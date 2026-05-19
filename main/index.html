@@ -1,0 +1,1842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GMIC.AI — The edge AI hardware company</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ---------- Tokens ---------- */
+:root{
+  --black:#0a0a0a;
+  --off-black:#111111;
+  --white:#ffffff;
+  --off-white:#f0f4ff;
+  --blue:#006aff;
+  --blue-dark:#0050c8;
+  --blue-deep:#2563eb;
+  --warm-dark:#0a1628;
+  --border-light:#c7d7f5;
+  --border-dark:#2a2a2a;
+  --text-muted:#5b6e9a;
+  --text-muted-dark:#8099c4;
+  --serif:'Instrument Serif', 'Inter', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --sans:'Inter', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  --radius-sm:10px;
+  --radius:14px;
+  --radius-lg:24px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);
+  background:var(--white);
+  color:var(--black);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  font-size:16px;
+  line-height:1.5;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none;font-family:var(--sans)}
+button{font-family:var(--sans);cursor:pointer;border:none;background:none;color:inherit}
+input,textarea,select{font-family:var(--sans)}
+
+/* ---------- Container ---------- */
+.container{
+  max-width:156rem;
+  width:100%;
+  margin:0 auto;
+  padding:0 clamp(20px, 4vw, 80px);
+}
+
+/* ---------- Typography helpers ---------- */
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-0.02em}
+.italic{font-style:italic}
+.eyebrow{
+  font-family:var(--sans);
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+}
+.eyebrow.dark{color:rgba(255,255,255,0.55)}
+
+h1.display{
+  font-family:var(--sans);font-weight:800;
+  font-size:clamp(48px,7vw,104px);
+  line-height:1.02;letter-spacing:-0.025em;
+}
+h2.section{
+  font-family:var(--sans);font-weight:800;
+  font-size:clamp(40px,5.5vw,80px);
+  line-height:1.05;letter-spacing:-0.02em;
+}
+h1.display .italic,
+h1.display em,
+h2.section .italic,
+h2.section em{
+  font-family:var(--sans);
+  font-style:italic;
+  font-weight:600;
+  letter-spacing:-0.01em;
+}
+h1 em, h2 em, h3 em,
+h1 .italic, h2 .italic, h3 .italic{
+  font-family:var(--sans) !important;
+  font-style:italic;
+}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 22px;border-radius:100px;
+  font-family:var(--sans);
+  font-size:14.5px;font-weight:500;
+  transition:all .25s ease;
+  white-space:nowrap;
+}
+.btn-blue{background:var(--blue);color:var(--white)}
+.btn-blue:hover{background:var(--blue-dark);transform:translateY(-1px)}
+.btn-blue-deep{background:var(--blue-deep);color:var(--white)}
+.btn-blue-deep:hover{background:#1d4ed8;transform:translateY(-1px)}
+.btn-nav{background:#0f172a;color:var(--white);padding:10px 18px;font-size:13.5px}
+.btn-nav:hover{background:#1e293b;transform:translateY(-1px)}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.35)}
+.btn-ghost:hover{background:rgba(255,255,255,0.08);border-color:var(--white)}
+.btn-outline-dark{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,0.35)}
+.btn-outline-dark:hover{border-color:var(--white);background:rgba(255,255,255,0.05)}
+
+.section-link{
+  font-family:var(--sans);
+  font-size:14.5px;font-weight:500;color:var(--blue);
+  display:inline-flex;align-items:center;gap:6px;
+  border-bottom:1px solid transparent;padding-bottom:2px;
+  transition:border-color .2s;
+}
+.section-link:hover{border-color:var(--blue)}
+.section-link-light{
+  font-family:var(--sans);
+  font-size:14.5px;font-weight:500;color:#7aa7ff;
+  border-bottom:1px solid transparent;padding-bottom:2px;
+  transition:border-color .2s;
+  display:inline-flex;align-items:center;gap:6px;
+  align-self:flex-start;
+}
+.section-link-light:hover{border-color:#7aa7ff}
+.section-link-deep{
+  font-family:var(--sans);
+  font-size:14.5px;font-weight:500;color:var(--blue-deep);
+  border-bottom:1px solid transparent;padding-bottom:2px;
+  transition:border-color .2s;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.section-link-deep:hover{border-color:var(--blue-deep)}
+
+/* ---------- NAV ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:18px 0;
+  transition:background .35s ease, backdrop-filter .35s ease, box-shadow .35s ease, color .35s ease;
+}
+.nav-inner{
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav .logo{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:18px;
+  letter-spacing:-0.01em;
+  color:var(--white);
+  transition:color .35s ease;
+}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{
+  font-family:var(--sans);
+  font-size:14px;font-weight:500;
+  color:rgba(255,255,255,0.85);
+  transition:color .25s ease;
+}
+.nav-links a:hover{color:var(--white)}
+.nav-right{display:flex;align-items:center}
+
+/* scrolled state */
+.nav.scrolled{
+  background:rgba(255,255,255,0.85);
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  box-shadow:0 1px 0 var(--border-light);
+}
+.nav.scrolled .logo{color:var(--black)}
+.nav.scrolled .nav-links a{color:#333}
+.nav.scrolled .nav-links a:hover{color:var(--black)}
+
+/* ---------- HERO ---------- */
+.hero-pin-wrap{position:relative}
+#hero-spacer{height:100vh}
+.hero{
+  position:sticky;
+  top:0;
+  z-index:10;
+  height:100vh;
+  display:flex;align-items:center;
+  color:var(--white);
+  overflow:hidden;
+  padding-top:120px;padding-bottom:80px;
+  background:#0a1530;
+}
+.hero-video{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  z-index:0;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(155deg, rgba(15,30,61,.28) 0%, rgba(10,22,40,.32) 50%, rgba(6,16,32,.3) 100%);
+  z-index:1;
+}
+.hero-ov{
+  position:absolute;inset:0;
+  background:linear-gradient(to top, rgba(0,0,0,.38) 0%, rgba(0,0,0,0) 45%);
+  z-index:2;
+  pointer-events:none;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(60% 50% at 50% 40%, rgba(0,106,255,0.12), transparent 70%);
+  pointer-events:none;
+  z-index:2;
+}
+.hero::after{
+  content:"";position:absolute;inset:0;
+  background:
+    radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.4), transparent),
+    radial-gradient(1px 1px at 70% 60%, rgba(255,255,255,0.3), transparent),
+    radial-gradient(1px 1px at 50% 80%, rgba(255,255,255,0.25), transparent);
+  opacity:.6;pointer-events:none;
+  z-index:2;
+}
+.hero-inner{
+  position:relative;z-index:3;
+  text-align:center;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+.hero .eyebrow{color:rgba(255,255,255,0.75);margin-bottom:24px}
+.hero h1{
+  font-size:clamp(22px, 2.8vw, 40px);
+  width:max-content;
+  max-width:min(900px, 90vw);
+  line-height:1.2;
+  margin-left:auto;margin-right:auto;
+  margin-bottom:28px;
+}
+.hero p.lede{
+  max-width:min(860px, 80vw);font-size:15px;line-height:1.55;
+  color:rgba(255,255,255,0.85);
+  margin-left:auto;margin-right:auto;margin-bottom:32px;
+  font-family:var(--sans);
+}
+.hero-cta{
+  display:flex;gap:14px;flex-wrap:wrap;
+  justify-content:center;
+}
+
+/* ---------- HERO MOSAIC (full-width rows) ---------- */
+.hero-mosaic{
+  position:absolute;inset:0;z-index:4;
+  background:#ffffff;
+  opacity:0;
+  pointer-events:none;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:32px 0;
+  gap:24px;
+}
+.mosaic-row{
+  display:flex;
+  align-items:center;
+  width:100%;
+  padding:0 20px;
+}
+.mosaic-row.row-3,
+.mosaic-row.row-4{justify-content:space-around}
+.mosaic-row.row-2,
+.mosaic-row.row-5{justify-content:space-between}
+.mosaic-row.text-row{
+  justify-content:center;
+  padding:8px 0;
+}
+.mosaic-tile{
+  width:160px;height:160px;
+  border-radius:16px;
+  overflow:hidden;
+  flex-shrink:0;
+  background:#f0f4ff;
+}
+.mosaic-tile img,
+.mosaic-tile video{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+#mosaic-video-slot{background:#000}
+.mosaic-center-text{
+  font-family:var(--sans);
+  font-size:clamp(18px,2vw,26px);
+  font-weight:800;
+  color:#0f172a;
+  text-align:center;
+  letter-spacing:-0.02em;
+  line-height:1.4;
+}
+.mosaic-center-text span{color:#2563eb;display:block}
+@media (max-width:1100px){
+  .mosaic-tile{width:120px;height:120px}
+}
+@media (max-width:640px){
+  .mosaic-tile{width:80px;height:80px}
+  .mosaic-row{padding:0 12px}
+}
+
+/* ---------- Generic section ---------- */
+section.bleed{padding:120px 0}
+#products{background:#ffffff}
+#products .container{position:relative;z-index:1}
+#products .carousel-viewport{margin-top:8px}
+.section-head{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  margin-bottom:64px;gap:24px;flex-wrap:wrap;
+}
+.section-head h2{max-width:1000px}
+.section-head .eyebrow{margin-bottom:18px;display:block}
+.section-head-right{display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+
+/* ---------- PRODUCTS carousel ---------- */
+.carousel-controls{display:flex;gap:8px}
+.carousel-btn{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--white);border:1px solid var(--border-light);
+  color:var(--black);
+  display:flex;align-items:center;justify-content:center;
+  transition:all .2s ease;
+}
+.carousel-btn:hover:not(:disabled){background:var(--black);color:var(--white);border-color:var(--black)}
+.carousel-btn:disabled{opacity:0.35;cursor:not-allowed}
+
+.carousel-viewport{
+  margin-left:calc(50% - 50vw);
+  margin-right:calc(50% - 50vw);
+  overflow:hidden;
+}
+.carousel-track{
+  display:flex;
+  gap:0;
+  align-items:flex-start;
+  transition:transform .55s cubic-bezier(0.2,0.8,0.2,1);
+}
+.carousel-slide{
+  flex:none;
+  min-width:0;
+}
+.carousel-track,
+.c-track{
+  display:flex;
+  gap:0;
+  align-items:stretch;
+  transform:none !important;
+  width:100%;
+}
+.c-slide{
+  flex:1;
+  aspect-ratio:1/1;
+  position:relative;
+  overflow:hidden;
+  background:#ffffff;
+  cursor:pointer;
+}
+.slide-bg{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:contain;
+  background:#ffffff;
+  margin:0;padding:0;
+  transition:opacity .4s ease;
+}
+.slide-bg.bg-main{opacity:1;z-index:1}
+.slide-bg.bg-1{opacity:0;z-index:2}
+.c-slide.is-active .slide-bg.bg-main,
+.c-slide:hover .slide-bg.bg-main{opacity:0}
+.c-slide.is-active .slide-bg.bg-1,
+.c-slide:hover .slide-bg.bg-1{opacity:1}
+.slide-overlay{
+  position:absolute;inset:0;z-index:3;
+  background:linear-gradient(to top, rgba(0,0,0,.7) 0%, rgba(0,0,0,0) 50%);
+  pointer-events:none;
+}
+.slide-text{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  z-index:4;
+  padding:20px 22px;
+}
+.sl-brand{
+  display:block;
+  font-family:var(--sans);
+  font-size:10px;font-weight:700;
+  color:#93c5fd;
+  letter-spacing:.12em;text-transform:uppercase;
+  margin-bottom:5px;
+}
+.sl-h3{
+  font-family:var(--sans);
+  font-size:22px;font-weight:800;
+  color:#ffffff;
+  margin:0 0 8px;
+  letter-spacing:-0.02em;
+  line-height:1.2;
+}
+.sl-link{
+  font-family:var(--sans);
+  font-size:12px;font-weight:500;
+  color:rgba(255,255,255,.65);
+  text-decoration:none;
+  transition:color .2s;
+}
+.c-slide.is-active .sl-link,
+.c-slide:hover .sl-link{color:rgba(255,255,255,.9)}
+
+/* ---------- FEATURES TILES ---------- */
+.features-tiles{
+  background:#0a0a0a;
+  color:#ffffff;
+  padding:120px 0 0;
+}
+.features-head{margin-bottom:64px}
+.features-head .eyebrow{
+  display:block;
+  margin-bottom:18px;
+  color:rgba(255,255,255,0.55);
+}
+.features-head h2{
+  color:#ffffff;
+  font-family:var(--sans);
+  font-weight:800;
+  letter-spacing:-0.02em;
+}
+.ft-grid{
+  display:flex;
+  width:100%;
+  height:480px;
+}
+.ft-tile{
+  position:relative;
+  flex:1;
+  overflow:hidden;
+  cursor:pointer;
+  filter:brightness(0.35);
+  transition:flex .45s ease, filter .35s ease;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:24px;
+  color:#ffffff;
+}
+.ft-tile.active{
+  flex:2.2;
+  filter:brightness(1);
+}
+.ft-tile img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  z-index:0;
+  transition:transform .4s ease;
+}
+.ft-overlay{
+  position:absolute;inset:0;
+  z-index:1;
+  background:linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,.2) 60%);
+}
+.ft-content{
+  position:relative;
+  z-index:2;
+  display:flex;flex-direction:column;gap:10px;
+  max-width:520px;
+}
+.ft-tile h3{
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:16px;
+  color:#ffffff;
+  margin:0;
+  letter-spacing:-0.005em;
+  transition:font-size .3s ease;
+}
+.ft-tile.active h3{font-size:22px}
+.ft-tile p{
+  font-family:var(--sans);
+  font-size:14px;
+  color:rgba(255,255,255,0.7);
+  line-height:1.5;
+  margin:0;
+  opacity:0;
+  max-height:0;
+  overflow:hidden;
+  transition:opacity .3s ease, max-height .3s ease;
+}
+.ft-tile.active p{
+  opacity:1;
+  max-height:80px;
+}
+.ft-btn{
+  display:none;
+  align-self:flex-start;
+  font-family:var(--sans);
+  font-size:13.5px;font-weight:500;
+  color:#ffffff;
+  padding:8px 16px;
+  border:1px solid rgba(255,255,255,0.4);
+  border-radius:100px;
+  margin-top:8px;
+  transition:background .2s ease, border-color .2s ease;
+}
+.ft-tile.active .ft-btn{display:inline-block}
+.ft-btn:hover{background:rgba(255,255,255,0.08);border-color:#fff}
+
+/* ---------- INDUSTRIES — stacked ---------- */
+.industries{background:var(--black);color:var(--white);padding:120px 0}
+.industries-top{
+  display:grid;grid-template-columns:1.2fr 1fr;gap:80px;
+  align-items:end;margin-bottom:72px;
+}
+.industries-top .eyebrow{margin-bottom:18px;display:block;color:rgba(255,255,255,0.55)}
+.industries-top h2{color:var(--white)}
+.industries-top p{
+  font-family:var(--sans);
+  font-size:15px;line-height:1.55;
+  color:rgba(255,255,255,0.6);
+  max-width:420px;justify-self:end;text-align:right;
+}
+.industries h2.section,
+.industries .industries-top h2{
+  font-family:var(--sans);
+  font-weight:800;
+  letter-spacing:-0.02em;
+}
+.industries .italic{font-style:italic}
+.industries-layout{
+  display:flex;
+  align-items:center;
+  gap:60px;
+  min-height:700px;
+}
+.industries-list{
+  flex:1;
+  border-top:1px solid var(--border-dark);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.industries-line{
+  display:flex;align-items:flex-start;gap:20px;
+  padding:28px 0;border-bottom:1px solid var(--border-dark);
+  font-family:var(--sans);font-weight:800;
+  font-size:clamp(24px,2.6vw,34px);
+  line-height:1.15;letter-spacing:-0.015em;
+  color:var(--white);
+  transition:color .25s ease;
+  cursor:pointer;
+}
+.industries-line:hover{color:#2563eb}
+.industries-line .idx{
+  font-family:var(--sans);font-weight:500;
+  font-size:13px;color:rgba(255,255,255,0.4);
+  letter-spacing:0.06em;
+  width:32px;flex:none;
+  transition:color .25s ease;
+  padding-top:6px;
+}
+.industries-line:hover .idx{color:#2563eb}
+.industries-line .dash{
+  font-family:var(--sans);font-weight:400;font-size:13px;
+  color:rgba(255,255,255,0.4);
+  padding-top:6px;
+  transition:color .25s ease;
+}
+.industries-line:hover .dash{color:#2563eb}
+.industries-line .ind-text{
+  flex:1;display:flex;flex-direction:column;gap:6px;
+}
+.industries-line .name{
+  font-family:var(--sans);
+  font-weight:800;
+  color:#ffffff;
+}
+.industries-line .name .italic,
+.industries-line .name em{
+  font-family:var(--sans);
+  font-style:italic;
+  font-weight:400;
+  color:rgba(255,255,255,0.6);
+}
+.industries-line .description{
+  font-family:var(--sans);
+  font-size:13px;font-weight:400;
+  color:rgba(255,255,255,0.55);
+  letter-spacing:0;
+  max-height:0;overflow:hidden;
+  transition:max-height .3s ease, margin-top .3s ease;
+}
+.industries-line .arrow{
+  font-family:var(--sans);
+  font-size:22px;color:#2563eb;
+  opacity:0;
+  padding-top:4px;
+  transition:opacity .25s ease, transform .25s ease;
+}
+.industries-line.active{color:#2563eb}
+.industries-line.active .idx,
+.industries-line.active .dash{color:#2563eb}
+.industries-line.active .description{max-height:40px}
+.industries-line.active .arrow{opacity:1;transform:translateX(4px)}
+
+/* ---------- INDUSTRY QUOTE (active row only) ---------- */
+.ind-quote{
+  display:block;
+  margin-top:20px;
+  max-height:0;overflow:hidden;
+  transition:max-height .4s ease, opacity .3s ease;
+  opacity:0;
+  max-width:520px;
+}
+.industries-line.active .ind-quote{
+  max-height:300px;
+  opacity:1;
+}
+.ind-stars{
+  display:block;
+  color:#fbbf24;
+  font-size:20px;
+  letter-spacing:3px;
+  margin-bottom:10px;
+}
+.ind-quote-tag{
+  display:inline-block;
+  font-family:var(--sans);
+  font-size:13px;font-weight:600;
+  color:#2563eb;
+  background:rgba(37,99,235,.1);
+  border:1px solid rgba(37,99,235,.2);
+  border-radius:100px;
+  padding:4px 14px;
+  margin-bottom:14px;
+}
+.ind-quote-body{
+  font-family:var(--sans);
+  font-size:13px;color:rgba(255,255,255,.5);
+  line-height:1.7;margin-bottom:14px;
+  display:none;
+}
+.ind-quote-pull{
+  display:block;
+  font-family:var(--sans);
+  font-size:22px;font-weight:700;
+  color:rgba(255,255,255,.9);
+  line-height:1.35;
+  margin-bottom:10px;
+  letter-spacing:-0.01em;
+}
+.ind-quote-mark{
+  font-family:var(--serif);
+  font-size:36px;color:#2563eb;
+  line-height:0;vertical-align:-12px;
+  margin:0 4px;
+}
+.ind-quote-sub{
+  display:block;
+  font-family:var(--sans);
+  font-size:14px;font-style:italic;
+  color:rgba(255,255,255,.35);
+}
+.ind-badge{
+  font-size:14px;
+  padding:6px 16px;
+}
+
+.industries-photo{
+  position:relative;
+  width:48%;
+  flex-shrink:0;
+  aspect-ratio:4/3;
+  height:auto;
+  min-height:unset;
+  border-radius:12px;
+  overflow:hidden;
+  background:#0a0a0a;
+}
+.industries-photo img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:12px;
+  opacity:0;
+  transition:opacity .4s ease;
+}
+.industries-photo img.active{opacity:1}
+
+/* ---------- PLATFORM two-up ---------- */
+.platform{background:var(--black);color:var(--white);padding:120px 0;position:relative;overflow:hidden}
+.platform .section-head h2{
+  color:var(--white);
+  font-family:var(--sans);
+  font-weight:800;
+  letter-spacing:-0.02em;
+}
+.platform-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.platform-card{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:var(--radius);
+  padding:48px;
+  display:flex;flex-direction:column;
+  min-height:340px;
+  overflow:hidden;
+  transition:background .25s ease, border-color .25s ease, transform .25s ease;
+}
+.platform-card:hover{
+  background:rgba(255,255,255,0.07);
+  border-color:rgba(255,255,255,0.16);
+  transform:translateY(-2px);
+}
+.platform-card-img{
+  margin:-48px -48px 28px -48px;
+  aspect-ratio:16/9;
+  height:auto;
+  border-radius:10px 10px 0 0;
+  overflow:hidden;
+  position:relative;
+}
+.platform-card-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.platform-card-img::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom, transparent 40%, rgba(10,22,40,.6) 100%);
+  pointer-events:none;
+}
+.platform-card .slash-tag{
+  font-family:var(--sans);
+  font-size:12px;font-weight:500;letter-spacing:0.12em;
+  text-transform:uppercase;color:rgba(255,255,255,0.55);
+  margin-bottom:24px;
+}
+.platform-card h3{
+  font-family:var(--sans);font-weight:700;
+  font-size:26px;letter-spacing:-0.015em;line-height:1.2;
+  color:var(--white);margin-bottom:18px;max-width:480px;
+}
+.platform-card p{
+  font-family:var(--sans);
+  font-size:15px;color:rgba(255,255,255,0.65);
+  line-height:1.6;flex:1;margin-bottom:28px;max-width:520px;
+}
+
+/* ---------- INSIGHTS ---------- */
+.insights{background:#eef2ff;padding:120px 0}
+.insights-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.icard{
+  background:var(--white);
+  border:1px solid var(--border-light);
+  border-radius:12px;
+  overflow:hidden;
+  display:flex;flex-direction:column;
+  transition:transform .35s ease, box-shadow .35s ease, border-color .2s;
+}
+.icard:hover{transform:translateY(-3px);box-shadow:0 18px 40px -22px rgba(0,0,0,0.1);border-color:#cfcfca}
+.icard-img{
+  height:180px;
+  overflow:hidden;
+  background:#eef2ff;
+}
+.icard-img img{
+  width:100%;height:100%;
+  object-fit:cover;
+  display:block;
+}
+.icard-body{
+  padding:24px 26px 26px;
+  display:flex;flex-direction:column;flex:1;
+}
+.icard-meta{
+  font-family:var(--sans);
+  font-size:12px;font-weight:500;
+  letter-spacing:0.08em;text-transform:uppercase;
+  color:var(--text-muted);margin-bottom:14px;
+}
+.icard h3{
+  font-family:var(--sans);font-weight:600;
+  font-size:20px;letter-spacing:-0.01em;line-height:1.3;
+  color:var(--black);margin-bottom:20px;flex:1;
+}
+.insights-foot{margin-top:36px;display:flex;justify-content:flex-end}
+
+/* ---------- FINAL CTA ---------- */
+.final-cta{background:var(--black);color:var(--white);padding:140px 0;text-align:center}
+.final-cta .eyebrow{margin-bottom:24px;display:block;color:rgba(255,255,255,0.6)}
+.final-cta h2{
+  color:var(--white);
+  max-width:1000px;margin:0 auto 24px;
+}
+.final-cta p{
+  font-family:var(--sans);
+  font-size:17px;color:rgba(255,255,255,0.7);
+  max-width:600px;margin:0 auto 36px;line-height:1.55;
+}
+
+/* ---------- EMAIL BAR ---------- */
+.email-bar{background:#111;color:var(--white);padding:48px 0;border-top:1px solid var(--border-dark)}
+.email-inner{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.email-left h3{
+  font-family:var(--sans);
+  font-size:24px;font-weight:600;letter-spacing:-0.01em;
+  margin-bottom:6px;color:var(--white);
+}
+.email-left p{
+  font-family:var(--sans);
+  font-size:14.5px;color:rgba(255,255,255,0.6);max-width:420px;
+}
+.email-form{display:flex;gap:10px;min-width:380px}
+.email-form input{
+  flex:1;background:#1a1a1a;border:1px solid #2a2a2a;
+  color:var(--white);padding:14px 18px;border-radius:100px;
+  font-family:var(--sans);font-size:14.5px;
+  transition:border-color .2s;
+}
+.email-form input::placeholder{color:#666}
+.email-form input:focus{outline:none;border-color:var(--blue)}
+
+/* ---------- FOOTER ---------- */
+.footer{background:var(--black);color:rgba(255,255,255,0.7);padding:80px 0 32px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr 1fr;gap:48px;margin-bottom:64px}
+.footer-brand .logo{
+  font-family:var(--sans);
+  font-weight:600;
+  font-size:20px;
+  color:var(--white);
+  letter-spacing:-0.01em;margin-bottom:16px;display:inline-block;
+}
+.footer-brand p{
+  font-family:var(--sans);
+  font-size:14px;line-height:1.55;
+  color:rgba(255,255,255,0.55);margin-bottom:20px;max-width:280px;
+}
+.footer-contact{
+  font-family:var(--sans);
+  font-size:13.5px;line-height:1.7;color:rgba(255,255,255,0.6);margin-bottom:20px;
+}
+.footer-contact a{color:rgba(255,255,255,0.75);transition:color .2s}
+.footer-contact a:hover{color:var(--white)}
+.cert-pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{
+  font-family:var(--sans);
+  border:1px solid #2a2a2a;border-radius:100px;
+  padding:4px 10px;font-size:11.5px;font-weight:500;
+  color:rgba(255,255,255,0.7);letter-spacing:0.04em;
+}
+.footer-col h4{
+  font-family:var(--sans);
+  font-size:12px;font-weight:600;letter-spacing:0.1em;
+  text-transform:uppercase;color:var(--white);margin-bottom:18px;
+}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-col a{
+  font-family:var(--sans);
+  font-size:14px;color:rgba(255,255,255,0.6);transition:color .2s;
+}
+.footer-col a:hover{color:var(--white)}
+.footer-bottom{
+  font-family:var(--sans);
+  border-top:1px solid #1f1f1f;padding-top:28px;
+  display:flex;justify-content:space-between;align-items:center;
+  flex-wrap:wrap;gap:16px;
+  font-size:13px;color:rgba(255,255,255,0.45);
+}
+.footer-bottom a{color:rgba(255,255,255,0.6);margin-left:20px;transition:color .2s}
+.footer-bottom a:hover{color:var(--white)}
+
+/* ---------- Floating action bar ---------- */
+.fab{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%);
+  z-index:300;
+  background:var(--white);
+  border-radius:100px;
+  padding:8px 14px;
+  display:flex;align-items:center;gap:6px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.18), 0 2px 6px rgba(0,0,0,0.08);
+}
+.fab-btn{
+  width:44px;height:44px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:#333;background:transparent;
+  transition:background .2s ease, color .2s ease, transform .2s ease;
+}
+.fab-btn:hover{background:#f0f0ee;color:var(--black)}
+.fab-btn.active{background:var(--black);color:var(--white)}
+.fab-btn.active:hover{background:var(--black);color:var(--white)}
+a.fab-btn{text-decoration:none}
+.fab-divider{width:1px;height:22px;background:var(--border-light);margin:0 4px}
+.fab svg{width:20px;height:20px}
+
+@keyframes pulse-ring{
+  0%   { box-shadow: 0 0 0 0 rgba(37,99,235,.4); }
+  70%  { box-shadow: 0 0 0 12px rgba(37,99,235,0); }
+  100% { box-shadow: 0 0 0 0 rgba(37,99,235,0); }
+}
+
+/* ---------- Back to top ---------- */
+.back-top{
+  position:fixed;right:28px;bottom:28px;
+  width:44px;height:44px;border-radius:50%;
+  background:var(--white);
+  border:1px solid var(--border-light);
+  box-shadow:0 6px 18px rgba(0,0,0,0.12);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--black);
+  opacity:0;pointer-events:none;
+  transition:opacity .3s ease, background .2s ease, color .2s ease, transform .2s ease;
+  z-index:300;
+}
+.back-top.visible{opacity:1;pointer-events:auto}
+.back-top:hover{background:var(--black);color:var(--white);border-color:var(--black);transform:translateY(-2px)}
+.back-top svg{width:18px;height:18px}
+
+/* ---------- Reveal animation ---------- */
+.reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .8s ease, transform .8s ease;
+}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+.fade-section{
+  opacity:0;
+  transform:translateY(24px);
+  transition:opacity .7s ease, transform .7s ease;
+}
+.fade-section.in-view{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1100px){
+  .c-slide{aspect-ratio:auto;height:360px}
+  .features-split{grid-template-columns:1fr;gap:48px}
+  .features-right{height:480px}
+  .industries-top{grid-template-columns:1fr;gap:24px;align-items:start}
+  .industries-top p{text-align:left;justify-self:start;max-width:560px}
+  .industries-layout{flex-direction:column;gap:32px;min-height:0;align-items:stretch}
+  .industries-photo{width:100%;aspect-ratio:4/3;height:auto}
+  .platform-grid{grid-template-columns:1fr}
+  .insights-grid{grid-template-columns:1fr 1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
+  .nav-links{display:none}
+  .ft-grid{flex-direction:column;height:auto}
+  .ft-tile{height:200px}
+  .ft-tile.active{flex:none;height:320px}
+}
+@media (max-width: 640px){
+  section.bleed{padding:80px 0}
+  .industries,.platform,.insights{padding:80px 0}
+  .final-cta{padding:96px 0}
+  .c-slide{aspect-ratio:auto;height:300px}
+  .platform-card{padding:32px}
+  .industries-line{font-size:28px;padding:24px 0;gap:16px}
+  .industries-line .idx{width:36px}
+  .insights-grid{grid-template-columns:1fr}
+  .email-form{min-width:100%;flex-direction:column}
+  .email-inner{flex-direction:column;align-items:flex-start}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAV ========== -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">GMIC.AI</a>
+    <div class="nav-links">
+      <a href="#products">Products</a>
+      <a href="#industries">Industries</a>
+      <a href="#platform">Platform</a>
+      <a href="#insights">Insights</a>
+      <a href="#company">Company</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-nav">Book a Demo</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ========== HERO ========== -->
+<div class="hero-pin-wrap">
+<header class="hero">
+  <video autoplay muted loop playsinline class="hero-video"
+    src="img/hero-video.mp4"
+    poster=""></video>
+  <div class="hero-bg"></div>
+  <div class="hero-ov"></div>
+  <div class="container hero-inner">
+    <div class="eyebrow">EDGE AI HARDWARE · ODM/OEM · EST. 2009</div>
+    <h1 class="display">
+      The edge AI hardware company.<br>
+      <em>Engineered for the voice-first era.</em>
+    </h1>
+    <p class="lede">GMIC is the embedded AI hardware manufacturer behind tomorrow's AI wearable devices and voice AI hardware. End-to-end ODM, from schematic to mass production.</p>
+    <div class="hero-cta">
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Start Your Project →</a>
+      <a href="#products" class="btn btn-ghost">Explore Products</a>
+    </div>
+  </div>
+  <div class="hero-mosaic" aria-hidden="true">
+    <!-- Row 1: 3 tiles, staggered into gaps of Row 2 -->
+    <div class="mosaic-row row-3">
+      <div class="mosaic-tile"><img src="img/product/AI Smart Pen.png" alt=""></div>
+      <div class="mosaic-tile"><img src="img/product/AI Chat BC Headset.png" alt=""></div>
+      <div class="mosaic-tile"><img src="img/product/AI Voice Recorder.png" alt=""></div>
+    </div>
+
+    <!-- Row 2: 4 tiles, full-width -->
+    <div class="mosaic-row row-2">
+      <div class="mosaic-tile"><img src="img/product/AI Chatmic.png" alt=""></div>
+      <div class="mosaic-tile"><img src="img/product/AI noise reduction voice recorder.png" alt=""></div>
+      <div class="mosaic-tile"><img src="img/product/Phone assistant.png" alt=""></div>
+      <div class="mosaic-tile"><img src="img/product/hearitai.png" alt=""></div>
+    </div>
+
+    <!-- Row 3: text only, no image -->
+    <div class="mosaic-row text-row">
+      <div class="mosaic-center-text">
+        Edge AI hardware.<br>
+        <span>From schematic to scale.</span>
+      </div>
+    </div>
+
+    <!-- Row 4: 4 tiles staggered into gaps of Row 5 — video is 2nd tile -->
+    <div class="mosaic-row row-4">
+      <div class="mosaic-tile"><img src="img/product/Frame 8.png" alt=""></div>
+      <div class="mosaic-tile" id="mosaic-video-slot">
+        <video autoplay muted loop playsinline style="width:100%;height:100%;object-fit:cover;display:block;border-radius:16px;"></video>
+      </div>
+      <div class="mosaic-tile"><img src="img/product/Frame 9.png" alt=""></div>
+      <div class="mosaic-tile"><img src="img/product/Frame 10.png" alt=""></div>
+    </div>
+
+    <!-- Row 5: 5 tiles, full-width -->
+    <div class="mosaic-row row-5">
+      <div class="mosaic-tile"><img src="img/product/MIC05.png" alt=""></div>
+      <div class="mosaic-tile"><img src="img/product/recordpen.png" alt=""></div>
+      <div class="mosaic-tile"><img src="img/product/Frame 11.png" alt=""></div>
+      <div class="mosaic-tile"><img src="img/product/opsmic-16.png" alt=""></div>
+      <div class="mosaic-tile"><img src="img/product/opsmic-main.png" alt=""></div>
+    </div>
+  </div>
+</header>
+<div id="hero-spacer"></div>
+</div>
+
+<!-- ========== PRODUCTS ========== -->
+<section class="bleed fade-section" id="products">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">/ PRODUCTS</div>
+        <h2 class="section">Four families. <span class="italic">One edge AI platform.</span></h2>
+      </div>
+      <div class="section-head-right">
+        <a href="#" class="section-link">See all products →</a>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="prevBtn" aria-label="Previous">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+          </button>
+          <button class="carousel-btn" id="nextBtn" aria-label="Next">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="carousel-viewport">
+      <div class="c-track" id="cTrack">
+
+        <div class="c-slide is-active" data-idx="0">
+          <img class="slide-bg bg-main" src="img/clinmic-main.png" alt="Clinmic">
+          <img class="slide-bg bg-1"    src="img/clinmic-1.png" alt="Clinmic active">
+          <div class="slide-overlay"></div>
+          <div class="slide-text">
+            <span class="sl-brand">CLINMIC</span>
+            <h3 class="sl-h3">Clinmic</h3>
+            <a href="#" class="sl-link">Explore more →</a>
+          </div>
+        </div>
+
+        <div class="c-slide" data-idx="1">
+          <img class="slide-bg bg-main" src="img/bizmic-2.png" alt="Bizmic">
+          <img class="slide-bg bg-1"    src="img/bizmic-1.png" alt="Bizmic active">
+          <div class="slide-overlay"></div>
+          <div class="slide-text">
+            <span class="sl-brand">BIZMIC</span>
+            <h3 class="sl-h3">Bizmic</h3>
+            <a href="#" class="sl-link">Explore more →</a>
+          </div>
+        </div>
+
+        <div class="c-slide" data-idx="2">
+          <img class="slide-bg bg-main" src="img/opsmic-main.png" alt="Opsmic">
+          <img class="slide-bg bg-1"    src="img/opsmic-1.png" alt="Opsmic active">
+          <div class="slide-overlay"></div>
+          <div class="slide-text">
+            <span class="sl-brand">OPSMIC</span>
+            <h3 class="sl-h3">Opsmic</h3>
+            <a href="#" class="sl-link">Explore more →</a>
+          </div>
+        </div>
+
+        <div class="c-slide" data-idx="3">
+          <img class="slide-bg bg-main" src="img/fleetmic-main.png" alt="Fleetmic">
+          <img class="slide-bg bg-1"    src="img/fleetmic.png" alt="Fleetmic active">
+          <div class="slide-overlay"></div>
+          <div class="slide-text">
+            <span class="sl-brand">FLEETMIC</span>
+            <h3 class="sl-h3">Fleetmic</h3>
+            <a href="#" class="sl-link">Explore more →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FEATURES TILES ========== -->
+<section class="features-tiles fade-section">
+  <div class="container">
+    <div class="features-head reveal">
+      <div class="eyebrow dark">/ PLATFORM</div>
+      <h2 class="section">See your whole <span class="italic">hardware stack.</span></h2>
+    </div>
+  </div>
+  <div class="ft-grid" id="ftGrid">
+    <div class="ft-tile active" data-tile="1">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Embedded AI Hardware">
+      <div class="ft-overlay"></div>
+      <div class="ft-content">
+        <h3>Embedded AI Hardware</h3>
+        <p>MCU, DSP, BLE/Wi-Fi, low-power audio pipelines. Custom voice modules tuned for on-device inference.</p>
+        <a href="#" class="ft-btn">Learn more →</a>
+      </div>
+    </div>
+    <div class="ft-tile" data-tile="2">
+      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="AI Hardware ODM">
+      <div class="ft-overlay"></div>
+      <div class="ft-content">
+        <h3>AI Hardware ODM</h3>
+        <p>15 years of precision through Gainstrong. SMT, acoustic calibration, global certification under one roof.</p>
+        <a href="#" class="ft-btn">Learn more →</a>
+      </div>
+    </div>
+    <div class="ft-tile" data-tile="3">
+      <img src="img/stack-4.png" alt="Global Certifications">
+      <div class="ft-overlay"></div>
+      <div class="ft-content">
+        <h3>Global Certifications</h3>
+        <p>FCC, CE, UKCA, TELEC Japan, RoHS, ISED Canada — every device ships certified and market-ready.</p>
+        <a href="#" class="ft-btn">Learn more →</a>
+      </div>
+    </div>
+    <div class="ft-tile" data-tile="4">
+      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="SDK & Integrations">
+      <div class="ft-overlay"></div>
+      <div class="ft-content">
+        <h3>SDK &amp; Integrations</h3>
+        <p>BLE profiles, audio pipeline configs, firmware update protocols. Works with leading AI software platforms.</p>
+        <a href="#" class="ft-btn">Learn more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== INDUSTRIES ========== -->
+<section class="industries fade-section" id="industries">
+  <div class="container">
+    <div class="industries-top reveal">
+      <div>
+        <div class="eyebrow dark">/ BUILT FOR</div>
+        <h2 class="section">Where edge AI ships.</h2>
+      </div>
+      <p>From clinical exam rooms to logistics fleets — embedded AI hardware deployed everywhere voice matters.</p>
+    </div>
+    <div class="industries-layout reveal">
+      <div class="industries-list">
+        <a class="industries-line active" href="#" data-photo="healthcare">
+          <span class="idx">01</span>
+          <span class="dash">—</span>
+          <span class="ind-text">
+            <span class="name">Healthcare <span class="italic">Voice AI</span></span>
+            <span class="description">AI scribe · ambient capture · clinical workflows</span>
+            <span class="ind-quote">
+              <span class="ind-stars">★★★★★</span>
+              <span class="ind-quote-tag">AI Healthcare</span>
+              <span class="ind-quote-pull">
+                <span class="ind-quote-mark">“</span>
+                <strong>We realized software and hardware are two completely different businesses.</strong>
+                <span class="ind-quote-mark">”</span>
+              </span>
+              <span class="ind-quote-sub">From AI software to production-ready wearable hardware</span>
+            </span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="industries-line" href="#" data-photo="operations">
+          <span class="idx">03</span>
+          <span class="dash">—</span>
+          <span class="ind-text">
+            <span class="name">Operations <span class="italic">Logistics</span></span>
+            <span class="description">Fleet sync · warehouse · edge devices</span>
+            <span class="ind-quote">
+              <span class="ind-stars">★★★★★</span>
+              <span class="ind-quote-tag">Field &amp; Real Estate</span>
+              <span class="ind-quote-pull">
+                <span class="ind-quote-mark">“</span>
+                <strong>Their acoustic engineering solved our noise challenges immediately.</strong>
+                <span class="ind-quote-mark">”</span>
+              </span>
+              <span class="ind-quote-sub">From noisy environments to clear, usable audio</span>
+            </span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="industries-line" href="#" data-photo="realestate">
+          <span class="idx">05</span>
+          <span class="dash">—</span>
+          <span class="ind-text">
+            <span class="name">Real Estate <span class="italic">Field Service</span></span>
+            <span class="description">CRM sync · voice dictation · mobile teams</span>
+            <span class="ind-quote">
+              <span class="ind-stars">★★★★★</span>
+              <span class="ind-quote-tag">Legal Services</span>
+              <span class="ind-quote-pull">
+                <span class="ind-quote-mark">“</span>
+                <strong>They helped us scale from prototype to mass production without cutting corners.</strong>
+                <span class="ind-quote-mark">”</span>
+              </span>
+              <span class="ind-quote-sub">From prototype to dependable high-volume builds</span>
+            </span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+      </div>
+      <div class="industries-photo">
+        <img class="active" data-photo="healthcare" src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=1200&q=80" alt="Healthcare Voice AI">
+        <img data-photo="operations" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80" alt="Operations Logistics">
+        <img data-photo="realestate" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80" alt="Real Estate Field Service">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PLATFORM ========== -->
+<section class="platform fade-section" id="platform">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow dark">/ PLATFORM</div>
+        <h2 class="section">From schematic to <span class="italic">scale.</span></h2>
+      </div>
+    </div>
+    <div class="platform-grid">
+      <div class="platform-card reveal">
+        <div class="platform-card-img">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Engineering">
+        </div>
+        <div class="slash-tag">/ ENGINEER</div>
+        <h3>Embedded AI hardware, edge-native.</h3>
+        <p>MCU, DSP, BLE/Wi-Fi, low-power audio pipelines. Custom voice modules and AIoT boards tuned for on-device inference and real-time voice.</p>
+        <a href="#" class="section-link-light">Engineering capabilities →</a>
+      </div>
+      <div class="platform-card reveal">
+        <div class="platform-card-img">
+          <img src="img/hardware-2.png" alt="Manufacture">
+        </div>
+        <div class="slash-tag">/ MANUFACTURE</div>
+        <h3>The AI hardware manufacturer.</h3>
+        <p>15 years of precision through Gainstrong. SMT, acoustic calibration, global certification, and door-to-door logistics — under one roof. The AI hardware ODM you can ship with.</p>
+        <a href="#" class="section-link-light">AI hardware ODM process →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== INSIGHTS ========== -->
+<section class="insights fade-section" id="insights">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <div class="eyebrow">/ LATEST</div>
+        <h2 class="section">From the edge.</h2>
+      </div>
+    </div>
+    <div class="insights-grid">
+      <a class="icard reveal" href="https://gmic.ai/voice-control-plane-smart-spaces/" target="_blank" rel="noopener">
+        <div class="icard-img">
+          <img src="https://gmic.ai/wp-content/uploads/2026/05/voice_gateway_banner.png" alt="">
+        </div>
+        <div class="icard-body">
+          <div class="icard-meta">Essay · 2026</div>
+          <h3>When Every Device Has a Microphone, Who Decides What Gets Executed?</h3>
+          <span class="section-link-deep">Read more →</span>
+        </div>
+      </a>
+      <a class="icard reveal" href="https://gmic.ai/ai-receptionist-cost-vs-enterprise-memory/" target="_blank" rel="noopener">
+        <div class="icard-img">
+          <img src="https://gmic.ai/wp-content/uploads/2026/05/banner_9625b514e6af_1778983257.png" alt="">
+        </div>
+        <div class="icard-body">
+          <div class="icard-meta">Analysis · 2026</div>
+          <h3>The Receptionist Math Changed. Memory Matters More.</h3>
+          <span class="section-link-deep">Read more →</span>
+        </div>
+      </a>
+      <a class="icard reveal" href="https://gmic.ai/ai-voice-receptionist-enterprise-memory-relief/" target="_blank" rel="noopener">
+        <div class="icard-img">
+          <img src="https://gmic.ai/wp-content/uploads/2026/05/banner_6bf14001b435_1778896843.png" alt="">
+        </div>
+        <div class="icard-body">
+          <div class="icard-meta">POV · 2026</div>
+          <h3>The Real Relief Isn’t AI Answering</h3>
+          <span class="section-link-deep">Read more →</span>
+        </div>
+      </a>
+    </div>
+    <div class="insights-foot">
+      <a href="https://gmic.ai/blog/" target="_blank" rel="noopener" class="section-link-deep">Read all insights →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FINAL CTA ========== -->
+<section class="final-cta fade-section">
+  <div class="container">
+    <div class="eyebrow reveal">/ BEGIN</div>
+    <h2 class="section reveal">Build your edge AI hardware.</h2>
+    <p class="reveal">Bring us a sketch, a spec sheet, or a working prototype. We return a manufacturing-ready roadmap in two weeks.</p>
+    <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue-deep reveal">Book a Demo →</a>
+  </div>
+</section>
+
+<!-- ========== EMAIL BAR ========== -->
+<section class="email-bar fade-section">
+  <div class="container email-inner">
+    <div class="email-left">
+      <h3>Get the latest product from the edge.</h3>
+      <p>Monthly notes on hardware shipping, certifications, and the AI models running on our devices.</p>
+    </div>
+    <form class="email-form" onsubmit="event.preventDefault();this.querySelector('input').value='';this.querySelector('button').textContent='Subscribed ✓'">
+      <input type="email" placeholder="your@company.com" required>
+      <button type="submit" class="btn btn-blue">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer" id="company">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">GMIC.AI</a>
+        <p>Designing and manufacturing the embedded hardware behind the voice-first era.</p>
+        <div class="footer-contact">
+          <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a><br>
+          <a href="tel:+16699000008">+1 (669) 900-0008</a><br>
+          Anaheim, CA · Shenzhen, CN
+        </div>
+        <div class="cert-pills">
+          <span class="pill">FCC</span>
+          <span class="pill">CE</span>
+          <span class="pill">UKCA</span>
+          <span class="pill">TELEC</span>
+          <span class="pill">RoHS</span>
+          <span class="pill">ISED</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Products</h4>
+        <ul>
+          <li><a href="#">Clinmic</a></li>
+          <li><a href="#">Bizmic</a></li>
+          <li><a href="#">Opsmic</a></li>
+          <li><a href="#">Fleetmic</a></li>
+          <li><a href="#">Accessories</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="#">Engineering</a></li>
+          <li><a href="#">Manufacturing</a></li>
+          <li><a href="#">Certifications</a></li>
+          <li><a href="#">SDKs &amp; APIs</a></li>
+          <li><a href="#">Fleet Console</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="#">Healthcare</a></li>
+          <li><a href="#">Retail</a></li>
+          <li><a href="#">Logistics</a></li>
+          <li><a href="#">Field Service</a></li>
+          <li><a href="#">Public Sector</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Insights</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 GMIC.AI · All rights reserved.</div>
+      <div>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ========== FLOATING ACTION BAR ========== -->
+<div class="fab" role="toolbar" aria-label="Quick actions">
+  <a class="fab-btn" href="https://t.me/gmicai" target="_blank" rel="noopener" aria-label="Telegram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+  </a>
+  <a class="fab-btn" href="https://api.whatsapp.com/send/?phone=16699000008&text=Hi%21+I+just+left+a+voice+note+on+your+site+%E2%80%94+looking+forward+to+your+reply.&type=phone_number&app_absent=0" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+  <button class="fab-btn wechat-fab-btn" id="fabWechat" aria-label="WeChat">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor">
+      <path d="M9.5 4C5.36 4 2 6.91 2 10.5c0 1.99 1.03 3.76 2.64 4.95L4 17l2.19-1.09c.96.27 1.99.42 3.04.42.18 0 .36 0 .54-.01C9.63 15.83 9.5 15.17 9.5 14.5 9.5 11.09 12.91 8.5 17 8.5c.35 0 .7.02 1.04.06C17.14 5.72 13.63 4 9.5 4zm-2 4.5a1 1 0 110-2 1 1 0 010 2zm4 0a1 1 0 110-2 1 1 0 010 2z"/>
+      <path d="M17 10.5c-3.31 0-6 2.24-6 5 0 1.5.75 2.84 1.93 3.77L12.5 21l1.96-.98c.82.22 1.67.34 2.54.34 3.31 0 6-2.24 6-5s-2.69-5-6-5zm-2 5.5a1 1 0 110-2 1 1 0 010 2zm4 0a1 1 0 110-2 1 1 0 010 2z"/>
+    </svg>
+  </button>
+  <span class="fab-divider"></span>
+  <button class="fab-btn active" id="fabMic" aria-label="Microphone" onclick="var vp=document.getElementById('voice-panel');vp.style.display=(vp.style.display==='none'||!vp.style.display)?'block':'none';">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+  </button>
+  <button class="fab-btn" id="fabConnect" data-connect aria-label="More" onclick="var cm=document.getElementById('connect-menu');cm.style.display=(cm.style.display==='none'||!cm.style.display)?'block':'none';">
+    <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></svg>
+  </button>
+</div>
+
+<!-- ========== BACK TO TOP ========== -->
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</button>
+
+<script>
+// ---------- Nav scroll transition ----------
+(function(){
+  const nav = document.getElementById('nav');
+  const hero = document.querySelector('.hero');
+  const threshold = () => Math.max(80, hero.offsetHeight - 80);
+  function onScroll(){
+    if(window.scrollY > threshold()){
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  onScroll();
+})();
+
+// ---------- Hero scroll-jacking (sticky pin + progress fade + shrink to slot) ----------
+(function(){
+  const heroEl = document.querySelector('.hero');
+  const heroInner = document.querySelector('.hero-inner');
+  const heroVideoBg = document.querySelector('.hero-video');
+  const heroBgEl = document.querySelector('.hero-bg');
+  const heroOvEl = document.querySelector('.hero-ov');
+  const mosaicEl = document.querySelector('.hero-mosaic');
+  if (!heroEl || !mosaicEl) return;
+
+  // Copy hero video src into the mosaic slot's video
+  const mosaicVid = document.querySelector('#mosaic-video-slot video');
+  if (mosaicVid && heroVideoBg){
+    mosaicVid.src = 'img/hero-video.mp4';
+  }
+
+  let videoShrunk = false;
+  let hideVideoTimeout = null;
+
+  function shrinkVideoToMosaic(){
+    if (!heroVideoBg) return;
+    const slot = document.getElementById('mosaic-video-slot');
+    if (!slot) return;
+    if (hideVideoTimeout){ clearTimeout(hideVideoTimeout); hideVideoTimeout = null; }
+    const slotRect = slot.getBoundingClientRect();
+
+    heroVideoBg.style.visibility = 'visible';
+    heroVideoBg.style.opacity = '1';
+    heroVideoBg.style.pointerEvents = '';
+    heroVideoBg.style.transition = 'none';
+    heroVideoBg.style.position = 'fixed';
+    heroVideoBg.style.top = '0';
+    heroVideoBg.style.left = '0';
+    heroVideoBg.style.width = '100vw';
+    heroVideoBg.style.height = '100vh';
+    heroVideoBg.style.borderRadius = '0';
+    heroVideoBg.style.zIndex = '6';
+    heroVideoBg.style.objectFit = 'cover';
+    heroVideoBg.style.inset = 'auto';
+
+    // Force reflow before applying transition
+    heroVideoBg.getBoundingClientRect();
+
+    heroVideoBg.style.transition = 'all 0.7s cubic-bezier(.4,0,.2,1)';
+    heroVideoBg.style.top = slotRect.top + 'px';
+    heroVideoBg.style.left = slotRect.left + 'px';
+    heroVideoBg.style.width = slotRect.width + 'px';
+    heroVideoBg.style.height = slotRect.height + 'px';
+    heroVideoBg.style.borderRadius = '18px';
+
+    // After animation completes, hide the original — slot's own video takes over.
+    hideVideoTimeout = setTimeout(() => {
+      heroVideoBg.style.opacity = '0';
+      heroVideoBg.style.visibility = 'hidden';
+      heroVideoBg.style.pointerEvents = 'none';
+    }, 700);
+  }
+
+  function expandVideoFromMosaic(){
+    if (!heroVideoBg) return;
+    if (hideVideoTimeout){ clearTimeout(hideVideoTimeout); hideVideoTimeout = null; }
+    heroVideoBg.style.visibility = 'visible';
+    heroVideoBg.style.opacity = '1';
+    heroVideoBg.style.pointerEvents = '';
+    heroVideoBg.style.transition = 'all 0.6s cubic-bezier(.4,0,.2,1)';
+    heroVideoBg.style.top = '0';
+    heroVideoBg.style.left = '0';
+    heroVideoBg.style.width = '100vw';
+    heroVideoBg.style.height = '100vh';
+    heroVideoBg.style.borderRadius = '0';
+    setTimeout(() => {
+      heroVideoBg.style.position = 'absolute';
+      heroVideoBg.style.transition = '';
+      heroVideoBg.style.zIndex = '';
+      heroVideoBg.style.top = '';
+      heroVideoBg.style.left = '';
+      heroVideoBg.style.width = '';
+      heroVideoBg.style.height = '';
+      heroVideoBg.style.borderRadius = '';
+      heroVideoBg.style.inset = '';
+      heroVideoBg.style.objectFit = '';
+    }, 620);
+  }
+
+  function updateHero(){
+    const scrollY = window.scrollY;
+    const heroH = heroEl.offsetHeight;
+    const progress = Math.min(Math.max(scrollY / heroH, 0), 1);
+
+    if (progress < 0.3){
+      if (videoShrunk){
+        videoShrunk = false;
+        expandVideoFromMosaic();
+      }
+      if (heroInner) heroInner.style.opacity = 1 - (progress / 0.3);
+      mosaicEl.style.opacity = 0;
+      mosaicEl.style.pointerEvents = 'none';
+      if (heroBgEl) heroBgEl.style.opacity = 1;
+      if (heroOvEl) heroOvEl.style.opacity = 1;
+    } else {
+      if (!videoShrunk){
+        videoShrunk = true;
+        shrinkVideoToMosaic();
+      }
+      if (heroInner) heroInner.style.opacity = 0;
+      if (heroBgEl) heroBgEl.style.opacity = 0;
+      if (heroOvEl) heroOvEl.style.opacity = 0;
+      const mosaicProgress = Math.min((progress - 0.3) / 0.3, 1);
+      mosaicEl.style.opacity = mosaicProgress;
+      mosaicEl.style.pointerEvents = mosaicProgress > 0.5 ? 'auto' : 'none';
+    }
+  }
+
+  window.addEventListener('scroll', updateHero, { passive:true });
+  updateHero();
+})();
+
+// ---------- Features tiles (hover + auto-rotate) ----------
+(function(){
+  const tiles = document.querySelectorAll('#ftGrid .ft-tile');
+  if (!tiles.length) return;
+
+  let platformCurrent = 0;
+  let platformAuto = null;
+
+  function setActiveTile(idx){
+    platformCurrent = idx;
+    tiles.forEach((t, i) => {
+      t.classList.toggle('active', i === idx);
+    });
+  }
+  function startPlatformAuto(){
+    clearInterval(platformAuto);
+    platformAuto = setInterval(() => {
+      platformCurrent = (platformCurrent + 1) % tiles.length;
+      setActiveTile(platformCurrent);
+    }, 3000);
+  }
+
+  tiles.forEach((tile, idx) => {
+    tile.addEventListener('mouseenter', () => {
+      setActiveTile(idx);
+      clearInterval(platformAuto);
+    });
+    tile.addEventListener('mouseleave', () => {
+      startPlatformAuto();
+    });
+  });
+
+  startPlatformAuto();
+})();
+
+// ---------- Products carousel (active class rotation only) ----------
+(function(){
+  const slides = Array.from(document.querySelectorAll('.c-slide'));
+  const prev = document.getElementById('prevBtn');
+  const next = document.getElementById('nextBtn');
+  if (!slides.length) return;
+
+  let activeIdx = 0;
+  let carouselTimer = null;
+
+  function setActive(idx){
+    activeIdx = idx;
+    slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
+  }
+
+  function startCarousel(){
+    clearInterval(carouselTimer);
+    carouselTimer = setInterval(() => {
+      setActive((activeIdx + 1) % slides.length);
+    }, 4000);
+  }
+
+  if (prev){
+    prev.addEventListener('click', () => {
+      clearInterval(carouselTimer);
+      setActive(Math.max(0, activeIdx - 1));
+      startCarousel();
+    });
+  }
+  if (next){
+    next.addEventListener('click', () => {
+      clearInterval(carouselTimer);
+      setActive(Math.min(slides.length - 1, activeIdx + 1));
+      startCarousel();
+    });
+  }
+
+  slides.forEach((slide, idx) => {
+    slide.addEventListener('mouseenter', () => {
+      clearInterval(carouselTimer);
+      setActive(idx);
+    });
+    slide.addEventListener('mouseleave', startCarousel);
+  });
+
+  setActive(0);
+  startCarousel();
+})();
+
+// ---------- Industries photo switcher ----------
+(function(){
+  const rows = document.querySelectorAll('.industries-line[data-photo]');
+  const photos = document.querySelectorAll('.industries-photo img[data-photo]');
+  if (!rows.length || !photos.length) return;
+  rows.forEach(row => {
+    row.addEventListener('click', (e) => {
+      e.preventDefault();
+      const key = row.getAttribute('data-photo');
+      rows.forEach(r => r.classList.toggle('active', r === row));
+      photos.forEach(p => p.classList.toggle('active', p.getAttribute('data-photo') === key));
+    });
+  });
+})();
+
+// ---------- Back to top ----------
+(function(){
+  const btn = document.getElementById('backTop');
+  if (!btn) return;
+  function onScroll(){
+    if (window.scrollY > 400) btn.classList.add('visible');
+    else btn.classList.remove('visible');
+  }
+  window.addEventListener('scroll', onScroll, { passive:true });
+  btn.addEventListener('click', () => window.scrollTo({ top:0, behavior:'smooth' }));
+  onScroll();
+})();
+
+// ---------- Reveal on scroll ----------
+(function(){
+  const reveals = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)){
+    reveals.forEach(el => el.classList.add('visible'));
+    return;
+  }
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting){
+        entry.target.classList.add('visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -80px 0px', threshold: 0.05 });
+  reveals.forEach(el => io.observe(el));
+})();
+
+// ---------- Fade-section reveal ----------
+(function(){
+  const fadeEls = document.querySelectorAll('.fade-section');
+  if (!fadeEls.length) return;
+  if (!('IntersectionObserver' in window)){
+    fadeEls.forEach(el => el.classList.add('in-view'));
+    return;
+  }
+  const fadeObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting){
+        e.target.classList.add('in-view');
+      }
+    });
+  }, { threshold: 0.08 });
+  fadeEls.forEach(el => fadeObs.observe(el));
+})();
+
+// ---------- FAB: WeChat popup + Connect menu outside-click ----------
+(function(){
+  const wechatBtn = document.getElementById('fabWechat');
+  const wechatPopup = document.getElementById('wechat-popup');
+  if (wechatBtn && wechatPopup){
+    wechatBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const r = wechatBtn.getBoundingClientRect();
+      wechatPopup.style.bottom = (window.innerHeight - r.top + 12) + 'px';
+      wechatPopup.style.left = (r.left + r.width/2 - 120) + 'px';
+      wechatPopup.style.display = wechatPopup.style.display === 'block' ? 'none' : 'block';
+    });
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#wechat-popup') && !e.target.closest('.wechat-fab-btn')){
+        wechatPopup.style.display = 'none';
+      }
+    });
+  }
+  const cm = document.getElementById('connect-menu');
+  if (cm){
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('#connect-menu') && !e.target.closest('[data-connect]')){
+        cm.style.display = 'none';
+      }
+    });
+  }
+  // Position the connect menu's right edge near the three-dots fab button.
+  const fabConnect = document.getElementById('fabConnect');
+  function positionConnectMenu(){
+    if (!cm || !fabConnect) return;
+    const r = fabConnect.getBoundingClientRect();
+    cm.style.bottom = (window.innerHeight - r.top + 12) + 'px';
+    cm.style.left = (r.left + r.width/2 - 100) + 'px';
+    cm.style.right = 'auto';
+    cm.style.transform = 'none';
+  }
+  if (cm && fabConnect){
+    fabConnect.addEventListener('click', positionConnectMenu);
+    window.addEventListener('resize', positionConnectMenu, { passive:true });
+    positionConnectMenu();
+  }
+})();
+</script>
+
+<!-- ========== WeChat QR popup ========== -->
+<div id="wechat-popup" style="display:none;position:fixed;z-index:500;background:#fff;border-radius:16px;padding:20px 20px 16px;box-shadow:0 8px 40px rgba(0,0,0,.2);border:1px solid #e2e8f0;width:240px;text-align:center;">
+  <button onclick="document.getElementById('wechat-popup').style.display='none'" style="position:absolute;top:8px;right:12px;background:none;border:none;font-size:16px;cursor:pointer;color:#aaa;font-family:var(--sans);" aria-label="Close">×</button>
+  <img src="img/wechat-qr.png" alt="WeChat QR" style="width:100%;border-radius:8px;display:block;">
+</div>
+
+<!-- ========== Voice assistant panel ========== -->
+<div id="voice-panel" style="display:none;position:fixed;bottom:96px;left:50%;transform:translateX(-50%);z-index:500;background:#fff;border-radius:16px;padding:24px 28px;box-shadow:0 8px 40px rgba(0,0,0,.18);border:1px solid #e2e8f0;width:320px;text-align:center;">
+  <div style="font-family:var(--sans);font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px;">Talk to GMIC</div>
+  <div style="font-family:var(--sans);font-size:13px;color:#6b7280;margin-bottom:20px;line-height:1.5;">Ask about our products, request a sample, or start a demo inquiry.</div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;">
+    <div id="voice-indicator" style="width:56px;height:56px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.4);animation:pulse-ring 2s ease infinite;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/>
+        <path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/>
+      </svg>
+    </div>
+  </div>
+  <div style="font-family:var(--sans);font-size:12px;color:#9ca3af;">Tap the mic to speak · or <a href="mailto:trigg@gmic.ai" style="color:#2563eb;text-decoration:none;">email us</a></div>
+  <button onclick="document.getElementById('voice-panel').style.display='none'" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:16px;cursor:pointer;color:#aaa;" aria-label="Close">×</button>
+</div>
+
+<!-- ========== Connect dropdown menu ========== -->
+<div id="connect-menu" style="display:none;position:fixed;bottom:auto;z-index:500;background:#fff;border-radius:14px;padding:12px 0;box-shadow:0 8px 40px rgba(0,0,0,.18);border:1px solid #e2e8f0;min-width:200px;">
+  <div style="font-family:var(--sans);font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.08em;text-transform:uppercase;padding:4px 18px 10px;">CONNECT</div>
+  <a href="https://twitter.com/gmicai" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <span style="font-size:16px;font-weight:700;">𝕏</span> X / Twitter
+  </a>
+  <a href="https://linkedin.com/company/gmicai" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="#0077b5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    LinkedIn
+  </a>
+  <a href="https://gmic.ai" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+    GMIC.ai
+  </a>
+  <a href="mailto:trigg@gmic.ai" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+    Trigg@gmic.ai
+  </a>
+</div>
+
+</body>
+</html>
