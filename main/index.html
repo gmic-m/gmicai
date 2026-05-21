@@ -77,8 +77,19 @@ h1.display{
 }
 h2.section{
   font-family:var(--sans);font-weight:800;
-  font-size:clamp(40px,5.5vw,80px);
-  line-height:1.05;letter-spacing:-0.02em;
+  font-size:clamp(28px, 3.2vw, 42px);
+  line-height:1.12;letter-spacing:-0.025em;
+}
+.gap-h2,
+.why-sec h2.section,
+.industries h2.section,
+.platform .section-head h2,
+#capabilities h2.section,
+.insights h2.section{
+  font-size:clamp(28px, 3.2vw, 42px);
+  font-weight:800;
+  letter-spacing:-0.025em;
+  line-height:1.12;
 }
 h1.display .italic,
 h1.display em,
@@ -569,6 +580,8 @@ section.bleed{padding:120px 0}
 }
 .industries-list{
   flex:1;
+  min-width:0;
+  padding-right:40px;
   border-top:1px solid var(--border-dark);
   display:flex;
   flex-direction:column;
@@ -576,10 +589,10 @@ section.bleed{padding:120px 0}
 }
 .industries-line{
   display:flex;align-items:flex-start;gap:20px;
-  padding:28px 0;border-bottom:1px solid var(--border-dark);
+  padding:24px 0;border-bottom:1px solid var(--border-dark);
   font-family:var(--sans);font-weight:800;
-  font-size:clamp(24px,2.6vw,34px);
-  line-height:1.15;letter-spacing:-0.015em;
+  font-size:clamp(28px,4vw,52px);
+  line-height:1.1;letter-spacing:-0.02em;
   color:var(--white);
   transition:color .25s ease;
   cursor:pointer;
@@ -606,15 +619,17 @@ section.bleed{padding:120px 0}
 }
 .industries-line .name{
   font-family:var(--sans);
+  font-size:clamp(1.5rem, 2.5vw, 2.2rem);
   font-weight:800;
-  color:#ffffff;
+  color:rgba(255,255,255,.92);
+  line-height:1.1;
 }
 .industries-line .name .italic,
 .industries-line .name em{
   font-family:var(--sans);
   font-style:italic;
-  font-weight:400;
-  color:rgba(255,255,255,0.6);
+  font-weight:600;
+  color:rgba(255,255,255,.5);
 }
 .industries-line .description{
   font-family:var(--sans);
@@ -644,7 +659,8 @@ section.bleed{padding:120px 0}
   max-height:0;overflow:hidden;
   transition:max-height .4s ease, opacity .3s ease;
   opacity:0;
-  max-width:520px;
+  max-width:100%;
+  width:100%;
 }
 .industries-line.active .ind-quote{
   max-height:300px;
@@ -653,14 +669,14 @@ section.bleed{padding:120px 0}
 .ind-stars{
   display:block;
   color:#fbbf24;
-  font-size:20px;
+  font-size:1.1rem;
   letter-spacing:3px;
   margin-bottom:10px;
 }
 .ind-quote-tag{
   display:inline-block;
   font-family:var(--sans);
-  font-size:13px;font-weight:600;
+  font-size:0.8125rem;font-weight:600;
   color:#2563eb;
   background:rgba(37,99,235,.1);
   border:1px solid rgba(37,99,235,.2);
@@ -677,9 +693,9 @@ section.bleed{padding:120px 0}
 .ind-quote-pull{
   display:block;
   font-family:var(--sans);
-  font-size:22px;font-weight:700;
-  color:rgba(255,255,255,.9);
-  line-height:1.35;
+  font-size:clamp(1rem, 1.4vw, 1.2rem);font-weight:600;
+  color:rgba(255,255,255,.88);
+  line-height:1.5;
   margin-bottom:10px;
   letter-spacing:-0.01em;
 }
@@ -692,19 +708,44 @@ section.bleed{padding:120px 0}
 .ind-quote-sub{
   display:block;
   font-family:var(--sans);
-  font-size:14px;font-style:italic;
-  color:rgba(255,255,255,.35);
+  font-size:0.875rem;font-style:italic;
+  color:rgba(255,255,255,.4);
+  margin-top:8px;
 }
 .ind-badge{
-  font-size:14px;
-  padding:6px 16px;
+  font-size:clamp(0.8rem, 1vw, 0.9rem);
+  padding:5px 14px;
+}
+.ind-product-tag{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-bottom:10px;
+  margin-top:4px;
+}
+.ind-product-label{
+  font-family:var(--sans);
+  font-size:clamp(0.875rem, 1.2vw, 1rem);
+  font-weight:500;
+  color:rgba(255,255,255,.5);
+  letter-spacing:.04em;
+}
+.ind-product-name{
+  font-family:var(--sans);
+  font-size:clamp(0.875rem, 1.2vw, 1rem);
+  font-weight:700;
+  color:#93c5fd;
+  background:rgba(37,99,235,.2);
+  border-radius:100px;
+  padding:3px 12px;
+  letter-spacing:.04em;
 }
 
 .industries-photo{
   position:relative;
-  width:48%;
+  width:40%;
   flex-shrink:0;
-  aspect-ratio:4/3;
+  aspect-ratio:3/4;
   height:auto;
   min-height:unset;
   border-radius:12px;
@@ -925,46 +966,84 @@ a.fab-btn{text-decoration:none}
   max-width:560px;
 }
 
-/* ---------- PLATFORM process-cards (5-up full-bleed photos) ---------- */
-.process-cards{
+/* ---------- PLATFORM timeline (5-step process) ---------- */
+.timeline-wrap{
+  position:relative;
+  padding:40px 0 48px;
+  margin-top:48px;
+}
+.timeline-line{
+  position:absolute;
+  top:40px;
+  left:0;right:0;
+  height:2px;
+  background:rgba(37,99,235,0.3);
+  z-index:0;
+  overflow:hidden;
+}
+.timeline-line::after{
+  content:'';
+  position:absolute;
+  left:0;top:0;
+  height:100%;width:0;
+  background:var(--blue);
+  transition:width 1s ease;
+}
+.timeline-wrap:hover .timeline-line::after{width:100%}
+.timeline-steps{
   display:grid;
   grid-template-columns:repeat(5, 1fr);
-  gap:12px;
-  margin-top:48px;
-  margin-bottom:0;
-  background:none;
-}
-.process-card{
+  gap:24px;
   position:relative;
-  border-radius:12px;
+  z-index:1;
+}
+.timeline-step{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+  padding-top:0;
+}
+.timeline-dot{
+  width:14px;height:14px;
+  border-radius:50%;
+  background:var(--blue);
+  border:3px solid rgba(37,99,235,0.25);
+  box-shadow:0 0 0 4px rgba(37,99,235,0.1);
+  margin-bottom:20px;
+  flex-shrink:0;
+  position:relative;
+  z-index:2;
+}
+.timeline-img{
+  width:100%;
+  aspect-ratio:16/9;
+  border-radius:10px;
   overflow:hidden;
-  aspect-ratio:3/4;
-  cursor:pointer;
-  background:#1a2030;
+  margin-bottom:16px;
+  background:rgba(255,255,255,0.05);
 }
-.process-card-img{
-  position:absolute;inset:0;
-}
-.process-card-img img{
+.timeline-img img{
   width:100%;height:100%;
   object-fit:cover;
-  display:block;
-  transition:transform .5s ease;
 }
-.process-card:hover .process-card-img img{transform:scale(1.04)}
-.process-card-placeholder{
-  background:linear-gradient(135deg, rgba(37,99,235,.4) 0%, rgba(15,30,61,.75) 100%);
+.timeline-num{
+  font-family:var(--sans);
+  font-size:10px;font-weight:700;
+  color:var(--blue);letter-spacing:.12em;
+  margin-bottom:6px;
 }
-.process-card-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.3) 45%, rgba(0,0,0,.05) 100%);
-  pointer-events:none;
+.timeline-title{
+  font-family:var(--sans);
+  font-size:15px;font-weight:700;
+  color:var(--white);
+  margin-bottom:8px;
+  line-height:1.3;
 }
-.process-card-body{
-  position:absolute;
-  bottom:0;left:0;right:0;
-  padding:22px 20px;
-  z-index:2;
+.timeline-body{
+  font-family:var(--sans);
+  font-size:0.85rem;
+  color:rgba(255,255,255,0.45);
+  line-height:1.65;
 }
 .plat-step-num{
   font-family:var(--sans);
@@ -994,11 +1073,12 @@ a.fab-btn{text-decoration:none}
   grid-template-columns:repeat(4, 1fr);
   gap:0;
   border-top:none;
-  margin-top:0;
+  margin-top:64px;
   padding-top:0;
 }
 .plat-trust-item{
   padding:28px 0 28px 24px;
+  border-top:none;
   border-right:1px solid rgba(255,255,255,.08);
 }
 .plat-trust-item:last-child{border-right:none}
@@ -1013,60 +1093,198 @@ a.fab-btn{text-decoration:none}
   text-transform:uppercase;letter-spacing:.07em;font-weight:600;
 }
 @media (max-width:768px){
-  .process-cards{grid-template-columns:1fr 1fr;gap:10px}
-  .process-card{aspect-ratio:3/4}
+  .timeline-line{
+    top:0;bottom:0;
+    left:7px;right:auto;
+    width:2px;height:auto;
+  }
+  .timeline-line::after{
+    width:100%;height:0;
+    transition:height 1s ease;
+  }
+  .timeline-wrap:hover .timeline-line::after{
+    height:100%;width:100%;
+  }
+  .timeline-steps{
+    grid-template-columns:1fr;
+    gap:32px;
+    padding-left:36px;
+  }
+  .timeline-step{position:relative}
+  .timeline-dot{
+    position:absolute;
+    left:-36px;
+    top:4px;
+    margin-bottom:0;
+  }
   .plat-trust{grid-template-columns:1fr 1fr}
+}
+
+/* ---------- "From AI Model to Real-World Device" section ---------- */
+.gap-sec{
+  background:var(--white);
+  padding:100px 0;
+  border:none;
+}
+.gap-header{margin-bottom:64px}
+.gap-header .eyebrow{display:block;margin-bottom:12px}
+.gap-h2{
+  font-family:var(--sans);
+  font-weight:800;
+  color:var(--black);
+  margin-top:12px;
+  max-width:600px;
+}
+.gap-blocks{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:20px;
+  border:none;
+}
+.gap-block{
+  background:var(--off-white);
+  border-radius:16px;
+  padding:36px 32px 40px;
+  border:none;
+  position:relative;
+  overflow:hidden;
+}
+.gap-block-icon{
+  width:48px;height:48px;
+  border-radius:12px;
+  background:rgba(37,99,235,.12);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:20px;
+}
+.gap-block-icon [data-lucide]{
+  width:22px;height:22px;
+  stroke:var(--blue);stroke-width:1.8;
+}
+.gap-block-num{
+  font-family:var(--sans);
+  font-size:11px;font-weight:700;
+  color:var(--blue);letter-spacing:.12em;
+  margin-bottom:12px;
+}
+.gap-block-title{
+  font-family:var(--sans);
+  font-size:17px;font-weight:700;
+  color:var(--black);
+  line-height:1.3;
+  letter-spacing:-0.01em;
+  margin-bottom:12px;
+}
+.gap-block-body{
+  font-family:var(--sans);
+  font-size:0.9rem;
+  color:var(--gray);
+  line-height:1.72;
+}
+@media (max-width:768px){
+  .gap-blocks{grid-template-columns:1fr;gap:14px}
+  .gap-block{padding:28px 24px;border-right:none !important;padding-left:24px !important;padding-right:24px !important}
 }
 
 /* ---------- WHY GMIC section ---------- */
 .why-sec{
-  background:var(--white);
-  padding:100px 0;
-  border-top:1px solid var(--border-l);
+  background:#0a0a0a;
+  color:#ffffff;
+  padding:100px 0 0;
 }
+.why-sec .section{color:#ffffff}
+.why-sec .eyebrow{color:rgba(255,255,255,0.55)}
 .why-header{margin-bottom:56px;max-width:min(1100px, 95vw)}
 .why-header h2{
   max-width:640px;
-  font-size:clamp(28px, 3.5vw, 48px);
-  line-height:1.15;
+  font-size:clamp(28px, 3.2vw, 42px);
+  line-height:1.12;
+  letter-spacing:-0.025em;
 }
 @media (max-width:768px){
   .why-header h2{max-width:100%}
 }
 .why-header .eyebrow{display:block;margin-bottom:18px}
 .why-grid{
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:16px;
+  display:flex;
+  width:100%;
+  height:480px;
   border-top:none;
 }
-.why-card{
-  padding:40px 36px;
-  background:rgba(37,99,235,.06);
-  border:none;
-  border-radius:16px;
-  transition:background .2s;
+.why-tile{
+  position:relative;
+  flex:1;
+  overflow:hidden;
+  cursor:pointer;
+  filter:brightness(0.35);
+  transition:flex .45s ease, filter .35s ease;
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:24px;
+  color:#ffffff;
 }
-.why-card:hover{background:rgba(37,99,235,.1)}
-.why-icon{margin-bottom:20px;display:flex;align-items:center}
-.why-icon [data-lucide]{
-  width:36px;height:36px;
-  stroke:var(--blue);stroke-width:1.6;
+.why-tile.active{
+  flex:2.2;
+  filter:brightness(1);
 }
+.why-tile img{
+  position:absolute;inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  z-index:0;
+  transition:transform .4s ease;
+}
+.why-overlay{
+  position:absolute;inset:0;
+  z-index:1;
+  background:linear-gradient(to top, rgba(0,0,0,.8) 0%, rgba(0,0,0,.2) 60%);
+}
+.why-content{
+  position:relative;
+  z-index:2;
+  display:flex;flex-direction:column;gap:10px;
+  max-width:520px;
+}
+.why-tile h3{
+  font-family:var(--sans);
+  font-weight:700;
+  font-size:16px;
+  color:#ffffff;
+  margin:0;
+  letter-spacing:-0.005em;
+  transition:font-size .3s ease;
+}
+.why-tile.active h3{font-size:22px}
+.why-tile p{
+  font-family:var(--sans);
+  font-size:0.9rem;
+  color:rgba(255,255,255,0.7);
+  line-height:1.55;
+  margin:0;
+  opacity:0;
+  max-height:0;
+  overflow:hidden;
+  transition:opacity .3s ease, max-height .3s ease;
+}
+.why-tile.active p{
+  opacity:1;
+  max-height:80px;
+}
+.why-btn{
+  display:none;
+  align-self:flex-start;
+  font-family:var(--sans);
+  font-size:13.5px;font-weight:500;
+  color:#ffffff;
+  padding:8px 16px;
+  border:1px solid rgba(255,255,255,0.4);
+  border-radius:100px;
+  margin-top:8px;
+  transition:background .2s ease, border-color .2s ease;
+}
+.why-tile.active .why-btn{display:inline-block}
+.why-btn:hover{background:rgba(255,255,255,0.08);border-color:#fff}
 .ind-tile-icon [data-lucide]{
   width:18px;height:18px;
   stroke:rgba(255,255,255,.65);stroke-width:1.8;
-}
-.why-card h3{
-  font-family:var(--sans);
-  font-size:18px;font-weight:700;
-  color:var(--black);margin-bottom:12px;
-  letter-spacing:-0.01em;
-}
-.why-card p{
-  font-family:var(--sans);
-  font-size:14px;color:var(--gray);
-  line-height:1.7;
 }
 @media (max-width:768px){
   .why-grid{grid-template-columns:1fr}
@@ -1104,6 +1322,9 @@ a.fab-btn{text-decoration:none}
   .ft-grid{flex-direction:column;height:auto}
   .ft-tile{height:200px}
   .ft-tile.active{flex:none;height:320px}
+  .why-grid{flex-direction:column;height:auto}
+  .why-tile{height:200px}
+  .why-tile.active{flex:none;height:320px}
 }
 @media (max-width: 640px){
   section.bleed{padding:80px 0}
@@ -1260,11 +1481,8 @@ a.fab-btn{text-decoration:none}
   <div class="hero-ov"></div>
   <div class="container hero-inner">
     <div class="eyebrow">EDGE AI HARDWARE ODM · EST. 2009</div>
-    <h1 class="display">
-      Ship your AI hardware.<br>
-      <em>Engineered for the voice-first era.</em>
-    </h1>
-    <p class="lede">GMIC turns AI concepts into certified, mass-produced edge devices.</p>
+    <h1 class="display">Voice AI Hardware Built for the Physical World</h1>
+    <p class="lede">Production-ready AI devices for ambient intelligence, AI scribing, and real-world voice capture.</p>
     <div class="hero-cta">
       <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Start Your Project</a>
       <a href="#capabilities" class="btn btn-ghost">Explore Capabilities</a>
@@ -1318,17 +1536,46 @@ a.fab-btn{text-decoration:none}
 <div id="hero-spacer"></div>
 </div>
 
-<!-- ========== PRODUCTS ========== -->
-<section class="bleed fade-section" id="products">
+<!-- ========== THE OPPORTUNITY ========== -->
+<section class="gap-sec fade-section">
+  <div class="container">
+    <div class="gap-header reveal">
+      <div class="eyebrow">/ THE OPPORTUNITY</div>
+      <h2 class="gap-h2">From AI Model to<br>Real-World Device.</h2>
+    </div>
+    <div class="gap-blocks">
+      <div class="gap-block reveal">
+        <div class="gap-block-icon"><i data-lucide="globe"></i></div>
+        <div class="gap-block-num">01</div>
+        <h3 class="gap-block-title">AI Is Moving Into the Physical World</h3>
+        <p class="gap-block-body">AI is no longer limited to chatbots and desktop workflows. The next generation of AI products depends on real-world voice, ambient data, and wearable interaction.</p>
+      </div>
+      <div class="gap-block reveal">
+        <div class="gap-block-icon"><i data-lucide="zap"></i></div>
+        <div class="gap-block-num">02</div>
+        <h3 class="gap-block-title">Most AI Companies Cannot Build Hardware Fast Enough</h3>
+        <p class="gap-block-body">Turning AI software into deployable hardware requires manufacturing, firmware, acoustics, connectivity, and supply chain expertise — most AI teams don't have this in-house.</p>
+      </div>
+      <div class="gap-block reveal">
+        <div class="gap-block-icon"><i data-lucide="layers"></i></div>
+        <div class="gap-block-num">03</div>
+        <h3 class="gap-block-title">GMIC Bridges AI Software and Real-World Deployment</h3>
+        <p class="gap-block-body">We help AI companies move from prototype to scalable hardware systems — handling engineering, firmware, certification, and mass production end-to-end.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CAPABILITIES (Square-style featured carousel) ========== -->
+<section class="bleed fade-section" id="capabilities">
   <div class="container">
     <div class="section-head reveal">
       <div>
-        <div class="eyebrow">/ REFERENCE PLATFORMS</div>
-        <h2 class="section">Deployable products. <span class="italic">Proven in the field.</span></h2>
-        <p class="ref-intro">Production-ready hardware built on our core capabilities. Customize, rebrand, or build from scratch.</p>
+        <div class="eyebrow">/ CAPABILITIES</div>
+        <h2 class="section">End-to-end AI hardware capabilities.</h2>
+        <p class="ref-intro">Four core areas where GMIC delivers complete hardware solutions.</p>
       </div>
       <div class="section-head-right">
-        <a href="#" class="section-link">See all products →</a>
         <div class="carousel-controls">
           <button class="carousel-btn" id="prevBtn" aria-label="Previous">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -1344,50 +1591,50 @@ a.fab-btn{text-decoration:none}
       <div class="c-track" id="cTrack">
 
         <div class="c-slide is-active" data-idx="0">
-          <img class="slide-bg bg-main" src="img/clinmic-main.png" alt="Clinmic">
-          <img class="slide-bg bg-1"    src="img/clinmic-1.png" alt="Clinmic active">
+          <img class="slide-bg bg-main" src="img/clinmic-main.png" alt="Edge AI Hardware">
+          <img class="slide-bg bg-1"    src="img/clinmic-1.png" alt="Edge AI Hardware active">
           <div class="slide-overlay"></div>
           <div class="slide-text">
-            <span class="sl-brand">CLINMIC</span>
-            <h3 class="sl-h3">Clinmic</h3>
-            <p class="sl-tagline">AI voice wearable for healthcare documentation and ambient clinical workflows.</p>
-            <a href="#" class="sl-link">Explore more →</a>
+            <span class="sl-brand">EDGE AI</span>
+            <h3 class="sl-h3">Edge AI Hardware</h3>
+            <p class="sl-tagline">Embedded AI devices optimized for low-latency voice processing and real-world deployment across healthcare, enterprise, and field operations.</p>
+            <a href="#" class="sl-link">Explore Edge AI →</a>
           </div>
         </div>
 
         <div class="c-slide" data-idx="1">
-          <img class="slide-bg bg-main" src="img/bizmic-2.png" alt="Bizmic">
-          <img class="slide-bg bg-1"    src="img/bizmic-1.png" alt="Bizmic active">
+          <img class="slide-bg bg-main" src="img/bizmic-2.png" alt="Voice AI Hardware">
+          <img class="slide-bg bg-1"    src="img/bizmic-1.png" alt="Voice AI Hardware active">
           <div class="slide-overlay"></div>
           <div class="slide-text">
-            <span class="sl-brand">BIZMIC</span>
-            <h3 class="sl-h3">Bizmic</h3>
-            <p class="sl-tagline">Enterprise wearable voice device for AI-powered field workflows.</p>
-            <a href="#" class="sl-link">Explore more →</a>
+            <span class="sl-brand">VOICE AI</span>
+            <h3 class="sl-h3">Voice AI Hardware</h3>
+            <p class="sl-tagline">Custom microphones and voice-enabled systems built for AI transcription, conversational workflows, and ambient intelligence.</p>
+            <a href="#" class="sl-link">Explore Voice AI →</a>
           </div>
         </div>
 
         <div class="c-slide" data-idx="2">
-          <img class="slide-bg bg-main" src="img/opsmic-main.png" alt="Opsmic">
-          <img class="slide-bg bg-1"    src="img/opsmic-1.png" alt="Opsmic active">
+          <img class="slide-bg bg-main" src="img/opsmic-main.png" alt="AI Wearable Devices">
+          <img class="slide-bg bg-1"    src="img/opsmic-1.png" alt="AI Wearable Devices active">
           <div class="slide-overlay"></div>
           <div class="slide-text">
-            <span class="sl-brand">OPSMIC</span>
-            <h3 class="sl-h3">Opsmic</h3>
-            <p class="sl-tagline">Secure AI wearable for enterprise operations and meeting capture.</p>
-            <a href="#" class="sl-link">Explore more →</a>
+            <span class="sl-brand">WEARABLES</span>
+            <h3 class="sl-h3">AI Wearable Devices</h3>
+            <p class="sl-tagline">Wearable AI devices for healthcare documentation, field service, enterprise operations, and ambient intelligence at scale.</p>
+            <a href="#" class="sl-link">Explore Wearables →</a>
           </div>
         </div>
 
         <div class="c-slide" data-idx="3">
-          <img class="slide-bg bg-main" src="img/fleetmic-main.png" alt="Fleetmic">
-          <img class="slide-bg bg-1"    src="img/fleetmic.png" alt="Fleetmic active">
+          <img class="slide-bg bg-main" src="img/fleetmic-main.png" alt="AI Hardware ODM/OEM">
+          <img class="slide-bg bg-1"    src="img/fleetmic.png" alt="AI Hardware ODM/OEM active">
           <div class="slide-overlay"></div>
           <div class="slide-text">
-            <span class="sl-brand">FLEETMIC</span>
-            <h3 class="sl-h3">Fleetmic</h3>
-            <p class="sl-tagline">Field-ready voice capture hardware for technicians and operational teams.</p>
-            <a href="#" class="sl-link">Explore more →</a>
+            <span class="sl-brand">ODM/OEM</span>
+            <h3 class="sl-h3">AI Hardware ODM/OEM</h3>
+            <p class="sl-tagline">From prototyping to mass production with firmware integration, industrial design, certification support, and supply chain management.</p>
+            <a href="#" class="sl-link">Explore ODM/OEM →</a>
           </div>
         </div>
 
@@ -1396,82 +1643,49 @@ a.fab-btn{text-decoration:none}
   </div>
 </section>
 
-<!-- ========== CAPABILITIES (merged into features-tiles UI) ========== -->
-<section class="features-tiles fade-section" id="capabilities">
-  <div class="container">
-    <div class="features-head reveal">
-      <div class="eyebrow dark">/ CAPABILITIES</div>
-      <h2 class="section">End-to-end AI hardware capabilities.</h2>
-      <p class="cap-subtitle">Four core areas where GMIC delivers complete hardware solutions.</p>
-    </div>
-  </div>
-  <div class="ft-grid" id="ftGrid">
-    <div class="ft-tile active" data-tile="1">
-      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="Edge AI Hardware">
-      <div class="ft-overlay"></div>
-      <div class="ft-content">
-        <h3>Edge AI Hardware</h3>
-        <p>Embedded AI devices optimized for low-latency voice processing and real-world deployment across healthcare, enterprise, and field operations.</p>
-        <a href="#" class="ft-btn">Explore Edge AI →</a>
-      </div>
-    </div>
-    <div class="ft-tile" data-tile="2">
-      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Voice AI Hardware">
-      <div class="ft-overlay"></div>
-      <div class="ft-content">
-        <h3>Voice AI Hardware</h3>
-        <p>Custom microphones and voice-enabled systems built for AI transcription, conversational workflows, and ambient intelligence.</p>
-        <a href="#" class="ft-btn">Explore Voice AI →</a>
-      </div>
-    </div>
-    <div class="ft-tile" data-tile="3">
-      <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="AI Wearable Devices">
-      <div class="ft-overlay"></div>
-      <div class="ft-content">
-        <h3>AI Wearable Devices</h3>
-        <p>Wearable AI devices for healthcare documentation, field service, enterprise operations, and ambient intelligence at scale.</p>
-        <a href="#" class="ft-btn">Explore Wearables →</a>
-      </div>
-    </div>
-    <div class="ft-tile" data-tile="4">
-      <img src="img/stack-4.png" alt="AI Hardware ODM/OEM">
-      <div class="ft-overlay"></div>
-      <div class="ft-content">
-        <h3>AI Hardware ODM/OEM</h3>
-        <p>From prototyping to mass production with firmware integration, industrial design, certification support, and supply chain management.</p>
-        <a href="#" class="ft-btn">Explore ODM/OEM →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== WHY GMIC ========== -->
+<!-- ========== WHY GMIC (expanding 4-tile layout) ========== -->
 <section class="why-sec fade-section" id="why-gmic">
   <div class="container">
     <div class="why-header reveal">
       <div class="eyebrow">/ WHY GMIC</div>
       <h2 class="section">US-based communication. China-scale manufacturing.</h2>
     </div>
-    <div class="why-grid">
-      <div class="why-card reveal">
-        <div class="why-icon"><i data-lucide="zap"></i></div>
+  </div>
+  <div class="why-grid" id="whyGrid">
+    <div class="why-tile active" data-tile="1">
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80" alt="AI-first hardware specialization">
+      <div class="why-overlay"></div>
+      <div class="why-content">
         <h3>AI-first hardware specialization</h3>
         <p>We build exclusively for AI applications — voice processing, edge inference, and ambient intelligence hardware. Not generic contract manufacturing.</p>
+        <a href="#" class="why-btn">Learn more →</a>
       </div>
-      <div class="why-card reveal">
-        <div class="why-icon"><i data-lucide="wrench"></i></div>
+    </div>
+    <div class="why-tile" data-tile="2">
+      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Firmware + hardware integration">
+      <div class="why-overlay"></div>
+      <div class="why-content">
         <h3>Firmware + hardware integration</h3>
         <p>End-to-end ownership from PCB layout to embedded firmware and AI SDK integration. One team, full stack, zero handoff gaps.</p>
+        <a href="#" class="why-btn">Learn more →</a>
       </div>
-      <div class="why-card reveal">
-        <div class="why-icon"><i data-lucide="target"></i></div>
+    </div>
+    <div class="why-tile" data-tile="3">
+      <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=800&q=80" alt="Flexible ODM/OEM customization">
+      <div class="why-overlay"></div>
+      <div class="why-content">
         <h3>Flexible ODM/OEM customization</h3>
         <p>White-label, co-branded, or fully custom. Adapt our reference platforms or build from scratch — at any production volume.</p>
+        <a href="#" class="why-btn">Learn more →</a>
       </div>
-      <div class="why-card reveal">
-        <div class="why-icon"><i data-lucide="rocket"></i></div>
+    </div>
+    <div class="why-tile" data-tile="4">
+      <img src="https://images.unsplash.com/photo-1565688534245-05d6b5be184a?w=800&q=80" alt="Fast prototyping to production">
+      <div class="why-overlay"></div>
+      <div class="why-content">
         <h3>Fast prototyping to production</h3>
         <p>First engineering sample in 4–6 weeks. Manufacturing-ready roadmap returned within two weeks of initial brief.</p>
+        <a href="#" class="why-btn">Learn more →</a>
       </div>
     </div>
   </div>
@@ -1483,9 +1697,9 @@ a.fab-btn{text-decoration:none}
     <div class="industries-top reveal">
       <div>
         <div class="eyebrow dark">/ BUILT FOR</div>
-        <h2 class="section">Built for real-world AI applications.</h2>
+        <h2 class="section">AI Voice Infrastructure for Different Industries</h2>
       </div>
-      <p>Six industries where edge AI hardware is driving measurable outcomes across healthcare, enterprise, and field operations.</p>
+      <p>From healthcare AI scribing to enterprise workflow automation — purpose-built voice hardware for every industry.</p>
     </div>
     <div class="industries-layout reveal">
       <div class="industries-list">
@@ -1494,63 +1708,147 @@ a.fab-btn{text-decoration:none}
           <span class="dash">—</span>
           <span class="ind-text">
             <span class="name">Healthcare <span class="italic">Voice AI</span></span>
+            <span class="ind-product-tag">
+              <span class="ind-product-label">Powered by</span>
+              <span class="ind-product-name">Clinmic</span>
+            </span>
             <span class="description">Ambient scribing · Clinical documentation · Doctor workflows</span>
             <span class="ind-quote">
               <span class="ind-stars">★★★★★</span>
               <span class="ind-quote-tag">AI Healthcare</span>
               <span class="ind-quote-pull">
                 <span class="ind-quote-mark">“</span>
-                <strong>We realized software and hardware are two completely different businesses.</strong>
+                <strong>Reduce charting burden and capture real-time clinical conversations without relying on phones.</strong>
                 <span class="ind-quote-mark">”</span>
               </span>
-              <span class="ind-quote-sub">From AI software to production-ready wearable hardware</span>
+              <span class="ind-quote-sub">Clinmic — Healthcare Voice AI</span>
             </span>
           </span>
           <span class="arrow">→</span>
         </a>
-        <a class="industries-line" href="#" data-photo="operations">
-          <span class="idx">03</span>
+        <a class="industries-line" href="#" data-photo="enterprise">
+          <span class="idx">02</span>
           <span class="dash">—</span>
           <span class="ind-text">
-            <span class="name">Enterprise <span class="italic">Operations</span></span>
+            <span class="name">Enterprise <span class="italic">AI</span></span>
+            <span class="ind-product-tag">
+              <span class="ind-product-label">Powered by</span>
+              <span class="ind-product-name">Opsmic</span>
+            </span>
             <span class="description">Conversation intelligence · Workflow automation · Team productivity</span>
             <span class="ind-quote">
               <span class="ind-stars">★★★★★</span>
-              <span class="ind-quote-tag">Field &amp; Real Estate</span>
+              <span class="ind-quote-tag">Enterprise</span>
               <span class="ind-quote-pull">
                 <span class="ind-quote-mark">“</span>
-                <strong>Their acoustic engineering solved our noise challenges immediately.</strong>
+                <strong>Capture every meeting, automate administrative tasks, and streamline enterprise workflow with one-tap voice hardware.</strong>
                 <span class="ind-quote-mark">”</span>
               </span>
-              <span class="ind-quote-sub">From noisy environments to clear, usable audio</span>
+              <span class="ind-quote-sub">Opsmic — Enterprise Workflow AI</span>
             </span>
           </span>
           <span class="arrow">→</span>
         </a>
-        <a class="industries-line" href="#" data-photo="realestate">
+        <a class="industries-line" href="#" data-photo="field">
+          <span class="idx">03</span>
+          <span class="dash">—</span>
+          <span class="ind-text">
+            <span class="name">Field <span class="italic">Service</span></span>
+            <span class="ind-product-tag">
+              <span class="ind-product-label">Powered by</span>
+              <span class="ind-product-name">Fleetmic</span>
+            </span>
+            <span class="description">Voice capture · Fleet sync · Technician tools</span>
+            <span class="ind-quote">
+              <span class="ind-stars">★★★★★</span>
+              <span class="ind-quote-tag">Field &amp; Operations</span>
+              <span class="ind-quote-pull">
+                <span class="ind-quote-mark">“</span>
+                <strong>Turn frontline conversations into structured operational intelligence. Built for the people who can't stop to type.</strong>
+                <span class="ind-quote-mark">”</span>
+              </span>
+              <span class="ind-quote-sub">Fleetmic — Field Operations AI</span>
+            </span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="industries-line" href="#" data-photo="telecom">
+          <span class="idx">04</span>
+          <span class="dash">—</span>
+          <span class="ind-text">
+            <span class="name">Telecom <span class="italic">AI</span></span>
+            <span class="ind-product-tag">
+              <span class="ind-product-label">Powered by</span>
+              <span class="ind-product-name">Fleetmic</span>
+            </span>
+            <span class="description">Voice infrastructure · Connected edge · Network devices</span>
+            <span class="ind-quote">
+              <span class="ind-stars">★★★★★</span>
+              <span class="ind-quote-tag">Telecom</span>
+              <span class="ind-quote-pull">
+                <span class="ind-quote-mark">“</span>
+                <strong>Give field technicians voice-first tools that work in the toughest network environments — no phone required.</strong>
+                <span class="ind-quote-mark">”</span>
+              </span>
+              <span class="ind-quote-sub">Fleetmic — Field Operations AI</span>
+            </span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="industries-line" href="#" data-photo="hospitality">
           <span class="idx">05</span>
           <span class="dash">—</span>
           <span class="ind-text">
-            <span class="name">Field Service <span class="italic">&amp; Logistics</span></span>
-            <span class="description">Frontline voice capture · Fleet sync · Technician tools</span>
+            <span class="name">Hospitality <span class="italic">AI</span></span>
+            <span class="ind-product-tag">
+              <span class="ind-product-label">Powered by</span>
+              <span class="ind-product-name">Opsmic</span>
+            </span>
+            <span class="description">Hands-free ops · Front-of-house · AI-assisted service</span>
             <span class="ind-quote">
               <span class="ind-stars">★★★★★</span>
-              <span class="ind-quote-tag">Legal Services</span>
+              <span class="ind-quote-tag">Hospitality</span>
               <span class="ind-quote-pull">
                 <span class="ind-quote-mark">“</span>
-                <strong>They helped us scale from prototype to mass production without cutting corners.</strong>
+                <strong>Hands-free communication and AI-assisted operations that let your team focus on the guest, not the device.</strong>
                 <span class="ind-quote-mark">”</span>
               </span>
-              <span class="ind-quote-sub">From prototype to dependable high-volume builds</span>
+              <span class="ind-quote-sub">Opsmic — Enterprise Workflow AI</span>
+            </span>
+          </span>
+          <span class="arrow">→</span>
+        </a>
+        <a class="industries-line" href="#" data-photo="retail">
+          <span class="idx">06</span>
+          <span class="dash">—</span>
+          <span class="ind-text">
+            <span class="name">Smart <span class="italic">Retail</span></span>
+            <span class="ind-product-tag">
+              <span class="ind-product-label">Powered by</span>
+              <span class="ind-product-name">Bizmic</span>
+            </span>
+            <span class="description">Voice interaction · Workforce tools · Customer AI</span>
+            <span class="ind-quote">
+              <span class="ind-stars">★★★★★</span>
+              <span class="ind-quote-tag">Smart Retail</span>
+              <span class="ind-quote-pull">
+                <span class="ind-quote-mark">“</span>
+                <strong>Capture field sales interactions and revenue conversations beyond Zoom and CRM workflows.</strong>
+                <span class="ind-quote-mark">”</span>
+              </span>
+              <span class="ind-quote-sub">Bizmic — Revenue &amp; Sales AI</span>
             </span>
           </span>
           <span class="arrow">→</span>
         </a>
       </div>
       <div class="industries-photo">
-        <img class="active" data-photo="healthcare" src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=1200&q=80" alt="Healthcare Voice AI">
-        <img data-photo="operations" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&q=80" alt="Operations Logistics">
-        <img data-photo="realestate" src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1200&q=80" alt="Real Estate Field Service">
+        <img class="active" data-photo="healthcare" src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=800&q=80" alt="Healthcare Voice AI">
+        <img data-photo="enterprise" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80" alt="Enterprise AI">
+        <img data-photo="field" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80" alt="Field Service">
+        <img data-photo="telecom" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80" alt="Telecom AI">
+        <img data-photo="hospitality" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&q=80" alt="Hospitality AI">
+        <img data-photo="retail" src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="Smart Retail">
       </div>
     </div>
   </div>
@@ -1566,60 +1864,53 @@ a.fab-btn{text-decoration:none}
         <p class="plat-sub">From industrial design and hardware engineering to firmware integration, prototype validation, and scalable manufacturing — all under one roof.</p>
       </div>
     </div>
-    <div class="process-cards reveal">
-      <div class="process-card">
-        <div class="process-card-img">
-          <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&q=80" alt="Industrial Design">
+    <div class="timeline-wrap reveal">
+      <div class="timeline-line"></div>
+      <div class="timeline-steps">
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <div class="timeline-img">
+            <img src="https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?w=800&q=80" alt="Industrial Design">
+          </div>
+          <div class="timeline-num">01</div>
+          <div class="timeline-title">Industrial Design</div>
+          <div class="timeline-body">Form factor, ergonomics, and industrial design tailored to your use case and target environment.</div>
         </div>
-        <div class="process-card-overlay"></div>
-        <div class="process-card-body">
-          <div class="plat-step-num">01</div>
-          <div class="plat-step-title">Industrial Design</div>
-          <a href="#" class="process-card-link">Learn more ↗</a>
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <div class="timeline-img">
+            <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80" alt="Hardware Engineering">
+          </div>
+          <div class="timeline-num">02</div>
+          <div class="timeline-title">Hardware Engineering</div>
+          <div class="timeline-body">MCU, DSP, BLE/Wi-Fi, low-power audio pipelines, and custom AIoT board design for on-device inference.</div>
         </div>
-      </div>
-      <div class="process-card">
-        <div class="process-card-img">
-          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80" alt="Hardware Engineering">
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <div class="timeline-img">
+            <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&q=80" alt="Firmware Integration">
+          </div>
+          <div class="timeline-num">03</div>
+          <div class="timeline-title">Firmware &amp; AI Integration</div>
+          <div class="timeline-body">Embedded firmware, SDK development, and integration with leading AI software platforms and cloud services.</div>
         </div>
-        <div class="process-card-overlay"></div>
-        <div class="process-card-body">
-          <div class="plat-step-num">02</div>
-          <div class="plat-step-title">Hardware Engineering</div>
-          <a href="#" class="process-card-link">Learn more ↗</a>
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <div class="timeline-img">
+            <img src="img/stack-4.png" alt="Prototype Validation">
+          </div>
+          <div class="timeline-num">04</div>
+          <div class="timeline-title">Prototype Validation</div>
+          <div class="timeline-body">Acoustic calibration, environmental testing, FCC, CE, UKCA, TELEC certification, and pre-production validation.</div>
         </div>
-      </div>
-      <div class="process-card">
-        <div class="process-card-img">
-          <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=800&q=80" alt="Firmware &amp; AI Integration">
-        </div>
-        <div class="process-card-overlay"></div>
-        <div class="process-card-body">
-          <div class="plat-step-num">03</div>
-          <div class="plat-step-title">Firmware &amp; AI Integration</div>
-          <a href="#" class="process-card-link">Learn more ↗</a>
-        </div>
-      </div>
-      <div class="process-card">
-        <div class="process-card-img">
-          <img src="img/stack-4.png" alt="Prototype Validation">
-        </div>
-        <div class="process-card-overlay"></div>
-        <div class="process-card-body">
-          <div class="plat-step-num">04</div>
-          <div class="plat-step-title">Prototype Validation</div>
-          <a href="#" class="process-card-link">Learn more ↗</a>
-        </div>
-      </div>
-      <div class="process-card">
-        <div class="process-card-img">
-          <img src="img/hardware-2.png" alt="Scalable Manufacturing">
-        </div>
-        <div class="process-card-overlay"></div>
-        <div class="process-card-body">
-          <div class="plat-step-num">05</div>
-          <div class="plat-step-title">Scalable Manufacturing</div>
-          <a href="#" class="process-card-link">Learn more ↗</a>
+        <div class="timeline-step">
+          <div class="timeline-dot"></div>
+          <div class="timeline-img">
+            <img src="img/hardware-2.png" alt="Scalable Manufacturing">
+          </div>
+          <div class="timeline-num">05</div>
+          <div class="timeline-title">Scalable Manufacturing</div>
+          <div class="timeline-body">SMT production, quality control, global logistics, and door-to-door delivery. 50,000+ units/month capacity.</div>
         </div>
       </div>
     </div>
@@ -1955,39 +2246,39 @@ a.fab-btn{text-decoration:none}
   updateHero();
 })();
 
-// ---------- Features tiles (hover + auto-rotate) ----------
+// ---------- Why GMIC tiles (hover + auto-rotate) ----------
 (function(){
-  const tiles = document.querySelectorAll('#ftGrid .ft-tile');
+  const tiles = document.querySelectorAll('#whyGrid .why-tile');
   if (!tiles.length) return;
 
-  let platformCurrent = 0;
-  let platformAuto = null;
+  let whyCurrent = 0;
+  let whyAuto = null;
 
   function setActiveTile(idx){
-    platformCurrent = idx;
+    whyCurrent = idx;
     tiles.forEach((t, i) => {
       t.classList.toggle('active', i === idx);
     });
   }
-  function startPlatformAuto(){
-    clearInterval(platformAuto);
-    platformAuto = setInterval(() => {
-      platformCurrent = (platformCurrent + 1) % tiles.length;
-      setActiveTile(platformCurrent);
+  function startWhyAuto(){
+    clearInterval(whyAuto);
+    whyAuto = setInterval(() => {
+      whyCurrent = (whyCurrent + 1) % tiles.length;
+      setActiveTile(whyCurrent);
     }, 3000);
   }
 
   tiles.forEach((tile, idx) => {
     tile.addEventListener('mouseenter', () => {
       setActiveTile(idx);
-      clearInterval(platformAuto);
+      clearInterval(whyAuto);
     });
     tile.addEventListener('mouseleave', () => {
-      startPlatformAuto();
+      startWhyAuto();
     });
   });
 
-  startPlatformAuto();
+  startWhyAuto();
 })();
 
 // ---------- Products carousel (active class + mobile translate) ----------
