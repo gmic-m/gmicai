@@ -203,7 +203,7 @@
 }
 .industries-layout{
   display:flex;
-  align-items:center;
+  align-items:stretch;
   gap:60px;
   min-height:700px;
 }

@@ -211,7 +211,7 @@ h1 .italic, h2 .italic, h3 .italic{
 .mosaic-center-text span{color:#2563eb;display:block}
 
 /* ---------- Generic section ---------- */
-section.bleed{padding:120px 0}
+section.bleed{padding:120px 0 0}
 #products{background:#ffffff}
 #products .container{position:relative;z-index:1}
 #products .carousel-viewport{margin-top:8px}
@@ -505,9 +505,7 @@ section.bleed{padding:120px 0}
   position:relative;
   width:40%;
   flex-shrink:0;
-  aspect-ratio:3/4;
-  height:auto;
-  min-height:unset;
+  align-self:stretch;
   border-radius:12px;
   overflow:hidden;
   background:#0a0a0a;
@@ -670,7 +668,7 @@ a.fab-btn{text-decoration:none}
 }
 .timeline-line{
   position:absolute;
-  top:40px;
+  top:46px; /* wrap padding-top (40) + dot half-height (7) − line half-height (1) → line center on dot center */
   left:0;right:0;
   height:2px;
   background:rgba(37,99,235,0.3);
@@ -873,3 +871,109 @@ a.fab-btn{text-decoration:none}
   opacity:1;
   transform:translateY(0);
 }
+
+/* ---------- Proof / Case Studies ---------- */
+.home-proof-cases { background: #f8f9fa; }
+
+.home-proof-note {
+  font-size: 0.8rem;
+  color: #888;
+  font-style: italic;
+  align-self: flex-end;
+}
+
+.proof-cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin: 48px 0 40px;
+}
+
+.proof-case {
+  background: #ffffff;
+  border: 1px solid #e5e5e2;
+  border-radius: 8px;
+  padding: 32px 28px;
+}
+
+.proof-case-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.proof-case-tag {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #2563eb;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background: #eff6ff;
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+.proof-case-units {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #888;
+}
+
+.proof-case h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+
+.proof-case p {
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.proof-case-result {
+  font-size: 0.875rem;
+  color: #0f172a;
+  padding-top: 16px;
+  border-top: 1px solid #e5e5e2;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .proof-cases-grid { grid-template-columns: 1fr; }
+}
+
+/* ---------- Injected nav (js/nav.js) — edge fade ---------- */
+.gmic-nav{ position:relative; }
+.gmic-nav::before,
+.gmic-nav::after{
+  content:'';
+  position:absolute;
+  top:0; bottom:0;
+  width:40px;
+  pointer-events:none;
+  z-index:1;
+}
+.gmic-nav::before{
+  left:0;
+  background:linear-gradient(to right, var(--nav-bg, rgba(255,255,255,1)), transparent);
+}
+.gmic-nav::after{
+  right:0;
+  background:linear-gradient(to left, var(--nav-bg, rgba(255,255,255,1)), transparent);
+}
+
+/* ---------- Footer logo — match injected nav logo ---------- */
+.footer-brand .logo img,
+.gmic-footer-logo{
+  display:inline-block;
+  height:28px;
+  width:auto;
+  filter:brightness(0) invert(1); /* white version on dark footer bg */
+  margin-bottom:16px;
+}
+.footer-brand .logo:has(img){ font-size:0; line-height:0; }
