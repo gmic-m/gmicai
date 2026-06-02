@@ -11,6 +11,356 @@
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/grid.css">
+<style>
+/* ===== Dropdown navigation — full-width mega menu ===== */
+/* ── Mega Menu Base ── */
+.nav-item {
+  position: relative; /* anchors the hover-bridge pseudo-element */
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Pseudo-element bridge so the mouse doesn't lose hover
+   when moving from the nav link down to the dropdown panel */
+.nav-item.has-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  right: -20px;
+  height: 20px; /* bridges the gap */
+  background: transparent;
+}
+
+.nav-dropdown {
+  display: none;
+  position: fixed;
+  top: 64px; /* height of nav bar */
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  z-index: 999;
+  padding: 32px 0 40px; /* generous top/bottom padding, flush against nav */
+}
+
+.nav-item.has-dropdown:hover .nav-dropdown {
+  display: block;
+}
+.nav-item.has-dropdown:hover .nav-arrow {
+  transform: rotate(90deg);
+  opacity: 1;
+}
+
+.dropdown-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  padding-top: 8px;
+  display: flex;
+  gap: 0;
+}
+
+/* ── Products Mega Menu ── */
+.nav-dropdown--products .dropdown-inner {
+  flex-direction: row;
+  gap: 0;
+}
+
+.dropdown-sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  padding-right: 32px;
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dropdown-sidebar-label {
+  font-size: 1rem; /* 16px */
+  font-weight: 700;
+  color: #0f172a;
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.dropdown-sidebar-label:hover {
+  background: #f0f4ff;
+  color: #2563eb;
+}
+.dropdown-sidebar-label.active {
+  background: #f0f4ff;
+  color: #2563eb;
+}
+.dropdown-product-card.hidden {
+  display: none;
+}
+
+.dropdown-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.dropdown-product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.15s;
+  border: 1px solid transparent;
+}
+
+.dropdown-product-card:hover {
+  background: #f5f7ff;
+  border-color: rgba(37,99,235,0.15);
+}
+
+.dropdown-product-card img {
+  width: 100%;
+  height: 72px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  background: #f8f9fa;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+.dp-name {
+  font-size: 1rem; /* 16px */
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 3px;
+}
+
+.dp-desc {
+  font-size: 0.875rem; /* 14px */
+  color: #888;
+  line-height: 1.5;
+}
+
+.dropdown-all {
+  align-items: center;
+  justify-content: center;
+  background: #f8f9fa;
+  border: 1px solid rgba(0,0,0,0.06) !important;
+}
+
+.dp-arrow {
+  font-size: 22px;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+/* ── Text Mega Menu (Custom Devices & Industries) ── */
+.nav-dropdown--text .dropdown-inner {
+  gap: 0;
+}
+
+.dropdown-col {
+  flex: 1;
+  padding: 0 32px;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-col:first-child { padding-left: 0; }
+.dropdown-col:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.dropdown-col-head {
+  font-size: 0.75rem; /* 12px — kept small as it's a label */
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.dropdown-link {
+  font-size: 1rem; /* 16px */
+  color: #0f172a;
+  text-decoration: none;
+  padding: 7px 0;
+  font-weight: 500;
+  transition: color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dropdown-link:hover { color: #2563eb; }
+
+.dropdown-link--external {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.dropdown-link--external::after {
+  content: '↗';
+  font-size: 11px;
+}
+
+/* ── Nav arrow ── */
+.nav-arrow {
+  font-size: 10px;
+  margin-left: 3px;
+  opacity: 0.5;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+/* ── Overlay behind mega menu ── */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 998;
+}
+.nav-item.has-dropdown:hover ~ .nav-overlay,
+.nav-overlay:hover { display: block; }
+
+/* ── Mobile: hide mega menu ── */
+@media (max-width: 768px) {
+  .nav-dropdown { display: none !important; }
+  .nav-arrow { display: none; }
+}
+
+/* ── Hamburger button ── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1001;
+}
+.nav-burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+  transform-origin: center;
+}
+/* X state when open */
+.nav-burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-burger.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile nav drawer ── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0; right: 0;
+  width: 85%;
+  max-width: 360px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 1002;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  padding-top: 80px;
+}
+.mobile-nav.open {
+  transform: translateX(0);
+}
+.mobile-nav-inner {
+  padding: 24px 28px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mobile-nav-section {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.mobile-nav-section:last-of-type {
+  border-bottom: none;
+}
+.mobile-nav-head {
+  font-size: 0.75rem; /* 12px — label only */
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.mobile-nav-link {
+  display: block;
+  font-size: 1rem; /* 16px */
+  font-weight: 500;
+  color: #0f172a;
+  text-decoration: none;
+  padding: 8px 0;
+  transition: color 0.15s;
+}
+.mobile-nav-link:hover { color: #2563eb; }
+.mobile-nav-link--external {
+  color: #2563eb;
+  font-weight: 600;
+}
+.mobile-nav-cta {
+  padding-top: 24px;
+}
+.mobile-nav-cta .btn-nav {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 14px;
+}
+
+/* ── Overlay ── */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1001;
+}
+.mobile-nav-overlay.open {
+  display: block;
+}
+
+/* ── Show burger on mobile, hide desktop links ── */
+@media (max-width: 768px) {
+  .nav-burger { display: flex; }
+  .nav-links { display: none; }
+  .nav-right { display: none; }
+  .mobile-nav { display: block; }
+}
+</style>
 </head>
 <body>
 
@@ -29,18 +379,202 @@
       </svg>
     </a>
     <div class="nav-links">
-      <a href="#hardware" class="nav-link">Hardware</a>
-      <a href="#capabilities" class="nav-link">Capabilities</a>
-      <a href="#proof" class="nav-link">Proof</a>
-      <a href="#industries" class="nav-link">Industries</a>
-      <a href="#process" class="nav-link">Process</a>
-      <a href="#contact" class="nav-link">Contact</a>
+
+      <!-- Products -->
+      <div class="nav-item has-dropdown">
+        <a href="#hardware" class="nav-link">
+          Products <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--products">
+          <div class="dropdown-inner">
+            <div class="dropdown-sidebar">
+              <p class="dropdown-sidebar-label" data-filter="all">All Products →</p>
+              <p class="dropdown-sidebar-label" data-filter="voice">Voice Capture</p>
+              <p class="dropdown-sidebar-label" data-filter="pcba">Phone & PCBA</p>
+            </div>
+            <div class="dropdown-grid">
+              <a href="/products/mic06/" class="dropdown-product-card" data-category="voice">
+                <img src="img/cap/mic06-main.png" alt="MIC06">
+                <span class="dp-name">MIC06</span>
+                <span class="dp-desc">Continuous voice capture for shift-based operations</span>
+              </a>
+              <a href="/products/mic05/" class="dropdown-product-card" data-category="voice">
+                <img src="img/cap/mic05-main.png" alt="MIC05">
+                <span class="dp-name">MIC05</span>
+                <span class="dp-desc">Button-triggered capture for field notes</span>
+              </a>
+              <a href="/products/mic01/" class="dropdown-product-card" data-category="voice">
+                <img src="img/cap/mic01-main.png" alt="MIC01">
+                <span class="dp-name">MIC01</span>
+                <span class="dp-desc">Entry-level pilot device</span>
+              </a>
+              <a href="/products/telalive/" class="dropdown-product-card" data-category="pcba">
+                <img src="img/cap/telalive-main.png" alt="Telalive">
+                <span class="dp-name">Telalive</span>
+                <span class="dp-desc">AI phone front desk and wearables</span>
+              </a>
+              <a href="/products/hearit/" class="dropdown-product-card" data-category="pcba">
+                <img src="img/cap/mic06-main.png" alt="Hearit.ai PCBA">
+                <span class="dp-name">Hearit.ai PCBA</span>
+                <span class="dp-desc">Module and PCBA path</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Devices -->
+      <div class="nav-item has-dropdown">
+        <a href="#capabilities" class="nav-link">
+          Custom Devices <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Hardware</p>
+              <a href="/custom-devices/" class="dropdown-link">ODM / OEM</a>
+              <a href="/custom-devices/" class="dropdown-link">Private Label</a>
+              <a href="/custom-devices/" class="dropdown-link">Custom Enclosure</a>
+              <a href="/custom-devices/" class="dropdown-link">3D Small-batch Prototype</a>
+            </div>
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Engineering</p>
+              <a href="/custom-devices/" class="dropdown-link">Firmware Integration</a>
+              <a href="/custom-devices/" class="dropdown-link">Audio & DSP Tuning</a>
+              <a href="/custom-devices/" class="dropdown-link">AI SDK Integration</a>
+              <a href="/custom-devices/" class="dropdown-link">Prototype Validation</a>
+            </div>
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Production</p>
+              <a href="/custom-devices/" class="dropdown-link">EVT / DVT / PVT</a>
+              <a href="/custom-devices/" class="dropdown-link">SMT Manufacturing</a>
+              <a href="/custom-devices/" class="dropdown-link">Certification Support</a>
+              <a href="/custom-devices/" class="dropdown-link">Supply Chain Management</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Implementation -->
+      <div class="nav-item">
+        <a href="#process" class="nav-link">Implementation</a>
+      </div>
+
+      <!-- Proof -->
+      <div class="nav-item">
+        <a href="#proof-cases" class="nav-link">Proof</a>
+      </div>
+
+      <!-- Industries -->
+      <div class="nav-item has-dropdown">
+        <a href="#industries" class="nav-link">
+          Industries <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Healthcare & Ops</p>
+              <a href="/industries/healthcare/" class="dropdown-link">Healthcare Voice AI</a>
+              <a href="/industries/hospitality/" class="dropdown-link">Hospitality AI</a>
+              <a href="/industries/hvac/" class="dropdown-link">HVAC</a>
+            </div>
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Enterprise & Field</p>
+              <a href="/industries/enterprise/" class="dropdown-link">Enterprise AI</a>
+              <a href="/industries/field-service/" class="dropdown-link">Field Service</a>
+              <a href="/industries/telecom/" class="dropdown-link">Telecom AI</a>
+            </div>
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Retail & Transport</p>
+              <a href="/industries/smart-retail/" class="dropdown-link">Smart Retail</a>
+              <a href="https://gmic-nemt-demo.vercel.app/"
+                 class="dropdown-link dropdown-link--external"
+                 target="_blank" rel="noopener">NEMT</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="nav-item">
+        <a href="#process" class="nav-link">Process</a>
+      </div>
+
+      <!-- Contact -->
+      <div class="nav-item">
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+
     </div>
+
+    <!-- Overlay -->
+    <div class="nav-overlay"></div>
     <div class="nav-right">
       <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-nav">Start a Project</a>
     </div>
+    <button class="nav-burger" id="navBurger"
+      aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </div>
 </nav>
+
+<!-- Mobile nav drawer -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-inner">
+
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Products</p>
+      <a href="/products/mic06/" class="mobile-nav-link">MIC06</a>
+      <a href="/products/mic05/" class="mobile-nav-link">MIC05</a>
+      <a href="/products/mic01/" class="mobile-nav-link">MIC01</a>
+      <a href="/products/telalive/" class="mobile-nav-link">Telalive</a>
+      <a href="/products/hearit/" class="mobile-nav-link">Hearit.ai PCBA</a>
+    </div>
+
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Custom Devices</p>
+      <a href="/custom-devices/" class="mobile-nav-link">ODM / OEM</a>
+      <a href="/custom-devices/" class="mobile-nav-link">Private Label</a>
+      <a href="/custom-devices/" class="mobile-nav-link">Firmware Integration</a>
+      <a href="/custom-devices/" class="mobile-nav-link">Prototype Path</a>
+    </div>
+
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Industries</p>
+      <a href="/industries/healthcare/" class="mobile-nav-link">Healthcare Voice AI</a>
+      <a href="/industries/enterprise/" class="mobile-nav-link">Enterprise AI</a>
+      <a href="/industries/field-service/" class="mobile-nav-link">Field Service</a>
+      <a href="/industries/telecom/" class="mobile-nav-link">Telecom AI</a>
+      <a href="/industries/hospitality/" class="mobile-nav-link">Hospitality AI</a>
+      <a href="/industries/smart-retail/" class="mobile-nav-link">Smart Retail</a>
+      <a href="/industries/hvac/" class="mobile-nav-link">HVAC</a>
+      <a href="https://gmic-nemt-demo.vercel.app/"
+         class="mobile-nav-link mobile-nav-link--external"
+         target="_blank" rel="noopener">NEMT ↗</a>
+    </div>
+
+    <div class="mobile-nav-section">
+      <a href="#process" class="mobile-nav-link">Implementation</a>
+      <a href="#proof-cases" class="mobile-nav-link">Proof</a>
+      <a href="#process" class="mobile-nav-link">Process</a>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
+    </div>
+
+    <div class="mobile-nav-cta">
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb"
+         target="_blank" rel="noopener" class="btn btn-nav">
+        Start a Project
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 
 <!-- ========== HERO ========== -->
 <div class="hero-pin-wrap">
@@ -722,6 +1256,73 @@
 </div>
 
 <script src="js/main.js"></script>
+
+<script>
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-item')) {
+    document.querySelectorAll('.nav-dropdown').forEach(d => {
+      d.style.display = '';
+    });
+  }
+});
+
+// Products mega menu — filter cards by sidebar category
+document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label) {
+  label.addEventListener('click', function() {
+    // Update active state
+    document.querySelectorAll('.dropdown-sidebar-label')
+      .forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+
+    // Filter cards
+    var filter = this.getAttribute('data-filter');
+    document.querySelectorAll('.dropdown-product-card').forEach(function(card) {
+      if (filter === 'all' || card.getAttribute('data-category') === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// Mobile nav
+const navBurger = document.getElementById('navBurger');
+const mobileNav = document.getElementById('mobileNav');
+const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+function openMobileNav() {
+  mobileNav.classList.add('open');
+  mobileNavOverlay.classList.add('open');
+  navBurger.classList.add('open');
+  navBurger.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileNav() {
+  mobileNav.classList.remove('open');
+  mobileNavOverlay.classList.remove('open');
+  navBurger.classList.remove('open');
+  navBurger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+navBurger.addEventListener('click', function() {
+  if (mobileNav.classList.contains('open')) {
+    closeMobileNav();
+  } else {
+    openMobileNav();
+  }
+});
+
+mobileNavOverlay.addEventListener('click', closeMobileNav);
+
+// Close on mobile nav link click
+document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+  link.addEventListener('click', closeMobileNav);
+});
+</script>
 
 </body>
 </html>
