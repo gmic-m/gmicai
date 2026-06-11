@@ -128,14 +128,61 @@
   border-color: rgba(37,99,235,0.15);
 }
 
+.dropdown-all {
+  background: transparent;
+  border: 1px solid transparent !important;
+  /* 与其他卡片一样 top-aligned */
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.dropdown-all:hover {
+  background: #f0f4ff !important;
+  border-color: rgba(37,99,235,0.5) !important;
+}
+
+.dp-all-icon {
+  width: 100%;
+  height: 94px;          /* 与 .dropdown-product-card img 的 height 相同 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 6px;
+  margin-bottom: 10px;   /* 与 .dropdown-product-card img 的 margin-bottom 相同 */
+  transition: background 0.15s;
+}
+
+.dropdown-all .dp-all-icon svg {
+  stroke: #9ca3af;
+  transition: stroke 0.15s;
+}
+
+.dropdown-all:hover .dp-all-icon {
+  background: #e8eeff;
+}
+
+.dropdown-all:hover .dp-all-icon svg {
+  stroke: #2563eb;
+}
+
+.dropdown-all .dp-name {
+  color: #0f172a;   /* 默认深色，不要蓝色 */
+  transition: color 0.15s;
+}
+
+.dropdown-all:hover .dp-name {
+  color: #2563eb;   /* hover 才变蓝 */
+}
+
 .dropdown-product-card img {
   width: 100%;
-  height: 72px;
+  height: 94px;             /* 从 72px 放大到 94px */
   object-fit: contain;
   margin-bottom: 10px;
-  background: #f8f9fa;
+  background: transparent;  /* 去掉灰色背景 */
   border-radius: 6px;
-  padding: 8px;
+  padding: 0;
 }
 
 .dp-name {
@@ -149,13 +196,14 @@
   font-size: 0.875rem; /* 14px */
   color: #888;
   line-height: 1.5;
+  display: none;
 }
 
 .dropdown-all {
   align-items: center;
   justify-content: center;
-  background: #f8f9fa;
-  border: 1px solid rgba(0,0,0,0.06) !important;
+  background: transparent;
+  border: 1px solid transparent !important;
 }
 
 .dp-arrow {
@@ -360,6 +408,30 @@
   .nav-right { display: none; }
   .mobile-nav { display: block; }
 }
+
+/* ── Force black text in all dropdown panels ── */
+.nav-dropdown {
+  background: #ffffff;
+  color: #0f172a;
+}
+.dropdown-col-head {
+  color: #aaaaaa !important;
+}
+.dropdown-link {
+  color: #0f172a !important;
+}
+.dropdown-link:hover {
+  color: #2563eb !important;
+}
+.dropdown-link--external {
+  color: #2563eb !important;
+}
+.dropdown-sidebar-label {
+  color: #0f172a !important;
+}
+.dropdown-sidebar-label:hover {
+  color: #2563eb !important;
+}
 </style>
 </head>
 <body>
@@ -388,35 +460,36 @@
         <div class="nav-dropdown nav-dropdown--products">
           <div class="dropdown-inner">
             <div class="dropdown-sidebar">
-              <p class="dropdown-sidebar-label" data-filter="all">All Products →</p>
+              <p class="dropdown-sidebar-label" data-filter="all">All Products</p>
               <p class="dropdown-sidebar-label" data-filter="voice">Voice Capture</p>
               <p class="dropdown-sidebar-label" data-filter="pcba">Phone & PCBA</p>
             </div>
             <div class="dropdown-grid">
               <a href="/products/mic06/" class="dropdown-product-card" data-category="voice">
-                <img src="img/cap/mic06-main.png" alt="MIC06">
+                <img src="img/cap/MIC06.png" alt="MIC06">
                 <span class="dp-name">MIC06</span>
                 <span class="dp-desc">Continuous voice capture for shift-based operations</span>
               </a>
               <a href="/products/mic05/" class="dropdown-product-card" data-category="voice">
-                <img src="img/cap/mic05-main.png" alt="MIC05">
+                <img src="img/cap/MIC05.png" alt="MIC05">
                 <span class="dp-name">MIC05</span>
                 <span class="dp-desc">Button-triggered capture for field notes</span>
               </a>
               <a href="/products/mic01/" class="dropdown-product-card" data-category="voice">
-                <img src="img/cap/mic01-main.png" alt="MIC01">
+                <img src="img/cap/MIC01.png" alt="MIC01">
                 <span class="dp-name">MIC01</span>
                 <span class="dp-desc">Entry-level pilot device</span>
               </a>
               <a href="/products/telalive/" class="dropdown-product-card" data-category="pcba">
-                <img src="img/cap/telalive-main.png" alt="Telalive">
+                <img src="img/cap/telalive.png" alt="Telalive">
                 <span class="dp-name">Telalive</span>
                 <span class="dp-desc">AI phone front desk and wearables</span>
               </a>
-              <a href="/products/hearit/" class="dropdown-product-card" data-category="pcba">
-                <img src="img/cap/mic06-main.png" alt="Hearit.ai PCBA">
-                <span class="dp-name">Hearit.ai PCBA</span>
-                <span class="dp-desc">Module and PCBA path</span>
+              <a href="./products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
+                <div class="dp-all-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+                <span class="dp-name">View All</span>
               </a>
             </div>
           </div>
@@ -432,24 +505,24 @@
           <div class="dropdown-inner">
             <div class="dropdown-col">
               <p class="dropdown-col-head">Hardware</p>
-              <a href="/custom-devices/" class="dropdown-link">ODM / OEM</a>
-              <a href="/custom-devices/" class="dropdown-link">Private Label</a>
-              <a href="/custom-devices/" class="dropdown-link">Custom Enclosure</a>
-              <a href="/custom-devices/" class="dropdown-link">3D Small-batch Prototype</a>
+              <a href="./custom-devices/index.html" class="dropdown-link">ODM / OEM</a>
+              <a href="./custom-devices/index.html" class="dropdown-link">Private Label</a>
+              <a href="./custom-devices/index.html" class="dropdown-link">Custom Enclosure</a>
+              <a href="./custom-devices/index.html" class="dropdown-link">3D Small-batch Prototype</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Engineering</p>
-              <a href="/custom-devices/" class="dropdown-link">Firmware Integration</a>
-              <a href="/custom-devices/" class="dropdown-link">Audio & DSP Tuning</a>
-              <a href="/custom-devices/" class="dropdown-link">AI SDK Integration</a>
-              <a href="/custom-devices/" class="dropdown-link">Prototype Validation</a>
+              <a href="./custom-devices/index.html" class="dropdown-link">Firmware Integration</a>
+              <a href="./custom-devices/index.html" class="dropdown-link">Audio & DSP Tuning</a>
+              <a href="./custom-devices/index.html" class="dropdown-link">AI SDK Integration</a>
+              <a href="./custom-devices/index.html" class="dropdown-link">Prototype Validation</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Production</p>
-              <a href="/custom-devices/" class="dropdown-link">EVT / DVT / PVT</a>
-              <a href="/custom-devices/" class="dropdown-link">SMT Manufacturing</a>
-              <a href="/custom-devices/" class="dropdown-link">Certification Support</a>
-              <a href="/custom-devices/" class="dropdown-link">Supply Chain Management</a>
+              <a href="./custom-devices/index.html" class="dropdown-link">EVT / DVT / PVT</a>
+              <a href="./custom-devices/index.html" class="dropdown-link">SMT Manufacturing</a>
+              <a href="./custom-devices/index.html" class="dropdown-link">Certification Support</a>
+              <a href="./custom-devices/index.html" class="dropdown-link">Supply Chain Management</a>
             </div>
           </div>
         </div>
@@ -502,7 +575,7 @@
 
       <!-- Company -->
       <div class="nav-item has-dropdown">
-        <a href="/about/" class="nav-link">
+        <a href="./about/index.html" class="nav-link">
           Company <span class="nav-arrow">›</span>
         </a>
         <div class="nav-dropdown nav-dropdown--text">
@@ -510,15 +583,11 @@
             <div class="dropdown-col">
               <p class="dropdown-col-head">Company</p>
               <a href="https://gmic-m.github.io/gmicai/main/about/index.html" class="dropdown-link">About Us</a>
-              <a href="/blog/" class="dropdown-link">Blog</a>
+              <a href="./blog/index.html" class="dropdown-link">Blog</a>
+              <a href="./contact/index.html" class="dropdown-link">Contact</a>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Contact -->
-      <div class="nav-item">
-        <a href="#contact" class="nav-link">Contact</a>
       </div>
 
     </div>
@@ -552,10 +621,10 @@
 
     <div class="mobile-nav-section">
       <p class="mobile-nav-head">Custom Devices</p>
-      <a href="/custom-devices/" class="mobile-nav-link">ODM / OEM</a>
-      <a href="/custom-devices/" class="mobile-nav-link">Private Label</a>
-      <a href="/custom-devices/" class="mobile-nav-link">Firmware Integration</a>
-      <a href="/custom-devices/" class="mobile-nav-link">Prototype Path</a>
+      <a href="./custom-devices/index.html" class="mobile-nav-link">ODM / OEM</a>
+      <a href="./custom-devices/index.html" class="mobile-nav-link">Private Label</a>
+      <a href="./custom-devices/index.html" class="mobile-nav-link">Firmware Integration</a>
+      <a href="./custom-devices/index.html" class="mobile-nav-link">Prototype Path</a>
     </div>
 
     <div class="mobile-nav-section">
@@ -576,13 +645,13 @@
       <a href="#process" class="mobile-nav-link">Implementation</a>
       <a href="#proof-cases" class="mobile-nav-link">Proof</a>
       <a href="#process" class="mobile-nav-link">Process</a>
-      <a href="#contact" class="mobile-nav-link">Contact</a>
     </div>
 
     <div class="mobile-nav-section">
       <p class="mobile-nav-head">Company</p>
       <a href="https://gmic-m.github.io/gmicai/main/about/index.html" class="mobile-nav-link">About Us</a>
-      <a href="/blog/" class="mobile-nav-link">Blog</a>
+      <a href="./blog/index.html" class="mobile-nav-link">Blog</a>
+      <a href="./contact/index.html" class="mobile-nav-link">Contact</a>
     </div>
 
     <div class="mobile-nav-cta">
@@ -701,8 +770,9 @@
         <div class="eyebrow">/ CAPABILITIES</div>
         <h2 class="section">Start with the devices we recommend first.</h2>
         <p class="ref-intro">Proven clip-on devices, wearable forms, and PCBA paths — customize when the pilot proves the need.</p>
+        <a href="./products/index.html" class="capabilities-view-all">View All Products</a>
       </div>
-      <div class="section-head-right">
+      <div class="section-head-right" style="display:flex;align-items:center;gap:12px;">
         <div class="carousel-controls">
           <button class="carousel-btn" id="prevBtn" aria-label="Previous">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
