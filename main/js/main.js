@@ -176,17 +176,35 @@
 
   let activeIdx = 0;
   let carouselTimer = null;
+  const GAP = 0;
+
+  function getSlideWidth(){
+    // 取第一张 slide 的实际宽度 + gap（当前无间隙）
+    return slides[0].offsetWidth + GAP;
+  }
+
+  function getVisibleCount(){
+    const viewport = document.querySelector('.carousel-viewport');
+    if (!viewport) return 1;
+    return Math.max(1, Math.round(viewport.offsetWidth / getSlideWidth()));
+  }
+
+  function applyTransform(){
+    if (!cTrack) return;
+    if (window.innerWidth >= 1200){
+      // 大屏：4张卡片完整显示，不滚动
+      cTrack.style.transform = 'none';
+      return;
+    }
+    const maxIndex = Math.max(0, slides.length - getVisibleCount());
+    const idx = Math.min(activeIdx, maxIndex);
+    cTrack.style.transform = `translateX(-${idx * getSlideWidth()}px)`;
+  }
 
   function setActive(idx){
     activeIdx = idx;
     slides.forEach((s, i) => s.classList.toggle('is-active', i === idx));
-    if (!cTrack) return;
-    if (window.innerWidth <= 768){
-      const cardWidth = slides[0].offsetWidth;
-      cTrack.style.transform = `translateX(-${idx * cardWidth}px)`;
-    } else {
-      cTrack.style.transform = 'none';
-    }
+    applyTransform();
   }
 
   function startCarousel(){
@@ -221,12 +239,10 @@
 
   window.addEventListener('resize', () => {
     if (!cTrack) return;
-    if (window.innerWidth > 768){
-      cTrack.style.transform = 'none';
-    } else {
-      const cardWidth = slides[0].offsetWidth;
-      cTrack.style.transform = `translateX(-${activeIdx * cardWidth}px)`;
-    }
+    // 窗口尺寸变化时重置位置，避免大屏切换时卡在错误位置
+    activeIdx = 0;
+    slides.forEach((s, i) => s.classList.toggle('is-active', i === 0));
+    cTrack.style.transform = window.innerWidth >= 1200 ? 'none' : 'translateX(0)';
   }, { passive:true });
 
   setActive(0);

@@ -125,6 +125,37 @@
 
 /* ---------- PRODUCTS carousel (layout) ---------- */
 .carousel-controls{display:flex;gap:8px}
+.carousel-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--sans);
+  font-size: 14px;        /* 与 .nav-link 一致 */
+  font-weight: 500;       /* 与 .nav-link 一致 */
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.2s;
+  white-space: nowrap;
+}
+.carousel-view-all:hover {
+  color: #0f172a;
+}
+.capabilities-view-all {
+  display: inline-block;
+  margin-top: 12px;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(107,114,128,0.4);
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+.capabilities-view-all:hover {
+  color: #0f172a;
+  text-decoration-color: rgba(15,23,42,0.6);
+}
 .carousel-btn{
   display:flex;align-items:center;justify-content:center;
   transition:all .2s ease;
@@ -139,21 +170,66 @@
   flex:none;
   min-width:0;
 }
-.carousel-track,
-.c-track{
+.carousel-track{
   display:flex;
   gap:0;
   align-items:stretch;
   transform:none;
   width:100%;
 }
+/* Track holds all slides in a row */
+.c-track{
+  display:flex;
+  gap:0;  /* 去掉卡片间隙 */
+  align-items:stretch;
+  width:100%;
+  transition:transform 0.4s ease;
+}
 .c-slide{
   flex:1;
+  margin:0;
   aspect-ratio:1/1;
   position:relative;
   overflow:hidden;
   background:#ffffff;
   cursor:pointer;
+}
+
+/* 大屏：每张 slide 占 25% 减去 gap，显示4个完整卡片，隐藏箭头，View All 保持显示 */
+@media (min-width: 1200px) {
+  .c-slide {
+    flex: 0 0 25%;
+    min-width: 25%;
+  }
+  .carousel-controls {
+    display: none;
+  }
+  .carousel-view-all {
+    display: inline-flex;
+  }
+}
+
+/* 中屏：显示约2个，提示可以滑动 */
+@media (min-width: 768px) and (max-width: 1199px) {
+  .c-slide {
+    flex: 0 0 50%;
+    min-width: 50%;
+  }
+}
+
+/* 小屏：显示约1.2个 */
+@media (max-width: 767px) {
+  .c-slide {
+    flex: 0 0 85%;
+    min-width: 85%;
+  }
+}
+
+/* 小于1200px显示箭头 */
+@media (max-width: 1199px) {
+  .carousel-controls {
+    display: flex;
+  }
 }
 
 /* ---------- FEATURES TILES (layout) ---------- */
@@ -499,8 +575,9 @@
     transition:transform .4s cubic-bezier(.4,0,.2,1);
   }
   .c-slide{
-    flex:none !important;
-    width:100vw !important;
+    flex:0 0 85% !important;
+    min-width:85% !important;
+    width:auto !important;
     aspect-ratio:1/1;
     height:auto;
   }
