@@ -26,58 +26,430 @@
 .nav.scrolled .nav-links a:hover{color:var(--black);}
 .btn-nav{background:#0f172a;color:var(--white);padding:10px 18px;font-size:13.5px;}
 .btn-nav:hover{background:#1e293b;transform:translateY(-1px);}
-.nav-item{position:relative;height:100%;display:flex;align-items:center;}
-.nav-item.has-dropdown::after{content:'';position:absolute;top:100%;left:-20px;right:-20px;height:20px;background:transparent;}
-.nav-dropdown{display:none;position:fixed;top:64px;left:0;right:0;width:100%;background:#ffffff;border-top:1px solid rgba(0,0,0,0.08);border-bottom:1px solid rgba(0,0,0,0.08);box-shadow:0 8px 40px rgba(0,0,0,0.10);z-index:999;padding:32px 0 40px;}
-.nav-item.has-dropdown:hover .nav-dropdown{display:block;}
-.nav-item.has-dropdown:hover .nav-arrow{transform:rotate(90deg);opacity:1;}
-.dropdown-inner{max-width:1200px;margin:0 auto;padding:0 40px;padding-top:8px;display:flex;gap:0;}
-.nav-dropdown--products .dropdown-inner{flex-direction:row;gap:0;}
-.dropdown-sidebar{width:200px;flex-shrink:0;border-right:1px solid rgba(0,0,0,0.06);padding-right:32px;margin-right:40px;display:flex;flex-direction:column;gap:4px;}
-.dropdown-sidebar-label{font-size:1rem;font-weight:700;color:#0f172a;padding:10px 12px;border-radius:6px;cursor:pointer;transition:background 0.15s;}
-.dropdown-sidebar-label:hover{background:#f0f4ff;color:#2563eb;}
-.dropdown-sidebar-label.active{background:#f0f4ff;color:#2563eb;}
-.dropdown-product-card.hidden{display:none;}
-.dropdown-grid{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;align-items:start;}
-.dropdown-product-card{display:flex;flex-direction:column;align-items:flex-start;padding:16px 12px;border-radius:10px;text-decoration:none;transition:background 0.15s;border:1px solid transparent;}
-.dropdown-product-card:hover{background:#f5f7ff;border-color:rgba(37,99,235,0.15);}
-.dropdown-product-card img{width:100%;height:72px;object-fit:contain;margin-bottom:10px;background:#f8f9fa;border-radius:6px;padding:8px;}
-.dp-name{font-size:1rem;font-weight:700;color:#0f172a;margin-bottom:3px;}
-.dp-desc{font-size:0.875rem;color:#888;line-height:1.5;}
-.nav-dropdown--text .dropdown-inner{gap:0;}
-.dropdown-col{flex:1;padding:0 32px;border-right:1px solid rgba(0,0,0,0.06);display:flex;flex-direction:column;}
-.dropdown-col:first-child{padding-left:0;}
-.dropdown-col:last-child{border-right:none;padding-right:0;}
-.dropdown-col-head{font-size:0.75rem;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(0,0,0,0.06);}
-.dropdown-link{font-size:1rem;color:#0f172a;text-decoration:none;padding:7px 0;font-weight:500;transition:color 0.15s;display:flex;align-items:center;gap:6px;}
-.dropdown-link:hover{color:#2563eb;}
-.dropdown-link--external{color:#2563eb;font-weight:600;}
-.dropdown-link--external::after{content:'↗';font-size:11px;}
-.nav-arrow{font-size:10px;margin-left:3px;opacity:0.5;transition:transform 0.2s;display:inline-block;}
-.nav-overlay{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.2);z-index:998;}
-.nav-item.has-dropdown:hover ~ .nav-overlay,.nav-overlay:hover{display:block;}
-.nav-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:36px;height:36px;background:none;border:none;cursor:pointer;padding:4px;z-index:1001;}
-.nav-burger span{display:block;width:22px;height:2px;background:currentColor;border-radius:2px;transition:transform 0.3s,opacity 0.3s;transform-origin:center;}
-.nav-burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.nav-burger.open span:nth-child(2){opacity:0;}
-.nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.mobile-nav{display:none;position:fixed;top:0;right:0;width:85%;max-width:360px;height:100vh;background:#ffffff;z-index:1002;overflow-y:auto;transform:translateX(100%);transition:transform 0.3s ease;padding-top:80px;}
-.mobile-nav.open{transform:translateX(0);}
-.mobile-nav-inner{padding:24px 28px 40px;display:flex;flex-direction:column;gap:8px;}
-.mobile-nav-section{padding:16px 0;border-bottom:1px solid rgba(0,0,0,0.06);}
-.mobile-nav-section:last-of-type{border-bottom:none;}
-.mobile-nav-head{font-size:0.75rem;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:0.1em;margin-bottom:10px;}
-.mobile-nav-link{display:block;font-size:1rem;font-weight:500;color:#0f172a;text-decoration:none;padding:8px 0;transition:color 0.15s;}
-.mobile-nav-link:hover{color:#2563eb;}
-.mobile-nav-link--external{color:#2563eb;font-weight:600;}
-.mobile-nav-cta{padding-top:24px;}
-.mobile-nav-cta .btn-nav{display:block;text-align:center;width:100%;padding:14px;}
-.mobile-nav-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.4);z-index:1001;}
-.mobile-nav-overlay.open{display:block;}
+/* ===== Dropdown navigation — full-width mega menu ===== */
+/* ── Mega Menu Base ── */
+.nav-item {
+  position: relative; /* anchors the hover-bridge pseudo-element */
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Pseudo-element bridge so the mouse doesn't lose hover
+   when moving from the nav link down to the dropdown panel */
+.nav-item.has-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  right: -20px;
+  height: 20px; /* bridges the gap */
+  background: transparent;
+}
+
+.nav-dropdown {
+  display: none;
+  position: fixed;
+  top: 64px; /* height of nav bar */
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  z-index: 999;
+  padding: 32px 0 40px; /* generous top/bottom padding, flush against nav */
+}
+
+.nav-item.has-dropdown:hover .nav-dropdown {
+  display: block;
+}
+.nav-item.has-dropdown:hover .nav-arrow {
+  transform: rotate(90deg);
+  opacity: 1;
+}
+
+.dropdown-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  padding-top: 8px;
+  display: flex;
+  gap: 0;
+}
+
+/* ── Products Mega Menu ── */
+.nav-dropdown--products .dropdown-inner {
+  flex-direction: row;
+  gap: 0;
+}
+
+.dropdown-sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  padding-right: 32px;
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dropdown-sidebar-label {
+  font-size: 1rem; /* 16px */
+  font-weight: 700;
+  color: #0f172a;
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.dropdown-sidebar-label:hover {
+  background: #f0f4ff;
+  color: #2563eb;
+}
+.dropdown-sidebar-label.active {
+  background: #f0f4ff;
+  color: #2563eb;
+}
+.dropdown-product-card.hidden {
+  display: none;
+}
+
+.dropdown-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.dropdown-product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.15s;
+  border: 1px solid transparent;
+}
+
+.dropdown-product-card:hover {
+  background: #f5f7ff;
+  border-color: rgba(37,99,235,0.15);
+}
+
+.dropdown-all {
+  background: transparent;
+  border: 1px solid transparent !important;
+  /* 与其他卡片一样 top-aligned */
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.dropdown-all:hover {
+  background: #f0f4ff !important;
+  border-color: rgba(37,99,235,0.5) !important;
+}
+
+.dp-all-icon {
+  width: 100%;
+  height: 94px;          /* 与 .dropdown-product-card img 的 height 相同 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 6px;
+  margin-bottom: 10px;   /* 与 .dropdown-product-card img 的 margin-bottom 相同 */
+  transition: background 0.15s;
+}
+
+.dropdown-all .dp-all-icon svg {
+  stroke: #9ca3af;
+  transition: stroke 0.15s;
+}
+
+.dropdown-all:hover .dp-all-icon {
+  background: #e8eeff;
+}
+
+.dropdown-all:hover .dp-all-icon svg {
+  stroke: #2563eb;
+}
+
+.dropdown-all .dp-name {
+  color: #0f172a;   /* 默认深色，不要蓝色 */
+  transition: color 0.15s;
+}
+
+.dropdown-all:hover .dp-name {
+  color: #2563eb;   /* hover 才变蓝 */
+}
+
+.dropdown-product-card img {
+  width: 100%;
+  height: 94px;             /* 从 72px 放大到 94px */
+  object-fit: contain;
+  margin-bottom: 10px;
+  background: transparent;  /* 去掉灰色背景 */
+  border-radius: 6px;
+  padding: 0;
+}
+
+.dp-name {
+  font-size: 1rem; /* 16px */
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 3px;
+}
+
+.dp-desc {
+  font-size: 0.875rem; /* 14px */
+  color: #888;
+  line-height: 1.5;
+  display: none;
+}
+
+.dropdown-all {
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent !important;
+}
+
+.dp-arrow {
+  font-size: 22px;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+/* ── Text Mega Menu (Custom Devices & Industries) ── */
+.nav-dropdown--text .dropdown-inner {
+  gap: 0;
+}
+
+.dropdown-col {
+  flex: 1;
+  padding: 0 32px;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-col:first-child { padding-left: 0; }
+.dropdown-col:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.dropdown-col-head {
+  font-size: 0.75rem; /* 12px — kept small as it's a label */
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.dropdown-link {
+  font-size: 1rem; /* 16px */
+  color: #0f172a;
+  text-decoration: none;
+  padding: 7px 0;
+  font-weight: 500;
+  transition: color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dropdown-link:hover { color: #2563eb; }
+
+.dropdown-link--external {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.dropdown-link--external::after {
+  content: '↗';
+  font-size: 11px;
+}
+
+/* ── Nav arrow ── */
+.nav-arrow {
+  font-size: 10px;
+  margin-left: 3px;
+  opacity: 0.5;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+/* ── Overlay behind mega menu ── */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 998;
+}
+.nav-item.has-dropdown:hover ~ .nav-overlay,
+.nav-overlay:hover { display: block; }
+
+/* ── Mobile: hide mega menu ── */
+@media (max-width: 768px) {
+  .nav-dropdown { display: none !important; }
+  .nav-arrow { display: none; }
+}
+
+/* ── Hamburger button ── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1001;
+}
+.nav-burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+  transform-origin: center;
+}
+/* X state when open */
+.nav-burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-burger.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile nav drawer ── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0; right: 0;
+  width: 85%;
+  max-width: 360px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 1002;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  padding-top: 80px;
+}
+.mobile-nav.open {
+  transform: translateX(0);
+}
+.mobile-nav-inner {
+  padding: 24px 28px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mobile-nav-section {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.mobile-nav-section:last-of-type {
+  border-bottom: none;
+}
+.mobile-nav-head {
+  font-size: 0.75rem; /* 12px — label only */
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.mobile-nav-link {
+  display: block;
+  font-size: 1rem; /* 16px */
+  font-weight: 500;
+  color: #0f172a;
+  text-decoration: none;
+  padding: 8px 0;
+  transition: color 0.15s;
+}
+.mobile-nav-link:hover { color: #2563eb; }
+.mobile-nav-link--external {
+  color: #2563eb;
+  font-weight: 600;
+}
+.mobile-nav-cta {
+  padding-top: 24px;
+}
+.mobile-nav-cta .btn-nav {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 14px;
+}
+
+/* ── Overlay ── */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1001;
+}
+.mobile-nav-overlay.open {
+  display: block;
+}
+
+/* ── Show burger on mobile, hide desktop links ── */
+@media (max-width: 768px) {
+  .nav-burger { display: flex; }
+  .nav-links { display: none; }
+  .nav-right { display: none; }
+  .mobile-nav { display: block; }
+}
+
+/* ── Force black text in all dropdown panels ── */
+.nav-dropdown {
+  background: #ffffff;
+  color: #0f172a;
+}
+.dropdown-col-head {
+  color: #aaaaaa !important;
+}
+.dropdown-link {
+  color: #0f172a !important;
+}
+.dropdown-link:hover {
+  color: #2563eb !important;
+}
+.dropdown-link--external {
+  color: #2563eb !important;
+}
+.dropdown-sidebar-label {
+  color: #0f172a !important;
+}
+.dropdown-sidebar-label:hover {
+  color: #2563eb !important;
+}
+
 /* Active state for Company/About Us */
 .nav-company-active{font-weight:700 !important;color:#2563eb !important;}
 .nav.scrolled .nav-company-active{color:#2563eb !important;}
-@media(max-width:768px){.nav-dropdown{display:none !important;}.nav-arrow{display:none;}.nav-burger{display:flex;}.nav-links{display:none;}.nav-right{display:none;}.mobile-nav{display:block;}}
 
 /* ============================================================
    ABOUT US — page styles
@@ -151,7 +523,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
   border-top: 1px solid #f0f0f0;
   border-bottom: 1px solid #f0f0f0;
 }
-.ab-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+.ab-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
 .ab-stat { padding: 0 56px; border-left: 1px solid #f0f0f0; }
 .ab-stat:first-child { padding-left: 0; border-left: none; }
 .ab-stat-num {
@@ -557,35 +929,36 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         <div class="nav-dropdown nav-dropdown--products">
           <div class="dropdown-inner">
             <div class="dropdown-sidebar">
-              <p class="dropdown-sidebar-label" data-filter="all">All Products →</p>
+              <p class="dropdown-sidebar-label" data-filter="all">All Products</p>
               <p class="dropdown-sidebar-label" data-filter="voice">Voice Capture</p>
               <p class="dropdown-sidebar-label" data-filter="pcba">Phone & PCBA</p>
             </div>
             <div class="dropdown-grid">
               <a href="/products/mic06/" class="dropdown-product-card" data-category="voice">
-                <img src="../img/cap/mic06-main.png" alt="MIC06">
+                <img src="../img/cap/MIC06.png" alt="MIC06">
                 <span class="dp-name">MIC06</span>
                 <span class="dp-desc">Continuous voice capture for shift-based operations</span>
               </a>
               <a href="/products/mic05/" class="dropdown-product-card" data-category="voice">
-                <img src="../img/cap/mic05-main.png" alt="MIC05">
+                <img src="../img/cap/MIC05.png" alt="MIC05">
                 <span class="dp-name">MIC05</span>
                 <span class="dp-desc">Button-triggered capture for field notes</span>
               </a>
               <a href="/products/mic01/" class="dropdown-product-card" data-category="voice">
-                <img src="../img/cap/mic01-main.png" alt="MIC01">
+                <img src="../img/cap/MIC01.png" alt="MIC01">
                 <span class="dp-name">MIC01</span>
                 <span class="dp-desc">Entry-level pilot device</span>
               </a>
               <a href="/products/telalive/" class="dropdown-product-card" data-category="pcba">
-                <img src="../img/cap/telalive-main.png" alt="Telalive">
+                <img src="../img/cap/telalive.png" alt="Telalive">
                 <span class="dp-name">Telalive</span>
                 <span class="dp-desc">AI phone front desk and wearables</span>
               </a>
-              <a href="/products/hearit/" class="dropdown-product-card" data-category="pcba">
-                <img src="../img/cap/mic06-main.png" alt="Hearit.ai PCBA">
-                <span class="dp-name">Hearit.ai PCBA</span>
-                <span class="dp-desc">Module and PCBA path</span>
+              <a href="../products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
+                <div class="dp-all-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+                <span class="dp-name">View All</span>
               </a>
             </div>
           </div>
@@ -601,24 +974,24 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           <div class="dropdown-inner">
             <div class="dropdown-col">
               <p class="dropdown-col-head">Hardware</p>
-              <a href="/custom-devices/" class="dropdown-link">ODM / OEM</a>
-              <a href="/custom-devices/" class="dropdown-link">Private Label</a>
-              <a href="/custom-devices/" class="dropdown-link">Custom Enclosure</a>
-              <a href="/custom-devices/" class="dropdown-link">3D Small-batch Prototype</a>
+              <a href="../custom-devices/odm-oem/index.html" class="dropdown-link">ODM / OEM</a>
+              <a href="../custom-devices/private-label/index.html" class="dropdown-link">Private Label</a>
+              <a href="../custom-devices/custom-enclosure/index.html" class="dropdown-link">Custom Enclosure</a>
+              <a href="../custom-devices/3d-prototype/index.html" class="dropdown-link">3D Small-batch Prototype</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Engineering</p>
-              <a href="/custom-devices/" class="dropdown-link">Firmware Integration</a>
-              <a href="/custom-devices/" class="dropdown-link">Audio & DSP Tuning</a>
-              <a href="/custom-devices/" class="dropdown-link">AI SDK Integration</a>
-              <a href="/custom-devices/" class="dropdown-link">Prototype Validation</a>
+              <a href="../custom-devices/firmware-integration/index.html" class="dropdown-link">Firmware Integration</a>
+              <a href="../custom-devices/audio-dsp-tuning/index.html" class="dropdown-link">Audio & DSP Tuning</a>
+              <a href="../custom-devices/ai-sdk-integration/index.html" class="dropdown-link">AI SDK Integration</a>
+              <a href="../custom-devices/prototype-validation/index.html" class="dropdown-link">Prototype Validation</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Production</p>
-              <a href="/custom-devices/" class="dropdown-link">EVT / DVT / PVT</a>
-              <a href="/custom-devices/" class="dropdown-link">SMT Manufacturing</a>
-              <a href="/custom-devices/" class="dropdown-link">Certification Support</a>
-              <a href="/custom-devices/" class="dropdown-link">Supply Chain Management</a>
+              <a href="../custom-devices/evt-dvt-pvt/index.html" class="dropdown-link">EVT / DVT / PVT</a>
+              <a href="../custom-devices/smt-manufacturing/index.html" class="dropdown-link">SMT Manufacturing</a>
+              <a href="../custom-devices/certification-support/index.html" class="dropdown-link">Certification Support</a>
+              <a href="../custom-devices/supply-chain/index.html" class="dropdown-link">Supply Chain Management</a>
             </div>
           </div>
         </div>
@@ -671,23 +1044,19 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 
       <!-- Company -->
       <div class="nav-item has-dropdown">
-        <a href="/about/" class="nav-link nav-company-active">
+        <a href="../about/index.html" class="nav-link nav-company-active">
           Company <span class="nav-arrow">›</span>
         </a>
         <div class="nav-dropdown nav-dropdown--text">
           <div class="dropdown-inner">
             <div class="dropdown-col">
               <p class="dropdown-col-head">Company</p>
-              <a href="/about/" class="dropdown-link">About Us</a>
-              <a href="/blog/" class="dropdown-link">Blog</a>
+              <a href="../about/index.html" class="dropdown-link">About Us</a>
+              <a href="../blog/index.html" class="dropdown-link">Blog</a>
+              <a href="../contact/index.html" class="dropdown-link">Contact</a>
             </div>
           </div>
         </div>
-      </div>
-
-      <!-- Contact -->
-      <div class="nav-item">
-        <a href="../index.html#contact" class="nav-link">Contact</a>
       </div>
 
     </div>
@@ -721,10 +1090,10 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 
     <div class="mobile-nav-section">
       <p class="mobile-nav-head">Custom Devices</p>
-      <a href="/custom-devices/" class="mobile-nav-link">ODM / OEM</a>
-      <a href="/custom-devices/" class="mobile-nav-link">Private Label</a>
-      <a href="/custom-devices/" class="mobile-nav-link">Firmware Integration</a>
-      <a href="/custom-devices/" class="mobile-nav-link">Prototype Path</a>
+      <a href="../custom-devices/odm-oem/index.html" class="mobile-nav-link">ODM / OEM</a>
+      <a href="../custom-devices/private-label/index.html" class="mobile-nav-link">Private Label</a>
+      <a href="../custom-devices/firmware-integration/index.html" class="mobile-nav-link">Firmware Integration</a>
+      <a href="../custom-devices/index.html" class="mobile-nav-link">Prototype Path</a>
     </div>
 
     <div class="mobile-nav-section">
@@ -745,13 +1114,13 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <a href="../index.html#process" class="mobile-nav-link">Implementation</a>
       <a href="../index.html#proof-cases" class="mobile-nav-link">Proof</a>
       <a href="../index.html#process" class="mobile-nav-link">Process</a>
-      <a href="../index.html#contact" class="mobile-nav-link">Contact</a>
     </div>
 
     <div class="mobile-nav-section">
       <p class="mobile-nav-head">Company</p>
-      <a href="/about/" class="mobile-nav-link">About Us</a>
-      <a href="/blog/" class="mobile-nav-link">Blog</a>
+      <a href="../about/index.html" class="mobile-nav-link">About Us</a>
+      <a href="../blog/index.html" class="mobile-nav-link">Blog</a>
+      <a href="../contact/index.html" class="mobile-nav-link">Contact</a>
     </div>
 
     <div class="mobile-nav-cta">
@@ -772,7 +1141,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
   <div class="ab-hero-top">
     <div class="ab-hero-tag">About Us</div>
     <h1>Real hardware. Built by people who've done it for 15 years.</h1>
-    <p class="ab-hero-sub">The AI hardware division of Gainstrong — a Shenzhen manufacturer trusted by global brands since 2009.</p>
+    <p class="ab-hero-sub">Build production-ready AI hardware — without building a hardware team.</p>
   </div>
   <div class="ab-carousel" aria-label="GMIC manufacturing">
     <div class="ab-carousel-track">
@@ -807,10 +1176,6 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
     <div class="ab-stat">
       <div class="ab-stat-num">250+</div>
       <div class="ab-stat-label">Projects delivered</div>
-    </div>
-    <div class="ab-stat">
-      <div class="ab-stat-num">500k+</div>
-      <div class="ab-stat-label">Units produced per year</div>
     </div>
     <div class="ab-stat">
       <div class="ab-stat-num">2</div>
@@ -852,9 +1217,9 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           <div class="ab-office-city">Anaheim, California</div>
           <div class="ab-office-role">Client &amp; Product Team</div>
           <div class="ab-office-lines">
-            300 S Harbor Blvd Ste 1120, Anaheim, CA 92805<br>
-            <a href="mailto:Trigg@gmic.ai">Trigg@gmic.ai</a><br>
-            (629) 900-0008
+            300 S Harbor Blvd Ste 1020, Anaheim, CA 92805<br>
+            <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a><br>
+            (669) 900-0008
           </div>
           <div class="ab-office-chip">Client &amp; Product Team</div>
         </div>
@@ -929,48 +1294,48 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
     <div class="ab-cap-left">
       <div class="ab-eyebrow">What we build</div>
       <h2>Six core capabilities. One integrated team.</h2>
-      <p class="ab-cap-intro">As AI adoption accelerated, we noticed AI companies could build software quickly — but struggled to build hardware just as fast. GMIC was built to close that gap.</p>
+      <p class="ab-cap-intro">As AI adoption accelerated, AI companies could build software quickly, but struggled to build hardware just as fast. GMIC was built to close that gap.</p>
     </div>
     <div class="ab-cap-list">
       <div class="ab-cap-item">
         <div class="ab-cap-num"><i data-lucide="watch"></i></div>
         <div>
-          <h3>Wearable hardware</h3>
+          <h3>Wearable Hardware Development</h3>
           <p>Clip-on units, badges, pendants, and portable voice-enabled devices — from industrial design to production.</p>
         </div>
       </div>
       <div class="ab-cap-item">
         <div class="ab-cap-num"><i data-lucide="mic"></i></div>
         <div>
-          <h3>Voice-enabled devices</h3>
+          <h3>Voice-Enabled Device Manufacturing</h3>
           <p>End-to-end development with microphones, speakers, DSP pipelines, and real-time audio capabilities.</p>
         </div>
       </div>
       <div class="ab-cap-item">
         <div class="ab-cap-num"><i data-lucide="monitor-speaker"></i></div>
         <div>
-          <h3>Smart office hardware</h3>
+          <h3>Smart Office &amp; Desk Hardware</h3>
           <p>Conference devices, desktop assistants, and business-focused communication hardware.</p>
         </div>
       </div>
       <div class="ab-cap-item">
         <div class="ab-cap-num"><i data-lucide="cpu"></i></div>
         <div>
-          <h3>AIoT &amp; voice modules</h3>
+          <h3>AIoT and Voice Modules</h3>
           <p>Custom Wi-Fi/BLE audio modules and microphone boards for AI teams integrating voice into products.</p>
         </div>
       </div>
       <div class="ab-cap-item">
         <div class="ab-cap-num"><i data-lucide="flask-conical"></i></div>
         <div>
-          <h3>Rapid prototyping</h3>
+          <h3>Rapid Prototyping &amp; Engineering</h3>
           <p>Fast industrial design, electronics, firmware, and acoustics — concept to prototype in weeks.</p>
         </div>
       </div>
       <div class="ab-cap-item">
         <div class="ab-cap-num"><i data-lucide="factory"></i></div>
         <div>
-          <h3>Mass production</h3>
+          <h3>Mass Production &amp; Quality Systems</h3>
           <p>SMT, assembly, testing, and scalable manufacturing backed by Gainstrong's established production lines.</p>
         </div>
       </div>
@@ -995,8 +1360,8 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         <img class="ab-team-photo" src="../img/team/trigg.png" alt="Trigg Shaw">
         <div class="ab-team-info">
           <div class="ab-team-name">Trigg Shaw</div>
-          <div class="ab-team-role">CEO</div>
-          <div class="ab-team-bio">Founder of Gainstrong since 2009. Expert in Wi-Fi/Bluetooth hardware and global ODM operations. Now leading GMIC's AI hardware division, helping teams build voice-enabled and connected devices at speed.</div>        </div>
+          <div class="ab-team-role">CEO / ML Expert</div>
+          <div class="ab-team-bio">Founder &amp; CEO of Gainstrong since 2009, specializing in global ODM and AI-driven products. Expert in Wi-Fi/Bluetooth hardware and production. Now leading heart.ai, creating wearables to revolutionize voice interaction.</div>        </div>
       </div>
       <div class="ab-team-card">
         <img class="ab-team-photo" src="../img/team/shangpeng.png" alt="Shang Peng Li">
@@ -1142,47 +1507,69 @@ if (typeof lucide !== 'undefined') lucide.createIcons();
     else { nav.classList.remove('scrolled'); }
   }, {passive:true});
 
-  // Mobile nav
-  var navBurger = document.getElementById('navBurger');
-  var mobileNav = document.getElementById('mobileNav');
-  var mobileNavOverlay = document.getElementById('mobileNavOverlay');
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item')) {
+      document.querySelectorAll('.nav-dropdown').forEach(d => {
+        d.style.display = '';
+      });
+    }
+  });
 
-  function openMobileNav(){
+  // Products mega menu — filter cards by sidebar category
+  document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label) {
+    label.addEventListener('click', function() {
+      // Update active state
+      document.querySelectorAll('.dropdown-sidebar-label')
+        .forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+
+      // Filter cards
+      var filter = this.getAttribute('data-filter');
+      document.querySelectorAll('.dropdown-product-card').forEach(function(card) {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    });
+  });
+
+  // Mobile nav
+  const navBurger = document.getElementById('navBurger');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+  function openMobileNav() {
     mobileNav.classList.add('open');
     mobileNavOverlay.classList.add('open');
     navBurger.classList.add('open');
-    navBurger.setAttribute('aria-expanded','true');
-    document.body.style.overflow='hidden';
+    navBurger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
   }
-  function closeMobileNav(){
+
+  function closeMobileNav() {
     mobileNav.classList.remove('open');
     mobileNavOverlay.classList.remove('open');
     navBurger.classList.remove('open');
-    navBurger.setAttribute('aria-expanded','false');
-    document.body.style.overflow='';
+    navBurger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
   }
-  if(navBurger){
-    navBurger.addEventListener('click', function(){
-      if(mobileNav.classList.contains('open')){ closeMobileNav(); }
-      else { openMobileNav(); }
-    });
-  }
-  if(mobileNavOverlay){ mobileNavOverlay.addEventListener('click', closeMobileNav); }
-  document.querySelectorAll('.mobile-nav-link').forEach(function(link){
-    link.addEventListener('click', closeMobileNav);
+
+  navBurger.addEventListener('click', function() {
+    if (mobileNav.classList.contains('open')) {
+      closeMobileNav();
+    } else {
+      openMobileNav();
+    }
   });
 
-  // Products sidebar filter
-  document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label){
-    label.addEventListener('click', function(){
-      document.querySelectorAll('.dropdown-sidebar-label').forEach(function(l){ l.classList.remove('active'); });
-      this.classList.add('active');
-      var filter = this.getAttribute('data-filter');
-      document.querySelectorAll('.dropdown-product-card').forEach(function(card){
-        if(filter==='all'||card.getAttribute('data-category')===filter){ card.classList.remove('hidden'); }
-        else { card.classList.add('hidden'); }
-      });
-    });
+  mobileNavOverlay.addEventListener('click', closeMobileNav);
+
+  // Close on mobile nav link click
+  document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+    link.addEventListener('click', closeMobileNav);
   });
 })();
 </script>
