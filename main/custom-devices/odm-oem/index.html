@@ -471,12 +471,15 @@
 /* ---------- Generic section scaffolding ---------- */
 .odm-sec{padding:96px 0;background:#ffffff}        /* default: pure white section */
 .odm-sec.alt{background:#f8fafc}                    /* full-width light-gray band */
+/* "What We Provide": full-width gray band; content inset via responsive horizontal padding (no max-width wrapper) */
+.odm-sec.odm-provide{padding-left:clamp(40px,8vw,200px);padding-right:clamp(40px,8vw,200px)}
+@media(max-width:768px){.odm-sec.odm-provide{padding-left:24px;padding-right:24px}}
 .odm-head{max-width:780px;margin-bottom:48px}
 .odm-head .eyebrow{display:block;margin-bottom:16px}
 .odm-head h2.section{color:#0f172a}
 
 /* ---------- Hero (two-column text row above a full-bleed image, Square style) ---------- */
-.odm-hero{padding:48px 0 0;background:#f8fafc;border-bottom:1px solid rgba(0,0,0,0.06)}
+.odm-hero{padding:48px 0 0;background:#ffffff;border-bottom:1px solid rgba(0,0,0,0.06)}
 /* LEFT ~55% (title block) · RIGHT ~40% (supporting note), bottom-aligned to the title */
 .odm-hero-top{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:56px;align-items:end}
 .odm-hero .eyebrow{display:block;margin-bottom:18px}
@@ -756,7 +759,7 @@
 
       <!-- Implementation -->
       <div class="nav-item">
-        <a href="../../index.html#process" class="nav-link">Implementation</a>
+        <a href="../../implementation/index.html" class="nav-link">Implementation</a>
       </div>
 
       <!-- Proof -->
@@ -811,6 +814,7 @@
               <a href="../../about/index.html" class="dropdown-link">About Us</a>
               <a href="../../blog/index.html" class="dropdown-link">Blog</a>
               <a href="../../contact/index.html" class="dropdown-link">Contact</a>
+              <a href="../../faq/index.html" class="dropdown-link">FAQ</a>
             </div>
           </div>
         </div>
@@ -882,7 +886,7 @@
     </div>
 
     <div class="mobile-nav-section">
-      <a href="../../index.html#process" class="mobile-nav-link">Implementation</a>
+      <a href="../../implementation/index.html" class="mobile-nav-link">Implementation</a>
       <a href="../../index.html#proof-cases" class="mobile-nav-link">Proof</a>
       <a href="../../index.html#process" class="mobile-nav-link">Process</a>
     </div>
@@ -892,6 +896,7 @@
       <a href="../../about/index.html" class="mobile-nav-link">About Us</a>
       <a href="../../blog/index.html" class="mobile-nav-link">Blog</a>
       <a href="../../contact/index.html" class="mobile-nav-link">Contact</a>
+      <a href="../../faq/index.html" class="mobile-nav-link">FAQ</a>
     </div>
 
     <div class="mobile-nav-cta">
@@ -972,8 +977,7 @@
   </section>
 
   <!-- ========== 3) WHAT WE PROVIDE ========== -->
-  <section class="odm-sec alt fade-section" aria-labelledby="provide-h">
-    <div class="container">
+  <section class="odm-sec alt odm-provide fade-section" aria-labelledby="provide-h">
       <div class="odm-head reveal">
         <div class="eyebrow">/ WHAT WE PROVIDE</div>
         <h2 class="section" id="provide-h">What We Provide</h2>
@@ -1028,7 +1032,6 @@
         </div>
       </div>
       </div>
-    </div>
   </section>
 
   <!-- ========== 4) TYPICAL APPLICATIONS (card carousel) ========== -->
