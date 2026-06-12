@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Contact Us — GMIC.AI</title>
-<meta name="description" content="Talk to GMIC.AI about your AI hardware project. From a finished spec to a napkin sketch, our team in Anaheim and Shenzhen helps you move from idea to production-ready device.">
+<title>FAQ — GMIC.AI</title>
+<meta name="description" content="Frequently asked questions about working with GMIC on AI hardware — from prototyping and ODM/OEM to manufacturing, certification, and pricing.">
 <link rel="icon" type="image/png" href="../img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/grid.css">
 
 <style>
-/* ===== NAV CSS from homepage ===== */
+/* ===== NAV CSS (copied verbatim from about/index.html so the header matches site-wide) ===== */
 :root{--sans:'Inter',sans-serif;--black:#111111;--white:#ffffff;--blue:#2563eb;--blue-deep:#1a4fbf;--border-light:rgba(0,0,0,0.08);--border-dark:rgba(255,255,255,0.08);}
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:background .35s ease,backdrop-filter .35s ease,box-shadow .35s ease,color .35s ease;}
 .nav-logo-svg{height:28px;width:auto;display:block;color:#0f172a;transition:color .3s ease;}
@@ -27,30 +27,25 @@
 .btn-nav{background:#0f172a;color:var(--white);padding:10px 18px;font-size:13.5px;}
 .btn-nav:hover{background:#1e293b;transform:translateY(-1px);}
 /* ===== Dropdown navigation — full-width mega menu ===== */
-/* ── Mega Menu Base ── */
 .nav-item {
-  position: relative; /* anchors the hover-bridge pseudo-element */
+  position: relative;
   height: 100%;
   display: flex;
   align-items: center;
 }
-
-/* Pseudo-element bridge so the mouse doesn't lose hover
-   when moving from the nav link down to the dropdown panel */
 .nav-item.has-dropdown::after {
   content: '';
   position: absolute;
   top: 100%;
   left: -20px;
   right: -20px;
-  height: 20px; /* bridges the gap */
+  height: 20px;
   background: transparent;
 }
-
 .nav-dropdown {
   display: none;
   position: fixed;
-  top: 64px; /* height of nav bar */
+  top: 64px;
   left: 0;
   right: 0;
   width: 100%;
@@ -59,17 +54,10 @@
   border-bottom: 1px solid rgba(0,0,0,0.08);
   box-shadow: 0 8px 40px rgba(0,0,0,0.10);
   z-index: 999;
-  padding: 32px 0 40px; /* generous top/bottom padding, flush against nav */
+  padding: 32px 0 40px;
 }
-
-.nav-item.has-dropdown:hover .nav-dropdown {
-  display: block;
-}
-.nav-item.has-dropdown:hover .nav-arrow {
-  transform: rotate(90deg);
-  opacity: 1;
-}
-
+.nav-item.has-dropdown:hover .nav-dropdown { display: block; }
+.nav-item.has-dropdown:hover .nav-arrow { transform: rotate(90deg); opacity: 1; }
 .dropdown-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -78,13 +66,7 @@
   display: flex;
   gap: 0;
 }
-
-/* ── Products Mega Menu ── */
-.nav-dropdown--products .dropdown-inner {
-  flex-direction: row;
-  gap: 0;
-}
-
+.nav-dropdown--products .dropdown-inner { flex-direction: row; gap: 0; }
 .dropdown-sidebar {
   width: 200px;
   flex-shrink: 0;
@@ -95,9 +77,8 @@
   flex-direction: column;
   gap: 4px;
 }
-
 .dropdown-sidebar-label {
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
   font-weight: 700;
   color: #0f172a;
   padding: 10px 12px;
@@ -105,19 +86,9 @@
   cursor: pointer;
   transition: background 0.15s;
 }
-
-.dropdown-sidebar-label:hover {
-  background: #f0f4ff;
-  color: #2563eb;
-}
-.dropdown-sidebar-label.active {
-  background: #f0f4ff;
-  color: #2563eb;
-}
-.dropdown-product-card.hidden {
-  display: none;
-}
-
+.dropdown-sidebar-label:hover { background: #f0f4ff; color: #2563eb; }
+.dropdown-sidebar-label.active { background: #f0f4ff; color: #2563eb; }
+.dropdown-product-card.hidden { display: none; }
 .dropdown-grid {
   flex: 1;
   display: grid;
@@ -125,7 +96,6 @@
   gap: 16px;
   align-items: start;
 }
-
 .dropdown-product-card {
   display: flex;
   flex-direction: column;
@@ -136,101 +106,43 @@
   transition: background 0.15s;
   border: 1px solid transparent;
 }
-
-.dropdown-product-card:hover {
-  background: #f5f7ff;
-  border-color: rgba(37,99,235,0.15);
-}
-
+.dropdown-product-card:hover { background: #f5f7ff; border-color: rgba(37,99,235,0.15); }
 .dropdown-all {
   background: transparent;
   border: 1px solid transparent !important;
-  /* 与其他卡片一样 top-aligned */
   align-items: flex-start;
   justify-content: flex-start;
 }
-
-.dropdown-all:hover {
-  background: #f0f4ff !important;
-  border-color: rgba(37,99,235,0.5) !important;
-}
-
+.dropdown-all:hover { background: #f0f4ff !important; border-color: rgba(37,99,235,0.5) !important; }
 .dp-all-icon {
   width: 100%;
-  height: 94px;          /* 与 .dropdown-product-card img 的 height 相同 */
+  height: 94px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
   border-radius: 6px;
-  margin-bottom: 10px;   /* 与 .dropdown-product-card img 的 margin-bottom 相同 */
+  margin-bottom: 10px;
   transition: background 0.15s;
 }
-
-.dropdown-all .dp-all-icon svg {
-  stroke: #9ca3af;
-  transition: stroke 0.15s;
-}
-
-.dropdown-all:hover .dp-all-icon {
-  background: #e8eeff;
-}
-
-.dropdown-all:hover .dp-all-icon svg {
-  stroke: #2563eb;
-}
-
-.dropdown-all .dp-name {
-  color: #0f172a;   /* 默认深色，不要蓝色 */
-  transition: color 0.15s;
-}
-
-.dropdown-all:hover .dp-name {
-  color: #2563eb;   /* hover 才变蓝 */
-}
-
+.dropdown-all .dp-all-icon svg { stroke: #9ca3af; transition: stroke 0.15s; }
+.dropdown-all:hover .dp-all-icon { background: #e8eeff; }
+.dropdown-all:hover .dp-all-icon svg { stroke: #2563eb; }
+.dropdown-all .dp-name { color: #0f172a; transition: color 0.15s; }
+.dropdown-all:hover .dp-name { color: #2563eb; }
 .dropdown-product-card img {
   width: 100%;
-  height: 94px;             /* 从 72px 放大到 94px */
+  height: 94px;
   object-fit: contain;
   margin-bottom: 10px;
-  background: transparent;  /* 去掉灰色背景 */
+  background: transparent;
   border-radius: 6px;
   padding: 0;
 }
-
-.dp-name {
-  font-size: 1rem; /* 16px */
-  font-weight: 700;
-  color: #0f172a;
-  margin-bottom: 3px;
-}
-
-.dp-desc {
-  font-size: 0.875rem; /* 14px */
-  color: #888;
-  line-height: 1.5;
-  display: none;
-}
-
-.dropdown-all {
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: 1px solid transparent !important;
-}
-
-.dp-arrow {
-  font-size: 22px;
-  color: #2563eb;
-  margin-bottom: 6px;
-}
-
-/* ── Text Mega Menu (Custom Devices & Industries) ── */
-.nav-dropdown--text .dropdown-inner {
-  gap: 0;
-}
-
+.dp-name { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 3px; }
+.dp-desc { font-size: 0.875rem; color: #888; line-height: 1.5; display: none; }
+.dp-arrow { font-size: 22px; color: #2563eb; margin-bottom: 6px; }
+.nav-dropdown--text .dropdown-inner { gap: 0; }
 .dropdown-col {
   flex: 1;
   padding: 0 32px;
@@ -238,15 +150,10 @@
   display: flex;
   flex-direction: column;
 }
-
 .dropdown-col:first-child { padding-left: 0; }
-.dropdown-col:last-child {
-  border-right: none;
-  padding-right: 0;
-}
-
+.dropdown-col:last-child { border-right: none; padding-right: 0; }
 .dropdown-col-head {
-  font-size: 0.75rem; /* 12px — kept small as it's a label */
+  font-size: 0.75rem;
   font-weight: 700;
   color: #aaa;
   text-transform: uppercase;
@@ -255,9 +162,8 @@
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(0,0,0,0.06);
 }
-
 .dropdown-link {
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
   color: #0f172a;
   text-decoration: none;
   padding: 7px 0;
@@ -267,20 +173,9 @@
   align-items: center;
   gap: 6px;
 }
-
 .dropdown-link:hover { color: #2563eb; }
-
-.dropdown-link--external {
-  color: #2563eb;
-  font-weight: 600;
-}
-
-.dropdown-link--external::after {
-  content: '↗';
-  font-size: 11px;
-}
-
-/* ── Nav arrow ── */
+.dropdown-link--external { color: #2563eb; font-weight: 600; }
+.dropdown-link--external::after { content: '↗'; font-size: 11px; }
 .nav-arrow {
   font-size: 10px;
   margin-left: 3px;
@@ -288,8 +183,6 @@
   transition: transform 0.2s;
   display: inline-block;
 }
-
-/* ── Overlay behind mega menu ── */
 .nav-overlay {
   display: none;
   position: fixed;
@@ -299,14 +192,10 @@
 }
 .nav-item.has-dropdown:hover ~ .nav-overlay,
 .nav-overlay:hover { display: block; }
-
-/* ── Mobile: hide mega menu ── */
 @media (max-width: 768px) {
   .nav-dropdown { display: none !important; }
   .nav-arrow { display: none; }
 }
-
-/* ── Hamburger button ── */
 .nav-burger {
   display: none;
   flex-direction: column;
@@ -329,18 +218,9 @@
   transition: transform 0.3s, opacity 0.3s;
   transform-origin: center;
 }
-/* X state when open */
-.nav-burger.open span:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-.nav-burger.open span:nth-child(2) {
-  opacity: 0;
-}
-.nav-burger.open span:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
-}
-
-/* ── Mobile nav drawer ── */
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 .mobile-nav {
   display: none;
   position: fixed;
@@ -355,9 +235,7 @@
   transition: transform 0.3s ease;
   padding-top: 80px;
 }
-.mobile-nav.open {
-  transform: translateX(0);
-}
+.mobile-nav.open { transform: translateX(0); }
 .mobile-nav-inner {
   padding: 24px 28px 40px;
   display: flex;
@@ -368,11 +246,9 @@
   padding: 16px 0;
   border-bottom: 1px solid rgba(0,0,0,0.06);
 }
-.mobile-nav-section:last-of-type {
-  border-bottom: none;
-}
+.mobile-nav-section:last-of-type { border-bottom: none; }
 .mobile-nav-head {
-  font-size: 0.75rem; /* 12px — label only */
+  font-size: 0.75rem;
   font-weight: 700;
   color: #aaa;
   text-transform: uppercase;
@@ -381,7 +257,7 @@
 }
 .mobile-nav-link {
   display: block;
-  font-size: 1rem; /* 16px */
+  font-size: 1rem;
   font-weight: 500;
   color: #0f172a;
   text-decoration: none;
@@ -389,21 +265,9 @@
   transition: color 0.15s;
 }
 .mobile-nav-link:hover { color: #2563eb; }
-.mobile-nav-link--external {
-  color: #2563eb;
-  font-weight: 600;
-}
-.mobile-nav-cta {
-  padding-top: 24px;
-}
-.mobile-nav-cta .btn-nav {
-  display: block;
-  text-align: center;
-  width: 100%;
-  padding: 14px;
-}
-
-/* ── Overlay ── */
+.mobile-nav-link--external { color: #2563eb; font-weight: 600; }
+.mobile-nav-cta { padding-top: 24px; }
+.mobile-nav-cta .btn-nav { display: block; text-align: center; width: 100%; padding: 14px; }
 .mobile-nav-overlay {
   display: none;
   position: fixed;
@@ -411,144 +275,366 @@
   background: rgba(0,0,0,0.4);
   z-index: 1001;
 }
-.mobile-nav-overlay.open {
-  display: block;
-}
-
-/* ── Show burger on mobile, hide desktop links ── */
+.mobile-nav-overlay.open { display: block; }
 @media (max-width: 768px) {
   .nav-burger { display: flex; }
   .nav-links { display: none; }
   .nav-right { display: none; }
   .mobile-nav { display: block; }
 }
-
-/* ── Force black text in all dropdown panels ── */
-.nav-dropdown {
-  background: #ffffff;
-  color: #0f172a;
-}
-.dropdown-col-head {
-  color: #aaaaaa !important;
-}
-.dropdown-link {
-  color: #0f172a !important;
-}
-.dropdown-link:hover {
-  color: #2563eb !important;
-}
-.dropdown-link--external {
-  color: #2563eb !important;
-}
-.dropdown-sidebar-label {
-  color: #0f172a !important;
-}
-.dropdown-sidebar-label:hover {
-  color: #2563eb !important;
-}
-
-/* Active state for Company/About Us */
-.nav-company-active{font-weight:700 !important;color:#2563eb !important;}
-.nav.scrolled .nav-company-active{color:#2563eb !important;}
+.nav-dropdown { background: #ffffff; color: #0f172a; }
+.dropdown-col-head { color: #aaaaaa !important; }
+.dropdown-link { color: #0f172a !important; }
+.dropdown-link:hover { color: #2563eb !important; }
+.dropdown-link--external { color: #2563eb !important; }
+.dropdown-sidebar-label { color: #0f172a !important; }
+.dropdown-sidebar-label:hover { color: #2563eb !important; }
 
 /* ============================================================
-   CONTACT — page styles (ct- prefix)
+   FAQ — page-specific styles
+   Tokens reuse the site palette: blue #2563eb, ink #0a0a0a,
+   light-grey panel #F5F6F8, card border #E5E7EB, radius 12px.
    ============================================================ */
-body { background: #fff; color: #111; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+body { background: #fff; color: #0a0a0a; -webkit-font-smoothing: antialiased; --faq-controls-w: 800px; }
 
-.ct-wrap { max-width: 1440px; width: 100%; margin: 0 auto; padding: 0 clamp(20px, 4vw, 80px); }
+.faq-wrap { max-width: 1440px; width: 100%; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
 
-.ct-eyebrow {
-  font-size: 0.75rem;
+/* small slashed section label, e.g. "/ HELP CENTER" */
+.faq-label {
+  font-family: var(--sans);
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 1.2px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: #2563eb;
-  display: block;
-  margin-bottom: 16px;
+  color: #9ca3af;
+}
+.faq-label::before { content: '/ '; color: #2563eb; }
+.faq-label--dark { color: rgba(255,255,255,0.55); }
+.faq-label--dark::before { color: #2563eb; }
+
+/* ---------- HERO ---------- */
+.faq-hero {
+  background: #F5F6F8;
+  padding: 140px 0 56px;
+  text-align: center;
+}
+.faq-breadcrumb {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  white-space: nowrap;
+  font-family: var(--sans);
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 22px;
+}
+.faq-breadcrumb a { color: #6b7280; transition: color 0.15s; }
+.faq-breadcrumb a:hover { color: #2563eb; }
+.faq-breadcrumb .sep { color: #cbd5e1; }
+.faq-breadcrumb [aria-current="page"] { color: #0f172a; font-weight: 600; }
+.faq-hero h1 {
+  font-family: var(--sans);
+  font-size: clamp(34px, 5vw, 56px);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: #0a0a0a;
+  margin-top: 16px;
+}
+.faq-hero h1 .accent { color: #2563eb; }
+.faq-hero-sub {
+  font-size: 1.0625rem;
+  color: #5b6472;
+  max-width: 620px;
+  margin: 18px auto 0;
+  line-height: 1.7;
 }
 
-/* ---------- 1. HERO ---------- */
-.ct-hero { background: #fff; padding-top: 120px; padding-bottom: 96px; }
-.ct-hero h1 { font-size: clamp(36px, 4.5vw, 58px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; color: #111; }
-.ct-hero-sub { font-size: 1.0625rem; color: #666; max-width: 580px; line-height: 1.72; margin-top: 20px; }
-.ct-hero-grid { display: grid; grid-template-columns: 55fr 45fr; gap: 80px; align-items: start; margin-top: 64px; }
+/* ---------- SEARCH ---------- */
+.faq-controls { padding: 40px 0 8px; }
+.faq-search {
+  position: relative;
+  /* shares the exact same width as the category-tabs row below (--faq-controls-w),
+     so both boxes always have identical left/right edges at any screen size */
+  width: 100%;
+  max-width: var(--faq-controls-w, 800px);
+  margin: 0 auto;
+}
+.faq-search-icon {
+  position: absolute;
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: #9ca3af;
+  pointer-events: none;
+}
+.faq-search input {
+  width: 100%;
+  padding: 16px 22px 16px 50px;
+  border: 1px solid #E5E7EB;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-family: var(--sans);
+  color: #0a0a0a;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.18s, box-shadow 0.18s;
+}
+.faq-search input::placeholder { color: #9ca3af; }
+.faq-search input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 4px rgba(37,99,235,0.10);
+}
 
-/* Form card */
-.ct-form-card { background: #f8f8f8; border: 1px solid #f0f0f0; border-radius: 12px; padding: 40px 44px; }
-.ct-form-title { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; color: #111; }
-.ct-form-resp { font-size: 0.875rem; color: #999; margin-top: 6px; }
-.ct-form { margin-top: 28px; display: flex; flex-direction: column; gap: 18px; }
-.ct-field-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; color: #999; margin-bottom: 6px; display: block; }
-.ct-input, .ct-select, .ct-textarea { width: 100%; padding: 11px 14px; border: 1px solid #e0e0e0; border-radius: 7px; font-family: 'Inter', sans-serif; font-size: 0.9375rem; color: #111; outline: none; transition: border-color 0.15s; background: #fff; }
-.ct-input:focus, .ct-select:focus, .ct-textarea:focus { border-color: #2563eb; }
-.ct-input.error, .ct-select.error, .ct-textarea.error { border-color: #ef4444; }
-.ct-req { color: #ef4444; }
-.ct-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.ct-select-wrap { position: relative; }
-.ct-select { appearance: none; -webkit-appearance: none; -moz-appearance: none; padding-right: 40px; cursor: pointer; }
-.ct-chevron { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #999; display: flex; }
-.ct-textarea { min-height: 110px; resize: vertical; line-height: 1.6; }
-.ct-submit { width: 100%; margin-top: 8px; background: #111; color: #fff; padding: 13px; border-radius: 7px; font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 600; border: none; cursor: pointer; transition: opacity 0.15s; }
-.ct-submit:hover { opacity: 0.85; }
-.ct-fineprint { font-size: 0.8125rem; color: #bbb; text-align: center; margin-top: 10px; }
+/* ---------- CATEGORY TABS ---------- */
+.faq-tabs {
+  display: flex;
+  flex-wrap: nowrap;            /* keep all tabs on a single row */
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  max-width: var(--faq-controls-w, 800px); /* identical width to the search box above */
+  margin: 24px auto 0;
+  overflow-x: auto;            /* narrow screens scroll instead of wrapping */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;       /* Firefox: hide scrollbar */
+  padding-bottom: 2px;
+}
+.faq-tabs::-webkit-scrollbar { display: none; } /* WebKit: hide scrollbar */
+.faq-tab {
+  font-family: var(--sans);
+  font-size: 13.5px;
+  font-weight: 500;
+  color: #5b6472;
+  background: #fff;
+  border: 1px solid #E5E7EB;
+  border-radius: 100px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+  flex-shrink: 0;              /* don't squeeze tabs when the row overflows */
+}
+.faq-tab:hover { border-color: #c7d7f5; color: #2563eb; }
+.faq-tab.active {
+  background: #0a0a0a;
+  border-color: #0a0a0a;
+  color: #fff;
+}
 
-/* Success state */
-.ct-success { min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
-.ct-success-circle { width: 48px; height: 48px; background: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-.ct-success-title { font-size: 1.125rem; font-weight: 700; color: #111; margin-top: 16px; }
-.ct-success-sub { font-size: 0.9375rem; color: #666; margin-top: 8px; }
+/* ---------- ACCORDION LIST ---------- */
+.faq-list { padding: 36px 0 8px; }
+.faq-count {
+  font-size: 13px;
+  color: #9ca3af;
+  margin-bottom: 16px;
+}
+.faq-item {
+  border: none;
+  border-bottom: 1px solid #E5E7EB;
+  border-radius: 0;
+  background: #fff;
+  margin-bottom: 0;
+  overflow: hidden;
+  transition: background 0.18s;
+}
+.faq-item.open {
+  box-shadow: none;
+}
+.faq-q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  text-align: left;
+  padding: 20px 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+}
+/* title + badge sit on one row, badge trailing the title text */
+.faq-q-main {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;                   /* space between the title and the trailing badge */
+}
+.faq-q-text {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: #0a0a0a;
+  line-height: 1.4;
+}
+.faq-q-cat {
+  display: inline-block;
+  flex-shrink: 0;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #2563eb;
+  background: #eef3ff;
+  border-radius: 6px;
+  padding: 3px 8px;
+  margin: 0;
+}
+.faq-icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  position: relative;
+  color: #9ca3af;
+  transition: color 0.18s, transform 0.25s ease;
+}
+.faq-icon::before,
+.faq-icon::after {
+  content: '';
+  position: absolute;
+  background: currentColor;
+  border-radius: 2px;
+  top: 50%;
+  left: 50%;
+}
+.faq-icon::before { width: 14px; height: 2px; transform: translate(-50%, -50%); }
+.faq-icon::after { width: 2px; height: 14px; transform: translate(-50%, -50%); transition: transform 0.25s ease; }
+.faq-item.open .faq-icon { color: #2563eb; }
+.faq-item.open .faq-icon::after { transform: translate(-50%, -50%) scaleY(0); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.faq-a-inner {
+  padding: 0 22px 22px;
+  font-size: 0.9375rem;
+  color: #5b6472;
+  line-height: 1.72;
+}
 
-/* Right column — trust */
-.ct-trust { margin-bottom: 48px; }
-.ct-trust-item { display: flex; flex-direction: row; gap: 14px; border-top: 1px solid #f0f0f0; padding: 18px 0; }
-.ct-trust-icon { width: 32px; height: 32px; background: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-.ct-trust-icon svg { width: 18px; height: 18px; stroke-width: 1.5; color: #999; }
-.ct-trust-title { font-size: 0.9375rem; font-weight: 600; color: #111; }
-.ct-trust-desc { font-size: 0.875rem; color: #666; margin-top: 3px; line-height: 1.6; }
+/* ---------- EMPTY STATE ---------- */
+.faq-empty {
+  display: none;
+  text-align: center;
+  padding: 56px 20px;
+  border: 1px dashed #E5E7EB;
+  border-radius: 12px;
+  color: #6b7280;
+}
+.faq-empty svg { width: 32px; height: 32px; color: #cbd0d8; margin-bottom: 14px; }
+.faq-empty p { font-size: 0.9375rem; line-height: 1.6; }
+.faq-empty a { color: #2563eb; font-weight: 600; }
 
-/* Right column — direct contact */
-.ct-direct { border-top: 1px solid #f0f0f0; padding-top: 32px; }
-.ct-direct-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
-.ct-direct-card { border: 1px solid #f0f0f0; border-radius: 10px; padding: 20px 22px; }
-.ct-direct-city { font-size: 0.9375rem; font-weight: 600; color: #111; }
-.ct-direct-role { font-size: 0.8125rem; color: #999; margin-top: 4px; }
-.ct-direct-email { color: #2563eb; font-size: 0.875rem; margin-top: 12px; display: block; text-decoration: none; }
-.ct-direct-line { color: #666; font-size: 0.875rem; }
+/* ---------- PAGINATION ---------- */
+.faq-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  padding: 32px 0 8px;
+  flex-wrap: wrap;
+}
+.faq-page-btn {
+  min-width: 38px;
+  height: 38px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  background: #fff;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: #5b6472;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.faq-page-btn:hover:not(:disabled) { border-color: #c7d7f5; color: #2563eb; }
+.faq-page-btn.active {
+  background: #2563eb;
+  border-color: #2563eb;
+  color: #fff;
+}
+.faq-page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
-/* ---------- 2. CTA BAND ---------- */
-.ct-cta { background: #111; padding: 120px 0; text-align: center; }
-.ct-cta .ct-wrap { max-width: 1200px; }
-.ct-cta .ct-eyebrow { color: #888; }
-.ct-cta h2 { font-size: clamp(1.75rem, 3.5vw, 2.625rem); font-weight: 700; letter-spacing: -0.04em; color: #fff; max-width: 100%; width: 100%; margin: 0 auto; }
-.cta-h2 { white-space: nowrap; }
-.ct-cta-body { font-size: 1rem; color: #aaa; max-width: 480px; margin: 24px auto 0; line-height: 1.75; }
-.ct-cta-btns { margin-top: 40px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-.ct-btn-primary { background: #fff; color: #111; padding: 13px 28px; border-radius: 7px; font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 600; text-decoration: none; transition: opacity 0.15s; }
-.ct-btn-primary:hover { opacity: 0.85; }
-.ct-btn-secondary { background: transparent; color: #666; padding: 13px 28px; border-radius: 7px; border: 1px solid #333; font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 500; text-decoration: none; transition: color 0.15s; }
-.ct-btn-secondary:hover { color: #aaa; }
+/* ---------- CTA (dark) ---------- */
+.faq-cta {
+  background: #0a0a0a;
+  padding: 96px 0;
+  margin-top: 100px;          /* clear gap between pagination and CTA */
+  text-align: center;
+}
+.faq-cta h2 {
+  font-family: var(--sans);
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  color: #fff;
+  margin-top: 18px;
+}
+.faq-cta-sub {
+  font-size: 1rem;
+  color: #9ca3af;
+  max-width: none;            /* allow the line to use the wide container */
+  margin: 16px auto 0;
+  line-height: 1.72;
+}
+.faq-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.faq-cta-btn {
+  background: #2563eb;
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 100px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.15s, transform 0.15s;
+}
+.faq-cta-btn:hover { background: #1d4ed8; transform: translateY(-1px); }
+.faq-cta-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #9ca3af;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.15s;
+}
+.faq-cta-link:hover { color: #fff; }
 
-/* ---------- 3. FULL WIDTH PHOTO ---------- */
-.contact-photo-banner { width: 100%; height: 480px; overflow: hidden; }
-.contact-photo-banner-img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
-
-/* ---------- RESPONSIVE (<=768px) ---------- */
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px) {
-  .ct-wrap { padding: 0 24px; }
-  .ct-hero { padding-top: 80px; padding-bottom: 64px; }
-  .ct-hero-grid { grid-template-columns: 1fr; gap: 48px; }
-  .ct-cta { padding: 64px 0; }
-  .ct-cta-btns { flex-direction: column; align-items: center; }
-  .ct-direct-grid { grid-template-columns: 1fr; }
-  .contact-photo-banner { height: 260px; }
-  .form-name-row { grid-template-columns: 1fr; }
-  .cta-h2 { white-space: normal; }
+  .faq-hero { padding: 100px 0 44px; }
+  .faq-wrap { padding: 0 20px; }
+  /* left-align so the scrollable tab row starts at the first tab */
+  .faq-tabs { justify-content: flex-start; }
+  .faq-q { padding: 18px 16px; }
+  .faq-q-text { font-size: 1rem; }
+  .faq-a-inner { padding: 0 16px 18px; }
+  .faq-cta { padding: 72px 0; margin-top: 72px; }
+  .faq-cta-actions { flex-direction: column; gap: 16px; }
 }
 </style>
 </head>
 <body>
 
+<!-- ========== NAV (inlined — identical to about/index.html) ========== -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="../index.html" class="nav-logo" aria-label="GMIC.AI">
@@ -610,7 +696,7 @@ body { background: #fff; color: #111; font-family: 'Inter', sans-serif; -webkit-
 
       <!-- Custom Devices -->
       <div class="nav-item has-dropdown">
-        <a href="../custom-devices/index.html" class="nav-link">
+        <a href="../index.html#capabilities" class="nav-link">
           Custom Devices <span class="nav-arrow">›</span>
         </a>
         <div class="nav-dropdown nav-dropdown--text">
@@ -729,25 +815,22 @@ body { background: #fff; color: #111; font-family: 'Inter', sans-serif; -webkit-
       <a href="../products/mic05/index.html" class="mobile-nav-link">MIC05</a>
       <a href="../products/mic01/index.html" class="mobile-nav-link">MIC01</a>
       <a href="../products/telalive/index.html" class="mobile-nav-link">Telalive</a>
-      <a href="../products/hearit/index.html" class="mobile-nav-link">Hearit.ai PCBA</a>
     </div>
 
-        <div class="mobile-nav-section">
+    <div class="mobile-nav-section">
       <p class="mobile-nav-head">Custom Devices · Hardware</p>
       <a href="../custom-devices/odm-oem/index.html" class="mobile-nav-link">ODM / OEM</a>
       <a href="../custom-devices/private-label/index.html" class="mobile-nav-link">Private Label</a>
       <a href="../custom-devices/custom-enclosure/index.html" class="mobile-nav-link">Custom Enclosure</a>
       <a href="../custom-devices/3d-prototype/index.html" class="mobile-nav-link">3D Small-batch Prototype</a>
     </div>
-
     <div class="mobile-nav-section">
       <p class="mobile-nav-head">Custom Devices · Engineering</p>
       <a href="../custom-devices/firmware-integration/index.html" class="mobile-nav-link">Firmware Integration</a>
-      <a href="../custom-devices/audio-dsp-tuning/index.html" class="mobile-nav-link">Audio &amp; DSP Tuning</a>
+      <a href="../custom-devices/audio-dsp-tuning/index.html" class="mobile-nav-link">Audio & DSP Tuning</a>
       <a href="../custom-devices/ai-sdk-integration/index.html" class="mobile-nav-link">AI SDK Integration</a>
       <a href="../custom-devices/prototype-validation/index.html" class="mobile-nav-link">Prototype Validation</a>
     </div>
-
     <div class="mobile-nav-section">
       <p class="mobile-nav-head">Custom Devices · Production</p>
       <a href="../custom-devices/evt-dvt-pvt/index.html" class="mobile-nav-link">EVT / DVT / PVT</a>
@@ -797,179 +880,83 @@ body { background: #fff; color: #111; font-family: 'Inter', sans-serif; -webkit-
 <!-- Mobile nav overlay -->
 <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 
-<!-- ========== SECTION 1 — HERO ========== -->
-<section class="ct-hero">
-  <div class="ct-wrap">
-    <span class="ct-eyebrow">Contact Us</span>
-    <h1>Let's build something real.</h1>
-    <p class="ct-hero-sub">Whether you have a finished spec or a napkin sketch — our team in Anaheim and Shenzhen is ready to help you move from idea to production-ready device.</p>
+<!-- ========== 1. HERO ========== -->
+<section class="faq-hero">
+  <div class="faq-wrap">
+    <nav class="faq-breadcrumb" aria-label="Breadcrumb">
+      <a href="../index.html">Home</a>
+      <span class="sep" aria-hidden="true">/</span>
+      <span aria-current="page">FAQ</span>
+    </nav>
+    <h1>Frequently Asked <span class="accent">Questions</span></h1>
+    <p class="faq-hero-sub">Everything you need to know about working with GMIC on AI hardware — from prototyping to mass production.</p>
+  </div>
+</section>
 
-    <div class="ct-hero-grid">
+<!-- ========== 2. CONTROLS (search + category tabs) ========== -->
+<section class="faq-controls">
+  <div class="faq-wrap">
+    <div class="faq-search">
+      <svg class="faq-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="search" id="faqSearch" placeholder="Search questions..." aria-label="Search questions" autocomplete="off">
+    </div>
 
-      <!-- LEFT — form card -->
-      <div class="ct-form-card" id="formCard">
-        <div class="ct-form-title">Start a conversation</div>
-        <p class="ct-form-resp">We respond within 1 business day.</p>
-
-        <form id="contactForm" class="ct-form" novalidate>
-          <div class="ct-row form-name-row">
-            <div>
-              <label class="ct-field-label" for="firstName">First Name <span class="ct-req">*</span></label>
-              <input class="ct-input" type="text" id="firstName" name="firstName">
-            </div>
-            <div>
-              <label class="ct-field-label" for="lastName">Last Name <span class="ct-req">*</span></label>
-              <input class="ct-input" type="text" id="lastName" name="lastName">
-            </div>
-          </div>
-
-          <div>
-            <label class="ct-field-label" for="email">Work Email <span class="ct-req">*</span></label>
-            <input class="ct-input" type="email" id="email" name="email">
-          </div>
-
-          <div>
-            <label class="ct-field-label" for="companyName">Company <span class="ct-req">*</span></label>
-            <input class="ct-input" type="text" id="companyName" name="company">
-          </div>
-
-          <div>
-            <label class="ct-field-label" for="jobTitle">Job Title</label>
-            <input class="ct-input" type="text" id="jobTitle" name="jobTitle">
-          </div>
-
-          <div>
-            <label class="ct-field-label" for="industry">Industry</label>
-            <div class="ct-select-wrap">
-              <select class="ct-select" id="industry" name="industry">
-                <option value="" disabled selected>Select your industry</option>
-                <option>Healthcare</option>
-                <option>MedTech</option>
-                <option>Enterprise</option>
-                <option>Workforce</option>
-                <option>Field Service</option>
-                <option>Industrial</option>
-                <option>Hospitality</option>
-                <option>Retail</option>
-                <option>Telecom</option>
-                <option>Smart Home</option>
-                <option>Consumer</option>
-                <option>Other</option>
-              </select>
-              <span class="ct-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-            </div>
-          </div>
-
-          <div>
-            <label class="ct-field-label" for="volume">Annual Volume</label>
-            <div class="ct-select-wrap">
-              <select class="ct-select" id="volume" name="volume">
-                <option value="" disabled selected>Expected unit volume</option>
-                <option>Prototype or under 500</option>
-                <option>500 to 5,000</option>
-                <option>5,000 to 50,000</option>
-                <option>50,000 to 500,000</option>
-                <option>500,000 plus</option>
-              </select>
-              <span class="ct-chevron"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg></span>
-            </div>
-          </div>
-
-          <div>
-            <label class="ct-field-label" for="project">Tell us about your project <span class="ct-req">*</span></label>
-            <textarea class="ct-textarea" id="project" name="project"></textarea>
-          </div>
-
-          <button type="submit" class="ct-submit">Send Message →</button>
-          <p class="ct-fineprint">By submitting, you agree to our Privacy Policy. Your information is never shared.</p>
-        </form>
-      </div>
-
-      <!-- RIGHT — trust + contact -->
-      <div class="ct-side">
-
-        <div class="ct-trust">
-          <span class="ct-eyebrow">Why teams choose GMIC</span>
-
-          <div class="ct-trust-item">
-            <div class="ct-trust-icon"><i data-lucide="shield-check"></i></div>
-            <div>
-              <div class="ct-trust-title">Responds in 24 hours</div>
-              <div class="ct-trust-desc">A real human replies — not an autoresponder.</div>
-            </div>
-          </div>
-
-          <div class="ct-trust-item">
-            <div class="ct-trust-icon"><i data-lucide="clock"></i></div>
-            <div>
-              <div class="ct-trust-title">NDA on day one</div>
-              <div class="ct-trust-desc">Your concept and IP are protected from the first conversation.</div>
-            </div>
-          </div>
-
-          <div class="ct-trust-item">
-            <div class="ct-trust-icon"><i data-lucide="lock"></i></div>
-            <div>
-              <div class="ct-trust-title">No generic ODM</div>
-              <div class="ct-trust-desc">We only take projects where we can genuinely help.</div>
-            </div>
-          </div>
-
-          <div class="ct-trust-item">
-            <div class="ct-trust-icon"><i data-lucide="map-pin"></i></div>
-            <div>
-              <div class="ct-trust-title">US + Shenzhen team</div>
-              <div class="ct-trust-desc">Engineering in Shenzhen, client support in Anaheim, CA.</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="ct-direct">
-          <span class="ct-eyebrow">Or reach us directly</span>
-          <div class="ct-direct-grid">
-            <div class="ct-direct-card">
-              <div class="ct-direct-city">Anaheim, CA</div>
-              <div class="ct-direct-role">Client &amp; Product</div>
-              <a href="mailto:trigg@gmic.ai" class="ct-direct-email">trigg@gmic.ai</a>
-              <div class="ct-direct-line">(629) 900-0008</div>
-            </div>
-            <div class="ct-direct-card">
-              <div class="ct-direct-city">Shenzhen, CN</div>
-              <div class="ct-direct-role">Engineering &amp; Mfg</div>
-              <a href="mailto:info@gmic.ai" class="ct-direct-email">info@gmic.ai</a>
-              <div class="ct-direct-line">Shenzhen HQ</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
+    <!-- Category filter tabs -->
+    <div class="faq-tabs" id="faqTabs" role="tablist" aria-label="FAQ categories">
+      <button class="faq-tab active" data-cat="All" role="tab" aria-selected="true">All</button>
+      <button class="faq-tab" data-cat="General" role="tab" aria-selected="false">General</button>
+      <button class="faq-tab" data-cat="Products" role="tab" aria-selected="false">Products</button>
+      <button class="faq-tab" data-cat="ODM / OEM" role="tab" aria-selected="false">ODM / OEM</button>
+      <button class="faq-tab" data-cat="Manufacturing" role="tab" aria-selected="false">Manufacturing</button>
+      <button class="faq-tab" data-cat="Certification" role="tab" aria-selected="false">Certification</button>
+      <button class="faq-tab" data-cat="Pricing &amp; MOQ" role="tab" aria-selected="false">Pricing &amp; MOQ</button>
     </div>
   </div>
 </section>
 
-<!-- ========== SECTION 2 — CTA BAND ========== -->
-<section class="ct-cta">
-  <div class="ct-wrap">
-    <span class="ct-eyebrow">Ready to build?</span>
-    <h2 class="cta-h2">Turn your AI idea into a real, production-ready device.</h2>
-    <p class="ct-cta-body">From concept to mass production — our team in Shenzhen and California is ready to move fast with you.</p>
-    <div class="ct-cta-btns">
-      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="ct-btn-primary">Start Your Project →</a>
-      <a href="../faq/index.html" class="ct-btn-secondary">Have a question? Read our FAQ →</a>
+<!-- ========== 3. FAQ LIST (accordion) + 4. PAGINATION ========== -->
+<section class="faq-list" id="faqListSection">
+  <div class="faq-wrap">
+    <div class="faq-count" id="faqCount"></div>
+
+    <!-- Accordion items are rendered here by JS -->
+    <div id="faqAccordion"></div>
+
+    <!-- Empty state -->
+    <div class="faq-empty" id="faqEmpty">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <p>No results found. Try a different keyword or <a href="../contact/index.html">contact us</a>.</p>
+    </div>
+
+    <!-- Pagination -->
+    <div class="faq-pagination" id="faqPagination"></div>
+  </div>
+</section>
+
+<!-- ========== 5. CTA (dark) ========== -->
+<section class="faq-cta">
+  <div class="faq-wrap">
+    <h2>Still have questions?</h2>
+    <p class="faq-cta-sub">Our team in Shenzhen and California is ready to help you turn your AI into a real product.</p>
+    <div class="faq-cta-actions">
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="faq-cta-btn">Book a Demo</a>
+      <a href="../contact/index.html" class="faq-cta-link">Contact us</a>
     </div>
   </div>
 </section>
 
-<!-- ========== SECTION 3 — FULL WIDTH PHOTO ========== -->
-<div class="contact-photo-banner">
-  <img src="../img/12.jpg" alt="GMIC manufacturing facility" class="contact-photo-banner-img">
-</div>
-
+<!-- ========== FOOTER (copied verbatim from about/index.html) ========== -->
 <footer class="footer" id="company">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="#" class="logo">GMIC.AI</a>
+        <a href="../index.html" class="logo">GMIC.AI</a>
         <p>Designing and manufacturing the embedded hardware behind the voice-first era.</p>
         <div class="footer-contact">
           <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a><br>
@@ -989,22 +976,22 @@ body { background: #fff; color: #111; font-family: 'Inter', sans-serif; -webkit-
       <div class="footer-col">
         <h4>Solutions</h4>
         <ul>
-          <li><a href="#capabilities">Edge AI Hardware</a></li>
-          <li><a href="#capabilities">Voice AI Hardware</a></li>
-          <li><a href="#capabilities">AI Wearable Devices</a></li>
-          <li><a href="#capabilities">AI Hardware ODM</a></li>
-          <li><a href="#capabilities">Embedded AI Hardware</a></li>
+          <li><a href="../index.html#capabilities">Edge AI Hardware</a></li>
+          <li><a href="../index.html#capabilities">Voice AI Hardware</a></li>
+          <li><a href="../index.html#capabilities">AI Wearable Devices</a></li>
+          <li><a href="../index.html#capabilities">AI Hardware ODM</a></li>
+          <li><a href="../index.html#capabilities">Embedded AI Hardware</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>Industries</h4>
         <ul>
-          <li><a href="#industries">Healthcare AI</a></li>
-          <li><a href="#industries">Enterprise AI</a></li>
-          <li><a href="#industries">Field Service AI</a></li>
-          <li><a href="#industries">Telecom AI</a></li>
-          <li><a href="#industries">Smart Retail</a></li>
+          <li><a href="../index.html#industries">Healthcare AI</a></li>
+          <li><a href="../index.html#industries">Enterprise AI</a></li>
+          <li><a href="../index.html#industries">Field Service AI</a></li>
+          <li><a href="../index.html#industries">Telecom AI</a></li>
+          <li><a href="../index.html#industries">Smart Retail</a></li>
         </ul>
       </div>
 
@@ -1012,9 +999,9 @@ body { background: #fff; color: #111; font-family: 'Inter', sans-serif; -webkit-
         <h4>Resources</h4>
         <ul>
           <li><a href="https://gmic.ai/blog/" target="_blank" rel="noopener">Blog</a></li>
-          <li><a href="#insights">Case Studies</a></li>
-          <li><a href="#process">Our Process</a></li>
-          <li><a href="#why-gmic">Engineering Capabilities</a></li>
+          <li><a href="../index.html#insights">Case Studies</a></li>
+          <li><a href="../index.html#process">Our Process</a></li>
+          <li><a href="../faq/index.html">FAQ</a></li>
           <li><a href="mailto:trigg@gmic.ai">Contact</a></li>
         </ul>
       </div>
@@ -1022,8 +1009,8 @@ body { background: #fff; color: #111; font-family: 'Inter', sans-serif; -webkit-
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="#why-gmic">About GMIC</a></li>
-          <li><a href="#industries">Customer Stories</a></li>
+          <li><a href="../index.html#why-gmic">About GMIC</a></li>
+          <li><a href="../index.html#industries">Customer Stories</a></li>
           <li><a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener">Book a Demo</a></li>
           <li><a href="#">Careers</a></li>
           <li><a href="#">Privacy</a></li>
@@ -1043,110 +1030,291 @@ body { background: #fff; color: #111; font-family: 'Inter', sans-serif; -webkit-
 </footer>
 
 <script>
-(function(){
-  // 1. Nav scroll: add .scrolled to #nav when scrollY > 40
-  var nav = document.getElementById('nav');
-  if(nav){
-    window.addEventListener('scroll', function(){
-      if(window.scrollY > 40){ nav.classList.add('scrolled'); }
-      else { nav.classList.remove('scrolled'); }
-    }, {passive:true});
+// ============================================================
+// FAQ DATA  ← PLACEHOLDER CONTENT
+// Replace / edit the objects below to update the FAQ.
+// Each entry: { category, q (question), a (answer) }.
+// `category` must match one of the tab data-cat values:
+//   General · Products · ODM / OEM · Manufacturing · Certification · Pricing & MOQ
+// ============================================================
+const FAQ_DATA = [
+  { category: "General", q: "What does GMIC AI do?",
+    a: "We design and manufacture AI voice and edge hardware for B2B companies — from industrial design and firmware to scalable mass production." },
+  { category: "General", q: "Can you help if we only have a concept or a spec sheet?",
+    a: "Yes. We work with companies at any stage, including early concept or a rough spec, and return a manufacturing-ready roadmap." },
+  { category: "ODM / OEM", q: "What's the difference between ODM and OEM?",
+    a: "With OEM, you provide the design and we manufacture it. With ODM, we provide a hardware platform and customize it for your application." },
+  { category: "ODM / OEM", q: "Do you sign NDAs before sharing details?",
+    a: "Yes. We routinely sign NDAs and treat all product designs and roadmaps as confidential." },
+  { category: "Products", q: "What types of devices can you build?",
+    a: "Clip-on voice recorders, wearable badges and pendants, conference and desktop devices, AIoT and voice modules, and custom enclosures." },
+  { category: "Products", q: "What connectivity options do you support?",
+    a: "Wi-Fi, Bluetooth / BLE, and custom audio modules, tuned for low-power voice-enabled devices." },
+  { category: "Products", q: "Do you handle audio tuning and noise reduction?",
+    a: "Yes. We do microphone, beamforming, and noise-reduction tuning for clear real-time voice capture." },
+  { category: "Manufacturing", q: "Where is the hardware manufactured?",
+    a: "In Shenzhen, China — vertically integrated from SMT to final assembly — with client support in California." },
+  { category: "Manufacturing", q: "How long does it take from concept to mass production?",
+    a: "Typical timelines run from a few weeks for prototypes to a few months for production, depending on complexity." },
+  { category: "Manufacturing", q: "How do you ensure quality?",
+    a: "Through AOI inspection, EVT / DVT / PVT validation, in-line QC, and final testing before shipment." },
+  { category: "Manufacturing", q: "Can I order a sample or prototype first?",
+    a: "Yes. We offer rapid prototyping so you can validate the design before committing to volume production." },
+  { category: "Manufacturing", q: "What is EVT / DVT / PVT?",
+    a: "They are engineering, design, and production validation phases that progressively de-risk a device before mass production." },
+  { category: "Certification", q: "What certifications do your devices support?",
+    a: "FCC, CE, URCA, TELEC, RoHS, and ISED, with full compliance documentation." },
+  { category: "Certification", q: "Do you provide compliance documentation?",
+    a: "Yes. We deliver test reports and certification paperwork to support market entry." },
+  // PLACEHOLDER pricing answers — replace with real data when available
+  { category: "Pricing & MOQ", q: "What is your typical minimum order quantity?",
+    a: "MOQ depends on the product and components; we'll confirm exact numbers after reviewing your spec." },
+  { category: "Pricing & MOQ", q: "How is pricing structured?",
+    a: "Pricing covers engineering / NRE plus per-unit manufacturing, and scales down with volume." },
+  { category: "General", q: "What industries do you serve?",
+    a: "Healthcare, enterprise, field service, telecom, hospitality, and smart retail — purpose-built voice hardware for each." },
+  { category: "General", q: "How do I start a project?",
+    a: "Click \"Start a Project\" or book a demo, share your concept or spec, and we'll return a manufacturing-ready plan in about two weeks." }
+];
+
+// ============================================================
+// FAQ INTERACTION LOGIC (search + category filter + pagination + accordion)
+// Pure vanilla JS — no framework, no storage.
+// ============================================================
+(function () {
+  const PER_PAGE = 10;
+
+  const accordionEl  = document.getElementById('faqAccordion');
+  const emptyEl      = document.getElementById('faqEmpty');
+  const paginationEl = document.getElementById('faqPagination');
+  const countEl      = document.getElementById('faqCount');
+  const searchEl     = document.getElementById('faqSearch');
+  const tabsEl       = document.getElementById('faqTabs');
+  const listSection  = document.getElementById('faqListSection');
+
+  let currentCategory = 'All';
+  let currentQuery    = '';
+  let currentPage     = 1;
+
+  // Decode HTML entity in tab data-cat (e.g. "Pricing &amp; MOQ" -> "Pricing & MOQ")
+  function decode(str) {
+    const t = document.createElement('textarea');
+    t.innerHTML = str;
+    return t.value;
   }
 
+  // Return the list of FAQs matching the active category + search query.
+  function getFiltered() {
+    const q = currentQuery.trim().toLowerCase();
+    return FAQ_DATA.filter(function (item) {
+      const matchCat = currentCategory === 'All' || item.category === currentCategory;
+      const matchQ = q === '' ||
+        item.q.toLowerCase().includes(q) ||
+        item.a.toLowerCase().includes(q);
+      return matchCat && matchQ;
+    });
+  }
+
+  // Build one accordion item (accessible: <button> + aria-expanded).
+  function buildItem(item, index) {
+    const wrap = document.createElement('div');
+    wrap.className = 'faq-item';
+
+    const btnId = 'faq-q-' + index;
+    const panelId = 'faq-a-' + index;
+
+    const btn = document.createElement('button');
+    btn.className = 'faq-q';
+    btn.id = btnId;
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-controls', panelId);
+    btn.innerHTML =
+      '<span class="faq-q-main">' +
+        '<span class="faq-q-text">' + item.q + '</span>' +
+        '<span class="faq-q-cat">' + item.category + '</span>' +
+      '</span>' +
+      '<span class="faq-icon" aria-hidden="true"></span>';
+
+    const panel = document.createElement('div');
+    panel.className = 'faq-a';
+    panel.id = panelId;
+    panel.setAttribute('role', 'region');
+    panel.setAttribute('aria-labelledby', btnId);
+    panel.innerHTML = '<div class="faq-a-inner">' + item.a + '</div>';
+
+    btn.addEventListener('click', function () {
+      const isOpen = wrap.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      panel.style.maxHeight = isOpen ? panel.scrollHeight + 'px' : '0';
+    });
+
+    wrap.appendChild(btn);
+    wrap.appendChild(panel);
+    return wrap;
+  }
+
+  // Render current page of results.
+  function render() {
+    const filtered = getFiltered();
+    const total = filtered.length;
+    const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+    if (currentPage > totalPages) currentPage = totalPages;
+
+    // Count text
+    countEl.textContent = total === 0
+      ? ''
+      : total + (total === 1 ? ' question' : ' questions');
+
+    // Accordion
+    accordionEl.innerHTML = '';
+    if (total === 0) {
+      emptyEl.style.display = 'block';
+      paginationEl.innerHTML = '';
+      return;
+    }
+    emptyEl.style.display = 'none';
+
+    const start = (currentPage - 1) * PER_PAGE;
+    const pageItems = filtered.slice(start, start + PER_PAGE);
+    pageItems.forEach(function (item, i) {
+      accordionEl.appendChild(buildItem(item, start + i));
+    });
+
+    renderPagination(totalPages);
+  }
+
+  // Build the ‹ Prev / numbers / Next › control.
+  function renderPagination(totalPages) {
+    paginationEl.innerHTML = '';
+    if (totalPages <= 1) return;
+
+    function pageBtn(label, page, opts) {
+      opts = opts || {};
+      const b = document.createElement('button');
+      b.className = 'faq-page-btn' + (opts.active ? ' active' : '');
+      b.innerHTML = label;
+      if (opts.disabled) b.disabled = true;
+      if (opts.active) b.setAttribute('aria-current', 'page');
+      b.addEventListener('click', function () {
+        currentPage = page;
+        render();
+        // Scroll back to the top of the FAQ list on page change.
+        listSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      return b;
+    }
+
+    paginationEl.appendChild(
+      pageBtn('‹ Prev', currentPage - 1, { disabled: currentPage === 1 }));
+
+    for (let p = 1; p <= totalPages; p++) {
+      paginationEl.appendChild(pageBtn(String(p), p, { active: p === currentPage }));
+    }
+
+    paginationEl.appendChild(
+      pageBtn('Next ›', currentPage + 1, { disabled: currentPage === totalPages }));
+  }
+
+  // ---- Events ----
+  searchEl.addEventListener('input', function () {
+    currentQuery = this.value;
+    currentPage = 1; // reset to first page when the result set changes
+    render();
+  });
+
+  tabsEl.addEventListener('click', function (e) {
+    const tab = e.target.closest('.faq-tab');
+    if (!tab) return;
+    tabsEl.querySelectorAll('.faq-tab').forEach(function (t) {
+      t.classList.remove('active');
+      t.setAttribute('aria-selected', 'false');
+    });
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    currentCategory = decode(tab.getAttribute('data-cat'));
+    currentPage = 1; // reset paging when filter changes
+    render();
+  });
+
+  // Initial render
+  render();
+})();
+
+// ---------- Lucide icons (nav/footer) ----------
+if (typeof lucide !== 'undefined') lucide.createIcons();
+</script>
+
+<script>
+// ========== NAV behaviour (copied verbatim from about/index.html) ==========
+(function(){
+  var nav = document.getElementById('nav');
+  if(!nav) return;
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 40){ nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  }, {passive:true});
+
   // Close dropdown when clicking outside
-  document.addEventListener('click', function(e){
-    if(!e.target.closest('.nav-item')){
-      document.querySelectorAll('.nav-dropdown').forEach(function(d){ d.style.display = ''; });
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item')) {
+      document.querySelectorAll('.nav-dropdown').forEach(d => {
+        d.style.display = '';
+      });
     }
   });
 
-  // 3. Products mega menu — filter cards by sidebar category
-  document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label){
-    label.addEventListener('click', function(){
-      document.querySelectorAll('.dropdown-sidebar-label').forEach(function(l){ l.classList.remove('active'); });
+  // Products mega menu — filter cards by sidebar category
+  document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label) {
+    label.addEventListener('click', function() {
+      document.querySelectorAll('.dropdown-sidebar-label')
+        .forEach(l => l.classList.remove('active'));
       this.classList.add('active');
+
       var filter = this.getAttribute('data-filter');
-      document.querySelectorAll('.dropdown-product-card').forEach(function(card){
-        if(filter === 'all' || card.getAttribute('data-category') === filter){ card.classList.remove('hidden'); }
-        else { card.classList.add('hidden'); }
+      document.querySelectorAll('.dropdown-product-card').forEach(function(card) {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
       });
     });
   });
 
-  // 2. Mobile nav
-  var navBurger = document.getElementById('navBurger');
-  var mobileNav = document.getElementById('mobileNav');
-  var mobileNavOverlay = document.getElementById('mobileNavOverlay');
-  function openMobileNav(){
+  // Mobile nav
+  const navBurger = document.getElementById('navBurger');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+  function openMobileNav() {
     mobileNav.classList.add('open');
     mobileNavOverlay.classList.add('open');
     navBurger.classList.add('open');
-    navBurger.setAttribute('aria-expanded','true');
+    navBurger.setAttribute('aria-expanded', 'true');
     document.body.style.overflow = 'hidden';
   }
-  function closeMobileNav(){
+
+  function closeMobileNav() {
     mobileNav.classList.remove('open');
     mobileNavOverlay.classList.remove('open');
     navBurger.classList.remove('open');
-    navBurger.setAttribute('aria-expanded','false');
+    navBurger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
   }
-  if(navBurger){
-    navBurger.addEventListener('click', function(){
-      if(mobileNav.classList.contains('open')){ closeMobileNav(); }
-      else { openMobileNav(); }
-    });
-  }
-  if(mobileNavOverlay){ mobileNavOverlay.addEventListener('click', closeMobileNav); }
-  document.querySelectorAll('.mobile-nav-link').forEach(function(link){
-    link.addEventListener('click', closeMobileNav);
+
+  navBurger.addEventListener('click', function() {
+    if (mobileNav.classList.contains('open')) {
+      closeMobileNav();
+    } else {
+      openMobileNav();
+    }
   });
 
-  // 4. Form submit — validate required fields, then show success state
-  var contactForm = document.getElementById('contactForm');
-  if(contactForm){
-    var requiredIds = ['firstName', 'lastName', 'email', 'companyName', 'project'];
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  mobileNavOverlay.addEventListener('click', closeMobileNav);
 
-    requiredIds.forEach(function(id){
-      var field = document.getElementById(id);
-      if(field){
-        field.addEventListener('focus', function(){ field.classList.remove('error'); });
-      }
-    });
-
-    contactForm.addEventListener('submit', function(e){
-      e.preventDefault();
-      var firstInvalid = null;
-      requiredIds.forEach(function(id){
-        var field = document.getElementById(id);
-        if(!field){ return; }
-        var value = field.value.trim();
-        var invalid = (value === '') || (id === 'email' && !emailRegex.test(value));
-        if(invalid){
-          field.classList.add('error');
-          if(!firstInvalid){ firstInvalid = field; }
-        } else {
-          field.classList.remove('error');
-        }
-      });
-
-      if(firstInvalid){
-        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        return;
-      }
-
-      var card = document.getElementById('formCard');
-      card.innerHTML = '<div class="ct-success">'
-        + '<div class="ct-success-circle"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></div>'
-        + '<div class="ct-success-title">Message received.</div>'
-        + '<div class="ct-success-sub">Your team will be in touch within 1 business day.</div>'
-        + '</div>';
-    });
-  }
-
-  // 5. Lucide icons
-  if(typeof lucide !== 'undefined') lucide.createIcons();
+  document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+    link.addEventListener('click', closeMobileNav);
+  });
 })();
 </script>
 

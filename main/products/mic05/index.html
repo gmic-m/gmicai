@@ -4,18 +4,27 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MIC05 — Secure Voice Capture for AI Workflows | GMIC.AI</title>
-<meta name="description" content="MIC05 is a professional wearable voice capture device with hardware noise reduction, NFC authentication, and encrypted firmware — engineered for organizations that rely on voice data in operational workflows." />
 <link rel="icon" type="image/png" href="../../img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <link rel="stylesheet" href="../../css/style.css">
 <link rel="stylesheet" href="../../css/grid.css">
 <script src="../../js/main.js" defer></script>
-
-<!-- ===== Homepage NAV styles (copied verbatim from index.html) ===== -->
 <style>
+/* ===== NAV CSS from about/index.html ===== */
+:root{--sans:'Inter',sans-serif;--black:#111111;--white:#ffffff;--blue:#2563eb;--blue-deep:#1a4fbf;--border-light:rgba(0,0,0,0.08);--border-dark:rgba(255,255,255,0.08);}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:background .35s ease,backdrop-filter .35s ease,box-shadow .35s ease,color .35s ease;}
+.nav-logo-svg{height:28px;width:auto;display:block;color:#0f172a;transition:color .3s ease;}
+.nav.scrolled .nav-logo-svg{color:#0f172a;}
+.nav-links a{font-family:var(--sans);font-size:14px;font-weight:500;color:rgba(0,0,0,0.75);transition:color .25s ease;}
+.nav-links a:hover{color:var(--black);}
+.nav.scrolled{background:rgba(255,255,255,0.85);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);box-shadow:0 1px 0 var(--border-light);}
+.nav.scrolled .nav-links a{color:#333;}
+.nav.scrolled .nav-links a:hover{color:var(--black);}
+.btn-nav{background:#0f172a;color:var(--white);padding:10px 18px;font-size:13.5px;}
+.btn-nav:hover{background:#1e293b;transform:translateY(-1px);}
 /* ===== Dropdown navigation — full-width mega menu ===== */
 /* ── Mega Menu Base ── */
 .nav-item {
@@ -87,7 +96,7 @@
 }
 
 .dropdown-sidebar-label {
-  font-size: 13px;
+  font-size: 1rem; /* 16px */
   font-weight: 700;
   color: #0f172a;
   padding: 10px 12px;
@@ -132,34 +141,82 @@
   border-color: rgba(37,99,235,0.15);
 }
 
+.dropdown-all {
+  background: transparent;
+  border: 1px solid transparent !important;
+  /* 与其他卡片一样 top-aligned */
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.dropdown-all:hover {
+  background: #f0f4ff !important;
+  border-color: rgba(37,99,235,0.5) !important;
+}
+
+.dp-all-icon {
+  width: 100%;
+  height: 94px;          /* 与 .dropdown-product-card img 的 height 相同 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 6px;
+  margin-bottom: 10px;   /* 与 .dropdown-product-card img 的 margin-bottom 相同 */
+  transition: background 0.15s;
+}
+
+.dropdown-all .dp-all-icon svg {
+  stroke: #9ca3af;
+  transition: stroke 0.15s;
+}
+
+.dropdown-all:hover .dp-all-icon {
+  background: #e8eeff;
+}
+
+.dropdown-all:hover .dp-all-icon svg {
+  stroke: #2563eb;
+}
+
+.dropdown-all .dp-name {
+  color: #0f172a;   /* 默认深色，不要蓝色 */
+  transition: color 0.15s;
+}
+
+.dropdown-all:hover .dp-name {
+  color: #2563eb;   /* hover 才变蓝 */
+}
+
 .dropdown-product-card img {
   width: 100%;
-  height: 72px;
+  height: 94px;             /* 从 72px 放大到 94px */
   object-fit: contain;
   margin-bottom: 10px;
-  background: #f8f9fa;
+  background: transparent;  /* 去掉灰色背景 */
   border-radius: 6px;
-  padding: 8px;
+  padding: 0;
 }
 
 .dp-name {
-  font-size: 13px;
+  font-size: 1rem; /* 16px */
   font-weight: 700;
   color: #0f172a;
   margin-bottom: 3px;
 }
 
 .dp-desc {
-  font-size: 11px;
+  font-size: 0.875rem; /* 14px */
   color: #888;
   line-height: 1.5;
+  display: none;
 }
 
 .dropdown-all {
   align-items: center;
   justify-content: center;
-  background: #f8f9fa;
-  border: 1px solid rgba(0,0,0,0.06) !important;
+  background: transparent;
+  border: 1px solid transparent !important;
 }
 
 .dp-arrow {
@@ -188,7 +245,7 @@
 }
 
 .dropdown-col-head {
-  font-size: 10px;
+  font-size: 0.75rem; /* 12px — kept small as it's a label */
   font-weight: 700;
   color: #aaa;
   text-transform: uppercase;
@@ -199,7 +256,7 @@
 }
 
 .dropdown-link {
-  font-size: 14px;
+  font-size: 1rem; /* 16px */
   color: #0f172a;
   text-decoration: none;
   padding: 7px 0;
@@ -314,7 +371,7 @@
   border-bottom: none;
 }
 .mobile-nav-head {
-  font-size: 10px;
+  font-size: 0.75rem; /* 12px — label only */
   font-weight: 700;
   color: #aaa;
   text-transform: uppercase;
@@ -323,7 +380,7 @@
 }
 .mobile-nav-link {
   display: block;
-  font-size: 15px;
+  font-size: 1rem; /* 16px */
   font-weight: 500;
   color: #0f172a;
   text-decoration: none;
@@ -364,416 +421,384 @@
   .nav-right { display: none; }
   .mobile-nav { display: block; }
 }
-.dropdown-all {
-  background: transparent;
-  border: 1px solid transparent !important;
-  align-items: flex-start;
-  justify-content: flex-start;
+
+/* ── Force black text in all dropdown panels ── */
+.nav-dropdown {
+  background: #ffffff;
+  color: #0f172a;
 }
-.dropdown-all:hover {
-  background: #f0f4ff !important;
-  border-color: rgba(37,99,235,0.5) !important;
+.dropdown-col-head {
+  color: #aaaaaa !important;
 }
-.dp-all-icon {
-  width: 100%;
-  height: 94px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border-radius: 6px;
-  margin-bottom: 10px;
-  transition: background 0.15s;
-}
-.dropdown-all .dp-all-icon svg {
-  stroke: #9ca3af;
-  transition: stroke 0.15s;
-}
-.dropdown-all:hover .dp-all-icon { background: #e8eeff; }
-.dropdown-all:hover .dp-all-icon svg { stroke: #2563eb; }
-.dropdown-all .dp-name { color: #0f172a; transition: color 0.15s; }
-.dropdown-all:hover .dp-name { color: #2563eb; }
-.dropdown-product-card img {
-  width: 100%;
-  height: 94px;
-  object-fit: contain;
-  margin-bottom: 10px;
-  background: transparent;
-  border-radius: 6px;
-  padding: 0;
-}
-.dp-desc { display: none; }
-</style>
-
-<!-- ===== MIC05R2 design system — tokens + component CSS (copied verbatim) ===== -->
-<style>
-  /* ===== Tokens ===== */
-  :root{
-    --ink:#0a0b0d;
-    --ink-soft:#1c1f24;
-    --body:#5b6168;
-    --muted:#9aa0a8;
-    --blue:#2563eb;
-    --blue-dark:#1d4ed8;
-    --blue-soft:#93c5fd;
-    --border:#e7e8ea;
-    --border-strong:#d6d8db;
-    --bg-soft:#f8f9fa;
-    --dark:#0b0b0b;
-    --dark-2:#0f1115;
-    --dark-border:rgba(255,255,255,.12);
-    --green:#16a34a;
-    --cyan:#0ea5e9;
-    --radius:8px;
-    --maxw:1440px;
-    --pad:48px;
-  }
-  *{ box-sizing:border-box; }
-  html{ scroll-behavior:smooth; }
-  body{
-    margin:0;
-    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink); background:#fff; line-height:1.6;
-    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-  }
-  img{ max-width:100%; display:block; }
-  a{ color:inherit; text-decoration:none; }
-  h1,h2,h3,h4{ margin:0; letter-spacing:-0.025em; color:var(--ink); }
-  p{ margin:0; }
-  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 var(--pad); }
-
-  /* ===== Buttons ===== */
-  .btn{
-    display:inline-flex; align-items:center; justify-content:center; gap:9px;
-    font-size:15px; font-weight:600; line-height:1; padding:15px 24px; border-radius:var(--radius);
-    border:1px solid transparent; cursor:pointer;
-    transition:background .18s, border-color .18s, color .18s, transform .18s; white-space:nowrap;
-  }
-  .btn-blue{ background:var(--blue); color:#fff; }
-  .btn-blue:hover{ background:var(--blue-dark); transform:translateY(-1px); }
-  .btn-dark{ background:var(--ink); color:#fff; }
-  .btn-dark:hover{ background:#000; transform:translateY(-1px); }
-  .btn-ghost{ background:#fff; color:var(--ink); border-color:var(--border-strong); }
-  .btn-ghost:hover{ border-color:var(--ink); }
-  .btn-white{ background:#fff; color:var(--ink); }
-  .btn-white:hover{ transform:translateY(-1px); }
-  .btn-outline-light{ background:transparent; color:#fff; border-color:rgba(255,255,255,.3); }
-  .btn-outline-light:hover{ border-color:#fff; }
-  .btn svg{ width:17px; height:17px; }
-
-  /* ===== Section bits ===== */
-  .eyebrow{ font-size:12px; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--blue); display:inline-flex; align-items:center; }
-  .sec{ padding:110px 0; }
-  .sec-dark{ background:var(--dark); color:#fff; }
-  .sec-dark h2,.sec-dark h3{ color:#fff; }
-  .sec-dark .eyebrow{ color:var(--blue-soft); }
-  .head{ max-width:720px; margin-bottom:60px; }
-  .head h2{ font-size:clamp(30px,3.6vw,46px); font-weight:800; line-height:1.07; letter-spacing:-.03em; margin-top:18px; }
-  .head p{ font-size:16px; color:var(--body); line-height:1.75; margin-top:18px; }
-  .sec-dark .head p{ color:#a8aeb6; }
-  .split-head{ display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:end; margin-bottom:60px; }
-  .split-head h2{ font-size:clamp(30px,3.6vw,46px); font-weight:800; line-height:1.07; letter-spacing:-.03em; margin-top:18px; }
-  .split-head .right-col p{ font-size:16px; color:var(--body); line-height:1.75; padding-bottom:6px; }
-  .sec-dark .split-head .right-col p{ color:#a8aeb6; }
-
-  /* ===== HERO ===== */
-  .hero{ padding:84px 0; }
-  .hero-grid{ display:grid; grid-template-columns:0.95fr 1.05fr; gap:64px; align-items:center; }
-  .hero h1{ font-size:clamp(38px,4.6vw,58px); font-weight:800; line-height:1.05; letter-spacing:-.03em; margin:22px 0 0; }
-  .hero .support{ font-size:18px; color:var(--body); line-height:1.6; margin-top:22px; max-width:480px; }
-  .hero-cta{ display:flex; gap:12px; margin-top:34px; flex-wrap:wrap; }
-  .hero-media{ position:relative; background:var(--bg-soft); border:1px solid var(--border); border-radius:14px; min-height:470px; display:flex; align-items:center; justify-content:center; padding:40px; overflow:hidden; }
-  .hero-media img{ width:100%; max-width:430px; object-fit:contain; }
-  .hero-media .ph{ display:none; flex-direction:column; align-items:center; gap:10px; color:var(--muted); }
-  .hero-media .ph .ph-name{ font-size:34px; font-weight:800; color:#c9cdd2; }
-  .media-tag{ position:absolute; top:22px; left:22px; display:inline-flex; align-items:center; gap:8px; background:#fff; border:1px solid var(--border); border-radius:999px; padding:8px 15px; font-size:12.5px; font-weight:600; color:var(--ink-soft); }
-  .media-tag .pulse{ width:8px; height:8px; border-radius:50%; background:var(--green); flex:none; }
-  .hero-stats{ display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--border); border-radius:12px; margin-top:56px; overflow:hidden; }
-  .hero-stat{ padding:24px 28px; border-right:1px solid var(--border); }
-  .hero-stat:last-child{ border-right:none; }
-  .hero-stat .v{ font-size:26px; font-weight:800; letter-spacing:-.02em; }
-  .hero-stat .k{ font-size:13px; color:var(--body); margin-top:5px; }
-
-  /* ===== KEY SPECS — split layout, stacked horizontal cards ===== */
-  .spec-split{ display:grid; grid-template-columns:0.78fr 1.22fr; gap:60px; align-items:start; }
-  .spec-left{ position:sticky; top:96px; }
-  .spec-left h2{ font-size:clamp(28px,3.4vw,44px); font-weight:800; line-height:1.08; letter-spacing:-.03em; margin-top:18px; }
-  .spec-left p{ font-size:16px; color:var(--body); line-height:1.75; margin-top:18px; }
-  .spec-grid{ display:flex; flex-direction:column; gap:16px; }
-  .spec-card{ display:flex; gap:22px; align-items:flex-start; border:1px solid var(--border); border-radius:var(--radius); padding:28px 30px; background:#fff; transition:border-color .2s; }
-  .spec-card:hover{ border-color:var(--ink); }
-  .spec-ico{ flex:none; width:46px; height:46px; border-radius:10px; background:#eff4ff; color:var(--blue); display:flex; align-items:center; justify-content:center; }
-  .spec-ico svg{ width:22px; height:22px; }
-  .spec-ico.green{ background:#e9f7ee; color:var(--green); }
-  .spec-ico.cyan{ background:#e3f4fd; color:var(--cyan); }
-  .spec-body{ flex:1; min-width:0; }
-  .spec-card h3{ font-size:17px; font-weight:700; letter-spacing:-.02em; margin-top:2px; }
-  .spec-card .note{ font-size:13.5px; color:var(--body); margin-top:8px; line-height:1.6; }
-  .spec-list{ list-style:none; margin:13px 0 0; padding:0; display:flex; flex-direction:column; gap:9px; }
-  .spec-list li{ display:flex; gap:8px; font-size:13px; color:var(--ink-soft); align-items:flex-start; line-height:1.5; }
-  .spec-list li::before{ content:""; width:4px; height:4px; border-radius:50%; background:var(--blue); flex:none; margin-top:7px; }
-  .spec-tags{ display:flex; flex-wrap:wrap; gap:7px; margin-top:13px; }
-  .spec-tag{ font-size:12.5px; font-weight:600; color:var(--ink-soft); border:1px solid var(--border-strong); border-radius:6px; padding:6px 10px; display:inline-flex; align-items:center; gap:6px; }
-  .spec-tag svg{ width:14px; height:14px; color:var(--muted); }
-  .spec-tag.green{ color:var(--green); border-color:rgba(22,163,74,.4); }
-  .spec-tag.green svg{ color:var(--green); }
-  .spec-tag.cyan{ color:#0369a1; border-color:rgba(14,165,233,.4); }
-  .spec-tag.cyan svg{ color:var(--cyan); }
-
-  /* ===== WHY (dark) ===== */
-  .why-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
-  .why-card{ border:1px solid var(--dark-border); border-radius:12px; padding:36px; background:rgba(255,255,255,.025); transition:border-color .2s, background .2s; }
-  .why-card:hover{ border-color:rgba(255,255,255,.28); background:rgba(255,255,255,.05); }
-  .why-num{ font-size:12px; font-weight:700; color:#6b7280; letter-spacing:.1em; }
-  .why-ico{ color:var(--blue-soft); margin-top:14px; }
-  .why-ico svg{ width:25px; height:25px; }
-  .why-card h3{ font-size:20px; font-weight:700; letter-spacing:-.02em; margin-top:18px; }
-  .why-card p{ font-size:14.5px; color:#a8aeb6; line-height:1.7; margin-top:11px; }
-
-  /* ===== CORE CAPABILITIES ===== */
-  .cap-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-  .cap-card{ border:1px solid var(--border); border-radius:var(--radius); padding:30px; background:#fff; transition:border-color .2s; }
-  .cap-card:hover{ border-color:var(--ink); }
-  .cap-ico{ width:42px; height:42px; border-radius:9px; background:#eff4ff; color:var(--blue); display:flex; align-items:center; justify-content:center; }
-  .cap-ico svg{ width:21px; height:21px; }
-  .cap-ico.green{ background:#e9f7ee; color:var(--green); }
-  .cap-ico.cyan{ background:#e3f4fd; color:var(--cyan); }
-  .cap-card h3{ font-size:17px; font-weight:700; letter-spacing:-.02em; margin-top:18px; }
-  .cap-card p{ font-size:14px; color:var(--body); line-height:1.65; margin-top:9px; }
-
-  /* ===== AI WORKFLOW — icon timeline (icons only, no numbers) ===== */
-  .flow{ position:relative; display:grid; grid-template-columns:repeat(5,1fr); gap:0; }
-  /* connector line passes through the center of every icon (icon = 54px tall, center = 27px) */
-  .flow::before{ content:""; position:absolute; top:26px; left:10%; right:10%; height:2px; background:var(--border); z-index:0; }
-  .flow-step{ position:relative; z-index:1; text-align:center; padding:0 14px; }
-  .flow-node{ width:54px; height:54px; border-radius:13px; background:#fff; border:1px solid var(--border); color:var(--blue); display:flex; align-items:center; justify-content:center; margin:0 auto 20px; }
-  .flow-node svg{ width:23px; height:23px; }
-  .flow-step h4{ font-size:17px; font-weight:700; letter-spacing:-.02em; }
-  .flow-step p{ font-size:13.5px; color:var(--body); line-height:1.6; margin:9px auto 0; max-width:230px; }
-
-  /* ===== OEM (dark split) ===== */
-  .oem-split{ display:grid; grid-template-columns:minmax(0, 1.35fr) minmax(320px, 0.75fr); align-items:center; gap:0; border:1px solid var(--dark-border); border-radius:16px; overflow:hidden; }
-  .oem-media{ position:relative; overflow:hidden; background:var(--dark-2); }
-  .oem-media img{ width:100%; height:auto; display:block; }
-  .oem-media .ph{ position:absolute; inset:0; display:none; align-items:center; justify-content:center; color:#475569; font-weight:700; }
-  .oem-copy{ padding:60px 56px; display:flex; flex-direction:column; justify-content:center; }
-  .oem-copy h2{ font-size:clamp(28px,3.2vw,40px); font-weight:800; line-height:1.08; letter-spacing:-.03em; margin-top:16px; }
-  .oem-copy .lead{ font-size:15.5px; color:#a8aeb6; line-height:1.7; margin-top:18px; }
-  .oem-list{ list-style:none; margin:28px 0 0; padding:0; display:flex; flex-direction:column; gap:18px; }
-  .oem-list li{ display:flex; gap:15px; }
-  .oem-list .oico{ flex:none; width:38px; height:38px; border-radius:9px; background:rgba(37,99,235,.16); color:var(--blue-soft); display:flex; align-items:center; justify-content:center; }
-  .oem-list .oico svg{ width:19px; height:19px; }
-  .oem-list h3{ font-size:16.5px; font-weight:700; }
-  .oem-list p{ font-size:14px; color:#a8aeb6; line-height:1.6; margin-top:4px; }
-
-  /* ===== FINAL CTA ===== */
-  .final{ text-align:center; max-width:680px; margin:0 auto; }
-  .final h2{ font-size:clamp(30px,3.6vw,46px); font-weight:800; line-height:1.08; letter-spacing:-.03em; }
-  .final p{ font-size:17px; color:var(--body); line-height:1.7; margin-top:18px; }
-  .final .hero-cta{ justify-content:center; margin-top:32px; }
-
-  /* ===== Responsive ===== */
-  @media (max-width:1120px){
-    .appcar{ height:460px; }
-  }
-  @media (max-width:980px){
-    :root{ --pad:32px; }
-    .sec{ padding:84px 0; }
-    .hero{ padding:56px 0; }
-    .hero-grid{ grid-template-columns:1fr; gap:40px; }
-    .hero-media{ order:-1; min-height:360px; }
-    .split-head{ grid-template-columns:1fr; gap:22px; align-items:start; }
-    .spec-split{ grid-template-columns:1fr; gap:36px; }
-    .spec-left{ position:static; }
-    .cap-grid{ grid-template-columns:repeat(2,1fr); }
-    /* vertical timeline — connector runs through icon centers (icon 54px wide, center 27px) */
-    .flow{ grid-template-columns:1fr; gap:8px; }
-    .flow::before{ display:none; }
-    .flow-step{ display:flex; align-items:flex-start; text-align:left; gap:20px; padding:0; }
-    .flow-step .flow-node{ margin:0; flex:none; }
-    .flow-step:not(:last-child)::after{ content:""; position:absolute; top:54px; bottom:-8px; left:26px; width:2px; background:var(--border); z-index:0; }
-    .flow-step p{ max-width:none; margin-left:0; margin-right:0; }
-    .flow-text{ padding-bottom:16px; }
-    .oem-split{ grid-template-columns:1fr; }
-    .oem-media{ align-self:stretch; }
-    .oem-copy{ padding:48px 36px; }
-  }
-  @media (max-width:680px){
-    .sec{ padding:60px 0; }
-    .hero-stats{ grid-template-columns:1fr; margin-top:44px; }
-    .hero-stat{ border-right:none; border-bottom:1px solid var(--border); }
-    .hero-stat:last-child{ border-bottom:none; }
-    .why-grid{ grid-template-columns:1fr; }
-    .cap-grid{ grid-template-columns:1fr; }
-  }
-  @media (max-width:400px){
-    .hero-cta .btn, .final .hero-cta .btn{ flex:1 1 100%; }
-  }
-</style>
-
-<!-- ===== Additional page styles ===== -->
-<style>
-  /* Breadcrumb */
-  .crumb-bar{ background:#fff; }
-  .crumb-bar .wrap{ padding-top:96px; padding-bottom:8px; }
-  .crumb{ font-size:13px; color:var(--muted); }
-  .crumb a{ color:var(--muted); }
-  .crumb a:hover{ color:var(--ink); }
-  .crumb .sep{ margin:0 7px; }
-  .crumb .cur{ color:var(--ink); font-weight:600; }
-
-  /* Industries grid */
-  .ind-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
-  .ind-card { border:1px solid var(--border); border-radius:12px; padding:32px 28px; background:#fff; transition:border-color .2s, box-shadow .2s; }
-  .ind-card:hover { border-color:var(--blue); box-shadow:0 4px 20px rgba(37,99,235,.08); }
-  .ind-ico { width:44px; height:44px; border-radius:10px; background:#eff4ff; color:var(--blue); display:flex; align-items:center; justify-content:center; }
-  .ind-ico svg { width:22px; height:22px; }
-  .ind-card h3 { font-size:17px; font-weight:700; letter-spacing:-.02em; margin-top:18px; }
-  .ind-card p { font-size:14px; color:var(--body); line-height:1.65; margin-top:8px; }
-
-  /* Factory photos grid */
-  .factory-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:48px; }
-  .factory-grid img { width:100%; height:260px; object-fit:cover; border-radius:12px; display:block; }
-
-  /* Mfg stats row */
-  .mfg-stats { display:grid; grid-template-columns:repeat(4,1fr); text-align:center; border-top:1px solid rgba(255,255,255,.08); padding-top:48px; margin-top:56px; }
-  .mfg-stat .v { font-size:40px; font-weight:800; letter-spacing:-.03em; color:#fff; }
-  .mfg-stat .k { font-size:14px; color:#6b7280; margin-top:6px; }
-
-  @media (max-width:980px){
-    .ind-grid { grid-template-columns:1fr; }
-    .factory-grid { grid-template-columns:1fr; }
-    .mfg-stats { grid-template-columns:repeat(2,1fr); gap:32px 0; }
-  }
-</style>
-
-<!-- ===== Overrides for conflicting style.css hero rules ===== -->
-<style>
-  /* ── 修复1: 覆盖首页 hero 的 fixed/overflow 行为 ── */
-  .hero {
-    position: static !important;
-    overflow: visible !important;
-    height: auto !important;
-    min-height: unset !important;
-    padding: 84px 0;
-  }
-
-  /* ── 修复2: hero 背景白色，不继承首页 dark overlay ── */
-  .hero-bg,
-  .hero-ov,
-  .hero-video {
-    display: none !important;
-  }
-  /* 首页 .hero::before / ::after 是蓝色光晕 + 星点遮罩，hero 变 static 后会贴到视口，需关闭 */
-  .hero::before,
-  .hero::after {
-    content: none !important;
-    display: none !important;
-  }
-
-  section.hero {
-    background: #ffffff;
-  }
-
-  /* ── 修复3: hero-media 去掉灰色盒子，改成干净的白底展示 ── */
-  .hero-media {
-    background: #f8fafc;
-    border: 1px solid #e7e8ea;
-    border-radius: 20px;
-    min-height: 480px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 48px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  /* ── 修复4: hero文字颜色确保是深色（首页hero文字是白色） ── */
-  .hero h1 {
-    color: #0a0b0d !important;
-    font-size: clamp(38px, 4.6vw, 58px);
-    font-weight: 800;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    margin: 22px 0 0;
-  }
-
-  .hero .support {
-    color: #5b6168 !important;
-  }
-
-  .hero .eyebrow {
-    color: #2563eb !important;
-  }
-
-/* ============================================================
-   MIC05 PAGE — OVERRIDE FIXES
-   Correct style.css homepage styles that bleed into this page
-   ============================================================ */
-
-/* ── FIX 1: Nav — force light theme regardless of style.css ── */
-.nav {
-  background: rgba(255,255,255,0.95) !important;
-  backdrop-filter: saturate(180%) blur(14px) !important;
-  border-bottom: 1px solid rgba(0,0,0,0.08) !important;
+.dropdown-link {
   color: #0f172a !important;
 }
-.nav-link {
-  color: #1c1f24 !important;
-  font-size: 14px !important;
-  font-weight: 500 !important;
+.dropdown-link:hover {
+  color: #2563eb !important;
 }
-.nav-link:hover { color: #2563eb !important; }
+.dropdown-link--external {
+  color: #2563eb !important;
+}
+.dropdown-sidebar-label {
+  color: #0f172a !important;
+}
+.dropdown-sidebar-label:hover {
+  color: #2563eb !important;
+}
+</style>
+<style>
+/* ─── Page tokens ─── */
+:root {
+  --ink: #0a0b0d;
+  --ink-soft: #1c1f24;
+  --body: #5b6168;
+  --muted: #9aa0a8;
+  --blue: #2563eb;
+  --blue-dark: #1d4ed8;
+  --blue-soft: #93c5fd;
+  --border: #e7e8ea;
+  --border-strong: #d6d8db;
+  --bg-soft: #f8f9fa;
+  --dark: #0b0b0b;
+  --dark-2: #0f1115;
+  --dark-border: rgba(255,255,255,.1);
+  --green: #16a34a;
+  --cyan: #0ea5e9;
+  --radius: 8px;
+  --maxw: 1200px;
+  --pad: 48px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, sans-serif;
+  color: var(--ink);
+  background: #fff;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+h1,h2,h3,h4 { margin: 0; letter-spacing: -0.025em; }
+p { margin: 0; }
 
-/* The GMIC logo SVG text part uses currentColor — ensure it's dark */
-.nav-logo { color: #0f172a !important; }
-.nav-logo-svg path:not([fill="#2563eb"]) { fill: #0f172a !important; }
+/* ─── Wrap ─── */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--pad); }
 
-/* ── FIX 2: Hero section — white bg, no fixed, no dark overlay ── */
-.hero,
-header.hero,
-section.hero {
-  position: static !important;
-  background: #ffffff !important;
-  color: #0a0b0d !important;
-  overflow: visible !important;
-  height: auto !important;
-  min-height: unset !important;
+/* ─── Pilled buttons ─── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 600;
+  line-height: 1; padding: 14px 28px; border-radius: 999px;
+  border: 1.5px solid transparent; cursor: pointer; white-space: nowrap;
+  transition: background .18s, border-color .18s, color .18s, transform .15s;
+  text-decoration: none;
+}
+.btn-blue  { background: var(--blue); color: #fff; border-color: var(--blue); }
+.btn-blue:hover  { background: var(--blue-dark); border-color: var(--blue-dark); transform: translateY(-1px); }
+.btn-ghost { background: #fff; color: var(--ink); border-color: var(--border-strong); }
+.btn-ghost:hover { border-color: var(--ink); }
+.btn-white { background: #fff; color: var(--ink); border-color: transparent; }
+.btn-white:hover { transform: translateY(-1px); }
+.btn-outline-light { background: transparent; color: #fff; border-color: rgba(255,255,255,.35); }
+.btn-outline-light:hover { border-color: #fff; }
+.btn svg { width: 16px; height: 16px; }
+
+/* ─── Eyebrow ─── */
+.eyebrow {
+  font-size: 11px; font-weight: 700; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--blue);
+  display: inline-flex; align-items: center; gap: 6px;
 }
 
-/* Hide homepage-only hero elements if they sneak in */
-.hero-video,
-.hero-bg,
-.hero-ov,
-.hero-pin-wrap { display: none !important; }
+/* ─── Section base ─── */
+.sec { padding: 100px 0; }
+.sec-dark { background: var(--dark); color: #fff; }
+.sec-dark h2, .sec-dark h3 { color: #fff; }
+.sec-dark .eyebrow { color: var(--blue-soft); }
+.sec-gray { background: var(--bg-soft); }
 
-/* Hero text must be dark */
-.hero h1 { color: #0a0b0d !important; }
-.hero .eyebrow { color: #2563eb !important; }
-.hero .support { color: #5b6168 !important; }
+.head { max-width: 680px; margin-bottom: 56px; }
+.head h2 {
+  font-size: clamp(28px, 3.4vw, 44px); font-weight: 700;
+  line-height: 1.1; letter-spacing: -.03em; margin-top: 14px;
+}
+.head p { font-size: 17px; color: var(--body); line-height: 1.75; margin-top: 16px; }
+.sec-dark .head p { color: #9ca3af; }
 
-/* ── FIX 3: Hero CTA buttons — left-aligned, not centered ── */
-.hero-copy { display: flex; flex-direction: column; align-items: flex-start; }
-.hero-cta {
-  justify-content: flex-start !important;
-  align-self: flex-start !important;
-  width: auto !important;
+.split-head {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: end; margin-bottom: 56px;
+}
+.split-head h2 {
+  font-size: clamp(28px, 3.4vw, 44px); font-weight: 700;
+  line-height: 1.1; letter-spacing: -.03em; margin-top: 14px;
+}
+.split-head .right-col p { font-size: 16px; color: var(--body); line-height: 1.75; }
+.sec-dark .split-head .right-col p { color: #9ca3af; }
+
+/* ─── Breadcrumb ─── */
+.crumb-bar { background: #fff; }
+.crumb-wrap { padding-top: 88px; padding-bottom: 8px; }
+.crumb { font-size: 13px; color: var(--muted); display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.crumb a { color: var(--muted); }
+.crumb a:hover { color: var(--ink); }
+.crumb .sep { color: var(--border-strong); }
+.crumb .cur { color: var(--ink); font-weight: 600; }
+
+/* ─── HERO ─── */
+.hero-pd { padding: 72px 0 80px; background: #fff; }
+.hero-pd-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center;
+}
+.hero-pd h1 {
+  font-size: clamp(34px, 4vw, 54px); font-weight: 700;
+  line-height: 1.06; letter-spacing: -.03em;
+  color: var(--ink); margin: 16px 0 0;
+}
+.hero-pd .support {
+  font-size: 17px; color: var(--body);
+  line-height: 1.7; margin-top: 20px; max-width: 460px;
+}
+.hero-pd-cta { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+.hero-pd-media {
+  position: relative; background: var(--bg-soft);
+  border: 1px solid var(--border); border-radius: 20px;
+  min-height: 460px; display: flex; align-items: center;
+  justify-content: center; padding: 44px; overflow: hidden;
+}
+.hero-pd-media img { width: 100%; max-width: 380px; object-fit: contain; }
+.hero-pd-media .ph {
+  display: none; flex-direction: column;
+  align-items: center; gap: 10px; color: var(--muted);
+}
+.hero-pd-media .ph span:first-child { font-size: 32px; font-weight: 700; color: #c9cdd2; }
+.media-tag {
+  position: absolute; top: 20px; left: 20px;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 999px; padding: 7px 14px;
+  font-size: 12px; font-weight: 600; color: var(--ink-soft);
+}
+.media-tag .pulse {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--green); flex: none;
 }
 
-/* ── FIX 4: Hero stats — numbers must be dark ink, not white ── */
-.hero-stat .v { color: #0a0b0d !important; }
-.hero-stat .k { color: #5b6168 !important; }
+/* Stats bar */
 .hero-stats {
-  background: #ffffff !important;
-  border: 1px solid #e7e8ea !important;
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border: 1px solid var(--border); border-radius: 14px;
+  margin-top: 48px; overflow: hidden;
 }
-.hero-stat { border-right-color: #e7e8ea !important; }
+.hero-stat { padding: 22px 26px; border-right: 1px solid var(--border); }
+.hero-stat:last-child { border-right: none; }
+.hero-stat .v { font-size: 24px; font-weight: 700; letter-spacing: -.02em; color: var(--ink); }
+.hero-stat .k { font-size: 12px; color: var(--body); margin-top: 4px; }
+
+/* ─── Value pillars (3-col icon strip) ─── */
+.pillars {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+}
+.pillar {
+  padding: 36px 32px; border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.pillar:last-child { border-right: none; }
+.pillar-ico { color: var(--blue); }
+.pillar-ico svg { width: 22px; height: 22px; }
+.pillar h3 { font-size: 15px; font-weight: 700; color: var(--ink); margin: 0; }
+.pillar p { font-size: 13.5px; color: var(--body); line-height: 1.6; margin: 0; }
+
+/* ─── Spec split (sticky left) ─── */
+.spec-split { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 64px; align-items: start; }
+.spec-left { position: sticky; top: 88px; }
+.spec-left h2 { font-size: clamp(26px,3vw,38px); font-weight:700; line-height:1.1; letter-spacing:-.03em; margin-top:14px; }
+.spec-left p { font-size:15px; color:var(--body); line-height:1.75; margin-top:16px; }
+.spec-grid { display:flex; flex-direction:column; gap:14px; }
+.spec-card {
+  display:flex; gap:20px; align-items:flex-start;
+  border:1px solid var(--border); border-radius:10px;
+  padding:24px 26px; background:#fff; transition:border-color .2s;
+}
+.spec-card:hover { border-color: var(--ink); }
+.spec-ico {
+  flex:none; width:44px; height:44px; border-radius:10px;
+  background:#eff4ff; color:var(--blue);
+  display:flex; align-items:center; justify-content:center;
+}
+.spec-ico svg { width:21px; height:21px; }
+.spec-ico.green { background:#e9f7ee; color:var(--green); }
+.spec-ico.cyan  { background:#e3f4fd; color:var(--cyan); }
+.spec-body { flex:1; min-width:0; }
+.spec-card h3 { font-size:16px; font-weight:700; letter-spacing:-.02em; }
+.spec-card .note { font-size:13px; color:var(--body); margin-top:7px; line-height:1.6; }
+.spec-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:11px; }
+.spec-tag {
+  font-size:12px; font-weight:600; color:var(--ink-soft);
+  border:1px solid var(--border-strong); border-radius:999px;
+  padding:5px 12px; display:inline-flex; align-items:center; gap:5px;
+}
+.spec-tag.green { color:var(--green); border-color:rgba(22,163,74,.35); }
+.spec-tag.cyan  { color:#0369a1;   border-color:rgba(14,165,233,.35); }
+
+/* ─── Why grid (dark 2×2) ─── */
+.why-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+.why-card {
+  border:1px solid var(--dark-border); border-radius:12px;
+  padding:36px; background:rgba(255,255,255,.03);
+  overflow:hidden;
+  transition:border-color .2s, background .2s;
+}
+.why-card:hover { border-color:rgba(255,255,255,.25); background:rgba(255,255,255,.055); }
+.why-num { font-size:11px; font-weight:700; color:#4b5563; letter-spacing:.1em; }
+.why-ico { color:var(--blue-soft); margin-top:12px; }
+.why-ico svg { width:24px; height:24px; }
+.why-card h3 { font-size:19px; font-weight:700; letter-spacing:-.02em; margin-top:16px; color:#fff; }
+.why-card p  { font-size:14px; color:#9ca3af; line-height:1.7; margin-top:10px; }
+
+/* ─── Cap grid (3 col) ─── */
+.cap-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.cap-card {
+  border:1px solid var(--border); border-radius:10px;
+  background:#fff; overflow:hidden;
+  transition:border-color .2s;
+}
+.cap-card:hover { border-color:var(--ink); }
+.cap-card-body { padding:26px 26px 28px; }
+.cap-ico {
+  width:40px; height:40px; border-radius:9px;
+  background:#eff4ff; color:var(--blue);
+  display:flex; align-items:center; justify-content:center;
+}
+.cap-ico svg { width:20px; height:20px; }
+.cap-ico.green { background:#e9f7ee; color:var(--green); }
+.cap-ico.cyan  { background:#e3f4fd; color:var(--cyan); }
+.cap-card h3 { font-size:16px; font-weight:700; letter-spacing:-.02em; margin-top:16px; }
+.cap-card p  { font-size:13.5px; color:var(--body); line-height:1.65; margin-top:8px; }
+
+/* ─── Workflow flow ─── */
+.flow {
+  position:relative; display:grid;
+  grid-template-columns:repeat(5,1fr); gap:0;
+}
+.flow::before {
+  content:""; position:absolute;
+  top:26px; left:10%; right:10%;
+  height:1px; background:var(--border); z-index:0;
+}
+.flow-step { position:relative; z-index:1; text-align:center; padding:0 12px; }
+.flow-node {
+  width:52px; height:52px; border-radius:13px;
+  background:#fff; border:1px solid var(--border);
+  color:var(--blue); display:flex; align-items:center;
+  justify-content:center; margin:0 auto 18px;
+}
+.flow-node svg { width:22px; height:22px; }
+.flow-step h4 { font-size:15px; font-weight:700; letter-spacing:-.02em; }
+.flow-step p  { font-size:13px; color:var(--body); line-height:1.6; margin:8px auto 0; max-width:200px; }
+
+/* ─── Industries (image cards) ─── */
+.ind-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.ind-card {
+  border:1px solid var(--border); border-radius:12px;
+  background:#fff; overflow:hidden;
+  transition:border-color .2s, box-shadow .2s;
+}
+.ind-card:hover { border-color:var(--blue); box-shadow:0 4px 20px rgba(37,99,235,.08); }
+.ind-card img { width:100%; height:200px; object-fit:cover; display:block; }
+.ind-card-body { padding:22px 22px 26px; }
+.ind-card h3 { font-size:16px; font-weight:700; letter-spacing:-.02em; }
+.ind-card p  { font-size:13.5px; color:var(--body); line-height:1.65; margin-top:8px; }
+
+/* ─── Tech spec table ─── */
+.spec-table { width:100%; border-collapse:collapse; }
+.spec-table tr { border-bottom:1px solid var(--border); }
+.spec-table tr:last-child { border-bottom:none; }
+.spec-table td { padding:14px 0; font-size:14px; vertical-align:top; }
+.spec-table td:first-child { color:var(--muted); font-weight:500; width:42%; text-transform:uppercase; font-size:12px; letter-spacing:.04em; padding-right:20px; }
+.spec-table td:last-child { color:var(--ink); font-weight:500; }
+
+/* ─── OEM split (dark) ─── */
+.oem-split {
+  display:grid; grid-template-columns:1.3fr 0.7fr;
+  border:1px solid var(--dark-border); border-radius:16px;
+  overflow:hidden; align-items:stretch;
+}
+.oem-media { overflow:hidden; background:var(--dark-2); }
+.oem-media img { width:100%; height:100%; min-height:400px; object-fit:cover; display:block; }
+.oem-copy { padding:56px 48px; display:flex; flex-direction:column; justify-content:center; }
+.oem-copy h2 { font-size:clamp(26px,3vw,38px); font-weight:700; line-height:1.1; letter-spacing:-.03em; margin-top:14px; color:#fff; }
+.oem-copy .lead { font-size:15px; color:#9ca3af; line-height:1.7; margin-top:16px; }
+.oem-list { list-style:none; margin:24px 0 0; padding:0; display:flex; flex-direction:column; gap:16px; }
+.oem-list li { display:flex; gap:14px; }
+.oem-list .oico {
+  flex:none; width:36px; height:36px; border-radius:9px;
+  background:rgba(37,99,235,.15); color:var(--blue-soft);
+  display:flex; align-items:center; justify-content:center;
+}
+.oem-list .oico svg { width:18px; height:18px; }
+.oem-list h4 { font-size:15px; font-weight:700; color:#fff; margin:0; }
+.oem-list p  { font-size:13px; color:#9ca3af; line-height:1.6; margin:3px 0 0; }
+
+/* ─── Factory grid (dark) ─── */
+.factory-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:44px; }
+.factory-grid img { width:100%; height:240px; object-fit:cover; border-radius:10px; display:block; }
+.mfg-stats {
+  display:grid; grid-template-columns:repeat(4,1fr);
+  text-align:center; border-top:1px solid rgba(255,255,255,.08);
+  padding-top:48px; margin-top:52px;
+}
+.mfg-stat .v { font-size:38px; font-weight:700; letter-spacing:-.03em; color:#fff; }
+.mfg-stat .k { font-size:13px; color:#6b7280; margin-top:5px; }
+
+/* ─── Final CTA ─── */
+.final { text-align:center; max-width:640px; margin:0 auto; }
+.final h2 { font-size:clamp(28px,3.4vw,44px); font-weight:700; line-height:1.1; letter-spacing:-.03em; }
+.final p  { font-size:17px; color:var(--body); line-height:1.7; margin-top:16px; }
+.final-cta { display:flex; justify-content:center; gap:12px; margin-top:32px; flex-wrap:wrap; }
+
+/* ─── Responsive ─── */
+@media (max-width:980px){
+  :root{ --pad:28px; }
+  .sec{ padding:72px 0; }
+  .hero-pd-grid { grid-template-columns:1fr; gap:40px; }
+  .hero-pd-media { order:-1; min-height:320px; }
+  .split-head { grid-template-columns:1fr; gap:20px; align-items:start; }
+  .spec-split { grid-template-columns:1fr; gap:36px; }
+  .spec-left { position:static; }
+  .cap-grid { grid-template-columns:repeat(2,1fr); }
+  .flow { grid-template-columns:1fr; }
+  .flow::before { display:none; }
+  .flow-step { display:flex; align-items:flex-start; text-align:left; gap:18px; padding:0; }
+  .flow-step .flow-node { margin:0; flex:none; }
+  .oem-split { grid-template-columns:1fr; }
+  .why-grid { grid-template-columns:1fr; }
+  .ind-grid { grid-template-columns:1fr; }
+  .mfg-stats { grid-template-columns:repeat(2,1fr); gap:28px 0; }
+  .pillars { grid-template-columns:1fr; }
+  .pillar { border-right:none; border-bottom:1px solid var(--border); }
+  .pillar:last-child { border-bottom:none; }
+}
+@media (max-width:640px){
+  .sec{ padding:56px 0; }
+  .hero-stats { grid-template-columns:1fr; }
+  .hero-stat { border-right:none; border-bottom:1px solid var(--border); }
+  .hero-stat:last-child { border-bottom:none; }
+  .cap-grid { grid-template-columns:1fr; }
+  .factory-grid { grid-template-columns:1fr; }
+  .final-cta .btn { flex:1 1 100%; }
+}
 </style>
 </head>
 <body>
 
-<!-- ========== NAV (copied verbatim from index.html) ========== -->
+<!-- ========== NAV (verbatim from homepage) ========== -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="../../index.html" class="nav-logo" aria-label="GMIC.AI">
@@ -791,7 +816,7 @@ section.hero {
 
       <!-- Products -->
       <div class="nav-item has-dropdown">
-        <a href="#hardware" class="nav-link">
+        <a href="../../index.html#hardware" class="nav-link">
           Products <span class="nav-arrow">›</span>
         </a>
         <div class="nav-dropdown nav-dropdown--products">
@@ -802,23 +827,27 @@ section.hero {
               <p class="dropdown-sidebar-label" data-filter="pcba">Phone & PCBA</p>
             </div>
             <div class="dropdown-grid">
-              <a href="/products/mic06/" class="dropdown-product-card" data-category="voice">
+              <a href="../../products/mic06/index.html" class="dropdown-product-card" data-category="voice">
                 <img src="../../img/cap/MIC06.png" alt="MIC06">
                 <span class="dp-name">MIC06</span>
+                <span class="dp-desc">Continuous voice capture for shift-based operations</span>
               </a>
-              <a href="/products/mic05/" class="dropdown-product-card" data-category="voice">
+              <a href="../../products/mic05/index.html" class="dropdown-product-card" data-category="voice">
                 <img src="../../img/cap/MIC05.png" alt="MIC05">
                 <span class="dp-name">MIC05</span>
+                <span class="dp-desc">Button-triggered capture for field notes</span>
               </a>
-              <a href="/products/mic01/" class="dropdown-product-card" data-category="voice">
+              <a href="../../products/mic01/index.html" class="dropdown-product-card" data-category="voice">
                 <img src="../../img/cap/MIC01.png" alt="MIC01">
                 <span class="dp-name">MIC01</span>
+                <span class="dp-desc">Entry-level pilot device</span>
               </a>
-              <a href="/products/telalive/" class="dropdown-product-card" data-category="pcba">
+              <a href="../../products/telalive/index.html" class="dropdown-product-card" data-category="pcba">
                 <img src="../../img/cap/telalive.png" alt="Telalive">
                 <span class="dp-name">Telalive</span>
+                <span class="dp-desc">AI phone front desk and wearables</span>
               </a>
-              <a href="../" class="dropdown-product-card dropdown-all" data-category="all">
+              <a href="../../products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
                 <div class="dp-all-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </div>
@@ -831,31 +860,31 @@ section.hero {
 
       <!-- Custom Devices -->
       <div class="nav-item has-dropdown">
-        <a href="#capabilities" class="nav-link">
+        <a href="../../index.html#capabilities" class="nav-link">
           Custom Devices <span class="nav-arrow">›</span>
         </a>
         <div class="nav-dropdown nav-dropdown--text">
           <div class="dropdown-inner">
             <div class="dropdown-col">
               <p class="dropdown-col-head">Hardware</p>
-              <a href="../../custom-devices/" class="dropdown-link">ODM / OEM</a>
-              <a href="../../custom-devices/" class="dropdown-link">Private Label</a>
-              <a href="../../custom-devices/" class="dropdown-link">Custom Enclosure</a>
-              <a href="../../custom-devices/" class="dropdown-link">3D Small-batch Prototype</a>
+              <a href="../../custom-devices/odm-oem/index.html" class="dropdown-link">ODM / OEM</a>
+              <a href="../../custom-devices/private-label/index.html" class="dropdown-link">Private Label</a>
+              <a href="../../custom-devices/custom-enclosure/index.html" class="dropdown-link">Custom Enclosure</a>
+              <a href="../../custom-devices/3d-prototype/index.html" class="dropdown-link">3D Small-batch Prototype</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Engineering</p>
-              <a href="../../custom-devices/" class="dropdown-link">Firmware Integration</a>
-              <a href="../../custom-devices/" class="dropdown-link">Audio & DSP Tuning</a>
-              <a href="../../custom-devices/" class="dropdown-link">AI SDK Integration</a>
-              <a href="../../custom-devices/" class="dropdown-link">Prototype Validation</a>
+              <a href="../../custom-devices/firmware-integration/index.html" class="dropdown-link">Firmware Integration</a>
+              <a href="../../custom-devices/audio-dsp-tuning/index.html" class="dropdown-link">Audio & DSP Tuning</a>
+              <a href="../../custom-devices/ai-sdk-integration/index.html" class="dropdown-link">AI SDK Integration</a>
+              <a href="../../custom-devices/prototype-validation/index.html" class="dropdown-link">Prototype Validation</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Production</p>
-              <a href="../../custom-devices/" class="dropdown-link">EVT / DVT / PVT</a>
-              <a href="../../custom-devices/" class="dropdown-link">SMT Manufacturing</a>
-              <a href="../../custom-devices/" class="dropdown-link">Certification Support</a>
-              <a href="../../custom-devices/" class="dropdown-link">Supply Chain Management</a>
+              <a href="../../custom-devices/evt-dvt-pvt/index.html" class="dropdown-link">EVT / DVT / PVT</a>
+              <a href="../../custom-devices/smt-manufacturing/index.html" class="dropdown-link">SMT Manufacturing</a>
+              <a href="../../custom-devices/certification-support/index.html" class="dropdown-link">Certification Support</a>
+              <a href="../../custom-devices/supply-chain/index.html" class="dropdown-link">Supply Chain Management</a>
             </div>
           </div>
         </div>
@@ -863,36 +892,36 @@ section.hero {
 
       <!-- Implementation -->
       <div class="nav-item">
-        <a href="#process" class="nav-link">Implementation</a>
+        <a href="../../implementation/index.html" class="nav-link">Implementation</a>
       </div>
 
       <!-- Proof -->
       <div class="nav-item">
-        <a href="#proof-cases" class="nav-link">Proof</a>
+        <a href="../../index.html#proof-cases" class="nav-link">Proof</a>
       </div>
 
       <!-- Industries -->
       <div class="nav-item has-dropdown">
-        <a href="#industries" class="nav-link">
+        <a href="../../index.html#industries" class="nav-link">
           Industries <span class="nav-arrow">›</span>
         </a>
         <div class="nav-dropdown nav-dropdown--text">
           <div class="dropdown-inner">
             <div class="dropdown-col">
               <p class="dropdown-col-head">Healthcare & Ops</p>
-              <a href="/industries/healthcare/" class="dropdown-link">Healthcare Voice AI</a>
-              <a href="/industries/hospitality/" class="dropdown-link">Hospitality AI</a>
-              <a href="/industries/hvac/" class="dropdown-link">HVAC</a>
+              <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare Voice AI</a>
+              <a href="../../industries/hospitality/index.html" class="dropdown-link">Hospitality AI</a>
+              <a href="../../industries/hvac/index.html" class="dropdown-link">HVAC</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Enterprise & Field</p>
-              <a href="/industries/enterprise/" class="dropdown-link">Enterprise AI</a>
-              <a href="/industries/field-service/" class="dropdown-link">Field Service</a>
-              <a href="/industries/telecom/" class="dropdown-link">Telecom AI</a>
+              <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise AI</a>
+              <a href="../../industries/field-service/index.html" class="dropdown-link">Field Service</a>
+              <a href="../../industries/telecom/index.html" class="dropdown-link">Telecom AI</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Retail & Transport</p>
-              <a href="/industries/smart-retail/" class="dropdown-link">Smart Retail</a>
+              <a href="../../industries/smart-retail/index.html" class="dropdown-link">Smart Retail</a>
               <a href="https://gmic-nemt-demo.vercel.app/"
                  class="dropdown-link dropdown-link--external"
                  target="_blank" rel="noopener">NEMT</a>
@@ -903,12 +932,24 @@ section.hero {
 
       <!-- Process -->
       <div class="nav-item">
-        <a href="#process" class="nav-link">Process</a>
+        <a href="../../index.html#process" class="nav-link">Process</a>
       </div>
 
-      <!-- Contact -->
-      <div class="nav-item">
-        <a href="#contact" class="nav-link">Contact</a>
+      <!-- Company -->
+      <div class="nav-item has-dropdown">
+        <a href="../../about/index.html" class="nav-link">
+          Company <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Company</p>
+              <a href="../../about/index.html" class="dropdown-link">About Us</a>
+              <a href="../../blog/index.html" class="dropdown-link">Blog</a>
+              <a href="../../contact/index.html" class="dropdown-link">Contact</a>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -926,46 +967,66 @@ section.hero {
     </button>
   </div>
 </nav>
-
-<!-- Mobile nav drawer -->
 <div class="mobile-nav" id="mobileNav">
   <div class="mobile-nav-inner">
 
     <div class="mobile-nav-section">
       <p class="mobile-nav-head">Products</p>
-      <a href="/products/mic06/" class="mobile-nav-link">MIC06</a>
-      <a href="/products/mic05/" class="mobile-nav-link">MIC05</a>
-      <a href="/products/mic01/" class="mobile-nav-link">MIC01</a>
-      <a href="/products/telalive/" class="mobile-nav-link">Telalive</a>
+      <a href="../../products/mic06/index.html" class="mobile-nav-link">MIC06</a>
+      <a href="../../products/mic05/index.html" class="mobile-nav-link">MIC05</a>
+      <a href="../../products/mic01/index.html" class="mobile-nav-link">MIC01</a>
+      <a href="../../products/telalive/index.html" class="mobile-nav-link">Telalive</a>
     </div>
 
     <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Custom Devices</p>
-      <a href="../../custom-devices/" class="mobile-nav-link">ODM / OEM</a>
-      <a href="../../custom-devices/" class="mobile-nav-link">Private Label</a>
-      <a href="../../custom-devices/" class="mobile-nav-link">Firmware Integration</a>
-      <a href="../../custom-devices/" class="mobile-nav-link">Prototype Path</a>
+      <p class="mobile-nav-head">Custom Devices · Hardware</p>
+      <a href="../../custom-devices/odm-oem/index.html" class="mobile-nav-link">ODM / OEM</a>
+      <a href="../../custom-devices/private-label/index.html" class="mobile-nav-link">Private Label</a>
+      <a href="../../custom-devices/custom-enclosure/index.html" class="mobile-nav-link">Custom Enclosure</a>
+      <a href="../../custom-devices/3d-prototype/index.html" class="mobile-nav-link">3D Small-batch Prototype</a>
+    </div>
+
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Custom Devices · Engineering</p>
+      <a href="../../custom-devices/firmware-integration/index.html" class="mobile-nav-link">Firmware Integration</a>
+      <a href="../../custom-devices/audio-dsp-tuning/index.html" class="mobile-nav-link">Audio &amp; DSP Tuning</a>
+      <a href="../../custom-devices/ai-sdk-integration/index.html" class="mobile-nav-link">AI SDK Integration</a>
+      <a href="../../custom-devices/prototype-validation/index.html" class="mobile-nav-link">Prototype Validation</a>
+    </div>
+
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Custom Devices · Production</p>
+      <a href="../../custom-devices/evt-dvt-pvt/index.html" class="mobile-nav-link">EVT / DVT / PVT</a>
+      <a href="../../custom-devices/smt-manufacturing/index.html" class="mobile-nav-link">SMT Manufacturing</a>
+      <a href="../../custom-devices/certification-support/index.html" class="mobile-nav-link">Certification Support</a>
+      <a href="../../custom-devices/supply-chain/index.html" class="mobile-nav-link">Supply Chain Management</a>
     </div>
 
     <div class="mobile-nav-section">
       <p class="mobile-nav-head">Industries</p>
-      <a href="/industries/healthcare/" class="mobile-nav-link">Healthcare Voice AI</a>
-      <a href="/industries/enterprise/" class="mobile-nav-link">Enterprise AI</a>
-      <a href="/industries/field-service/" class="mobile-nav-link">Field Service</a>
-      <a href="/industries/telecom/" class="mobile-nav-link">Telecom AI</a>
-      <a href="/industries/hospitality/" class="mobile-nav-link">Hospitality AI</a>
-      <a href="/industries/smart-retail/" class="mobile-nav-link">Smart Retail</a>
-      <a href="/industries/hvac/" class="mobile-nav-link">HVAC</a>
+      <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare Voice AI</a>
+      <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise AI</a>
+      <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
+      <a href="../../industries/telecom/index.html" class="mobile-nav-link">Telecom AI</a>
+      <a href="../../industries/hospitality/index.html" class="mobile-nav-link">Hospitality AI</a>
+      <a href="../../industries/smart-retail/index.html" class="mobile-nav-link">Smart Retail</a>
+      <a href="../../industries/hvac/index.html" class="mobile-nav-link">HVAC</a>
       <a href="https://gmic-nemt-demo.vercel.app/"
          class="mobile-nav-link mobile-nav-link--external"
          target="_blank" rel="noopener">NEMT ↗</a>
     </div>
 
     <div class="mobile-nav-section">
-      <a href="#process" class="mobile-nav-link">Implementation</a>
-      <a href="#proof-cases" class="mobile-nav-link">Proof</a>
-      <a href="#process" class="mobile-nav-link">Process</a>
-      <a href="#contact" class="mobile-nav-link">Contact</a>
+      <a href="../../implementation/index.html" class="mobile-nav-link">Implementation</a>
+      <a href="../../index.html#proof-cases" class="mobile-nav-link">Proof</a>
+      <a href="../../index.html#process" class="mobile-nav-link">Process</a>
+    </div>
+
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Company</p>
+      <a href="../../about/index.html" class="mobile-nav-link">About Us</a>
+      <a href="../../blog/index.html" class="mobile-nav-link">Blog</a>
+      <a href="../../contact/index.html" class="mobile-nav-link">Contact</a>
     </div>
 
     <div class="mobile-nav-cta">
@@ -977,348 +1038,428 @@ section.hero {
 
   </div>
 </div>
-
-<!-- Mobile nav overlay -->
 <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 
 <!-- ========== BREADCRUMB ========== -->
 <div class="crumb-bar">
-  <div class="wrap">
-    <nav class="crumb" aria-label="Breadcrumb">
-      <a href="../../index.html">Products</a><span class="sep">›</span><a href="../">MIC Series</a><span class="sep">›</span><span class="cur">MIC05</span>
+  <div class="wrap crumb-wrap">
+    <nav class="crumb">
+      <a href="../../../index.html">Home</a>
+      <span class="sep">›</span>
+      <a href="../../../index.html#products">Products</a>
+      <span class="sep">›</span>
+      <span class="cur">MIC05</span>
     </nav>
   </div>
 </div>
 
-<!-- ========== SECTION 1 — HERO ========== -->
-<section class="hero">
+<!-- SECTION 1 — HERO -->
+<section class="hero-pd">
   <div class="wrap">
-    <div class="hero-grid">
-      <div class="hero-copy">
-        <span class="eyebrow">MIC SERIES · PROFESSIONAL VOICE CAPTURE</span>
+    <div class="hero-pd-grid">
+
+      <div class="hero-pd-copy">
+        <span class="eyebrow">MIC Series · Professional Voice Capture</span>
         <h1>Secure Voice Capture for AI Workflows</h1>
-        <p class="support">A professional wearable device engineered for organizations that rely on voice data in operational workflows. Hardware noise reduction, NFC authentication, and encrypted firmware — in a 50g aluminum form factor.</p>
-        <div class="hero-cta">
-          <a href="#contact" class="btn btn-blue">Request Sample <i data-lucide="arrow-right"></i></a>
-          <a href="#specs" class="btn btn-ghost">View Specs</a>
+        <p class="support">A professional wearable voice capture device designed for organizations that require secure audio collection, reliable wireless connectivity, and flexible system integration.</p>
+        <div class="hero-pd-cta">
+          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb"
+             target="_blank" rel="noopener" class="btn btn-blue">
+            Request Sample <i data-lucide="arrow-right"></i>
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="v">10h</div><div class="k">Battery Runtime</div></div>
+          <div class="hero-stat"><div class="v">50g</div><div class="k">Device Weight</div></div>
+          <div class="hero-stat"><div class="v">BT 5.3</div><div class="k">Wireless</div></div>
         </div>
       </div>
-      <div class="hero-media">
-        <span class="media-tag"><span class="pulse" aria-hidden="true"></span> Enterprise Ready</span>
-        <img src="../../img/cap/mic05-main.png" alt="MIC05" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
-        <div class="ph"><span class="ph-name">MIC05</span><span>Product image</span></div>
+
+      <div class="hero-pd-media">
+        <span class="media-tag"><span class="pulse"></span> Enterprise Ready</span>
+        <img src="../../../img/cap/mic05-main.png" alt="MIC05"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <div class="ph"><span>MIC05</span><span>Product image</span></div>
       </div>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat"><div class="v">10h</div><div class="k">Battery runtime</div></div>
-      <div class="hero-stat"><div class="v">50g</div><div class="k">Device weight</div></div>
-      <div class="hero-stat"><div class="v">BT 5.3</div><div class="k">Wireless</div></div>
+
     </div>
   </div>
 </section>
 
-<!-- ========== SECTION 2 — KEY SPECS ========== -->
-<section class="sec" id="specs" style="border-top:1px solid var(--border);">
+<!-- SECTION 2 — VALUE PILLARS -->
+<div class="wrap">
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-ico"><i data-lucide="shield-check"></i></div>
+      <h3>Enterprise-grade security</h3>
+      <p>NFC authentication and firmware encryption built in at the hardware level.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-ico"><i data-lucide="wifi"></i></div>
+      <h3>Wireless-first architecture</h3>
+      <p>Wi-Fi + Bluetooth 5.3 for cloud-connected, real-time sync workflows.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-ico"><i data-lucide="settings-2"></i></div>
+      <h3>Built for integration</h3>
+      <p>Customize firmware, branding, and cloud endpoints for your platform.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3 — KEY SPECS -->
+<section class="sec" id="specs">
   <div class="wrap">
     <div class="spec-split">
       <div class="spec-left">
-        <span class="eyebrow">Key Specifications</span>
+        <span class="eyebrow">KEY SPECIFICATIONS</span>
         <h2>Everything you need. Nothing you don't.</h2>
-        <p>MIC05 is engineered for deployment at scale — every component chosen for reliability in demanding real-world environments.</p>
-        <a href="#" class="btn btn-ghost" style="margin-top:28px;">Download Datasheet</a>
+        <p>MIC05 is engineered for deployment at scale — every component chosen for reliability in demanding environments.</p>
+        <a href="#tech-specs" class="btn btn-ghost" style="margin-top:24px">Download Datasheet</a>
       </div>
       <div class="spec-grid">
-        <article class="spec-card">
+        <div class="spec-card">
           <div class="spec-ico"><i data-lucide="mic"></i></div>
           <div class="spec-body">
             <h3>Audio Capture</h3>
             <p class="note">Hardware noise reduction optimized for conversational speech in dynamic environments.</p>
-            <div class="spec-tags">
-              <span class="spec-tag"><i data-lucide="audio-waveform"></i> Noise Reduction</span>
-              <span class="spec-tag"><i data-lucide="volume-2"></i> 1W Speaker</span>
-            </div>
+            <div class="spec-tags"><span class="spec-tag">Noise Reduction</span><span class="spec-tag">1W Speaker</span></div>
           </div>
-        </article>
-        <article class="spec-card">
+        </div>
+        <div class="spec-card">
           <div class="spec-ico green"><i data-lucide="shield-check"></i></div>
           <div class="spec-body">
             <h3>Security</h3>
             <p class="note">Encrypted firmware and NFC authentication built in at the hardware level.</p>
-            <div class="spec-tags">
-              <span class="spec-tag green"><i data-lucide="nfc"></i> NFC Auth</span>
-              <span class="spec-tag green"><i data-lucide="lock"></i> Firmware Encryption</span>
-            </div>
+            <div class="spec-tags"><span class="spec-tag green">NFC Auth</span><span class="spec-tag green">Firmware Encryption</span></div>
           </div>
-        </article>
-        <article class="spec-card">
+        </div>
+        <div class="spec-card">
           <div class="spec-ico cyan"><i data-lucide="wifi"></i></div>
           <div class="spec-body">
             <h3>Connectivity</h3>
             <p class="note">Wireless-first architecture for cloud-connected workflows.</p>
-            <div class="spec-tags">
-              <span class="spec-tag cyan"><i data-lucide="wifi"></i> Wi-Fi 802.11 b/g/n</span>
-              <span class="spec-tag cyan"><i data-lucide="bluetooth"></i> Bluetooth 5.3</span>
-            </div>
+            <div class="spec-tags"><span class="spec-tag cyan">Wi-Fi 802.11 b/g/n</span><span class="spec-tag cyan">Bluetooth 5.3</span></div>
           </div>
-        </article>
-        <article class="spec-card">
+        </div>
+        <div class="spec-card">
           <div class="spec-ico"><i data-lucide="hard-drive"></i></div>
           <div class="spec-body">
             <h3>Storage</h3>
-            <p class="note">1GB NAND internal storage. Auto-clears after upload for continuous capture.</p>
-            <ul class="spec-list">
-              <li>1GB NAND Flash</li>
-              <li>Auto-clear after sync</li>
-            </ul>
+            <p class="note">1GB NAND internal storage with auto-clear after upload for continuous capture.</p>
+            <div class="spec-tags"><span class="spec-tag">1GB NAND</span><span class="spec-tag">Auto-clear</span></div>
           </div>
-        </article>
-        <article class="spec-card">
+        </div>
+        <div class="spec-card">
           <div class="spec-ico"><i data-lucide="battery"></i></div>
           <div class="spec-body">
             <h3>Battery</h3>
-            <p class="note">950mAh battery. Up to 10 hours runtime. Charges in approximately 1 hour via USB-C.</p>
-            <div class="spec-tags">
-              <span class="spec-tag"><i data-lucide="battery"></i> 950mAh</span>
-              <span class="spec-tag"><i data-lucide="clock"></i> 10h Runtime</span>
-              <span class="spec-tag"><i data-lucide="usb"></i> USB-C</span>
-            </div>
+            <p class="note">950mAh, up to 10 hours runtime, charges in approximately 1 hour via USB-C.</p>
+            <div class="spec-tags"><span class="spec-tag">950mAh</span><span class="spec-tag">10h Runtime</span><span class="spec-tag">USB-C</span></div>
           </div>
-        </article>
-        <article class="spec-card">
+        </div>
+        <div class="spec-card">
           <div class="spec-ico"><i data-lucide="box"></i></div>
           <div class="spec-body">
             <h3>Form Factor</h3>
             <p class="note">Aluminum alloy enclosure. 72 × 32 × 25 mm. 50.5g.</p>
-            <div class="spec-tags">
-              <span class="spec-tag"><i data-lucide="box"></i> Aluminum Alloy</span>
-              <span class="spec-tag"><i data-lucide="feather"></i> 50.5g</span>
-              <span class="spec-tag"><i data-lucide="ruler"></i> 72×32×25mm</span>
-            </div>
+            <div class="spec-tags"><span class="spec-tag">Aluminum Alloy</span><span class="spec-tag">50.5g</span><span class="spec-tag">72×32×25mm</span></div>
           </div>
-        </article>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== SECTION 3 — WHY MIC05 (dark) ========== -->
-<section class="sec sec-dark" id="why">
+<!-- SECTION 4 — WHY MIC05 -->
+<section class="sec sec-dark">
   <div class="wrap">
     <div class="split-head">
       <div>
-        <span class="eyebrow">Why MIC05</span>
-        <h2>Enterprise voice capture.<br>Beyond the basics.</h2>
+        <span class="eyebrow">WHY MIC05</span>
+        <h2>Enterprise voice capture. Beyond the basics.</h2>
       </div>
       <div class="right-col">
-        <p>Most wearable recorders are built for consumers. MIC05 is engineered for organizations — combining security, wireless connectivity, and intelligent hardware into a platform designed for enterprise deployment.</p>
+        <p>Most wearable recorders are built for consumers. MIC05 is engineered for organizations — combining security, wireless connectivity, and intelligent hardware into a deployable enterprise platform.</p>
       </div>
     </div>
     <div class="why-grid">
-      <article class="why-card">
-        <span class="why-num">01</span>
+      <div class="why-card">
+        <div class="why-num">01</div>
         <div class="why-ico"><i data-lucide="video-off"></i></div>
         <h3>Beyond Consumer Devices</h3>
-        <img src="../../img/about/factory-exterior.jpg" alt="Enterprise device" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin:16px 0;opacity:0.7;">
-        <p>MIC05 is not a consumer recorder. It is a deployable enterprise hardware platform with encrypted firmware, NFC authentication, and wireless management.</p>
-      </article>
-      <article class="why-card">
-        <span class="why-num">02</span>
+        <p>MIC05 is a deployable enterprise hardware platform with encrypted firmware, NFC authentication, and wireless management — not a consumer recorder.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">02</div>
         <div class="why-ico"><i data-lucide="wifi"></i></div>
         <h3>Wireless-First Architecture</h3>
-        <img src="../../img/about/smt-machines.jpg" alt="Wireless connectivity" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin:16px 0;opacity:0.7;">
         <p>Wi-Fi and Bluetooth 5.3 enable cloud sync, remote device management, and flexible integration with your existing software stack.</p>
-      </article>
-      <article class="why-card">
-        <span class="why-num">03</span>
+      </div>
+      <div class="why-card">
+        <div class="why-num">03</div>
         <div class="why-ico"><i data-lucide="shield-check"></i></div>
         <h3>Security at the Hardware Level</h3>
-        <img src="../../img/about/aoi-inspection.jpg" alt="Hardware security" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin:16px 0;opacity:0.7;">
-        <p>NFC authentication and firmware encryption are not software features — they are built into the hardware, giving your deployment a security layer that cannot be patched away.</p>
-      </article>
-      <article class="why-card">
-        <span class="why-num">04</span>
+        <p>NFC authentication and firmware encryption are built into the hardware — giving your deployment a security layer that cannot be patched away.</p>
+      </div>
+      <div class="why-card">
+        <div class="why-num">04</div>
         <div class="why-ico"><i data-lucide="settings-2"></i></div>
         <h3>Built for Integration</h3>
-        <img src="../../img/about/assembly-line.jpg" alt="Integration" loading="lazy" style="width:100%;height:160px;object-fit:cover;border-radius:8px;margin:16px 0;opacity:0.7;">
         <p>Customize firmware behavior, upload triggers, cloud endpoints, and branding. MIC05 ships as a platform, not a finished consumer product.</p>
-      </article>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ========== SECTION 4 — CORE CAPABILITIES ========== -->
-<section class="sec" id="capabilities" style="border-top:1px solid var(--border);">
+<!-- SECTION 5 — CORE CAPABILITIES -->
+<section class="sec" style="border-top:1px solid var(--border)">
   <div class="wrap">
     <div class="head">
-      <span class="eyebrow">Core Capabilities</span>
+      <span class="eyebrow">CORE CAPABILITIES</span>
       <h2>Capture-grade hardware for real-world voice.</h2>
       <p>Everything needed to turn a conversation into clean, secure audio your AI systems can use.</p>
     </div>
     <div class="cap-grid">
-      <article class="cap-card" style="padding:0;overflow:hidden;">
-        <img src="../../img/6.jpg" alt="Hardware Noise Reduction"
+      <article class="cap-card">
+        <img src="../../../img/6.jpg" alt="Hardware Noise Reduction"
           style="width:100%;height:150px;object-fit:cover;display:block;">
-        <div style="padding:24px 24px 28px;">
+        <div class="cap-card-body">
           <div class="cap-ico"><i data-lucide="mic"></i></div>
-          <h3 style="margin-top:14px;">Hardware Noise Reduction</h3>
+          <h3>Hardware Noise Reduction</h3>
           <p>Dedicated audio processing improves speech intelligibility in noisy environments without software post-processing.</p>
         </div>
       </article>
-      <article class="cap-card"><div class="cap-ico"><i data-lucide="bell"></i></div><h3>Real-Time Audio Feedback</h3><p>Built-in 1W speaker delivers recording alerts, upload confirmations, and workflow notifications.</p></article>
-      <article class="cap-card" style="padding:0;overflow:hidden;">
-        <img src="../../img/8.jpg" alt="NFC Authentication"
+      <article class="cap-card">
+        <div class="cap-card-body">
+          <div class="cap-ico"><i data-lucide="bell"></i></div>
+          <h3>Real-Time Audio Feedback</h3>
+          <p>Built-in 1W speaker delivers recording alerts, upload confirmations, and workflow notifications instantly.</p>
+        </div>
+      </article>
+      <article class="cap-card">
+        <img src="../../../img/8.jpg" alt="NFC Authentication"
           style="width:100%;height:150px;object-fit:cover;display:block;">
-        <div style="padding:24px 24px 28px;">
-          <div class="cap-ico green"><i data-lucide="nfc"></i></div>
-          <h3 style="margin-top:14px;">NFC Authentication</h3>
+        <div class="cap-card-body">
+          <div class="cap-ico green"><i data-lucide="shield-check"></i></div>
+          <h3>NFC Authentication</h3>
           <p>Tap-to-activate with user identification — secure access control built into the recording workflow.</p>
         </div>
       </article>
-      <article class="cap-card"><div class="cap-ico"><i data-lucide="zap"></i></div><h3>Multi-Sensory Notifications</h3><p>Vibration, LED indicators, and audio prompts keep users informed hands-free.</p></article>
-      <article class="cap-card" style="padding:0;overflow:hidden;">
-        <img src="../../img/4.jpg" alt="Wireless Sync"
-          style="width:100%;height:150px;object-fit:cover;display:block;">
-        <div style="padding:24px 24px 28px;">
-          <div class="cap-ico cyan"><i data-lucide="upload-cloud"></i></div>
-          <h3 style="margin-top:14px;">Wireless Sync</h3>
-          <p>Auto-upload over Wi-Fi to your cloud endpoint. BT 5.3 for paired-device workflows.</p>
+      <article class="cap-card">
+        <div class="cap-card-body">
+          <div class="cap-ico"><i data-lucide="zap"></i></div>
+          <h3>Multi-Sensory Notifications</h3>
+          <p>Vibration, LED indicators, and audio prompts keep users informed hands-free without screen interaction.</p>
         </div>
       </article>
-      <article class="cap-card"><div class="cap-ico green"><i data-lucide="lock"></i></div><h3>Firmware Encryption</h3><p>Encrypted firmware locked to your deployment — deployable with custom logic and upload behavior.</p></article>
+      <article class="cap-card">
+        <img src="../../../img/4.jpg" alt="Wireless Sync"
+          style="width:100%;height:150px;object-fit:cover;display:block;">
+        <div class="cap-card-body">
+          <div class="cap-ico cyan"><i data-lucide="upload-cloud"></i></div>
+          <h3>Wireless Sync</h3>
+          <p>Auto-upload over Wi-Fi to your cloud endpoint. Bluetooth 5.3 for paired-device workflows.</p>
+        </div>
+      </article>
+      <article class="cap-card">
+        <div class="cap-card-body">
+          <div class="cap-ico green"><i data-lucide="lock"></i></div>
+          <h3>Firmware Encryption</h3>
+          <p>Encrypted firmware locked to your deployment — with custom upload logic and workflow triggers.</p>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- ========== SECTION 5 — AI WORKFLOW ========== -->
-<section class="sec" id="workflow" style="border-top:1px solid var(--border);">
+<!-- SECTION 6 — AI WORKFLOW -->
+<section class="sec" style="border-top:1px solid var(--border)">
   <div class="wrap">
     <div class="head">
-      <span class="eyebrow">AI Workflow</span>
+      <span class="eyebrow">AI WORKFLOW</span>
       <h2>From conversation to insight.</h2>
       <p>MIC05 slots into the AI pipeline you already run — capture in the field, sync over Wi-Fi, and feed into your transcription or AI workflow platform.</p>
     </div>
     <div class="flow">
-      <div class="flow-step"><div class="flow-node"><i data-lucide="mic"></i></div><div class="flow-text"><h4>Capture</h4><p>Record real-world conversations with hardware noise reduction.</p></div></div>
-      <div class="flow-step"><div class="flow-node"><i data-lucide="upload-cloud"></i></div><div class="flow-text"><h4>Upload</h4><p>Sync over Wi-Fi when network access is available.</p></div></div>
-      <div class="flow-step"><div class="flow-node"><i data-lucide="file-text"></i></div><div class="flow-text"><h4>Transcribe</h4><p>Send audio into transcription or AI scribe systems.</p></div></div>
-      <div class="flow-step"><div class="flow-node"><i data-lucide="bar-chart-3"></i></div><div class="flow-text"><h4>Analyze</h4><p>Extract intelligence from conversations at scale.</p></div></div>
-      <div class="flow-step"><div class="flow-node"><i data-lucide="plug"></i></div><div class="flow-text"><h4>Integrate</h4><p>Feed insights into your CRM, workflow, or AI agent platform.</p></div></div>
+      <div class="flow-step">
+        <div class="flow-node"><i data-lucide="mic"></i></div>
+        <h4>Capture</h4>
+        <p>Record conversations with hardware noise reduction.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-node"><i data-lucide="upload-cloud"></i></div>
+        <h4>Upload</h4>
+        <p>Sync over Wi-Fi when network is available.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-node"><i data-lucide="file-text"></i></div>
+        <h4>Transcribe</h4>
+        <p>Feed audio into your AI transcription system.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-node"><i data-lucide="bar-chart-3"></i></div>
+        <h4>Analyze</h4>
+        <p>Extract intelligence from conversations at scale.</p>
+      </div>
+      <div class="flow-step">
+        <div class="flow-node"><i data-lucide="plug"></i></div>
+        <h4>Integrate</h4>
+        <p>Push insights into your CRM, workflow, or AI agent.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ========== SECTION 6 — INDUSTRIES ========== -->
-<section class="sec" id="applications" style="background:var(--bg-soft);">
+<!-- SECTION 7 — INDUSTRIES -->
+<section class="sec sec-gray">
   <div class="wrap">
     <div class="split-head">
       <div>
-        <span class="eyebrow">Applications</span>
+        <span class="eyebrow">APPLICATIONS</span>
         <h2>Where MIC05 fits.</h2>
       </div>
       <div class="right-col">
-        <p>Built for teams that need reliable audio capture from the conversations that happen outside the meeting room — in the field, in the clinic, and on every customer visit.</p>
+        <p>Built for teams that capture conversations outside the meeting room — in the field, in the clinic, and on every customer visit.</p>
       </div>
     </div>
     <div class="ind-grid">
-
-      <div class="ind-card" style="padding:0;overflow:hidden;">
-        <img src="../../img/11.jpg" alt="Healthcare Voice AI"
-          style="width:100%;height:200px;object-fit:cover;display:block;">
-        <div style="padding:24px 24px 28px;">
+      <div class="ind-card">
+        <img src="../../../img/11.jpg" alt="Healthcare Voice AI">
+        <div class="ind-card-body">
           <h3>Healthcare Voice AI</h3>
           <p>Enable AI scribing and documentation workflows in clinics, hospitals, and home-health environments.</p>
         </div>
       </div>
-
-      <div class="ind-card" style="padding:0;overflow:hidden;">
-        <img src="../../img/12.jpg" alt="Field Sales"
-          style="width:100%;height:200px;object-fit:cover;display:block;">
-        <div style="padding:24px 24px 28px;">
+      <div class="ind-card">
+        <img src="../../../img/12.jpg" alt="Field Sales">
+        <div class="ind-card-body">
           <h3>Field Sales</h3>
           <p>Capture customer conversations in-person — demos, site visits, and account reviews outside your CRM.</p>
         </div>
       </div>
-
-      <div class="ind-card" style="padding:0;overflow:hidden;">
-        <img src="../../img/15.jpg" alt="Enterprise AI"
-          style="width:100%;height:200px;object-fit:cover;display:block;">
-        <div style="padding:24px 24px 28px;">
+      <div class="ind-card">
+        <img src="../../../img/15.jpg" alt="Enterprise AI">
+        <div class="ind-card-body">
           <h3>Enterprise AI</h3>
-          <p>High-quality audio input for enterprise AI agents, voice workflow automation, and compliance recording platforms.</p>
+          <p>High-quality audio input for AI agents, voice workflow automation, and compliance recording platforms.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ========== SECTION 7 — MANUFACTURING (dark) ========== -->
-<section class="sec sec-dark" id="manufacturing">
+<!-- SECTION 8 — TECHNICAL SPECS TABLE -->
+<section class="sec" id="tech-specs">
   <div class="wrap">
-    <div class="head">
-      <span class="eyebrow">From Concept to Mass Production</span>
-      <h2>Manufactured in Shenzhen. Shipped worldwide.</h2>
-      <p>MIC05 is built in our own factory — SMT lines, quality inspection, and firmware flashing all in-house. From EVT prototype to 50,000 units/month.</p>
-    </div>
-    <div class="factory-grid">
-      <img src="../../img/about/smt-machines.jpg" alt="SMT manufacturing line" loading="lazy">
-      <img src="../../img/about/assembly-line.jpg" alt="Assembly line" loading="lazy">
-      <img src="../../img/about/aoi-inspection.jpg" alt="Automated optical inspection" loading="lazy">
-    </div>
-    <div class="mfg-stats">
-      <div class="mfg-stat"><div class="v">270+</div><div class="k">Hardware programs shipped</div></div>
-      <div class="mfg-stat"><div class="v">50K+</div><div class="k">Units per month</div></div>
-      <div class="mfg-stat"><div class="v">15+</div><div class="k">Years manufacturing</div></div>
-      <div class="mfg-stat"><div class="v">US + SZ</div><div class="k">Dual-location team</div></div>
+    <div class="spec-split">
+      <div class="spec-left">
+        <span class="eyebrow">TECHNICAL SPECIFICATIONS</span>
+        <h2>Precisely specified.</h2>
+        <p>Every component chosen for enterprise-grade reliability, designed for deployment at scale.</p>
+        <a href="#" class="btn btn-ghost" style="margin-top:24px">Download Datasheet</a>
+      </div>
+      <div>
+        <table class="spec-table">
+          <tr><td>Connectivity</td><td>Wi-Fi + Bluetooth 5.3</td></tr>
+          <tr><td>Wi-Fi Standard</td><td>IEEE 802.11 b/g/n</td></tr>
+          <tr><td>Internal Storage</td><td>1GB NAND</td></tr>
+          <tr><td>Speaker</td><td>1W Integrated</td></tr>
+          <tr><td>Security</td><td>NFC + Firmware Encryption</td></tr>
+          <tr><td>Notifications</td><td>Vibration + Audio + LED</td></tr>
+          <tr><td>Battery</td><td>950mAh</td></tr>
+          <tr><td>Runtime</td><td>Up to 10 Hours</td></tr>
+          <tr><td>Charging</td><td>USB-C, ~1 Hour</td></tr>
+          <tr><td>Material</td><td>Aluminum Alloy</td></tr>
+          <tr><td>Weight</td><td>50.5g</td></tr>
+          <tr><td>Dimensions</td><td>72 × 32 × 25 mm</td></tr>
+        </table>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ========== SECTION 8 — OEM / ODM (dark split) ========== -->
-<section class="sec sec-dark" id="oem" style="border-top:1px solid rgba(255,255,255,.08);">
+<!-- SECTION 9 — OEM / CUSTOMIZATION -->
+<section class="sec sec-dark">
   <div class="wrap">
     <div class="oem-split">
-      <div class="oem-media">
-        <img src="../../img/1.jpg" alt="GMIC Manufacturing"
-          style="width:100%;height:100%;min-height:420px;object-fit:cover;display:block;"
-          onerror="this.style.display='none'">
-      </div>
+      <div class="oem-media"><img src="../../../img/1.jpg" alt="GMIC Manufacturing"></div>
       <div class="oem-copy">
-        <span class="eyebrow">Customization</span>
+        <span class="eyebrow">CUSTOMIZATION</span>
         <h2>Your brand. Your firmware. Your workflow.</h2>
         <p class="lead">MIC05 ships as a white-label-ready platform. Customize the enclosure, firmware behavior, and cloud connectivity to match your product exactly.</p>
         <ul class="oem-list">
-          <li><span class="oico"><i data-lucide="tag"></i></span><div><h3>White Label Branding</h3><p>Custom logo, custom packaging, white-label production runs under your brand.</p></div></li>
-          <li><span class="oico"><i data-lucide="code-2"></i></span><div><h3>Custom Firmware</h3><p>Custom button behavior, upload logic, workflow triggers, and cloud endpoint configuration.</p></div></li>
-          <li><span class="oico"><i data-lucide="server"></i></span><div><h3>Enterprise Deployment</h3><p>Fleet provisioning, private server deployment, and lifecycle support across enterprise teams.</p></div></li>
+          <li>
+            <div class="oico"><i data-lucide="tag"></i></div>
+            <div>
+              <h4>White Label Branding</h4>
+              <p>Custom logo, custom packaging, white-label production runs under your brand.</p>
+            </div>
+          </li>
+          <li>
+            <div class="oico"><i data-lucide="code-2"></i></div>
+            <div>
+              <h4>Custom Firmware</h4>
+              <p>Custom button behavior, upload logic, workflow triggers, and cloud endpoint configuration.</p>
+            </div>
+          </li>
+          <li>
+            <div class="oico"><i data-lucide="server"></i></div>
+            <div>
+              <h4>Enterprise Deployment</h4>
+              <p>Fleet provisioning, private server deployment, and lifecycle support across enterprise teams.</p>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== SECTION 9 — FINAL CTA ========== -->
-<section class="sec" id="contact">
+<!-- SECTION 10 — MANUFACTURING -->
+<section class="sec sec-dark" style="border-top:1px solid rgba(255,255,255,.08)">
   <div class="wrap">
-    <div class="final">
-      <span class="eyebrow" style="justify-content:center;">Get Started</span>
-      <h2 style="margin-top:18px;">Ready to turn MIC05 into your product?</h2>
-      <p>Request an evaluation unit or talk to our team about a customization program for your platform.</p>
-      <div class="hero-cta">
-        <a href="mailto:trigg@gmic.ai?subject=MIC05%20Sample%20Request" class="btn btn-blue">Request a Sample <i data-lucide="arrow-right"></i></a>
-        <a href="mailto:trigg@gmic.ai?subject=Contact%20GMIC.AI%20%E2%80%93%20MIC05" class="btn btn-ghost">Contact GMIC.AI</a>
-      </div>
-      <p style="margin-top:16px; font-size:13px; color:var(--muted);">Questions? trigg@gmic.ai</p>
+    <div class="head">
+      <span class="eyebrow">FROM CONCEPT TO MASS PRODUCTION</span>
+      <h2>Manufactured in Shenzhen. Shipped worldwide.</h2>
+      <p>MIC05 is built in our own factory — SMT lines, quality inspection, and firmware flashing all in-house.</p>
+    </div>
+    <div class="factory-grid">
+      <img src="../../../img/2.jpg" alt="SMT manufacturing line">
+      <img src="../../../img/4.jpg" alt="Quality inspection">
+      <img src="../../../img/PixPin_20260529_170758.jpg" alt="Firmware flashing">
+    </div>
+    <div class="mfg-stats">
+      <div class="mfg-stat"><div class="v">270+</div><div class="k">Hardware programs</div></div>
+      <div class="mfg-stat"><div class="v">50K+</div><div class="k">Units per month</div></div>
+      <div class="mfg-stat"><div class="v">15+</div><div class="k">Years manufacturing</div></div>
+      <div class="mfg-stat"><div class="v">US + SZ</div><div class="k">Dual-location</div></div>
     </div>
   </div>
 </section>
 
-<!-- ========== FOOTER (copied verbatim from index.html) ========== -->
+<!-- SECTION 11 — FINAL CTA -->
+<section class="sec">
+  <div class="wrap">
+    <div class="final">
+      <span class="eyebrow">GET STARTED</span>
+      <h2>Ready to turn MIC05 into your product?</h2>
+      <p>Request an evaluation unit or talk to our team about a customization program.</p>
+      <div class="final-cta">
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Request a Sample →</a>
+        <a href="../../../contact/index.html" class="btn btn-ghost">Contact GMIC.AI</a>
+      </div>
+      <p style="margin-top:16px;font-size:13px;color:var(--muted);text-align:center">Questions? trigg@gmic.ai</p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== FOOTER (verbatim from homepage) ========== -->
 <footer class="footer" id="company">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="../../index.html" class="logo">GMIC.AI</a>
+        <a href="#" class="logo">GMIC.AI</a>
         <p>Designing and manufacturing the embedded hardware behind the voice-first era.</p>
         <div class="footer-contact">
           <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a><br>
@@ -1391,7 +1532,7 @@ section.hero {
   </div>
 </footer>
 
-<!-- ========== FLOATING ACTION BAR (copied verbatim from index.html) ========== -->
+<!-- ========== FAB + POPUPS (verbatim from homepage) ========== -->
 <div class="fab" role="toolbar" aria-label="Quick actions">
   <a class="fab-btn" href="https://t.me/gmicai" target="_blank" rel="noopener" aria-label="Telegram">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
@@ -1422,7 +1563,7 @@ section.hero {
 <!-- ========== WeChat QR popup ========== -->
 <div id="wechat-popup" style="display:none;position:fixed;z-index:500;background:#fff;border-radius:16px;padding:20px 20px 16px;box-shadow:0 8px 40px rgba(0,0,0,.2);border:1px solid #e2e8f0;width:240px;text-align:center;">
   <button onclick="document.getElementById('wechat-popup').style.display='none'" style="position:absolute;top:8px;right:12px;background:none;border:none;font-size:16px;cursor:pointer;color:#aaa;font-family:var(--sans);" aria-label="Close">×</button>
-  <img src="../../img/wechat-qr.png" alt="WeChat QR" style="width:100%;border-radius:8px;display:block;">
+  <img src="img/wechat-qr.png" alt="WeChat QR" style="width:100%;border-radius:8px;display:block;">
 </div>
 
 <!-- ========== Voice assistant panel ========== -->
@@ -1461,81 +1602,79 @@ section.hero {
   </a>
 </div>
 
-
 <script>
-// Close dropdown when clicking outside
-document.addEventListener('click', function(e) {
-  if (!e.target.closest('.nav-item')) {
-    document.querySelectorAll('.nav-dropdown').forEach(d => {
-      d.style.display = '';
-    });
-  }
-});
+// ========== NAV behaviour (copied verbatim from about/index.html) ==========
+(function(){
+  var nav = document.getElementById('nav');
+  if(!nav) return;
+  window.addEventListener('scroll', function(){
+    if(window.scrollY > 40){ nav.classList.add('scrolled'); }
+    else { nav.classList.remove('scrolled'); }
+  }, {passive:true});
 
-// Products mega menu — filter cards by sidebar category
-document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label) {
-  label.addEventListener('click', function() {
-    // Update active state
-    document.querySelectorAll('.dropdown-sidebar-label')
-      .forEach(l => l.classList.remove('active'));
-    this.classList.add('active');
+  // Close dropdown when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.nav-item')) {
+      document.querySelectorAll('.nav-dropdown').forEach(d => {
+        d.style.display = '';
+      });
+    }
+  });
 
-    // Filter cards
-    var filter = this.getAttribute('data-filter');
-    document.querySelectorAll('.dropdown-product-card').forEach(function(card) {
-      if (filter === 'all' || card.getAttribute('data-category') === filter) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
+  // Products mega menu — filter cards by sidebar category
+  document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label) {
+    label.addEventListener('click', function() {
+      document.querySelectorAll('.dropdown-sidebar-label')
+        .forEach(l => l.classList.remove('active'));
+      this.classList.add('active');
+
+      var filter = this.getAttribute('data-filter');
+      document.querySelectorAll('.dropdown-product-card').forEach(function(card) {
+        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
     });
   });
-});
 
-// Mobile nav
-const navBurger = document.getElementById('navBurger');
-const mobileNav = document.getElementById('mobileNav');
-const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+  // Mobile nav
+  const navBurger = document.getElementById('navBurger');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileNavOverlay = document.getElementById('mobileNavOverlay');
 
-function openMobileNav() {
-  mobileNav.classList.add('open');
-  mobileNavOverlay.classList.add('open');
-  navBurger.classList.add('open');
-  navBurger.setAttribute('aria-expanded', 'true');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeMobileNav() {
-  mobileNav.classList.remove('open');
-  mobileNavOverlay.classList.remove('open');
-  navBurger.classList.remove('open');
-  navBurger.setAttribute('aria-expanded', 'false');
-  document.body.style.overflow = '';
-}
-
-navBurger.addEventListener('click', function() {
-  if (mobileNav.classList.contains('open')) {
-    closeMobileNav();
-  } else {
-    openMobileNav();
+  function openMobileNav() {
+    mobileNav.classList.add('open');
+    mobileNavOverlay.classList.add('open');
+    navBurger.classList.add('open');
+    navBurger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
   }
-});
 
-mobileNavOverlay.addEventListener('click', closeMobileNav);
+  function closeMobileNav() {
+    mobileNav.classList.remove('open');
+    mobileNavOverlay.classList.remove('open');
+    navBurger.classList.remove('open');
+    navBurger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+  }
 
-// Close on mobile nav link click
-document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
-  link.addEventListener('click', closeMobileNav);
-});
+  navBurger.addEventListener('click', function() {
+    if (mobileNav.classList.contains('open')) {
+      closeMobileNav();
+    } else {
+      openMobileNav();
+    }
+  });
+
+  mobileNavOverlay.addEventListener('click', closeMobileNav);
+
+  document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+    link.addEventListener('click', closeMobileNav);
+  });
+})();
 </script>
-
-<!-- Render all Lucide icons -->
-<script>
-  (function(){
-    function init(){ if(window.lucide && typeof window.lucide.createIcons==='function'){ window.lucide.createIcons(); } }
-    if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded', init); } else { init(); }
-  })();
-</script>
-
+<script>lucide.createIcons();</script>
 </body>
 </html>
