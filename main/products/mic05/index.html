@@ -55,7 +55,7 @@
   width: 100%;
   background: #ffffff;
   border-top: 1px solid rgba(0,0,0,0.08);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  
   box-shadow: 0 8px 40px rgba(0,0,0,0.10);
   z-index: 999;
   padding: 32px 0 40px; /* generous top/bottom padding, flush against nav */
@@ -445,6 +445,8 @@
 .dropdown-sidebar-label:hover {
   color: #2563eb !important;
 }
+
+.nav { border-bottom: none !important; box-shadow: none !important; }
 </style>
 <style>
 /* ─── Page tokens ─── */
@@ -465,7 +467,7 @@
   --green: #16a34a;
   --cyan: #0ea5e9;
   --radius: 8px;
-  --maxw: 1200px;
+  --maxw: 1512px;
   --pad: 48px;
 }
 *, *::before, *::after { box-sizing: border-box; }
@@ -622,11 +624,19 @@ p { margin: 0; }
 .spec-left p { font-size:15px; color:var(--body); line-height:1.75; margin-top:16px; }
 .spec-grid { display:flex; flex-direction:column; gap:14px; }
 .spec-card {
-  display:flex; gap:20px; align-items:flex-start;
-  border:1px solid var(--border); border-radius:10px;
-  padding:24px 26px; background:#fff; transition:border-color .2s;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  border: none;
+  border-radius: 12px;
+  padding: 24px 26px;
+  background: #f8f9fa;
+  transition: none;
 }
-.spec-card:hover { border-color: var(--ink); }
+.spec-card:hover {
+  transform: none;
+  box-shadow: none;
+}
 .spec-ico {
   flex:none; width:44px; height:44px; border-radius:10px;
   background:#eff4ff; color:var(--blue);
@@ -665,11 +675,16 @@ p { margin: 0; }
 /* ─── Cap grid (3 col) ─── */
 .cap-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
 .cap-card {
-  border:1px solid var(--border); border-radius:10px;
-  background:#fff; overflow:hidden;
-  transition:border-color .2s;
+  border: none;
+  border-radius: 12px;
+  background: #f8f9fa;
+  overflow: hidden;
+  transition: none;
 }
-.cap-card:hover { border-color:var(--ink); }
+.cap-card:hover {
+  transform: none;
+  box-shadow: none;
+}
 .cap-card-body { padding:26px 26px 28px; }
 .cap-ico {
   width:40px; height:40px; border-radius:9px;
@@ -682,35 +697,20 @@ p { margin: 0; }
 .cap-card h3 { font-size:16px; font-weight:700; letter-spacing:-.02em; margin-top:16px; }
 .cap-card p  { font-size:13.5px; color:var(--body); line-height:1.65; margin-top:8px; }
 
-/* ─── Workflow flow ─── */
-.flow {
-  position:relative; display:grid;
-  grid-template-columns:repeat(5,1fr); gap:0;
-}
-.flow::before {
-  content:""; position:absolute;
-  top:26px; left:10%; right:10%;
-  height:1px; background:var(--border); z-index:0;
-}
-.flow-step { position:relative; z-index:1; text-align:center; padding:0 12px; }
-.flow-node {
-  width:52px; height:52px; border-radius:13px;
-  background:#fff; border:1px solid var(--border);
-  color:var(--blue); display:flex; align-items:center;
-  justify-content:center; margin:0 auto 18px;
-}
-.flow-node svg { width:22px; height:22px; }
-.flow-step h4 { font-size:15px; font-weight:700; letter-spacing:-.02em; }
-.flow-step p  { font-size:13px; color:var(--body); line-height:1.6; margin:8px auto 0; max-width:200px; }
 
 /* ─── Industries (image cards) ─── */
 .ind-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
 .ind-card {
-  border:1px solid var(--border); border-radius:12px;
-  background:#fff; overflow:hidden;
-  transition:border-color .2s, box-shadow .2s;
+  border: none;
+  border-radius: 12px;
+  background: #f8f9fa;
+  overflow: hidden;
+  transition: none;
 }
-.ind-card:hover { border-color:var(--blue); box-shadow:0 4px 20px rgba(37,99,235,.08); }
+.ind-card:hover {
+  transform: none;
+  box-shadow: none;
+}
 .ind-card img { width:100%; height:200px; object-fit:cover; display:block; }
 .ind-card-body { padding:22px 22px 26px; }
 .ind-card h3 { font-size:16px; font-weight:700; letter-spacing:-.02em; }
@@ -773,10 +773,6 @@ p { margin: 0; }
   .spec-split { grid-template-columns:1fr; gap:36px; }
   .spec-left { position:static; }
   .cap-grid { grid-template-columns:repeat(2,1fr); }
-  .flow { grid-template-columns:1fr; }
-  .flow::before { display:none; }
-  .flow-step { display:flex; align-items:flex-start; text-align:left; gap:18px; padding:0; }
-  .flow-step .flow-node { margin:0; flex:none; }
   .oem-split { grid-template-columns:1fr; }
   .why-grid { grid-template-columns:1fr; }
   .ind-grid { grid-template-columns:1fr; }
@@ -1059,26 +1055,24 @@ p { margin: 0; }
     <div class="hero-pd-grid">
 
       <div class="hero-pd-copy">
-        <span class="eyebrow">MIC Series · Professional Voice Capture</span>
-        <h1>Secure Voice Capture for AI Workflows</h1>
-        <p class="support">A professional wearable voice capture device designed for organizations that require secure audio collection, reliable wireless connectivity, and flexible system integration.</p>
+        <span class="eyebrow">MIC Series · Voice Capture</span>
+        <h1>The wearable mic<br>built for AI workflows.</h1>
+        <p class="support">Hardware noise reduction. NFC authentication. Encrypted firmware. 50g.</p>
         <div class="hero-pd-cta">
           <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb"
-             target="_blank" rel="noopener" class="btn btn-blue">
-            Request Sample <i data-lucide="arrow-right"></i>
-          </a>
+             target="_blank" rel="noopener" class="btn btn-blue">Request Sample</a>
         </div>
         <div class="hero-stats">
-          <div class="hero-stat"><div class="v">10h</div><div class="k">Battery Runtime</div></div>
-          <div class="hero-stat"><div class="v">50g</div><div class="k">Device Weight</div></div>
+          <div class="hero-stat"><div class="v">10h</div><div class="k">Battery</div></div>
+          <div class="hero-stat"><div class="v">50g</div><div class="k">Weight</div></div>
           <div class="hero-stat"><div class="v">BT 5.3</div><div class="k">Wireless</div></div>
         </div>
       </div>
 
       <div class="hero-pd-media">
         <span class="media-tag"><span class="pulse"></span> Enterprise Ready</span>
-        <img src="../../../img/cap/mic05-main.png" alt="MIC05"
-          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+        <img src="../../../img/cap/MIC05.png" alt="MIC05"
+          style="width:100%;height:100%;object-fit:contain;padding:32px;display:block;">
         <div class="ph"><span>MIC05</span><span>Product image</span></div>
       </div>
 
@@ -1274,38 +1268,69 @@ p { margin: 0; }
 </section>
 
 <!-- SECTION 6 — AI WORKFLOW -->
-<section class="sec" style="border-top:1px solid var(--border)">
+<section class="sec" style="border-top:1px solid var(--border);background:var(--bg-soft);">
   <div class="wrap">
     <div class="head">
       <span class="eyebrow">AI WORKFLOW</span>
       <h2>From conversation to insight.</h2>
       <p>MIC05 slots into the AI pipeline you already run — capture in the field, sync over Wi-Fi, and feed into your transcription or AI workflow platform.</p>
     </div>
-    <div class="flow">
-      <div class="flow-step">
-        <div class="flow-node"><i data-lucide="mic"></i></div>
-        <h4>Capture</h4>
-        <p>Record conversations with hardware noise reduction.</p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-node"><i data-lucide="upload-cloud"></i></div>
-        <h4>Upload</h4>
-        <p>Sync over Wi-Fi when network is available.</p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-node"><i data-lucide="file-text"></i></div>
-        <h4>Transcribe</h4>
-        <p>Feed audio into your AI transcription system.</p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-node"><i data-lucide="bar-chart-3"></i></div>
-        <h4>Analyze</h4>
-        <p>Extract intelligence from conversations at scale.</p>
-      </div>
-      <div class="flow-step">
-        <div class="flow-node"><i data-lucide="plug"></i></div>
-        <h4>Integrate</h4>
-        <p>Push insights into your CRM, workflow, or AI agent.</p>
+    <div style="position:relative;">
+      <!-- connecting line -->
+      <div style="position:absolute;top:20px;left:calc(10% + 20px);right:calc(10% + 20px);height:1px;background:var(--border);z-index:0;"></div>
+
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:0;position:relative;z-index:1;">
+
+        <!-- Step 1 -->
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;">
+          <div style="width:40px;height:40px;border-radius:10px;background:#fff;border:1px solid #dbeafe;display:flex;align-items:center;justify-content:center;color:#2563eb;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+            <i data-lucide="mic" style="width:18px;height:18px;"></i>
+          </div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9aa0a8;margin-bottom:6px;">01</div>
+          <h4 style="font-size:15px;font-weight:700;letter-spacing:-.02em;color:#0a0b0d;margin:0 0 8px;">Capture</h4>
+          <p style="font-size:13px;color:#5b6168;line-height:1.6;margin:0;">Hardware noise reduction in the field.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;">
+          <div style="width:40px;height:40px;border-radius:10px;background:#fff;border:1px solid #dbeafe;display:flex;align-items:center;justify-content:center;color:#2563eb;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+            <i data-lucide="upload-cloud" style="width:18px;height:18px;"></i>
+          </div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9aa0a8;margin-bottom:6px;">02</div>
+          <h4 style="font-size:15px;font-weight:700;letter-spacing:-.02em;color:#0a0b0d;margin:0 0 8px;">Upload</h4>
+          <p style="font-size:13px;color:#5b6168;line-height:1.6;margin:0;">Auto-sync over Wi-Fi to your cloud endpoint.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;">
+          <div style="width:40px;height:40px;border-radius:10px;background:#fff;border:1px solid #dbeafe;display:flex;align-items:center;justify-content:center;color:#2563eb;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+            <i data-lucide="file-text" style="width:18px;height:18px;"></i>
+          </div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9aa0a8;margin-bottom:6px;">03</div>
+          <h4 style="font-size:15px;font-weight:700;letter-spacing:-.02em;color:#0a0b0d;margin:0 0 8px;">Transcribe</h4>
+          <p style="font-size:13px;color:#5b6168;line-height:1.6;margin:0;">Feed audio into any AI transcription pipeline.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;">
+          <div style="width:40px;height:40px;border-radius:10px;background:#fff;border:1px solid #dbeafe;display:flex;align-items:center;justify-content:center;color:#2563eb;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+            <i data-lucide="bar-chart-3" style="width:18px;height:18px;"></i>
+          </div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9aa0a8;margin-bottom:6px;">04</div>
+          <h4 style="font-size:15px;font-weight:700;letter-spacing:-.02em;color:#0a0b0d;margin:0 0 8px;">Analyze</h4>
+          <p style="font-size:13px;color:#5b6168;line-height:1.6;margin:0;">Extract insights, summaries, and action items.</p>
+        </div>
+
+        <!-- Step 5 -->
+        <div style="display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;">
+          <div style="width:40px;height:40px;border-radius:10px;background:#fff;border:1px solid #dbeafe;display:flex;align-items:center;justify-content:center;color:#2563eb;margin-bottom:20px;box-shadow:0 1px 4px rgba(0,0,0,.06);">
+            <i data-lucide="plug" style="width:18px;height:18px;"></i>
+          </div>
+          <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#9aa0a8;margin-bottom:6px;">05</div>
+          <h4 style="font-size:15px;font-weight:700;letter-spacing:-.02em;color:#0a0b0d;margin:0 0 8px;">Integrate</h4>
+          <p style="font-size:13px;color:#5b6168;line-height:1.6;margin:0;">Push to CRM, workflow, or AI agent platform.</p>
+        </div>
+
       </div>
     </div>
   </div>
@@ -1425,9 +1450,9 @@ p { margin: 0; }
       <p>MIC05 is built in our own factory — SMT lines, quality inspection, and firmware flashing all in-house.</p>
     </div>
     <div class="factory-grid">
-      <img src="../../../img/2.jpg" alt="SMT manufacturing line">
-      <img src="../../../img/4.jpg" alt="Quality inspection">
-      <img src="../../../img/PixPin_20260529_170758.jpg" alt="Firmware flashing">
+      <img src="../../../img/about/smt-machines.jpg" alt="SMT manufacturing line">
+      <img src="../../../img/about/qc-inspection.jpg" alt="Quality inspection">
+      <img src="../../../img/about/assembly-line.jpg" alt="Firmware flashing">
     </div>
     <div class="mfg-stats">
       <div class="mfg-stat"><div class="v">270+</div><div class="k">Hardware programs</div></div>
@@ -1439,18 +1464,28 @@ p { margin: 0; }
 </section>
 
 <!-- SECTION 11 — FINAL CTA -->
-<section class="sec">
-  <div class="wrap">
-    <div class="final">
-      <span class="eyebrow">GET STARTED</span>
-      <h2>Ready to turn MIC05 into your product?</h2>
-      <p>Request an evaluation unit or talk to our team about a customization program.</p>
-      <div class="final-cta">
-        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Request a Sample →</a>
-        <a href="../../../contact/index.html" class="btn btn-ghost">Contact GMIC.AI</a>
+<section style="background:#0f172a; padding:100px 0;">
+  <div style="max-width:1512px; margin:0 auto; padding:0 48px; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
+
+    <!-- Left: text -->
+    <div>
+      <span style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#93c5fd;">GET STARTED</span>
+      <h2 style="font-size:clamp(32px,3.5vw,52px);font-weight:700;line-height:1.05;letter-spacing:-.03em;color:#fff;margin-top:16px;white-space:nowrap;">Ready to turn MIC05 into your product?</h2>
+      <p style="font-size:17px;color:#9ca3af;line-height:1.7;margin-top:16px;max-width:480px;">Request an evaluation unit or talk to our team about a customization program.</p>
+      <div style="margin-top:32px;">
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb"
+           target="_blank" rel="noopener"
+           class="btn btn-blue">Request a Sample</a>
       </div>
-      <p style="margin-top:16px;font-size:13px;color:var(--muted);text-align:center">Questions? trigg@gmic.ai</p>
+      <p style="margin-top:16px;font-size:13px;color:#4b5563;">Questions? <a href="mailto:trigg@gmic.ai" style="color:#93c5fd;text-decoration:none;">trigg@gmic.ai</a></p>
     </div>
+
+    <!-- Right: image -->
+    <div style="border-radius:16px;overflow:hidden;height:400px;">
+      <img src="../../../img/about/factory-exterior.jpg" alt="GMIC Manufacturing"
+        style="width:100%;height:100%;object-fit:cover;display:block;">
+    </div>
+
   </div>
 </section>
 

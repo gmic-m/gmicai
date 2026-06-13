@@ -29,7 +29,7 @@
 .btn-nav:hover{background:#1e293b;transform:translateY(-1px);}
 .nav-item{position:relative;height:100%;display:flex;align-items:center;}
 .nav-item.has-dropdown::after{content:'';position:absolute;top:100%;left:-20px;right:-20px;height:20px;background:transparent;}
-.nav-dropdown{display:none;position:fixed;top:64px;left:0;right:0;width:100%;background:#ffffff;border-top:1px solid rgba(0,0,0,0.08);border-bottom:1px solid rgba(0,0,0,0.08);box-shadow:0 8px 40px rgba(0,0,0,0.10);z-index:999;padding:32px 0 40px;}
+.nav-dropdown{display:none;position:fixed;top:64px;left:0;right:0;width:100%;background:#ffffff;border-top:1px solid rgba(0,0,0,0.08);box-shadow:0 8px 40px rgba(0,0,0,0.10);z-index:999;padding:32px 0 40px;}
 .nav-item.has-dropdown:hover .nav-dropdown{display:block;}
 .nav-item.has-dropdown:hover .nav-arrow{transform:rotate(90deg);opacity:1;}
 .dropdown-inner{max-width:1200px;margin:0 auto;padding:0 40px;padding-top:8px;display:flex;gap:0;}
@@ -142,7 +142,7 @@ body.blog-body {
 
 /* Page container */
 .blog-container{
-  max-width:1240px;
+  max-width:1512px;
   margin:0 auto;
   padding:0 32px;
 }
@@ -515,6 +515,8 @@ img.post-thumb-bg{
   transform:translateY(-1px);
   background:rgba(255,255,255,.08);
 }
+
+.nav { border-bottom: none !important; box-shadow: none !important; }
 </style>
 </head>
 <body class="blog-body">
