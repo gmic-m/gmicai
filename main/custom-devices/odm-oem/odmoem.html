@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Audio Processing &amp; DSP Tuning | GMIC.AI</title>
-<meta name="description" content="GMIC audio processing and DSP tuning: noise reduction, echo cancellation, beamforming, voice enhancement, and far-field audio for clear voice capture." />
-<link rel="canonical" href="https://gmic.ai/custom-devices/audio-dsp-tuning/" />
+<title>ODM &amp; OEM AI Hardware Development | GMIC.AI</title>
+<meta name="description" content="Turnkey OEM/ODM AI voice hardware — from concept validation to mass production. Hardware, firmware, audio, and manufacturing under one roof across US + Shenzhen." />
+<link rel="canonical" href="https://gmic.ai/custom-devices/odm-oem/" />
 <link rel="icon" type="image/png" href="../../img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -456,6 +456,12 @@
 /* Active / current treatment for this page's nav entry */
 .dropdown-link.nav-current{color:#2563eb !important;font-weight:700}
 
+/* ---------- Global content-width cap (wide-screen fix) ----------
+   The shared .container is max-width:156rem; on large monitors that lets
+   every section stretch edge-to-edge and pulls the hero's two columns apart.
+   Cap it to the standard 1200px, centered, with calm ≤40px side padding. */
+.container{max-width:1512px;padding-left:clamp(20px,4vw,40px);padding-right:clamp(20px,4vw,40px)}
+
 /* ---------- Breadcrumb (clears the fixed nav) ---------- */
 .breadcrumb{padding-top:84px}
 .breadcrumb .container{padding-top:18px;padding-bottom:18px}
@@ -471,12 +477,15 @@
 /* ---------- Generic section scaffolding ---------- */
 .odm-sec{padding:96px 0;background:#ffffff}        /* default: pure white section */
 .odm-sec.alt{background:#f8fafc}                    /* full-width light-gray band */
+/* "What We Provide": full-width gray band (background spans full viewport);
+   its text/cards are constrained & centered by an inner .container (max 1200px). */
+.odm-sec.odm-provide{padding-left:0;padding-right:0}
 .odm-head{max-width:780px;margin-bottom:48px}
 .odm-head .eyebrow{display:block;margin-bottom:16px}
 .odm-head h2.section{color:#0f172a}
 
 /* ---------- Hero (two-column text row above a full-bleed image, Square style) ---------- */
-.odm-hero{padding:48px 0 0;background:#f8fafc;border-bottom:1px solid rgba(0,0,0,0.06)}
+.odm-hero{padding:48px 0 0;background:#ffffff;border-bottom:1px solid rgba(0,0,0,0.06)}
 /* LEFT ~55% (title block) · RIGHT ~40% (supporting note), bottom-aligned to the title */
 .odm-hero-top{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:56px;align-items:end}
 .odm-hero .eyebrow{display:block;margin-bottom:18px}
@@ -639,6 +648,11 @@
   will-change:transform;
   touch-action:pan-y;            /* let JS own horizontal drags, keep vertical scroll */
   cursor:grab;
+  /* The viewport runs full-bleed (outside .container). This pad lines the FIRST card's
+     left edge up with the centered 1200px container content edge, while the track still
+     extends full width to the right (cards bleed past the viewport edge, scroll via arrows).
+     100% = viewport width, so this stays scrollbar-safe (no 100vw). */
+  padding-left:calc(max((100% - 1512px) / 2, 0px) + clamp(20px, 4vw, 40px));
 }
 .tp-track.is-dragging{cursor:grabbing;transition:none;user-select:none}
 /* Desktop ≥1024px → ~3.5 cards visible (next card peeks) */
@@ -660,14 +674,6 @@
 @media (prefers-reduced-motion:reduce){
   .tp-track{transition:none}
 }
-
-/* ============================================================
-   PAGE-SPECIFIC STYLES — AUDIO & DSP TUNING
-   ============================================================ */
-/* Decorative photo strip before the CTA (visual balance on a thin page) */
-.ad-photostrip{display:grid;grid-template-columns:repeat(3,1fr);width:100%;height:220px;overflow:hidden}
-.ad-photostrip img{width:100%;height:100%;object-fit:cover;display:block;background:#e8eeff}
-@media(max-width:768px){.ad-photostrip{height:150px}}
 
 .nav { border-bottom: none !important; box-shadow: none !important; }
 </style>
@@ -741,7 +747,7 @@
           <div class="dropdown-inner">
             <div class="dropdown-col">
               <p class="dropdown-col-head">Hardware</p>
-              <a href="../../custom-devices/odm-oem/index.html" class="dropdown-link">ODM / OEM</a>
+              <a href="../../custom-devices/odm-oem/index.html" class="dropdown-link nav-current" aria-current="page">ODM / OEM</a>
               <a href="../../custom-devices/private-label/index.html" class="dropdown-link">Private Label</a>
               <a href="../../custom-devices/custom-enclosure/index.html" class="dropdown-link">Custom Enclosure</a>
               <a href="../../custom-devices/3d-prototype/index.html" class="dropdown-link">3D Small-batch Prototype</a>
@@ -749,7 +755,7 @@
             <div class="dropdown-col">
               <p class="dropdown-col-head">Engineering</p>
               <a href="../../custom-devices/firmware-integration/index.html" class="dropdown-link">Firmware Integration</a>
-              <a href="../../custom-devices/audio-dsp-tuning/index.html" class="dropdown-link nav-current" aria-current="page">Audio & DSP Tuning</a>
+              <a href="../../custom-devices/audio-dsp-tuning/index.html" class="dropdown-link">Audio & DSP Tuning</a>
               <a href="../../custom-devices/ai-sdk-integration/index.html" class="dropdown-link">AI SDK Integration</a>
               <a href="../../custom-devices/prototype-validation/index.html" class="dropdown-link">Prototype Validation</a>
             </div>
@@ -784,23 +790,21 @@
             <div class="dropdown-col">
               <p class="dropdown-col-head">Healthcare & Ops</p>
               <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare Voice AI</a>
-              <a href="../../industries/veterinary/index.html" class="dropdown-link">Veterinary AI</a>
               <a href="../../industries/hospitality/index.html" class="dropdown-link">Hospitality AI</a>
+              <a href="../../industries/hvac/index.html" class="dropdown-link">HVAC</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Enterprise & Field</p>
               <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise AI</a>
-              <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
               <a href="../../industries/field-service/index.html" class="dropdown-link">Field Service</a>
-              <a href="../../industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
               <a href="../../industries/telecom/index.html" class="dropdown-link">Telecom AI</a>
             </div>
             <div class="dropdown-col">
-              <p class="dropdown-col-head">Safety & Transport</p>
-              <a href="../../industries/public-safety/index.html" class="dropdown-link">Public Safety</a>
-              <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics & Transportation</a>
+              <p class="dropdown-col-head">Retail & Transport</p>
               <a href="../../industries/smart-retail/index.html" class="dropdown-link">Smart Retail</a>
-              <a href="https://gmic-nemt-demo.vercel.app/" class="dropdown-link dropdown-link--external" target="_blank" rel="noopener">NEMT</a>
+              <a href="https://gmic-nemt-demo.vercel.app/"
+                 class="dropdown-link dropdown-link--external"
+                 target="_blank" rel="noopener">NEMT</a>
             </div>
           </div>
         </div>
@@ -853,11 +857,12 @@
       <a href="../../products/mic05/" class="mobile-nav-link">MIC05</a>
       <a href="../../products/mic01/" class="mobile-nav-link">MIC01</a>
       <a href="../../products/telalive/" class="mobile-nav-link">Telalive</a>
+      <a href="../../products/hearit/" class="mobile-nav-link">Hearit.ai PCBA</a>
     </div>
 
         <div class="mobile-nav-section">
       <p class="mobile-nav-head">Custom Devices · Hardware</p>
-      <a href="../../custom-devices/odm-oem/index.html" class="mobile-nav-link">ODM / OEM</a>
+      <a href="../../custom-devices/odm-oem/index.html" class="mobile-nav-link" aria-current="page" style="color:#2563eb;font-weight:700;">ODM / OEM</a>
       <a href="../../custom-devices/private-label/index.html" class="mobile-nav-link">Private Label</a>
       <a href="../../custom-devices/custom-enclosure/index.html" class="mobile-nav-link">Custom Enclosure</a>
       <a href="../../custom-devices/3d-prototype/index.html" class="mobile-nav-link">3D Small-batch Prototype</a>
@@ -866,7 +871,7 @@
     <div class="mobile-nav-section">
       <p class="mobile-nav-head">Custom Devices · Engineering</p>
       <a href="../../custom-devices/firmware-integration/index.html" class="mobile-nav-link">Firmware Integration</a>
-      <a href="../../custom-devices/audio-dsp-tuning/index.html" class="mobile-nav-link" style="color:#2563eb;font-weight:700;" aria-current="page">Audio &amp; DSP Tuning</a>
+      <a href="../../custom-devices/audio-dsp-tuning/index.html" class="mobile-nav-link">Audio &amp; DSP Tuning</a>
       <a href="../../custom-devices/ai-sdk-integration/index.html" class="mobile-nav-link">AI SDK Integration</a>
       <a href="../../custom-devices/prototype-validation/index.html" class="mobile-nav-link">Prototype Validation</a>
     </div>
@@ -882,17 +887,15 @@
     <div class="mobile-nav-section">
       <p class="mobile-nav-head">Industries</p>
       <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare Voice AI</a>
-      <a href="../../industries/veterinary/index.html" class="mobile-nav-link">Veterinary AI</a>
-      <a href="../../industries/hospitality/index.html" class="mobile-nav-link">Hospitality AI</a>
       <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise AI</a>
-      <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
       <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
-      <a href="../../industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
       <a href="../../industries/telecom/index.html" class="mobile-nav-link">Telecom AI</a>
-      <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
-      <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics & Transportation</a>
+      <a href="../../industries/hospitality/index.html" class="mobile-nav-link">Hospitality AI</a>
       <a href="../../industries/smart-retail/index.html" class="mobile-nav-link">Smart Retail</a>
-      <a href="https://gmic-nemt-demo.vercel.app/" class="mobile-nav-link mobile-nav-link--external" target="_blank" rel="noopener">NEMT ↗</a>
+      <a href="../../industries/hvac/index.html" class="mobile-nav-link">HVAC</a>
+      <a href="https://gmic-nemt-demo.vercel.app/"
+         class="mobile-nav-link mobile-nav-link--external"
+         target="_blank" rel="noopener">NEMT ↗</a>
     </div>
 
     <div class="mobile-nav-section">
@@ -935,93 +938,222 @@
       <li class="sep" aria-hidden="true">/</li>
       <li><a href="../../custom-devices/index.html">Custom Devices</a></li>
       <li class="sep" aria-hidden="true">/</li>
-      <li aria-current="page">Audio &amp; DSP Tuning</li>
+      <li aria-current="page">ODM &amp; OEM</li>
     </ol>
   </div>
 </nav>
 
 <main id="main">
 
-  <!-- ========== 1) HERO ========== -->
+  <!-- ========== 1) HERO — two-column text above a full-bleed image ========== -->
   <header class="odm-hero fade-section">
     <div class="container">
       <div class="odm-hero-top">
         <div class="odm-hero-lead reveal">
-          <div class="eyebrow">CUSTOM DEVICES · AUDIO &amp; DSP TUNING</div>
-          <h1 class="display">Audio Processing &amp; <span class="odm-hero-accent">DSP Tuning</span></h1>
+          <div class="eyebrow">CUSTOM DEVICES · ODM / OEM</div>
+          <h1 class="display">ODM &amp; OEM <span class="odm-hero-accent">AI Hardware</span> Development</h1>
           <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Start a Project</a>
         </div>
         <div class="odm-hero-note reveal">
-          <!-- [PLACEHOLDER] hero copy — marketing to revise -->
-          <p>Tuning the full audio path so your device captures clear, intelligible voice.</p>
+          <p>Build custom AI voice hardware with an experienced OEM/ODM partner. From concept validation to mass production, GMIC helps software companies launch branded hardware products without building an internal hardware team.</p>
         </div>
       </div>
     </div>
     <div class="odm-hero-banner">
-      <img src="../../img/platform/05.jpg" alt="Audio tuning and acoustic testing for AI voice devices at GMIC" onerror="this.style.display='none'">
+      <img src="../../img/platform/01.jpg" alt="GMIC production line in Shenzhen" onerror="this.style.display='none'">
     </div>
   </header>
 
-  <!-- ========== 2) WHAT WE TUNE (gray band, image cards) ========== -->
-  <section class="odm-sec alt fade-section" aria-labelledby="tune-h">
+  <!-- ========== 2) WHAT IT IS — OEM vs ODM ========== -->
+  <section class="odm-sec fade-section" aria-labelledby="whatitis-h">
     <div class="container">
       <div class="odm-head reveal">
-        <div class="eyebrow">/ WHAT WE TUNE</div>
-        <h2 class="section" id="tune-h">What We Tune</h2>
+        <div class="eyebrow">/ WHAT IT IS</div>
+        <h2 class="section" id="whatitis-h">What is ODM vs OEM</h2>
+        <p class="odm-vs-intro">Two ways to work with us, depending on what you bring.</p>
+      </div>
+      <div class="odm-vs reveal">
+        <div class="odm-vs-half">
+          <div class="odm-vs-icon"><i data-lucide="file-cog" aria-hidden="true"></i></div>
+          <div class="odm-vs-label">OEM</div>
+          <p class="odm-vs-line">You provide the design. We manufacture it.</p>
+          <p class="odm-vs-flow">Your design <span aria-hidden="true">→</span> our production</p>
+        </div>
+        <div class="odm-vs-half">
+          <div class="odm-vs-icon"><i data-lucide="layers" aria-hidden="true"></i></div>
+          <div class="odm-vs-label">ODM</div>
+          <p class="odm-vs-line">We provide the hardware platform and customize it for your application.</p>
+          <p class="odm-vs-flow">Our platform <span aria-hidden="true">→</span> your application</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 3) WHAT WE PROVIDE ========== -->
+  <section class="odm-sec alt odm-provide fade-section" aria-labelledby="provide-h">
+    <div class="container">
+      <div class="odm-head reveal">
+        <div class="eyebrow">/ WHAT WE PROVIDE</div>
+        <h2 class="section" id="provide-h">What We Provide</h2>
       </div>
       <div class="svc-rows">
       <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/platform/01.jpg" alt="Noise reduction — Suppressing background noise." onerror="this.style.display='none'"></div>
+        <div class="svc-row-media"><img src="../../img/platform/01.jpg" alt="Hardware architecture — System and board-level design for on-device voice and edge AI." onerror="this.style.display='none'"></div>
         <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="volume-x" aria-hidden="true"></i></div>
-          <h3>Noise reduction</h3>
-          <p>Suppressing background noise.</p>
+          <div class="svc-row-icon"><i data-lucide="cpu" aria-hidden="true"></i></div>
+          <h3>Hardware architecture</h3>
+          <p>System and board-level design for on-device voice and edge AI.</p>
         </div>
       </div>
       <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/platform/02.jpg" alt="Echo cancellation — Removing echo and feedback." onerror="this.style.display='none'"></div>
+        <div class="svc-row-media"><img src="../../img/platform/02.jpg" alt="PCB development — Schematic capture and PCB layout for compact, low-power devices." onerror="this.style.display='none'"></div>
         <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="repeat" aria-hidden="true"></i></div>
-          <h3>Echo cancellation</h3>
-          <p>Removing echo and feedback.</p>
+          <div class="svc-row-icon"><i data-lucide="circuit-board" aria-hidden="true"></i></div>
+          <h3>PCB development</h3>
+          <p>Schematic capture and PCB layout for compact, low-power devices.</p>
         </div>
       </div>
       <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/platform/03.jpg" alt="Beamforming — Focusing the mics on the speaker." onerror="this.style.display='none'"></div>
+        <div class="svc-row-media"><img src="../../img/platform/03.jpg" alt="Firmware development — Embedded firmware for audio, connectivity, and power management." onerror="this.style.display='none'"></div>
         <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="focus" aria-hidden="true"></i></div>
-          <h3>Beamforming</h3>
-          <p>Focusing the mics on the speaker.</p>
+          <div class="svc-row-icon"><i data-lucide="terminal" aria-hidden="true"></i></div>
+          <h3>Firmware development</h3>
+          <p>Embedded firmware for audio, connectivity, and power management.</p>
         </div>
       </div>
       <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/platform/04.jpg" alt="Voice enhancement — Making speech clearer." onerror="this.style.display='none'"></div>
+        <div class="svc-row-media"><img src="../../img/platform/04.jpg" alt="Mechanical design — Industrial design and enclosures for wearable and desktop forms." onerror="this.style.display='none'"></div>
+        <div class="svc-row-text">
+          <div class="svc-row-icon"><i data-lucide="box" aria-hidden="true"></i></div>
+          <h3>Mechanical design</h3>
+          <p>Industrial design and enclosures for wearable and desktop forms.</p>
+        </div>
+      </div>
+      <div class="svc-row reveal">
+        <div class="svc-row-media"><img src="../../img/platform/05.jpg" alt="Audio tuning — Microphone, beamforming, and noise-reduction tuning for clear capture." onerror="this.style.display='none'"></div>
         <div class="svc-row-text">
           <div class="svc-row-icon"><i data-lucide="audio-lines" aria-hidden="true"></i></div>
-          <h3>Voice enhancement</h3>
-          <p>Making speech clearer.</p>
+          <h3>Audio tuning</h3>
+          <p>Microphone, beamforming, and noise-reduction tuning for clear capture.</p>
         </div>
       </div>
       <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/platform/05.jpg" alt="Far-field audio — Capturing voice at a distance." onerror="this.style.display='none'"></div>
+        <div class="svc-row-media"><img src="../../img/platform/01.jpg" alt="Manufacturing — SMT, assembly, testing, and QC for production at scale." onerror="this.style.display='none'"></div>
         <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="radio" aria-hidden="true"></i></div>
-          <h3>Far-field audio</h3>
-          <p>Capturing voice at a distance.</p>
+          <div class="svc-row-icon"><i data-lucide="factory" aria-hidden="true"></i></div>
+          <h3>Manufacturing</h3>
+          <p>SMT, assembly, testing, and QC for production at scale.</p>
         </div>
       </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 3) PHOTO STRIP (decorative) ========== -->
-  <div class="ad-photostrip fade-section" aria-hidden="true">
-    <img src="../../img/platform/02.jpg" alt="" onerror="this.style.display='none'">
-    <img src="../../img/platform/03.jpg" alt="" onerror="this.style.display='none'">
-    <img src="../../img/platform/04.jpg" alt="" onerror="this.style.display='none'">
-  </div>
+  <!-- ========== 4) TYPICAL APPLICATIONS (card carousel) ========== -->
+  <section class="odm-sec fade-section" aria-labelledby="apps-h">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">/ TYPICAL APPLICATIONS</div>
+          <h2 class="section" id="apps-h">Typical Applications</h2>
+        </div>
+        <div class="section-head-right">
+          <div class="carousel-controls tp-controls">
+            <button class="carousel-btn" id="tpPrev" type="button" aria-label="Previous applications">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button class="carousel-btn" id="tpNext" type="button" aria-label="Next applications">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!-- ========== 4) FINAL CTA ========== -->
+    <div class="tp-viewport">
+      <div class="tp-track" id="tpTrack">
+          <a class="tp-card odm-proj-card" href="#">
+            <div class="odm-proj-media">
+              <img src="../../img/product/AI%20Voice%20Recorder.png" alt="AI Scribe device placeholder" onerror="this.style.display='none'">
+            </div>
+            <div class="odm-proj-body">
+              <h3>AI Scribe devices</h3>
+              <span class="odm-proj-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a class="tp-card odm-proj-card" href="#">
+            <div class="odm-proj-media">
+              <img src="../../img/product/AI%20Chatmic.png" alt="Voice agent hardware placeholder" onerror="this.style.display='none'">
+            </div>
+            <div class="odm-proj-body">
+              <h3>Voice agent hardware</h3>
+              <span class="odm-proj-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a class="tp-card odm-proj-card" href="#">
+            <div class="odm-proj-media">
+              <img src="../../img/product/fleetmic.png" alt="Wearable microphone placeholder" onerror="this.style.display='none'">
+            </div>
+            <div class="odm-proj-body">
+              <h3>Wearable microphones</h3>
+              <span class="odm-proj-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a class="tp-card odm-proj-card" href="#">
+            <div class="odm-proj-media">
+              <img src="../../img/product/opsmic-main.png" alt="Smart badge placeholder" onerror="this.style.display='none'">
+            </div>
+            <div class="odm-proj-body">
+              <h3>Smart badges</h3>
+              <span class="odm-proj-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+          <a class="tp-card odm-proj-card" href="#">
+            <div class="odm-proj-media">
+              <img src="../../img/product/AI%20noise%20reduction%20voice%20recorder.png" alt="Medical recording device placeholder" onerror="this.style.display='none'">
+            </div>
+            <div class="odm-proj-body">
+              <h3>Medical recording devices</h3>
+              <span class="odm-proj-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>
+            </div>
+          </a>
+        </div>
+      </div>
+  </section>
+
+  <!-- ========== 5) WHY GMIC — static label cards (no accordion, no stat band, no image tiles) ========== -->
+  <section class="odm-sec fade-section" id="why-gmic" aria-labelledby="why-h">
+    <div class="container">
+      <div class="odm-head reveal">
+        <div class="eyebrow">/ WHY GMIC</div>
+        <h2 class="section" id="why-h">Why GMIC</h2>
+      </div>
+      <div class="odm-stats reveal">
+        <div class="odm-stat">
+          <div class="odm-stat-icon"><i data-lucide="award" aria-hidden="true"></i></div>
+          <div class="odm-stat-top">15+ Years</div>
+          <div class="odm-stat-cap">Manufacturing experience</div>
+        </div>
+        <div class="odm-stat">
+          <div class="odm-stat-icon"><i data-lucide="factory" aria-hidden="true"></i></div>
+          <div class="odm-stat-top">Shenzhen</div>
+          <div class="odm-stat-cap">Production facility</div>
+        </div>
+        <div class="odm-stat">
+          <div class="odm-stat-icon"><i data-lucide="headset" aria-hidden="true"></i></div>
+          <div class="odm-stat-top">US</div>
+          <div class="odm-stat-cap">Support team</div>
+        </div>
+        <div class="odm-stat">
+          <div class="odm-stat-icon"><i data-lucide="clipboard-check" aria-hidden="true"></i></div>
+          <div class="odm-stat-top">EVT / DVT / PVT</div>
+          <div class="odm-stat-cap">Experience</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 6) FINAL CTA ========== -->
   <section class="final-cta fade-section">
     <div class="container">
       <div class="eyebrow reveal">Begin</div>

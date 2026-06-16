@@ -44,7 +44,7 @@
   width: 100%;
   background: #ffffff;
   border-top: 1px solid rgba(0,0,0,0.08);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  
   box-shadow: 0 8px 40px rgba(0,0,0,0.10);
   z-index: 999;
   padding: 32px 0 40px; /* generous top/bottom padding, flush against nav */
@@ -682,6 +682,8 @@
 .dp-step-week{font-family:var(--sans);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:#6b7280;margin-top:8px}
 .dp-step-title{font-family:var(--sans);font-size:1.35rem;font-weight:700;color:#0f172a;line-height:1.2}
 @media(max-width:768px){.dp-timeline{grid-template-columns:1fr;gap:32px}.dp-step::before{display:none}}
+
+.nav { border-bottom: none !important; box-shadow: none !important; }
 </style>
 </head>
 <body>
@@ -796,21 +798,23 @@
             <div class="dropdown-col">
               <p class="dropdown-col-head">Healthcare & Ops</p>
               <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare Voice AI</a>
+              <a href="../../industries/veterinary/index.html" class="dropdown-link">Veterinary AI</a>
               <a href="../../industries/hospitality/index.html" class="dropdown-link">Hospitality AI</a>
-              <a href="../../industries/hvac/index.html" class="dropdown-link">HVAC</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Enterprise & Field</p>
               <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise AI</a>
+              <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
               <a href="../../industries/field-service/index.html" class="dropdown-link">Field Service</a>
+              <a href="../../industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
               <a href="../../industries/telecom/index.html" class="dropdown-link">Telecom AI</a>
             </div>
             <div class="dropdown-col">
-              <p class="dropdown-col-head">Retail & Transport</p>
+              <p class="dropdown-col-head">Safety & Transport</p>
+              <a href="../../industries/public-safety/index.html" class="dropdown-link">Public Safety</a>
+              <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics & Transportation</a>
               <a href="../../industries/smart-retail/index.html" class="dropdown-link">Smart Retail</a>
-              <a href="https://gmic-nemt-demo.vercel.app/"
-                 class="dropdown-link dropdown-link--external"
-                 target="_blank" rel="noopener">NEMT</a>
+              <a href="https://gmic-nemt-demo.vercel.app/" class="dropdown-link dropdown-link--external" target="_blank" rel="noopener">NEMT</a>
             </div>
           </div>
         </div>
@@ -892,15 +896,17 @@
     <div class="mobile-nav-section">
       <p class="mobile-nav-head">Industries</p>
       <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare Voice AI</a>
-      <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise AI</a>
-      <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
-      <a href="../../industries/telecom/index.html" class="mobile-nav-link">Telecom AI</a>
+      <a href="../../industries/veterinary/index.html" class="mobile-nav-link">Veterinary AI</a>
       <a href="../../industries/hospitality/index.html" class="mobile-nav-link">Hospitality AI</a>
+      <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise AI</a>
+      <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
+      <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
+      <a href="../../industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
+      <a href="../../industries/telecom/index.html" class="mobile-nav-link">Telecom AI</a>
+      <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
+      <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics & Transportation</a>
       <a href="../../industries/smart-retail/index.html" class="mobile-nav-link">Smart Retail</a>
-      <a href="../../industries/hvac/index.html" class="mobile-nav-link">HVAC</a>
-      <a href="https://gmic-nemt-demo.vercel.app/"
-         class="mobile-nav-link mobile-nav-link--external"
-         target="_blank" rel="noopener">NEMT ↗</a>
+      <a href="https://gmic-nemt-demo.vercel.app/" class="mobile-nav-link mobile-nav-link--external" target="_blank" rel="noopener">NEMT ↗</a>
     </div>
 
     <div class="mobile-nav-section">

@@ -44,7 +44,7 @@
   width: 100%;
   background: #ffffff;
   border-top: 1px solid rgba(0,0,0,0.08);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
+  
   box-shadow: 0 8px 40px rgba(0,0,0,0.10);
   z-index: 999;
   padding: 32px 0 40px; /* generous top/bottom padding, flush against nav */
@@ -456,6 +456,12 @@
 /* Active / current treatment for this page's nav entry */
 .dropdown-link.nav-current{color:#2563eb !important;font-weight:700}
 
+/* ---------- Global content-width cap (wide-screen fix) ----------
+   The shared .container is max-width:156rem; on large monitors that lets
+   every section stretch edge-to-edge and pulls the hero's two columns apart.
+   Cap it to the standard 1200px, centered, with calm ≤40px side padding. */
+.container{max-width:1512px;padding-left:clamp(20px,4vw,40px);padding-right:clamp(20px,4vw,40px)}
+
 /* ---------- Breadcrumb (clears the fixed nav) ---------- */
 .breadcrumb{padding-top:84px}
 .breadcrumb .container{padding-top:18px;padding-bottom:18px}
@@ -471,9 +477,9 @@
 /* ---------- Generic section scaffolding ---------- */
 .odm-sec{padding:96px 0;background:#ffffff}        /* default: pure white section */
 .odm-sec.alt{background:#f8fafc}                    /* full-width light-gray band */
-/* "What We Provide": full-width gray band; content inset via responsive horizontal padding (no max-width wrapper) */
-.odm-sec.odm-provide{padding-left:clamp(40px,8vw,200px);padding-right:clamp(40px,8vw,200px)}
-@media(max-width:768px){.odm-sec.odm-provide{padding-left:24px;padding-right:24px}}
+/* "What We Provide": full-width gray band (background spans full viewport);
+   its text/cards are constrained & centered by an inner .container (max 1200px). */
+.odm-sec.odm-provide{padding-left:0;padding-right:0}
 .odm-head{max-width:780px;margin-bottom:48px}
 .odm-head .eyebrow{display:block;margin-bottom:16px}
 .odm-head h2.section{color:#0f172a}
@@ -642,6 +648,11 @@
   will-change:transform;
   touch-action:pan-y;            /* let JS own horizontal drags, keep vertical scroll */
   cursor:grab;
+  /* The viewport runs full-bleed (outside .container). This pad lines the FIRST card's
+     left edge up with the centered 1200px container content edge, while the track still
+     extends full width to the right (cards bleed past the viewport edge, scroll via arrows).
+     100% = viewport width, so this stays scrollbar-safe (no 100vw). */
+  padding-left:calc(max((100% - 1512px) / 2, 0px) + clamp(20px, 4vw, 40px));
 }
 .tp-track.is-dragging{cursor:grabbing;transition:none;user-select:none}
 /* Desktop ≥1024px → ~3.5 cards visible (next card peeks) */
@@ -663,6 +674,8 @@
 @media (prefers-reduced-motion:reduce){
   .tp-track{transition:none}
 }
+
+.nav { border-bottom: none !important; box-shadow: none !important; }
 </style>
 </head>
 <body>
@@ -777,21 +790,23 @@
             <div class="dropdown-col">
               <p class="dropdown-col-head">Healthcare & Ops</p>
               <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare Voice AI</a>
+              <a href="../../industries/veterinary/index.html" class="dropdown-link">Veterinary AI</a>
               <a href="../../industries/hospitality/index.html" class="dropdown-link">Hospitality AI</a>
-              <a href="../../industries/hvac/index.html" class="dropdown-link">HVAC</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Enterprise & Field</p>
               <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise AI</a>
+              <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
               <a href="../../industries/field-service/index.html" class="dropdown-link">Field Service</a>
+              <a href="../../industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
               <a href="../../industries/telecom/index.html" class="dropdown-link">Telecom AI</a>
             </div>
             <div class="dropdown-col">
-              <p class="dropdown-col-head">Retail & Transport</p>
+              <p class="dropdown-col-head">Safety & Transport</p>
+              <a href="../../industries/public-safety/index.html" class="dropdown-link">Public Safety</a>
+              <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics & Transportation</a>
               <a href="../../industries/smart-retail/index.html" class="dropdown-link">Smart Retail</a>
-              <a href="https://gmic-nemt-demo.vercel.app/"
-                 class="dropdown-link dropdown-link--external"
-                 target="_blank" rel="noopener">NEMT</a>
+              <a href="https://gmic-nemt-demo.vercel.app/" class="dropdown-link dropdown-link--external" target="_blank" rel="noopener">NEMT</a>
             </div>
           </div>
         </div>
@@ -874,15 +889,17 @@
     <div class="mobile-nav-section">
       <p class="mobile-nav-head">Industries</p>
       <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare Voice AI</a>
-      <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise AI</a>
-      <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
-      <a href="../../industries/telecom/index.html" class="mobile-nav-link">Telecom AI</a>
+      <a href="../../industries/veterinary/index.html" class="mobile-nav-link">Veterinary AI</a>
       <a href="../../industries/hospitality/index.html" class="mobile-nav-link">Hospitality AI</a>
+      <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise AI</a>
+      <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
+      <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
+      <a href="../../industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
+      <a href="../../industries/telecom/index.html" class="mobile-nav-link">Telecom AI</a>
+      <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
+      <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics & Transportation</a>
       <a href="../../industries/smart-retail/index.html" class="mobile-nav-link">Smart Retail</a>
-      <a href="../../industries/hvac/index.html" class="mobile-nav-link">HVAC</a>
-      <a href="https://gmic-nemt-demo.vercel.app/"
-         class="mobile-nav-link mobile-nav-link--external"
-         target="_blank" rel="noopener">NEMT ↗</a>
+      <a href="https://gmic-nemt-demo.vercel.app/" class="mobile-nav-link mobile-nav-link--external" target="_blank" rel="noopener">NEMT ↗</a>
     </div>
 
     <div class="mobile-nav-section">
@@ -978,6 +995,7 @@
 
   <!-- ========== 3) WHAT WE PROVIDE ========== -->
   <section class="odm-sec alt odm-provide fade-section" aria-labelledby="provide-h">
+    <div class="container">
       <div class="odm-head reveal">
         <div class="eyebrow">/ WHAT WE PROVIDE</div>
         <h2 class="section" id="provide-h">What We Provide</h2>
@@ -1032,6 +1050,7 @@
         </div>
       </div>
       </div>
+    </div>
   </section>
 
   <!-- ========== 4) TYPICAL APPLICATIONS (card carousel) ========== -->
@@ -1053,9 +1072,10 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="tp-viewport">
-        <div class="tp-track" id="tpTrack">
+    <div class="tp-viewport">
+      <div class="tp-track" id="tpTrack">
           <a class="tp-card odm-proj-card" href="#">
             <div class="odm-proj-media">
               <img src="../../img/product/AI%20Voice%20Recorder.png" alt="AI Scribe device placeholder" onerror="this.style.display='none'">
@@ -1103,7 +1123,6 @@
           </a>
         </div>
       </div>
-    </div>
   </section>
 
   <!-- ========== 5) WHY GMIC — static label cards (no accordion, no stat band, no image tiles) ========== -->
