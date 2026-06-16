@@ -455,6 +455,7 @@
 .nav-burger{color:#0f172a}
 /* Active / current treatment for this page's nav entry */
 .dropdown-link.nav-current{color:#2563eb !important;font-weight:700}
+.container{max-width:1512px;padding-left:clamp(20px,4vw,40px);padding-right:clamp(20px,4vw,40px)}
 
 /* ---------- Breadcrumb (clears the fixed nav) ---------- */
 .breadcrumb{padding-top:84px}
@@ -476,7 +477,7 @@
 .odm-head h2.section{color:#0f172a}
 
 /* ---------- Hero (two-column text row above a full-bleed image, Square style) ---------- */
-.odm-hero{padding:48px 0 0;background:#f8fafc;border-bottom:1px solid rgba(0,0,0,0.06)}
+.odm-hero{padding:48px 0 0;background:#ffffff;border-bottom:1px solid rgba(0,0,0,0.06)}
 /* LEFT ~55% (title block) · RIGHT ~40% (supporting note), bottom-aligned to the title */
 .odm-hero-top{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:56px;align-items:end}
 .odm-hero .eyebrow{display:block;margin-bottom:18px}
@@ -639,6 +640,11 @@
   will-change:transform;
   touch-action:pan-y;            /* let JS own horizontal drags, keep vertical scroll */
   cursor:grab;
+  /* The viewport runs full-bleed (outside .container). This pad lines the FIRST card's
+     left edge up with the centered container content edge, while the track still
+     extends full width to the right (cards bleed past the viewport edge, scroll via arrows).
+     100% = viewport width, so this stays scrollbar-safe (no 100vw). */
+  padding-left:calc(max((100% - 1512px) / 2, 0px) + clamp(20px, 4vw, 40px));
 }
 .tp-track.is-dragging{cursor:grabbing;transition:none;user-select:none}
 /* Desktop ≥1024px → ~3.5 cards visible (next card peeks) */
@@ -661,13 +667,22 @@
   .tp-track{transition:none}
 }
 
+/* ---------- What We Handle — carousel cards (big icon on top, text below) ----------
+   Same card as Private Label's Customization Options: tall/square, white card, no border/
+   shadow, rounded; on hover the card fills blue and text turns white, while the icon panel
+   keeps its light fill + blue icon (stays legible). */
+.co-card{display:flex;flex-direction:column;background:#ffffff;border-radius:14px;overflow:hidden;height:100%;transition:transform .2s ease, background .2s ease}
+.co-card:hover{transform:translateY(-4px);background:#2563eb}
+.co-icon{aspect-ratio:1 / 1;width:100%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#eef2ff;border-top-left-radius:14px;border-top-right-radius:14px}
+.co-icon [data-lucide]{width:60px;height:60px;stroke:#2563eb;stroke-width:1.6}
+.co-body{padding:22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.co-body h3{font-family:var(--sans);font-size:1.15rem;font-weight:700;color:#0f172a;line-height:1.3;margin:0;transition:color .2s ease}
+.co-body p{font-family:var(--sans);font-size:0.95rem;line-height:1.5;color:#6b7280;margin:0;transition:color .2s ease}
+.co-card:hover h3,.co-card:hover p{color:#fff}
+
 /* ============================================================
    PAGE-SPECIFIC STYLES — FIRMWARE INTEGRATION
    ============================================================ */
-/* Decorative photo strip before the CTA (visual balance on a thin page) */
-.fi-photostrip{display:grid;grid-template-columns:repeat(3,1fr);width:100%;height:220px;overflow:hidden}
-.fi-photostrip img{width:100%;height:100%;object-fit:cover;display:block;background:#e8eeff}
-@media(max-width:768px){.fi-photostrip{height:150px}}
 
 .nav { border-bottom: none !important; box-shadow: none !important; }
 </style>
@@ -771,7 +786,7 @@
 
       <!-- Proof -->
       <div class="nav-item">
-        <a href="../../index.html#proof-cases" class="nav-link">Proof</a>
+        <a href="../../proof/index.html" class="nav-link">Proof</a>
       </div>
 
       <!-- Industries -->
@@ -897,7 +912,7 @@
 
     <div class="mobile-nav-section">
       <a href="../../implementation/index.html" class="mobile-nav-link">Implementation</a>
-      <a href="../../index.html#proof-cases" class="mobile-nav-link">Proof</a>
+      <a href="../../proof/index.html" class="mobile-nav-link">Proof</a>
       <a href="../../index.html#process" class="mobile-nav-link">Process</a>
     </div>
 
@@ -962,72 +977,74 @@
     </div>
   </header>
 
-  <!-- ========== 2) WHAT WE HANDLE (gray band, image cards) ========== -->
+  <!-- ========== 2) WHAT WE HANDLE (card carousel — big icon on top) ========== -->
   <section class="odm-sec alt fade-section" aria-labelledby="handle-h">
     <div class="container">
-      <div class="odm-head reveal">
-        <div class="eyebrow">/ WHAT WE HANDLE</div>
-        <h2 class="section" id="handle-h">What We Handle</h2>
-      </div>
-      <div class="svc-rows">
-      <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/platform/01.jpg" alt="Recording logic — On-device capture, triggering, and storage." onerror="this.style.display='none'"></div>
-        <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="mic" aria-hidden="true"></i></div>
-          <h3>Recording logic</h3>
-          <p>On-device capture, triggering, and storage.</p>
+      <div class="section-head reveal">
+        <div>
+          <div class="eyebrow">/ WHAT WE HANDLE</div>
+          <h2 class="section" id="handle-h">What We Handle</h2>
         </div>
-      </div>
-      <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/platform/02.jpg" alt="Wi-Fi upload — Uploading recordings and data over Wi-Fi." onerror="this.style.display='none'"></div>
-        <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="wifi" aria-hidden="true"></i></div>
-          <h3>Wi-Fi upload</h3>
-          <p>Uploading recordings and data over Wi-Fi.</p>
+        <div class="section-head-right">
+          <div class="carousel-controls tp-controls">
+            <button class="carousel-btn" id="fwPrev" type="button" aria-label="Previous capabilities">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+            </button>
+            <button class="carousel-btn" id="fwNext" type="button" aria-label="Next capabilities">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+          </div>
         </div>
-      </div>
-      <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/platform/03.jpg" alt="BLE communication — Low-energy pairing and data exchange." onerror="this.style.display='none'"></div>
-        <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="bluetooth" aria-hidden="true"></i></div>
-          <h3>BLE communication</h3>
-          <p>Low-energy pairing and data exchange.</p>
-        </div>
-      </div>
-      <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/platform/04.jpg" alt="OTA updates — Over-the-air firmware updates in the field." onerror="this.style.display='none'"></div>
-        <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="refresh-cw" aria-hidden="true"></i></div>
-          <h3>OTA updates</h3>
-          <p>Over-the-air firmware updates in the field.</p>
-        </div>
-      </div>
-      <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/platform/05.jpg" alt="Battery management — Charging, power states, and battery life." onerror="this.style.display='none'"></div>
-        <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="battery" aria-hidden="true"></i></div>
-          <h3>Battery management</h3>
-          <p>Charging, power states, and battery life.</p>
-        </div>
-      </div>
-      <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/platform/01.jpg" alt="Cloud integration — Connecting the device to your cloud backend." onerror="this.style.display='none'"></div>
-        <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="cloud" aria-hidden="true"></i></div>
-          <h3>Cloud integration</h3>
-          <p>Connecting the device to your cloud backend.</p>
-        </div>
-      </div>
       </div>
     </div>
-  </section>
 
-  <!-- ========== 3) PHOTO STRIP (decorative) ========== -->
-  <div class="fi-photostrip fade-section" aria-hidden="true">
-    <img src="../../img/platform/02.jpg" alt="" onerror="this.style.display='none'">
-    <img src="../../img/platform/04.jpg" alt="" onerror="this.style.display='none'">
-    <img src="../../img/platform/05.jpg" alt="" onerror="this.style.display='none'">
-  </div>
+    <div class="tp-viewport">
+      <div class="tp-track" id="fwTrack">
+          <div class="tp-card co-card">
+            <div class="co-icon"><i data-lucide="mic" aria-hidden="true"></i></div>
+            <div class="co-body">
+              <h3>Recording logic</h3>
+              <p>On-device capture, triggering, and storage.</p>
+            </div>
+          </div>
+          <div class="tp-card co-card">
+            <div class="co-icon"><i data-lucide="wifi" aria-hidden="true"></i></div>
+            <div class="co-body">
+              <h3>Wi-Fi upload</h3>
+              <p>Uploading recordings and data over Wi-Fi.</p>
+            </div>
+          </div>
+          <div class="tp-card co-card">
+            <div class="co-icon"><i data-lucide="bluetooth" aria-hidden="true"></i></div>
+            <div class="co-body">
+              <h3>BLE communication</h3>
+              <p>Low-energy pairing and data exchange.</p>
+            </div>
+          </div>
+          <div class="tp-card co-card">
+            <div class="co-icon"><i data-lucide="refresh-cw" aria-hidden="true"></i></div>
+            <div class="co-body">
+              <h3>OTA updates</h3>
+              <p>Over-the-air firmware updates in the field.</p>
+            </div>
+          </div>
+          <div class="tp-card co-card">
+            <div class="co-icon"><i data-lucide="battery" aria-hidden="true"></i></div>
+            <div class="co-body">
+              <h3>Battery management</h3>
+              <p>Charging, power states, and battery life.</p>
+            </div>
+          </div>
+          <div class="tp-card co-card">
+            <div class="co-icon"><i data-lucide="cloud" aria-hidden="true"></i></div>
+            <div class="co-body">
+              <h3>Cloud integration</h3>
+              <p>Connecting the device to your cloud backend.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
 
   <!-- ========== 4) FINAL CTA ========== -->
   <section class="final-cta fade-section">
@@ -1263,15 +1280,15 @@ document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
 });
 </script>
 
-<!-- Typical Projects carousel — self-contained, scoped to #tpTrack.
+<!-- What We Handle carousel — self-contained, scoped to #fwTrack.
      Independent of main.js / the homepage #cTrack carousel. -->
 <script>
 (function(){
-  var track = document.getElementById('tpTrack');
+  var track = document.getElementById('fwTrack');
   if(!track) return;
   var viewport = track.parentElement;
-  var prevBtn = document.getElementById('tpPrev');
-  var nextBtn = document.getElementById('tpNext');
+  var prevBtn = document.getElementById('fwPrev');
+  var nextBtn = document.getElementById('fwNext');
   var cards = track.querySelectorAll('.tp-card');
   if(!cards.length || !prevBtn || !nextBtn) return;
 

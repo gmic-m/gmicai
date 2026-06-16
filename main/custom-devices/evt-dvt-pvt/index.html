@@ -455,6 +455,7 @@
 .nav-burger{color:#0f172a}
 /* Active / current treatment for this page's nav entry */
 .dropdown-link.nav-current{color:#2563eb !important;font-weight:700}
+.container{max-width:1512px;padding-left:clamp(20px,4vw,40px);padding-right:clamp(20px,4vw,40px)}
 
 /* ---------- Breadcrumb (clears the fixed nav) ---------- */
 .breadcrumb{padding-top:84px}
@@ -476,7 +477,7 @@
 .odm-head h2.section{color:#0f172a}
 
 /* ---------- Hero (two-column text row above a full-bleed image, Square style) ---------- */
-.odm-hero{padding:48px 0 0;background:#f8fafc;border-bottom:1px solid rgba(0,0,0,0.06)}
+.odm-hero{padding:48px 0 0;background:#ffffff;border-bottom:1px solid rgba(0,0,0,0.06)}
 /* LEFT ~55% (title block) · RIGHT ~40% (supporting note), bottom-aligned to the title */
 .odm-hero-top{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:56px;align-items:end}
 .odm-hero .eyebrow{display:block;margin-bottom:18px}
@@ -664,24 +665,29 @@
 /* ============================================================
    PAGE-SPECIFIC STYLES — EVT / DVT / PVT
    ============================================================ */
-/* EVT -> DVT -> PVT progression: three stages with arrows between (centerpiece) */
-.evt-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;margin-top:8px}
-.evt-stage{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:36px 28px;background:#f8fafc;border-radius:16px}
-.evt-acronym{font-family:var(--sans);font-size:2.75rem;font-weight:800;letter-spacing:-0.02em;color:#2563eb;line-height:1}
-.evt-fullname{font-family:var(--sans);font-size:1.2rem;font-weight:700;color:#0f172a;line-height:1.3}
-.evt-desc{font-family:var(--sans);font-size:0.95rem;color:#475569;line-height:1.55;margin:0;max-width:30ch}
-.evt-arrow{display:flex;align-items:center;justify-content:center;padding:0 20px;color:#2563eb}
-.evt-arrow [data-lucide]{width:34px;height:34px;stroke-width:2}
+/* EVT, DVT & PVT Explained: three alternating image/text rows, one per stage.
+   No border, no fill — image + centered text. Easy to swap images (just change <img src>). */
+.evt-rows{display:flex;flex-direction:column;gap:60px;margin-top:8px}
+.evt-row{display:grid;grid-template-columns:48% 1fr;gap:clamp(28px,5vw,64px);align-items:center}
+/* Alternate sides: even rows put the image on the right, text on the left */
+.evt-row:nth-child(even) .evt-row-media{order:2}
+.evt-row:nth-child(even) .evt-row-text{order:1}
+.evt-row-media{border-radius:14px;overflow:hidden;height:300px;background:#eef2ff}
+.evt-row-media img{width:100%;height:100%;object-fit:cover;display:block}
+.evt-row-text{display:flex;flex-direction:column}
+.evt-step{font-family:var(--sans);font-size:3rem;font-weight:700;color:#d1d5db;line-height:1;letter-spacing:-0.02em}
+.evt-acronym{font-family:var(--sans);font-size:2rem;font-weight:800;letter-spacing:-0.02em;color:#0f172a;line-height:1.1;margin-top:10px}
+.evt-fullname{font-family:var(--sans);font-size:1.05rem;color:#6b7280;line-height:1.4;margin-top:6px}
+.evt-desc{font-family:var(--sans);font-size:1rem;color:#475569;line-height:1.6;margin:12px 0 0}
 @media(max-width:768px){
-  .evt-flow{grid-template-columns:1fr}
-  .evt-arrow{padding:16px 0}
-  .evt-arrow [data-lucide]{transform:rotate(90deg)}
+  .evt-rows{gap:40px}
+  .evt-row{grid-template-columns:1fr;gap:20px}
+  /* stack every row image-on-top regardless of alternation */
+  .evt-row:nth-child(even) .evt-row-media{order:0}
+  .evt-row:nth-child(even) .evt-row-text{order:0}
+  .evt-row-media{height:240px}
 }
 
-/* Decorative photo strip before the CTA */
-.evt-photostrip{display:grid;grid-template-columns:repeat(3,1fr);width:100%;height:220px;overflow:hidden}
-.evt-photostrip img{width:100%;height:100%;object-fit:cover;display:block;background:#e8eeff}
-@media(max-width:768px){.evt-photostrip{height:150px}}
 
 .nav { border-bottom: none !important; box-shadow: none !important; }
 </style>
@@ -785,7 +791,7 @@
 
       <!-- Proof -->
       <div class="nav-item">
-        <a href="../../index.html#proof-cases" class="nav-link">Proof</a>
+        <a href="../../proof/index.html" class="nav-link">Proof</a>
       </div>
 
       <!-- Industries -->
@@ -911,7 +917,7 @@
 
     <div class="mobile-nav-section">
       <a href="../../implementation/index.html" class="mobile-nav-link">Implementation</a>
-      <a href="../../index.html#proof-cases" class="mobile-nav-link">Proof</a>
+      <a href="../../proof/index.html" class="mobile-nav-link">Proof</a>
       <a href="../../index.html#process" class="mobile-nav-link">Process</a>
     </div>
 
@@ -976,41 +982,54 @@
     </div>
   </header>
 
-  <!-- ========== 2) THE PROCESS — EVT -> DVT -> PVT progression (centerpiece, white) ========== -->
+  <!-- ========== 2) EVT, DVT & PVT EXPLAINED — alternating image/text rows (white) ========== -->
   <section class="odm-sec fade-section" aria-labelledby="process-h">
     <div class="container">
       <div class="odm-head reveal">
-        <div class="eyebrow">/ THE PROCESS</div>
+        <div class="eyebrow">/ EVT, DVT &amp; PVT EXPLAINED</div>
         <h2 class="section" id="process-h">EVT, DVT &amp; PVT Explained</h2>
       </div>
-      <div class="evt-flow reveal">
-        <div class="evt-stage">
-          <div class="evt-acronym">EVT</div>
-          <div class="evt-fullname">Engineering Validation Test</div>
-          <p class="evt-desc">Confirm the core design and function work.</p>
+      <div class="evt-rows">
+
+        <!-- Row 1 — image LEFT / text RIGHT -->
+        <div class="evt-row reveal">
+          <!-- Unsplash placeholder — client will replace with their own production photo -->
+          <div class="evt-row-media"><img src="https://images.unsplash.com/photo-1592659762303-90081d34b277?w=800&auto=format&fit=crop" alt="PCB circuit board close-up representing engineering validation" onerror="this.style.display='none'"></div>
+          <div class="evt-row-text">
+            <div class="evt-step">01</div>
+            <div class="evt-acronym">EVT</div>
+            <div class="evt-fullname">Engineering Validation Test</div>
+            <p class="evt-desc">Confirm the core design and function work.</p>
+          </div>
         </div>
-        <div class="evt-arrow" aria-hidden="true"><i data-lucide="arrow-right"></i></div>
-        <div class="evt-stage">
-          <div class="evt-acronym">DVT</div>
-          <div class="evt-fullname">Design Validation Test</div>
-          <p class="evt-desc">Validate the final design against requirements.</p>
+
+        <!-- Row 2 — image RIGHT / text LEFT (alternated via :nth-child(even)) -->
+        <div class="evt-row reveal">
+          <!-- Unsplash placeholder — client will replace with their own production photo -->
+          <div class="evt-row-media"><img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=800&auto=format&fit=crop" alt="Electronics testing equipment representing design validation" onerror="this.style.display='none'"></div>
+          <div class="evt-row-text">
+            <div class="evt-step">02</div>
+            <div class="evt-acronym">DVT</div>
+            <div class="evt-fullname">Design Validation Test</div>
+            <p class="evt-desc">Validate the final design against requirements.</p>
+          </div>
         </div>
-        <div class="evt-arrow" aria-hidden="true"><i data-lucide="arrow-right"></i></div>
-        <div class="evt-stage">
-          <div class="evt-acronym">PVT</div>
-          <div class="evt-fullname">Production Validation Test</div>
-          <p class="evt-desc">Prove the design is ready for mass production.</p>
+
+        <!-- Row 3 — image LEFT / text RIGHT -->
+        <div class="evt-row reveal">
+          <!-- Unsplash placeholder — client will replace with their own production photo -->
+          <div class="evt-row-media"><img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=800&auto=format&fit=crop" alt="Manufacturing production line representing production validation" onerror="this.style.display='none'"></div>
+          <div class="evt-row-text">
+            <div class="evt-step">03</div>
+            <div class="evt-acronym">PVT</div>
+            <div class="evt-fullname">Production Validation Test</div>
+            <p class="evt-desc">Prove the design is ready for mass production.</p>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
-
-  <!-- ========== 3) PHOTO STRIP (decorative) ========== -->
-  <div class="evt-photostrip fade-section" aria-hidden="true">
-    <img src="../../img/platform/02.jpg" alt="" onerror="this.style.display='none'">
-    <img src="../../img/platform/03.jpg" alt="" onerror="this.style.display='none'">
-    <img src="../../img/platform/04.jpg" alt="" onerror="this.style.display='none'">
-  </div>
 
   <!-- ========== 4) FINAL CTA ========== -->
   <section class="final-cta fade-section">

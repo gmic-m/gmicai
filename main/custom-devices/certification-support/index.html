@@ -455,6 +455,7 @@
 .nav-burger{color:#0f172a}
 /* Active / current treatment for this page's nav entry */
 .dropdown-link.nav-current{color:#2563eb !important;font-weight:700}
+.container{max-width:1512px;padding-left:clamp(20px,4vw,40px);padding-right:clamp(20px,4vw,40px)}
 
 /* ---------- Breadcrumb (clears the fixed nav) ---------- */
 .breadcrumb{padding-top:84px}
@@ -476,7 +477,7 @@
 .odm-head h2.section{color:#0f172a}
 
 /* ---------- Hero (two-column text row above a full-bleed image, Square style) ---------- */
-.odm-hero{padding:48px 0 0;background:#f8fafc;border-bottom:1px solid rgba(0,0,0,0.06)}
+.odm-hero{padding:48px 0 0;background:#ffffff;border-bottom:1px solid rgba(0,0,0,0.06)}
 /* LEFT ~55% (title block) · RIGHT ~40% (supporting note), bottom-aligned to the title */
 .odm-hero-top{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:56px;align-items:end}
 .odm-hero .eyebrow{display:block;margin-bottom:18px}
@@ -673,6 +674,23 @@
 @media(max-width:1000px){.cert-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:768px){.cert-grid{grid-template-columns:1fr}}
 
+/* Certificate image row — three framed certificate scans above the badge grid.
+   Placeholders for now; shown complete (object-fit:contain) on a light fill, framed
+   like physical documents. Click opens a scoped lightbox. */
+.cs-certs{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
+.cs-cert{display:block;width:100%;height:240px;padding:0;background:#fafafa;border:1px solid rgba(0,0,0,0.08);border-radius:12px;overflow:hidden;cursor:zoom-in;box-shadow:0 8px 24px -16px rgba(15,23,42,0.4);transition:transform .2s ease,box-shadow .2s ease}
+.cs-cert:hover{transform:translateY(-2px);box-shadow:0 14px 30px -16px rgba(15,23,42,0.45)}
+.cs-cert img{width:100%;height:100%;object-fit:contain;display:block}
+.cs-certs-cap{text-align:center;font-family:var(--sans);font-size:0.9rem;color:#6b7280;margin:14px 0 44px}
+@media(max-width:768px){.cs-certs{grid-template-columns:1fr}.cs-cert{height:260px}}
+
+/* Lightbox for full-size certificate viewing */
+.cs-lightbox{display:none;position:fixed;inset:0;z-index:2000;background:rgba(15,23,42,0.82);align-items:center;justify-content:center;padding:24px}
+.cs-lightbox.open{display:flex}
+.cs-lightbox img{max-width:90vw;max-height:90vh;object-fit:contain;border-radius:8px;background:#fff;box-shadow:0 20px 60px rgba(0,0,0,0.5)}
+.cs-lightbox-close{position:absolute;top:20px;right:24px;width:40px;height:40px;border:none;background:rgba(255,255,255,0.14);color:#fff;border-radius:50%;font-size:22px;line-height:1;cursor:pointer}
+.cs-lightbox-close:hover{background:rgba(255,255,255,0.26)}
+
 .nav { border-bottom: none !important; box-shadow: none !important; }
 </style>
 </head>
@@ -775,7 +793,7 @@
 
       <!-- Proof -->
       <div class="nav-item">
-        <a href="../../index.html#proof-cases" class="nav-link">Proof</a>
+        <a href="../../proof/index.html" class="nav-link">Proof</a>
       </div>
 
       <!-- Industries -->
@@ -901,7 +919,7 @@
 
     <div class="mobile-nav-section">
       <a href="../../implementation/index.html" class="mobile-nav-link">Implementation</a>
-      <a href="../../index.html#proof-cases" class="mobile-nav-link">Proof</a>
+      <a href="../../proof/index.html" class="mobile-nav-link">Proof</a>
       <a href="../../index.html#process" class="mobile-nav-link">Process</a>
     </div>
 
@@ -973,6 +991,21 @@
         <div class="eyebrow">/ CERTIFICATIONS</div>
         <h2 class="section" id="certs-h">Certifications we support</h2>
       </div>
+
+      <!-- Certificate scans — placeholder images; client will replace with real certificate scans -->
+      <div class="cs-certs reveal">
+        <button type="button" class="cs-cert" data-cert="../../img/platform/01.jpg" aria-label="View full certificate">
+          <img src="../../img/platform/01.jpg" alt="GMIC certification document" onerror="this.style.display='none'">
+        </button>
+        <button type="button" class="cs-cert" data-cert="../../img/platform/02.jpg" aria-label="View full certificate">
+          <img src="../../img/platform/02.jpg" alt="GMIC certification document" onerror="this.style.display='none'">
+        </button>
+        <button type="button" class="cs-cert" data-cert="../../img/platform/03.jpg" aria-label="View full certificate">
+          <img src="../../img/platform/03.jpg" alt="GMIC certification document" onerror="this.style.display='none'">
+        </button>
+      </div>
+      <p class="cs-certs-cap reveal">Tap any certificate to view it full size.</p>
+
       <!-- [verify] region/purpose tags are general facts — confirm before publishing -->
       <div class="cert-grid reveal">
         <div class="cert-card">
@@ -1336,6 +1369,28 @@ document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
   function init(){ measure(); pos = clamp(pos); render(false); }
   init();
   window.addEventListener('load', init);   // re-measure once images have loaded
+})();
+</script>
+
+<!-- Certificate lightbox — self-contained, scoped to #csLightbox -->
+<div class="cs-lightbox" id="csLightbox" role="dialog" aria-modal="true" aria-label="Certificate viewer">
+  <button type="button" class="cs-lightbox-close" aria-label="Close">&times;</button>
+  <img src="" alt="GMIC certification document">
+</div>
+<script>
+(function(){
+  var lb = document.getElementById('csLightbox');
+  if(!lb) return;
+  var lbImg = lb.querySelector('img');
+  var closeBtn = lb.querySelector('.cs-lightbox-close');
+  function open(src){ lbImg.setAttribute('src', src); lb.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  function close(){ lb.classList.remove('open'); document.body.style.overflow = ''; lbImg.setAttribute('src', ''); }
+  document.querySelectorAll('.cs-cert').forEach(function(btn){
+    btn.addEventListener('click', function(){ var s = btn.getAttribute('data-cert'); if(s) open(s); });
+  });
+  closeBtn.addEventListener('click', close);
+  lb.addEventListener('click', function(e){ if(e.target === lb) close(); });   // click outside the image
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && lb.classList.contains('open')) close(); });
 })();
 </script>
 </body>
