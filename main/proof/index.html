@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>FAQ — GMIC.AI</title>
-<meta name="description" content="Frequently asked questions about working with GMIC on AI hardware — from prototyping and ODM/OEM to manufacturing, certification, and pricing.">
+<title>Proof — GMIC.AI</title>
+<meta name="description" content="Proof of GMIC.AI: real AI-hardware projects — manufacturing scale-up to ~5,000 units, AI co-development, healthcare AI-scribe pilots, field deployment of wearable voice hardware, and enterprise AI evaluation.">
 <link rel="icon" type="image/png" href="../img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="../css/grid.css">
 
 <style>
-/* ===== NAV CSS (copied verbatim from about/index.html so the header matches site-wide) ===== */
+/* ===== NAV CSS from homepage ===== */
 :root{--sans:'Inter',sans-serif;--black:#111111;--white:#ffffff;--blue:#2563eb;--blue-deep:#1a4fbf;--border-light:rgba(0,0,0,0.08);--border-dark:rgba(255,255,255,0.08);}
 .nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:background .35s ease,backdrop-filter .35s ease,box-shadow .35s ease,color .35s ease;}
 .nav-logo-svg{height:28px;width:auto;display:block;color:#0f172a;transition:color .3s ease;}
@@ -27,25 +27,30 @@
 .btn-nav{background:#0f172a;color:var(--white);padding:10px 18px;font-size:13.5px;}
 .btn-nav:hover{background:#1e293b;transform:translateY(-1px);}
 /* ===== Dropdown navigation — full-width mega menu ===== */
+/* ── Mega Menu Base ── */
 .nav-item {
-  position: relative;
+  position: relative; /* anchors the hover-bridge pseudo-element */
   height: 100%;
   display: flex;
   align-items: center;
 }
+
+/* Pseudo-element bridge so the mouse doesn't lose hover
+   when moving from the nav link down to the dropdown panel */
 .nav-item.has-dropdown::after {
   content: '';
   position: absolute;
   top: 100%;
   left: -20px;
   right: -20px;
-  height: 20px;
+  height: 20px; /* bridges the gap */
   background: transparent;
 }
+
 .nav-dropdown {
   display: none;
   position: fixed;
-  top: 64px;
+  top: 64px; /* height of nav bar */
   left: 0;
   right: 0;
   width: 100%;
@@ -54,10 +59,17 @@
   
   box-shadow: 0 8px 40px rgba(0,0,0,0.10);
   z-index: 999;
-  padding: 32px 0 40px;
+  padding: 32px 0 40px; /* generous top/bottom padding, flush against nav */
 }
-.nav-item.has-dropdown:hover .nav-dropdown { display: block; }
-.nav-item.has-dropdown:hover .nav-arrow { transform: rotate(90deg); opacity: 1; }
+
+.nav-item.has-dropdown:hover .nav-dropdown {
+  display: block;
+}
+.nav-item.has-dropdown:hover .nav-arrow {
+  transform: rotate(90deg);
+  opacity: 1;
+}
+
 .dropdown-inner {
   max-width: 1200px;
   margin: 0 auto;
@@ -66,7 +78,13 @@
   display: flex;
   gap: 0;
 }
-.nav-dropdown--products .dropdown-inner { flex-direction: row; gap: 0; }
+
+/* ── Products Mega Menu ── */
+.nav-dropdown--products .dropdown-inner {
+  flex-direction: row;
+  gap: 0;
+}
+
 .dropdown-sidebar {
   width: 200px;
   flex-shrink: 0;
@@ -77,8 +95,9 @@
   flex-direction: column;
   gap: 4px;
 }
+
 .dropdown-sidebar-label {
-  font-size: 1rem;
+  font-size: 1rem; /* 16px */
   font-weight: 700;
   color: #0f172a;
   padding: 10px 12px;
@@ -86,9 +105,19 @@
   cursor: pointer;
   transition: background 0.15s;
 }
-.dropdown-sidebar-label:hover { background: #f0f4ff; color: #2563eb; }
-.dropdown-sidebar-label.active { background: #f0f4ff; color: #2563eb; }
-.dropdown-product-card.hidden { display: none; }
+
+.dropdown-sidebar-label:hover {
+  background: #f0f4ff;
+  color: #2563eb;
+}
+.dropdown-sidebar-label.active {
+  background: #f0f4ff;
+  color: #2563eb;
+}
+.dropdown-product-card.hidden {
+  display: none;
+}
+
 .dropdown-grid {
   flex: 1;
   display: grid;
@@ -96,6 +125,7 @@
   gap: 16px;
   align-items: start;
 }
+
 .dropdown-product-card {
   display: flex;
   flex-direction: column;
@@ -106,43 +136,101 @@
   transition: background 0.15s;
   border: 1px solid transparent;
 }
-.dropdown-product-card:hover { background: #f5f7ff; border-color: rgba(37,99,235,0.15); }
+
+.dropdown-product-card:hover {
+  background: #f5f7ff;
+  border-color: rgba(37,99,235,0.15);
+}
+
 .dropdown-all {
   background: transparent;
   border: 1px solid transparent !important;
+  /* 与其他卡片一样 top-aligned */
   align-items: flex-start;
   justify-content: flex-start;
 }
-.dropdown-all:hover { background: #f0f4ff !important; border-color: rgba(37,99,235,0.5) !important; }
+
+.dropdown-all:hover {
+  background: #f0f4ff !important;
+  border-color: rgba(37,99,235,0.5) !important;
+}
+
 .dp-all-icon {
   width: 100%;
-  height: 94px;
+  height: 94px;          /* 与 .dropdown-product-card img 的 height 相同 */
   display: flex;
   align-items: center;
   justify-content: center;
   background: transparent;
   border-radius: 6px;
-  margin-bottom: 10px;
+  margin-bottom: 10px;   /* 与 .dropdown-product-card img 的 margin-bottom 相同 */
   transition: background 0.15s;
 }
-.dropdown-all .dp-all-icon svg { stroke: #9ca3af; transition: stroke 0.15s; }
-.dropdown-all:hover .dp-all-icon { background: #e8eeff; }
-.dropdown-all:hover .dp-all-icon svg { stroke: #2563eb; }
-.dropdown-all .dp-name { color: #0f172a; transition: color 0.15s; }
-.dropdown-all:hover .dp-name { color: #2563eb; }
+
+.dropdown-all .dp-all-icon svg {
+  stroke: #9ca3af;
+  transition: stroke 0.15s;
+}
+
+.dropdown-all:hover .dp-all-icon {
+  background: #e8eeff;
+}
+
+.dropdown-all:hover .dp-all-icon svg {
+  stroke: #2563eb;
+}
+
+.dropdown-all .dp-name {
+  color: #0f172a;   /* 默认深色，不要蓝色 */
+  transition: color 0.15s;
+}
+
+.dropdown-all:hover .dp-name {
+  color: #2563eb;   /* hover 才变蓝 */
+}
+
 .dropdown-product-card img {
   width: 100%;
-  height: 94px;
+  height: 94px;             /* 从 72px 放大到 94px */
   object-fit: contain;
   margin-bottom: 10px;
-  background: transparent;
+  background: transparent;  /* 去掉灰色背景 */
   border-radius: 6px;
   padding: 0;
 }
-.dp-name { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 3px; }
-.dp-desc { font-size: 0.875rem; color: #888; line-height: 1.5; display: none; }
-.dp-arrow { font-size: 22px; color: #2563eb; margin-bottom: 6px; }
-.nav-dropdown--text .dropdown-inner { gap: 0; }
+
+.dp-name {
+  font-size: 1rem; /* 16px */
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 3px;
+}
+
+.dp-desc {
+  font-size: 0.875rem; /* 14px */
+  color: #888;
+  line-height: 1.5;
+  display: none;
+}
+
+.dropdown-all {
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent !important;
+}
+
+.dp-arrow {
+  font-size: 22px;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+/* ── Text Mega Menu (Custom Devices & Industries) ── */
+.nav-dropdown--text .dropdown-inner {
+  gap: 0;
+}
+
 .dropdown-col {
   flex: 1;
   padding: 0 32px;
@@ -150,10 +238,15 @@
   display: flex;
   flex-direction: column;
 }
+
 .dropdown-col:first-child { padding-left: 0; }
-.dropdown-col:last-child { border-right: none; padding-right: 0; }
+.dropdown-col:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
 .dropdown-col-head {
-  font-size: 0.75rem;
+  font-size: 0.75rem; /* 12px — kept small as it's a label */
   font-weight: 700;
   color: #aaa;
   text-transform: uppercase;
@@ -162,8 +255,9 @@
   padding-bottom: 10px;
   border-bottom: 1px solid rgba(0,0,0,0.06);
 }
+
 .dropdown-link {
-  font-size: 1rem;
+  font-size: 1rem; /* 16px */
   color: #0f172a;
   text-decoration: none;
   padding: 7px 0;
@@ -173,9 +267,20 @@
   align-items: center;
   gap: 6px;
 }
+
 .dropdown-link:hover { color: #2563eb; }
-.dropdown-link--external { color: #2563eb; font-weight: 600; }
-.dropdown-link--external::after { content: '↗'; font-size: 11px; }
+
+.dropdown-link--external {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.dropdown-link--external::after {
+  content: '↗';
+  font-size: 11px;
+}
+
+/* ── Nav arrow ── */
 .nav-arrow {
   font-size: 10px;
   margin-left: 3px;
@@ -183,6 +288,8 @@
   transition: transform 0.2s;
   display: inline-block;
 }
+
+/* ── Overlay behind mega menu ── */
 .nav-overlay {
   display: none;
   position: fixed;
@@ -192,10 +299,14 @@
 }
 .nav-item.has-dropdown:hover ~ .nav-overlay,
 .nav-overlay:hover { display: block; }
+
+/* ── Mobile: hide mega menu ── */
 @media (max-width: 768px) {
   .nav-dropdown { display: none !important; }
   .nav-arrow { display: none; }
 }
+
+/* ── Hamburger button ── */
 .nav-burger {
   display: none;
   flex-direction: column;
@@ -218,9 +329,18 @@
   transition: transform 0.3s, opacity 0.3s;
   transform-origin: center;
 }
-.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.nav-burger.open span:nth-child(2) { opacity: 0; }
-.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* X state when open */
+.nav-burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-burger.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile nav drawer ── */
 .mobile-nav {
   display: none;
   position: fixed;
@@ -235,7 +355,9 @@
   transition: transform 0.3s ease;
   padding-top: 80px;
 }
-.mobile-nav.open { transform: translateX(0); }
+.mobile-nav.open {
+  transform: translateX(0);
+}
 .mobile-nav-inner {
   padding: 24px 28px 40px;
   display: flex;
@@ -246,9 +368,11 @@
   padding: 16px 0;
   border-bottom: 1px solid rgba(0,0,0,0.06);
 }
-.mobile-nav-section:last-of-type { border-bottom: none; }
+.mobile-nav-section:last-of-type {
+  border-bottom: none;
+}
 .mobile-nav-head {
-  font-size: 0.75rem;
+  font-size: 0.75rem; /* 12px — label only */
   font-weight: 700;
   color: #aaa;
   text-transform: uppercase;
@@ -257,7 +381,7 @@
 }
 .mobile-nav-link {
   display: block;
-  font-size: 1rem;
+  font-size: 1rem; /* 16px */
   font-weight: 500;
   color: #0f172a;
   text-decoration: none;
@@ -265,9 +389,21 @@
   transition: color 0.15s;
 }
 .mobile-nav-link:hover { color: #2563eb; }
-.mobile-nav-link--external { color: #2563eb; font-weight: 600; }
-.mobile-nav-cta { padding-top: 24px; }
-.mobile-nav-cta .btn-nav { display: block; text-align: center; width: 100%; padding: 14px; }
+.mobile-nav-link--external {
+  color: #2563eb;
+  font-weight: 600;
+}
+.mobile-nav-cta {
+  padding-top: 24px;
+}
+.mobile-nav-cta .btn-nav {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 14px;
+}
+
+/* ── Overlay ── */
 .mobile-nav-overlay {
   display: none;
   position: fixed;
@@ -275,379 +411,611 @@
   background: rgba(0,0,0,0.4);
   z-index: 1001;
 }
-.mobile-nav-overlay.open { display: block; }
+.mobile-nav-overlay.open {
+  display: block;
+}
+
+/* ── Show burger on mobile, hide desktop links ── */
 @media (max-width: 768px) {
   .nav-burger { display: flex; }
   .nav-links { display: none; }
   .nav-right { display: none; }
   .mobile-nav { display: block; }
 }
-.nav-dropdown { background: #ffffff; color: #0f172a; }
-.dropdown-col-head { color: #aaaaaa !important; }
-.dropdown-link { color: #0f172a !important; }
-.dropdown-link:hover { color: #2563eb !important; }
-.dropdown-link--external { color: #2563eb !important; }
-.dropdown-sidebar-label { color: #0f172a !important; }
-.dropdown-sidebar-label:hover { color: #2563eb !important; }
+
+/* ── Force black text in all dropdown panels ── */
+.nav-dropdown {
+  background: #ffffff;
+  color: #0f172a;
+}
+.dropdown-col-head {
+  color: #aaaaaa !important;
+}
+.dropdown-link {
+  color: #0f172a !important;
+}
+.dropdown-link:hover {
+  color: #2563eb !important;
+}
+.dropdown-link--external {
+  color: #2563eb !important;
+}
+.dropdown-sidebar-label {
+  color: #0f172a !important;
+}
+.dropdown-sidebar-label:hover {
+  color: #2563eb !important;
+}
+
+/* Active state for Company/About Us */
+.nav-company-active{font-weight:700 !important;color:#2563eb !important;}
+.nav.scrolled .nav-company-active{color:#2563eb !important;}
 
 /* ============================================================
-   FAQ — page-specific styles
-   Tokens reuse the site palette: blue #2563eb, ink #0a0a0a,
-   light-grey panel #F5F6F8, card border #E5E7EB, radius 12px.
+   ABOUT US — page styles
    ============================================================ */
-body { background: #fff; color: #0a0a0a; -webkit-font-smoothing: antialiased; --faq-controls-w: 800px; }
+body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 
-.faq-wrap { max-width: 1512px; width: 100%; margin: 0 auto; padding: 0 clamp(20px, 4vw, 48px); }
+.ab-wrap { max-width: 1512px; width: 100%; margin: 0 auto; padding: 0 clamp(20px, 4vw, 80px); }
 
-/* small slashed section label, e.g. "/ HELP CENTER" */
-.faq-label {
-  font-family: var(--sans);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.12em;
+.ab-eyebrow {
+  font-size: 0.9rem;
   text-transform: uppercase;
-  color: #9ca3af;
+  letter-spacing: 0.12em;
+  color: #999;
+  margin-bottom: 16px;
+  font-weight: 500;
 }
-.faq-label::before { content: '/ '; color: #2563eb; }
-.faq-label--dark { color: rgba(255,255,255,0.55); }
-.faq-label--dark::before { color: #2563eb; }
+.ab-eyebrow--dark { color: #444; }
 
-/* ---------- HERO ---------- */
-.faq-hero {
-  background: #F5F6F8;
-  padding: 140px 0 56px;
-  text-align: center;
+/* ---------- 1. HERO ---------- */
+.ab-hero { background: #fff; padding: 120px 0 0; }
+.ab-hero-top { text-align: center; padding: 0 48px 56px; }
+.ab-hero-tag {
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #999;
+  margin-bottom: 20px;
+  font-weight: 500;
 }
-.faq-breadcrumb {
-  display: flex;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  white-space: nowrap;
+.ab-hero h1 {
   font-family: var(--sans);
-  font-size: 13px;
-  color: #6b7280;
-  margin-bottom: 22px;
-}
-.faq-breadcrumb a { color: #6b7280; transition: color 0.15s; }
-.faq-breadcrumb a:hover { color: #2563eb; }
-.faq-breadcrumb .sep { color: #cbd5e1; }
-.faq-breadcrumb [aria-current="page"] { color: #0f172a; font-weight: 600; }
-.faq-hero h1 {
-  font-family: var(--sans);
-  font-size: clamp(34px, 5vw, 56px);
+  font-size: clamp(36px, 4.5vw, 58px);
   font-weight: 700;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
   line-height: 1.05;
-  color: #0a0a0a;
-  margin-top: 16px;
-}
-.faq-hero h1 .accent { color: #2563eb; }
-.faq-hero-sub {
-  font-size: 1.0625rem;
-  color: #5b6472;
-  max-width: 620px;
-  margin: 18px auto 0;
-  line-height: 1.7;
-}
-
-/* ---------- SEARCH ---------- */
-.faq-controls { padding: 40px 0 8px; }
-.faq-search {
-  position: relative;
-  /* shares the exact same width as the category-tabs row below (--faq-controls-w),
-     so both boxes always have identical left/right edges at any screen size */
-  width: 100%;
-  max-width: var(--faq-controls-w, 800px);
+  color: #111;
+  max-width: 900px;
   margin: 0 auto;
 }
-.faq-search-icon {
-  position: absolute;
-  left: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
-  color: #9ca3af;
-  pointer-events: none;
-}
-.faq-search input {
-  width: 100%;
-  padding: 16px 22px 16px 50px;
-  border: 1px solid #E5E7EB;
-  border-radius: 999px;
-  font-size: 1rem;
-  font-family: var(--sans);
-  color: #0a0a0a;
-  background: #fff;
-  outline: none;
-  transition: border-color 0.18s, box-shadow 0.18s;
-}
-.faq-search input::placeholder { color: #9ca3af; }
-.faq-search input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 4px rgba(37,99,235,0.10);
-}
-
-/* ---------- CATEGORY TABS ---------- */
-.faq-tabs {
-  display: flex;
-  flex-wrap: nowrap;            /* keep all tabs on a single row */
-  justify-content: center;
-  gap: 8px;
-  width: 100%;
-  max-width: var(--faq-controls-w, 800px); /* identical width to the search box above */
-  margin: 24px auto 0;
-  overflow-x: auto;            /* narrow screens scroll instead of wrapping */
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;       /* Firefox: hide scrollbar */
-  padding-bottom: 2px;
-}
-.faq-tabs::-webkit-scrollbar { display: none; } /* WebKit: hide scrollbar */
-.faq-tab {
-  font-family: var(--sans);
-  font-size: 13.5px;
-  font-weight: 500;
-  color: #5b6472;
-  background: #fff;
-  border: 1px solid #E5E7EB;
-  border-radius: 100px;
-  padding: 8px 16px;
-  cursor: pointer;
-  transition: all 0.15s ease;
-  white-space: nowrap;
-  flex-shrink: 0;              /* don't squeeze tabs when the row overflows */
-}
-.faq-tab:hover { border-color: #c7d7f5; color: #2563eb; }
-.faq-tab.active {
-  background: #0a0a0a;
-  border-color: #0a0a0a;
-  color: #fff;
-}
-
-/* ---------- ACCORDION LIST ---------- */
-.faq-list { padding: 36px 0 8px; }
-.faq-count {
-  font-size: 13px;
-  color: #9ca3af;
-  margin-bottom: 16px;
-}
-.faq-item {
-  border: none;
-  border-bottom: 1px solid #E5E7EB;
-  border-radius: 0;
-  background: #fff;
-  margin-bottom: 0;
-  overflow: hidden;
-  transition: background 0.18s;
-}
-.faq-item.open {
-  box-shadow: none;
-}
-.faq-q {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  text-align: left;
-  padding: 20px 22px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  font-family: var(--sans);
-}
-/* title + badge sit on one row, badge trailing the title text */
-.faq-q-main {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 12px;                   /* space between the title and the trailing badge */
-}
-.faq-q-text {
+.ab-hero-sub {
   font-size: 1.0625rem;
-  font-weight: 600;
-  color: #0a0a0a;
-  line-height: 1.4;
-}
-.faq-q-cat {
-  display: inline-block;
-  flex-shrink: 0;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #2563eb;
-  background: #eef3ff;
-  border-radius: 6px;
-  padding: 3px 8px;
-  margin: 0;
-}
-.faq-icon {
-  flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  position: relative;
-  color: #9ca3af;
-  transition: color 0.18s, transform 0.25s ease;
-}
-.faq-icon::before,
-.faq-icon::after {
-  content: '';
-  position: absolute;
-  background: currentColor;
-  border-radius: 2px;
-  top: 50%;
-  left: 50%;
-}
-.faq-icon::before { width: 14px; height: 2px; transform: translate(-50%, -50%); }
-.faq-icon::after { width: 2px; height: 14px; transform: translate(-50%, -50%); transition: transform 0.25s ease; }
-.faq-item.open .faq-icon { color: #2563eb; }
-.faq-item.open .faq-icon::after { transform: translate(-50%, -50%) scaleY(0); }
-.faq-a {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-.faq-a-inner {
-  padding: 0 22px 22px;
-  font-size: 0.9375rem;
-  color: #5b6472;
+  color: #666;
+  max-width: 680px;
+  margin: 20px auto 0;
   line-height: 1.72;
 }
-/* Rich-text answer content (paragraphs, lists, inline emphasis) */
-.faq-a-inner > :first-child { margin-top: 0; }
-.faq-a-inner > :last-child { margin-bottom: 0; }
-.faq-a-inner p { margin: 0 0 14px; }
-.faq-a-inner ul {
-  margin: 0 0 14px;
-  padding-left: 22px;
-  list-style: disc;
-}
-.faq-a-inner li { margin: 0 0 6px; }
-.faq-a-inner strong { color: #0a0a0a; font-weight: 600; }
-
-/* ---------- EMPTY STATE ---------- */
-.faq-empty {
-  display: none;
-  text-align: center;
-  padding: 56px 20px;
-  border: 1px dashed #E5E7EB;
-  border-radius: 12px;
-  color: #6b7280;
-}
-.faq-empty svg { width: 32px; height: 32px; color: #cbd0d8; margin-bottom: 14px; }
-.faq-empty p { font-size: 0.9375rem; line-height: 1.6; }
-.faq-empty a { color: #2563eb; font-weight: 600; }
-
-/* ---------- PAGINATION ---------- */
-.faq-pagination {
+.ab-carousel { overflow: hidden; width: 100%; }
+.ab-carousel-track {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  padding: 32px 0 8px;
-  flex-wrap: wrap;
+  width: max-content;
+  animation: ab-scroll 30s linear infinite;
 }
-.faq-page-btn {
-  min-width: 38px;
-  height: 38px;
-  padding: 0 10px;
+.ab-carousel:hover .ab-carousel-track { animation-play-state: paused; }
+.ab-carousel-track img {
+  height: 340px;
+  width: 420px;
+  object-fit: cover;
+  flex-shrink: 0;
+  margin-right: 4px;
+  display: block;
+}
+@keyframes ab-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ---------- 2. STATS ---------- */
+.ab-stats {
+  background: #fff;
+  padding: 72px 0;
+  border-top: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+.ab-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); }
+.ab-stat { padding: 0 56px; border-left: 1px solid #f0f0f0; }
+.ab-stat:first-child { padding-left: 0; border-left: none; }
+.ab-stat-num {
+  font-size: 3.25rem;
+  font-weight: 700;
+  letter-spacing: -0.05em;
+  color: #111;
+  line-height: 1;
+}
+.ab-stat-label { font-size: 0.875rem; color: #999; margin-top: 10px; line-height: 1.5; }
+
+/* ---------- 3. BRAND STORY ---------- */
+.ab-story { background: #fff; padding: 96px 0; }
+.ab-story-grid {
+  display: grid;
+  grid-template-columns: 44fr 56fr;
+  gap: 80px;
+  align-items: center;
+}
+.ab-story h2 {
+  font-family: var(--sans);
+  font-size: clamp(2.125rem, 4vw, 3.125rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
+  color: #111;
+}
+.ab-story-body { font-size: 0.9375rem; color: #666; line-height: 1.78; margin-top: 20px; }
+.ab-story-body p + p { margin-top: 16px; }
+.ab-story-logos {
+  background: #f8f8f8;
+  width: 100%;
+  height: 460px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+.ab-story-logos .divider { font-size: 1.5rem; color: #ccc; line-height: 1; }
+
+/* ---------- 4. GLOBAL OFFICES ---------- */
+.ab-offices { background: #fff; padding: 96px 0; border-top: 1px solid #f0f0f0; }
+.ab-offices h2 {
+  font-family: var(--sans);
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #111;
+}
+.ab-offices-sub { font-size: 0.9375rem; color: #666; margin-top: 10px; line-height: 1.6; }
+.ab-offices-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+.ab-office { border: 1px solid #f0f0f0; border-radius: 12px; overflow: hidden; }
+.ab-office-body { padding: 24px 28px; }
+.ab-office-city {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111;
+}
+.ab-office-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.ab-office-role { font-size: 0.875rem; color: #999; margin-top: 6px; margin-bottom: 16px; }
+.ab-office-lines { font-size: 0.875rem; color: #666; line-height: 1.8; }
+.ab-office-lines a { color: #666; transition: color 0.15s ease; }
+.ab-office-lines a:hover { color: #111; }
+.ab-office-chip {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  border: 1px solid #E5E7EB;
-  border-radius: 8px;
-  background: #fff;
-  font-family: var(--sans);
-  font-size: 14px;
-  font-weight: 500;
-  color: #5b6472;
-  cursor: pointer;
-  transition: all 0.15s ease;
+  gap: 7px;
+  border: 1px solid #e8e8e8;
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 0.875rem;
+  color: #666;
+  margin-top: 16px;
 }
-.faq-page-btn:hover:not(:disabled) { border-color: #c7d7f5; color: #2563eb; }
-.faq-page-btn.active {
-  background: #2563eb;
-  border-color: #2563eb;
-  color: #fff;
-}
-.faq-page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.ab-office-chip .ab-office-dot { width: 7px; height: 7px; }
 
-/* ---------- CTA (dark) ---------- */
-.faq-cta {
-  background: #0a0a0a;
-  padding: 96px 0;
-  margin-top: 100px;          /* clear gap between pagination and CTA */
-  text-align: center;
-}
-.faq-cta h2 {
+/* ---------- 5. OUR MISSION (full-bleed black) ---------- */
+.ab-mission { background: #111; padding: 120px 0; text-align: center; }
+.ab-mission h2 {
   font-family: var(--sans);
-  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-size: clamp(1.75rem, 3.5vw, 2.625rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  color: #fff;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.ab-mission .ab-eyebrow {
+  font-size: 1rem;
+  color: #aaa;
+  letter-spacing: 0.14em;
+  margin-bottom: 24px;
+}
+.ab-mission-body { font-size: 1rem; color: #aaa; max-width: 480px; margin: 24px auto 0; line-height: 1.75; }
+
+/* ---------- 6. MANUFACTURING (black) ---------- */
+.ab-mfg { background: #111; padding: 96px 0; border-top: 1px solid #1e1e1e; }
+.ab-mfg h2 {
+  font-family: var(--sans);
+  font-size: clamp(2.125rem, 4vw, 3.125rem);
   font-weight: 700;
   letter-spacing: -0.035em;
   color: #fff;
-  margin-top: 18px;
 }
-.faq-cta-sub {
-  font-size: 1rem;
-  color: #9ca3af;
-  max-width: none;            /* allow the line to use the wide container */
-  margin: 16px auto 0;
-  line-height: 1.72;
+.ab-mfg-sub { font-size: 0.9375rem; color: #aaa; margin-top: 10px; }
+.ab-mfg-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr 1fr;
+  grid-template-rows: 250px 250px;
+  gap: 2px;
+  margin-top: 48px;
 }
-.faq-cta-actions {
+.ab-mcell { position: relative; overflow: hidden; }
+.ab-mcell img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.ab-mcell:hover img { transform: scale(1.03); }
+.ab-mcell-tall { grid-row: span 2; }
+.ab-mcell-ov {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 1;
+}
+.ab-mcell-label {
+  position: absolute;
+  bottom: 14px;
+  left: 16px;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.7);
+  font-weight: 500;
+  z-index: 2;
+}
+
+/* ---------- 7. CAPABILITIES (white) ---------- */
+.ab-cap { background: #fff; padding: 96px 0; }
+.ab-cap-grid { display: grid; grid-template-columns: 38fr 62fr; gap: 80px; }
+.ab-cap-left { position: sticky; top: 96px; align-self: start; }
+.ab-cap h2 {
+  font-family: var(--sans);
+  font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  color: #111;
+}
+.ab-cap-intro { font-size: 0.9375rem; color: #666; margin-top: 16px; line-height: 1.75; }
+.ab-cap-item {
+  border-top: 1px solid #f0f0f0;
+  padding: 28px 0;
+  display: flex;
+  gap: 20px;
+}
+.ab-cap-item:last-child { border-bottom: 1px solid #f0f0f0; }
+.ab-cap-num {
+  width: 36px;
+  height: 36px;
+  background: #f5f5f5;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
-  margin-top: 32px;
-  flex-wrap: wrap;
+  flex-shrink: 0;
+  margin-top: 2px;
 }
-.faq-cta-btn {
-  background: #2563eb;
+.ab-cap-num svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.5;
+  color: #999;
+}
+.ab-cap-item h3 { font-size: 1.125rem; font-weight: 600; color: #111; }
+.ab-cap-item p { font-size: 0.875rem; color: #666; line-height: 1.72; margin-top: 6px; }
+
+/* ---------- 8. LEADERSHIP (black) ---------- */
+.ab-team { background: #111; padding: 96px 0; }
+.ab-team h2 {
+  font-family: var(--sans);
+  font-size: clamp(2.125rem, 4vw, 3.125rem);
+  font-weight: 700;
+  letter-spacing: -0.035em;
   color: #fff;
-  padding: 14px 30px;
-  border-radius: 100px;
-  font-size: 0.9375rem;
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-block;
-  transition: background 0.15s, transform 0.15s;
 }
-.faq-cta-btn:hover { background: #1d4ed8; transform: translateY(-1px); }
-.faq-cta-link {
-  font-size: 0.9375rem;
+.ab-team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; }
+.ab-team-photo {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+  object-position: top center;
+  border-radius: 8px;
+}
+.ab-team-info { padding-top: 20px; }
+.ab-team-name { font-size: 1rem; font-weight: 600; color: #fff; }
+.ab-team-role { font-size: 0.875rem; color: #555; margin-top: 5px; line-height: 1.4; }
+.ab-team-bio {
+  font-size: 0.875rem;
+  color: #666;
+  line-height: 1.72;
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid #1e1e1e;
+}
+.ab-team-sample {
+  margin-top: 16px;
+  border: 1px solid #2a2a2a;
+  background: transparent;
+  color: #aaa;
+  padding: 9px 20px;
+  border-radius: 6px;
+  font-size: 0.875rem;
   font-weight: 500;
-  color: #9ca3af;
+  display: inline-block;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.ab-team-sample:hover { background: #1e1e1e; }
+
+/* ---------- 9. JOIN / CTA ---------- */
+.ab-join {
+  background: #f8f8f8;
+  padding: 0;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.ab-join-left {
+  background: #f8f8f8;
+  padding: 80px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.ab-join h2 {
+  font-family: var(--sans);
+  font-size: clamp(1.75rem, 3vw, 2.625rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #111;
+  line-height: 1.15;
+}
+.ab-join-body { font-size: 1rem; color: #666; margin-top: 16px; line-height: 1.75; max-width: 400px; }
+.ab-join-btn {
+  margin-top: 32px;
+  align-self: flex-start;
+  background: #111;
+  color: #fff;
+  padding: 12px 26px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  display: inline-block;
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+.ab-join-btn:hover { opacity: 0.85; }
+.ab-join-link {
+  margin-top: 12px;
+  align-self: flex-start;
+  font-size: 0.9rem;
+  color: #999;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: color 0.15s;
+  transition: color 0.15s ease;
 }
-.faq-cta-link:hover { color: #fff; }
+.ab-join-link:hover { color: #111; }
+.ab-join-img {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  object-fit: cover;
+  object-position: center;
+}
 
-/* ---------- RESPONSIVE ---------- */
+/* ---------- 10. NEWSLETTER ---------- */
+.ab-news { background: #fff; padding: 80px 0; border-top: 1px solid #f0f0f0; }
+.ab-news-grid { display: grid; grid-template-columns: 45fr 55fr; gap: 80px; align-items: center; }
+.ab-news h2 {
+  font-family: var(--sans);
+  font-size: clamp(1.5rem, 2.5vw, 2.125rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #111;
+  line-height: 1.2;
+}
+.ab-news-body { font-size: 0.9375rem; color: #666; margin-top: 12px; line-height: 1.75; }
+.ab-news-fine { font-size: 0.875rem; color: #bbb; margin-top: 12px; line-height: 1.6; }
+.ab-news-form { display: flex; flex-direction: row; gap: 8px; align-items: center; }
+.ab-news-input {
+  flex: 1;
+  padding: 12px 18px;
+  border: 1px solid #e0e0e0;
+  border-radius: 7px;
+  font-size: 0.875rem;
+  color: #111;
+  font-family: 'Inter', sans-serif;
+  outline: none;
+  transition: border-color 0.15s ease;
+}
+.ab-news-input:focus { border-color: #999; }
+.ab-news-btn {
+  background: #111;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 7px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: opacity 0.15s ease;
+}
+.ab-news-btn:hover { opacity: 0.85; }
+.ab-news-done { font-size: 0.9375rem; color: #111; font-weight: 500; }
+
+/* ---------- RESPONSIVE (<=768px) ---------- */
 @media (max-width: 768px) {
-  .faq-hero { padding: 100px 0 44px; }
-  .faq-wrap { padding: 0 20px; }
-  /* left-align so the scrollable tab row starts at the first tab */
-  .faq-tabs { justify-content: flex-start; }
-  .faq-q { padding: 18px 16px; }
-  .faq-q-text { font-size: 1rem; }
-  .faq-a-inner { padding: 0 16px 18px; }
-  .faq-cta { padding: 72px 0; margin-top: 72px; }
-  .faq-cta-actions { flex-direction: column; gap: 16px; }
+  .ab-wrap { padding: 0 24px; }
+
+  .ab-hero { padding: 64px 0 0; }
+  .ab-hero-top { padding: 0 24px 40px; }
+  .ab-hero h1 { max-width: 100%; font-size: 3rem; }
+  .ab-carousel-track img { height: 220px; width: 280px; }
+
+  .ab-stats { padding: 64px 0; }
+  .ab-stats-grid { grid-template-columns: 1fr 1fr; row-gap: 40px; }
+  .ab-stat { padding: 0 24px; }
+  .ab-stat:nth-child(odd) { padding-left: 0; border-left: none; }
+  .ab-stat:nth-child(even) { border-left: 1px solid #f0f0f0; }
+  .ab-stat-num { font-size: 2.75rem; }
+
+  .ab-story { padding: 64px 0; }
+  .ab-story-grid { grid-template-columns: 1fr; gap: 40px; }
+  .ab-story-logos { height: 280px; }
+  .ab-story-logos img { max-width: 140px; }
+
+  .ab-offices { padding: 64px 0; }
+  .ab-offices-grid { grid-template-columns: 1fr; }
+
+  .ab-mission { padding: 72px 24px; }
+  .ab-mission h2 { max-width: 100%; }
+
+  .ab-mfg { padding: 64px 0; }
+  .ab-mfg-grid { grid-template-columns: 1fr; grid-template-rows: none; }
+  .ab-mcell { height: 240px; }
+  .ab-mcell-tall { grid-row: auto; }
+
+  .ab-cap { padding: 64px 0; }
+  .ab-cap-grid { grid-template-columns: 1fr; gap: 40px; }
+  .ab-cap-left { position: static; top: auto; }
+
+  .ab-team { padding: 64px 0; }
+  .ab-team-grid { grid-template-columns: 1fr; }
+
+  .ab-join { grid-template-columns: 1fr; }
+  .ab-join-left { padding: 56px 24px; }
+  .ab-join-img { min-height: 280px; height: 280px; }
+
+  .ab-news { padding: 64px 0; }
+  .ab-news-grid { grid-template-columns: 1fr; gap: 32px; }
+  .ab-news-form { flex-direction: column; align-items: stretch; }
+  .ab-news-input, .ab-news-btn { width: 100%; }
 }
 
 .nav { border-bottom: none !important; box-shadow: none !important; }
+
+/* ============================================================
+   PROOF PAGE — page styles (pf-*) built on the existing tokens.
+   Reuses .ab-wrap / .ab-eyebrow(.--dark) from the copied nav/ab block.
+   ============================================================ */
+/* current-page nav highlight (mirror site's active treatment) */
+.nav-link.active{color:var(--blue) !important;font-weight:700;}
+.mobile-nav-link.active{color:var(--blue) !important;font-weight:700;}
+
+/* shared dark-section base */
+.pf-dark{background:#111;color:#aaa;}
+.pf-dark .ab-eyebrow,.pf-dark .ab-eyebrow--dark{color:#aaa;}
+
+.pf-h2{font-family:var(--sans);font-size:clamp(2.125rem,4vw,3.125rem);font-weight:700;letter-spacing:-0.035em;line-height:1.08;color:#111;margin:0;}
+.pf-dark .pf-h2{color:#fff;}
+
+.pf-btn{display:inline-block;background:#111;color:#fff;font-family:var(--sans);font-size:0.9rem;font-weight:600;padding:13px 26px;border-radius:100px;text-decoration:none;transition:opacity .15s ease,transform .15s ease;}
+.pf-btn:hover{opacity:.88;transform:translateY(-1px);}
+.pf-btn--light{background:#fff;color:#111;}
+
+/* ---------- 1. HERO (left-aligned, two-column header + full-width banner) ---------- */
+.pf-hero{padding:120px 0 0;background:#fff;}  /* clears the fixed nav; no bottom rule */
+.pf-hero-top{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:56px;align-items:end;}
+.pf-hero .ab-eyebrow{display:block;margin-bottom:18px;}
+.pf-hero h1{font-family:var(--sans);font-size:clamp(36px,4.5vw,58px);font-weight:700;letter-spacing:-0.04em;line-height:1.05;color:#111;margin:0;}
+.pf-hero h1 .accent{color:var(--blue);}
+.pf-hero-lead .pf-btn{margin-top:28px;}
+.pf-hero-note{padding-bottom:6px;}
+.pf-hero-note p{font-family:var(--sans);font-size:1.0625rem;line-height:1.7;color:#666;max-width:420px;margin:0;}
+.pf-hero-banner{margin-top:56px;width:100%;height:clamp(420px,42vw,520px);overflow:hidden;background:#e8eeff;}
+.pf-hero-banner img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* ---------- 2. STATS STRIP (flat row, hairline dividers) ---------- */
+.pf-stats-sec{padding:72px 0;background:#fff;}   /* no top/bottom rules; vertical column dividers only */
+.pf-stats{display:grid;grid-template-columns:repeat(4,1fr);}
+.pf-stat{padding:0 40px;border-left:1px solid #f0f0f0;}
+.pf-stat:first-child{border-left:none;padding-left:0;}
+.pf-stat-num{font-family:var(--sans);font-size:clamp(2rem,3vw,2.75rem);font-weight:700;letter-spacing:-0.03em;color:#111;line-height:1.05;}
+.pf-stat-cap{font-family:var(--sans);font-size:0.75rem;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#999;margin-top:10px;line-height:1.5;}
+
+/* ---------- 3. CASE STUDIES (alternating image/text rows) ---------- */
+.pf-sec{padding:clamp(72px,9vw,120px) 0;background:#fff;}
+.pf-sec-head{max-width:760px;margin-bottom:56px;}
+.pf-sec-head .ab-eyebrow{display:block;margin-bottom:14px;}
+.pf-cases{display:flex;flex-direction:column;}
+.pf-row{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:stretch;padding:64px 0;border-top:1px solid #f0f0f0;}
+.pf-row:first-child{border-top:none;padding-top:8px;}
+.pf-row-media{height:100%;border-radius:12px;overflow:hidden;background:#f0f0f0;}
+.pf-row-media img{width:100%;height:100%;object-fit:cover;display:block;}
+.pf-row:nth-child(even) .pf-row-media{order:2;}
+.pf-row-text{display:flex;flex-direction:column;justify-content:center;}
+.pf-row-text .ab-eyebrow{display:block;margin-bottom:14px;}
+.pf-row-h{font-family:var(--sans);font-size:clamp(1.5rem,2.4vw,1.75rem);font-weight:700;letter-spacing:-0.02em;line-height:1.18;color:#111;margin:0 0 16px;}
+.pf-row-body{font-family:var(--sans);font-size:0.9375rem;line-height:1.75;color:#666;margin:0 0 20px;}
+.pf-sub{font-family:var(--sans);font-size:0.8rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:#999;margin:0 0 10px;}
+.pf-checks{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-direction:column;gap:10px;}
+.pf-checks li{display:flex;align-items:flex-start;gap:10px;font-family:var(--sans);font-size:0.9375rem;line-height:1.55;color:#111;}
+.pf-checks li [data-lucide]{width:18px;height:18px;color:var(--blue);stroke:var(--blue);flex-shrink:0;margin-top:2px;}
+.pf-bullets{list-style:none;margin:0 0 20px;padding:0;display:flex;flex-direction:column;gap:8px;}
+.pf-bullets li{font-family:var(--sans);font-size:0.9375rem;line-height:1.55;color:#666;padding-left:16px;position:relative;}
+.pf-bullets li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:#cbd5e1;}
+.pf-row-muted{font-family:var(--sans);font-size:0.9375rem;font-style:italic;line-height:1.7;color:#999;margin:0;}
+
+/* ---------- 4. WHY THIS MATTERS (WHITE section, dark text — mirrors "What is ODM vs OEM").
+   Must NOT use the dark/--dark light-text styles, or labels go white-on-white. ---------- */
+.pf-why{border-top:1px solid #f0f0f0;}              /* separate from the white case section above */
+.pf-why .pf-sec-head{margin-bottom:32px;}           /* keep eyebrow/H2 close to the columns */
+.pf-vs{display:grid;grid-template-columns:1fr 1fr;}
+.pf-vs-half{padding:0 48px;border-left:1px solid #f0f0f0;}
+.pf-vs-half:first-child{padding-left:0;border-left:none;}
+.pf-vs-half:last-child{padding-right:0;}
+.pf-vs-icon{line-height:0;margin-bottom:18px;}
+.pf-vs-icon [data-lucide]{width:26px;height:26px;color:#111;stroke:#111;stroke-width:1.8;}
+.pf-vs-label{font-family:var(--sans);font-size:1.75rem;font-weight:600;letter-spacing:-0.02em;color:#111;line-height:1.1;margin-bottom:14px;}
+.pf-vs-line{font-family:var(--sans);font-size:1.0625rem;line-height:1.7;color:#666;margin:0;max-width:42ch;}
+
+/* ---------- 5. CTA (dark, centered) ---------- */
+.pf-cta{padding:clamp(96px,11vw,140px) 0;text-align:center;}
+.pf-cta-inner{max-width:760px;margin:0 auto;}
+.pf-cta .ab-eyebrow{display:block;margin-bottom:20px;}
+.pf-cta-body{font-family:var(--sans);font-size:1.0625rem;line-height:1.75;color:#aaa;margin:18px auto 0;max-width:600px;}
+.pf-cta-actions{margin-top:32px;display:flex;gap:24px;align-items:center;justify-content:center;flex-wrap:wrap;}
+.pf-cta-link{font-family:var(--sans);font-size:0.95rem;font-weight:600;color:#fff;text-decoration:none;transition:opacity .15s ease;}
+.pf-cta-link:hover{opacity:.7;}
+
+/* ---------- Responsive (<=900px) ---------- */
+@media (max-width:900px){
+  .pf-hero{padding-top:64px;}                /* smaller nav clearance on mobile */
+  .pf-hero-top{grid-template-columns:1fr;gap:28px;align-items:start;}
+  .pf-hero-note{padding-bottom:0;}
+  .pf-hero-note p{max-width:560px;}
+  .pf-hero-banner{margin-top:36px;height:clamp(260px,56vw,420px);}
+  .pf-stats{grid-template-columns:1fr 1fr;row-gap:40px;}
+  .pf-stat{padding:0 24px;}
+  .pf-stat:nth-child(odd){border-left:none;padding-left:0;}
+  .pf-stat:nth-child(even){border-left:1px solid #f0f0f0;}
+  .pf-row{grid-template-columns:1fr;gap:24px;padding:48px 0;}
+  .pf-row:nth-child(even) .pf-row-media{order:0;}
+  .pf-row-media{height:auto;}
+  .pf-row-media img{height:clamp(240px,60vw,300px);}
+  .pf-vs{grid-template-columns:1fr;}
+  .pf-vs-half{padding:0;}
+  .pf-vs-half:last-child{border-left:none;border-top:1px solid #f0f0f0;padding-top:32px;margin-top:32px;}
+}
+@media (max-width:560px){
+  .pf-stats{grid-template-columns:1fr;row-gap:32px;}
+  .pf-stat{border-left:none !important;padding-left:0 !important;}
+}
+
 </style>
 </head>
 <body>
 
-<!-- ========== NAV (inlined — identical to about/index.html) ========== -->
 <nav class="nav" id="nav">
   <div class="container nav-inner">
     <a href="../index.html" class="nav-logo" aria-label="GMIC.AI">
@@ -746,7 +1114,7 @@ body { background: #fff; color: #0a0a0a; -webkit-font-smoothing: antialiased; --
 
       <!-- Proof -->
       <div class="nav-item">
-        <a href="../index.html#proof-cases" class="nav-link">Proof</a>
+        <a href="../proof/index.html" class="nav-link active" aria-current="page">Proof</a>
       </div>
 
       <!-- Industries -->
@@ -788,7 +1156,7 @@ body { background: #fff; color: #0a0a0a; -webkit-font-smoothing: antialiased; --
 
       <!-- Company -->
       <div class="nav-item has-dropdown">
-        <a href="../about/index.html" class="nav-link">
+        <a href="../about/index.html" class="nav-link nav-company-active">
           Company <span class="nav-arrow">›</span>
         </a>
         <div class="nav-dropdown nav-dropdown--text">
@@ -820,7 +1188,6 @@ body { background: #fff; color: #0a0a0a; -webkit-font-smoothing: antialiased; --
   </div>
 </nav>
 
-<!-- Mobile nav drawer -->
 <div class="mobile-nav" id="mobileNav">
   <div class="mobile-nav-inner">
 
@@ -872,7 +1239,7 @@ body { background: #fff; color: #0a0a0a; -webkit-font-smoothing: antialiased; --
 
     <div class="mobile-nav-section">
       <a href="../implementation/index.html" class="mobile-nav-link">Implementation</a>
-      <a href="../index.html#proof-cases" class="mobile-nav-link">Proof</a>
+      <a href="../proof/index.html" class="mobile-nav-link active" aria-current="page">Proof</a>
       <a href="../index.html#process" class="mobile-nav-link">Process</a>
     </div>
 
@@ -897,78 +1264,223 @@ body { background: #fff; color: #0a0a0a; -webkit-font-smoothing: antialiased; --
 <!-- Mobile nav overlay -->
 <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 
-<!-- ========== 1. HERO ========== -->
-<section class="faq-hero">
-  <div class="faq-wrap">
-    <nav class="faq-breadcrumb" aria-label="Breadcrumb">
-      <a href="../index.html">Home</a>
-      <span class="sep" aria-hidden="true">/</span>
-      <span aria-current="page">FAQ</span>
-    </nav>
-    <h1>Frequently Asked <span class="accent">Questions</span></h1>
-    <p class="faq-hero-sub">Everything you need to know about working with GMIC on AI hardware — from prototyping to mass production.</p>
+
+<!-- ========== 1. HERO (ODM/OEM left-aligned style) ========== -->
+<header class="pf-hero">
+  <div class="ab-wrap">
+    <div class="pf-hero-top">
+      <div class="pf-hero-lead">
+        <div class="ab-eyebrow">PROOF · CASE EVIDENCE</div>
+        <h1>Trusted by AI Companies, <span class="accent">Enterprise Teams</span>, and Product Innovators</h1>
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="pf-btn">Start a Project</a>
+      </div>
+      <div class="pf-hero-note">
+        <p>GMIC helps companies move from ideas to deployable hardware. Whether the goal is validating a new workflow, launching a consumer product, or scaling an AI platform into the physical world, our customers rely on GMIC for engineering, prototyping, and manufacturing support.</p>
+      </div>
+    </div>
+    <div class="pf-hero-banner">
+      <img src="../img/about/assembly-workers.jpg" alt="GMIC assembly-line workers building hardware at scale">
+    </div>
+  </div>
+</header>
+
+<!-- ========== 2. PROOF STATS STRIP ========== -->
+<section class="pf-stats-sec" aria-label="Proof in numbers">
+  <div class="ab-wrap">
+    <div class="pf-stats">
+      <div class="pf-stat">
+        <div class="pf-stat-num">~5,000</div>
+        <div class="pf-stat-cap">Units sold in 3 months</div>
+      </div>
+      <div class="pf-stat">
+        <div class="pf-stat-num">3rd-Gen</div>
+        <div class="pf-stat-cap">Prototype co-developed with an AI software co.</div>
+      </div>
+      <div class="pf-stat">
+        <div class="pf-stat-num">5</div>
+        <div class="pf-stat-cap">Healthcare AI-scribe pilot devices delivered</div>
+      </div>
+      <div class="pf-stat">
+        <div class="pf-stat-num">Enterprise</div>
+        <div class="pf-stat-cap">Active evaluations with large-scale AI orgs</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ========== 2. CONTROLS (search + category tabs) ========== -->
-<section class="faq-controls">
-  <div class="faq-wrap">
-    <div class="faq-search">
-      <svg class="faq-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <input type="search" id="faqSearch" placeholder="Search questions..." aria-label="Search questions" autocomplete="off">
+<!-- ========== 3. CASE STUDIES (alternating image/text rows) ========== -->
+<section class="pf-sec" aria-label="Proven outcomes">
+  <div class="ab-wrap">
+    <div class="pf-sec-head">
+      <div class="ab-eyebrow">PROVEN OUTCOMES</div>
+      <h2 class="pf-h2">From idea to deployable hardware.</h2>
     </div>
 
-    <!-- Category filter tabs -->
-    <div class="faq-tabs" id="faqTabs" role="tablist" aria-label="FAQ categories">
-      <button class="faq-tab active" data-cat="All" role="tab" aria-selected="true">All</button>
-      <button class="faq-tab" data-cat="General" role="tab" aria-selected="false">General</button>
-      <button class="faq-tab" data-cat="Products" role="tab" aria-selected="false">Products</button>
-      <button class="faq-tab" data-cat="ODM / OEM" role="tab" aria-selected="false">ODM / OEM</button>
-      <button class="faq-tab" data-cat="Manufacturing" role="tab" aria-selected="false">Manufacturing</button>
-      <button class="faq-tab" data-cat="Certification" role="tab" aria-selected="false">Certification</button>
-      <button class="faq-tab" data-cat="Pricing &amp; MOQ" role="tab" aria-selected="false">Pricing &amp; MOQ</button>
+    <div class="pf-cases">
+
+      <!-- Row 1 — Proof of Manufacturing -->
+      <article class="pf-row">
+        <div class="pf-row-media">
+          <img src="../img/about/assembly-workers.jpg" alt="Workers assembling consumer audio hardware on a GMIC production line">
+        </div>
+        <div class="pf-row-text">
+          <div class="ab-eyebrow">PROOF OF MANUFACTURING</div>
+          <h3 class="pf-row-h">5,000 Units Sold in Three Months</h3>
+          <p class="pf-row-body">A creator-led consumer-electronics brand partnered with GMIC to launch a bone-conduction audio product. GMIC supported manufacturing, supply-chain coordination, and production scaling.</p>
+          <ul class="pf-checks">
+            <li><i data-lucide="check"></i><span>Nearly 5,000 units sold within three months</span></li>
+            <li><i data-lucide="check"></i><span>Successful product launch</span></li>
+            <li><i data-lucide="check"></i><span>Demonstrated manufacturing scalability</span></li>
+          </ul>
+          <p class="pf-row-muted">This project validates GMIC's ability to support customers beyond prototyping and into commercial production.</p>
+        </div>
+      </article>
+
+      <!-- Row 2 — Proof of AI Hardware Development -->
+      <article class="pf-row">
+        <div class="pf-row-media">
+          <img src="../img/about/smt-hanwha.jpg" alt="SMT line producing custom AI hardware boards at GMIC">
+        </div>
+        <div class="pf-row-text">
+          <div class="ab-eyebrow">PROOF OF AI HARDWARE DEVELOPMENT</div>
+          <h3 class="pf-row-h">Co-Developing Dedicated Hardware with an AI Software Company</h3>
+          <p class="pf-row-body">A growing AI software company partnered with GMIC to transform its software workflow into a dedicated hardware experience.</p>
+          <p class="pf-sub">GMIC provides</p>
+          <ul class="pf-bullets">
+            <li>Hardware platform development</li>
+            <li>Product customization</li>
+            <li>Firmware optimization</li>
+            <li>Workflow validation</li>
+          </ul>
+          <p class="pf-sub">Current status</p>
+          <ul class="pf-checks">
+            <li><i data-lucide="check"></i><span>Third-generation prototype completed</span></li>
+            <li><i data-lucide="check"></i><span>Multiple development iterations completed</span></li>
+            <li><i data-lucide="check"></i><span>Ongoing joint product development</span></li>
+          </ul>
+          <p class="pf-row-muted">This project demonstrates GMIC's ability to work closely with AI companies throughout the hardware development lifecycle.</p>
+        </div>
+      </article>
+
+      <!-- Row 3 — Proof of AI Scribe Adoption -->
+      <article class="pf-row">
+        <div class="pf-row-media">
+          <img src="../img/about/bv50p.jpg" alt="GMIC voice-hardware device for clinical documentation">
+        </div>
+        <div class="pf-row-text">
+          <div class="ab-eyebrow">PROOF OF AI SCRIBE ADOPTION</div>
+          <h3 class="pf-row-h">Supporting Healthcare AI Hardware Pilots</h3>
+          <p class="pf-row-body">An AI documentation company engaged GMIC to develop a dedicated voice-hardware solution for clinical documentation workflows.</p>
+          <p class="pf-sub">The project included</p>
+          <ul class="pf-bullets">
+            <li>Custom hardware evaluation</li>
+            <li>Workflow validation</li>
+            <li>Prototype deployment</li>
+          </ul>
+          <p class="pf-sub">Results</p>
+          <ul class="pf-checks">
+            <li><i data-lucide="check"></i><span>Five pilot devices delivered</span></li>
+            <li><i data-lucide="check"></i><span>Customer workflow validation completed</span></li>
+            <li><i data-lucide="check"></i><span>Hardware evaluation successfully launched</span></li>
+          </ul>
+          <p class="pf-row-muted">This project highlights the growing demand for dedicated hardware in AI-powered documentation workflows.</p>
+        </div>
+      </article>
+
+      <!-- Row 4 — Proof of Field Deployment -->
+      <article class="pf-row">
+        <div class="pf-row-media">
+          <img src="../img/about/aoi-inspection.jpg" alt="Automated optical inspection of GMIC wearable voice hardware">
+        </div>
+        <div class="pf-row-text">
+          <div class="ab-eyebrow">PROOF OF FIELD DEPLOYMENT</div>
+          <h3 class="pf-row-h">Wearable Voice Hardware for Field Service Teams</h3>
+          <p class="pf-row-body">A workflow automation platform selected GMIC's wearable voice hardware for real-world testing with field technicians. Initial pilot feedback showed strong adoption among users, particularly because the wearable form factor reduced workflow friction compared to traditional recording methods.</p>
+          <ul class="pf-checks">
+            <li><i data-lucide="check"></i><span>Successful field deployment</span></li>
+            <li><i data-lucide="check"></i><span>Positive technician feedback</span></li>
+            <li><i data-lucide="check"></i><span>Expansion planning underway</span></li>
+          </ul>
+          <p class="pf-row-muted">Future projections from the customer include significant investment in contractor and home-services adoption over the next several years.</p>
+        </div>
+      </article>
+
+      <!-- Row 5 — Proof of Enterprise Interest -->
+      <article class="pf-row">
+        <div class="pf-row-media">
+          <img src="../img/about/qc-inspection.jpg" alt="Quality-control inspection of GMIC enterprise-grade voice hardware">
+        </div>
+        <div class="pf-row-text">
+          <div class="ab-eyebrow">PROOF OF ENTERPRISE INTEREST</div>
+          <h3 class="pf-row-h">Evaluated by Large-Scale Enterprise AI Organizations</h3>
+          <p class="pf-row-body">GMIC is actively engaged with enterprise software and conversation-intelligence organizations exploring dedicated voice hardware. These organizations serve large customer bases and need hardware capable of enterprise-grade deployment, workflow adoption, and long-term scalability.</p>
+          <p class="pf-sub">Current activities</p>
+          <ul class="pf-checks">
+            <li><i data-lucide="check"></i><span>Hardware evaluation</span></li>
+            <li><i data-lucide="check"></i><span>Workflow validation</span></li>
+            <li><i data-lucide="check"></i><span>Prototype testing</span></li>
+            <li><i data-lucide="check"></i><span>Deployment-planning discussions</span></li>
+          </ul>
+          <p class="pf-row-muted">These engagements reflect growing demand for dedicated hardware within enterprise AI ecosystems.</p>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
 
-<!-- ========== 3. FAQ LIST (accordion) + 4. PAGINATION ========== -->
-<section class="faq-list" id="faqListSection">
-  <div class="faq-wrap">
-    <div class="faq-count" id="faqCount"></div>
-
-    <!-- Accordion items are rendered here by JS -->
-    <div id="faqAccordion"></div>
-
-    <!-- Empty state -->
-    <div class="faq-empty" id="faqEmpty">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="11" cy="11" r="8"></circle>
-        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-      </svg>
-      <p>No results found. Try a different keyword or <a href="../contact/index.html">contact us</a>.</p>
+<!-- ========== 4. WHY THIS MATTERS (WHITE two-column comparison) ========== -->
+<section class="pf-sec pf-why" aria-label="Why this matters">
+  <div class="ab-wrap">
+    <div class="pf-sec-head">
+      <div class="ab-eyebrow">WHY THIS MATTERS</div>
+      <h2 class="pf-h2">Most manufacturers can build devices. Few can turn workflows into products.</h2>
     </div>
-
-    <!-- Pagination -->
-    <div class="faq-pagination" id="faqPagination"></div>
+    <div class="pf-vs">
+      <div class="pf-vs-half">
+        <div class="pf-vs-icon"><i data-lucide="package" aria-hidden="true"></i></div>
+        <div class="pf-vs-label">Most hardware manufacturers</div>
+        <p class="pf-vs-line">Can build devices to spec, but stop at the factory door. The software team is left to figure out integration, validation, and deployment alone.</p>
+      </div>
+      <div class="pf-vs-half">
+        <div class="pf-vs-icon"><i data-lucide="rocket" aria-hidden="true"></i></div>
+        <div class="pf-vs-label">GMIC</div>
+        <p class="pf-vs-line">Combines AI hardware development, firmware engineering, prototype validation, manufacturing support, and deployment planning — so customers move from concept to real-world adoption.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ========== 5. CTA (dark) ========== -->
-<section class="faq-cta">
-  <div class="faq-wrap">
-    <h2>Still have questions?</h2>
-    <p class="faq-cta-sub">Our team in Shenzhen and California is ready to help you turn your AI into a real product.</p>
-    <div class="faq-cta-actions">
-      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="faq-cta-btn">Book a Demo</a>
-      <a href="../contact/index.html" class="faq-cta-link">Contact us</a>
+<section class="pf-cta pf-dark" aria-label="From prototype to scale">
+  <div class="ab-wrap pf-cta-inner">
+    <div class="ab-eyebrow ab-eyebrow--dark">BEGIN</div>
+    <h2 class="pf-h2">From prototype to scale.</h2>
+    <p class="pf-cta-body">Whether you're building an AI scribe platform, a voice agent, an enterprise workflow solution, or a consumer product, GMIC bridges the gap between software and hardware.</p>
+    <div class="pf-cta-actions">
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="pf-btn pf-btn--light">Start Your Project</a>
+      <a href="https://gmic.ai/our-process/" class="pf-cta-link">Learn our process →</a>
     </div>
   </div>
 </section>
 
-<!-- ========== FOOTER (copied verbatim from about/index.html) ========== -->
+<section class="ab-news">
+  <div class="ab-wrap ab-news-grid">
+    <div>
+      <div class="ab-eyebrow">Stay in the loop</div>
+      <h2>Don't miss out.</h2>
+      <p class="ab-news-body">Sign up to stay up to date with the latest from GMIC — new products, industry insights, and hardware developments.</p>
+      <p class="ab-news-fine">By providing your email address and clicking Subscribe, you agree to our Privacy Policy and consent to receive updates from GMIC AI.</p>
+    </div>
+    <div>
+      <form class="ab-news-form" id="abNewsForm">
+        <input type="email" class="ab-news-input" placeholder="Enter your email" required aria-label="Email address">
+        <button type="submit" class="ab-news-btn">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
 <footer class="footer" id="company">
   <div class="container">
     <div class="footer-grid">
@@ -1018,7 +1530,7 @@ body { background: #fff; color: #0a0a0a; -webkit-font-smoothing: antialiased; --
           <li><a href="https://gmic.ai/blog/" target="_blank" rel="noopener">Blog</a></li>
           <li><a href="../index.html#insights">Case Studies</a></li>
           <li><a href="../index.html#process">Our Process</a></li>
-          <li><a href="../faq/index.html">FAQ</a></li>
+          <li><a href="../index.html#why-gmic">Engineering Capabilities</a></li>
           <li><a href="mailto:trigg@gmic.ai">Contact</a></li>
         </ul>
       </div>
@@ -1047,386 +1559,22 @@ body { background: #fff; color: #0a0a0a; -webkit-font-smoothing: antialiased; --
 </footer>
 
 <script>
-// ============================================================
-// FAQ DATA  ← REAL CONTENT
-// Each entry: { category, q (question), a (answer, HTML) }.
-// `category` must match one of the tab data-cat values:
-//   General · Products · ODM / OEM · Manufacturing · Certification · Pricing & MOQ
-// ============================================================
-const FAQ_DATA = [
-  {
-    category: "General",
-    q: "What does GMIC AI do?",
-    a: `<p>GMIC AI is an AI hardware manufacturer specializing in voice AI hardware, AI wearable devices, and edge AI hardware solutions. We help software companies, AI startups, healthcare providers, and enterprise organizations design, develop, and manufacture custom AI edge devices—from industrial design and firmware development to scalable mass production.</p>`
-  },
-  {
-    category: "General",
-    q: "Can you help if we only have a concept or a spec sheet?",
-    a: `<p>Yes. Whether you have an idea, a product specification, or an existing prototype, our team can help transform it into a production-ready AI hardware solution. We support product planning, industrial design, electronics engineering, firmware development, testing, and manufacturing.</p>`
-  },
-  {
-    category: "ODM / OEM",
-    q: "What's the difference between ODM and OEM?",
-    a: `<p><strong>OEM (Original Equipment Manufacturing)</strong> means producing hardware based on your existing design and specifications.</p>
-<p><strong>ODM (Original Design Manufacturing)</strong> means GMIC AI develops the product design, hardware architecture, firmware, and manufacturing process for you.</p>
-<p>Many customers choose our AI hardware ODM services when building custom voice AI hardware or edge AI devices without maintaining an in-house hardware engineering team.</p>`
-  },
-  {
-    category: "ODM / OEM",
-    q: "Do you sign NDAs before sharing details?",
-    a: `<p>Yes. We regularly sign NDAs before discussing product concepts, proprietary technologies, firmware requirements, AI workflows, or manufacturing plans. Protecting customer intellectual property is a standard part of our development process.</p>`
-  },
-  {
-    category: "Products",
-    q: "What types of devices can you build?",
-    a: `<p>We develop a wide range of AI-powered hardware products, including:</p>
-<ul>
-  <li>AI wearable devices</li>
-  <li>Wearable voice AI recorders</li>
-  <li>AI scribe hardware</li>
-  <li>Edge AI hardware</li>
-  <li>Embedded AI hardware</li>
-  <li>Smart microphones</li>
-  <li>Voice capture devices</li>
-  <li>Healthcare AI devices</li>
-  <li>Enterprise AI hardware</li>
-  <li>Custom AI edge devices</li>
-</ul>
-<p>Our solutions can be customized for healthcare, field services, enterprise productivity, education, and industrial applications.</p>`
-  },
-  {
-    category: "Products",
-    q: "What connectivity options do you support?",
-    a: `<p>Our AI hardware platforms support multiple connectivity options, including:</p>
-<ul>
-  <li>Wi-Fi</li>
-  <li>Bluetooth Low Energy (BLE)</li>
-  <li>NFC</li>
-  <li>USB-C</li>
-  <li>Cellular (4G / LTE)</li>
-  <li>GPS</li>
-  <li>Local network and edge deployments</li>
-</ul>
-<p>Connectivity can be customized based on your application and deployment requirements.</p>`
-  },
-  {
-    category: "Products",
-    q: "Do you handle audio tuning and noise reduction?",
-    a: `<p>Yes. Voice capture is one of our core specialties.</p>
-<p>We provide microphone tuning, beamforming, acoustic optimization, echo cancellation, and noise-reduction engineering to improve speech quality for AI scribe hardware, wearable voice AI devices, and real-time voice AI applications.</p>`
-  },
-  {
-    category: "Manufacturing",
-    q: "Where is the hardware manufactured?",
-    a: `<p>Our hardware is developed and manufactured through our production facilities in China, with customer support and business operations available from our Anaheim, California office.</p>
-<p>We support prototyping, pilot production, and high-volume manufacturing for global customers.</p>`
-  },
-  {
-    category: "Manufacturing",
-    q: "How long does it take from concept to mass production?",
-    a: `<p>Timelines vary depending on product complexity.</p>
-<ul>
-  <li><strong>Existing platform customization:</strong> 4–8 weeks</li>
-  <li><strong>New product development:</strong> 2–6 months</li>
-  <li><strong>Large-scale production:</strong> based on certification and volume requirements</li>
-</ul>
-<p>Our team works closely with customers to accelerate development while maintaining quality and manufacturability.</p>`
-  },
-  {
-    category: "Manufacturing",
-    q: "How do you ensure quality?",
-    a: `<p>We follow a structured product development and manufacturing process that includes:</p>
-<ul>
-  <li>EVT (Engineering Validation Test)</li>
-  <li>DVT (Design Validation Test)</li>
-  <li>PVT (Production Validation Test)</li>
-  <li>Automated Optical Inspection (AOI)</li>
-  <li>In-line quality control</li>
-  <li>Functional testing</li>
-  <li>Final product inspection</li>
-</ul>
-<p>This process helps ensure reliability, consistency, and scalability across every production run.</p>`
-  },
-  {
-    category: "General",
-    q: "What industries use GMIC AI hardware?",
-    a: `<p>Our customers include companies building:</p>
-<ul>
-  <li>AI scribe platforms</li>
-  <li>Healthcare AI solutions</li>
-  <li>Voice AI assistants</li>
-  <li>Enterprise productivity tools</li>
-  <li>Field service AI systems</li>
-  <li>Education technology</li>
-  <li>AI workflow automation platforms</li>
-</ul>
-<p>We help these organizations deploy custom voice AI hardware and edge AI devices that connect physical workflows with AI software systems.</p>`
-  },
-  {
-    category: "General",
-    q: "Why choose GMIC AI as your hardware partner?",
-    a: `<p>Unlike traditional electronics manufacturers, GMIC AI focuses specifically on AI hardware development, voice AI hardware, wearable AI devices, and edge AI solutions.</p>
-<p>Our team combines industrial design, embedded engineering, firmware development, acoustic expertise, and scalable manufacturing to help customers bring AI-powered products to market faster.</p>`
-  },
-  {
-    category: "Manufacturing",
-    q: "Can I order a sample or prototype first?",
-    a: `<p>Yes. Most customers begin with a sample unit, prototype, or pilot batch before moving to mass production.</p>
-<p>Whether you're developing voice AI hardware, AI wearable devices, AI scribe hardware, or custom edge AI hardware, we can provide evaluation units to validate functionality, user workflows, and deployment requirements before scaling.</p>`
-  },
-  {
-    category: "Manufacturing",
-    q: "What is EVT / DVT / PVT?",
-    a: `<p>EVT, DVT, and PVT are key stages in hardware product development and manufacturing.</p>
-<p><strong>EVT (Engineering Validation Test)</strong><br>Validates core hardware functionality, electronics, firmware, and mechanical design.</p>
-<p><strong>DVT (Design Validation Test)</strong><br>Verifies that the product design meets performance, reliability, and user requirements.</p>
-<p><strong>PVT (Production Validation Test)</strong><br>Confirms manufacturing readiness and production consistency before mass production.</p>
-<p>These stages help reduce risk and ensure reliable deployment of custom AI hardware and embedded AI hardware products.</p>`
-  },
-  {
-    category: "Certification",
-    q: "What certifications do your devices support?",
-    a: `<p>Depending on the target market and product requirements, we support:</p>
-<ul>
-  <li>FCC</li>
-  <li>CE</li>
-  <li>RoHS</li>
-  <li>UKCA</li>
-  <li>TELEC</li>
-  <li>KC</li>
-  <li>NCC</li>
-  <li>Bluetooth SIG</li>
-  <li>UN38.3</li>
-  <li>MSDS</li>
-  <li>Battery certifications</li>
-</ul>
-<p>Certification requirements are reviewed during project planning to ensure compliance for global deployment.</p>`
-  },
-  {
-    category: "Certification",
-    q: "Do you provide compliance documentation?",
-    a: `<p>Yes. We can provide certification reports, declarations of conformity, test reports, battery documentation, and other compliance materials required for product launches, enterprise procurement, and international shipping.</p>
-<p>Documentation availability depends on the product platform and certification scope.</p>`
-  },
-  {
-    category: "Pricing & MOQ",
-    q: "What is your typical minimum order quantity?",
-    a: `<p>MOQ depends on the product type and level of customization.</p>
-<p>For existing platforms and AI voice hardware products, pilot orders may start with small quantities.</p>
-<p>For fully custom AI hardware ODM projects, production quantities are typically determined during development planning based on tooling, certification, and manufacturing requirements.</p>`
-  },
-  {
-    category: "Pricing & MOQ",
-    q: "How is pricing structured?",
-    a: `<p>Pricing depends on several factors, including:</p>
-<ul>
-  <li>Hardware specifications</li>
-  <li>AI processing requirements</li>
-  <li>Connectivity options</li>
-  <li>Industrial design complexity</li>
-  <li>Firmware customization</li>
-  <li>Certifications</li>
-  <li>Order volume</li>
-</ul>
-<p>For AI wearable devices, edge AI hardware, and custom voice AI hardware projects, we typically provide pricing after reviewing product requirements and target production volumes.</p>`
-  },
-  {
-    category: "General",
-    q: "What industries do you serve?",
-    a: `<p>We work with companies building:</p>
-<ul>
-  <li>AI scribe platforms</li>
-  <li>Healthcare AI solutions</li>
-  <li>Voice AI applications</li>
-  <li>Enterprise productivity software</li>
-  <li>Field service platforms</li>
-  <li>Education technology</li>
-  <li>Retail technology</li>
-  <li>Industrial AI systems</li>
-  <li>Customer service automation</li>
-  <li>AI workflow platforms</li>
-</ul>
-<p>Our AI hardware solutions help organizations connect real-world voice and workflow data with AI software systems.</p>`
-  },
-  {
-    category: "General",
-    q: "How do I start a project?",
-    a: `<p>Getting started is simple.</p>
-<p>Click "Start a Project" or schedule a consultation with our team. Share your concept, specification sheet, prototype, or business requirements, and we'll evaluate the best approach for product development.</p>
-<p>Whether you're building AI wearable devices, voice AI hardware, AI scribe hardware, or custom edge AI devices, we can provide a development roadmap covering hardware architecture, firmware, manufacturing, certifications, and production planning.</p>
-<p>Most customers receive an initial project assessment within approximately two weeks.</p>`
-  }
-];
-
-// ============================================================
-// FAQ INTERACTION LOGIC (search + category filter + pagination + accordion)
-// Pure vanilla JS — no framework, no storage.
-// ============================================================
+// ---------- Newsletter form (no backend) ----------
 (function () {
-  const PER_PAGE = 10;
-
-  const accordionEl  = document.getElementById('faqAccordion');
-  const emptyEl      = document.getElementById('faqEmpty');
-  const paginationEl = document.getElementById('faqPagination');
-  const countEl      = document.getElementById('faqCount');
-  const searchEl     = document.getElementById('faqSearch');
-  const tabsEl       = document.getElementById('faqTabs');
-  const listSection  = document.getElementById('faqListSection');
-
-  let currentCategory = 'All';
-  let currentQuery    = '';
-  let currentPage     = 1;
-
-  // Decode HTML entity in tab data-cat (e.g. "Pricing &amp; MOQ" -> "Pricing & MOQ")
-  function decode(str) {
-    const t = document.createElement('textarea');
-    t.innerHTML = str;
-    return t.value;
-  }
-
-  // Return the list of FAQs matching the active category + search query.
-  function getFiltered() {
-    const q = currentQuery.trim().toLowerCase();
-    return FAQ_DATA.filter(function (item) {
-      const matchCat = currentCategory === 'All' || item.category === currentCategory;
-      const matchQ = q === '' ||
-        item.q.toLowerCase().includes(q) ||
-        item.a.toLowerCase().includes(q);
-      return matchCat && matchQ;
-    });
-  }
-
-  // Build one accordion item (accessible: <button> + aria-expanded).
-  function buildItem(item, index) {
-    const wrap = document.createElement('div');
-    wrap.className = 'faq-item';
-
-    const btnId = 'faq-q-' + index;
-    const panelId = 'faq-a-' + index;
-
-    const btn = document.createElement('button');
-    btn.className = 'faq-q';
-    btn.id = btnId;
-    btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-controls', panelId);
-    btn.innerHTML =
-      '<span class="faq-q-main">' +
-        '<span class="faq-q-text">' + item.q + '</span>' +
-        '<span class="faq-q-cat">' + item.category + '</span>' +
-      '</span>' +
-      '<span class="faq-icon" aria-hidden="true"></span>';
-
-    const panel = document.createElement('div');
-    panel.className = 'faq-a';
-    panel.id = panelId;
-    panel.setAttribute('role', 'region');
-    panel.setAttribute('aria-labelledby', btnId);
-    panel.innerHTML = '<div class="faq-a-inner">' + item.a + '</div>';
-
-    btn.addEventListener('click', function () {
-      const isOpen = wrap.classList.toggle('open');
-      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-      panel.style.maxHeight = isOpen ? panel.scrollHeight + 'px' : '0';
-    });
-
-    wrap.appendChild(btn);
-    wrap.appendChild(panel);
-    return wrap;
-  }
-
-  // Render current page of results.
-  function render() {
-    const filtered = getFiltered();
-    const total = filtered.length;
-    const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
-    if (currentPage > totalPages) currentPage = totalPages;
-
-    // Count text
-    countEl.textContent = total === 0
-      ? ''
-      : total + (total === 1 ? ' question' : ' questions');
-
-    // Accordion
-    accordionEl.innerHTML = '';
-    if (total === 0) {
-      emptyEl.style.display = 'block';
-      paginationEl.innerHTML = '';
-      return;
-    }
-    emptyEl.style.display = 'none';
-
-    const start = (currentPage - 1) * PER_PAGE;
-    const pageItems = filtered.slice(start, start + PER_PAGE);
-    pageItems.forEach(function (item, i) {
-      accordionEl.appendChild(buildItem(item, start + i));
-    });
-
-    renderPagination(totalPages);
-  }
-
-  // Build the ‹ Prev / numbers / Next › control.
-  function renderPagination(totalPages) {
-    paginationEl.innerHTML = '';
-    if (totalPages <= 1) return;
-
-    function pageBtn(label, page, opts) {
-      opts = opts || {};
-      const b = document.createElement('button');
-      b.className = 'faq-page-btn' + (opts.active ? ' active' : '');
-      b.innerHTML = label;
-      if (opts.disabled) b.disabled = true;
-      if (opts.active) b.setAttribute('aria-current', 'page');
-      b.addEventListener('click', function () {
-        currentPage = page;
-        render();
-        // Scroll back to the top of the FAQ list on page change.
-        listSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      });
-      return b;
-    }
-
-    paginationEl.appendChild(
-      pageBtn('‹ Prev', currentPage - 1, { disabled: currentPage === 1 }));
-
-    for (let p = 1; p <= totalPages; p++) {
-      paginationEl.appendChild(pageBtn(String(p), p, { active: p === currentPage }));
-    }
-
-    paginationEl.appendChild(
-      pageBtn('Next ›', currentPage + 1, { disabled: currentPage === totalPages }));
-  }
-
-  // ---- Events ----
-  searchEl.addEventListener('input', function () {
-    currentQuery = this.value;
-    currentPage = 1; // reset to first page when the result set changes
-    render();
+  var form = document.getElementById('abNewsForm');
+  if (!form) return;
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    form.outerHTML = '<p class="ab-news-done">Thanks! You\'re on the list.</p>';
   });
-
-  tabsEl.addEventListener('click', function (e) {
-    const tab = e.target.closest('.faq-tab');
-    if (!tab) return;
-    tabsEl.querySelectorAll('.faq-tab').forEach(function (t) {
-      t.classList.remove('active');
-      t.setAttribute('aria-selected', 'false');
-    });
-    tab.classList.add('active');
-    tab.setAttribute('aria-selected', 'true');
-    currentCategory = decode(tab.getAttribute('data-cat'));
-    currentPage = 1; // reset paging when filter changes
-    render();
-  });
-
-  // Initial render
-  render();
 })();
 
-// ---------- Lucide icons (nav/footer) ----------
+// ---------- Lucide icons (page content; the nav loader re-runs this too) ----------
 if (typeof lucide !== 'undefined') lucide.createIcons();
 </script>
 
 <script>
-// ========== NAV behaviour (copied verbatim from about/index.html) ==========
+// Scroll: add .scrolled class to nav
 (function(){
   var nav = document.getElementById('nav');
   if(!nav) return;
@@ -1447,10 +1595,12 @@ if (typeof lucide !== 'undefined') lucide.createIcons();
   // Products mega menu — filter cards by sidebar category
   document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label) {
     label.addEventListener('click', function() {
+      // Update active state
       document.querySelectorAll('.dropdown-sidebar-label')
         .forEach(l => l.classList.remove('active'));
       this.classList.add('active');
 
+      // Filter cards
       var filter = this.getAttribute('data-filter');
       document.querySelectorAll('.dropdown-product-card').forEach(function(card) {
         if (filter === 'all' || card.getAttribute('data-category') === filter) {
@@ -1493,6 +1643,7 @@ if (typeof lucide !== 'undefined') lucide.createIcons();
 
   mobileNavOverlay.addEventListener('click', closeMobileNav);
 
+  // Close on mobile nav link click
   document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
     link.addEventListener('click', closeMobileNav);
   });
