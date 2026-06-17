@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blog — GMIC AI</title>
+<meta name="description" content="Insights on edge AI hardware, voice infrastructure, and the industries being transformed by on-device intelligence — from GMIC AI." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+/* ===================== TOKENS (v2) ===================== */
+:root{
+  --white:#ffffff;
+  --black:#0a0a0a;
+  --concrete:#e9e6e1;
+  --blue:#1f3df0;
+  --ink-60:rgba(10,10,10,.6);
+  --line:#0a0a0a;
+  --arch:'Archivo', 'Helvetica Neue', Arial, sans-serif;
+  --sans:'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --maxw:1400px;
+  --gut:clamp(20px,5vw,72px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--sans);
+  background:var(--white);
+  color:var(--black);
+  line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+input{font-family:inherit}
+::selection{background:var(--blue);color:#fff}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+.newsletter :focus-visible,.cta-block :focus-visible,.footer :focus-visible{outline-color:#fff}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+
+/* type helpers */
+.arch{font-family:var(--arch);font-weight:900;letter-spacing:-.02em;line-height:.92;text-transform:uppercase}
+.eyebrow{font-family:var(--arch);font-weight:700;font-size:13px;letter-spacing:.18em;text-transform:uppercase}
+.blue{color:var(--blue)}
+.blue-box{background:var(--blue);color:#fff;padding:0 .12em;display:inline-block}
+.black-box{background:var(--black);color:#fff;padding:0 .12em;display:inline-block}
+
+/* square solid button */
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--arch);font-weight:800;
+  font-size:15px;letter-spacing:.06em;text-transform:uppercase;
+  padding:18px 28px;border-radius:0;
+  background:var(--blue);color:#fff;border:2px solid var(--blue);
+  transition:background .18s ease,color .18s ease,transform .18s ease,border-color .18s ease;
+}
+.btn:hover{background:var(--black);border-color:var(--black);transform:translateY(-2px)}
+.btn--ghost{background:transparent;color:var(--black);border-color:var(--black)}
+.btn--ghost:hover{background:var(--black);color:#fff}
+.btn--invert{background:#fff;color:var(--black);border-color:#fff}
+.btn--invert:hover{background:var(--black);color:#fff;border-color:#fff}
+.btn--line{background:transparent;color:#fff;border-color:#fff}
+.btn--line:hover{background:#fff;color:var(--black);border-color:#fff}
+.btn svg{width:18px;height:18px}
+
+/* ===================== NAV (v2) ===================== */
+.nav{position:sticky;top:0;z-index:90;background:var(--white);border-bottom:5px solid var(--black)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px;gap:24px}
+.brand{font-family:var(--arch);font-weight:900;font-size:24px;letter-spacing:-.02em;text-transform:uppercase;display:flex;align-items:center;gap:9px}
+.brand .dot{width:16px;height:16px;background:var(--blue);display:inline-block}
+.nav-links{display:flex;align-items:center;gap:clamp(16px,2vw,30px)}
+.nav-links a{font-family:var(--arch);font-weight:700;font-size:14px;letter-spacing:.08em;text-transform:uppercase;position:relative;padding:6px 0}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--blue);transition:width .2s ease}
+.nav-links a:hover::after,.nav-links a:focus-visible::after{width:100%}
+.nav-links a.active{color:var(--blue)}
+.nav-links a.active::after{width:100%}
+.nav-right{display:flex;align-items:center;gap:18px}
+.nav .btn{padding:13px 20px;font-size:13px}
+.burger{display:none;flex-direction:column;gap:5px;width:42px;height:42px;justify-content:center;align-items:center}
+.burger span{width:26px;height:3px;background:var(--black);transition:transform .25s,opacity .25s}
+.burger.open span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+.burger.open span:nth-child(2){opacity:0}
+.burger.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+.mnav{position:fixed;inset:0 0 0 auto;width:min(86%,360px);background:var(--black);color:#fff;z-index:120;transform:translateX(100%);transition:transform .3s ease;padding:96px 32px 40px;display:flex;flex-direction:column;gap:6px;overflow-y:auto}
+.mnav.open{transform:translateX(0)}
+.mnav a{font-family:var(--arch);font-weight:800;font-size:24px;text-transform:uppercase;letter-spacing:-.01em;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.16)}
+.mnav a:hover,.mnav a.active{color:var(--blue)}
+.mnav .btn{margin-top:22px;justify-content:center}
+.mscrim{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:110;display:none}
+.mscrim.open{display:block}
+
+/* ===================== BLOG HEADER ===================== */
+.blog-head{border-bottom:5px solid var(--black);padding:clamp(48px,7vw,110px) 0 clamp(34px,4vw,60px)}
+.blog-head-grid{display:grid;grid-template-columns:1fr auto;gap:clamp(20px,4vw,56px);align-items:flex-end}
+.blog-head h1{font-family:var(--arch);font-weight:900;font-size:clamp(56px,15vw,230px);line-height:.82;letter-spacing:-.035em;text-transform:uppercase}
+.blog-head .sub{max-width:34ch;font-size:clamp(15px,1.2vw,18px);line-height:1.55;color:var(--ink-60);font-weight:500;padding-bottom:.4em}
+
+/* ===================== FILTER BAR ===================== */
+.filters-wrap{border-bottom:1px solid var(--black);background:var(--white);position:sticky;top:79px;z-index:70}
+.filters{display:flex;flex-wrap:wrap;gap:0;padding:0}
+.filter-pill{
+  font-family:var(--arch);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+  padding:18px 22px;border-radius:0;color:var(--black);background:transparent;
+  border-right:1px solid var(--black);
+  transition:background .15s ease,color .15s ease;
+}
+.filter-pill:hover{background:var(--concrete)}
+.filter-pill.active{background:var(--black);color:#fff}
+
+/* ===================== POSTS GRID (Swiss) ===================== */
+.posts{padding:0 0 clamp(40px,5vw,80px)}
+.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);border-left:1px solid var(--black)}
+.post-card{
+  position:relative;display:flex;flex-direction:column;min-height:clamp(300px,30vw,400px);
+  border-right:1px solid var(--black);border-bottom:1px solid var(--black);
+  background:var(--white);color:var(--black);text-decoration:none;
+  transition:background .2s ease,color .2s ease;
+}
+.post-card.fade-in{animation:cardUp .5s ease both}
+@keyframes cardUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* image card */
+.post-card .pc-thumb{aspect-ratio:16/10;overflow:hidden;background:var(--concrete);border-bottom:1px solid var(--black)}
+.post-card .pc-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.post-card.has-img:hover .pc-thumb img{transform:scale(1.04)}
+.post-card .pc-body{display:flex;flex-direction:column;flex:1;padding:clamp(20px,2vw,30px)}
+.post-card.has-img:hover{background:var(--black);color:#fff}
+
+/* gradient card (no image) — whole card is a color block */
+.post-card.grad{background:var(--g,linear-gradient(135deg,#1e3a8a,#2563eb,#0ea5e9));color:#fff;padding:clamp(20px,2vw,30px)}
+.post-card.grad .pc-body{padding:0}
+.post-card.grad::after{content:"";position:absolute;inset:0;background:rgba(10,10,10,0);transition:background .2s ease;pointer-events:none}
+.post-card.grad:hover::after{background:rgba(10,10,10,.18)}
+.post-card.grad .pc-meta,.post-card.grad .pc-title,.post-card.grad .pc-ex,.post-card.grad .pc-read{position:relative;z-index:1}
+
+.pc-meta{display:flex;align-items:center;gap:12px;margin-bottom:auto}
+.pc-tag{font-family:var(--arch);font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:var(--blue);color:#fff;padding:5px 10px}
+.post-card.grad .pc-tag{background:var(--black);color:#fff}
+.post-card.has-img:hover .pc-tag{background:var(--blue);color:#fff}
+.pc-date{font-family:var(--arch);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-60)}
+.post-card.grad .pc-date,.post-card.has-img:hover .pc-date{color:rgba(255,255,255,.72)}
+.pc-title{font-family:var(--arch);font-weight:900;letter-spacing:-.02em;line-height:.96;text-transform:uppercase;font-size:clamp(22px,2vw,30px);margin:18px 0 12px}
+.pc-ex{font-size:14px;line-height:1.5;color:var(--ink-60);margin-bottom:18px}
+.post-card.grad .pc-ex{color:rgba(255,255,255,.85)}
+.post-card.has-img:hover .pc-ex{color:rgba(255,255,255,.7)}
+.pc-read{margin-top:auto;font-family:var(--arch);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;display:inline-flex;align-items:center;gap:8px}
+.post-card.has-img:hover .pc-read,.post-card.grad:hover .pc-read{color:#fff}
+
+/* feature first card spans full width */
+.post-card.is-feature{grid-column:1 / -1}
+.post-card.is-feature.has-img{flex-direction:row}
+.post-card.is-feature.has-img .pc-thumb{flex:1 1 52%;aspect-ratio:auto;border-bottom:none;border-right:1px solid var(--black);min-height:clamp(280px,34vw,460px)}
+.post-card.is-feature.has-img:hover .pc-thumb{border-right-color:#fff}
+.post-card.is-feature.has-img .pc-body{flex:1 1 48%;justify-content:center}
+.post-card.is-feature .pc-title{font-size:clamp(34px,5.5vw,82px);line-height:.86}
+.post-card.is-feature.grad{min-height:clamp(320px,32vw,440px)}
+.post-card.is-feature .pc-ex{max-width:54ch;font-size:clamp(15px,1.2vw,18px)}
+
+/* skeleton loaders */
+.skeleton-card{min-height:clamp(300px,30vw,400px);border-right:1px solid var(--black);border-bottom:1px solid var(--black);padding:0}
+.skeleton-thumb{aspect-ratio:16/10;background:linear-gradient(90deg,#efece7 25%,#e2ddd4 50%,#efece7 75%);background-size:200% 100%;animation:shimmer 1.4s infinite;border-bottom:1px solid var(--black)}
+.skeleton-body{padding:clamp(20px,2vw,30px);display:flex;flex-direction:column;gap:12px}
+.skeleton-line{height:14px;background:linear-gradient(90deg,#efece7 25%,#e2ddd4 50%,#efece7 75%);background-size:200% 100%;animation:shimmer 1.4s infinite}
+.skeleton-line.short{width:40%;height:20px}
+.skeleton-line.med{width:70%}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* ===================== PAGINATION ===================== */
+.pagination{display:flex;flex-wrap:wrap;gap:0;justify-content:center;margin-top:clamp(40px,5vw,72px);border:1px solid var(--black);width:max-content;margin-left:auto;margin-right:auto}
+.page-btn{
+  font-family:var(--arch);font-weight:800;font-size:clamp(16px,1.6vw,22px);letter-spacing:.02em;text-transform:uppercase;
+  min-width:clamp(52px,5vw,68px);height:clamp(52px,5vw,68px);padding:0 14px;
+  border-right:1px solid var(--black);background:var(--white);color:var(--black);
+  display:inline-flex;align-items:center;justify-content:center;transition:background .15s,color .15s;
+}
+.page-btn:last-child{border-right:none}
+.page-btn:hover:not([disabled]):not(.ellipsis){background:var(--concrete)}
+.page-btn.active{background:var(--blue);color:#fff}
+.page-btn[disabled]{opacity:.35;cursor:not-allowed}
+.page-btn.ellipsis{cursor:default}
+
+/* ===================== NEWSLETTER ===================== */
+.newsletter{background:var(--black);color:#fff;border-top:5px solid var(--black)}
+.news-inner{padding:clamp(48px,6vw,90px) 0;display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(28px,4vw,60px);align-items:center}
+.news-inner h2{font-family:var(--arch);font-weight:900;font-size:clamp(32px,5vw,64px);line-height:.9;letter-spacing:-.02em;text-transform:uppercase}
+.news-inner p{margin-top:16px;color:rgba(255,255,255,.66);font-size:clamp(15px,1.2vw,18px);max-width:46ch}
+.news-form{display:flex;gap:0;border:2px solid #fff}
+.news-form input{flex:1;background:transparent;color:#fff;border:none;padding:18px 20px;font-size:15px;font-weight:500}
+.news-form input::placeholder{color:rgba(255,255,255,.5)}
+.news-form .btn{border:none;border-left:2px solid #fff}
+.news-note{margin-top:14px;font-size:12px;color:rgba(255,255,255,.4)}
+
+/* ===================== CTA ===================== */
+.cta-block{background:var(--blue);color:#fff;border-top:5px solid var(--black)}
+.cta-inner{padding:clamp(64px,9vw,150px) 0;text-align:center}
+.cta-inner h2{font-family:var(--arch);font-weight:900;font-size:clamp(48px,11vw,170px);line-height:.84;letter-spacing:-.03em;text-transform:uppercase}
+.cta-inner .csub{margin:26px auto 0;max-width:60ch;font-size:clamp(16px,1.4vw,20px);font-weight:500;color:rgba(255,255,255,.9)}
+.cta-actions{margin-top:38px;display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:center}
+.cta-mail{font-family:var(--arch);font-weight:800;font-size:clamp(18px,2vw,28px);text-transform:lowercase;letter-spacing:.01em;border-bottom:4px solid #fff;padding-bottom:2px}
+.cta-mail:hover{color:var(--black);border-color:var(--black)}
+
+/* ===================== FOOTER (v2) ===================== */
+.footer{background:var(--black);color:#fff;padding:clamp(56px,7vw,96px) 0 40px}
+.foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:clamp(24px,2.6vw,44px);padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,.18)}
+.foot-brand .brand{font-size:30px;color:#fff}
+.foot-brand p{margin-top:18px;max-width:34ch;color:rgba(255,255,255,.6);font-size:14.5px}
+.foot-contact{margin-top:20px;font-size:14px;color:rgba(255,255,255,.72);line-height:1.8}
+.foot-contact a:hover{color:var(--blue)}
+.certs{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+.certs span{font-family:var(--arch);font-weight:700;font-size:11px;letter-spacing:.1em;border:1px solid rgba(255,255,255,.28);padding:5px 10px;color:rgba(255,255,255,.7)}
+.foot-col h5{font-family:var(--arch);font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:16px}
+.foot-col a{display:block;font-family:var(--arch);font-weight:700;font-size:15px;text-transform:uppercase;letter-spacing:.01em;padding:7px 0;color:#fff}
+.foot-col a:hover{color:var(--blue)}
+.foot-bottom{padding-top:28px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:center;color:rgba(255,255,255,.5);font-size:13px}
+.foot-bottom .arch{font-weight:700;letter-spacing:.04em}
+
+/* ===================== REVEAL ===================== */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width:1000px){
+  .posts-grid{grid-template-columns:repeat(2,1fr)}
+  .news-inner{grid-template-columns:1fr;gap:28px}
+  .foot-top{grid-template-columns:1fr 1fr 1fr;gap:32px}
+  .foot-brand{grid-column:1 / -1}
+}
+@media (max-width:900px){
+  .nav-links{display:none}
+  .burger{display:flex}
+}
+@media (max-width:760px){
+  .nav .nav-right .btn{display:none}
+  .blog-head-grid{grid-template-columns:1fr}
+  .blog-head .sub{padding-bottom:0}
+  .filters-wrap{position:static}
+  .post-card.is-feature.has-img{flex-direction:column}
+  .post-card.is-feature.has-img .pc-thumb{border-right:none;border-bottom:1px solid var(--black);aspect-ratio:16/10;min-height:0}
+  .foot-top{grid-template-columns:1fr 1fr}
+}
+@media (max-width:560px){
+  .posts-grid{grid-template-columns:1fr}
+  .foot-top{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *{scroll-behavior:auto !important}
+  .reveal{opacity:1 !important;transform:none !important;transition:none !important}
+  .post-card.fade-in{animation:none}
+  .skeleton-thumb,.skeleton-line{animation:none}
+  .btn,.post-card,.pc-thumb img{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="../index.html" class="brand" aria-label="GMIC AI home"><span class="dot" aria-hidden="true"></span>GMIC&nbsp;AI</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html#products">Products</a>
+      <a href="../index.html#capabilities">Custom Devices</a>
+      <a href="../index.html#industries">Industries</a>
+      <a href="../index.html#process">Process</a>
+      <a href="../index.html#about">About</a>
+      <a href="./" class="active" aria-current="page">Blog</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <a href="mailto:trigg@gmic.ai?subject=Quote%20request" class="btn">Get a Quote</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mnav">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile nav -->
+<nav class="mnav" id="mnav" aria-label="Mobile">
+  <a href="../index.html#products">Products</a>
+  <a href="../index.html#capabilities">Custom Devices</a>
+  <a href="../index.html#industries">Industries</a>
+  <a href="../index.html#process">Process</a>
+  <a href="../index.html#about">About</a>
+  <a href="./" class="active" aria-current="page">Blog</a>
+  <a href="../index.html#contact">Contact</a>
+  <a href="mailto:trigg@gmic.ai?subject=Quote%20request" class="btn">Get a Quote</a>
+</nav>
+<div class="mscrim" id="mscrim"></div>
+
+<!-- ===================== BLOG HEADER ===================== -->
+<section class="blog-head">
+  <div class="wrap blog-head-grid">
+    <h1>All <span class="blue-box">Posts</span></h1>
+    <p class="sub">Insights on edge AI hardware, voice infrastructure, and the industries being transformed by on-device intelligence.</p>
+  </div>
+</section>
+
+<!-- ===================== FILTERS ===================== -->
+<div class="filters-wrap">
+  <div class="wrap">
+    <div class="filters" id="blogFilters" role="tablist" aria-label="Filter posts by category">
+      <button class="filter-pill active" data-filter="all">All Posts</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== POSTS ===================== -->
+<section class="posts">
+  <div class="wrap">
+    <div class="posts-grid" id="postsGrid" aria-live="polite"></div>
+    <nav class="pagination" id="pagination" aria-label="Pagination"></nav>
+  </div>
+</section>
+
+<!-- ===================== NEWSLETTER ===================== -->
+<section class="newsletter">
+  <div class="wrap news-inner">
+    <div>
+      <h2>Get the latest<br>from the edge.</h2>
+      <p>Monthly notes on hardware shipping, certifications, and the AI models running on our devices.</p>
+    </div>
+    <div>
+      <form class="news-form" onsubmit="event.preventDefault();var i=this.querySelector('input');var b=this.querySelector('button');if(i.value){i.value='';b.textContent='Subscribed ✓';}">
+        <input type="email" required placeholder="Enter your email" aria-label="Email address">
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+      <p class="news-note">No spam. Unsubscribe anytime.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="cta-block">
+  <div class="wrap cta-inner">
+    <h2 class="reveal">Ready to build?</h2>
+    <p class="csub reveal">Ready to turn your AI into a real product? Bring us a concept, prototype, or pilot — we'll get you to production.</p>
+    <div class="cta-actions reveal">
+      <a href="mailto:trigg@gmic.ai?subject=Book%20a%20Demo" class="btn btn--invert">Book a Demo <i data-lucide="arrow-right"></i></a>
+      <a href="mailto:trigg@gmic.ai?subject=Talk%20to%20Sales" class="btn btn--line">Talk to Sales</a>
+      <a href="mailto:trigg@gmic.ai" class="cta-mail">trigg@gmic.ai</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <span class="brand"><span class="dot" aria-hidden="true"></span>GMIC&nbsp;AI</span>
+        <p>Designing and manufacturing the embedded hardware behind the voice-first era. The AI hardware division of Gainstrong.</p>
+        <div class="foot-contact">
+          <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a><br>
+          <a href="tel:+16699000008">+1 (669) 900-0008</a><br>
+          Anaheim, CA — Shenzhen, CN
+        </div>
+        <div class="certs" aria-label="Certifications">
+          <span>FCC</span><span>CE</span><span>UKCA</span><span>TELEC</span><span>RoHS</span><span>REED</span>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Solutions</h5>
+        <a href="../index.html#capabilities">Edge AI Hardware</a>
+        <a href="../index.html#capabilities">Voice AI Hardware</a>
+        <a href="../index.html#capabilities">AI Wearable Devices</a>
+        <a href="../index.html#capabilities">AI Hardware ODM</a>
+        <a href="../index.html#capabilities">Embedded AI Hardware</a>
+      </div>
+      <div class="foot-col">
+        <h5>Industries</h5>
+        <a href="../index.html#industries">Healthcare AI</a>
+        <a href="../index.html#industries">Enterprise AI</a>
+        <a href="../index.html#industries">Field Service AI</a>
+        <a href="../index.html#industries">Telecom AI</a>
+        <a href="../index.html#industries">Smart Retail</a>
+      </div>
+      <div class="foot-col">
+        <h5>Resources</h5>
+        <a href="./">Blog</a>
+        <a href="../index.html#products">Case Studies</a>
+        <a href="../index.html#process">Our Process</a>
+        <a href="../index.html#capabilities">Engineering Capabilities</a>
+        <a href="mailto:trigg@gmic.ai">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="../index.html#about">About GMIC</a>
+        <a href="../index.html#industries">Customer Stories</a>
+        <a href="mailto:trigg@gmic.ai?subject=Book%20a%20Demo">Book a Demo</a>
+        <a href="mailto:trigg@gmic.ai?subject=Careers">Careers</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div class="arch">© 2026 GMIC AI, INC. · ANAHEIM · SHENZHEN</div>
+      <div class="arch">TRIGG@GMIC.AI · +1 (669) 900-0008</div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== BLOG DATA SCRIPT ===================== -->
+<script>
+/* ===== Live sync from the WordPress REST API (gmic.ai) =====
+   Every load fetches posts live — title, link, excerpt, category, date,
+   featured image. FALLBACK_POSTS render only when the API is unreachable
+   (file:// preview or CORS). Card structure/styling is v2 (Swiss); the
+   fetch + pagination + category-filter + fallback flow mirrors main. */
+(function(){
+  const API_BASE = 'https://gmic.ai/wp-json/wp/v2';
+  const PER_PAGE = 9;
+
+  const grid       = document.getElementById('postsGrid');
+  const pagination = document.getElementById('pagination');
+  const filtersEl  = document.getElementById('blogFilters');
+
+  /* ---------- category → gradient fallback ---------- */
+  const DEFAULT_GRADIENT = 'linear-gradient(135deg,#1e3a8a,#2563eb,#0ea5e9)';
+  const CATEGORY_GRADIENTS = {
+    'enterprise ai':  'linear-gradient(135deg,#1e3a8a,#2563eb,#0ea5e9)',
+    'healthcare':     'linear-gradient(135deg,#134e4a,#0f766e,#14b8a6)',
+    'small business': 'linear-gradient(135deg,#1e3a5f,#1d6ed8,#38bdf8)',
+    'field service':  'linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)',
+    'industry news':  'linear-gradient(135deg,#1c1917,#292524,#57534e)'
+  };
+
+  /* ---------- hardcoded fallback posts (shaped like WP API objects) ---------- */
+  function fakePost(id, title, dateISO, excerpt, link, catName, catSlug){
+    return {
+      id: id, link: link, date: dateISO,
+      title:   { rendered: title },
+      excerpt: { rendered: excerpt },
+      content: { rendered: '' },
+      _embedded: { 'wp:term': [[ { name: catName, slug: catSlug } ]] }
+    };
+  }
+  const FALLBACK_POSTS = [
+    fakePost(1, 'Speed-to-Lead Is Now Infrastructure', '2026-05-28T00:00:00',
+      "Virtual receptionists are making response speed table stakes. Here's why AI-powered lead capture is no longer optional for enterprise sales teams.",
+      'https://gmic.ai/speed-to-lead-enterprise-memory/', 'Enterprise AI', 'enterprise-ai'),
+    fakePost(2, 'CLINMIC V7: Clinical Memory for the Fastest Moments in Care', '2026-05-23T00:00:00',
+      "GMIC AI's concept for a privacy-first wearable that captures clinical conversations at the point of care — without burdening clinicians.",
+      'https://gmic.ai/clinmic-v7-clinical-memory-fastest-moments-in-care-2/', 'Healthcare', 'healthcare'),
+    fakePost(3, "Companies Don't Just Need AI Customer Service. They Need Organization Memory.", '2026-05-21T00:00:00',
+      'Wellness and direct-selling companies do not just need faster responses — they need persistent organizational memory that compounds over time.',
+      'https://gmic.ai/wellness-organization-memory/', 'Enterprise AI', 'enterprise-ai'),
+    fakePost(4, "Most Small Businesses Don't Fail. They Forget.", '2026-05-21T00:00:00',
+      "Most small businesses don't fail because their team didn't work hard enough. They fail because no one built a memory layer to capture what matters.",
+      'https://gmic.ai/small-business-memory-layer/', 'Small Business', 'small-business'),
+    fakePost(5, 'The Evening Your Phone Finally Goes Quiet', '2026-05-21T00:00:00',
+      'AI voice reception is trending, but SMB owners need more than call routing — they need true time freedom that starts after 6 PM.',
+      'https://gmic.ai/ai-voice-receptionist-enterprise-memory-time-freedom/', 'Small Business', 'small-business'),
+    fakePost(6, "The Phone Shouldn't Own Your Weekend", '2026-05-19T00:00:00',
+      "For SMB operators juggling everything alone, weekend calls aren't just annoying — they're the last barrier between work and life. AI changes that.",
+      'https://gmic.ai/ai-receptionist-enterprise-memory-weekend-freedom/', 'Small Business', 'small-business'),
+    fakePost(7, 'When Every Device Has a Microphone, Who Decides What Gets Captured?', '2026-05-16T00:00:00',
+      'As ambient audio intelligence becomes standard in enterprise hardware, the conversation around consent, privacy, and edge processing has never been more urgent.',
+      'https://gmic.ai/blog/', 'Industry News', 'industry-news'),
+    fakePost(8, 'The Revolution Math Changed. Memory Matters More.', '2026-05-14T00:00:00',
+      'The bottleneck in AI deployment has shifted from model intelligence to memory persistence. On-device hardware is the only path to solving it at scale.',
+      'https://gmic.ai/blog/', 'Industry News', 'industry-news'),
+    fakePost(9, 'AI in the Field: How MIC05 is Capturing Voice Intelligence at the Edge', '2026-05-10T00:00:00',
+      'Field service teams generate thousands of hours of unstructured verbal data daily. MIC05 turns those conversations into structured intelligence — automatically.',
+      'https://gmic.ai/blog/', 'Field Service', 'field-service')
+  ];
+
+  /* ---------- state + maps ---------- */
+  const state = { page: 1, categoryId: null, totalPages: 1, useApi: true, firstRender: true };
+  let categoryMap = {}, slugToId = {};
+
+  /* ---------- helpers ---------- */
+  function stripHtml(html){
+    const doc = new DOMParser().parseFromString(html || '', 'text/html');
+    return (doc.body.textContent || '').replace(/\s+/g, ' ').trim();
+  }
+  function escapeHtml(s){
+    return (s || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+  function formatDate(iso){
+    const d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  }
+  function runFadeIn(){
+    const cards = grid.querySelectorAll('.post-card');
+    cards.forEach(c => c.classList.remove('fade-in'));
+    void grid.offsetWidth;
+    cards.forEach((c, i) => { c.style.animationDelay = (i * 50) + 'ms'; c.classList.add('fade-in'); });
+  }
+
+  /* ---------- categories ---------- */
+  async function fetchAndBuildCategoryMap(){
+    const res = await fetch(API_BASE + '/categories?per_page=100&_fields=id,name,slug,count');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const cats = await res.json();
+    categoryMap = {}; slugToId = {};
+    const withPosts = [];
+    (cats || []).forEach(c => {
+      const name = stripHtml(c.name);
+      categoryMap[c.id] = { name: name, slug: c.slug };
+      slugToId[c.slug] = c.id;
+      if (c.count > 0) withPosts.push({ name: name, slug: c.slug });
+    });
+    renderPills(withPosts);
+  }
+
+  /* ---------- posts ---------- */
+  function fetchPosts(page = 1, categoryId = null){
+    const url = new URL(API_BASE + '/posts');
+    url.searchParams.set('per_page', String(PER_PAGE));
+    url.searchParams.set('page', String(page));
+    url.searchParams.set('_embed', 'wp:featuredmedia,wp:term');
+    url.searchParams.set('_fields', ['id','title','date','excerpt','link','content','_links','_embedded'].join(','));
+    if (categoryId) url.searchParams.set('categories', categoryId);
+    return fetch(url).then(res => {
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      state.totalPages = parseInt(res.headers.get('X-WP-TotalPages'), 10) || 1;
+      return res.json();
+    });
+  }
+
+  /* ---------- image: real featured media if present, else null → gradient ---------- */
+  function getPostImage(post){
+    const emb = post._embedded || {};
+    const m = emb['wp:featuredmedia'] && emb['wp:featuredmedia'][0];
+    if (m && m.source_url) return m.source_url;
+    return null;
+  }
+  function getCategoryGradient(post){
+    const emb = post._embedded || {};
+    const term = emb['wp:term'] && emb['wp:term'][0] && emb['wp:term'][0][0];
+    const name = stripHtml(term && term.name ? term.name : '').toLowerCase();
+    return CATEGORY_GRADIENTS[name] || DEFAULT_GRADIENT;
+  }
+
+  /* ---------- build a Swiss card — 100% from data ---------- */
+  function buildCard(post, idx){
+    const emb = post._embedded || {};
+    const term = (emb['wp:term'] && emb['wp:term'][0] && emb['wp:term'][0][0]) || null;
+    const category = stripHtml((term && term.name) || '') || 'Insights';
+    const categorySlug = (term && term.slug) || '';
+    const title = stripHtml(post.title && post.title.rendered);
+    const raw = stripHtml(post.excerpt && post.excerpt.rendered);
+    const excerpt = raw.length > 150 ? raw.slice(0,150).replace(/\s+\S*$/,'').trim() + '…' : raw;
+    const date = formatDate(post.date);
+    const url = post.link || '#';
+    const img = getPostImage(post);
+    const feature = idx === 0 ? ' is-feature' : '';
+
+    const meta = '<div class="pc-meta"><span class="pc-tag">' + escapeHtml(category) + '</span>'
+      + '<span class="pc-date">' + escapeHtml(date) + '</span></div>';
+    const body = '<h3 class="pc-title">' + escapeHtml(title) + '</h3>'
+      + '<p class="pc-ex">' + escapeHtml(excerpt) + '</p>'
+      + '<span class="pc-read">Read more <i data-lucide="arrow-up-right"></i></span>';
+
+    if (img){
+      const grad = getCategoryGradient(post);
+      const onerr = "this.closest('.pc-thumb').style.background='" + grad + "';this.remove();";
+      return '<a class="post-card has-img' + feature + '" href="' + escapeHtml(url) + '" target="_blank" rel="noopener" data-tags="' + escapeHtml(categorySlug) + '">'
+        +   '<div class="pc-thumb"><img src="' + escapeHtml(img) + '" alt="' + escapeHtml(title) + '" loading="lazy" onerror="' + escapeHtml(onerr) + '"></div>'
+        +   '<div class="pc-body">' + meta + body + '</div>'
+        + '</a>';
+    }
+    return '<a class="post-card grad' + feature + '" style="--g:' + getCategoryGradient(post) + '" href="' + escapeHtml(url) + '" target="_blank" rel="noopener" data-tags="' + escapeHtml(categorySlug) + '">'
+      +   '<div class="pc-body">' + meta + body + '</div>'
+      + '</a>';
+  }
+
+  /* ---------- skeletons ---------- */
+  function showSkeletons(){
+    let html = '';
+    for (let i = 0; i < PER_PAGE; i++){
+      html += '<div class="skeleton-card"><div class="skeleton-thumb"></div>'
+        + '<div class="skeleton-body"><div class="skeleton-line short"></div><div class="skeleton-line"></div><div class="skeleton-line med"></div></div></div>';
+    }
+    grid.innerHTML = html;
+    pagination.innerHTML = '';
+  }
+
+  /* ---------- render flow ---------- */
+  async function renderPosts(page = 1, categoryId = null){
+    showSkeletons();
+    let posts;
+    try {
+      posts = await fetchPosts(page, categoryId);
+      if (!Array.isArray(posts)) throw new Error('Bad response');
+    } catch (e){ renderFallback(); return; }
+
+    state.page = page; state.categoryId = categoryId;
+    const wasFirst = state.firstRender; state.firstRender = false;
+
+    if (!posts.length){
+      grid.innerHTML = '<p style="color:var(--ink-60);grid-column:1/-1;text-align:center;padding:60px 0;font-family:var(--arch);font-weight:700;text-transform:uppercase;letter-spacing:.06em;">No posts found.</p>';
+      pagination.innerHTML = '';
+      return;
+    }
+    grid.innerHTML = posts.map(buildCard).join('');
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+    runFadeIn();
+    renderPagination(page);
+    if (!wasFirst) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  /* ---------- pagination ---------- */
+  function renderPagination(cur){
+    const total = state.totalPages;
+    if (total <= 1){ pagination.innerHTML = ''; return; }
+    const pages = new Set([1, total]);
+    for (let i = cur - 1; i <= cur + 1; i++) if (i >= 1 && i <= total) pages.add(i);
+    const sorted = Array.from(pages).sort((a,b) => a - b);
+    let html = '<button class="page-btn" data-page="prev"' + (cur === 1 ? ' disabled' : '') + '>←</button>';
+    let prev = 0;
+    sorted.forEach(p => {
+      if (p - prev > 1) html += '<span class="page-btn ellipsis" aria-hidden="true">…</span>';
+      html += '<button class="page-btn' + (p === cur ? ' active' : '') + '" data-page="' + p + '">' + p + '</button>';
+      prev = p;
+    });
+    html += '<button class="page-btn" data-page="next"' + (cur === total ? ' disabled' : '') + '>→</button>';
+    pagination.innerHTML = html;
+    pagination.querySelectorAll('.page-btn:not(.ellipsis):not([disabled])').forEach(btn => {
+      btn.addEventListener('click', () => {
+        let target;
+        if (btn.dataset.page === 'prev') target = state.page - 1;
+        else if (btn.dataset.page === 'next') target = state.page + 1;
+        else target = parseInt(btn.dataset.page, 10);
+        if (!target || target < 1 || target > state.totalPages || target === state.page) return;
+        renderPosts(target, state.categoryId);
+      });
+    });
+  }
+
+  /* ---------- filter pills ---------- */
+  function renderPills(categories){
+    let html = '<button class="filter-pill active" data-filter="all">All Posts</button>';
+    (categories || []).forEach(c => {
+      html += '<button class="filter-pill" data-filter="' + escapeHtml(c.slug) + '">' + escapeHtml(c.name) + '</button>';
+    });
+    filtersEl.innerHTML = html;
+    bindPills();
+  }
+  function bindPills(){
+    filtersEl.querySelectorAll('.filter-pill').forEach(pill => {
+      pill.addEventListener('click', () => {
+        filtersEl.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        const slug = pill.dataset.filter;
+        if (state.useApi){
+          const categoryId = slug === 'all' ? null : (slugToId[slug] || null);
+          renderPosts(1, categoryId);
+        } else {
+          renderFallbackGrid(slug);
+        }
+      });
+    });
+  }
+  bindPills();
+
+  /* ---------- fallback ---------- */
+  function renderFallback(){
+    state.useApi = false; state.firstRender = false;
+    const seen = {}, cats = [];
+    FALLBACK_POSTS.forEach(p => {
+      const t = p._embedded['wp:term'][0][0];
+      if (!seen[t.slug]){ seen[t.slug] = true; cats.push({ name: t.name, slug: t.slug }); }
+    });
+    renderPills(cats);
+    renderFallbackGrid('all');
+  }
+  function renderFallbackGrid(slug){
+    const posts = slug === 'all'
+      ? FALLBACK_POSTS
+      : FALLBACK_POSTS.filter(p => p._embedded['wp:term'][0][0].slug === slug);
+    grid.innerHTML = posts.length
+      ? posts.map(buildCard).join('')
+      : '<p style="color:var(--ink-60);grid-column:1/-1;text-align:center;padding:60px 0;font-family:var(--arch);font-weight:700;text-transform:uppercase;letter-spacing:.06em;">No posts found.</p>';
+    if (typeof lucide !== 'undefined') lucide.createIcons();
+    runFadeIn();
+    pagination.innerHTML = '';
+  }
+
+  /* ---------- init ---------- */
+  document.addEventListener('DOMContentLoaded', async () => {
+    showSkeletons();
+    try { await fetchAndBuildCategoryMap(); } catch (e){ /* pills stay default; posts fetch falls back */ }
+    await renderPosts(1, null);
+  });
+})();
+</script>
+
+<!-- ===================== SHELL SCRIPT (nav + reveal) ===================== -->
+<script>
+(function(){
+  var burger=document.getElementById('burger');
+  var mnav=document.getElementById('mnav');
+  var scrim=document.getElementById('mscrim');
+  function close(){mnav.classList.remove('open');scrim.classList.remove('open');burger.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  function open(){mnav.classList.add('open');scrim.classList.add('open');burger.classList.add('open');burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  if(burger){burger.addEventListener('click',function(){mnav.classList.contains('open')?close():open();});}
+  if(scrim){scrim.addEventListener('click',close);}
+  Array.prototype.forEach.call(mnav.querySelectorAll('a'),function(a){a.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('in');});
+  } else {
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});
+    },{rootMargin:'0px 0px -60px 0px',threshold:.08});
+    els.forEach(function(e){io.observe(e);});
+  }
+  if(typeof lucide!=='undefined')lucide.createIcons();
+})();
+</script>
+
+</body>
+</html>
