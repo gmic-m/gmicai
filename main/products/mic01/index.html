@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MIC05 — Secure AI Voice Capture Device | GMIC.AI</title>
-<meta name="description" content="MIC05 is a professional wearable AI voice device with hardware noise reduction, NFC authentication, and encrypted firmware — built for secure, integration-ready enterprise voice workflows." />
-<link rel="canonical" href="https://gmic.ai/products/mic05/">
+<title>MIC01 — Ultra-Compact Push-to-Talk AI Voice Device | GMIC.AI</title>
+<meta name="description" content="MIC01 is GMIC.AI's ultra-lightweight 8.8g push-to-talk wearable — instant voice capture over Bluetooth 5.3, an accessible entry-level platform for AI-powered voice apps and workflows." />
+<link rel="canonical" href="https://gmic.ai/products/mic01/">
 
 <!-- Favicon + Open Graph (mirrors homepage, paths rebased to ../../) -->
 <link rel="icon" type="image/png" href="../../img/favicon.png">
 <meta property="og:type" content="product">
-<meta property="og:title" content="MIC05 — Secure AI Voice Capture Device | GMIC.AI">
-<meta property="og:description" content="A professional wearable AI voice device with hardware noise reduction, NFC authentication, and encrypted firmware — built for secure, integration-ready enterprise voice workflows.">
-<meta property="og:url" content="https://gmic.ai/products/mic05/">
-<meta property="og:image" content="https://gmic.ai/img/cap/MIC05.png">
+<meta property="og:title" content="MIC01 — Ultra-Compact Push-to-Talk AI Voice Device | GMIC.AI">
+<meta property="og:description" content="GMIC.AI's ultra-lightweight 8.8g push-to-talk wearable — instant voice capture over Bluetooth 5.3, an accessible entry-level platform for AI-powered voice apps and workflows.">
+<meta property="og:url" content="https://gmic.ai/products/mic01/">
+<meta property="og:image" content="https://gmic.ai/img/cap/MIC01.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,7 +90,7 @@
 .nav.scrolled .nav-link.active{color:#2563eb!important;}
 
 /* ===================================================================
-   MIC05 PRODUCT PAGE — page-specific styles (m5- prefix).
+   MIC01 PRODUCT PAGE — page-specific styles (m5- prefix).
    Layout blocks are kept content-agnostic so this file works as the
    template for MIC06 / MIC01 / Telalive — swap the copy, keep the shell.
    =================================================================== */
@@ -126,6 +126,12 @@
 
 /* ---- C · FEATURE CARDS (reusable 3-col grid, single column on narrow) ---- */
 .m5-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+/* 5-card feature grid: wrap to 3+2 and keep the short last row centered */
+.m5-grid-flex{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
+.m5-grid-flex>.m5-card{flex:1 1 300px;max-width:380px;}
+/* 4-up card row (Why MIC01) and 2-up card row (deployment models) */
+.m5-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.m5-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
 .m5-card{border-radius:12px;padding:26px 24px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);transition:transform .25s ease,box-shadow .25s ease,background .25s ease;}
 .m5-light .m5-card,.m5-soft .m5-card{border-color:rgba(0,0,0,.08);background:#fff;}
 .m5-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.18);}
@@ -149,7 +155,7 @@
 .m5-spec-v{font-size:.9375rem;font-weight:600;color:#0f172a;text-align:right;}
 
 /* ---- E · WHAT'S UNIQUE (check row) ---- */
-.m5-check-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.m5-check-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 .m5-check{display:flex;align-items:center;gap:12px;padding:20px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);font-weight:600;font-size:.96rem;}
 .m5-check .m5-tick{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(37,99,235,.18);color:#60a5fa;}
 .m5-check .m5-tick svg{width:17px;height:17px;}
@@ -178,9 +184,10 @@
   .m5-hero-media{order:-1;max-width:520px;}
   .m5-grid-3{grid-template-columns:1fr 1fr;}
   .m5-check-row{grid-template-columns:1fr 1fr;}
+  .m5-grid-4{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:640px){
-  .m5-grid-3,.m5-check-row,.m5-specs,.m5-list{grid-template-columns:1fr;}
+  .m5-grid-3,.m5-check-row,.m5-grid-2,.m5-specs,.m5-list{grid-template-columns:1fr;}
   .m5-spec-row{padding:14px 0;}
 }
 
@@ -481,21 +488,26 @@
   <div class="container">
     <div class="m5-hero-grid">
       <div class="m5-hero-copy reveal">
-        <div class="eyebrow dark">MIC05 · AI Voice Device</div>
-        <h1>Secure voice capture for <em class="italic">AI-powered workflows.</em></h1>
-        <p class="m5-hero-sub">A professional wearable voice device for organizations that need secure audio collection, reliable wireless connectivity, and flexible system integration — with hardware noise reduction, NFC authentication, and encrypted firmware built in.</p>
+        <div class="eyebrow dark">MIC01 · AI Voice Device</div>
+        <h1>Ultra-compact <em class="italic">push-to-talk</em> voice capture.</h1>
+        <p class="m5-hero-sub">An ultra-lightweight wearable voice device for instant capture, AI interaction, and mobile-connected workflows. With a simple push-to-talk experience and all-day portability, MIC01 is an accessible hardware platform for teams building voice-enabled products and AI applications.</p>
         <div class="m5-hero-cta">
           <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Book a Demo</a>
           <a href="mailto:trigg@gmic.ai" class="btn btn-ghost">Talk to Sales</a>
         </div>
         <div class="m5-chips">
           <span class="m5-chip"><i data-lucide="bluetooth"></i>Bluetooth 5.3</span>
-          <span class="m5-chip"><i data-lucide="battery-charging"></i>Up to 10h runtime</span>
-          <span class="m5-chip"><i data-lucide="feather"></i>50.5g aluminum</span>
+          <span class="m5-chip"><i data-lucide="feather"></i>8.8g</span>
+          <span class="m5-chip"><i data-lucide="battery-charging"></i>Up to 8h</span>
+          <span class="m5-chip"><i data-lucide="radio"></i>Push-to-talk</span>
         </div>
       </div>
       <div class="m5-hero-media reveal">
-        <img src="../../img/product/mic05.png" alt="MIC05 secure AI voice capture device">
+        <!-- TODO: replace with official MIC01 hero photo -->
+        <div class="m5-hero-ph">
+          <span>MIC01</span>
+          <small>Product image coming soon</small>
+        </div>
       </div>
     </div>
   </div>
@@ -509,16 +521,16 @@
   <div class="container">
     <div class="m5-stats-grid">
       <div class="m5-stat reveal">
-        <div class="m5-stat-v">Up to 10h</div>
+        <div class="m5-stat-v">Up to 8h</div>
         <div class="m5-stat-k">Runtime</div>
       </div>
       <div class="m5-stat reveal">
-        <div class="m5-stat-v">950mAh</div>
+        <div class="m5-stat-v">80mAh</div>
         <div class="m5-stat-k">Battery</div>
       </div>
       <div class="m5-stat reveal">
-        <div class="m5-stat-v">50.5g</div>
-        <div class="m5-stat-k">Aluminum body</div>
+        <div class="m5-stat-v">8.8g</div>
+        <div class="m5-stat-k">Weight</div>
       </div>
       <div class="m5-stat reveal">
         <div class="m5-stat-v">BT 5.3</div>
@@ -534,13 +546,13 @@
   <div class="container">
     <div class="m5-split">
       <div class="reveal">
-        <div class="eyebrow">Built for business</div>
-        <h2 class="section" style="margin-bottom:18px;">Designed for business-critical conversations.</h2>
-        <p class="m5-lead">Unlike consumer voice recorders, MIC05 is engineered for organizations that rely on voice data as part of their operational workflows. It combines local storage, wireless connectivity, and intelligent security features in a compact wearable form factor — ready to integrate into your existing software platforms and AI systems.</p>
+        <div class="eyebrow">Zero friction</div>
+        <h2 class="section" style="margin-bottom:18px;">Simplicity meets <em class="italic">AI.</em></h2>
+        <p class="m5-lead">MIC01 is built around one principle: capture voice instantly, with zero friction. Unlike larger recording devices, it focuses on portability, ease of use, and fast interaction — ideal for applications where users need quick voice input throughout the day.</p>
       </div>
       <figure class="m5-scene reveal">
-        <!-- TODO: replace with official MIC05 in-use scene photo -->
-        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1100&q=80" alt="Teams capturing business-critical conversations with MIC05" loading="lazy">
+        <!-- TODO: replace with official MIC01 in-use scene photo -->
+        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1100&q=80" alt="Teams using MIC01 for instant push-to-talk voice capture" loading="lazy">
       </figure>
     </div>
   </div>
@@ -548,66 +560,57 @@
 
 
 <!-- ====================================================================
-     SECTION C: Key Features  (dark · 6 cards, 3×2 grid)
+     SECTION C: Key Features  (dark · 5 cards, flex grid 3+2 centered)
      ==================================================================== -->
 <section class="m5-sec m5-dark fade-section">
   <div class="container">
     <div class="m5-head reveal">
       <div class="eyebrow dark">Key Features</div>
-      <h2 class="section">Everything a serious deployment needs.</h2>
+      <h2 class="section">Everything you need — nothing you don't.</h2>
     </div>
-    <div class="m5-grid-3">
+    <div class="m5-grid-flex">
 
       <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="volume-x"></i></div>
-        <h3>Hardware Noise Reduction</h3>
-        <p>Dedicated audio processing and an optimized microphone architecture improve speech intelligibility and cut environmental noise — clearer capture in dynamic, real-world environments.</p>
+        <div class="m5-card-ico"><i data-lucide="radio"></i></div>
+        <h3>Push-to-Talk Operation</h3>
+        <p>Capture ideas, commands, and conversations with a single press. A streamlined interaction model lets users focus on communication, not device management.</p>
       </div>
 
       <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="scan-face"></i></div>
-        <h3>NFC Authentication Support</h3>
-        <p>Integrated NFC enables secure user interaction, device access, and identification — an extra layer of workflow security.</p>
-      </div>
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="shield-check"></i></div>
-        <h3>Firmware Encryption</h3>
-        <p>Encrypted firmware architecture protects device-level operations and data workflows for organizations that need stronger deployment controls.</p>
-      </div>
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="volume-2"></i></div>
-        <h3>Real-Time Audio Feedback</h3>
-        <p>A built-in speaker gives instant audio notifications and status confirmation.</p>
+        <div class="m5-card-ico"><i data-lucide="feather"></i></div>
+        <h3>Ultra-Compact Design</h3>
+        <p>Designed for everyday carry.</p>
         <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>Recording status alerts</li>
-          <li><i data-lucide="check"></i>System notifications</li>
-          <li><i data-lucide="check"></i>Workflow confirmations</li>
+          <li><i data-lucide="check"></i>Lightweight construction</li>
+          <li><i data-lucide="check"></i>Pocket-sized form factor</li>
+          <li><i data-lucide="check"></i>Comfortable all-day wear</li>
+          <li><i data-lucide="check"></i>Minimal visual footprint</li>
         </ul>
       </div>
 
       <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="bell-ring"></i></div>
-        <h3>Multi-Sensory Notifications</h3>
-        <p>Get feedback without ever checking a screen.</p>
+        <div class="m5-card-ico"><i data-lucide="bluetooth"></i></div>
+        <h3>Bluetooth Connectivity</h3>
+        <p>Connects seamlessly with mobile apps and AI platforms over Bluetooth 5.3 — reliable wireless communication with smartphones, tablets, and connected devices.</p>
+      </div>
+
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="zap"></i></div>
+        <h3>Instant Voice Capture</h3>
+        <p>Record and transmit voice quickly for downstream processing.</p>
         <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>Vibration alerts</li>
-          <li><i data-lucide="check"></i>LED indicators</li>
-          <li><i data-lucide="check"></i>Audio prompts</li>
+          <li><i data-lucide="check"></i>Voice notes</li>
+          <li><i data-lucide="check"></i>AI assistants</li>
+          <li><i data-lucide="check"></i>Voice commands</li>
+          <li><i data-lucide="check"></i>Task capture</li>
+          <li><i data-lucide="check"></i>Workflow automation</li>
         </ul>
       </div>
 
       <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="wifi"></i></div>
-        <h3>Wireless Connectivity</h3>
-        <p>Built for modern cloud-connected environments.</p>
-        <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>Wi-Fi connectivity</li>
-          <li><i data-lucide="check"></i>Bluetooth 5.3</li>
-          <li><i data-lucide="check"></i>Wireless device management</li>
-          <li><i data-lucide="check"></i>Flexible integration architecture</li>
-        </ul>
+        <div class="m5-card-ico"><i data-lucide="battery-charging"></i></div>
+        <h3>Long Battery Life</h3>
+        <p>Optimized for daily professional use. Despite its compact size, MIC01 delivers extended operation while staying lightweight.</p>
       </div>
 
     </div>
@@ -625,39 +628,56 @@
       <h2 class="section">The details.</h2>
     </div>
     <div class="m5-specs reveal">
-      <div class="m5-spec-row"><span class="m5-spec-k">Connectivity</span><span class="m5-spec-v">Wi-Fi + Bluetooth 5.3</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Wi-Fi Standard</span><span class="m5-spec-v">IEEE 802.11 b/g/n</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Internal Storage</span><span class="m5-spec-v">1GB NAND Storage</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Speaker</span><span class="m5-spec-v">1W Integrated Speaker</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Security</span><span class="m5-spec-v">NFC + Firmware Encryption</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Notifications</span><span class="m5-spec-v">Vibration + Audio Feedback</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Battery</span><span class="m5-spec-v">950mAh</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Runtime</span><span class="m5-spec-v">Up to 10 Hours</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Charging</span><span class="m5-spec-v">USB-C</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Charging Time</span><span class="m5-spec-v">Approximately 1 Hour</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Material</span><span class="m5-spec-v">Aluminum Alloy</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Weight</span><span class="m5-spec-v">50.5g</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Dimensions</span><span class="m5-spec-v">72 × 32 × 25 mm</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Connectivity</span><span class="m5-spec-v">Bluetooth 5.3</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Transmission Distance</span><span class="m5-spec-v">Up to 10m</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Storage</span><span class="m5-spec-v">128MB Internal Storage</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Microphone</span><span class="m5-spec-v">Single Mic (Dual Mic Optional)</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Charging Interface</span><span class="m5-spec-v">USB-C</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Battery Capacity</span><span class="m5-spec-v">80mAh</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Runtime</span><span class="m5-spec-v">Up to 8 Hours</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Charging Time</span><span class="m5-spec-v">Approximately 30 Minutes</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Weight</span><span class="m5-spec-v">8.8g</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Dimensions</span><span class="m5-spec-v">45 × 19 × 19.5 mm</span></div>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================================
-     SECTION E: What's Unique  (dark · 4-check row)
+     SECTION E: Why choose  (dark · 4 cards, 4-up / 2×2)
      ==================================================================== -->
 <section class="m5-sec m5-dark fade-section">
   <div class="container">
     <div class="m5-head reveal">
-      <div class="eyebrow dark">Why MIC05</div>
-      <h2 class="section">Four capabilities, rarely found together.</h2>
-      <p class="m5-lead">MIC05 combines security, usability, and wireless connectivity into one versatile platform for building voice-enabled products and services.</p>
+      <div class="eyebrow dark">Why MIC01</div>
+      <h2 class="section">Why choose MIC01?</h2>
     </div>
-    <div class="m5-check-row reveal">
-      <div class="m5-check"><span class="m5-tick"><i data-lucide="check"></i></span>Hardware Noise Reduction</div>
-      <div class="m5-check"><span class="m5-tick"><i data-lucide="check"></i></span>NFC Authentication</div>
-      <div class="m5-check"><span class="m5-tick"><i data-lucide="check"></i></span>Firmware Encryption</div>
-      <div class="m5-check"><span class="m5-tick"><i data-lucide="check"></i></span>Built-in Speaker Feedback</div>
+    <div class="m5-grid-4">
+
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="feather"></i></div>
+        <h3>Lightweight</h3>
+        <p>At just 8.8 grams, MIC01 is one of the most compact devices in the GMIC wearable lineup.</p>
+      </div>
+
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="zap"></i></div>
+        <h3>Easy to Deploy</h3>
+        <p>Simple Bluetooth pairing — users start working within minutes.</p>
+      </div>
+
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="wallet"></i></div>
+        <h3>Cost-Effective</h3>
+        <p>An excellent option for organizations scaling voice hardware deployments.</p>
+      </div>
+
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="code"></i></div>
+        <h3>Developer Friendly</h3>
+        <p>Integrates into existing mobile apps and AI workflows through custom software development.</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -672,17 +692,17 @@
       <div class="reveal">
         <div class="eyebrow">Made by the manufacturer</div>
         <h2 class="section" style="margin-bottom:18px;">Engineered and built <em class="italic">in-house.</em></h2>
-        <p class="m5-lead">From SMT and assembly to QA, MIC05 is produced in our own Shenzhen facility — consistent quality from 100 to 100,000+ units.</p>
+        <p class="m5-lead">From SMT and assembly to QA, MIC01 is produced in our own Shenzhen facility — consistent quality from 100 to 100,000+ units.</p>
       </div>
       <div class="m5-mfg-grid reveal">
         <figure>
-          <img src="../../img/platform/02.jpg" alt="SMT line operator inspecting a populated MIC05 circuit board" loading="lazy">
+          <img src="../../img/platform/02.jpg" alt="SMT line operator inspecting a populated MIC01 circuit board" loading="lazy">
         </figure>
         <figure>
-          <img src="../../img/platform/01.jpg" alt="Technician assembling MIC05 devices on the production line" loading="lazy">
+          <img src="../../img/platform/01.jpg" alt="Technician assembling MIC01 devices on the production line" loading="lazy">
         </figure>
         <figure>
-          <img src="../../img/platform/04.jpg" alt="MIC05 unit undergoing automated quality-assurance testing" loading="lazy">
+          <img src="../../img/platform/04.jpg" alt="MIC01 unit undergoing automated quality-assurance testing" loading="lazy">
         </figure>
       </div>
     </div>
@@ -699,47 +719,53 @@
       <div class="reveal">
         <div class="eyebrow">A platform, not just a recorder</div>
         <h2 class="section" style="margin-bottom:18px;">Built to plug into <em class="italic">your</em> stack.</h2>
-        <p class="m5-lead">MIC05 is designed as a hardware platform rather than a standalone recorder. It can be customized to support:</p>
-        <ul class="m5-list">
-          <li><i data-lucide="check"></i>Proprietary software platforms</li>
-          <li><i data-lucide="check"></i>AI transcription systems</li>
-          <li><i data-lucide="check"></i>Voice workflow automation</li>
-          <li><i data-lucide="check"></i>Cloud infrastructure integration</li>
-          <li><i data-lucide="check"></i>Private deployment environments</li>
-          <li><i data-lucide="check"></i>Custom firmware development</li>
-        </ul>
+        <p class="m5-lead">MIC01 can be configured for multiple deployment models:</p>
       </div>
       <div class="m5-split-media reveal">
         <!-- TODO: replace with official photo -->
-        <img src="../../img/platform/03.jpg" alt="GMIC engineering and manufacturing facility supporting MIC05 integration" loading="lazy">
+        <img src="../../img/platform/03.jpg" alt="GMIC engineering and manufacturing facility supporting MIC01 integration" loading="lazy">
       </div>
     </div>
 
     <!-- Integration flow diagram — horizontal on desktop, stacks vertically (arrows point down) on narrow -->
-    <div class="m5-flow reveal" role="img" aria-label="Integration flow: MIC05 to Wi-Fi or Bluetooth to Cloud or API to AI transcription to your platform">
+    <div class="m5-flow reveal" role="img" aria-label="Integration flow: MIC01 to Bluetooth to mobile app to AI platform to your workflow">
       <div class="m5-flow-node">
         <span class="m5-flow-ico"><i data-lucide="mic"></i></span>
-        <span>MIC05</span>
+        <span>MIC01</span>
       </div>
       <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
       <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="wifi"></i></span>
-        <span>Wi-Fi / Bluetooth</span>
+        <span class="m5-flow-ico"><i data-lucide="bluetooth"></i></span>
+        <span>Bluetooth</span>
       </div>
       <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
       <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="cloud"></i></span>
-        <span>Cloud / API</span>
+        <span class="m5-flow-ico"><i data-lucide="smartphone"></i></span>
+        <span>Mobile App</span>
       </div>
       <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
       <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="file-text"></i></span>
-        <span>AI Transcription</span>
+        <span class="m5-flow-ico"><i data-lucide="cpu"></i></span>
+        <span>AI Platform</span>
       </div>
       <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
       <div class="m5-flow-node">
         <span class="m5-flow-ico"><i data-lucide="layout-grid"></i></span>
-        <span>Your Platform</span>
+        <span>Your Workflow</span>
+      </div>
+    </div>
+
+    <!-- Deployment models — 2 cards (same card style, 2-up / single column on narrow) -->
+    <div class="m5-grid-2" style="margin-top:clamp(28px,4vw,40px);">
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="smartphone"></i></div>
+        <h3>Device → Mobile App → AI Platform</h3>
+        <p>Captures voice input and transmits through a companion app for processing and automation.</p>
+      </div>
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="building-2"></i></div>
+        <h3>Device → Enterprise Workflow</h3>
+        <p>Integrate voice interactions into CRM systems, productivity tools, knowledge management platforms, and custom software environments.</p>
       </div>
     </div>
   </div>
@@ -760,9 +786,9 @@
       <div class="m5-card m5-custom-col reveal">
         <h3><span class="m5-card-ico"><i data-lucide="tag"></i></span>Branding</h3>
         <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>Custom logo</li>
-          <li><i data-lucide="check"></i>Custom packaging</li>
+          <li><i data-lucide="check"></i>Logo printing</li>
           <li><i data-lucide="check"></i>White-label production</li>
+          <li><i data-lucide="check"></i>Custom packaging</li>
         </ul>
       </div>
 
@@ -770,17 +796,17 @@
         <h3><span class="m5-card-ico"><i data-lucide="cpu"></i></span>Firmware</h3>
         <ul class="m5-bullets">
           <li><i data-lucide="check"></i>Custom button behavior</li>
-          <li><i data-lucide="check"></i>Custom upload logic</li>
-          <li><i data-lucide="check"></i>Custom workflow triggers</li>
+          <li><i data-lucide="check"></i>Voice workflow customization</li>
+          <li><i data-lucide="check"></i>Notification settings</li>
         </ul>
       </div>
 
       <div class="m5-card m5-custom-col reveal">
-        <h3><span class="m5-card-ico"><i data-lucide="cloud"></i></span>Connectivity</h3>
+        <h3><span class="m5-card-ico"><i data-lucide="cloud"></i></span>Integration</h3>
         <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>API integration</li>
-          <li><i data-lucide="check"></i>Cloud endpoint configuration</li>
-          <li><i data-lucide="check"></i>Private server deployment</li>
+          <li><i data-lucide="check"></i>Mobile app integration</li>
+          <li><i data-lucide="check"></i>API connectivity</li>
+          <li><i data-lucide="check"></i>Cloud platform integration</li>
         </ul>
       </div>
 
@@ -795,8 +821,10 @@
 <section class="m5-sec m5-dark m5-cta fade-section">
   <div class="container">
     <div class="m5-head reveal">
-      <h2 class="section">Bring MIC05 into your product — or build your own version.</h2>
-      <p class="m5-lead" style="margin-top:16px;">Order MIC05 as-is, or use it as the base for a custom private-label build. Our team in Anaheim and Shenzhen will take it from there.</p>
+      <div class="eyebrow dark">Who MIC01 is for</div>
+      <p class="m5-lead" style="margin-bottom:18px;">Ideal for organizations that want a lightweight voice input device without enterprise-hardware complexity — an entry-level platform for AI-powered voice experiences.</p>
+      <h2 class="section">Bring MIC01 into your product — or build your own version.</h2>
+      <p class="m5-lead" style="margin-top:16px;">Order MIC01 as-is, or use it as the base for a custom private-label build. Our team in Anaheim and Shenzhen will take it from there.</p>
     </div>
     <div class="m5-cta-btns reveal">
       <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Book a Demo</a>
