@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Our Process — From AI Software to Deployable Hardware | GMIC.AI</title>
-<meta name="description" content="GMIC's 8-step process turns AI software into deployable hardware — from discovery and architecture through prototyping, validation, pilot, manufacturing, and long-term support." />
+<title>AI Hardware Development Process | From Software to Deployment | GMIC</title>
+<meta name="description" content="GMIC's 8-step hardware development process takes AI software to deployable hardware: discovery, solution architecture, prototyping, integration & validation, pilot, production preparation, manufacturing, and long-term support." />
 <link rel="canonical" href="https://gmic.ai/process/" />
 <link rel="icon" type="image/png" href="../img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <link rel="stylesheet" href="../css/style.css">
 <link rel="stylesheet" href="../css/grid.css">
@@ -903,6 +903,93 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 }
 
 .nav { border-bottom: none !important; box-shadow: none !important; }
+
+/* ===== PROCESS 组件样式（master-detail 桌面 / accordion 移动）+ 内容列 1536 ===== */
+
+/* 内容列 1440 居中（导航/各 section/页脚一起对齐） */
+.container{max-width:1440px;}
+
+/* 面包屑：现在是裸 <ol>（渲染成 1.2.3.），补样式 + 顶部避开固定导航 */
+.breadcrumb{margin:0 0 14px;}
+.breadcrumb ol{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0;font-size:13px;}
+.breadcrumb li{display:inline-flex;align-items:center;}
+.breadcrumb a{color:#6b7280;text-decoration:none;}
+.breadcrumb a:hover{color:#2563eb;}
+.breadcrumb .sep{color:#cbd5e1;}
+.breadcrumb [aria-current="page"]{color:#0f172a;font-weight:600;}
+
+/* section head */
+.proc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:48px;flex-wrap:wrap;}
+.proc-head-left{flex:1 1 480px;}
+.proc-head-note{flex:0 1 340px;max-width:340px;color:#6b7280;font-size:15px;line-height:1.6;margin:0;}
+
+/* ===== Inter only on this page — override any serif heading classes ===== */
+.display,.section{font-family:'Inter',sans-serif;letter-spacing:-.02em;}
+
+/* HERO */
+.process-hero{padding-top:clamp(84px,9vw,104px);}
+.process-hero .eyebrow{color:#999;}
+.process-hero h1{font-family:'Inter',sans-serif;font-size:clamp(38px,5.4vw,66px);font-weight:800;letter-spacing:-.03em;line-height:1.05;color:#111;margin:14px 0 0;max-width:18ch;}
+.process-hero p{font-size:clamp(16px,1.4vw,19px);line-height:1.6;color:#666;max-width:62ch;margin:22px 0 0;}
+.process-hero-banner{margin-top:clamp(44px,6vw,80px);width:100%;}
+.process-hero-banner img{display:block;width:100%;height:clamp(260px,36vw,520px);object-fit:cover;}
+
+/* ===== PROCESS TIMELINE — uniform header + alternating image/content per step ===== */
+.proc-timeline{padding:clamp(80px,10vw,140px) 0;}
+.step{padding:clamp(56px,7vw,100px) 0;border-top:1px solid #e5e5e5;}
+.step:first-child{border-top:0;padding-top:clamp(12px,2vw,28px);}
+/* full-width header row — every step header shares the same left edge */
+.step-header{margin-bottom:clamp(28px,4vw,48px);}
+.step-eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#2563eb;margin-bottom:8px;}
+.step-title{font-family:'Inter',sans-serif;font-size:clamp(22px,2.6vw,34px);font-weight:700;letter-spacing:-.02em;line-height:1.15;color:#111;margin:0;}
+/* image (45%) + content (55%) two-column, alternating sides by step parity */
+.step-grid{display:grid;grid-template-columns:45% 1fr;gap:clamp(32px,5vw,72px);align-items:center;}
+.step:nth-child(even) .step-grid{grid-template-columns:1fr 45%;}
+.step:nth-child(even) .step-figure{order:2;}
+.step:nth-child(even) .step-content{order:1;}
+.step-figure{margin:0;}
+.step-figure img{display:block;width:100%;aspect-ratio:3/2;object-fit:cover;border-radius:6px;background:#f1f3f5;}
+.step-content{min-width:0;}
+.step-intro{font-size:16px;line-height:1.65;color:#666;margin:0 0 22px;max-width:60ch;}
+.step-subhead{font-size:13px;font-weight:700;letter-spacing:.01em;color:#111;margin:22px 0 12px;}
+/* points: uniform 2-col grid, small blue dot, never default <ul> bullets */
+.step-points{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:11px 24px;}
+.step-points li{display:flex;align-items:flex-start;gap:10px;font-size:15px;color:#333;line-height:1.5;}
+.step-points li::before{content:"";flex-shrink:0;width:6px;height:6px;border-radius:50%;background:#2563eb;margin-top:8px;}
+/* deliverables: distinct block — light-gray bg + left blue bar + blue lucide checks, 3 across */
+.step-deliv{margin-top:26px;background:#f7f8fa;border-left:3px solid #2563eb;border-radius:0 10px 10px 0;padding:clamp(24px,3vw,36px);}
+.step-deliv-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#2563eb;margin-bottom:14px;}
+.step-deliv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px 20px;}
+.step-deliv-item{display:flex;align-items:flex-start;gap:9px;font-size:14px;color:#222;line-height:1.45;}
+.step-deliv-item svg{width:16px;height:16px;color:#2563eb;flex-shrink:0;margin-top:2px;}
+@media (max-width:768px){
+  .step-grid,.step:nth-child(even) .step-grid{grid-template-columns:1fr;gap:24px;}
+  .step-figure,.step:nth-child(even) .step-figure{order:0;}
+  .step-content,.step:nth-child(even) .step-content{order:1;}
+  .step-points{grid-template-columns:1fr;gap:10px;}
+  .step-deliv-grid{grid-template-columns:1fr;gap:12px;}
+}
+
+/* ===== WHY THIS PROCESS WORKS — dark section (#0a0a0a) ===== */
+.proc-why{background:#0a0a0a;padding:clamp(80px,10vw,140px) 0;}
+.proc-why .eyebrow{color:#8a8f98;}
+.proc-why .section{color:#fff;}
+.proc-prose{max-width:820px;}
+.proc-prose p{font-size:clamp(17px,1.5vw,20px);line-height:1.7;color:#c8ccd2;margin:0;}
+.why-caps{display:grid;grid-template-columns:repeat(4,1fr);margin-top:48px;border-top:1px solid rgba(255,255,255,.14);}
+.why-cap{display:flex;flex-direction:column;gap:12px;padding:26px 28px;border-left:1px solid rgba(255,255,255,.14);}
+.why-cap:first-child{border-left:0;padding-left:0;}
+.why-cap-icon{color:#2563eb;display:inline-flex;}
+.why-cap-icon svg{width:24px;height:24px;}
+.why-cap-label{font-size:15px;font-weight:600;color:#fff;line-height:1.3;}
+@media (max-width:768px){
+  .why-caps{grid-template-columns:1fr 1fr;border-top:0;}
+  .why-cap{border-left:0;border-top:1px solid rgba(255,255,255,.14);padding:20px 0;}
+  .why-cap:first-child{border-top:0;}
+}
+
+/* final CTA body */
+.proc-cta-body{max-width:640px;margin:16px auto 28px;font-size:16px;line-height:1.65;}
 </style>
 </head>
 <body>
@@ -1036,7 +1123,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 
       <!-- Process -->
       <div class="nav-item">
-        <a href="../index.html#process" class="nav-link">Process</a>
+        <a href="../process/index.html" class="nav-link" aria-current="page" style="color:#2563eb;font-weight:700;">Process</a>
       </div>
 
       <!-- Company -->
@@ -1156,67 +1243,53 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
      main.js: reveal, fade, FAB, back-to-top, lucide) working without a full hero. -->
 <div class="hero" aria-hidden="true" style="display:none"></div>
 
-<!-- ========== BREADCRUMB ========== -->
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <div class="container">
-    <ol>
-      <li><a href="../index.html">Home</a></li>
-      <li class="sep" aria-hidden="true">/</li>
-      <li aria-current="page">Process</li>
-    </ol>
-  </div>
-</nav>
-
 <main id="main">
 
-  <!-- ========== 1) HERO — two-column text above a full-bleed image ========== -->
-  <header class="odm-hero fade-section">
+  <!-- ========== 1) HERO ========== -->
+  <header class="process-hero fade-section">
     <div class="container">
-      <div class="odm-hero-top">
-        <div class="odm-hero-lead reveal">
-          <div class="eyebrow">PROCESS · HOW WE WORK</div>
-          <h1 class="display">From AI Software to <span class="odm-hero-accent">Deployable Hardware</span></h1>
-          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Start a Project</a>
-        </div>
-        <div class="odm-hero-note reveal">
-          <p>GMIC helps AI companies transform software products into real-world hardware solutions. Our process is designed to reduce risk, accelerate validation, and support long-term deployment.</p>
-        </div>
-      </div>
+      <nav class="breadcrumb reveal" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="../index.html">Home</a></li>
+          <li class="sep" aria-hidden="true">/</li>
+          <li aria-current="page">Process</li>
+        </ol>
+      </nav>
+      <div class="eyebrow reveal">/ PROCESS</div>
+      <h1 class="reveal">From AI Software to Deployable Hardware</h1>
+      <p class="reveal">GMIC helps AI companies transform software products into real-world hardware solutions. Our process is designed to reduce risk, accelerate validation, and support long-term deployment.</p>
     </div>
-    <div class="odm-hero-banner">
-      <img src="../img/platform/01.jpg" alt="GMIC production line in Shenzhen" onerror="this.style.display='none'">
+    <div class="process-hero-banner reveal">
+      <img src="../img/about/assembly-line.jpg" alt="GMIC production line in Shenzhen" onerror="this.onerror=null;this.src='https://placehold.co/1600x520?text=GMIC+Production+Line';">
     </div>
   </header>
 
-  <!-- ========== 2) THE PROCESS — master-detail (desktop) / accordion (mobile) ========== -->
-  <section class="odm-sec fade-section" aria-labelledby="process-h">
+  <!-- ========== 2) THE PROCESS — 8 steps: full-width header + alternating image/content ========== -->
+  <section class="odm-sec proc-timeline fade-section" aria-labelledby="process-h">
     <div class="container">
       <div class="odm-head proc-head reveal">
         <div class="proc-head-left">
-          <span class="eyebrow">PROCESS · OUR WORKFLOW</span>
+          <span class="eyebrow">/ THE PROCESS</span>
           <h2 class="section" id="process-h">Eight steps from concept to deployment</h2>
         </div>
         <p class="proc-head-note">From first conversation to long-term support, every stage is handled by one integrated team.</p>
       </div>
 
-      <div class="proc-md reveal">
+      <div class="proc-steps">
 
-        <!-- Step 1 -->
-        <button class="proc-md-item is-active" id="proc-tab-1" type="button" aria-expanded="true" aria-controls="proc-panel-1">
-          <span class="proc-md-num">01</span>
-          <span class="proc-md-itext">
-            <span class="proc-md-title">Discovery &amp; Requirements</span>
-            <span class="proc-md-guide">Understanding your workflow, requirements, and goals.</span>
-          </span>
-          <span class="proc-md-chevron" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-        </button>
-        <div class="proc-md-panel is-active" id="proc-panel-1" role="region" aria-labelledby="proc-tab-1">
-          <div class="proc-peyebrow"><i data-lucide="search"></i> Step 1</div>
-          <h3 class="proc-ptitle">Discovery &amp; Requirements</h3>
-          <p class="proc-step-intro">Every project begins with understanding your workflow. We work with your team to identify:</p>
-          <div class="proc-cols">
-            <div class="proc-points">
-              <ul>
+        <!-- STEP 01 -->
+        <article class="step reveal">
+          <header class="step-header">
+            <div class="step-eyebrow">Step 01</div>
+            <h3 class="step-title">Discovery &amp; Requirements</h3>
+          </header>
+          <div class="step-grid">
+            <figure class="step-figure">
+              <img src="../img/about/reception-logo.jpg" alt="GMIC reception and brand wall in Shenzhen" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Discovery';">
+            </figure>
+            <div class="step-content">
+              <p class="step-intro">Every project begins with understanding your workflow. We work with your team to identify:</p>
+              <ul class="step-points">
                 <li>User workflow</li>
                 <li>Recording requirements</li>
                 <li>Security requirements</li>
@@ -1224,295 +1297,271 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
                 <li>Connectivity needs</li>
                 <li>Business goals</li>
               </ul>
-            </div>
-            <div class="proc-deliverables">
-              <h4>Deliverables</h4>
-              <ul>
-                <li><i data-lucide="check"></i> Requirements Summary</li>
-                <li><i data-lucide="check"></i> Initial Architecture Direction</li>
-                <li><i data-lucide="check"></i> Project Feasibility Assessment</li>
-              </ul>
+              <div class="step-deliv">
+                <div class="step-deliv-label">Deliverables</div>
+                <div class="step-deliv-grid">
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Requirements Summary</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Initial Architecture Direction</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Project Feasibility Assessment</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Step 2 -->
-        <button class="proc-md-item" id="proc-tab-2" type="button" aria-expanded="false" aria-controls="proc-panel-2">
-          <span class="proc-md-num">02</span>
-          <span class="proc-md-itext">
-            <span class="proc-md-title">Solution Architecture</span>
-            <span class="proc-md-guide">Recommending the best hardware strategy for your project.</span>
-          </span>
-          <span class="proc-md-chevron" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-        </button>
-        <div class="proc-md-panel" id="proc-panel-2" role="region" aria-labelledby="proc-tab-2">
-          <div class="proc-peyebrow"><i data-lucide="layers"></i> Step 2</div>
-          <h3 class="proc-ptitle">Solution Architecture</h3>
-          <p class="proc-step-intro">Once requirements are defined, we recommend the best hardware strategy. Depending on your project, this may include:</p>
-          <div class="proc-cols">
-            <div class="proc-points">
-              <ul>
+        <!-- STEP 02 -->
+        <article class="step reveal">
+          <header class="step-header">
+            <div class="step-eyebrow">Step 02</div>
+            <h3 class="step-title">Solution Architecture</h3>
+          </header>
+          <div class="step-grid">
+            <figure class="step-figure">
+              <img src="../img/about/bv50p.jpg" alt="GMIC hardware platform device" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Solution+Architecture';">
+            </figure>
+            <div class="step-content">
+              <p class="step-intro">Once requirements are defined, we recommend the best hardware strategy. Depending on your project, this may include:</p>
+              <ul class="step-points">
                 <li>Existing GMIC platform</li>
                 <li>Hardware customization</li>
                 <li>Custom enclosure development</li>
                 <li>Firmware modifications</li>
                 <li>Connectivity architecture</li>
               </ul>
-            </div>
-            <div class="proc-deliverables">
-              <h4>Deliverables</h4>
-              <ul>
-                <li><i data-lucide="check"></i> Hardware Recommendation</li>
-                <li><i data-lucide="check"></i> System Architecture</li>
-                <li><i data-lucide="check"></i> Development Scope</li>
-              </ul>
+              <div class="step-deliv">
+                <div class="step-deliv-label">Deliverables</div>
+                <div class="step-deliv-grid">
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Hardware Recommendation</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> System Architecture</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Development Scope</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Step 3 -->
-        <button class="proc-md-item" id="proc-tab-3" type="button" aria-expanded="false" aria-controls="proc-panel-3">
-          <span class="proc-md-num">03</span>
-          <span class="proc-md-itext">
-            <span class="proc-md-title">Prototype Development</span>
-            <span class="proc-md-guide">Evaluation units to validate before production.</span>
-          </span>
-          <span class="proc-md-chevron" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-        </button>
-        <div class="proc-md-panel" id="proc-panel-3" role="region" aria-labelledby="proc-tab-3">
-          <div class="proc-peyebrow"><i data-lucide="cpu"></i> Step 3</div>
-          <h3 class="proc-ptitle">Prototype Development</h3>
-          <p class="proc-step-intro">Before committing to production, we create evaluation units for validation. This stage allows teams to test:</p>
-          <div class="proc-step-media"><img src="../img/platform/03.jpg" alt="GMIC prototype evaluation units" onerror="this.closest('.proc-step-media').style.display='none'"></div>
-          <div class="proc-cols">
-            <div class="proc-points">
-              <ul>
+        <!-- STEP 03 -->
+        <article class="step reveal">
+          <header class="step-header">
+            <div class="step-eyebrow">Step 03</div>
+            <h3 class="step-title">Prototype Development</h3>
+          </header>
+          <div class="step-grid">
+            <figure class="step-figure">
+              <img src="../img/about/reflow-solder.jpg" alt="Reflow soldering of prototype boards" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Prototype';">
+            </figure>
+            <div class="step-content">
+              <p class="step-intro">Before committing to production, we create evaluation units for validation. This stage allows teams to test:</p>
+              <ul class="step-points">
                 <li>Audio quality</li>
                 <li>Battery life</li>
                 <li>Storage requirements</li>
                 <li>User experience</li>
                 <li>Workflow integration</li>
               </ul>
-            </div>
-            <div class="proc-deliverables">
-              <h4>Deliverables</h4>
-              <ul>
-                <li><i data-lucide="check"></i> Functional Prototype</li>
-                <li><i data-lucide="check"></i> Evaluation Units</li>
-                <li><i data-lucide="check"></i> Testing Documentation</li>
-              </ul>
+              <div class="step-deliv">
+                <div class="step-deliv-label">Deliverables</div>
+                <div class="step-deliv-grid">
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Functional Prototype</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Evaluation Units</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Testing Documentation</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Step 4 -->
-        <button class="proc-md-item" id="proc-tab-4" type="button" aria-expanded="false" aria-controls="proc-panel-4">
-          <span class="proc-md-num">04</span>
-          <span class="proc-md-itext">
-            <span class="proc-md-title">Integration &amp; Validation</span>
-            <span class="proc-md-guide">Integrating hardware into your AI workflow.</span>
-          </span>
-          <span class="proc-md-chevron" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-        </button>
-        <div class="proc-md-panel" id="proc-panel-4" role="region" aria-labelledby="proc-tab-4">
-          <div class="proc-peyebrow"><i data-lucide="plug"></i> Step 4</div>
-          <h3 class="proc-ptitle">Integration &amp; Validation</h3>
-          <p class="proc-step-intro">Hardware becomes valuable when integrated into your AI workflow. GMIC supports:</p>
-          <div class="proc-cols">
-            <div class="proc-points">
-              <ul>
+        <!-- STEP 04 -->
+        <article class="step reveal">
+          <header class="step-header">
+            <div class="step-eyebrow">Step 04</div>
+            <h3 class="step-title">Integration &amp; Validation</h3>
+          </header>
+          <div class="step-grid">
+            <figure class="step-figure">
+              <img src="../img/about/qc-inspection.jpg" alt="Engineer validating hardware during QC inspection" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Validation';">
+            </figure>
+            <div class="step-content">
+              <p class="step-intro">Hardware becomes valuable when integrated into your AI workflow. GMIC supports:</p>
+              <ul class="step-points">
                 <li>Firmware integration</li>
                 <li>API integration</li>
                 <li>AI SDK integration</li>
                 <li>Cloud workflows</li>
                 <li>On-premise deployments</li>
               </ul>
-              <p class="proc-subhead">Validation focuses on:</p>
-              <ul>
+              <p class="step-subhead">Validation focuses on:</p>
+              <ul class="step-points">
                 <li>Reliability</li>
                 <li>Connectivity</li>
                 <li>Upload performance</li>
                 <li>User adoption</li>
               </ul>
-            </div>
-            <div class="proc-deliverables">
-              <h4>Deliverables</h4>
-              <ul>
-                <li><i data-lucide="check"></i> Integrated Solution</li>
-                <li><i data-lucide="check"></i> Workflow Validation</li>
-                <li><i data-lucide="check"></i> Pilot Readiness</li>
-              </ul>
+              <div class="step-deliv">
+                <div class="step-deliv-label">Deliverables</div>
+                <div class="step-deliv-grid">
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Integrated Solution</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Workflow Validation</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Pilot Readiness</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Step 5 -->
-        <button class="proc-md-item" id="proc-tab-5" type="button" aria-expanded="false" aria-controls="proc-panel-5">
-          <span class="proc-md-num">05</span>
-          <span class="proc-md-itext">
-            <span class="proc-md-title">Pilot Deployment</span>
-            <span class="proc-md-guide">Validating real-world usage before scaling.</span>
-          </span>
-          <span class="proc-md-chevron" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-        </button>
-        <div class="proc-md-panel" id="proc-panel-5" role="region" aria-labelledby="proc-tab-5">
-          <div class="proc-peyebrow"><i data-lucide="rocket"></i> Step 5</div>
-          <h3 class="proc-ptitle">Pilot Deployment</h3>
-          <p class="proc-step-intro">Pilot programs help validate real-world usage before scaling. Typical pilot objectives include:</p>
-          <div class="proc-cols">
-            <div class="proc-points">
-              <ul>
+        <!-- STEP 05 -->
+        <article class="step reveal">
+          <header class="step-header">
+            <div class="step-eyebrow">Step 05</div>
+            <h3 class="step-title">Pilot Deployment</h3>
+          </header>
+          <div class="step-grid">
+            <figure class="step-figure">
+              <img src="../img/about/wave-solder.jpg" alt="Finished boards moving through wave soldering" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Pilot+Deployment';">
+            </figure>
+            <div class="step-content">
+              <p class="step-intro">Pilot programs help validate real-world usage before scaling. Typical pilot objectives include:</p>
+              <ul class="step-points">
                 <li>User acceptance</li>
                 <li>Workflow validation</li>
                 <li>Operational testing</li>
                 <li>Infrastructure verification</li>
               </ul>
-            </div>
-            <div class="proc-deliverables">
-              <h4>Deliverables</h4>
-              <ul>
-                <li><i data-lucide="check"></i> Pilot Devices</li>
-                <li><i data-lucide="check"></i> Deployment Support</li>
-                <li><i data-lucide="check"></i> Feedback Collection</li>
-              </ul>
+              <div class="step-deliv">
+                <div class="step-deliv-label">Deliverables</div>
+                <div class="step-deliv-grid">
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Pilot Devices</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Deployment Support</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Feedback Collection</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Step 6 -->
-        <button class="proc-md-item" id="proc-tab-6" type="button" aria-expanded="false" aria-controls="proc-panel-6">
-          <span class="proc-md-num">06</span>
-          <span class="proc-md-itext">
-            <span class="proc-md-title">Production Preparation</span>
-            <span class="proc-md-guide">Moving toward manufacturing readiness.</span>
-          </span>
-          <span class="proc-md-chevron" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-        </button>
-        <div class="proc-md-panel" id="proc-panel-6" role="region" aria-labelledby="proc-tab-6">
-          <div class="proc-peyebrow"><i data-lucide="settings-2"></i> Step 6</div>
-          <h3 class="proc-ptitle">Production Preparation</h3>
-          <p class="proc-step-intro">After successful validation, projects move toward manufacturing readiness. Activities may include:</p>
-          <div class="proc-cols">
-            <div class="proc-points">
-              <ul>
+        <!-- STEP 06 -->
+        <article class="step reveal">
+          <header class="step-header">
+            <div class="step-eyebrow">Step 06</div>
+            <h3 class="step-title">Production Preparation</h3>
+          </header>
+          <div class="step-grid">
+            <figure class="step-figure">
+              <img src="../img/about/aoi-inspection.jpg" alt="AOI optical inspection machine on the GMIC line" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Production+Preparation';">
+            </figure>
+            <div class="step-content">
+              <p class="step-intro">After successful validation, projects move toward manufacturing readiness. Activities may include:</p>
+              <ul class="step-points">
                 <li>Design refinement</li>
                 <li>Tooling preparation</li>
                 <li>Certification planning</li>
                 <li>Supply chain preparation</li>
                 <li>Quality control planning</li>
               </ul>
-            </div>
-            <div class="proc-deliverables">
-              <h4>Deliverables</h4>
-              <ul>
-                <li><i data-lucide="check"></i> Production Plan</li>
-                <li><i data-lucide="check"></i> Manufacturing Readiness Review</li>
-                <li><i data-lucide="check"></i> Certification Support</li>
-              </ul>
+              <div class="step-deliv">
+                <div class="step-deliv-label">Deliverables</div>
+                <div class="step-deliv-grid">
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Production Plan</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Manufacturing Readiness Review</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Certification Support</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Step 7 -->
-        <button class="proc-md-item" id="proc-tab-7" type="button" aria-expanded="false" aria-controls="proc-panel-7">
-          <span class="proc-md-num">07</span>
-          <span class="proc-md-itext">
-            <span class="proc-md-title">Manufacturing &amp; Deployment</span>
-            <span class="proc-md-guide">Volume production and deployment planning.</span>
-          </span>
-          <span class="proc-md-chevron" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-        </button>
-        <div class="proc-md-panel" id="proc-panel-7" role="region" aria-labelledby="proc-tab-7">
-          <div class="proc-peyebrow"><i data-lucide="factory"></i> Step 7</div>
-          <h3 class="proc-ptitle">Manufacturing &amp; Deployment</h3>
-          <p class="proc-step-intro">GMIC supports volume production and deployment planning. Capabilities include:</p>
-          <div class="proc-step-media"><img src="../img/platform/05.jpg" alt="GMIC SMT manufacturing and assembly line" onerror="this.closest('.proc-step-media').style.display='none'"></div>
-          <div class="proc-cols">
-            <div class="proc-points">
-              <ul>
+        <!-- STEP 07 -->
+        <article class="step reveal">
+          <header class="step-header">
+            <div class="step-eyebrow">Step 07</div>
+            <h3 class="step-title">Manufacturing &amp; Deployment</h3>
+          </header>
+          <div class="step-grid">
+            <figure class="step-figure">
+              <img src="../img/about/assembly-workers.jpg" alt="Assembly line workers at the GMIC factory" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Manufacturing';">
+            </figure>
+            <div class="step-content">
+              <p class="step-intro">GMIC supports volume production and deployment planning. Capabilities include:</p>
+              <ul class="step-points">
                 <li>SMT manufacturing</li>
                 <li>Assembly</li>
                 <li>Testing</li>
                 <li>Packaging</li>
                 <li>Logistics support</li>
               </ul>
-            </div>
-            <div class="proc-deliverables">
-              <h4>Deliverables</h4>
-              <ul>
-                <li><i data-lucide="check"></i> Production Units</li>
-                <li><i data-lucide="check"></i> Quality Reports</li>
-                <li><i data-lucide="check"></i> Deployment Support</li>
-              </ul>
+              <div class="step-deliv">
+                <div class="step-deliv-label">Deliverables</div>
+                <div class="step-deliv-grid">
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Production Units</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Quality Reports</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Deployment Support</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </article>
 
-        <!-- Step 8 -->
-        <button class="proc-md-item" id="proc-tab-8" type="button" aria-expanded="false" aria-controls="proc-panel-8">
-          <span class="proc-md-num">08</span>
-          <span class="proc-md-itext">
-            <span class="proc-md-title">Scaling &amp; Long-Term Support</span>
-            <span class="proc-md-guide">Evolving the product over the long term.</span>
-          </span>
-          <span class="proc-md-chevron" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
-        </button>
-        <div class="proc-md-panel" id="proc-panel-8" role="region" aria-labelledby="proc-tab-8">
-          <div class="proc-peyebrow"><i data-lucide="trending-up"></i> Step 8</div>
-          <h3 class="proc-ptitle">Scaling &amp; Long-Term Support</h3>
-          <p class="proc-step-intro">Successful hardware products continue to evolve. GMIC supports:</p>
-          <div class="proc-cols">
-            <div class="proc-points">
-              <ul>
+        <!-- STEP 08 -->
+        <article class="step reveal">
+          <header class="step-header">
+            <div class="step-eyebrow">Step 08</div>
+            <h3 class="step-title">Scaling &amp; Long-Term Support</h3>
+          </header>
+          <div class="step-grid">
+            <figure class="step-figure">
+              <img src="../img/about/smt-machines.jpg" alt="SMT machines on the GMIC production floor" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Scaling';">
+            </figure>
+            <div class="step-content">
+              <p class="step-intro">Successful hardware products continue to evolve. GMIC supports:</p>
+              <ul class="step-points">
                 <li>Product updates</li>
                 <li>Firmware updates</li>
                 <li>New feature development</li>
                 <li>Supply chain continuity</li>
                 <li>Future hardware revisions</li>
               </ul>
-            </div>
-            <div class="proc-deliverables">
-              <h4>Deliverables</h4>
-              <ul>
-                <li><i data-lucide="check"></i> Long-Term Partnership</li>
-                <li><i data-lucide="check"></i> Product Evolution Roadmap</li>
-                <li><i data-lucide="check"></i> Ongoing Engineering Support</li>
-              </ul>
+              <div class="step-deliv">
+                <div class="step-deliv-label">Deliverables</div>
+                <div class="step-deliv-grid">
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Long-Term Partnership</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Product Evolution Roadmap</div>
+                  <div class="step-deliv-item"><i data-lucide="check"></i> Ongoing Engineering Support</div>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        </article>
 
       </div>
     </div>
   </section>
 
   <!-- ========== 3) WHY THIS PROCESS WORKS ========== -->
-  <section class="odm-sec fade-section" aria-labelledby="why-h">
+  <section class="odm-sec fade-section proc-why" aria-labelledby="why-h">
     <div class="container">
       <div class="odm-head reveal">
         <span class="eyebrow">/ WHY IT WORKS</span>
         <h2 class="section" id="why-h">Why This Process Works</h2>
       </div>
       <div class="proc-prose reveal">
-        <p>Many AI companies are experts in software but have limited experience building hardware products.</p>
-        <p>GMIC bridges the gap between AI platforms and real-world deployment by combining hardware development, firmware engineering, manufacturing, and deployment support into a single workflow.</p>
+        <p>Many AI companies are experts in software but have limited experience building hardware products. GMIC bridges the gap between AI platforms and real-world deployment by combining hardware development, firmware engineering, manufacturing, and deployment support into a single workflow.</p>
       </div>
-      <div class="proc-caps reveal">
-        <div class="proc-cap">
-          <span class="proc-cap-icon"><i data-lucide="cpu"></i></span>
-          <span class="proc-cap-label">Hardware Development</span>
+      <div class="why-caps reveal">
+        <div class="why-cap">
+          <span class="why-cap-icon"><i data-lucide="cpu"></i></span>
+          <span class="why-cap-label">Hardware Development</span>
         </div>
-        <div class="proc-cap">
-          <span class="proc-cap-icon"><i data-lucide="file-code-2"></i></span>
-          <span class="proc-cap-label">Firmware Engineering</span>
+        <div class="why-cap">
+          <span class="why-cap-icon"><i data-lucide="file-code-2"></i></span>
+          <span class="why-cap-label">Firmware Engineering</span>
         </div>
-        <div class="proc-cap">
-          <span class="proc-cap-icon"><i data-lucide="factory"></i></span>
-          <span class="proc-cap-label">Manufacturing</span>
+        <div class="why-cap">
+          <span class="why-cap-icon"><i data-lucide="factory"></i></span>
+          <span class="why-cap-label">Manufacturing</span>
         </div>
-        <div class="proc-cap">
-          <span class="proc-cap-icon"><i data-lucide="rocket"></i></span>
-          <span class="proc-cap-label">Deployment Support</span>
+        <div class="why-cap">
+          <span class="why-cap-icon"><i data-lucide="rocket"></i></span>
+          <span class="why-cap-label">Deployment Support</span>
         </div>
       </div>
     </div>
@@ -1763,48 +1812,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 })();
 </script>
 
-<!-- ========== Process master-detail / accordion — self-contained, no external deps ========== -->
-<script>
-(function(){
-  var md = document.querySelector('.proc-md');
-  if(!md) return;
-  var items  = Array.prototype.slice.call(md.querySelectorAll('.proc-md-item'));
-  var panels = Array.prototype.slice.call(md.querySelectorAll('.proc-md-panel'));
-  if(!items.length) return;
-
-  function activate(i, moveFocus){
-    for(var n = 0; n < items.length; n++){
-      var on = (n === i);
-      items[n].classList.toggle('is-active', on);
-      items[n].setAttribute('aria-expanded', on ? 'true' : 'false');
-      if(panels[n]) panels[n].classList.toggle('is-active', on);
-    }
-    if(moveFocus){ items[i].focus(); }
-  }
-
-  items.forEach(function(item, i){
-    item.addEventListener('click', function(){ activate(i); });
-    item.addEventListener('keydown', function(e){
-      switch(e.key){
-        case 'ArrowDown': case 'ArrowRight':
-          e.preventDefault(); activate((i + 1) % items.length, true); break;
-        case 'ArrowUp': case 'ArrowLeft':
-          e.preventDefault(); activate((i - 1 + items.length) % items.length, true); break;
-        case 'Home':
-          e.preventDefault(); activate(0, true); break;
-        case 'End':
-          e.preventDefault(); activate(items.length - 1, true); break;
-      }
-      // Enter / Space activate natively (these are <button>s).
-    });
-  });
-
-  // Normalize to a single active step (defaults to the one pre-marked .is-active, else Step 1).
-  var start = 0;
-  for(var k = 0; k < items.length; k++){ if(items[k].classList.contains('is-active')){ start = k; break; } }
-  activate(start);
-})();
-</script>
+<script>if(window.lucide&&lucide.createIcons){lucide.createIcons();}</script>
 
 </body>
 </html>
