@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MIC01 — Ultra-Compact Push-to-Talk AI Voice Device | GMIC.AI</title>
-<meta name="description" content="MIC01 is GMIC.AI's ultra-lightweight 8.8g push-to-talk wearable — instant voice capture over Bluetooth 5.3, an accessible entry-level platform for AI-powered voice apps and workflows." />
-<link rel="canonical" href="https://gmic.ai/products/mic01/">
+<title>Telalive — AI Phone Assistant for Business Calls | GMIC.AI</title>
+<meta name="description" content="Telalive is an AI phone assistant that answers every call, captures customer intent, and turns conversations into structured business data — with FXO/FXS telephony, Gigabit Ethernet, and CRM-ready integration." />
+<link rel="canonical" href="https://gmic.ai/products/telalive/">
 
 <!-- Favicon + Open Graph (mirrors homepage, paths rebased to ../../) -->
 <link rel="icon" type="image/png" href="../../img/favicon.png">
 <meta property="og:type" content="product">
-<meta property="og:title" content="MIC01 — Ultra-Compact Push-to-Talk AI Voice Device | GMIC.AI">
-<meta property="og:description" content="GMIC.AI's ultra-lightweight 8.8g push-to-talk wearable — instant voice capture over Bluetooth 5.3, an accessible entry-level platform for AI-powered voice apps and workflows.">
-<meta property="og:url" content="https://gmic.ai/products/mic01/">
-<meta property="og:image" content="https://gmic.ai/img/cap/MIC01.png">
+<meta property="og:title" content="Telalive — AI Phone Assistant for Business Calls | GMIC.AI">
+<meta property="og:description" content="An AI phone assistant that answers every call, captures customer intent, and turns conversations into structured business data — with FXO/FXS telephony, Gigabit Ethernet, and CRM-ready integration.">
+<meta property="og:url" content="https://gmic.ai/products/telalive/">
+<meta property="og:image" content="https://gmic.ai/img/cap/telalive.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -90,7 +90,7 @@
 .nav.scrolled .nav-link.active{color:#2563eb!important;}
 
 /* ===================================================================
-   MIC01 PRODUCT PAGE — page-specific styles (m5- prefix).
+   TELALIVE PRODUCT PAGE — page-specific styles (m5- prefix).
    Layout blocks are kept content-agnostic so this file works as the
    template for MIC06 / MIC01 / Telalive — swap the copy, keep the shell.
    =================================================================== */
@@ -126,12 +126,16 @@
 
 /* ---- C · FEATURE CARDS (reusable 3-col grid, single column on narrow) ---- */
 .m5-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-/* 5-card feature grid: wrap to 3+2 and keep the short last row centered */
+/* Telalive: 5-card grid (wraps 3+2, short last row centered) */
 .m5-grid-flex{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
 .m5-grid-flex>.m5-card{flex:1 1 300px;max-width:380px;}
-/* 4-up card row (Why MIC01) and 2-up card row (deployment models) */
-.m5-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-.m5-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+/* Telalive: industry tag wall (auto-wrapping pills) */
+.m5-tags{display:flex;flex-wrap:wrap;gap:12px;}
+.m5-tag{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid rgba(0,0,0,.1);background:#fff;font-size:.95rem;font-weight:500;color:#0f172a;transition:border-color .2s,transform .2s,box-shadow .2s;}
+.m5-tag:hover{border-color:rgba(37,99,235,.5);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.06);}
+.m5-tag svg{width:16px;height:16px;color:#2563eb;}
+/* Telalive: flow nodes carry a short description line (business-loop diagram) */
+.m5-flow-node p{font-size:.8rem;line-height:1.45;color:#64748b;margin:0;}
 .m5-card{border-radius:12px;padding:26px 24px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);transition:transform .25s ease,box-shadow .25s ease,background .25s ease;}
 .m5-light .m5-card,.m5-soft .m5-card{border-color:rgba(0,0,0,.08);background:#fff;}
 .m5-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.18);}
@@ -184,10 +188,9 @@
   .m5-hero-media{order:-1;max-width:520px;}
   .m5-grid-3{grid-template-columns:1fr 1fr;}
   .m5-check-row{grid-template-columns:1fr 1fr;}
-  .m5-grid-4{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:640px){
-  .m5-grid-3,.m5-check-row,.m5-grid-2,.m5-specs,.m5-list{grid-template-columns:1fr;}
+  .m5-grid-3,.m5-check-row,.m5-specs,.m5-list{grid-template-columns:1fr;}
   .m5-spec-row{padding:14px 0;}
 }
 
@@ -366,7 +369,7 @@
 
       <!-- Process -->
       <div class="nav-item">
-        <a href="../../process/index.html" class="nav-link">Process</a>
+        <a href="../../index.html#process" class="nav-link">Process</a>
       </div>
 
       <!-- Company -->
@@ -456,7 +459,7 @@
     <div class="mobile-nav-section">
       <a href="../../implementation/index.html" class="mobile-nav-link">Implementation</a>
       <a href="../../proof/index.html" class="mobile-nav-link">Proof</a>
-      <a href="../../process/index.html" class="mobile-nav-link">Process</a>
+      <a href="../../index.html#process" class="mobile-nav-link">Process</a>
     </div>
 
     <div class="mobile-nav-section">
@@ -488,26 +491,23 @@
   <div class="container">
     <div class="m5-hero-grid">
       <div class="m5-hero-copy reveal">
-        <div class="eyebrow dark">MIC01 · AI Voice Device</div>
-        <h1>Ultra-compact <em class="italic">push-to-talk</em> voice capture.</h1>
-        <p class="m5-hero-sub">An ultra-lightweight wearable voice device for instant capture, AI interaction, and mobile-connected workflows. With a simple push-to-talk experience and all-day portability, MIC01 is an accessible hardware platform for teams building voice-enabled products and AI applications.</p>
+        <div class="eyebrow dark">Telalive · AI Phone Assistant</div>
+        <h1>An AI phone assistant for <em class="italic">every incoming call.</em></h1>
+        <p class="m5-hero-sub">Telalive turns traditional phone conversations into structured business data — automatically answering calls, capturing customer intent, and feeding your existing systems. It's the intelligent voice gateway between your customers and your business.</p>
         <div class="m5-hero-cta">
           <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Book a Demo</a>
           <a href="mailto:trigg@gmic.ai" class="btn btn-ghost">Talk to Sales</a>
         </div>
         <div class="m5-chips">
-          <span class="m5-chip"><i data-lucide="bluetooth"></i>Bluetooth 5.3</span>
-          <span class="m5-chip"><i data-lucide="feather"></i>8.8g</span>
-          <span class="m5-chip"><i data-lucide="battery-charging"></i>Up to 8h</span>
-          <span class="m5-chip"><i data-lucide="radio"></i>Push-to-talk</span>
+          <span class="m5-chip"><i data-lucide="phone"></i>FXO + FXS</span>
+          <span class="m5-chip"><i data-lucide="network"></i>Gigabit Ethernet</span>
+          <span class="m5-chip"><i data-lucide="hard-drive"></i>16GB local storage</span>
+          <span class="m5-chip"><i data-lucide="clock"></i>24/7</span>
         </div>
       </div>
       <div class="m5-hero-media reveal">
-        <!-- TODO: replace with official MIC01 hero photo -->
-        <div class="m5-hero-ph">
-          <span>MIC01</span>
-          <small>Product image coming soon</small>
-        </div>
+        <!-- TODO: replace with official Telalive hero photo -->
+        <img src="../../img/cap/telalive.png" alt="Telalive AI phone assistant device">
       </div>
     </div>
   </div>
@@ -521,20 +521,20 @@
   <div class="container">
     <div class="m5-stats-grid">
       <div class="m5-stat reveal">
-        <div class="m5-stat-v">Up to 8h</div>
-        <div class="m5-stat-k">Runtime</div>
+        <div class="m5-stat-v">24/7</div>
+        <div class="m5-stat-k">Always answering</div>
       </div>
       <div class="m5-stat reveal">
-        <div class="m5-stat-v">80mAh</div>
-        <div class="m5-stat-k">Battery</div>
+        <div class="m5-stat-v">16GB</div>
+        <div class="m5-stat-k">Local storage</div>
       </div>
       <div class="m5-stat reveal">
-        <div class="m5-stat-v">8.8g</div>
-        <div class="m5-stat-k">Weight</div>
+        <div class="m5-stat-v">FXO + FXS</div>
+        <div class="m5-stat-k">Telephony ports</div>
       </div>
       <div class="m5-stat reveal">
-        <div class="m5-stat-v">BT 5.3</div>
-        <div class="m5-stat-k">Wireless</div>
+        <div class="m5-stat-v">Gigabit</div>
+        <div class="m5-stat-k">RJ45 Ethernet</div>
       </div>
     </div>
   </div>
@@ -546,13 +546,13 @@
   <div class="container">
     <div class="m5-split">
       <div class="reveal">
-        <div class="eyebrow">Zero friction</div>
-        <h2 class="section" style="margin-bottom:18px;">Simplicity meets <em class="italic">AI.</em></h2>
-        <p class="m5-lead">MIC01 is built around one principle: capture voice instantly, with zero friction. Unlike larger recording devices, it focuses on portability, ease of use, and fast interaction — ideal for applications where users need quick voice input throughout the day.</p>
+        <div class="eyebrow">Never miss an opportunity</div>
+        <h2 class="section" style="margin-bottom:18px;">Every call is <em class="italic">business intelligence.</em></h2>
+        <p class="m5-lead">Every incoming call carries valuable information. Telalive automatically answers, captures the conversation, identifies customer intent, and converts each interaction into actionable data for your workflows. From appointments and inquiries to reservations, service requests, and lead qualification — it keeps your business responsive 24/7.</p>
       </div>
       <figure class="m5-scene reveal">
-        <!-- TODO: replace with official MIC01 in-use scene photo -->
-        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1100&q=80" alt="Teams using MIC01 for instant push-to-talk voice capture" loading="lazy">
+        <!-- TODO: replace with official Telalive reception / call-desk scene photo -->
+        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1100&q=80" alt="Customer support team handling incoming business calls" loading="lazy">
       </figure>
     </div>
   </div>
@@ -560,57 +560,83 @@
 
 
 <!-- ====================================================================
-     SECTION C: Key Features  (dark · 5 cards, flex grid 3+2 centered)
+     SECTION C: Key Features  (dark · 6 cards, 3×2 grid)
      ==================================================================== -->
 <section class="m5-sec m5-dark fade-section">
   <div class="container">
     <div class="m5-head reveal">
       <div class="eyebrow dark">Key Features</div>
-      <h2 class="section">Everything you need — nothing you don't.</h2>
+      <h2 class="section">Everything your phone line needs.</h2>
     </div>
-    <div class="m5-grid-flex">
+    <div class="m5-grid-3">
 
       <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="radio"></i></div>
-        <h3>Push-to-Talk Operation</h3>
-        <p>Capture ideas, commands, and conversations with a single press. A streamlined interaction model lets users focus on communication, not device management.</p>
+        <div class="m5-card-ico"><i data-lucide="phone-call"></i></div>
+        <h3>AI-Powered Call Handling</h3>
+        <p>Engage callers with natural voice interactions. Telalive answers automatically, collects information, and guides callers through customized conversation flows.</p>
       </div>
 
       <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="feather"></i></div>
-        <h3>Ultra-Compact Design</h3>
-        <p>Designed for everyday carry.</p>
+        <div class="m5-card-ico"><i data-lucide="file-text"></i></div>
+        <h3>Intelligent Conversation Capture</h3>
+        <p>Every conversation becomes structured intelligence.</p>
         <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>Lightweight construction</li>
-          <li><i data-lucide="check"></i>Pocket-sized form factor</li>
-          <li><i data-lucide="check"></i>Comfortable all-day wear</li>
-          <li><i data-lucide="check"></i>Minimal visual footprint</li>
+          <li><i data-lucide="check"></i>Call transcription</li>
+          <li><i data-lucide="check"></i>Conversation summaries</li>
+          <li><i data-lucide="check"></i>Customer intent extraction</li>
+          <li><i data-lucide="check"></i>Action item generation</li>
+          <li><i data-lucide="check"></i>Searchable interaction history</li>
         </ul>
       </div>
 
       <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="bluetooth"></i></div>
-        <h3>Bluetooth Connectivity</h3>
-        <p>Connects seamlessly with mobile apps and AI platforms over Bluetooth 5.3 — reliable wireless communication with smartphones, tablets, and connected devices.</p>
-      </div>
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="zap"></i></div>
-        <h3>Instant Voice Capture</h3>
-        <p>Record and transmit voice quickly for downstream processing.</p>
+        <div class="m5-card-ico"><i data-lucide="clock"></i></div>
+        <h3>24/7 Availability</h3>
+        <p>Continuous engagement, even after hours.</p>
         <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>Voice notes</li>
-          <li><i data-lucide="check"></i>AI assistants</li>
-          <li><i data-lucide="check"></i>Voice commands</li>
-          <li><i data-lucide="check"></i>Task capture</li>
-          <li><i data-lucide="check"></i>Workflow automation</li>
+          <li><i data-lucide="check"></i>After-hours call handling</li>
+          <li><i data-lucide="check"></i>Overflow call management</li>
+          <li><i data-lucide="check"></i>Weekend coverage</li>
+          <li><i data-lucide="check"></i>Holiday support</li>
         </ul>
       </div>
 
       <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="battery-charging"></i></div>
-        <h3>Long Battery Life</h3>
-        <p>Optimized for daily professional use. Despite its compact size, MIC01 delivers extended operation while staying lightweight.</p>
+        <div class="m5-card-ico"><i data-lucide="refresh-cw"></i></div>
+        <h3>Automated Data Synchronization</h3>
+        <p>Turn conversations into operational data, integrated into:</p>
+        <ul class="m5-bullets">
+          <li><i data-lucide="check"></i>CRM systems</li>
+          <li><i data-lucide="check"></i>Scheduling platforms</li>
+          <li><i data-lucide="check"></i>Customer support systems</li>
+          <li><i data-lucide="check"></i>Internal databases</li>
+          <li><i data-lucide="check"></i>Business workflows</li>
+        </ul>
+      </div>
+
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="trending-up"></i></div>
+        <h3>Real-Time Customer Insights</h3>
+        <p>Understand customer needs instantly. Telalive helps identify:</p>
+        <ul class="m5-bullets">
+          <li><i data-lucide="check"></i>Service requests</li>
+          <li><i data-lucide="check"></i>Purchase intent</li>
+          <li><i data-lucide="check"></i>Appointment requirements</li>
+          <li><i data-lucide="check"></i>Customer preferences</li>
+          <li><i data-lucide="check"></i>Follow-up opportunities</li>
+        </ul>
+      </div>
+
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="network"></i></div>
+        <h3>Enterprise Telephony Integration</h3>
+        <p>Built for real business phone environments.</p>
+        <ul class="m5-bullets">
+          <li><i data-lucide="check"></i>POTS &amp; landline compatible</li>
+          <li><i data-lucide="check"></i>FXO / FXS support</li>
+          <li><i data-lucide="check"></i>Gigabit Ethernet</li>
+          <li><i data-lucide="check"></i>Local data storage</li>
+        </ul>
       </div>
 
     </div>
@@ -628,56 +654,80 @@
       <h2 class="section">The details.</h2>
     </div>
     <div class="m5-specs reveal">
-      <div class="m5-spec-row"><span class="m5-spec-k">Connectivity</span><span class="m5-spec-v">Bluetooth 5.3</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Transmission Distance</span><span class="m5-spec-v">Up to 10m</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Storage</span><span class="m5-spec-v">128MB Internal Storage</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Microphone</span><span class="m5-spec-v">Single Mic (Dual Mic Optional)</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Charging Interface</span><span class="m5-spec-v">USB-C</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Battery Capacity</span><span class="m5-spec-v">80mAh</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Runtime</span><span class="m5-spec-v">Up to 8 Hours</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Charging Time</span><span class="m5-spec-v">Approximately 30 Minutes</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Weight</span><span class="m5-spec-v">8.8g</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Dimensions</span><span class="m5-spec-v">45 × 19 × 19.5 mm</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Connectivity</span><span class="m5-spec-v">Wi-Fi + Bluetooth</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Ethernet</span><span class="m5-spec-v">Gigabit RJ45</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Telephony Ports</span><span class="m5-spec-v">FXO + FXS</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Internal Storage</span><span class="m5-spec-v">16GB</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Audio Input</span><span class="m5-spec-v">Built-in Microphone</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Speaker</span><span class="m5-spec-v">3W Speaker</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Power Input</span><span class="m5-spec-v">USB-C 5V/3A</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Network</span><span class="m5-spec-v">2.4GHz Wi-Fi</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Bluetooth</span><span class="m5-spec-v">Bluetooth 5.0</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Dimensions</span><span class="m5-spec-v">147 × 137 × 178 mm</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Deployment</span><span class="m5-spec-v">Local or Cloud Integration</span></div>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================================
-     SECTION E: Why choose  (dark · 4 cards, 4-up / 2×2)
+     SECTION E: What makes Telalive different  (dark · 4-step business-loop flow)
      ==================================================================== -->
 <section class="m5-sec m5-dark fade-section">
   <div class="container">
     <div class="m5-head reveal">
-      <div class="eyebrow dark">Why MIC01</div>
-      <h2 class="section">Why choose MIC01?</h2>
+      <div class="eyebrow dark">Outcomes, not just conversation</div>
+      <h2 class="section">Most AI voice systems stop at the conversation. <em class="italic">Telalive doesn't.</em></h2>
     </div>
-    <div class="m5-grid-4">
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="feather"></i></div>
-        <h3>Lightweight</h3>
-        <p>At just 8.8 grams, MIC01 is one of the most compact devices in the GMIC wearable lineup.</p>
+    <div class="m5-flow reveal" role="img" aria-label="Telalive business loop: answer calls, capture intent, generate data, trigger workflows">
+      <div class="m5-flow-node">
+        <span class="m5-flow-ico"><i data-lucide="phone-call"></i></span>
+        <span>Answer Calls</span>
+        <p>Automatically engage callers with natural voice conversations.</p>
       </div>
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="zap"></i></div>
-        <h3>Easy to Deploy</h3>
-        <p>Simple Bluetooth pairing — users start working within minutes.</p>
+      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
+      <div class="m5-flow-node">
+        <span class="m5-flow-ico"><i data-lucide="target"></i></span>
+        <span>Capture Intent</span>
+        <p>Identify what customers actually need.</p>
       </div>
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="wallet"></i></div>
-        <h3>Cost-Effective</h3>
-        <p>An excellent option for organizations scaling voice hardware deployments.</p>
+      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
+      <div class="m5-flow-node">
+        <span class="m5-flow-ico"><i data-lucide="database"></i></span>
+        <span>Generate Data</span>
+        <p>Convert conversations into structured information.</p>
       </div>
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="code"></i></div>
-        <h3>Developer Friendly</h3>
-        <p>Integrates into existing mobile apps and AI workflows through custom software development.</p>
+      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
+      <div class="m5-flow-node">
+        <span class="m5-flow-ico"><i data-lucide="workflow"></i></span>
+        <span>Trigger Workflows</span>
+        <p>Push appointments, leads, tickets, and requests into your existing systems.</p>
       </div>
+    </div>
+  </div>
+</section>
 
+
+<!-- ====================================================================
+     SECTION F: Ideal For  (light · industry tag wall)
+     ==================================================================== -->
+<section class="m5-sec m5-light fade-section">
+  <div class="container">
+    <div class="m5-head reveal">
+      <div class="eyebrow">Built for</div>
+      <h2 class="section">Made for businesses that live on the phone.</h2>
+    </div>
+    <div class="m5-tags reveal">
+      <span class="m5-tag"><i data-lucide="stethoscope"></i>Healthcare Providers</span>
+      <span class="m5-tag"><i data-lucide="paw-print"></i>Veterinary Clinics</span>
+      <span class="m5-tag"><i data-lucide="smile"></i>Dental Practices</span>
+      <span class="m5-tag"><i data-lucide="hotel"></i>Hospitality Businesses</span>
+      <span class="m5-tag"><i data-lucide="briefcase"></i>Professional Services</span>
+      <span class="m5-tag"><i data-lucide="shield"></i>Insurance Agencies</span>
+      <span class="m5-tag"><i data-lucide="wrench"></i>Home Services</span>
+      <span class="m5-tag"><i data-lucide="calendar-check"></i>Appointment-Based Businesses</span>
+      <span class="m5-tag"><i data-lucide="headphones"></i>Customer Support Centers</span>
+      <span class="m5-tag"><i data-lucide="phone"></i>Enterprise Voice Platforms</span>
     </div>
   </div>
 </section>
@@ -692,17 +742,17 @@
       <div class="reveal">
         <div class="eyebrow">Made by the manufacturer</div>
         <h2 class="section" style="margin-bottom:18px;">Engineered and built <em class="italic">in-house.</em></h2>
-        <p class="m5-lead">From SMT and assembly to QA, MIC01 is produced in our own Shenzhen facility — consistent quality from 100 to 100,000+ units.</p>
+        <p class="m5-lead">From SMT and assembly to QA, Telalive is produced in our own Shenzhen facility — consistent quality from 100 to 100,000+ units.</p>
       </div>
       <div class="m5-mfg-grid reveal">
         <figure>
-          <img src="../../img/platform/02.jpg" alt="SMT line operator inspecting a populated MIC01 circuit board" loading="lazy">
+          <img src="../../img/platform/02.jpg" alt="SMT line operator inspecting a populated Telalive circuit board" loading="lazy">
         </figure>
         <figure>
-          <img src="../../img/platform/01.jpg" alt="Technician assembling MIC01 devices on the production line" loading="lazy">
+          <img src="../../img/platform/01.jpg" alt="Technician assembling Telalive devices on the production line" loading="lazy">
         </figure>
         <figure>
-          <img src="../../img/platform/04.jpg" alt="MIC01 unit undergoing automated quality-assurance testing" loading="lazy">
+          <img src="../../img/platform/04.jpg" alt="Telalive unit undergoing automated quality-assurance testing" loading="lazy">
         </figure>
       </div>
     </div>
@@ -711,103 +761,44 @@
 
 
 <!-- ====================================================================
-     SECTION F: Built for Integration  (light · text + checklist + image)
-     ==================================================================== -->
-<section class="m5-sec m5-light fade-section">
-  <div class="container">
-    <div class="m5-split">
-      <div class="reveal">
-        <div class="eyebrow">A platform, not just a recorder</div>
-        <h2 class="section" style="margin-bottom:18px;">Built to plug into <em class="italic">your</em> stack.</h2>
-        <p class="m5-lead">MIC01 can be configured for multiple deployment models:</p>
-      </div>
-      <div class="m5-split-media reveal">
-        <!-- TODO: replace with official photo -->
-        <img src="../../img/platform/03.jpg" alt="GMIC engineering and manufacturing facility supporting MIC01 integration" loading="lazy">
-      </div>
-    </div>
-
-    <!-- Integration flow diagram — horizontal on desktop, stacks vertically (arrows point down) on narrow -->
-    <div class="m5-flow reveal" role="img" aria-label="Integration flow: MIC01 to Bluetooth to mobile app to AI platform to your workflow">
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="mic"></i></span>
-        <span>MIC01</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="bluetooth"></i></span>
-        <span>Bluetooth</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="smartphone"></i></span>
-        <span>Mobile App</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="cpu"></i></span>
-        <span>AI Platform</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="layout-grid"></i></span>
-        <span>Your Workflow</span>
-      </div>
-    </div>
-
-    <!-- Deployment models — 2 cards (same card style, 2-up / single column on narrow) -->
-    <div class="m5-grid-2" style="margin-top:clamp(28px,4vw,40px);">
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="smartphone"></i></div>
-        <h3>Device → Mobile App → AI Platform</h3>
-        <p>Captures voice input and transmits through a companion app for processing and automation.</p>
-      </div>
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="building-2"></i></div>
-        <h3>Device → Enterprise Workflow</h3>
-        <p>Integrate voice interactions into CRM systems, productivity tools, knowledge management platforms, and custom software environments.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ====================================================================
-     SECTION G: Available Customization  (dark · 3 columns)
+     SECTION G: Custom Deployment Options  (dark · 5 cards, 3+2 centered)
      ==================================================================== -->
 <section class="m5-sec m5-dark fade-section">
   <div class="container">
     <div class="m5-head reveal">
       <div class="eyebrow dark">Make it yours</div>
-      <h2 class="section">Available customization.</h2>
+      <h2 class="section">Custom deployment options.</h2>
     </div>
-    <div class="m5-grid-3">
+    <div class="m5-grid-flex">
 
-      <div class="m5-card m5-custom-col reveal">
-        <h3><span class="m5-card-ico"><i data-lucide="tag"></i></span>Branding</h3>
-        <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>Logo printing</li>
-          <li><i data-lucide="check"></i>White-label production</li>
-          <li><i data-lucide="check"></i>Custom packaging</li>
-        </ul>
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="tag"></i></div>
+        <h3>White Label Solutions</h3>
+        <p>Launch under your own brand.</p>
       </div>
 
-      <div class="m5-card m5-custom-col reveal">
-        <h3><span class="m5-card-ico"><i data-lucide="cpu"></i></span>Firmware</h3>
-        <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>Custom button behavior</li>
-          <li><i data-lucide="check"></i>Voice workflow customization</li>
-          <li><i data-lucide="check"></i>Notification settings</li>
-        </ul>
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="workflow"></i></div>
+        <h3>Custom AI Workflows</h3>
+        <p>Build industry-specific conversation flows.</p>
       </div>
 
-      <div class="m5-card m5-custom-col reveal">
-        <h3><span class="m5-card-ico"><i data-lucide="cloud"></i></span>Integration</h3>
-        <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>Mobile app integration</li>
-          <li><i data-lucide="check"></i>API connectivity</li>
-          <li><i data-lucide="check"></i>Cloud platform integration</li>
-        </ul>
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="link"></i></div>
+        <h3>CRM Integration</h3>
+        <p>Connect directly to existing platforms.</p>
+      </div>
+
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="server"></i></div>
+        <h3>Private Deployment</h3>
+        <p>On-premise and enterprise infrastructure support.</p>
+      </div>
+
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="code"></i></div>
+        <h3>API Integration</h3>
+        <p>Integrate with proprietary applications and business systems.</p>
       </div>
 
     </div>
@@ -821,10 +812,10 @@
 <section class="m5-sec m5-dark m5-cta fade-section">
   <div class="container">
     <div class="m5-head reveal">
-      <div class="eyebrow dark">Who MIC01 is for</div>
-      <p class="m5-lead" style="margin-bottom:18px;">Ideal for organizations that want a lightweight voice input device without enterprise-hardware complexity — an entry-level platform for AI-powered voice experiences.</p>
-      <h2 class="section">Bring MIC01 into your product — or build your own version.</h2>
-      <p class="m5-lead" style="margin-top:16px;">Order MIC01 as-is, or use it as the base for a custom private-label build. Our team in Anaheim and Shenzhen will take it from there.</p>
+      <div class="eyebrow dark">From conversation to execution</div>
+      <p class="m5-lead" style="margin-bottom:18px;">Telalive bridges customer conversations and operational execution — turning every interaction into structured, searchable, actionable data so you capture more opportunities.</p>
+      <h2 class="section">Put Telalive on every incoming call.</h2>
+      <p class="m5-lead" style="margin-top:16px;">Deploy Telalive for your own operation, or launch it under your own brand. Our team in Anaheim and Shenzhen will take it from there.</p>
     </div>
     <div class="m5-cta-btns reveal">
       <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Book a Demo</a>
