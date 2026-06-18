@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Products — AI Hardware for Voice Capture, Phone Entry &amp; Smart Devices — GMIC AI</title>
+<meta name="description" content="Browse the full hearit.ai product catalog — wearable recorders, phone entry, speakers, headsets, smart devices, and dev modules. Available for B2B evaluation, ODM/OEM, and private label." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<style>
+/* ============================================================
+   GMIC AI — Products Overview (Editorial Premium catalog).
+   compact header → category filter bar (native JS) →
+   grouped product grid (editorial cards) → emerald custom-config
+   card → newsletter → footer + giant wordmark.
+   ============================================================ */
+:root{
+  --white:#ffffff; --cream:#f6f5f1; --ink:#1a1a1a; --ink2:#6b6b66; --hair:#e7e6e1;
+  --green:#184a37; --green-deep:#0f2a1f; --green-accent:#2f6b51;
+  --serif:'Fraunces', Georgia, 'Times New Roman', serif;
+  --sans:'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --r:12px; --rl:14px;
+}
+*{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; }
+body{ font-family:var(--sans); background:var(--white); color:var(--ink); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+img{ max-width:100%; display:block; }
+a{ color:inherit; text-decoration:none; }
+button{ font-family:inherit; cursor:pointer; border:none; background:none; color:inherit; }
+:focus-visible{ outline:2px solid var(--green-accent); outline-offset:3px; }
+.wrap{ max-width:1240px; width:100%; margin:0 auto; padding:0 clamp(20px,4vw,48px); }
+.section{ padding:clamp(40px,5vw,72px) 0; }
+section[id]{ scroll-margin-top:84px; }
+
+.eyebrow{ font-size:11.5px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--ink2); }
+.display{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line-height:1.05; }
+h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line-height:1.12; }
+.h-md{ font-size:clamp(24px,2.6vw,34px); }
+.lead{ font-size:clamp(15px,1.25vw,17.5px); line-height:1.6; color:var(--ink2); }
+.measure{ max-width:62ch; }
+
+.btn{ display:inline-flex; align-items:center; gap:9px; font-size:14.5px; font-weight:500; padding:12px 22px; border-radius:100px; transition:transform .2s, background .2s, color .2s, border-color .2s; white-space:nowrap; }
+.btn-sm{ padding:10px 18px; font-size:13.5px; }
+.btn-green{ background:var(--green); color:#fff; }
+.btn-green:hover{ background:var(--green-accent); transform:translateY(-1px); }
+.btn-ink{ background:var(--ink); color:#fff; }
+.btn-ink:hover{ background:#000; transform:translateY(-1px); }
+.btn-light{ background:#fff; color:var(--ink); }
+.btn-light:hover{ transform:translateY(-1px); box-shadow:0 8px 24px rgba(0,0,0,.14); }
+.btn-outline{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,.4); }
+.btn-outline:hover{ background:rgba(255,255,255,.12); transform:translateY(-1px); }
+.link-arrow{ font-size:14px; font-weight:500; color:var(--green); display:inline-flex; align-items:center; gap:6px; }
+.link-arrow:hover{ color:var(--green-accent); gap:9px; }
+
+/* ---------- top bar + nav (solid sticky) ---------- */
+.topbar{ background:var(--green); color:#fff; }
+.topbar .wrap{ display:flex; align-items:center; justify-content:center; min-height:34px; }
+.topbar p{ font-size:12px; color:rgba(255,255,255,.92); }
+.nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.94); backdrop-filter:saturate(160%) blur(10px); border-bottom:1px solid var(--hair); }
+.nav-inner{ display:flex; align-items:center; justify-content:space-between; height:64px; gap:20px; }
+.brand{ font-family:var(--serif); font-weight:500; font-size:21px; letter-spacing:-.01em; color:var(--ink); }
+.nav-links{ display:flex; gap:24px; align-items:center; }
+.nav-right{ display:flex; align-items:center; gap:14px; }
+.burger{ display:none; width:42px; height:42px; align-items:center; justify-content:center; border:1px solid var(--hair); border-radius:10px; }
+/* mega-menu */
+.nav-item{ position:relative; display:flex; align-items:center; }
+.nav-top, .nav-item > a{ font-family:var(--sans); font-size:14px; color:var(--ink2); display:inline-flex; align-items:center; gap:5px; background:none; cursor:pointer; padding:0; transition:color .18s; }
+.nav-top:hover, .nav-item > a:hover{ color:var(--ink); }
+.nav-arrow{ width:13px; height:13px; opacity:.7; transition:transform .2s; }
+.nav-item.has-mega:hover .nav-arrow, .nav-item.has-mega:focus-within .nav-arrow{ transform:rotate(180deg); }
+.nav-links .nav-item.active > .nav-top, .nav-links .nav-item.active > a{ color:var(--green); }
+.mega{ position:absolute; top:100%; left:0; padding-top:14px; display:none; z-index:60; }
+.nav-item.has-mega:hover .mega, .nav-item.has-mega:focus-within .mega{ display:block; }
+.mega--right{ left:auto; right:0; }
+.mega-inner{ background:#fff; border:1px solid var(--hair); border-radius:14px; box-shadow:0 26px 60px rgba(15,42,31,.16); padding:22px 24px; }
+.mega-cols{ display:flex; gap:30px; }
+.mega-col{ min-width:186px; }
+.mega-col h5{ font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink2); margin-bottom:10px; font-weight:600; }
+.mega-link{ display:block; padding:8px 0; font-size:14px; color:var(--ink); line-height:1.3; }
+.mega-link:hover{ color:var(--green); }
+.mega-link.active{ color:var(--green); font-weight:600; }
+.mega-link span{ display:block; font-size:11.5px; color:var(--ink2); margin-top:2px; }
+/* drawer + accordion */
+.drawer{ position:fixed; inset:0 0 0 auto; width:min(84%,360px); background:#fff; border-left:1px solid var(--hair); transform:translateX(100%); transition:transform .3s; z-index:60; padding:84px 30px 30px; display:flex; flex-direction:column; gap:4px; overflow-y:auto; }
+.drawer.open{ transform:translateX(0); }
+.drawer > a{ font-size:16px; color:var(--ink); padding:14px 0; border-bottom:1px solid var(--hair); }
+.drawer > a.active{ color:var(--green); }
+.drawer .btn{ margin-top:20px; justify-content:center; border-bottom:none; }
+.drawer-close{ position:absolute; top:22px; right:22px; width:38px; height:38px; border:1px solid var(--hair); border-radius:10px; display:flex; align-items:center; justify-content:center; }
+.scrim{ position:fixed; inset:0; background:rgba(15,42,31,.4); z-index:55; opacity:0; pointer-events:none; transition:opacity .3s; }
+.scrim.open{ opacity:1; pointer-events:auto; }
+.drawer-group{ border-bottom:1px solid var(--hair); }
+.drawer-toggle{ width:100%; display:flex; align-items:center; justify-content:space-between; font-family:var(--sans); font-size:16px; color:var(--ink); padding:14px 0; background:none; cursor:pointer; }
+.drawer-toggle .chev{ width:18px; height:18px; color:var(--ink2); transition:transform .2s; }
+.drawer-group.open .drawer-toggle .chev{ transform:rotate(180deg); }
+.drawer-panel{ display:none; padding:2px 0 12px 14px; flex-direction:column; }
+.drawer-group.open .drawer-panel{ display:flex; }
+.drawer-panel a{ font-size:14px; color:var(--ink2); padding:9px 0; border:none; }
+.drawer-panel a:hover{ color:var(--green); }
+.drawer-panel a.active{ color:var(--green); }
+.drawer-sub{ font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink2); margin:10px 0 0; }
+
+/* ---------- compact header ---------- */
+.phead{ padding:clamp(38px,5vw,56px) 0 clamp(8px,1.5vw,16px); }
+.crumb{ font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink2); margin-bottom:16px; }
+.crumb a:hover{ color:var(--green); }
+.crumb .sep{ margin:0 8px; opacity:.6; }
+.phead .eyebrow{ display:block; margin-bottom:14px; }
+.phead h1{ font-size:clamp(30px,4vw,50px); max-width:20ch; margin-bottom:16px; }
+.phead .lead{ max-width:66ch; }
+
+/* ---------- filter bar ---------- */
+.filterbar{ position:sticky; top:64px; z-index:40; background:rgba(255,255,255,.92); backdrop-filter:saturate(160%) blur(8px); border-bottom:1px solid var(--hair); }
+.filters{ display:flex; gap:8px; flex-wrap:wrap; padding:16px 0; }
+.filter{ font-size:13.5px; color:var(--ink2); padding:8px 16px; border-radius:100px; border:1px solid transparent; transition:color .18s, background .18s, border-color .18s; }
+.filter:hover{ color:var(--ink); }
+.filter[aria-pressed="true"]{ color:#fff; background:var(--green); }
+.filter .n{ opacity:.7; font-size:12px; margin-left:5px; }
+
+/* ---------- product groups + grid ---------- */
+.cat{ padding:clamp(32px,4vw,56px) 0; border-top:1px solid var(--hair); }
+.cat:first-of-type{ border-top:none; }
+.cat-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:clamp(20px,2.5vw,30px); }
+.cat-head h2{ font-size:clamp(20px,2.2vw,28px); }
+.cat-head .count{ font-size:13px; color:var(--ink2); }
+.pgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.pcard{ display:flex; flex-direction:column; background:#fff; border:1px solid var(--hair); border-radius:var(--rl); overflow:hidden; transition:transform .2s, box-shadow .2s, border-color .2s; }
+.pcard:hover{ transform:translateY(-3px); box-shadow:0 18px 44px rgba(24,74,55,.09); border-color:#d9d8d2; }
+.pcard .shot{ position:relative; aspect-ratio:4/3; background:var(--cream); overflow:hidden; }
+.pcard .shot img{ width:100%; height:100%; object-fit:cover; }
+.pcard .conn{ position:absolute; top:12px; left:12px; display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,.92); border:1px solid var(--hair); border-radius:100px; padding:5px 11px; font-size:11px; font-weight:500; color:var(--green); letter-spacing:.02em; }
+.pcard .conn [data-lucide]{ width:13px; height:13px; stroke:var(--green); stroke-width:2; }
+.pcard .body{ padding:20px 22px 22px; display:flex; flex-direction:column; flex:1; }
+.pcard .model{ font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink2); margin-bottom:7px; }
+.pcard h3{ font-size:20px; margin-bottom:9px; }
+.pcard .desc{ font-size:13.5px; color:var(--ink2); line-height:1.6; margin-bottom:16px; }
+.specs{ display:flex; flex-wrap:wrap; gap:7px; margin-bottom:20px; }
+.spec{ font-size:11px; color:var(--ink); background:var(--cream); border:1px solid var(--hair); border-radius:7px; padding:4px 9px; }
+.pcard .actions{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:auto; padding-top:4px; }
+.pcard .actions .btn-green{ padding:9px 16px; font-size:13px; }
+.empty{ display:none; padding:40px 0; color:var(--ink2); font-size:15px; }
+
+/* ---------- custom config emerald card ---------- */
+.cfg{ padding:clamp(40px,5vw,72px) 0; }
+.cfg-card{ background:var(--green); color:#fff; border-radius:var(--rl); padding:clamp(34px,5vw,64px); display:grid; grid-template-columns:1.4fr .6fr; gap:36px; align-items:center; }
+.cfg-card .eyebrow{ color:rgba(255,255,255,.65); display:block; margin-bottom:14px; }
+.cfg-card h2{ color:#fff; font-size:clamp(24px,3vw,38px); max-width:20ch; margin-bottom:14px; }
+.cfg-card p{ color:rgba(255,255,255,.82); max-width:54ch; font-size:15px; }
+.cfg-actions{ display:flex; flex-direction:column; gap:12px; }
+.cfg-actions .btn{ justify-content:center; }
+@media (max-width:760px){ .cfg-card{ grid-template-columns:1fr; } }
+
+/* ---------- NEWSLETTER ---------- */
+.news{ border-top:1px solid var(--hair); padding:clamp(40px,5vw,64px) 0; }
+.news-inner{ display:flex; justify-content:space-between; gap:28px; flex-wrap:wrap; align-items:center; }
+.news h3{ font-size:clamp(22px,2.4vw,30px); }
+.news p{ color:var(--ink2); margin-top:8px; max-width:46ch; font-size:14px; }
+.news-form{ display:flex; gap:10px; flex-wrap:wrap; }
+.news-form input{ border:1px solid var(--hair); border-radius:100px; background:#fff; padding:12px 18px; font-size:14px; min-width:250px; color:var(--ink); }
+.news-form input:focus{ outline:none; border-color:var(--green); }
+
+/* ---------- FOOTER ---------- */
+.footer{ background:var(--white); border-top:1px solid var(--hair); padding-top:clamp(52px,6vw,84px); }
+.footer-grid{ display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr 1fr; gap:clamp(24px,3vw,44px); padding-bottom:clamp(44px,5vw,68px); }
+.f-brand .word{ font-family:var(--serif); font-size:24px; color:var(--ink); }
+.f-brand p{ font-size:13.5px; line-height:1.65; color:var(--ink2); margin:14px 0; max-width:32ch; }
+.f-contact{ font-size:13.5px; line-height:1.9; color:var(--ink2); }
+.f-contact a:hover{ color:var(--green); }
+.f-col h4{ font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink); margin-bottom:16px; }
+.f-col ul{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+.f-col a{ font-size:13.5px; color:var(--ink2); }
+.f-col a:hover{ color:var(--green); }
+.f-certs{ display:flex; flex-wrap:wrap; gap:14px; padding:22px 0; border-top:1px solid var(--hair); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink2); }
+.f-giant{ font-family:var(--serif); font-weight:500; color:var(--green); letter-spacing:-.03em; line-height:.84; font-size:clamp(72px,21vw,320px); padding:clamp(10px,2vw,28px) 0 clamp(4px,1vw,16px); text-align:center; white-space:nowrap; }
+.f-bottom{ border-top:1px solid var(--hair); padding:22px 0 30px; display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px; font-size:12.5px; color:var(--ink2); }
+.f-bottom a:hover{ color:var(--green); }
+
+/* reveal */
+.reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.in{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
+}
+
+/* responsive */
+@media (max-width:1080px){ .footer-grid{ grid-template-columns:1fr 1fr 1fr; } .f-brand{ grid-column:1 / -1; } .pgrid{ grid-template-columns:1fr 1fr; } }
+@media (max-width:900px){
+  .nav-links, .nav-right .btn{ display:none; }
+  .burger{ display:flex; }
+  .filterbar{ top:64px; }
+}
+@media (max-width:620px){
+  .pgrid{ grid-template-columns:1fr; }
+  .footer-grid{ grid-template-columns:1fr 1fr; }
+  .news-form input{ min-width:0; flex:1; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== TOP BAR + NAV (Products active) ===================== -->
+<div class="topbar">
+  <div class="wrap"><p>The AI hardware division of Gainstrong — manufacturing for global brands since 2009.</p></div>
+</div>
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html" aria-label="GMIC AI home">GMIC AI</a>
+    <nav class="nav-links" aria-label="Primary">
+      <div class="nav-item has-mega active">
+        <button class="nav-top" aria-haspopup="true" aria-expanded="false">Products <i data-lucide="chevron-down" class="nav-arrow"></i></button>
+        <div class="mega"><div class="mega-inner"><div class="mega-cols">
+          <div class="mega-col"><h5>Browse</h5>
+            <a class="mega-link active" href="./" aria-current="page">All Products</a>
+            <a class="mega-link" href="./">View All</a>
+          </div>
+          <div class="mega-col"><h5>Voice Capture</h5>
+            <a class="mega-link" href="./#wearable-recorders">MIC06 <span>Continuous voice capture for shift-based operations</span></a>
+            <a class="mega-link" href="./#wearable-recorders">MIC05 <span>Button-triggered capture for field notes</span></a>
+            <a class="mega-link" href="./#wearable-recorders">MIC01 <span>Entry-level pilot device</span></a>
+          </div>
+          <div class="mega-col"><h5>Phone &amp; PCBA</h5>
+            <a class="mega-link" href="./#phone-entry">Telalive</a>
+            <a class="mega-link" href="./#phone-entry">4G Phone Assistant</a>
+          </div>
+        </div></div></div>
+      </div>
+      <div class="nav-item has-mega">
+        <button class="nav-top" aria-haspopup="true" aria-expanded="false">Custom Devices <i data-lucide="chevron-down" class="nav-arrow"></i></button>
+        <div class="mega"><div class="mega-inner"><div class="mega-cols">
+          <div class="mega-col"><h5>Hardware</h5>
+            <a class="mega-link" href="../custom-devices/odm-oem/">ODM / OEM</a>
+            <a class="mega-link" href="../custom-devices/private-label/">Private Label</a>
+            <a class="mega-link" href="../custom-devices/custom-enclosure/">Custom Enclosure</a>
+            <a class="mega-link" href="../custom-devices/3d-prototype/">3D Small-batch Prototype</a>
+          </div>
+          <div class="mega-col"><h5>Engineering</h5>
+            <a class="mega-link" href="../custom-devices/firmware-integration/">Firmware Integration</a>
+            <a class="mega-link" href="../custom-devices/audio-dsp-tuning/">Audio &amp; DSP Tuning</a>
+            <a class="mega-link" href="../custom-devices/ai-sdk-integration/">AI SDK Integration</a>
+            <a class="mega-link" href="../custom-devices/prototype-validation/">Prototype Validation</a>
+          </div>
+          <div class="mega-col"><h5>Production</h5>
+            <a class="mega-link" href="../custom-devices/evt-dvt-pvt/">EVT / DVT / PVT</a>
+            <a class="mega-link" href="../custom-devices/smt-manufacturing/">SMT Manufacturing</a>
+            <a class="mega-link" href="../custom-devices/certification-support/">Certification Support</a>
+            <a class="mega-link" href="../custom-devices/supply-chain-management/">Supply Chain Management</a>
+          </div>
+        </div></div></div>
+      </div>
+      <div class="nav-item"><a href="../implementation/">Implementation</a></div>
+      <div class="nav-item"><a href="../proof/">Proof</a></div>
+      <div class="nav-item has-mega">
+        <button class="nav-top" aria-haspopup="true" aria-expanded="false">Industries <i data-lucide="chevron-down" class="nav-arrow"></i></button>
+        <div class="mega"><div class="mega-inner"><div class="mega-cols">
+          <div class="mega-col"><h5>Healthcare &amp; Ops</h5>
+            <a class="mega-link" href="../index.html#industries">Healthcare Voice AI</a><!-- TODO -->
+            <a class="mega-link" href="../industries/veterinary/">Veterinary AI</a>
+            <a class="mega-link" href="../index.html#industries">Hospitality AI</a><!-- TODO -->
+          </div>
+          <div class="mega-col"><h5>Enterprise &amp; Field</h5>
+            <a class="mega-link" href="../industries/enterprise-ai/">Enterprise AI</a>
+            <a class="mega-link" href="../index.html#industries">Sales Intelligence</a><!-- TODO -->
+            <a class="mega-link" href="../industries/field-service/">Field Service</a>
+            <a class="mega-link" href="../index.html#industries">Voice Agents</a><!-- TODO -->
+            <a class="mega-link" href="../index.html#industries">Telecom AI</a><!-- TODO -->
+          </div>
+          <div class="mega-col"><h5>Safety &amp; Transport</h5>
+            <a class="mega-link" href="../industries/public-safety/">Public Safety</a>
+            <a class="mega-link" href="../industries/logistics-transportation/">Logistics &amp; Transportation</a>
+            <a class="mega-link" href="../index.html#industries">Smart Retail</a><!-- TODO -->
+            <a class="mega-link" href="https://gmic-nemt-demo.vercel.app/" target="_blank" rel="noopener">NEMT ↗</a>
+          </div>
+        </div></div></div>
+      </div>
+      <div class="nav-item"><a href="../process/">Process</a></div>
+      <div class="nav-item has-mega">
+        <button class="nav-top" aria-haspopup="true" aria-expanded="false">Company <i data-lucide="chevron-down" class="nav-arrow"></i></button>
+        <div class="mega mega--right"><div class="mega-inner"><div class="mega-cols">
+          <div class="mega-col"><h5>Company</h5>
+            <a class="mega-link" href="../about/">About Us</a>
+            <a class="mega-link" href="../blog/">Blog</a>
+            <a class="mega-link" href="../contact/">Contact</a>
+            <a class="mega-link" href="../faq/">FAQ</a>
+          </div>
+        </div></div></div>
+      </div>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-green btn-sm" href="../contact/">Start a Project</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i data-lucide="menu" style="width:20px;height:20px;"></i></button>
+    </div>
+  </div>
+</header>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <button class="drawer-close" id="drawerClose" aria-label="Close menu"><i data-lucide="x" style="width:18px;height:18px;"></i></button>
+  <div class="drawer-group open">
+    <button class="drawer-toggle" aria-expanded="true">Products <i data-lucide="chevron-down" class="chev"></i></button>
+    <div class="drawer-panel" style="display:flex;">
+      <a href="./" class="active" aria-current="page">All Products</a>
+      <p class="drawer-sub">Voice Capture</p>
+      <a href="./#wearable-recorders">MIC06</a>
+      <a href="./#wearable-recorders">MIC05</a>
+      <a href="./#wearable-recorders">MIC01</a>
+      <p class="drawer-sub">Phone &amp; PCBA</p>
+      <a href="./#phone-entry">Telalive</a>
+      <a href="./#phone-entry">4G Phone Assistant</a>
+    </div>
+  </div>
+  <div class="drawer-group">
+    <button class="drawer-toggle" aria-expanded="false">Custom Devices <i data-lucide="chevron-down" class="chev"></i></button>
+    <div class="drawer-panel">
+      <p class="drawer-sub">Hardware</p>
+      <a href="../custom-devices/odm-oem/">ODM / OEM</a>
+      <a href="../custom-devices/private-label/">Private Label</a>
+      <a href="../custom-devices/custom-enclosure/">Custom Enclosure</a>
+      <a href="../custom-devices/3d-prototype/">3D Small-batch Prototype</a>
+      <p class="drawer-sub">Engineering</p>
+      <a href="../custom-devices/firmware-integration/">Firmware Integration</a>
+      <a href="../custom-devices/audio-dsp-tuning/">Audio &amp; DSP Tuning</a>
+      <a href="../custom-devices/ai-sdk-integration/">AI SDK Integration</a>
+      <a href="../custom-devices/prototype-validation/">Prototype Validation</a>
+      <p class="drawer-sub">Production</p>
+      <a href="../custom-devices/evt-dvt-pvt/">EVT / DVT / PVT</a>
+      <a href="../custom-devices/smt-manufacturing/">SMT Manufacturing</a>
+      <a href="../custom-devices/certification-support/">Certification Support</a>
+      <a href="../custom-devices/supply-chain-management/">Supply Chain Management</a>
+    </div>
+  </div>
+  <a href="../implementation/">Implementation</a>
+  <a href="../proof/">Proof</a>
+  <div class="drawer-group">
+    <button class="drawer-toggle" aria-expanded="false">Industries <i data-lucide="chevron-down" class="chev"></i></button>
+    <div class="drawer-panel">
+      <p class="drawer-sub">Healthcare &amp; Ops</p>
+      <a href="../index.html#industries">Healthcare Voice AI</a>
+      <a href="../industries/veterinary/">Veterinary AI</a>
+      <a href="../index.html#industries">Hospitality AI</a>
+      <p class="drawer-sub">Enterprise &amp; Field</p>
+      <a href="../industries/enterprise-ai/">Enterprise AI</a>
+      <a href="../index.html#industries">Sales Intelligence</a>
+      <a href="../industries/field-service/">Field Service</a>
+      <a href="../index.html#industries">Voice Agents</a>
+      <a href="../index.html#industries">Telecom AI</a>
+      <p class="drawer-sub">Safety &amp; Transport</p>
+      <a href="../industries/public-safety/">Public Safety</a>
+      <a href="../industries/logistics-transportation/">Logistics &amp; Transportation</a>
+      <a href="../index.html#industries">Smart Retail</a>
+      <a href="https://gmic-nemt-demo.vercel.app/" target="_blank" rel="noopener">NEMT ↗</a>
+    </div>
+  </div>
+  <a href="../process/">Process</a>
+  <div class="drawer-group">
+    <button class="drawer-toggle" aria-expanded="false">Company <i data-lucide="chevron-down" class="chev"></i></button>
+    <div class="drawer-panel">
+      <a href="../about/">About Us</a>
+      <a href="../blog/">Blog</a>
+      <a href="../contact/">Contact</a>
+      <a href="../faq/">FAQ</a>
+    </div>
+  </div>
+  <a class="btn btn-green" href="../contact/">Start a Project</a>
+</aside>
+
+<main>
+
+  <!-- ===================== COMPACT HEADER ===================== -->
+  <section class="phead">
+    <div class="wrap">
+      <div class="crumb"><a href="../index.html">Home</a><span class="sep">/</span>Products</div>
+      <span class="eyebrow">Products</span>
+      <h1 class="display">AI hardware for voice capture, phone entry, and smart devices.</h1>
+      <p class="lead">Browse the full hearit.ai product catalog. All devices are available for B2B evaluation, ODM/OEM, and private label programs.</p>
+    </div>
+  </section>
+
+  <!-- ===================== FILTER BAR ===================== -->
+  <div class="filterbar">
+    <div class="wrap">
+      <div class="filters" role="group" aria-label="Filter products by category">
+        <button class="filter" data-filter="all" aria-pressed="true">All Products <span class="n">21</span></button>
+        <button class="filter" data-filter="wearable-recorders" aria-pressed="false">Wearable Recorders <span class="n">6</span></button>
+        <button class="filter" data-filter="phone-entry" aria-pressed="false">Phone Entry <span class="n">2</span></button>
+        <button class="filter" data-filter="speakers-audio" aria-pressed="false">Speakers &amp; Audio <span class="n">5</span></button>
+        <button class="filter" data-filter="headsets" aria-pressed="false">Headsets <span class="n">3</span></button>
+        <button class="filter" data-filter="smart-devices" aria-pressed="false">Smart Devices <span class="n">4</span></button>
+        <button class="filter" data-filter="dev-modules" aria-pressed="false">Dev &amp; Modules <span class="n">1</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <p class="empty" id="emptyState">No products in this category.</p>
+
+    <!-- ============ WEARABLE RECORDERS ============ -->
+    <section class="cat" id="wearable-recorders" data-group="wearable-recorders">
+      <div class="cat-head"><h2>Wearable Recorders</h2><span class="count">6 products</span></div>
+      <div class="pgrid">
+
+        <article class="pcard" data-category="wearable-recorders">
+          <div class="shot"><span class="conn"><i data-lucide="wifi"></i>WiFi+BT</span>
+            <img src="img/ha-mic06b.png" alt="Hearit.ai Noise Voice Recorder HA-MIC06B" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-MIC06B';"></div>
+          <div class="body">
+            <div class="model">HA-MIC06B</div>
+            <h3>Hearit.ai Noise Voice Recorder</h3>
+            <p class="desc">Ultra-low power AI voice recorder with 512MB internal storage, slide touch control, NFC reader, encrypted storage, and magnetic mounting support.</p>
+            <div class="specs"><span class="spec">WiFi+Bluetooth</span><span class="spec">512MB Storage</span><span class="spec">NFC</span><span class="spec">Magnetic Mount</span><span class="spec">Encrypted</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="wearable-recorders">
+          <div class="shot"><span class="conn"><i data-lucide="bluetooth"></i>BT+WiFi</span>
+            <img src="img/ha-mic06a.png" alt="Hearit.ai ClinicMic HA-MIC06A" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-MIC06A';"></div>
+          <div class="body">
+            <div class="model">HA-MIC06A</div>
+            <h3>Hearit.ai ClinicMic</h3>
+            <p class="desc">AI devices featuring slide touch and NFC security with a magnetic design for versatile and encrypted interaction capture.</p>
+            <div class="specs"><span class="spec">Bluetooth+WiFi</span><span class="spec">1GB Storage</span><span class="spec">NFC</span><span class="spec">Magnetic</span><span class="spec">Encrypted</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="wearable-recorders">
+          <div class="shot"><span class="conn"><i data-lucide="wifi"></i>WiFi+BT</span>
+            <img src="img/ha-mic05.png" alt="Hearit.ai VoiceRec Pro HA-MIC05" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-MIC05';"></div>
+          <div class="body">
+            <div class="model">HA-MIC05</div>
+            <h3>Hearit.ai VoiceRec Pro</h3>
+            <p class="desc">Wearable AI devices that utilize hardware-level noise reduction and NFC security to capture clear interaction data and drive automated business processing.</p>
+            <div class="specs"><span class="spec">WiFi+Bluetooth</span><span class="spec">1GB Storage</span><span class="spec">NFC</span><span class="spec">Noise Reduction</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="wearable-recorders">
+          <div class="shot"><span class="conn"><i data-lucide="wifi"></i>WiFi+BT</span>
+            <img src="img/ha-mic04.png" alt="Hearit.ai VoiceRec HA-MIC04" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-MIC04';"></div>
+          <div class="body">
+            <div class="model">HA-MIC04</div>
+            <h3>Hearit.ai VoiceRec</h3>
+            <p class="desc">Wearable AI devices that capture conversations through high-fidelity recording and multi-sensory feedback to automatically generate structured professional workflows.</p>
+            <div class="specs"><span class="spec">WiFi+Bluetooth</span><span class="spec">1GB Storage</span><span class="spec">Multi-sensory Feedback</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="wearable-recorders">
+          <div class="shot"><span class="conn"><i data-lucide="bluetooth"></i>Bluetooth</span>
+            <img src="img/ha-mic01.png" alt="Hearit.ai ChatMic HA-MIC01" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-MIC01';"></div>
+          <div class="body">
+            <div class="model">HA-MIC01</div>
+            <h3>Hearit.ai ChatMic</h3>
+            <p class="desc">Ultra-compact "Push to Talk" AI devices for instant conversation capture and mobile-driven insights.</p>
+            <div class="specs"><span class="spec">Bluetooth</span><span class="spec">Compact</span><span class="spec">Push to Talk</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="wearable-recorders">
+          <div class="shot"><span class="conn"><i data-lucide="bluetooth"></i>Bluetooth</span>
+            <img src="img/ha-mic02.png" alt="Hearit.ai MagMic HA-MIC02" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-MIC02';"><!-- TODO: real product image --></div>
+          <div class="body">
+            <div class="model">HA-MIC02</div>
+            <h3>Hearit.ai MagMic</h3>
+            <p class="desc">Ultra-slim MagSafe AI devices that snap on for instant, speaker-free conversation capture and AI-driven insights.</p>
+            <div class="specs"><span class="spec">Bluetooth</span><span class="spec">MagSafe</span><span class="spec">Ultra-slim</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ PHONE ENTRY ============ -->
+    <section class="cat" id="phone-entry" data-group="phone-entry">
+      <div class="cat-head"><h2>Phone Entry</h2><span class="count">2 products</span></div>
+      <div class="pgrid">
+
+        <article class="pcard" data-category="phone-entry">
+          <div class="shot"><span class="conn"><i data-lucide="phone"></i>AI Phone</span>
+            <img src="img/telalive.png" alt="Hearit.ai Telalive AI phone" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=Telalive';"><!-- TODO: real product image --></div>
+          <div class="body">
+            <div class="model">Telalive</div>
+            <h3>Hearit.ai Telalive</h3>
+            <p class="desc">AI devices with FXO/FXS landline ports that answer PSTN calls and sync interaction data with professional workflows. 24/7 digital receptionist.</p>
+            <div class="specs"><span class="spec">FXO/FXS</span><span class="spec">PSTN</span><span class="spec">24/7 Receptionist</span><span class="spec">Workflow Sync</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="phone-entry">
+          <div class="shot"><span class="conn"><i data-lucide="phone"></i>AI Phone</span>
+            <img src="img/ha-tel02.png" alt="4G AI Mobile Phone Assistant HA-TEL02" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-TEL02';"></div>
+          <div class="body">
+            <div class="model">HA-TEL02</div>
+            <h3>4G AI Mobile Phone Assistant</h3>
+            <p class="desc">4G AI devices that utilize global LTE connectivity to independently capture calls and generate structured business data.</p>
+            <div class="specs"><span class="spec">4G LTE</span><span class="spec">Call Capture</span><span class="spec">Business Data</span><span class="spec">Mobile</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ SPEAKERS & AUDIO ============ -->
+    <section class="cat" id="speakers-audio" data-group="speakers-audio">
+      <div class="cat-head"><h2>Speakers &amp; Audio</h2><span class="count">5 products</span></div>
+      <div class="pgrid">
+
+        <article class="pcard" data-category="speakers-audio">
+          <div class="shot"><span class="conn"><i data-lucide="bluetooth"></i>Bluetooth</span>
+            <img src="img/ha-spk01.png" alt="Hearit.ai Magnetic SpeakAI Mini HA-SPK01" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-SPK01';"><!-- TODO: real product image --></div>
+          <div class="body">
+            <div class="model">HA-SPK01</div>
+            <h3>Hearit.ai Magnetic SpeakAI Mini</h3>
+            <p class="desc">AI-powered smart speaker with magnetic design and IPX7 waterproofing for versatile voice interaction.</p>
+            <div class="specs"><span class="spec">Bluetooth</span><span class="spec">Magnetic</span><span class="spec">IPX7</span><span class="spec">Smart Speaker</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="speakers-audio">
+          <div class="shot"><span class="conn"><i data-lucide="bluetooth"></i>Bluetooth</span>
+            <img src="img/ha-spk02.png" alt="Hearit.ai Magnetic AI Speaker HA-SPK02" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-SPK02';"><!-- TODO: real product image --></div>
+          <div class="body">
+            <div class="model">HA-SPK02</div>
+            <h3>Hearit.ai Magnetic AI Speaker</h3>
+            <p class="desc">AI-powered smart speaker with magnetic design, RGB ambient light, AI voice interaction, and IPX7 waterproofing.</p>
+            <div class="specs"><span class="spec">Bluetooth</span><span class="spec">Magnetic</span><span class="spec">RGB</span><span class="spec">IPX7</span><span class="spec">Smart Speaker</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="speakers-audio">
+          <div class="shot"><span class="conn"><i data-lucide="bluetooth"></i>Bluetooth</span>
+            <img src="img/ha-spk03-bt.png" alt="Hearit.ai SpeakAI HA-SPK03 Bluetooth" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-SPK03';"><!-- TODO: real product image --></div>
+          <div class="body">
+            <div class="model">HA-SPK03 (Bluetooth)</div>
+            <h3>Hearit.ai SpeakAI</h3>
+            <p class="desc">AI-integrated portable speaker with IPX5 waterproof and magnetic design for reliable smart interactions in outdoor and mobile scenarios.</p>
+            <div class="specs"><span class="spec">Bluetooth</span><span class="spec">IPX5</span><span class="spec">Magnetic</span><span class="spec">Portable</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="speakers-audio">
+          <div class="shot"><span class="conn"><i data-lucide="wifi"></i>WiFi+BT</span>
+            <img src="img/ha-spk03-wifi.png" alt="Hearit.ai SpeakAI Pro HA-SPK03 WiFi" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-SPK03+Pro';"><!-- TODO: real product image --></div>
+          <div class="body">
+            <div class="model">HA-SPK03 (WiFi)</div>
+            <h3>Hearit.ai SpeakAI Pro</h3>
+            <p class="desc">AI-integrated WiFi/Bluetooth speaker with cloud synchronization for instant intelligent responses and lag-free business processing.</p>
+            <div class="specs"><span class="spec">WiFi+Bluetooth</span><span class="spec">Cloud Sync</span><span class="spec">Smart Speaker</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="speakers-audio">
+          <div class="shot"><span class="conn"><i data-lucide="wifi"></i>WiFi+BT</span>
+            <img src="img/ha-tr01.png" alt="Hearit.ai VoiceLink HA-TR01" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-TR01';"><!-- TODO: real product image --></div>
+          <div class="body">
+            <div class="model">HA-TR01</div>
+            <h3>Hearit.ai VoiceLink</h3>
+            <p class="desc">Portable AI devices with high-power speakers and LED indicators for seamless multilingual translation.</p>
+            <div class="specs"><span class="spec">WiFi+Bluetooth</span><span class="spec">LED</span><span class="spec">Translation</span><span class="spec">Portable</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ HEADSETS ============ -->
+    <section class="cat" id="headsets" data-group="headsets">
+      <div class="cat-head"><h2>Headsets</h2><span class="count">3 products</span></div>
+      <div class="pgrid">
+
+        <article class="pcard" data-category="headsets">
+          <div class="shot"><span class="conn"><i data-lucide="bluetooth"></i>Bluetooth</span>
+            <img src="img/ha-bc01.png" alt="Hearit.ai BoneSonix HA-BC01" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-BC01';"></div>
+          <div class="body">
+            <div class="model">HA-BC01</div>
+            <h3>Hearit.ai BoneSonix</h3>
+            <p class="desc">Smart bone conduction headset with AI interaction and IPX6 rating for safe, open-ear sports communication.</p>
+            <div class="specs"><span class="spec">Bluetooth</span><span class="spec">Bone Conduction</span><span class="spec">IPX6</span><span class="spec">Open Ear</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="headsets">
+          <div class="shot"><span class="conn"><i data-lucide="bluetooth"></i>Bluetooth</span>
+            <img src="img/ha-ows03.png" alt="Hearit.ai AirSonix HA-OWS03" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-OWS03';"><!-- TODO: real product image --></div>
+          <div class="body">
+            <div class="model">HA-OWS03</div>
+            <h3>Hearit.ai AirSonix</h3>
+            <p class="desc">Ergonomic AI OWS headset offering superior comfort for lifelike, intelligent voice interaction all day long.</p>
+            <div class="specs"><span class="spec">Bluetooth</span><span class="spec">OWS</span><span class="spec">All-day Comfort</span><span class="spec">AI Interaction</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="headsets">
+          <div class="shot"><span class="conn"><i data-lucide="bluetooth"></i>Bluetooth</span>
+            <img src="img/ha-tws01.png" alt="Hearit.ai BudsAI HA-TWS01" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-TWS01';"><!-- TODO: real product image --></div>
+          <div class="body">
+            <div class="model">HA-TWS01</div>
+            <h3>Hearit.ai BudsAI</h3>
+            <p class="desc">AI-powered TWS headset with LED display for seamless intelligent assistance and reliable daily urban communication.</p>
+            <div class="specs"><span class="spec">Bluetooth</span><span class="spec">TWS</span><span class="spec">LED Display</span><span class="spec">AI Assistant</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ SMART DEVICES ============ -->
+    <section class="cat" id="smart-devices" data-group="smart-devices">
+      <div class="cat-head"><h2>Smart Devices</h2><span class="count">4 products</span></div>
+      <div class="pgrid">
+
+        <article class="pcard" data-category="smart-devices">
+          <div class="shot"><span class="conn"><i data-lucide="bluetooth"></i>Bluetooth</span>
+            <img src="img/ha-gls01.png" alt="Hearit.ai SmartGlass HA-GLS01" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-GLS01';"><!-- TODO: real product image --></div>
+          <div class="body">
+            <div class="model">HA-GLS01</div>
+            <h3>Hearit.ai SmartGlass</h3>
+            <p class="desc">AI-powered smart glasses with 2K video for hands-free intelligent interaction and visual capture in professional scenarios.</p>
+            <div class="specs"><span class="spec">Bluetooth</span><span class="spec">2K Video</span><span class="spec">Smart Glasses</span><span class="spec">Hands-free</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="smart-devices">
+          <div class="shot"><span class="conn"><i data-lucide="bluetooth"></i>Bluetooth</span>
+            <img src="img/ha-pen01.png" alt="Hearit.ai SmartPen HA-PEN01" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-PEN01';"></div>
+          <div class="body">
+            <div class="model">HA-PEN01</div>
+            <h3>Hearit.ai SmartPen</h3>
+            <p class="desc">AI-integrated ballpen with TF card expansion for seamless voice recording and real-time intelligent dialogue in professional scenarios.</p>
+            <div class="specs"><span class="spec">Bluetooth</span><span class="spec">TF Card</span><span class="spec">Smart Pen</span><span class="spec">Voice Recording</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="smart-devices">
+          <div class="shot"><span class="conn"><i data-lucide="wifi"></i>BT+WiFi</span>
+            <img src="img/ha-toy01.png" alt="Hearit.ai BirthdayBird HA-TOY01" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-TOY01';"><!-- TODO: real product image --></div>
+          <div class="body">
+            <div class="model">HA-TOY01</div>
+            <h3>Hearit.ai BirthdayBird</h3>
+            <p class="desc">AI-integrated voice speaker with a cute bird design, enabling natural voice conversations for a fun and authentic interactive experience.</p>
+            <div class="specs"><span class="spec">Bluetooth+WiFi</span><span class="spec">Interactive</span><span class="spec">Voice AI</span><span class="spec">Fun Design</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+        <article class="pcard" data-category="smart-devices">
+          <div class="shot"><span class="conn"><i data-lucide="wifi"></i>BT+WiFi</span>
+            <img src="img/ha-toy02.png" alt="Hearit.ai BuddyBear HA-TOY02" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=HA-TOY02';"><!-- TODO: real product image --></div>
+          <div class="body">
+            <div class="model">HA-TOY02</div>
+            <h3>Hearit.ai BuddyBear</h3>
+            <p class="desc">AI-integrated plush companion enabling natural voice conversations with the doll for a lifelike, authentic interactive experience.</p>
+            <div class="specs"><span class="spec">Bluetooth+WiFi</span><span class="spec">Interactive</span><span class="spec">Voice AI</span><span class="spec">Plush</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ============ DEV & MODULES ============ -->
+    <section class="cat" id="dev-modules" data-group="dev-modules">
+      <div class="cat-head"><h2>Dev &amp; Modules</h2><span class="count">1 product</span></div>
+      <div class="pgrid">
+
+        <article class="pcard" data-category="dev-modules">
+          <div class="shot"><span class="conn"><i data-lucide="wifi"></i>BT+WiFi</span>
+            <img src="img/ha-esp32.png" alt="Hearit.ai DevKit ESP32" onerror="this.onerror=null;this.src='https://placehold.co/600x450/f6f5f1/184a37?text=DevKit+ESP32';"><!-- TODO: real product image --></div>
+          <div class="body">
+            <div class="model">HA-ESP32 KIT</div>
+            <h3>Hearit.ai DevKit ESP32</h3>
+            <p class="desc">AI-powered ESP32 kit with dual-mode connectivity, enabling seamless prototyping of real-time intelligent voice solutions.</p>
+            <div class="specs"><span class="spec">Bluetooth+WiFi</span><span class="spec">ESP32</span><span class="spec">Dev Kit</span><span class="spec">Prototyping</span></div>
+            <div class="actions"><a class="link-arrow" href="#">Learn More <i data-lucide="arrow-right" style="width:15px;height:15px;"></i></a><!-- TODO --><a class="btn btn-green btn-sm" href="../contact/">Get a Quote</a></div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ===================== CUSTOM CONFIG CARD ===================== -->
+  <section class="cfg">
+    <div class="wrap">
+      <div class="cfg-card reveal">
+        <div>
+          <span class="eyebrow">Custom configuration</span>
+          <h2 class="display">Looking for a specific product or custom configuration?</h2>
+          <p>All products are available for B2B evaluation, ODM/OEM, and private label. Get in touch with the GMIC team.</p>
+        </div>
+        <div class="cfg-actions">
+          <a class="btn btn-light" href="../contact/">Request a Quote</a>
+          <a class="btn btn-outline" href="../custom-devices/odm-oem/">Browse ODM/OEM</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== NEWSLETTER ===================== -->
+  <section class="news">
+    <div class="wrap news-inner">
+      <div>
+        <h3>Get the latest product from the edge.</h3>
+        <p>Monthly notes on hardware shipping, certifications, and the AI models running on our devices.</p>
+      </div>
+      <form class="news-form" id="newsForm" novalidate>
+        <input type="email" id="newsEmail" placeholder="Enter your email" aria-label="Email address" required>
+        <button type="submit" class="btn btn-green">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="f-brand">
+        <span class="word">GMIC AI</span>
+        <p>Designing and manufacturing the embedded hardware behind the voice-first era.</p>
+        <div class="f-contact">
+          <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a><br>
+          <a href="tel:+16699000008">+1 (669) 900-0008</a><br>
+          Anaheim, CA — Shenzhen, CN
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="../index.html#capabilities">Edge AI Hardware</a></li>
+          <li><a href="../index.html#capabilities">Voice AI Hardware</a></li>
+          <li><a href="../index.html#capabilities">AI Wearable Devices</a></li>
+          <li><a href="../index.html#capabilities">AI Hardware ODM</a></li>
+          <li><a href="../index.html#capabilities">Embedded AI Hardware</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="../index.html#industries">Healthcare AI</a></li>
+          <li><a href="../industries/enterprise-ai/">Enterprise AI</a></li>
+          <li><a href="../industries/field-service/">Field Service AI</a></li>
+          <li><a href="../index.html#industries">Telecom AI</a></li>
+          <li><a href="../index.html#industries">Smart Retail</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="../blog/">Blog</a></li>
+          <li><a href="../proof/">Case Studies</a></li>
+          <li><a href="../process/">Our Process</a></li>
+          <li><a href="../faq/">FAQ</a></li>
+          <li><a href="../contact/">Contact</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about/">About GMIC</a></li>
+          <li><a href="../proof/">Customer Stories</a></li>
+          <li><a href="../contact/">Book a Demo</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="f-certs">
+      <span>Certifications</span>
+      <span>FCC</span><span>CE</span><span>UKCA</span><span>TELEC</span><span>RoHS</span><span>ISED</span>
+    </div>
+  </div>
+
+  <div class="f-giant" aria-hidden="true">GMIC AI</div>
+
+  <div class="wrap">
+    <div class="f-bottom">
+      <span>© 2026 GMIC AI, Inc.</span>
+      <span style="display:flex;gap:18px;flex-wrap:wrap;"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // Mobile drawer + accordion (nav)
+  var burger = document.getElementById('burger'), drawer = document.getElementById('drawer'),
+      scrim = document.getElementById('scrim'), closeBtn = document.getElementById('drawerClose');
+  function open(){ drawer.classList.add('open'); scrim.classList.add('open'); burger.setAttribute('aria-expanded','true'); drawer.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function close(){ drawer.classList.remove('open'); scrim.classList.remove('open'); burger.setAttribute('aria-expanded','false'); drawer.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
+  if(burger) burger.addEventListener('click', open);
+  if(closeBtn) closeBtn.addEventListener('click', close);
+  if(scrim) scrim.addEventListener('click', close);
+  drawer.querySelectorAll('a').forEach(function(a){ a.addEventListener('click', close); });
+  drawer.querySelectorAll('.drawer-toggle').forEach(function(t){
+    t.addEventListener('click', function(){
+      var g = t.parentElement; g.classList.toggle('open');
+      t.setAttribute('aria-expanded', g.classList.contains('open') ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+
+  // Category filter — native JS, group-level show/hide
+  var filters = Array.prototype.slice.call(document.querySelectorAll('.filter'));
+  var groups = Array.prototype.slice.call(document.querySelectorAll('.cat'));
+  var empty = document.getElementById('emptyState');
+  filters.forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var cat = btn.getAttribute('data-filter');
+      filters.forEach(function(b){ b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'); });
+      var anyVisible = false;
+      groups.forEach(function(g){
+        var show = (cat === 'all') || (g.getAttribute('data-group') === cat);
+        g.style.display = show ? '' : 'none';
+        if(show) anyVisible = true;
+      });
+      if(empty) empty.style.display = anyVisible ? 'none' : 'block';
+    });
+  });
+
+  // Reveal
+  var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+  var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(rm || !('IntersectionObserver' in window)){ reveals.forEach(function(el){ el.classList.add('in'); }); }
+  else {
+    var io = new IntersectionObserver(function(entries){ entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } }); }, { rootMargin:'0px 0px -8% 0px', threshold:0.08 });
+    reveals.forEach(function(el){ io.observe(el); });
+  }
+
+  // Newsletter (demo only)
+  var form = document.getElementById('newsForm');
+  if(form){ form.addEventListener('submit', function(e){ e.preventDefault();
+    var input = document.getElementById('newsEmail'), btn = form.querySelector('button');
+    if(input && input.value){ input.value=''; if(btn) btn.textContent='Subscribed ✓'; }
+  }); }
+
+  if(window.lucide && typeof lucide.createIcons === 'function'){ lucide.createIcons(); }
+})();
+</script>
+
+</body>
+</html>
