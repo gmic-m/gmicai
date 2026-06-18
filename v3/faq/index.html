@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FAQ — GMIC AI</title>
+<meta name="description" content="Frequently asked questions about working with GMIC on AI hardware — from prototyping to mass production. Products, ODM/OEM, manufacturing, certification, pricing & MOQ." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+/* ============================================================
+   GMIC AI · v3 FAQ — Infrastructure / private-markets style
+   White · single typeface · bold monochrome · flat · one blue
+   Standalone (no main reuse).
+   ============================================================ */
+:root{
+  --bg:#ffffff;--bg-2:#fafafa;--ink:#0b0b0c;--ink-2:#6b7280;--ink-3:#9aa1ad;
+  --line:#e8e8e8;--line-2:#dcdcdc;--blue:#0b6bff;--blue-ink:#0a5fe0;--blue-tint:#eef4ff;
+  --font:'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --r:8px;--r-sm:6px;--maxw:1200px;--gut:clamp(20px,4vw,40px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--font);background:var(--bg);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+::selection{background:var(--blue);color:#fff}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+.wrap-narrow{max-width:880px;margin:0 auto;padding:0 var(--gut)}
+section{position:relative}
+
+/* type */
+h1,h2,h3,h4{font-weight:700;letter-spacing:-0.02em;line-height:1.06}
+.h1{font-size:clamp(38px,5.4vw,68px);font-weight:800;letter-spacing:-0.035em;line-height:1.04}
+.h2{font-size:clamp(26px,3.4vw,42px);font-weight:700;letter-spacing:-0.03em;line-height:1.06}
+.lede{font-size:clamp(16px,1.4vw,19px);line-height:1.6;color:var(--ink-2)}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3)}
+.blue{color:var(--blue)}
+.kicker{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.kicker .idx{color:var(--blue)}
+
+/* buttons + links */
+.btn{display:inline-flex;align-items:center;gap:8px;font-weight:600;font-size:15px;padding:12px 20px;border-radius:var(--r);transition:background .15s ease,border-color .15s ease,color .15s ease;white-space:nowrap}
+.btn svg{width:17px;height:17px}
+.btn-blue{background:var(--blue);color:#fff}
+.btn-blue:hover{background:var(--blue-ink)}
+.btn-ghost{background:#fff;color:var(--ink);border:1px solid var(--line-2)}
+.btn-ghost:hover{border-color:var(--ink)}
+.tlink{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:15px;color:var(--blue)}
+.tlink svg{width:16px;height:16px;transition:transform .15s ease}
+.tlink:hover svg{transform:translateX(3px)}
+
+/* NAV (mega-menu) */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(10px);-webkit-backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+.nav-inner{height:64px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{font-weight:800;font-size:18px;letter-spacing:-0.03em;display:inline-flex;align-items:center;gap:9px;flex:none}
+.brand .mk{width:26px;height:26px;border-radius:var(--r-sm);background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center}
+.brand .mk svg{width:15px;height:15px}
+.nav-links{display:flex;align-items:center;gap:1px;height:100%}
+.nav-item{position:relative;height:100%;display:flex;align-items:center}
+.nl{display:inline-flex;align-items:center;gap:5px;font-size:14px;font-weight:500;color:var(--ink-2);padding:8px 11px;border-radius:var(--r-sm);cursor:pointer;transition:color .15s ease,background .15s ease;white-space:nowrap}
+.nav-item:hover>.nl{color:var(--ink);background:var(--bg-2)}
+.nav-item.active>.nl{color:var(--blue);background:var(--blue-tint)}
+.nl .chev{width:14px;height:14px;opacity:.7;transition:transform .2s ease}
+.nav-item.has-mega:hover .nl .chev{transform:rotate(180deg)}
+.nav-item.has-mega::after{content:"";position:absolute;top:100%;left:-12px;right:-12px;height:12px}
+.mega{position:absolute;top:calc(100% + 9px);left:0;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px;display:none;z-index:120;box-shadow:0 16px 30px -22px rgba(11,11,12,.3)}
+.nav-item.has-mega:hover .mega,.nav-item.has-mega:focus-within .mega{display:block}
+.mega.cols{grid-template-columns:repeat(3,minmax(192px,1fr));gap:4px 22px}
+.nav-item.has-mega:hover .mega.cols,.nav-item.has-mega:focus-within .mega.cols{display:grid}
+.mega-single{min-width:220px}
+.mega-col h6{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);padding:6px 8px 4px}
+.mega a{display:block;padding:8px;border-radius:var(--r-sm);color:var(--ink);font-size:14px;font-weight:500;transition:background .12s ease,color .12s ease}
+.mega a:hover{background:var(--bg-2);color:var(--blue)}
+.mega a.active{color:var(--blue)}
+.mega a .d{display:block;font-size:12px;font-weight:400;color:var(--ink-3);margin-top:2px;line-height:1.4}
+.nav-right{display:flex;align-items:center;gap:10px;flex:none}
+.burger{display:none;width:40px;height:40px;border-radius:var(--r-sm);align-items:center;justify-content:center;border:1px solid var(--line-2)}
+.burger svg{width:20px;height:20px}
+.drawer{position:fixed;inset:0 0 0 auto;width:88%;max-width:340px;background:#fff;z-index:400;transform:translateX(100%);transition:transform .28s ease;padding:14px 18px 28px;display:flex;flex-direction:column;border-left:1px solid var(--line);overflow-y:auto}
+.drawer.open{transform:translateX(0)}
+.drawer-top{display:flex;align-items:center;justify-content:space-between;height:48px;margin-bottom:6px}
+.drawer-close{width:40px;height:40px;border-radius:var(--r-sm);border:1px solid var(--line-2);display:flex;align-items:center;justify-content:center}
+.dgroup{border-bottom:1px solid var(--line)}
+.dtop{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 4px;font-size:15px;font-weight:600;color:var(--ink);text-align:left}
+.dtop .chev{width:16px;height:16px;color:var(--ink-3);transition:transform .2s ease}
+.dgroup.open .dtop .chev{transform:rotate(180deg)}
+.dtop.active{color:var(--blue)}
+.dpanel{display:none;padding:0 4px 12px}
+.dgroup.open .dpanel{display:block}
+.dpanel h6{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:10px 0 2px}
+.dpanel a{display:block;padding:9px 8px;border-radius:var(--r-sm);font-size:14px;color:var(--ink-2)}
+.dpanel a:hover,.dpanel a.active{background:var(--bg-2);color:var(--blue)}
+.d-link{display:block;padding:14px 4px;font-size:15px;font-weight:600;color:var(--ink);border-bottom:1px solid var(--line)}
+.d-link.active{color:var(--blue)}
+.drawer .btn{margin-top:18px;justify-content:center}
+.scrim{position:fixed;inset:0;background:rgba(11,11,12,.4);z-index:300;opacity:0;pointer-events:none;transition:opacity .25s ease}
+.scrim.open{opacity:1;pointer-events:auto}
+@media (max-width:1080px){.nav-links,.nav-right .btn{display:none}.burger{display:flex}}
+
+/* layout */
+.sec{padding:clamp(48px,6vw,86px) 0;scroll-margin-top:72px}
+.sec-tint{background:var(--bg-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1!important;transform:none!important;transition:none!important}.btn,.tlink svg,.faq-a{transition:none}}
+
+/* breadcrumb */
+.crumb{display:inline-flex;align-items:center;gap:8px;font-size:12.5px;color:var(--ink-3);margin-bottom:16px}
+.crumb a:hover{color:var(--ink)}
+.crumb .here{color:var(--blue)}
+
+/* HERO */
+.faq-hero{text-align:center;padding:calc(64px + clamp(46px,7vw,86px)) 0 clamp(8px,2vw,16px)}
+.faq-hero .eyebrow{display:block;margin-bottom:16px}
+.faq-hero h1{margin:0 auto;max-width:16ch}
+.faq-hero .lede{margin:18px auto 0;max-width:62ch}
+/* search */
+.search-wrap{position:relative;max-width:560px;margin:clamp(26px,3.4vw,38px) auto 0}
+.search-wrap .si{position:absolute;left:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--ink-3);pointer-events:none}
+.search-wrap input{width:100%;background:#fff;border:1px solid var(--line-2);border-radius:var(--r);padding:14px 44px 14px 46px;color:var(--ink);font-family:var(--font);font-size:15px;transition:border-color .15s ease,box-shadow .15s ease}
+.search-wrap input::placeholder{color:var(--ink-3)}
+.search-wrap input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(11,107,255,.14)}
+.search-clear{position:absolute;right:8px;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:var(--r-sm);display:none;align-items:center;justify-content:center;color:var(--ink-3)}
+.search-clear svg{width:18px;height:18px}
+.search-clear.show{display:flex}
+.search-clear:hover{color:var(--ink);background:var(--bg-2)}
+
+/* category filters */
+.cats{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.cat-pill{font-size:13.5px;font-weight:500;color:var(--ink-2);background:#fff;border:1px solid var(--line-2);padding:8px 15px;border-radius:var(--r-sm);cursor:pointer;transition:color .15s ease,background .15s ease,border-color .15s ease}
+.cat-pill:hover{color:var(--ink);border-color:var(--ink-3)}
+.cat-pill.active{color:#fff;background:var(--blue);border-color:var(--blue)}
+
+/* accordion */
+.faq-list{border-top:1px solid var(--line);margin-top:30px}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{width:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:20px;text-align:left;padding:22px 4px;cursor:pointer}
+.faq-q:hover{background:var(--bg-2)}
+.faq-q .qt{font-size:clamp(15px,1.4vw,17px);font-weight:600;color:var(--ink);line-height:1.4}
+.faq-q .qcat{display:block;font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:7px}
+.faq-ic{flex:none;width:30px;height:30px;border:1px solid var(--line-2);border-radius:var(--r-sm);display:flex;align-items:center;justify-content:center;position:relative;margin-top:2px;transition:border-color .15s ease}
+.faq-ic::before,.faq-ic::after{content:"";position:absolute;background:var(--ink-2);transition:transform .2s ease,background .15s ease}
+.faq-ic::before{width:12px;height:2px}
+.faq-ic::after{width:2px;height:12px}
+.faq-item.open .faq-ic{border-color:var(--blue)}
+.faq-item.open .faq-ic::before{background:var(--blue)}
+.faq-item.open .faq-ic::after{transform:scaleY(0);background:var(--blue)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-a-inner{padding:0 4px 24px;max-width:74ch}
+.faq-a-inner p{color:var(--ink-2);font-size:15px;line-height:1.7;margin-bottom:12px}
+.faq-a-inner p:last-child{margin-bottom:0}
+.faq-a-inner strong{color:var(--ink);font-weight:600}
+.faq-a-inner ul{list-style:none;margin:8px 0 14px;display:flex;flex-direction:column;gap:7px}
+.faq-a-inner li{position:relative;padding-left:20px;color:var(--ink-2);font-size:14.5px;line-height:1.5}
+.faq-a-inner li::before{content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;border-radius:1px;background:var(--blue)}
+
+/* empty */
+.faq-empty{display:none;text-align:center;color:var(--ink-2);font-size:15.5px;padding:50px 0}
+.faq-empty.show{display:block}
+.faq-empty a{color:var(--blue);text-decoration:underline;text-underline-offset:3px}
+
+/* CTA */
+.cta{text-align:center}
+.cta h2{margin:0 auto 14px;max-width:20ch}
+.cta .lede{margin:0 auto;max-width:54ch}
+.cta-actions{margin-top:26px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center}
+
+/* footer */
+.footer{border-top:1px solid var(--line);padding:clamp(48px,6vw,72px) 0 32px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:28px}
+.foot-brand p{color:var(--ink-2);font-size:14px;margin:14px 0 16px;max-width:30ch}
+.foot-contact a,.foot-contact span{display:block;color:var(--ink-2);font-size:13.5px;padding:2px 0}
+.foot-contact a:hover{color:var(--ink)}
+.certs{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.certs span{font-size:11px;letter-spacing:.04em;color:var(--ink-2);border:1px solid var(--line);border-radius:100px;padding:4px 10px}
+.foot-col h5{font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:14px}
+.foot-col a{display:block;color:var(--ink-2);font-size:14px;padding:6px 0;transition:color .15s ease}
+.foot-col a:hover{color:var(--blue)}
+.foot-bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-top:40px;padding-top:24px;border-top:1px solid var(--line);color:var(--ink-3);font-size:13px}
+.foot-bottom a{color:var(--ink-3);transition:color .15s ease}
+.foot-bottom a:hover{color:var(--blue)}
+
+/* responsive */
+@media (max-width:900px){.foot-grid{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}}
+@media (max-width:560px){.foot-grid{grid-template-columns:1fr}.faq-q{padding:18px 2px}}
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV (mega-menu) ===================== -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="../index.html" class="brand" aria-label="GMIC AI home"><span class="mk" aria-hidden="true"><i data-lucide="cpu"></i></span>GMIC AI</a>
+    <nav class="nav-links" aria-label="Primary">
+      <div class="nav-item has-mega">
+        <span class="nl" tabindex="0">Products <i class="chev" data-lucide="chevron-down"></i></span>
+        <div class="mega cols">
+          <div class="mega-col"><h6>Overview</h6><a href="../index.html#products">All Products</a><a href="../index.html#products">View All</a></div>
+          <div class="mega-col"><h6>Voice Capture</h6>
+            <!-- TODO: link when page exists -->
+            <a href="../index.html#products">MIC06<span class="d">Continuous voice capture for shift-based operations</span></a>
+            <a href="../index.html#products">MIC05<span class="d">Button-triggered capture for field notes</span></a>
+            <a href="../index.html#products">MIC01<span class="d">Entry-level pilot device</span></a>
+          </div>
+          <div class="mega-col"><h6>Phone &amp; PCBA</h6><a href="../index.html#products">Telalive</a><a href="../index.html#products">Hearit.ai PCBA</a></div>
+        </div>
+      </div>
+      <div class="nav-item has-mega">
+        <span class="nl" tabindex="0">Custom Devices <i class="chev" data-lucide="chevron-down"></i></span>
+        <div class="mega cols"><!-- TODO: link when page exists -->
+          <div class="mega-col"><h6>Hardware</h6><a href="../custom-devices/odm-oem/">ODM / OEM</a><a href="../custom-devices/private-label/">Private Label</a><a href="../custom-devices/custom-enclosure/">Custom Enclosure</a><a href="../custom-devices/3d-prototype/">3D Small-batch Prototype</a></div>
+          <div class="mega-col"><h6>Engineering</h6><a href="../custom-devices/firmware-integration/">Firmware Integration</a><a href="../custom-devices/audio-dsp-tuning/">Audio &amp; DSP Tuning</a><a href="../custom-devices/ai-sdk-integration/">AI SDK Integration</a><a href="../custom-devices/prototype-validation/">Prototype Validation</a></div>
+          <div class="mega-col"><h6>Production</h6><a href="../custom-devices/evt-dvt-pvt/">EVT / DVT / PVT</a><a href="../custom-devices/smt-manufacturing/">SMT Manufacturing</a><a href="../custom-devices/certification-support/">Certification Support</a><a href="../custom-devices/supply-chain-management/">Supply Chain Management</a></div>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nl" href="../implementation/">Implementation</a></div>
+      <div class="nav-item"><a class="nl" href="../proof/">Proof</a></div><!-- TODO: link when page exists -->
+      <div class="nav-item has-mega">
+        <span class="nl" tabindex="0">Industries <i class="chev" data-lucide="chevron-down"></i></span>
+        <div class="mega cols"><!-- TODO: link when page exists -->
+          <div class="mega-col"><h6>Healthcare &amp; Ops</h6><a href="../index.html#industries">Healthcare Voice AI</a><a href="../index.html#industries">Veterinary AI</a><a href="../index.html#industries">Hospitality AI</a></div>
+          <div class="mega-col"><h6>Enterprise &amp; Field</h6><a href="../index.html#industries">Enterprise AI</a><a href="../index.html#industries">Sales Intelligence</a><a href="../index.html#industries">Field Service</a><a href="../index.html#industries">Voice Agents</a><a href="../index.html#industries">Telecom AI</a></div>
+          <div class="mega-col"><h6>Safety &amp; Transport</h6><a href="../index.html#industries">Public Safety</a><a href="../index.html#industries">Logistics &amp; Transportation</a><a href="../index.html#industries">Smart Retail</a><a href="../index.html#industries">NEMT</a></div>
+        </div>
+      </div>
+      <div class="nav-item"><a class="nl" href="../process/">Process</a></div><!-- TODO: link to ../process/ when page exists -->
+      <div class="nav-item active has-mega">
+        <span class="nl" tabindex="0">Company <i class="chev" data-lucide="chevron-down"></i></span>
+        <div class="mega mega-single">
+          <a href="../about/">About Us</a><a href="../blog/">Blog</a><a href="../contact/">Contact</a><a href="../faq/" class="active">FAQ</a>
+        </div>
+      </div>
+    </nav>
+    <div class="nav-right">
+      <a href="../contact/" class="btn btn-blue">Start a Project</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i data-lucide="menu"></i></button>
+    </div>
+  </div>
+</header>
+
+<aside class="drawer" id="drawer" aria-label="Mobile menu">
+  <div class="drawer-top">
+    <span class="brand"><span class="mk" aria-hidden="true"><i data-lucide="cpu"></i></span>GMIC AI</span>
+    <button class="drawer-close" id="drawerClose" aria-label="Close menu"><i data-lucide="x"></i></button>
+  </div>
+  <div class="dgroup">
+    <button class="dtop" type="button">Products <i class="chev" data-lucide="chevron-down"></i></button>
+    <div class="dpanel">
+      <a href="../index.html#products">All Products</a>
+      <h6>Voice Capture</h6><a href="../index.html#products">MIC06</a><a href="../index.html#products">MIC05</a><a href="../index.html#products">MIC01</a>
+      <h6>Phone &amp; PCBA</h6><a href="../index.html#products">Telalive</a><a href="../index.html#products">Hearit.ai PCBA</a>
+    </div>
+  </div>
+  <div class="dgroup">
+    <button class="dtop" type="button">Custom Devices <i class="chev" data-lucide="chevron-down"></i></button>
+    <div class="dpanel">
+      <h6>Hardware</h6><a href="../custom-devices/odm-oem/">ODM / OEM</a><a href="../custom-devices/private-label/">Private Label</a><a href="../custom-devices/custom-enclosure/">Custom Enclosure</a><a href="../custom-devices/3d-prototype/">3D Small-batch Prototype</a>
+      <h6>Engineering</h6><a href="../custom-devices/firmware-integration/">Firmware Integration</a><a href="../custom-devices/audio-dsp-tuning/">Audio &amp; DSP Tuning</a><a href="../custom-devices/ai-sdk-integration/">AI SDK Integration</a><a href="../custom-devices/prototype-validation/">Prototype Validation</a>
+      <h6>Production</h6><a href="../custom-devices/evt-dvt-pvt/">EVT / DVT / PVT</a><a href="../custom-devices/smt-manufacturing/">SMT Manufacturing</a><a href="../custom-devices/certification-support/">Certification Support</a><a href="../custom-devices/supply-chain-management/">Supply Chain Management</a>
+    </div>
+  </div>
+  <a class="d-link" href="../implementation/">Implementation</a>
+  <a class="d-link" href="../proof/">Proof</a>
+  <div class="dgroup">
+    <button class="dtop" type="button">Industries <i class="chev" data-lucide="chevron-down"></i></button>
+    <div class="dpanel">
+      <h6>Healthcare &amp; Ops</h6><a href="../index.html#industries">Healthcare Voice AI</a><a href="../index.html#industries">Veterinary AI</a><a href="../index.html#industries">Hospitality AI</a>
+      <h6>Enterprise &amp; Field</h6><a href="../index.html#industries">Enterprise AI</a><a href="../index.html#industries">Sales Intelligence</a><a href="../index.html#industries">Field Service</a><a href="../index.html#industries">Voice Agents</a><a href="../index.html#industries">Telecom AI</a>
+      <h6>Safety &amp; Transport</h6><a href="../index.html#industries">Public Safety</a><a href="../index.html#industries">Logistics &amp; Transportation</a><a href="../index.html#industries">Smart Retail</a><a href="../index.html#industries">NEMT</a>
+    </div>
+  </div>
+  <a class="d-link" href="../process/">Process</a>
+  <div class="dgroup open">
+    <button class="dtop active" type="button">Company <i class="chev" data-lucide="chevron-down"></i></button>
+    <div class="dpanel">
+      <a href="../about/">About Us</a><a href="../blog/">Blog</a><a href="../contact/">Contact</a><a href="../faq/" class="active">FAQ</a>
+    </div>
+  </div>
+  <a class="btn btn-blue" href="../contact/">Start a Project</a>
+</aside>
+<div class="scrim" id="scrim"></div>
+
+<!-- ===================== HERO ===================== -->
+<header class="faq-hero">
+  <div class="wrap">
+    <nav class="crumb" aria-label="Breadcrumb"><a href="../index.html">Home</a><span aria-hidden="true">/</span><span class="here" aria-current="page">FAQ</span></nav>
+    <span class="eyebrow">Help Center</span>
+    <h1 class="h1">Frequently Asked <span class="blue">Questions</span></h1>
+    <p class="lede">Everything you need to know about working with GMIC on AI hardware — from prototyping to mass production.</p>
+    <div class="search-wrap">
+      <i class="si" data-lucide="search" aria-hidden="true"></i>
+      <input type="text" id="faqSearch" placeholder="Search questions…" aria-label="Search FAQ" autocomplete="off">
+      <button class="search-clear" id="searchClear" aria-label="Clear search"><i data-lucide="x"></i></button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== FAQ ===================== -->
+<section class="sec" style="padding-top:clamp(20px,3vw,32px)">
+  <div class="wrap-narrow">
+    <div class="cats" id="faqCats">
+      <button class="cat-pill active" data-cat="all">All</button>
+      <button class="cat-pill" data-cat="General">General</button>
+      <button class="cat-pill" data-cat="Products">Products</button>
+      <button class="cat-pill" data-cat="ODM / OEM">ODM / OEM</button>
+      <button class="cat-pill" data-cat="Manufacturing">Manufacturing</button>
+      <button class="cat-pill" data-cat="Certification">Certification</button>
+      <button class="cat-pill" data-cat="Pricing &amp; MOQ">Pricing &amp; MOQ</button>
+    </div>
+    <div class="faq-list" id="faqList"></div>
+    <div class="faq-empty" id="faqEmpty">No results found. Try a different keyword or <a href="../contact/">contact us</a>.</div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="sec sec-tint">
+  <div class="wrap cta">
+    <div class="kicker" style="justify-content:center"><span class="idx">—</span> Need a hand?</div>
+    <h2 class="h2" style="margin-top:14px">Still have questions?</h2>
+    <p class="lede">Our team in Shenzhen and California is ready to help you turn your AI into a real product.</p>
+    <div class="cta-actions">
+      <a href="../contact/" class="btn btn-blue">Book a Demo</a>
+      <a href="../contact/" class="tlink">Contact us <i data-lucide="arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="brand"><span class="mk" aria-hidden="true"><i data-lucide="cpu"></i></span>GMIC AI</span>
+        <p>Designing and manufacturing the embedded hardware behind the voice-first era.</p>
+        <div class="foot-contact">
+          <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a>
+          <a href="tel:+16699000008">+1 (669) 900-0008</a>
+          <span>Anaheim, CA · Shenzhen, CN</span>
+        </div>
+        <div class="certs" aria-label="Certifications">
+          <span>FCC</span><span>CE</span><span>UKCA</span><span>TELEC</span><span>RoHS</span><span>ISED</span>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Solutions</h5>
+        <a href="../index.html#products">Edge AI Hardware</a>
+        <a href="../index.html#products">Voice AI Hardware</a>
+        <a href="../index.html#products">AI Wearable Devices</a>
+        <a href="../custom-devices/odm-oem/">AI Hardware ODM</a>
+        <a href="../index.html#products">Embedded AI Hardware</a>
+      </div>
+      <div class="foot-col">
+        <h5>Industries</h5>
+        <a href="../index.html#industries">Healthcare AI</a>
+        <a href="../index.html#industries">Enterprise AI</a>
+        <a href="../index.html#industries">Field Service AI</a>
+        <a href="../index.html#industries">Telecom AI</a>
+        <a href="../index.html#industries">Smart Retail</a>
+      </div>
+      <div class="foot-col">
+        <h5>Resources</h5>
+        <a href="../blog/">Blog</a>
+        <a href="#">Case Studies</a><!-- TODO: link when page exists -->
+        <a href="../process/">Our Process</a>
+        <a href="../custom-devices/odm-oem/">Engineering Capabilities</a>
+        <a href="../contact/">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="../about/">About GMIC</a>
+        <a href="../index.html#industries">Customer Stories</a>
+        <a href="../contact/">Book a Demo</a>
+        <a href="#">Careers</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 GMIC.AI</div>
+      <div style="display:flex;gap:18px;flex-wrap:wrap"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== FAQ DATA (from main FAQ; answers are HTML, verbatim) ===================== -->
+<script>
+var FAQ_DATA = [
+  { category:"General", q:"What does GMIC AI do?",
+    a:`<p>GMIC AI is an AI hardware manufacturer specializing in voice AI hardware, AI wearable devices, and edge AI hardware solutions. We help software companies, AI startups, healthcare providers, and enterprise organizations design, develop, and manufacture custom AI edge devices—from industrial design and firmware development to scalable mass production.</p>` },
+  { category:"General", q:"Can you help if we only have a concept or a spec sheet?",
+    a:`<p>Yes. Whether you have an idea, a product specification, or an existing prototype, our team can help transform it into a production-ready AI hardware solution. We support product planning, industrial design, electronics engineering, firmware development, testing, and manufacturing.</p>` },
+  { category:"ODM / OEM", q:"What's the difference between ODM and OEM?",
+    a:`<p><strong>OEM (Original Equipment Manufacturing)</strong> means producing hardware based on your existing design and specifications.</p><p><strong>ODM (Original Design Manufacturing)</strong> means GMIC AI develops the product design, hardware architecture, firmware, and manufacturing process for you.</p><p>Many customers choose our AI hardware ODM services when building custom voice AI hardware or edge AI devices without maintaining an in-house hardware engineering team.</p>` },
+  { category:"ODM / OEM", q:"Do you sign NDAs before sharing details?",
+    a:`<p>Yes. We regularly sign NDAs before discussing product concepts, proprietary technologies, firmware requirements, AI workflows, or manufacturing plans. Protecting customer intellectual property is a standard part of our development process.</p>` },
+  { category:"Products", q:"What types of devices can you build?",
+    a:`<p>We develop a wide range of AI-powered hardware products, including:</p><ul><li>AI wearable devices</li><li>Wearable voice AI recorders</li><li>AI scribe hardware</li><li>Edge AI hardware</li><li>Embedded AI hardware</li><li>Smart microphones</li><li>Voice capture devices</li><li>Healthcare AI devices</li><li>Enterprise AI hardware</li><li>Custom AI edge devices</li></ul><p>Our solutions can be customized for healthcare, field services, enterprise productivity, education, and industrial applications.</p>` },
+  { category:"Products", q:"What connectivity options do you support?",
+    a:`<p>Our AI hardware platforms support multiple connectivity options, including:</p><ul><li>Wi-Fi</li><li>Bluetooth Low Energy (BLE)</li><li>NFC</li><li>USB-C</li><li>Cellular (4G / LTE)</li><li>GPS</li><li>Local network and edge deployments</li></ul><p>Connectivity can be customized based on your application and deployment requirements.</p>` },
+  { category:"Products", q:"Do you handle audio tuning and noise reduction?",
+    a:`<p>Yes. Voice capture is one of our core specialties.</p><p>We provide microphone tuning, beamforming, acoustic optimization, echo cancellation, and noise-reduction engineering to improve speech quality for AI scribe hardware, wearable voice AI devices, and real-time voice AI applications.</p>` },
+  { category:"Manufacturing", q:"Where is the hardware manufactured?",
+    a:`<p>Our hardware is developed and manufactured through our production facilities in China, with customer support and business operations available from our Anaheim, California office.</p><p>We support prototyping, pilot production, and high-volume manufacturing for global customers.</p>` },
+  { category:"Manufacturing", q:"How long does it take from concept to mass production?",
+    a:`<p>Timelines vary depending on product complexity.</p><ul><li><strong>Existing platform customization:</strong> 4–8 weeks</li><li><strong>New product development:</strong> 2–6 months</li><li><strong>Large-scale production:</strong> based on certification and volume requirements</li></ul><p>Our team works closely with customers to accelerate development while maintaining quality and manufacturability.</p>` },
+  { category:"Manufacturing", q:"How do you ensure quality?",
+    a:`<p>We follow a structured product development and manufacturing process that includes:</p><ul><li>EVT (Engineering Validation Test)</li><li>DVT (Design Validation Test)</li><li>PVT (Production Validation Test)</li><li>Automated Optical Inspection (AOI)</li><li>In-line quality control</li><li>Functional testing</li><li>Final product inspection</li></ul><p>This process helps ensure reliability, consistency, and scalability across every production run.</p>` },
+  { category:"General", q:"What industries use GMIC AI hardware?",
+    a:`<p>Our customers include companies building:</p><ul><li>AI scribe platforms</li><li>Healthcare AI solutions</li><li>Voice AI assistants</li><li>Enterprise productivity tools</li><li>Field service AI systems</li><li>Education technology</li><li>AI workflow automation platforms</li></ul><p>We help these organizations deploy custom voice AI hardware and edge AI devices that connect physical workflows with AI software systems.</p>` },
+  { category:"General", q:"Why choose GMIC AI as your hardware partner?",
+    a:`<p>Unlike traditional electronics manufacturers, GMIC AI focuses specifically on AI hardware development, voice AI hardware, wearable AI devices, and edge AI solutions.</p><p>Our team combines industrial design, embedded engineering, firmware development, acoustic expertise, and scalable manufacturing to help customers bring AI-powered products to market faster.</p>` },
+  { category:"Manufacturing", q:"Can I order a sample or prototype first?",
+    a:`<p>Yes. Most customers begin with a sample unit, prototype, or pilot batch before moving to mass production.</p><p>Whether you're developing voice AI hardware, AI wearable devices, AI scribe hardware, or custom edge AI hardware, we can provide evaluation units to validate functionality, user workflows, and deployment requirements before scaling.</p>` },
+  { category:"Manufacturing", q:"What is EVT / DVT / PVT?",
+    a:`<p>EVT, DVT, and PVT are key stages in hardware product development and manufacturing.</p><p><strong>EVT (Engineering Validation Test)</strong><br>Validates core hardware functionality, electronics, firmware, and mechanical design.</p><p><strong>DVT (Design Validation Test)</strong><br>Verifies that the product design meets performance, reliability, and user requirements.</p><p><strong>PVT (Production Validation Test)</strong><br>Confirms manufacturing readiness and production consistency before mass production.</p><p>These stages help reduce risk and ensure reliable deployment of custom AI hardware and embedded AI hardware products.</p>` },
+  { category:"Certification", q:"What certifications do your devices support?",
+    a:`<p>Depending on the target market and product requirements, we support:</p><ul><li>FCC</li><li>CE</li><li>RoHS</li><li>UKCA</li><li>TELEC</li><li>KC</li><li>NCC</li><li>Bluetooth SIG</li><li>UN38.3</li><li>MSDS</li><li>Battery certifications</li></ul><p>Certification requirements are reviewed during project planning to ensure compliance for global deployment.</p>` },
+  { category:"Certification", q:"Do you provide compliance documentation?",
+    a:`<p>Yes. We can provide certification reports, declarations of conformity, test reports, battery documentation, and other compliance materials required for product launches, enterprise procurement, and international shipping.</p><p>Documentation availability depends on the product platform and certification scope.</p>` },
+  { category:"Pricing & MOQ", q:"What is your typical minimum order quantity?",
+    a:`<p>MOQ depends on the product type and level of customization.</p><p>For existing platforms and AI voice hardware products, pilot orders may start with small quantities.</p><p>For fully custom AI hardware ODM projects, production quantities are typically determined during development planning based on tooling, certification, and manufacturing requirements.</p>` },
+  { category:"Pricing & MOQ", q:"How is pricing structured?",
+    a:`<p>Pricing depends on several factors, including:</p><ul><li>Hardware specifications</li><li>AI processing requirements</li><li>Connectivity options</li><li>Industrial design complexity</li><li>Firmware customization</li><li>Certifications</li><li>Order volume</li></ul><p>For AI wearable devices, edge AI hardware, and custom voice AI hardware projects, we typically provide pricing after reviewing product requirements and target production volumes.</p>` },
+  { category:"General", q:"What industries do you serve?",
+    a:`<p>We work with companies building:</p><ul><li>AI scribe platforms</li><li>Healthcare AI solutions</li><li>Voice AI applications</li><li>Enterprise productivity software</li><li>Field service platforms</li><li>Education technology</li><li>Retail technology</li><li>Industrial AI systems</li><li>Customer service automation</li><li>AI workflow platforms</li></ul><p>Our AI hardware solutions help organizations connect real-world voice and workflow data with AI software systems.</p>` },
+  { category:"General", q:"How do I start a project?",
+    a:`<p>Getting started is simple.</p><p>Click "Start a Project" or schedule a consultation with our team. Share your concept, specification sheet, prototype, or business requirements, and we'll evaluate the best approach for product development.</p><p>Whether you're building AI wearable devices, voice AI hardware, AI scribe hardware, or custom edge AI devices, we can provide a development roadmap.</p>` }
+];
+
+(function(){
+  var listEl=document.getElementById('faqList'),
+      emptyEl=document.getElementById('faqEmpty'),
+      catsEl=document.getElementById('faqCats'),
+      search=document.getElementById('faqSearch'),
+      clearBtn=document.getElementById('searchClear');
+  var activeCat='all';
+
+  function plain(html){var d=document.createElement('div');d.innerHTML=html||'';return (d.textContent||'').replace(/\s+/g,' ').trim().toLowerCase();}
+
+  FAQ_DATA.forEach(function(item,i){
+    var el=document.createElement('div');
+    el.className='faq-item';
+    el.setAttribute('data-cat',item.category);
+    el.setAttribute('data-text',(item.q+' '+item.category+' '+plain(item.a)).toLowerCase());
+
+    var btn=document.createElement('button');
+    btn.className='faq-q';btn.type='button';btn.setAttribute('aria-expanded','false');btn.id='faq-q-'+i;
+    btn.innerHTML='<span class="qt"><span class="qcat">'+item.category+'</span>'+item.q+'</span><span class="faq-ic" aria-hidden="true"></span>';
+
+    var panel=document.createElement('div');
+    panel.className='faq-a';panel.setAttribute('role','region');panel.setAttribute('aria-labelledby',btn.id);
+    var inner=document.createElement('div');inner.className='faq-a-inner';inner.innerHTML=item.a;
+    panel.appendChild(inner);
+
+    btn.addEventListener('click',function(){
+      var open=el.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      panel.style.maxHeight=open?(panel.scrollHeight+'px'):'0px';
+    });
+
+    el.appendChild(btn);el.appendChild(panel);
+    listEl.appendChild(el);
+  });
+
+  var items=Array.prototype.slice.call(listEl.querySelectorAll('.faq-item'));
+
+  function applyFilter(){
+    var kw=(search.value||'').trim().toLowerCase();
+    var shown=0;
+    items.forEach(function(el){
+      var matchCat=(activeCat==='all')||(el.getAttribute('data-cat')===activeCat);
+      var matchKw=!kw||el.getAttribute('data-text').indexOf(kw)!==-1;
+      var show=matchCat&&matchKw;
+      el.style.display=show?'':'none';
+      if(show)shown++;
+    });
+    emptyEl.classList.toggle('show',shown===0);
+    clearBtn.classList.toggle('show',!!kw);
+  }
+
+  catsEl.querySelectorAll('.cat-pill').forEach(function(pill){
+    pill.addEventListener('click',function(){
+      catsEl.querySelectorAll('.cat-pill').forEach(function(p){p.classList.remove('active');});
+      pill.classList.add('active');
+      activeCat=pill.getAttribute('data-cat');
+      applyFilter();
+    });
+  });
+  search.addEventListener('input',applyFilter);
+  clearBtn.addEventListener('click',function(){search.value='';search.focus();applyFilter();});
+  applyFilter();
+})();
+</script>
+
+<!-- ===================== SHELL BEHAVIOR ===================== -->
+<script>
+(function(){
+  var burger=document.getElementById('burger'),drawer=document.getElementById('drawer'),scrim=document.getElementById('scrim'),dclose=document.getElementById('drawerClose');
+  function openD(){drawer.classList.add('open');scrim.classList.add('open');burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function closeD(){drawer.classList.remove('open');scrim.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  burger&&burger.addEventListener('click',openD);
+  dclose&&dclose.addEventListener('click',closeD);
+  scrim&&scrim.addEventListener('click',closeD);
+  document.querySelectorAll('.drawer a').forEach(function(a){a.addEventListener('click',closeD);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeD();});
+  document.querySelectorAll('.drawer .dtop').forEach(function(b){b.addEventListener('click',function(){b.parentElement.classList.toggle('open');});});
+  if(typeof lucide!=='undefined')lucide.createIcons();
+})();
+</script>
+
+</body>
+</html>
