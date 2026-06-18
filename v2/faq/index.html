@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Blog — GMIC AI</title>
-<meta name="description" content="Insights on edge AI hardware, voice infrastructure, and the industries being transformed by on-device intelligence — from GMIC AI." />
+<title>FAQ — GMIC AI</title>
+<meta name="description" content="Frequently asked questions about working with GMIC on AI hardware — from prototyping to mass production. ODM/OEM, manufacturing, certification, pricing & MOQ." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
 /* ============================================================
-   GMIC AI · v2 — Modular Bold (Fourmula-style) · Blog
+   GMIC AI · v2 — Modular Bold (Fourmula-style) · FAQ
    ============================================================ */
 :root{
   --canvas:#efefed;--panel:#ffffff;--border:#e6e6e3;
@@ -37,26 +37,21 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 
 /* type */
 .display{font-family:var(--disp);font-weight:700;letter-spacing:-.03em;line-height:1.0}
-h1.display{font-size:clamp(44px,7vw,96px)}
-h2.display{font-size:clamp(24px,2.8vw,40px)}
+h1.display{font-size:clamp(40px,6vw,82px)}
+h2.display{font-size:clamp(26px,3.4vw,48px)}
 .tone{color:var(--faint)}
 .orange{color:var(--orange)}
 .lead{font-size:clamp(16px,1.4vw,19px);line-height:1.6;color:var(--muted)}
 .kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--orange)}
 
-/* panel */
+/* panel + buttons */
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg)}
-.pad{padding:clamp(24px,3vw,48px)}
-
-/* buttons */
+.pad{padding:clamp(24px,3vw,44px)}
 .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:600;font-size:15px;padding:14px 24px;border-radius:var(--r-pill);transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease,border-color .2s ease;white-space:nowrap}
 .btn svg{width:17px;height:17px}
 .btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
 .btn-light{background:#fff;color:var(--ink);border:1px solid var(--border)}.btn-light:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
-.txtlink{display:inline-flex;align-items:center;gap:7px;font-family:var(--disp);font-weight:600;font-size:15px;color:var(--ink);transition:gap .2s ease,color .2s ease}
-.txtlink svg{width:16px;height:16px;transition:transform .2s ease;color:var(--orange)}
-.txtlink:hover{color:var(--orange)}.txtlink:hover svg{transform:translateX(3px)}
 
 /* ---------- NAV (mega-menu) ---------- */
 .nav-shell{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px var(--gut);transition:padding .3s ease}
@@ -79,7 +74,7 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
 .mega-col{min-width:172px}
 .mega-col h6{font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .mega-col a{display:block;font-size:14px;font-weight:500;color:var(--ink);padding:7px 0;transition:color .2s ease}
-.mega-col a:hover{color:var(--orange)}
+.mega-col a:hover,.mega-col a.active{color:var(--orange)}
 .mega-col a small{display:block;font-weight:400;font-size:12px;color:var(--muted);line-height:1.35;margin-top:1px}
 .nav-right{display:flex;align-items:center;gap:10px}
 .burger{display:none;width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid var(--border);align-items:center;justify-content:center}
@@ -104,76 +99,54 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
 .scrim{position:fixed;inset:0;background:rgba(17,17,17,.4);z-index:300;opacity:0;pointer-events:none;transition:opacity .3s}
 .scrim.open{opacity:1;pointer-events:auto}
 
-/* HERO */
-.bloghero{padding:calc(104px + 3vw) 0 clamp(20px,3vw,36px)}
-.bloghero .kicker{margin-bottom:14px}
-.bloghero h1{max-width:14ch}
-.bloghero .lead{max-width:56ch;margin-top:18px}
+/* ---------- HERO ---------- */
+.fhero{padding:calc(104px + 3vw) 0 clamp(8px,2vw,20px);text-align:center}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:18px}
+.crumb a:hover{color:var(--orange)}.crumb span{color:var(--ink)}
+.fhero .kicker{margin-bottom:14px}
+.fhero h1{max-width:18ch;margin:0 auto}
+.fhero .lead{max-width:56ch;margin:18px auto 0}
+.faq-search{position:relative;max-width:620px;margin:clamp(26px,3vw,40px) auto 0}
+.faq-search input{width:100%;background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:16px 20px 16px 52px;font-size:16px;color:var(--ink);transition:border-color .2s ease,box-shadow .2s ease}
+.faq-search input::placeholder{color:var(--muted)}
+.faq-search input:focus{outline:none;border-color:var(--orange);box-shadow:0 0 0 3px rgba(255,90,31,.14)}
+.faq-search .si{position:absolute;left:20px;top:50%;transform:translateY(-50%);pointer-events:none}
+.faq-search .si svg{width:20px;height:20px;color:var(--muted)}
 
-/* FILTERS */
-.filters{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:clamp(20px,2.5vw,32px)}
+/* filters */
+.filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:clamp(24px,3vw,38px) 0 clamp(8px,1.5vw,16px)}
 .filter-pill{font-family:var(--disp);font-weight:600;font-size:13.5px;color:var(--ink-2);background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:10px 18px;transition:background .2s ease,color .2s ease,border-color .2s ease}
 .filter-pill:hover{border-color:var(--ink)}
 .filter-pill.active{background:var(--orange);border-color:var(--orange);color:#fff}
 
-/* POSTS GRID */
-.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,22px)}
-.post-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;
-  transition:transform .25s ease,box-shadow .25s ease;opacity:0;transform:translateY(16px)}
-.post-card.in{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease}
-.post-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.post-thumb{aspect-ratio:16/10;position:relative;overflow:hidden;background:var(--canvas)}
-.post-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
-.post-card:hover .post-thumb img{transform:scale(1.04)}
-.post-thumb .grad{position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px}
-.post-thumb .grad span{font-family:var(--disp);font-weight:700;font-size:18px;color:rgba(255,255,255,.96);letter-spacing:-.01em;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,.25)}
-.post-body{padding:clamp(20px,2vw,26px);display:flex;flex-direction:column;flex:1}
-.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.post-cat{font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);background:rgba(255,90,31,.1);padding:5px 10px;border-radius:var(--r-pill)}
-.post-date{font-size:12.5px;color:var(--muted)}
-.post-card h3{font-family:var(--disp);font-weight:700;font-size:19px;letter-spacing:-.01em;line-height:1.22;margin-bottom:10px}
-.post-ex{color:var(--muted);font-size:14px;flex:1}
-.post-read{margin-top:16px;font-family:var(--disp);font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:7px;color:var(--ink)}
-.post-read svg{width:15px;height:15px;color:var(--orange);transition:transform .2s ease}
-.post-card:hover .post-read svg{transform:translateX(3px)}
-
-/* feature first card */
-.post-card.feature{grid-column:span 2;flex-direction:row}
-.post-card.feature .post-thumb{flex:1 1 50%;aspect-ratio:auto;min-height:300px}
-.post-card.feature .post-body{flex:1 1 50%;justify-content:center}
-.post-card.feature h3{font-size:clamp(24px,2.4vw,34px);line-height:1.08;margin-bottom:14px}
-.post-card.feature .post-ex{font-size:15px;flex:none}
-.post-card.feature .post-thumb .grad span{font-size:26px}
-
-/* skeleton */
-.sk{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
-.sk .skt{aspect-ratio:16/10;background:linear-gradient(90deg,#e9e9e6 25%,#f2f2ef 50%,#e9e9e6 75%);background-size:200% 100%;animation:sh 1.4s infinite}
-.sk .skb{padding:24px;display:flex;flex-direction:column;gap:12px}
-.sk .skl{height:13px;border-radius:6px;background:linear-gradient(90deg,#e9e9e6 25%,#f2f2ef 50%,#e9e9e6 75%);background-size:200% 100%;animation:sh 1.4s infinite}
-.sk .skl.s{width:45%;height:18px}.sk .skl.m{width:75%}
-@keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
-
-/* pagination */
-.pagination{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:clamp(32px,4vw,52px)}
-.page-btn{font-family:var(--disp);font-weight:600;font-size:15px;min-width:46px;height:46px;padding:0 16px;border-radius:var(--r-pill);background:#fff;border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;color:var(--ink);transition:background .2s ease,color .2s ease,border-color .2s ease}
-.page-btn:hover:not([disabled]):not(.ellipsis){border-color:var(--ink)}
-.page-btn.active{background:var(--orange);border-color:var(--orange);color:#fff}
-.page-btn[disabled]{opacity:.4;cursor:not-allowed}
-.page-btn.ellipsis{border:none;background:none;cursor:default}
-.empty{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--muted);font-family:var(--disp);font-weight:600}
-
-/* NEWSLETTER */
-.news .panel{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(20px,3vw,48px);align-items:center}
-.news h2{font-family:var(--disp);font-weight:700;font-size:clamp(24px,2.8vw,38px);letter-spacing:-.02em}
-.news p{margin-top:12px;color:var(--muted);font-size:15px;max-width:42ch}
-.news-form{display:flex;gap:10px;flex-wrap:wrap}
-.news-form input{flex:1;min-width:200px;border:1px solid var(--border);border-radius:var(--r-pill);padding:14px 20px;font-size:15px;background:var(--canvas)}
-.news-form input:focus{outline:none;border-color:var(--orange)}
+/* FAQ list */
+.faq-list{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;transition:transform .2s ease,box-shadow .2s ease}
+.faq-item:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;text-align:left;padding:20px clamp(20px,2.4vw,28px)}
+.faq-q .qx{display:flex;flex-direction:column;gap:5px}
+.faq-q .qcat{font-family:var(--disp);font-weight:600;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--orange)}
+.faq-q .qt{font-family:var(--disp);font-weight:600;font-size:clamp(16px,1.5vw,19px);letter-spacing:-.01em;color:var(--ink);line-height:1.25}
+.faq-q .pm{width:34px;height:34px;border-radius:50%;background:var(--canvas);display:flex;align-items:center;justify-content:center;flex:none;transition:background .2s ease}
+.faq-q .pm svg{width:18px;height:18px;color:var(--ink);transition:transform .25s ease}
+.faq-item.open .pm{background:var(--orange)}
+.faq-item.open .pm svg{color:#fff;transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.open .faq-a{max-height:1200px}
+.faq-a-inner{padding:0 clamp(20px,2.4vw,28px) 24px;color:var(--ink-2);font-size:15px;line-height:1.65}
+.faq-a-inner p{margin:0 0 10px}.faq-a-inner p:last-child{margin-bottom:0}
+.faq-a-inner strong{color:var(--ink);font-weight:600}
+.faq-a-inner ul{list-style:none;margin:10px 0;padding:0}
+.faq-a-inner li{position:relative;padding-left:20px;margin:5px 0}
+.faq-a-inner li::before{content:"";position:absolute;left:0;top:10px;width:8px;height:8px;border-radius:2px;background:var(--orange)}
+.faq-empty{display:none;text-align:center;padding:48px 0;color:var(--muted)}
+.faq-empty.show{display:block}
+.faq-empty a{color:var(--orange);font-weight:600;border-bottom:1px solid var(--orange)}
 
 /* CTA */
 .cta-card{border-radius:var(--r-xl);background:var(--orange);color:#fff;text-align:center;padding:clamp(48px,7vw,104px) clamp(24px,5vw,72px)}
 .cta-card .kicker{justify-content:center;color:rgba(255,255,255,.85);margin-bottom:16px}.cta-card .kicker .dot{background:#fff}
-.cta-card h2{margin-bottom:16px;max-width:20ch;margin-left:auto;margin-right:auto;font-size:clamp(30px,4.4vw,58px)}
+.cta-card h2{margin-bottom:16px;max-width:20ch;margin-left:auto;margin-right:auto}
 .cta-card p{margin:0 auto;max-width:54ch;color:rgba(255,255,255,.92);font-size:clamp(16px,1.4vw,19px)}
 .cta-actions{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center}
 .cta-card .btn-light{background:#fff;color:var(--ink);border:none}
@@ -195,27 +168,13 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
 .foot-col a{display:block;color:var(--ink);font-size:14px;padding:6px 0;opacity:.8;transition:opacity .2s,color .2s}
 .foot-col a:hover{opacity:1;color:var(--orange)}
 .foot-bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+.foot-bottom a:hover{color:var(--orange)}
 
 /* responsive */
-@media (max-width:980px){
-  .posts-grid{grid-template-columns:repeat(2,1fr)}
-  .post-card.feature{grid-column:span 2;flex-direction:column}
-  .post-card.feature .post-thumb{min-height:0;aspect-ratio:16/10}
-  .news .panel{grid-template-columns:1fr}
-  .foot-grid{grid-template-columns:1fr 1fr}
-}
+@media (max-width:980px){.foot-grid{grid-template-columns:1fr 1fr}}
 @media (max-width:720px){.nav-pill{display:none}.burger{display:flex}}
-@media (max-width:560px){
-  .posts-grid{grid-template-columns:1fr}
-  .post-card.feature{grid-column:span 1}
-  .foot-grid{grid-template-columns:1fr 1fr}
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto}
-  .post-card{opacity:1!important;transform:none!important}
-  .btn,.post-card,.filter-pill,.page-btn{transition:none}
-  .sk .skt,.sk .skl{animation:none}
-}
+@media (max-width:560px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.faq-item,.filter-pill{transition:none}}
 </style>
 </head>
 <body>
@@ -272,12 +231,12 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
           </div>
         </div></div><!-- TODO: link sub-items when pages exist -->
       </div>
-      <div class="nav-item"><a href="../process/">Process</a><!-- TODO: link to ./process/ when page exists --></div>
+      <div class="nav-item"><a href="../process/">Process</a><!-- TODO: link to ../process/ when page exists --></div>
       <div class="nav-item has-mega alignR active">
         <a href="../about/">Company <i data-lucide="chevron-down" class="chev"></i></a>
         <div class="mega"><div class="mega-cols">
           <div class="mega-col"><h6>Company</h6>
-            <a href="../about/">About Us</a><a href="../blog/" class="active">Blog</a><a href="../contact/">Contact</a><a href="../faq/">FAQ</a>
+            <a href="../about/">About Us</a><a href="../blog/">Blog</a><a href="../contact/">Contact</a><a href="../faq/" class="active">FAQ</a>
           </div>
         </div></div>
       </div>
@@ -289,6 +248,7 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
   </nav>
 </div>
 
+<!-- mobile drawer (accordion) -->
 <aside class="drawer" id="drawer" aria-label="Menu">
   <div class="drawer-top">
     <span class="logo"><span class="mk" aria-hidden="true"></span>GMIC AI</span>
@@ -321,7 +281,7 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
   <a class="d-direct" href="../process/">Process</a>
   <div class="acc active"><button type="button">Company <i data-lucide="chevron-down" class="chev"></i></button>
     <div class="acc-panel">
-      <a href="../about/">About Us</a><a href="../blog/" class="active">Blog</a><a href="../contact/">Contact</a><a href="../faq/">FAQ</a>
+      <a href="../about/">About Us</a><a href="../blog/">Blog</a><a href="../contact/">Contact</a><a href="../faq/" class="active">FAQ</a>
     </div>
   </div>
   <a class="btn btn-dark" href="../contact/">Start a Project</a>
@@ -329,55 +289,50 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
 <div class="scrim" id="scrim"></div>
 
 <!-- ===================== HERO ===================== -->
-<header class="bloghero">
+<header class="fhero">
   <div class="wrap">
-    <span class="kicker"><span class="dot" aria-hidden="true"></span>Blog</span>
-    <h1 class="display">All <span class="tone">Posts.</span></h1>
-    <p class="lead">Insights on edge AI hardware, voice infrastructure, and the industries being transformed by on-device intelligence.</p>
+    <div class="crumb"><a href="../index.html">Home</a> / <span>FAQ</span></div>
+    <span class="kicker"><span class="dot" aria-hidden="true"></span>FAQ</span>
+    <h1 class="display">Real answers. <span class="orange">From real engineers.</span></h1>
+    <p class="lead">Everything you need to know about working with GMIC on AI hardware — from prototyping to mass production.</p>
+    <div class="faq-search">
+      <span class="si" aria-hidden="true"><i data-lucide="search"></i></span>
+      <input type="search" id="faqSearch" placeholder="Search questions…" aria-label="Search FAQs" autocomplete="off">
+    </div>
   </div>
 </header>
 
 <!-- ===================== FILTERS ===================== -->
 <div class="wrap">
-  <div class="filters" id="blogFilters" role="tablist" aria-label="Filter posts by category">
-    <button class="filter-pill active" data-filter="all">All Posts</button>
+  <div class="filters" id="faqFilters" role="tablist" aria-label="Filter by category">
+    <button class="filter-pill active" data-cat="all">All</button>
+    <button class="filter-pill" data-cat="General">General</button>
+    <button class="filter-pill" data-cat="Products">Products</button>
+    <button class="filter-pill" data-cat="ODM / OEM">ODM / OEM</button>
+    <button class="filter-pill" data-cat="Manufacturing">Manufacturing</button>
+    <button class="filter-pill" data-cat="Certification">Certification</button>
+    <button class="filter-pill" data-cat="Pricing &amp; MOQ">Pricing &amp; MOQ</button>
   </div>
 </div>
 
-<!-- ===================== POSTS ===================== -->
-<section class="sec" style="padding-top:0">
+<!-- ===================== FAQ LIST ===================== -->
+<section class="sec" style="padding-top:clamp(12px,2vw,24px)">
   <div class="wrap">
-    <div class="posts-grid" id="postsGrid" aria-live="polite"></div>
-    <nav class="pagination" id="pagination" aria-label="Pagination"></nav>
-  </div>
-</section>
-
-<!-- ===================== NEWSLETTER ===================== -->
-<section class="sec news">
-  <div class="wrap">
-    <div class="panel pad">
-      <div>
-        <h2>Get the latest from the edge.</h2>
-        <p>Monthly notes on hardware shipping, certifications, and the AI models running on our devices.</p>
-      </div>
-      <form class="news-form" onsubmit="event.preventDefault();var i=this.querySelector('input');var b=this.querySelector('button');if(i.value){i.value='';b.textContent='Subscribed ✓';}">
-        <input type="email" required placeholder="Enter your email" aria-label="Email address">
-        <button type="submit" class="btn btn-dark">Subscribe</button>
-      </form>
-    </div>
+    <div class="faq-list" id="faqList"></div>
+    <div class="faq-empty" id="faqEmpty">No results found. Try a different keyword or <a href="../contact/">contact us</a>.</div>
   </div>
 </section>
 
 <!-- ===================== CTA ===================== -->
-<section class="sec" style="padding-top:0">
+<section class="sec">
   <div class="wrap">
     <div class="cta-card">
-      <span class="kicker"><span class="dot" aria-hidden="true"></span>Begin</span>
-      <h2 class="display">Ready to turn your AI into a real product?</h2>
-      <p>Bring us a concept, prototype, or pilot — we'll get you to production.</p>
+      <span class="kicker"><span class="dot" aria-hidden="true"></span>Still have questions?</span>
+      <h2 class="display">Still have questions?</h2>
+      <p>Our team in Shenzhen and California is ready to help you turn your AI into a real product.</p>
       <div class="cta-actions">
         <a href="mailto:trigg@gmic.ai?subject=Book%20a%20Demo" class="btn btn-light">Book a Demo <i data-lucide="arrow-right"></i></a>
-        <a href="../contact/" class="cta-link">Talk to Sales <i data-lucide="arrow-right"></i></a>
+        <a href="../contact/" class="cta-link">Contact us <i data-lucide="arrow-right"></i></a>
       </div>
     </div>
   </div>
@@ -439,189 +394,80 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
   </div>
 </footer>
 
-<!-- ===================== BLOG DATA SCRIPT ===================== -->
 <script>
-/* Live sync from the WordPress REST API (gmic.ai). FALLBACK_POSTS render
-   when the API is unreachable (file:// / CORS). Same fetch + pagination +
-   category-filter + fallback flow as main; only buildCard() is restyled. */
+/* ===== FAQ data — answers are HTML, rendered as-is ===== */
+var FAQ_DATA = [
+  {category:"General", q:"What does GMIC AI do?", a:"<p>GMIC AI is an AI hardware manufacturer specializing in voice AI hardware, AI wearable devices, and edge AI hardware solutions. We help software companies, AI startups, healthcare providers, and enterprise organizations design, develop, and manufacture custom AI edge devices—from industrial design and firmware development to scalable mass production.</p>"},
+  {category:"General", q:"Can you help if we only have a concept or a spec sheet?", a:"<p>Yes. Whether you have an idea, a product specification, or an existing prototype, our team can help transform it into a production-ready AI hardware solution. We support product planning, industrial design, electronics engineering, firmware development, testing, and manufacturing.</p>"},
+  {category:"ODM / OEM", q:"What's the difference between ODM and OEM?", a:"<p><strong>OEM (Original Equipment Manufacturing)</strong> means producing hardware based on your existing design and specifications.</p><p><strong>ODM (Original Design Manufacturing)</strong> means GMIC AI develops the product design, hardware architecture, firmware, and manufacturing process for you.</p><p>Many customers choose our AI hardware ODM services when building custom voice AI hardware or edge AI devices without maintaining an in-house hardware engineering team.</p>"},
+  {category:"ODM / OEM", q:"Do you sign NDAs before sharing details?", a:"<p>Yes. We regularly sign NDAs before discussing product concepts, proprietary technologies, firmware requirements, AI workflows, or manufacturing plans. Protecting customer intellectual property is a standard part of our development process.</p>"},
+  {category:"Products", q:"What types of devices can you build?", a:"<p>We develop a wide range of AI-powered hardware products, including:</p><ul><li>AI wearable devices</li><li>Wearable voice AI recorders</li><li>AI scribe hardware</li><li>Edge AI hardware</li><li>Embedded AI hardware</li><li>Smart microphones</li><li>Voice capture devices</li><li>Healthcare AI devices</li><li>Enterprise AI hardware</li><li>Custom AI edge devices</li></ul><p>Our solutions can be customized for healthcare, field services, enterprise productivity, education, and industrial applications.</p>"},
+  {category:"Products", q:"What connectivity options do you support?", a:"<p>Our AI hardware platforms support multiple connectivity options, including:</p><ul><li>Wi-Fi</li><li>Bluetooth Low Energy (BLE)</li><li>NFC</li><li>USB-C</li><li>Cellular (4G / LTE)</li><li>GPS</li><li>Local network and edge deployments</li></ul><p>Connectivity can be customized based on your application and deployment requirements.</p>"},
+  {category:"Products", q:"Do you handle audio tuning and noise reduction?", a:"<p>Yes. Voice capture is one of our core specialties.</p><p>We provide microphone tuning, beamforming, acoustic optimization, echo cancellation, and noise-reduction engineering to improve speech quality for AI scribe hardware, wearable voice AI devices, and real-time voice AI applications.</p>"},
+  {category:"Manufacturing", q:"Where is the hardware manufactured?", a:"<p>Our hardware is developed and manufactured through our production facilities in China, with customer support and business operations available from our Anaheim, California office.</p><p>We support prototyping, pilot production, and high-volume manufacturing for global customers.</p>"},
+  {category:"Manufacturing", q:"How long does it take from concept to mass production?", a:"<p>Timelines vary depending on product complexity.</p><ul><li><strong>Existing platform customization:</strong> 4–8 weeks</li><li><strong>New product development:</strong> 2–6 months</li><li><strong>Large-scale production:</strong> based on certification and volume requirements</li></ul><p>Our team works closely with customers to accelerate development while maintaining quality and manufacturability.</p>"},
+  {category:"Manufacturing", q:"How do you ensure quality?", a:"<p>We follow a structured product development and manufacturing process that includes:</p><ul><li>EVT (Engineering Validation Test)</li><li>DVT (Design Validation Test)</li><li>PVT (Production Validation Test)</li><li>Automated Optical Inspection (AOI)</li><li>In-line quality control</li><li>Functional testing</li><li>Final product inspection</li></ul><p>This process helps ensure reliability, consistency, and scalability across every production run.</p>"},
+  {category:"General", q:"What industries use GMIC AI hardware?", a:"<p>Our customers include companies building:</p><ul><li>AI scribe platforms</li><li>Healthcare AI solutions</li><li>Voice AI assistants</li><li>Enterprise productivity tools</li><li>Field service AI systems</li><li>Education technology</li><li>AI workflow automation platforms</li></ul><p>We help these organizations deploy custom voice AI hardware and edge AI devices that connect physical workflows with AI software systems.</p>"},
+  {category:"General", q:"Why choose GMIC AI as your hardware partner?", a:"<p>Unlike traditional electronics manufacturers, GMIC AI focuses specifically on AI hardware development, voice AI hardware, wearable AI devices, and edge AI solutions.</p><p>Our team combines industrial design, embedded engineering, firmware development, acoustic expertise, and scalable manufacturing to help customers bring AI-powered products to market faster.</p>"},
+  {category:"Manufacturing", q:"Can I order a sample or prototype first?", a:"<p>Yes. Most customers begin with a sample unit, prototype, or pilot batch before moving to mass production.</p><p>Whether you're developing voice AI hardware, AI wearable devices, AI scribe hardware, or custom edge AI hardware, we can provide evaluation units to validate functionality, user workflows, and deployment requirements before scaling.</p>"},
+  {category:"Manufacturing", q:"What is EVT / DVT / PVT?", a:"<p>EVT, DVT, and PVT are key stages in hardware product development and manufacturing.</p><p><strong>EVT (Engineering Validation Test)</strong><br>Validates core hardware functionality, electronics, firmware, and mechanical design.</p><p><strong>DVT (Design Validation Test)</strong><br>Verifies that the product design meets performance, reliability, and user requirements.</p><p><strong>PVT (Production Validation Test)</strong><br>Confirms manufacturing readiness and production consistency before mass production.</p><p>These stages help reduce risk and ensure reliable deployment of custom AI hardware and embedded AI hardware products.</p>"},
+  {category:"Certification", q:"What certifications do your devices support?", a:"<p>Depending on the target market and product requirements, we support:</p><ul><li>FCC</li><li>CE</li><li>RoHS</li><li>UKCA</li><li>TELEC</li><li>KC</li><li>NCC</li><li>Bluetooth SIG</li><li>UN38.3</li><li>MSDS</li><li>Battery certifications</li></ul><p>Certification requirements are reviewed during project planning to ensure compliance for global deployment.</p>"},
+  {category:"Certification", q:"Do you provide compliance documentation?", a:"<p>Yes. We can provide certification reports, declarations of conformity, test reports, battery documentation, and other compliance materials required for product launches, enterprise procurement, and international shipping.</p><p>Documentation availability depends on the product platform and certification scope.</p>"},
+  {category:"Pricing & MOQ", q:"What is your typical minimum order quantity?", a:"<p>MOQ depends on the product type and level of customization.</p><p>For existing platforms and AI voice hardware products, pilot orders may start with small quantities.</p><p>For fully custom AI hardware ODM projects, production quantities are typically determined during development planning based on tooling, certification, and manufacturing requirements.</p>"},
+  {category:"Pricing & MOQ", q:"How is pricing structured?", a:"<p>Pricing depends on several factors, including:</p><ul><li>Hardware specifications</li><li>AI processing requirements</li><li>Connectivity options</li><li>Industrial design complexity</li><li>Firmware customization</li><li>Certifications</li><li>Order volume</li></ul><p>For AI wearable devices, edge AI hardware, and custom voice AI hardware projects, we typically provide pricing after reviewing product requirements and target production volumes.</p>"},
+  {category:"General", q:"What industries do you serve?", a:"<p>We work with companies building:</p><ul><li>AI scribe platforms</li><li>Healthcare AI solutions</li><li>Voice AI applications</li><li>Enterprise productivity software</li><li>Field service platforms</li><li>Education technology</li><li>Retail technology</li><li>Industrial AI systems</li><li>Customer service automation</li><li>AI workflow platforms</li></ul><p>Our AI hardware solutions help organizations connect real-world voice and workflow data with AI software systems.</p>"},
+  {category:"General", q:"How do I start a project?", a:"<p>Getting started is simple.</p><p>Click \"Start a Project\" or schedule a consultation with our team. Share your concept, specification sheet, prototype, or business requirements, and we'll evaluate the best approach for product development.</p><p>Whether you're building AI wearable devices, voice AI hardware, AI scribe hardware, or custom edge AI devices, we can provide a development roadmap.</p>"}
+];
+
 (function(){
-  const API_BASE = 'https://gmic.ai/wp-json/wp/v2';
-  const PER_PAGE = 9;
-  const grid = document.getElementById('postsGrid');
-  const pagination = document.getElementById('pagination');
-  const filtersEl = document.getElementById('blogFilters');
+  var listEl=document.getElementById('faqList');
+  var emptyEl=document.getElementById('faqEmpty');
+  var filterEl=document.getElementById('faqFilters');
+  var searchEl=document.getElementById('faqSearch');
+  var activeCat='all', query='';
 
-  const DEFAULT_GRADIENT = 'linear-gradient(135deg,#1e3a8a,#2563eb,#0ea5e9)';
-  const CATEGORY_GRADIENTS = {
-    'enterprise ai':  'linear-gradient(135deg,#1e3a8a,#2563eb,#0ea5e9)',
-    'healthcare':     'linear-gradient(135deg,#134e4a,#0f766e,#14b8a6)',
-    'small business': 'linear-gradient(135deg,#1e3a5f,#1d6ed8,#38bdf8)',
-    'field service':  'linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)',
-    'industry news':  'linear-gradient(135deg,#1c1917,#292524,#57534e)'
-  };
-
-  function fakePost(id,title,dateISO,excerpt,link,catName,catSlug){
-    return {id:id,link:link,date:dateISO,title:{rendered:title},excerpt:{rendered:excerpt},content:{rendered:''},
-      _embedded:{'wp:term':[[{name:catName,slug:catSlug}]]}};
-  }
-  const FALLBACK_POSTS = [
-    fakePost(1,'Speed-to-Lead Is Now Infrastructure','2026-05-28T00:00:00',
-      "Virtual receptionists are making response speed table stakes. Here's why AI-powered lead capture is no longer optional for enterprise sales teams.",
-      'https://gmic.ai/speed-to-lead-enterprise-memory/','Enterprise AI','enterprise-ai'),
-    fakePost(2,'CLINMIC V7: Clinical Memory for the Fastest Moments in Care','2026-05-23T00:00:00',
-      "GMIC AI's concept for a privacy-first wearable that captures clinical conversations at the point of care — without burdening clinicians.",
-      'https://gmic.ai/clinmic-v7-clinical-memory-fastest-moments-in-care-2/','Healthcare','healthcare'),
-    fakePost(3,"Companies Don't Just Need AI Customer Service. They Need Organization Memory.",'2026-05-21T00:00:00',
-      'Wellness and direct-selling companies do not just need faster responses — they need persistent organizational memory that compounds over time.',
-      'https://gmic.ai/wellness-organization-memory/','Enterprise AI','enterprise-ai'),
-    fakePost(4,"Most Small Businesses Don't Fail. They Forget.",'2026-05-21T00:00:00',
-      "Most small businesses don't fail because their team didn't work hard enough. They fail because no one built a memory layer to capture what matters.",
-      'https://gmic.ai/small-business-memory-layer/','Small Business','small-business'),
-    fakePost(5,'The Evening Your Phone Finally Goes Quiet','2026-05-21T00:00:00',
-      'AI voice reception is trending, but SMB owners need more than call routing — they need true time freedom that starts after 6 PM.',
-      'https://gmic.ai/ai-voice-receptionist-enterprise-memory-time-freedom/','Small Business','small-business'),
-    fakePost(6,"The Phone Shouldn't Own Your Weekend",'2026-05-19T00:00:00',
-      "For SMB operators juggling everything alone, weekend calls aren't just annoying — they're the last barrier between work and life. AI changes that.",
-      'https://gmic.ai/ai-receptionist-enterprise-memory-weekend-freedom/','Small Business','small-business'),
-    fakePost(7,'When Every Device Has a Microphone, Who Decides What Gets Captured?','2026-05-16T00:00:00',
-      'As ambient audio intelligence becomes standard in enterprise hardware, the conversation around consent, privacy, and edge processing has never been more urgent.',
-      'https://gmic.ai/blog/','Industry News','industry-news'),
-    fakePost(8,'The Revolution Math Changed. Memory Matters More.','2026-05-14T00:00:00',
-      'The bottleneck in AI deployment has shifted from model intelligence to memory persistence. On-device hardware is the only path to solving it at scale.',
-      'https://gmic.ai/blog/','Industry News','industry-news'),
-    fakePost(9,'AI in the Field: How MIC05 is Capturing Voice Intelligence at the Edge','2026-05-10T00:00:00',
-      'Field service teams generate thousands of hours of unstructured verbal data daily. MIC05 turns those conversations into structured intelligence — automatically.',
-      'https://gmic.ai/blog/','Field Service','field-service')
-  ];
-
-  const state = {page:1,categoryId:null,totalPages:1,useApi:true,firstRender:true};
-  let slugToId = {};
-
-  function stripHtml(html){var d=new DOMParser().parseFromString(html||'','text/html');return (d.body.textContent||'').replace(/\s+/g,' ').trim();}
+  function decode(s){var t=document.createElement('textarea');t.innerHTML=s;return t.value;}
   function escapeHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-  function formatDate(iso){var d=new Date(iso);if(isNaN(d.getTime()))return '';return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
-  function runFadeIn(){var c=grid.querySelectorAll('.post-card');c.forEach(function(x){x.classList.remove('in');});void grid.offsetWidth;c.forEach(function(x,i){x.style.transitionDelay=(i*50)+'ms';x.classList.add('in');});}
 
-  async function fetchAndBuildCategoryMap(){
-    var res=await fetch(API_BASE+'/categories?per_page=100&_fields=id,name,slug,count');
-    if(!res.ok)throw new Error('HTTP '+res.status);
-    var cats=await res.json();slugToId={};var withPosts=[];
-    (cats||[]).forEach(function(c){var name=stripHtml(c.name);slugToId[c.slug]=c.id;if(c.count>0)withPosts.push({name:name,slug:c.slug});});
-    renderPills(withPosts);
-  }
-  function fetchPosts(page,categoryId){
-    var url=new URL(API_BASE+'/posts');
-    url.searchParams.set('per_page',String(PER_PAGE));
-    url.searchParams.set('page',String(page||1));
-    url.searchParams.set('_embed','wp:featuredmedia,wp:term');
-    url.searchParams.set('_fields',['id','title','date','excerpt','link','content','_links','_embedded'].join(','));
-    if(categoryId)url.searchParams.set('categories',categoryId);
-    return fetch(url).then(function(res){if(!res.ok)throw new Error('HTTP '+res.status);state.totalPages=parseInt(res.headers.get('X-WP-TotalPages'),10)||1;return res.json();});
-  }
-  function getPostImage(post){var emb=post._embedded||{};var m=emb['wp:featuredmedia']&&emb['wp:featuredmedia'][0];if(m&&m.source_url)return m.source_url;return null;}
-  function getCategoryGradient(post){var emb=post._embedded||{};var t=emb['wp:term']&&emb['wp:term'][0]&&emb['wp:term'][0][0];var n=stripHtml(t&&t.name?t.name:'').toLowerCase();return CATEGORY_GRADIENTS[n]||DEFAULT_GRADIENT;}
+  listEl.innerHTML = FAQ_DATA.map(function(item,i){
+    return '<div class="faq-item" data-cat="'+escapeHtml(item.category)+'" data-i="'+i+'">'
+      + '<button class="faq-q" aria-expanded="false" aria-controls="fa-'+i+'" id="fq-'+i+'">'
+      +   '<span class="qx"><span class="qcat">'+escapeHtml(item.category)+'</span><span class="qt">'+escapeHtml(item.q)+'</span></span>'
+      +   '<span class="pm" aria-hidden="true"><i data-lucide="plus"></i></span>'
+      + '</button>'
+      + '<div class="faq-a" id="fa-'+i+'" role="region" aria-labelledby="fq-'+i+'"><div class="faq-a-inner">'+item.a+'</div></div>'
+      + '</div>';
+  }).join('');
+  if(typeof lucide!=='undefined')lucide.createIcons();
 
-  function buildCard(post,idx){
-    var emb=post._embedded||{};
-    var term=(emb['wp:term']&&emb['wp:term'][0]&&emb['wp:term'][0][0])||null;
-    var category=stripHtml((term&&term.name)||'')||'Insights';
-    var slug=(term&&term.slug)||'';
-    var title=stripHtml(post.title&&post.title.rendered);
-    var raw=stripHtml(post.excerpt&&post.excerpt.rendered);
-    var excerpt=raw.length>150?raw.slice(0,150).replace(/\s+\S*$/,'').trim()+'…':raw;
-    var date=formatDate(post.date);
-    var url=post.link||'#';
-    var img=getPostImage(post);
-    var grad=getCategoryGradient(post);
-    var feature=idx===0?' feature':'';
-
-    var thumb;
-    if(img){
-      var onerr="this.style.display='none';this.parentElement.style.background='"+grad+"';this.parentElement.insertAdjacentHTML('beforeend','<div class=\\'grad\\'><span>"+escapeHtml(title).replace(/'/g,"\\'")+"</span></div>');";
-      thumb='<div class="post-thumb"><img src="'+escapeHtml(img)+'" alt="'+escapeHtml(title)+'" loading="lazy" onerror="'+escapeHtml(onerr)+'"></div>';
-    } else {
-      thumb='<div class="post-thumb" style="background:'+grad+'"><div class="grad"><span>'+escapeHtml(title)+'</span></div></div>';
-    }
-    return '<a class="post-card'+feature+'" href="'+escapeHtml(url)+'" target="_blank" rel="noopener" data-tags="'+escapeHtml(slug)+'">'
-      + thumb
-      + '<div class="post-body">'
-      +   '<div class="post-meta"><span class="post-cat">'+escapeHtml(category)+'</span><span class="post-date">'+escapeHtml(date)+'</span></div>'
-      +   '<h3>'+escapeHtml(title)+'</h3>'
-      +   '<p class="post-ex">'+escapeHtml(excerpt)+'</p>'
-      +   '<span class="post-read">Read <i data-lucide="arrow-right"></i></span>'
-      + '</div></a>';
-  }
-
-  function showSkeletons(){
-    var h='';for(var i=0;i<PER_PAGE;i++){h+='<div class="sk"><div class="skt"></div><div class="skb"><div class="skl s"></div><div class="skl"></div><div class="skl m"></div></div></div>';}
-    grid.innerHTML=h;pagination.innerHTML='';
-  }
-
-  async function renderPosts(page,categoryId){
-    showSkeletons();var posts;
-    try{posts=await fetchPosts(page,categoryId);if(!Array.isArray(posts))throw new Error('bad');}
-    catch(e){renderFallback();return;}
-    state.page=page;state.categoryId=categoryId;var wasFirst=state.firstRender;state.firstRender=false;
-    if(!posts.length){grid.innerHTML='<div class="empty">No posts found.</div>';pagination.innerHTML='';return;}
-    grid.innerHTML=posts.map(buildCard).join('');
-    if(typeof lucide!=='undefined')lucide.createIcons();
-    runFadeIn();renderPagination(page);
-    if(!wasFirst)grid.scrollIntoView({behavior:'smooth',block:'start'});
-  }
-
-  function renderPagination(cur){
-    var total=state.totalPages;if(total<=1){pagination.innerHTML='';return;}
-    var pages=new Set([1,total]);for(var i=cur-1;i<=cur+1;i++)if(i>=1&&i<=total)pages.add(i);
-    var sorted=Array.from(pages).sort(function(a,b){return a-b;});
-    var html='<button class="page-btn" data-page="prev"'+(cur===1?' disabled':'')+'>←</button>';var prev=0;
-    sorted.forEach(function(p){if(p-prev>1)html+='<span class="page-btn ellipsis" aria-hidden="true">…</span>';html+='<button class="page-btn'+(p===cur?' active':'')+'" data-page="'+p+'">'+p+'</button>';prev=p;});
-    html+='<button class="page-btn" data-page="next"'+(cur===total?' disabled':'')+'>→</button>';
-    pagination.innerHTML=html;
-    pagination.querySelectorAll('.page-btn:not(.ellipsis):not([disabled])').forEach(function(btn){
-      btn.addEventListener('click',function(){var t;if(btn.dataset.page==='prev')t=state.page-1;else if(btn.dataset.page==='next')t=state.page+1;else t=parseInt(btn.dataset.page,10);if(!t||t<1||t>state.totalPages||t===state.page)return;renderPosts(t,state.categoryId);});
+  listEl.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var it=btn.closest('.faq-item');var op=it.classList.toggle('open');
+      btn.setAttribute('aria-expanded',op?'true':'false');
     });
-  }
-
-  function renderPills(categories){
-    var html='<button class="filter-pill active" data-filter="all">All Posts</button>';
-    (categories||[]).forEach(function(c){html+='<button class="filter-pill" data-filter="'+escapeHtml(c.slug)+'">'+escapeHtml(c.name)+'</button>';});
-    filtersEl.innerHTML=html;bindPills();
-  }
-  function bindPills(){
-    filtersEl.querySelectorAll('.filter-pill').forEach(function(pill){
-      pill.addEventListener('click',function(){
-        filtersEl.querySelectorAll('.filter-pill').forEach(function(p){p.classList.remove('active');});
-        pill.classList.add('active');var slug=pill.dataset.filter;
-        if(state.useApi){var id=slug==='all'?null:(slugToId[slug]||null);renderPosts(1,id);}
-        else{renderFallbackGrid(slug);}
-      });
-    });
-  }
-  bindPills();
-
-  function renderFallback(){
-    state.useApi=false;state.firstRender=false;
-    var seen={},cats=[];
-    FALLBACK_POSTS.forEach(function(p){var t=p._embedded['wp:term'][0][0];if(!seen[t.slug]){seen[t.slug]=true;cats.push({name:t.name,slug:t.slug});}});
-    renderPills(cats);renderFallbackGrid('all');
-  }
-  function renderFallbackGrid(slug){
-    var posts=slug==='all'?FALLBACK_POSTS:FALLBACK_POSTS.filter(function(p){return p._embedded['wp:term'][0][0].slug===slug;});
-    grid.innerHTML=posts.length?posts.map(buildCard).join(''):'<div class="empty">No posts found.</div>';
-    if(typeof lucide!=='undefined')lucide.createIcons();
-    runFadeIn();pagination.innerHTML='';
-  }
-
-  document.addEventListener('DOMContentLoaded',async function(){
-    showSkeletons();
-    try{await fetchAndBuildCategoryMap();}catch(e){}
-    await renderPosts(1,null);
   });
-})();
-</script>
 
-<!-- ===================== SHELL SCRIPT ===================== -->
-<script>
+  function apply(){
+    var shown=0;
+    listEl.querySelectorAll('.faq-item').forEach(function(it){
+      var catOk = activeCat==='all' || it.dataset.cat===activeCat;
+      var txt=(it.querySelector('.qt').textContent+' '+it.querySelector('.faq-a-inner').textContent).toLowerCase();
+      var qOk = !query || txt.indexOf(query)!==-1;
+      if(catOk&&qOk){it.style.display='';shown++;}
+      else{it.style.display='none';it.classList.remove('open');it.querySelector('.faq-q').setAttribute('aria-expanded','false');}
+    });
+    emptyEl.classList.toggle('show',shown===0);
+  }
+  filterEl.querySelectorAll('.filter-pill').forEach(function(p){
+    p.addEventListener('click',function(){
+      filterEl.querySelectorAll('.filter-pill').forEach(function(x){x.classList.remove('active');});
+      p.classList.add('active');activeCat=decode(p.getAttribute('data-cat'));apply();
+    });
+  });
+  searchEl.addEventListener('input',function(){query=searchEl.value.trim().toLowerCase();apply();});
+})();
+
+/* ===== shell: mobile drawer + accordion ===== */
 (function(){
   var burger=document.getElementById('burger'),drawer=document.getElementById('drawer'),
       scrim=document.getElementById('scrim'),dclose=document.getElementById('drawerClose');
@@ -631,8 +477,8 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
   dclose&&dclose.addEventListener('click',close);
   scrim&&scrim.addEventListener('click',close);
   document.querySelectorAll('.drawer a').forEach(function(a){a.addEventListener('click',close);});
-  document.querySelectorAll('.acc>button').forEach(function(b){b.addEventListener('click',function(){b.parentElement.classList.toggle('open');});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  document.querySelectorAll('.acc>button').forEach(function(b){b.addEventListener('click',function(){b.parentElement.classList.toggle('open');});});
   if(typeof lucide!=='undefined')lucide.createIcons();
 })();
 </script>

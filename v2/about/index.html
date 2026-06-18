@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Blog — GMIC AI</title>
-<meta name="description" content="Insights on edge AI hardware, voice infrastructure, and the industries being transformed by on-device intelligence — from GMIC AI." />
+<title>About — GMIC AI</title>
+<meta name="description" content="GMIC AI is the AI hardware division of Gainstrong — real hardware, built by people who've done it for 15 years. Engineering & manufacturing in Shenzhen, client & product in California." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
 /* ============================================================
-   GMIC AI · v2 — Modular Bold (Fourmula-style) · Blog
+   GMIC AI · v2 — Modular Bold (Fourmula-style)
    ============================================================ */
 :root{
   --canvas:#efefed;--panel:#ffffff;--border:#e6e6e3;
@@ -37,13 +37,16 @@ a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(-
 
 /* type */
 .display{font-family:var(--disp);font-weight:700;letter-spacing:-.03em;line-height:1.0}
-h1.display{font-size:clamp(44px,7vw,96px)}
-h2.display{font-size:clamp(24px,2.8vw,40px)}
+h1.display{font-size:clamp(38px,6.4vw,84px)}
+h2.display{font-size:clamp(28px,4.4vw,56px)}
 .tone{color:var(--faint)}
 .orange{color:var(--orange)}
 .lead{font-size:clamp(16px,1.4vw,19px);line-height:1.6;color:var(--muted)}
 .kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
 .kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--orange)}
+.sec-head{max-width:760px;margin-bottom:clamp(24px,3vw,40px)}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head h2{margin:14px 0 0}
 
 /* panel */
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg)}
@@ -105,62 +108,92 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
 .scrim.open{opacity:1;pointer-events:auto}
 
 /* HERO */
-.bloghero{padding:calc(104px + 3vw) 0 clamp(20px,3vw,36px)}
-.bloghero .kicker{margin-bottom:14px}
-.bloghero h1{max-width:14ch}
-.bloghero .lead{max-width:56ch;margin-top:18px}
+.hero{padding:calc(104px + 3vw) 0 clamp(24px,3vw,40px);text-align:center}
+.hero .kicker{margin-bottom:16px}
+.hero h1{max-width:20ch;margin:0 auto}
+.hero .lead{max-width:52ch;margin:20px auto 0}
+.hero-float{position:relative;height:clamp(150px,20vw,240px);margin-top:clamp(20px,3vw,40px)}
+.fcard{position:absolute;border-radius:18px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);background:#fff}
+.fcard img{width:100%;height:100%;object-fit:cover}
+.fcard.f1{width:clamp(120px,15vw,200px);aspect-ratio:4/3;left:4%;top:24%;transform:rotate(-6deg)}
+.fcard.f2{width:clamp(120px,14vw,190px);aspect-ratio:1/1;left:30%;top:2%;transform:rotate(4deg)}
+.fcard.f3{width:clamp(120px,14vw,190px);aspect-ratio:1/1;right:30%;top:30%;transform:rotate(-4deg)}
+.fcard.f4{width:clamp(120px,15vw,200px);aspect-ratio:4/3;right:4%;top:6%;transform:rotate(6deg)}
 
-/* FILTERS */
-.filters{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:clamp(20px,2.5vw,32px)}
-.filter-pill{font-family:var(--disp);font-weight:600;font-size:13.5px;color:var(--ink-2);background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:10px 18px;transition:background .2s ease,color .2s ease,border-color .2s ease}
-.filter-pill:hover{border-color:var(--ink)}
-.filter-pill.active{background:var(--orange);border-color:var(--orange);color:#fff}
+/* STATS */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,32px)}
+.stat{text-align:center}
+.stat .n{font-family:var(--disp);font-weight:800;font-size:clamp(40px,6vw,80px);letter-spacing:-.03em;line-height:1}
+.stat .n .o{color:var(--orange)}
+.stat .l{margin-top:10px;color:var(--muted);font-size:14px}
 
-/* POSTS GRID */
-.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,22px)}
-.post-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;
-  transition:transform .25s ease,box-shadow .25s ease;opacity:0;transform:translateY(16px)}
-.post-card.in{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease}
-.post-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.post-thumb{aspect-ratio:16/10;position:relative;overflow:hidden;background:var(--canvas)}
-.post-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
-.post-card:hover .post-thumb img{transform:scale(1.04)}
-.post-thumb .grad{position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px}
-.post-thumb .grad span{font-family:var(--disp);font-weight:700;font-size:18px;color:rgba(255,255,255,.96);letter-spacing:-.01em;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,.25)}
-.post-body{padding:clamp(20px,2vw,26px);display:flex;flex-direction:column;flex:1}
-.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.post-cat{font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);background:rgba(255,90,31,.1);padding:5px 10px;border-radius:var(--r-pill)}
-.post-date{font-size:12.5px;color:var(--muted)}
-.post-card h3{font-family:var(--disp);font-weight:700;font-size:19px;letter-spacing:-.01em;line-height:1.22;margin-bottom:10px}
-.post-ex{color:var(--muted);font-size:14px;flex:1}
-.post-read{margin-top:16px;font-family:var(--disp);font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:7px;color:var(--ink)}
-.post-read svg{width:15px;height:15px;color:var(--orange);transition:transform .2s ease}
-.post-card:hover .post-read svg{transform:translateX(3px)}
+/* ROOTS */
+.roots-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,48px);align-items:center}
+.roots-photo{border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3}
+.roots-photo img{width:100%;height:100%;object-fit:cover}
+.roots-text h2{margin:14px 0 18px}
+.roots-text p{color:var(--muted);font-size:15.5px}
+.roots-text p+p{margin-top:14px}
 
-/* feature first card */
-.post-card.feature{grid-column:span 2;flex-direction:row}
-.post-card.feature .post-thumb{flex:1 1 50%;aspect-ratio:auto;min-height:300px}
-.post-card.feature .post-body{flex:1 1 50%;justify-content:center}
-.post-card.feature h3{font-size:clamp(24px,2.4vw,34px);line-height:1.08;margin-bottom:14px}
-.post-card.feature .post-ex{font-size:15px;flex:none}
-.post-card.feature .post-thumb .grad span{font-size:26px}
+/* OFFICES */
+.off-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,24px)}
+.off .tag{font-family:var(--disp);font-weight:600;font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
+.off h3{font-family:var(--disp);font-weight:700;font-size:clamp(24px,2.6vw,34px);letter-spacing:-.02em;margin-bottom:6px}
+.off .role{font-family:var(--disp);font-weight:600;font-size:14px;color:var(--ink-2);margin-bottom:16px}
+.off address{font-style:normal;color:var(--muted);font-size:14.5px;line-height:1.7}
+.off address a{color:var(--ink)}
+.off address a:hover{color:var(--orange)}
 
-/* skeleton */
-.sk{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
-.sk .skt{aspect-ratio:16/10;background:linear-gradient(90deg,#e9e9e6 25%,#f2f2ef 50%,#e9e9e6 75%);background-size:200% 100%;animation:sh 1.4s infinite}
-.sk .skb{padding:24px;display:flex;flex-direction:column;gap:12px}
-.sk .skl{height:13px;border-radius:6px;background:linear-gradient(90deg,#e9e9e6 25%,#f2f2ef 50%,#e9e9e6 75%);background-size:200% 100%;animation:sh 1.4s infinite}
-.sk .skl.s{width:45%;height:18px}.sk .skl.m{width:75%}
-@keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
+/* MISSION orange panel */
+.mission{border-radius:var(--r-xl);background:var(--orange);color:#fff;text-align:center;padding:clamp(48px,7vw,110px) clamp(24px,5vw,72px)}
+.mission .kicker{color:rgba(255,255,255,.85);justify-content:center;margin-bottom:18px}
+.mission .kicker .dot{background:#fff}
+.mission h2{font-family:var(--disp);font-weight:700;font-size:clamp(28px,4.6vw,62px);letter-spacing:-.025em;line-height:1.06;max-width:20ch;margin:0 auto}
+.mission h2 .tone{color:rgba(255,255,255,.55)}
+.mission p{margin:22px auto 0;max-width:54ch;color:rgba(255,255,255,.92);font-size:clamp(15px,1.3vw,18px)}
 
-/* pagination */
-.pagination{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:clamp(32px,4vw,52px)}
-.page-btn{font-family:var(--disp);font-weight:600;font-size:15px;min-width:46px;height:46px;padding:0 16px;border-radius:var(--r-pill);background:#fff;border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;color:var(--ink);transition:background .2s ease,color .2s ease,border-color .2s ease}
-.page-btn:hover:not([disabled]):not(.ellipsis){border-color:var(--ink)}
-.page-btn.active{background:var(--orange);border-color:var(--orange);color:#fff}
-.page-btn[disabled]{opacity:.4;cursor:not-allowed}
-.page-btn.ellipsis{border:none;background:none;cursor:default}
-.empty{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--muted);font-family:var(--disp);font-weight:600}
+/* MANUFACTURING bento */
+.mfg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:clamp(20px,2.5vw,32px)}
+.mcell{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--border);aspect-ratio:4/3;background:var(--canvas)}
+.mcell.wide{grid-column:span 2;aspect-ratio:auto}
+.mcell img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.mcell:hover img{transform:scale(1.05)}
+.mcell .cap{position:absolute;left:0;bottom:0;background:#fff;border-top-right-radius:12px;font-family:var(--disp);font-weight:600;font-size:12px;padding:8px 13px;border:1px solid var(--border);border-left:none;border-bottom:none}
+.mcell:nth-child(3) .cap{background:var(--orange);color:#fff;border-color:var(--orange)}
+.mfg-foot{display:flex;justify-content:flex-end;margin-top:18px}
+
+/* generic bento */
+.grid{display:grid;gap:clamp(14px,1.6vw,20px)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:clamp(22px,2.4vw,32px);transition:transform .25s ease,box-shadow .25s ease}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.card .ic{width:46px;height:46px;border-radius:13px;background:var(--canvas);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.card .ic svg{width:22px;height:22px;color:var(--ink);stroke-width:1.6}
+.card .num{font-family:var(--disp);font-weight:700;font-size:14px;color:var(--orange);margin-bottom:12px}
+.card h3{font-family:var(--disp);font-weight:700;font-size:19px;letter-spacing:-.01em;margin-bottom:9px}
+.card p{color:var(--muted);font-size:14.5px}
+
+/* LEADERSHIP */
+.lead-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,22px)}
+.person{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease}
+.person:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.person-photo{aspect-ratio:1/1;overflow:hidden;background:var(--canvas)}
+.person-photo img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+.person:hover .person-photo img{transform:scale(1.04)}
+.person-body{padding:clamp(20px,2vw,28px)}
+.person-name{font-family:var(--disp);font-weight:700;font-size:clamp(20px,1.8vw,24px);letter-spacing:-.02em}
+.person-role{font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--orange);margin:8px 0 14px}
+.person-bio{color:var(--muted);font-size:14px;line-height:1.55}
+
+/* CTA */
+.cta-card{border-radius:var(--r-xl);background:var(--orange);color:#fff;text-align:center;padding:clamp(48px,7vw,104px) clamp(24px,5vw,72px)}
+.cta-card .kicker{justify-content:center;color:rgba(255,255,255,.85);margin-bottom:16px}.cta-card .kicker .dot{background:#fff}
+.cta-card h2{margin-bottom:16px;max-width:20ch;margin-left:auto;margin-right:auto}
+.cta-card p{margin:0 auto;max-width:54ch;color:rgba(255,255,255,.92);font-size:clamp(16px,1.4vw,19px)}
+.cta-actions{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center}
+.cta-card .btn-light{background:#fff;color:var(--ink);border:none}
+.cta-link{font-family:var(--disp);font-weight:600;color:#fff;border-bottom:2px solid rgba(255,255,255,.5);padding-bottom:2px;display:inline-flex;align-items:center;gap:7px}
+.cta-link:hover{border-color:#fff}.cta-link svg{width:16px;height:16px}
 
 /* NEWSLETTER */
 .news .panel{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(20px,3vw,48px);align-items:center}
@@ -169,16 +202,6 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
 .news-form{display:flex;gap:10px;flex-wrap:wrap}
 .news-form input{flex:1;min-width:200px;border:1px solid var(--border);border-radius:var(--r-pill);padding:14px 20px;font-size:15px;background:var(--canvas)}
 .news-form input:focus{outline:none;border-color:var(--orange)}
-
-/* CTA */
-.cta-card{border-radius:var(--r-xl);background:var(--orange);color:#fff;text-align:center;padding:clamp(48px,7vw,104px) clamp(24px,5vw,72px)}
-.cta-card .kicker{justify-content:center;color:rgba(255,255,255,.85);margin-bottom:16px}.cta-card .kicker .dot{background:#fff}
-.cta-card h2{margin-bottom:16px;max-width:20ch;margin-left:auto;margin-right:auto;font-size:clamp(30px,4.4vw,58px)}
-.cta-card p{margin:0 auto;max-width:54ch;color:rgba(255,255,255,.92);font-size:clamp(16px,1.4vw,19px)}
-.cta-actions{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center}
-.cta-card .btn-light{background:#fff;color:var(--ink);border:none}
-.cta-link{font-family:var(--disp);font-weight:600;color:#fff;border-bottom:2px solid rgba(255,255,255,.5);padding-bottom:2px;display:inline-flex;align-items:center;gap:7px}
-.cta-link:hover{border-color:#fff}.cta-link svg{width:16px;height:16px}
 
 /* FOOTER */
 .footer{background:#fff;border-top:1px solid var(--border);position:relative;overflow:hidden}
@@ -196,25 +219,37 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
 .foot-col a:hover{opacity:1;color:var(--orange)}
 .foot-bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
 
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+.fcard{opacity:0;transition:opacity .6s ease}
+.hero-float.in .fcard{opacity:1}
+
 /* responsive */
 @media (max-width:980px){
-  .posts-grid{grid-template-columns:repeat(2,1fr)}
-  .post-card.feature{grid-column:span 2;flex-direction:column}
-  .post-card.feature .post-thumb{min-height:0;aspect-ratio:16/10}
+  .roots-grid{grid-template-columns:1fr;gap:28px}
+  .off-grid{grid-template-columns:1fr}
+  .g3,.lead-grid{grid-template-columns:repeat(2,1fr)}
+  .mfg-grid{grid-template-columns:repeat(2,1fr)}
+  .mcell.wide{grid-column:span 2}
   .news .panel{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
-@media (max-width:720px){.nav-pill{display:none}.burger{display:flex}}
+@media (max-width:720px){
+  .nav-pill{display:none}.burger{display:flex}
+  .hero-float{height:clamp(130px,40vw,180px)}
+}
 @media (max-width:560px){
-  .posts-grid{grid-template-columns:1fr}
-  .post-card.feature{grid-column:span 1}
+  .stats{grid-template-columns:1fr}
+  .g3,.lead-grid{grid-template-columns:1fr}
+  .mfg-grid{grid-template-columns:1fr}.mcell.wide{grid-column:span 1}
   .foot-grid{grid-template-columns:1fr 1fr}
+  .fcard.f1,.fcard.f4{display:none}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .post-card{opacity:1!important;transform:none!important}
-  .btn,.post-card,.filter-pill,.page-btn{transition:none}
-  .sk .skt,.sk .skl{animation:none}
+  .reveal,.fcard{opacity:1!important;transform:none!important;transition:none!important}
+  .btn,.card,.person{transition:none}
 }
 </style>
 </head>
@@ -277,7 +312,7 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
         <a href="../about/">Company <i data-lucide="chevron-down" class="chev"></i></a>
         <div class="mega"><div class="mega-cols">
           <div class="mega-col"><h6>Company</h6>
-            <a href="../about/">About Us</a><a href="../blog/" class="active">Blog</a><a href="../contact/">Contact</a><a href="../faq/">FAQ</a>
+            <a href="../about/" class="active">About Us</a><a href="../blog/">Blog</a><a href="../contact/">Contact</a><a href="../faq/">FAQ</a>
           </div>
         </div></div>
       </div>
@@ -321,7 +356,7 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
   <a class="d-direct" href="../process/">Process</a>
   <div class="acc active"><button type="button">Company <i data-lucide="chevron-down" class="chev"></i></button>
     <div class="acc-panel">
-      <a href="../about/">About Us</a><a href="../blog/" class="active">Blog</a><a href="../contact/">Contact</a><a href="../faq/">FAQ</a>
+      <a href="../about/" class="active">About Us</a><a href="../blog/">Blog</a><a href="../contact/">Contact</a><a href="../faq/">FAQ</a>
     </div>
   </div>
   <a class="btn btn-dark" href="../contact/">Start a Project</a>
@@ -329,56 +364,184 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
 <div class="scrim" id="scrim"></div>
 
 <!-- ===================== HERO ===================== -->
-<header class="bloghero">
+<header class="hero">
   <div class="wrap">
-    <span class="kicker"><span class="dot" aria-hidden="true"></span>Blog</span>
-    <h1 class="display">All <span class="tone">Posts.</span></h1>
-    <p class="lead">Insights on edge AI hardware, voice infrastructure, and the industries being transformed by on-device intelligence.</p>
+    <span class="kicker"><span class="dot" aria-hidden="true"></span>About Us</span>
+    <h1 class="display">Real hardware. <span class="tone">Built by people who've done it for 15 years.</span></h1>
+    <p class="lead">Build production-ready AI hardware — without building a hardware team.</p>
+    <div class="hero-float" id="heroFloat" aria-hidden="true">
+      <div class="fcard f1"><img src="img/assembly.jpg" alt="" onerror="this.onerror=null;this.src='https://placehold.co/300x220/efefed/111111?text=Assembly';"></div>
+      <div class="fcard f2"><img src="img/smt.jpg" alt="" onerror="this.onerror=null;this.src='https://placehold.co/220x220/efefed/111111?text=SMT';"></div>
+      <div class="fcard f3"><img src="img/aoi.jpg" alt="" onerror="this.onerror=null;this.src='https://placehold.co/220x220/efefed/111111?text=AOI';"></div>
+      <div class="fcard f4"><img src="img/qc.jpg" alt="" onerror="this.onerror=null;this.src='https://placehold.co/300x220/efefed/111111?text=QC';"></div>
+    </div>
   </div>
 </header>
 
-<!-- ===================== FILTERS ===================== -->
-<div class="wrap">
-  <div class="filters" id="blogFilters" role="tablist" aria-label="Filter posts by category">
-    <button class="filter-pill active" data-filter="all">All Posts</button>
-  </div>
-</div>
-
-<!-- ===================== POSTS ===================== -->
-<section class="sec" style="padding-top:0">
+<!-- ===================== STATS ===================== -->
+<section class="sec">
   <div class="wrap">
-    <div class="posts-grid" id="postsGrid" aria-live="polite"></div>
-    <nav class="pagination" id="pagination" aria-label="Pagination"></nav>
+    <div class="panel pad reveal">
+      <div class="stats">
+        <div class="stat"><div class="n">15<span class="o">+</span></div><div class="l">Years of engineering expertise</div></div>
+        <div class="stat"><div class="n">250<span class="o">+</span></div><div class="l">Projects delivered</div></div>
+        <div class="stat"><div class="n">2</div><div class="l">Offices — US &amp; Shenzhen</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== OUR ROOTS ===================== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="panel pad reveal">
+      <div class="roots-grid">
+        <div class="roots-photo"><img src="img/roots.jpg" alt="Gainstrong manufacturing facility in Shenzhen" onerror="this.onerror=null;this.src='https://placehold.co/800x600/efefed/111111?text=Gainstrong+%C2%B7+2009';"></div>
+        <div class="roots-text">
+          <span class="kicker"><span class="dot" aria-hidden="true"></span>Our roots</span>
+          <h2 class="display">From Gainstrong <span class="orange">to GMIC.</span></h2>
+          <p>GMIC is the AI hardware division of Gainstrong, a manufacturing company founded in 2009 and known for delivering high-volume consumer devices, IoT products, voice electronics, and communication hardware to global brands.</p>
+          <p>For more than a decade, Gainstrong built a reputation for engineering reliability, efficient production, and scaling hardware from prototype to millions of units. This foundation is what enables GMIC to move fast today — bringing AI companies from concept to production-ready device faster than any traditional ODM.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TWO OFFICES ===================== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker"><span class="dot" aria-hidden="true"></span>Our offices</span>
+      <h2 class="display">Two offices. <span class="tone">One integrated team.</span></h2>
+      <p class="lead" style="margin-top:14px">Engineering and manufacturing in Shenzhen. Client support and product management in California.</p>
+    </div>
+    <div class="off-grid">
+      <div class="panel pad off reveal">
+        <div class="tag">North America</div>
+        <h3>Anaheim, California</h3>
+        <div class="role">Client &amp; Product Team</div>
+        <address>
+          300 S Harbor Blvd Ste 1020, Anaheim, CA 92805<br>
+          <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a><br>
+          <a href="tel:+16699000008">(669) 900-0008</a>
+        </address>
+      </div>
+      <div class="panel pad off reveal">
+        <div class="tag">Asia</div>
+        <h3>Shenzhen, China</h3>
+        <div class="role">Manufacturing &amp; Engineering HQ</div>
+        <address>
+          深圳市宝安区，广东省，中国<br>
+          <a href="mailto:info@gmic.ai">info@gmic.ai</a>
+        </address>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MISSION ===================== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="mission reveal">
+      <span class="kicker"><span class="dot" aria-hidden="true"></span>Our Mission</span>
+      <h2 class="display">To make hardware development <span class="tone">as fast and accessible as AI software development.</span></h2>
+      <p>We help founders, product leaders, and enterprise innovation teams build real, production-ready devices — not someday, but today.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== MANUFACTURING ===================== -->
+<section class="sec" id="manufacturing">
+  <div class="wrap">
+    <div class="panel pad reveal">
+      <div class="sec-head" style="margin-bottom:0">
+        <span class="kicker"><span class="dot" aria-hidden="true"></span>Manufacturing</span>
+        <h2 class="display">Where hardware <span class="orange">actually gets made.</span></h2>
+        <p class="lead" style="margin-top:14px">Shenzhen, China — vertically integrated from SMT to final assembly.</p>
+      </div>
+      <div class="mfg-grid">
+        <div class="mcell wide"><img src="img/assembly.jpg" alt="Assembly lines" onerror="this.onerror=null;this.src='https://placehold.co/600x300/efefed/111111?text=Assembly';"><span class="cap">Assembly lines</span></div>
+        <div class="mcell"><img src="img/smt.jpg" alt="SMT production" onerror="this.onerror=null;this.src='https://placehold.co/300x300/efefed/111111?text=SMT';"><span class="cap">SMT production</span></div>
+        <div class="mcell"><img src="img/aoi.jpg" alt="AOI inspection" onerror="this.onerror=null;this.src='https://placehold.co/300x300/efefed/111111?text=AOI';"><span class="cap">AOI inspection</span></div>
+        <div class="mcell"><img src="img/reflow.jpg" alt="Reflow and wave solder" onerror="this.onerror=null;this.src='https://placehold.co/300x300/efefed/111111?text=Solder';"><span class="cap">Reflow &amp; wave solder</span></div>
+        <div class="mcell"><img src="img/qc.jpg" alt="Quality control" onerror="this.onerror=null;this.src='https://placehold.co/300x300/efefed/111111?text=QC';"><span class="cap">Quality control</span></div>
+      </div>
+      <div class="mfg-foot"><a href="../process/" class="txtlink">Learn our process <i data-lucide="arrow-right"></i></a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SIX CORE CAPABILITIES ===================== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker"><span class="dot" aria-hidden="true"></span>What we build</span>
+      <h2 class="display">Six core capabilities. <span class="tone">One integrated team.</span></h2>
+      <p class="lead" style="margin-top:14px">As AI adoption accelerated, AI companies could build software quickly, but struggled to build hardware just as fast. GMIC was built to close that gap.</p>
+    </div>
+    <div class="grid g3">
+      <article class="card reveal"><div class="num">01</div><h3>Wearable Hardware Development</h3><p>Clip-on units, badges, pendants, and portable voice-enabled devices — from industrial design to production.</p></article>
+      <article class="card reveal"><div class="num">02</div><h3>Voice-Enabled Device Manufacturing</h3><p>End-to-end development with microphones, speakers, DSP pipelines, and real-time audio capabilities.</p></article>
+      <article class="card reveal"><div class="num">03</div><h3>Smart Office &amp; Desk Hardware</h3><p>Conference devices, desktop assistants, and business-focused communication hardware.</p></article>
+      <article class="card reveal"><div class="num">04</div><h3>AIoT and Voice Modules</h3><p>Custom Wi-Fi/BLE audio modules and microphone boards for AI teams integrating voice into products.</p></article>
+      <article class="card reveal"><div class="num">05</div><h3>Rapid Prototyping &amp; Engineering</h3><p>Fast industrial design, electronics, firmware, and acoustics — concept to prototype in weeks.</p></article>
+      <article class="card reveal"><div class="num">06</div><h3>Mass Production &amp; Quality Systems</h3><p>SMT, assembly, testing, and scalable manufacturing backed by Gainstrong's established production lines.</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== LEADERSHIP ===================== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker"><span class="dot" aria-hidden="true"></span>Leadership</span>
+      <h2 class="display">The people <span class="orange">behind the vision.</span></h2>
+    </div>
+    <div class="lead-grid">
+      <article class="person reveal">
+        <div class="person-photo"><img src="img/chunyan.jpg" alt="Chunyan Zhou" onerror="this.onerror=null;this.src='https://placehold.co/600x600/efefed/111111?text=CZ';"></div>
+        <div class="person-body"><div class="person-name">Chunyan Zhou</div><div class="person-role">Chairwoman, Gainstrong &amp; GMIC</div><p class="person-bio">Leads large-scale hardware manufacturing and global operations. Experienced in production management, supply chain optimization, and enterprise growth — driving the company's strategic direction worldwide.</p></div>
+      </article>
+      <article class="person reveal">
+        <div class="person-photo"><img src="img/trigg.jpg" alt="Trigg Shaw" onerror="this.onerror=null;this.src='https://placehold.co/600x600/efefed/111111?text=TS';"></div>
+        <div class="person-body"><div class="person-name">Trigg Shaw</div><div class="person-role">CEO / ML Expert</div><p class="person-bio">Founder &amp; CEO of Gainstrong since 2009, specializing in global ODM and AI-driven products. Expert in Wi-Fi/Bluetooth hardware and production. Now leading heart.ai, creating wearables to revolutionize voice interaction.</p></div>
+      </article>
+      <article class="person reveal">
+        <div class="person-photo"><img src="img/shangpeng.jpg" alt="Shang Peng Li" onerror="this.onerror=null;this.src='https://placehold.co/600x600/efefed/111111?text=SPL';"></div>
+        <div class="person-body"><div class="person-name">Shang Peng Li</div><div class="person-role">Director of AIoT &amp; Intelligent Market Strategy</div><p class="person-bio">20+ years of experience leading AI and intelligent solution projects. Drives global AIoT and smart audio strategies, forging partnerships and accelerating scalable AI hardware innovations worldwide.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="cta-card reveal">
+      <span class="kicker"><span class="dot" aria-hidden="true"></span>Ready to build?</span>
+      <h2 class="display">Turn your AI idea into a real, production-ready device.</h2>
+      <p>From concept to mass production — our team in Shenzhen and California is ready to move fast with you.</p>
+      <div class="cta-actions">
+        <a href="../contact/" class="btn btn-light">Start Your Project <i data-lucide="arrow-right"></i></a>
+        <a href="../process/" class="cta-link">Learn our process <i data-lucide="arrow-right"></i></a>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ===================== NEWSLETTER ===================== -->
 <section class="sec news">
   <div class="wrap">
-    <div class="panel pad">
+    <div class="panel pad reveal">
       <div>
-        <h2>Get the latest from the edge.</h2>
-        <p>Monthly notes on hardware shipping, certifications, and the AI models running on our devices.</p>
+        <h2>Don't miss out.</h2>
+        <p>Sign up to stay up to date with the latest from GMIC — new products, industry insights, and hardware developments.</p>
       </div>
       <form class="news-form" onsubmit="event.preventDefault();var i=this.querySelector('input');var b=this.querySelector('button');if(i.value){i.value='';b.textContent='Subscribed ✓';}">
         <input type="email" required placeholder="Enter your email" aria-label="Email address">
         <button type="submit" class="btn btn-dark">Subscribe</button>
       </form>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== CTA ===================== -->
-<section class="sec" style="padding-top:0">
-  <div class="wrap">
-    <div class="cta-card">
-      <span class="kicker"><span class="dot" aria-hidden="true"></span>Begin</span>
-      <h2 class="display">Ready to turn your AI into a real product?</h2>
-      <p>Bring us a concept, prototype, or pilot — we'll get you to production.</p>
-      <div class="cta-actions">
-        <a href="mailto:trigg@gmic.ai?subject=Book%20a%20Demo" class="btn btn-light">Book a Demo <i data-lucide="arrow-right"></i></a>
-        <a href="../contact/" class="cta-link">Talk to Sales <i data-lucide="arrow-right"></i></a>
-      </div>
     </div>
   </div>
 </section>
@@ -439,188 +602,6 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
   </div>
 </footer>
 
-<!-- ===================== BLOG DATA SCRIPT ===================== -->
-<script>
-/* Live sync from the WordPress REST API (gmic.ai). FALLBACK_POSTS render
-   when the API is unreachable (file:// / CORS). Same fetch + pagination +
-   category-filter + fallback flow as main; only buildCard() is restyled. */
-(function(){
-  const API_BASE = 'https://gmic.ai/wp-json/wp/v2';
-  const PER_PAGE = 9;
-  const grid = document.getElementById('postsGrid');
-  const pagination = document.getElementById('pagination');
-  const filtersEl = document.getElementById('blogFilters');
-
-  const DEFAULT_GRADIENT = 'linear-gradient(135deg,#1e3a8a,#2563eb,#0ea5e9)';
-  const CATEGORY_GRADIENTS = {
-    'enterprise ai':  'linear-gradient(135deg,#1e3a8a,#2563eb,#0ea5e9)',
-    'healthcare':     'linear-gradient(135deg,#134e4a,#0f766e,#14b8a6)',
-    'small business': 'linear-gradient(135deg,#1e3a5f,#1d6ed8,#38bdf8)',
-    'field service':  'linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)',
-    'industry news':  'linear-gradient(135deg,#1c1917,#292524,#57534e)'
-  };
-
-  function fakePost(id,title,dateISO,excerpt,link,catName,catSlug){
-    return {id:id,link:link,date:dateISO,title:{rendered:title},excerpt:{rendered:excerpt},content:{rendered:''},
-      _embedded:{'wp:term':[[{name:catName,slug:catSlug}]]}};
-  }
-  const FALLBACK_POSTS = [
-    fakePost(1,'Speed-to-Lead Is Now Infrastructure','2026-05-28T00:00:00',
-      "Virtual receptionists are making response speed table stakes. Here's why AI-powered lead capture is no longer optional for enterprise sales teams.",
-      'https://gmic.ai/speed-to-lead-enterprise-memory/','Enterprise AI','enterprise-ai'),
-    fakePost(2,'CLINMIC V7: Clinical Memory for the Fastest Moments in Care','2026-05-23T00:00:00',
-      "GMIC AI's concept for a privacy-first wearable that captures clinical conversations at the point of care — without burdening clinicians.",
-      'https://gmic.ai/clinmic-v7-clinical-memory-fastest-moments-in-care-2/','Healthcare','healthcare'),
-    fakePost(3,"Companies Don't Just Need AI Customer Service. They Need Organization Memory.",'2026-05-21T00:00:00',
-      'Wellness and direct-selling companies do not just need faster responses — they need persistent organizational memory that compounds over time.',
-      'https://gmic.ai/wellness-organization-memory/','Enterprise AI','enterprise-ai'),
-    fakePost(4,"Most Small Businesses Don't Fail. They Forget.",'2026-05-21T00:00:00',
-      "Most small businesses don't fail because their team didn't work hard enough. They fail because no one built a memory layer to capture what matters.",
-      'https://gmic.ai/small-business-memory-layer/','Small Business','small-business'),
-    fakePost(5,'The Evening Your Phone Finally Goes Quiet','2026-05-21T00:00:00',
-      'AI voice reception is trending, but SMB owners need more than call routing — they need true time freedom that starts after 6 PM.',
-      'https://gmic.ai/ai-voice-receptionist-enterprise-memory-time-freedom/','Small Business','small-business'),
-    fakePost(6,"The Phone Shouldn't Own Your Weekend",'2026-05-19T00:00:00',
-      "For SMB operators juggling everything alone, weekend calls aren't just annoying — they're the last barrier between work and life. AI changes that.",
-      'https://gmic.ai/ai-receptionist-enterprise-memory-weekend-freedom/','Small Business','small-business'),
-    fakePost(7,'When Every Device Has a Microphone, Who Decides What Gets Captured?','2026-05-16T00:00:00',
-      'As ambient audio intelligence becomes standard in enterprise hardware, the conversation around consent, privacy, and edge processing has never been more urgent.',
-      'https://gmic.ai/blog/','Industry News','industry-news'),
-    fakePost(8,'The Revolution Math Changed. Memory Matters More.','2026-05-14T00:00:00',
-      'The bottleneck in AI deployment has shifted from model intelligence to memory persistence. On-device hardware is the only path to solving it at scale.',
-      'https://gmic.ai/blog/','Industry News','industry-news'),
-    fakePost(9,'AI in the Field: How MIC05 is Capturing Voice Intelligence at the Edge','2026-05-10T00:00:00',
-      'Field service teams generate thousands of hours of unstructured verbal data daily. MIC05 turns those conversations into structured intelligence — automatically.',
-      'https://gmic.ai/blog/','Field Service','field-service')
-  ];
-
-  const state = {page:1,categoryId:null,totalPages:1,useApi:true,firstRender:true};
-  let slugToId = {};
-
-  function stripHtml(html){var d=new DOMParser().parseFromString(html||'','text/html');return (d.body.textContent||'').replace(/\s+/g,' ').trim();}
-  function escapeHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-  function formatDate(iso){var d=new Date(iso);if(isNaN(d.getTime()))return '';return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
-  function runFadeIn(){var c=grid.querySelectorAll('.post-card');c.forEach(function(x){x.classList.remove('in');});void grid.offsetWidth;c.forEach(function(x,i){x.style.transitionDelay=(i*50)+'ms';x.classList.add('in');});}
-
-  async function fetchAndBuildCategoryMap(){
-    var res=await fetch(API_BASE+'/categories?per_page=100&_fields=id,name,slug,count');
-    if(!res.ok)throw new Error('HTTP '+res.status);
-    var cats=await res.json();slugToId={};var withPosts=[];
-    (cats||[]).forEach(function(c){var name=stripHtml(c.name);slugToId[c.slug]=c.id;if(c.count>0)withPosts.push({name:name,slug:c.slug});});
-    renderPills(withPosts);
-  }
-  function fetchPosts(page,categoryId){
-    var url=new URL(API_BASE+'/posts');
-    url.searchParams.set('per_page',String(PER_PAGE));
-    url.searchParams.set('page',String(page||1));
-    url.searchParams.set('_embed','wp:featuredmedia,wp:term');
-    url.searchParams.set('_fields',['id','title','date','excerpt','link','content','_links','_embedded'].join(','));
-    if(categoryId)url.searchParams.set('categories',categoryId);
-    return fetch(url).then(function(res){if(!res.ok)throw new Error('HTTP '+res.status);state.totalPages=parseInt(res.headers.get('X-WP-TotalPages'),10)||1;return res.json();});
-  }
-  function getPostImage(post){var emb=post._embedded||{};var m=emb['wp:featuredmedia']&&emb['wp:featuredmedia'][0];if(m&&m.source_url)return m.source_url;return null;}
-  function getCategoryGradient(post){var emb=post._embedded||{};var t=emb['wp:term']&&emb['wp:term'][0]&&emb['wp:term'][0][0];var n=stripHtml(t&&t.name?t.name:'').toLowerCase();return CATEGORY_GRADIENTS[n]||DEFAULT_GRADIENT;}
-
-  function buildCard(post,idx){
-    var emb=post._embedded||{};
-    var term=(emb['wp:term']&&emb['wp:term'][0]&&emb['wp:term'][0][0])||null;
-    var category=stripHtml((term&&term.name)||'')||'Insights';
-    var slug=(term&&term.slug)||'';
-    var title=stripHtml(post.title&&post.title.rendered);
-    var raw=stripHtml(post.excerpt&&post.excerpt.rendered);
-    var excerpt=raw.length>150?raw.slice(0,150).replace(/\s+\S*$/,'').trim()+'…':raw;
-    var date=formatDate(post.date);
-    var url=post.link||'#';
-    var img=getPostImage(post);
-    var grad=getCategoryGradient(post);
-    var feature=idx===0?' feature':'';
-
-    var thumb;
-    if(img){
-      var onerr="this.style.display='none';this.parentElement.style.background='"+grad+"';this.parentElement.insertAdjacentHTML('beforeend','<div class=\\'grad\\'><span>"+escapeHtml(title).replace(/'/g,"\\'")+"</span></div>');";
-      thumb='<div class="post-thumb"><img src="'+escapeHtml(img)+'" alt="'+escapeHtml(title)+'" loading="lazy" onerror="'+escapeHtml(onerr)+'"></div>';
-    } else {
-      thumb='<div class="post-thumb" style="background:'+grad+'"><div class="grad"><span>'+escapeHtml(title)+'</span></div></div>';
-    }
-    return '<a class="post-card'+feature+'" href="'+escapeHtml(url)+'" target="_blank" rel="noopener" data-tags="'+escapeHtml(slug)+'">'
-      + thumb
-      + '<div class="post-body">'
-      +   '<div class="post-meta"><span class="post-cat">'+escapeHtml(category)+'</span><span class="post-date">'+escapeHtml(date)+'</span></div>'
-      +   '<h3>'+escapeHtml(title)+'</h3>'
-      +   '<p class="post-ex">'+escapeHtml(excerpt)+'</p>'
-      +   '<span class="post-read">Read <i data-lucide="arrow-right"></i></span>'
-      + '</div></a>';
-  }
-
-  function showSkeletons(){
-    var h='';for(var i=0;i<PER_PAGE;i++){h+='<div class="sk"><div class="skt"></div><div class="skb"><div class="skl s"></div><div class="skl"></div><div class="skl m"></div></div></div>';}
-    grid.innerHTML=h;pagination.innerHTML='';
-  }
-
-  async function renderPosts(page,categoryId){
-    showSkeletons();var posts;
-    try{posts=await fetchPosts(page,categoryId);if(!Array.isArray(posts))throw new Error('bad');}
-    catch(e){renderFallback();return;}
-    state.page=page;state.categoryId=categoryId;var wasFirst=state.firstRender;state.firstRender=false;
-    if(!posts.length){grid.innerHTML='<div class="empty">No posts found.</div>';pagination.innerHTML='';return;}
-    grid.innerHTML=posts.map(buildCard).join('');
-    if(typeof lucide!=='undefined')lucide.createIcons();
-    runFadeIn();renderPagination(page);
-    if(!wasFirst)grid.scrollIntoView({behavior:'smooth',block:'start'});
-  }
-
-  function renderPagination(cur){
-    var total=state.totalPages;if(total<=1){pagination.innerHTML='';return;}
-    var pages=new Set([1,total]);for(var i=cur-1;i<=cur+1;i++)if(i>=1&&i<=total)pages.add(i);
-    var sorted=Array.from(pages).sort(function(a,b){return a-b;});
-    var html='<button class="page-btn" data-page="prev"'+(cur===1?' disabled':'')+'>←</button>';var prev=0;
-    sorted.forEach(function(p){if(p-prev>1)html+='<span class="page-btn ellipsis" aria-hidden="true">…</span>';html+='<button class="page-btn'+(p===cur?' active':'')+'" data-page="'+p+'">'+p+'</button>';prev=p;});
-    html+='<button class="page-btn" data-page="next"'+(cur===total?' disabled':'')+'>→</button>';
-    pagination.innerHTML=html;
-    pagination.querySelectorAll('.page-btn:not(.ellipsis):not([disabled])').forEach(function(btn){
-      btn.addEventListener('click',function(){var t;if(btn.dataset.page==='prev')t=state.page-1;else if(btn.dataset.page==='next')t=state.page+1;else t=parseInt(btn.dataset.page,10);if(!t||t<1||t>state.totalPages||t===state.page)return;renderPosts(t,state.categoryId);});
-    });
-  }
-
-  function renderPills(categories){
-    var html='<button class="filter-pill active" data-filter="all">All Posts</button>';
-    (categories||[]).forEach(function(c){html+='<button class="filter-pill" data-filter="'+escapeHtml(c.slug)+'">'+escapeHtml(c.name)+'</button>';});
-    filtersEl.innerHTML=html;bindPills();
-  }
-  function bindPills(){
-    filtersEl.querySelectorAll('.filter-pill').forEach(function(pill){
-      pill.addEventListener('click',function(){
-        filtersEl.querySelectorAll('.filter-pill').forEach(function(p){p.classList.remove('active');});
-        pill.classList.add('active');var slug=pill.dataset.filter;
-        if(state.useApi){var id=slug==='all'?null:(slugToId[slug]||null);renderPosts(1,id);}
-        else{renderFallbackGrid(slug);}
-      });
-    });
-  }
-  bindPills();
-
-  function renderFallback(){
-    state.useApi=false;state.firstRender=false;
-    var seen={},cats=[];
-    FALLBACK_POSTS.forEach(function(p){var t=p._embedded['wp:term'][0][0];if(!seen[t.slug]){seen[t.slug]=true;cats.push({name:t.name,slug:t.slug});}});
-    renderPills(cats);renderFallbackGrid('all');
-  }
-  function renderFallbackGrid(slug){
-    var posts=slug==='all'?FALLBACK_POSTS:FALLBACK_POSTS.filter(function(p){return p._embedded['wp:term'][0][0].slug===slug;});
-    grid.innerHTML=posts.length?posts.map(buildCard).join(''):'<div class="empty">No posts found.</div>';
-    if(typeof lucide!=='undefined')lucide.createIcons();
-    runFadeIn();pagination.innerHTML='';
-  }
-
-  document.addEventListener('DOMContentLoaded',async function(){
-    showSkeletons();
-    try{await fetchAndBuildCategoryMap();}catch(e){}
-    await renderPosts(1,null);
-  });
-})();
-</script>
-
-<!-- ===================== SHELL SCRIPT ===================== -->
 <script>
 (function(){
   var burger=document.getElementById('burger'),drawer=document.getElementById('drawer'),
@@ -631,8 +612,16 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
   dclose&&dclose.addEventListener('click',close);
   scrim&&scrim.addEventListener('click',close);
   document.querySelectorAll('.drawer a').forEach(function(a){a.addEventListener('click',close);});
-  document.querySelectorAll('.acc>button').forEach(function(b){b.addEventListener('click',function(){b.parentElement.classList.toggle('open');});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  document.querySelectorAll('.acc>button').forEach(function(b){b.addEventListener('click',function(){b.parentElement.classList.toggle('open');});});
+
+  var els=document.querySelectorAll('.reveal, .hero-float');
+  if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('in');});
+  } else {
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -50px 0px',threshold:.08});
+    els.forEach(function(e){io.observe(e);});
+  }
   if(typeof lucide!=='undefined')lucide.createIcons();
 })();
 </script>

@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Blog — GMIC AI</title>
-<meta name="description" content="Insights on edge AI hardware, voice infrastructure, and the industries being transformed by on-device intelligence — from GMIC AI." />
+<title>Contact — GMIC AI</title>
+<meta name="description" content="Let's build something real. Whether you have a finished spec or a napkin sketch, GMIC's team in Anaheim and Shenzhen is ready to help you move from idea to production-ready device." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <style>
 /* ============================================================
-   GMIC AI · v2 — Modular Bold (Fourmula-style) · Blog
+   GMIC AI · v2 — Modular Bold (Fourmula-style) · Contact
    ============================================================ */
 :root{
   --canvas:#efefed;--panel:#ffffff;--border:#e6e6e3;
@@ -29,16 +29,16 @@ body{font-family:var(--sans);background:var(--canvas);color:var(--ink);font-size
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
-input{font-family:inherit}
+input,select,textarea{font-family:inherit}
 ::selection{background:rgba(255,90,31,.22)}
-a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
 .sec{padding:clamp(28px,3.5vw,52px) 0}
 
 /* type */
 .display{font-family:var(--disp);font-weight:700;letter-spacing:-.03em;line-height:1.0}
-h1.display{font-size:clamp(44px,7vw,96px)}
-h2.display{font-size:clamp(24px,2.8vw,40px)}
+h1.display{font-size:clamp(40px,6.4vw,84px)}
+h2.display{font-size:clamp(26px,3.4vw,48px)}
 .tone{color:var(--faint)}
 .orange{color:var(--orange)}
 .lead{font-size:clamp(16px,1.4vw,19px);line-height:1.6;color:var(--muted)}
@@ -47,7 +47,7 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
 
 /* panel */
 .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg)}
-.pad{padding:clamp(24px,3vw,48px)}
+.pad{padding:clamp(24px,3vw,44px)}
 
 /* buttons */
 .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:600;font-size:15px;padding:14px 24px;border-radius:var(--r-pill);transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease,border-color .2s ease;white-space:nowrap}
@@ -105,75 +105,52 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
 .scrim.open{opacity:1;pointer-events:auto}
 
 /* HERO */
-.bloghero{padding:calc(104px + 3vw) 0 clamp(20px,3vw,36px)}
-.bloghero .kicker{margin-bottom:14px}
-.bloghero h1{max-width:14ch}
-.bloghero .lead{max-width:56ch;margin-top:18px}
+.chero{padding:calc(104px + 3vw) 0 clamp(8px,2vw,20px);text-align:center}
+.chero .kicker{margin-bottom:14px}
+.chero h1{max-width:16ch;margin:0 auto}
+.chero .lead{max-width:60ch;margin:18px auto 0}
 
-/* FILTERS */
-.filters{display:flex;flex-wrap:wrap;gap:8px;padding-bottom:clamp(20px,2.5vw,32px)}
-.filter-pill{font-family:var(--disp);font-weight:600;font-size:13.5px;color:var(--ink-2);background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:10px 18px;transition:background .2s ease,color .2s ease,border-color .2s ease}
-.filter-pill:hover{border-color:var(--ink)}
-.filter-pill.active{background:var(--orange);border-color:var(--orange);color:#fff}
+/* CONTACT layout */
+.contact-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:clamp(16px,2vw,24px);align-items:start}
+.form-head{margin-bottom:clamp(20px,2.4vw,30px)}
+.form-head h2{font-family:var(--disp);font-weight:700;font-size:clamp(24px,2.6vw,34px);letter-spacing:-.02em}
+.form-head p{margin-top:8px;font-family:var(--disp);font-weight:600;font-size:13px;color:var(--orange)}
+.f-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;margin-bottom:14px}
+.field label{font-family:var(--disp);font-weight:600;font-size:12.5px;color:var(--ink-2);margin-bottom:7px}
+.field input,.field select,.field textarea{border:1px solid var(--border);background:var(--canvas);border-radius:14px;padding:13px 16px;font-size:15px;color:var(--ink);width:100%;transition:border-color .2s ease,background .2s ease,box-shadow .2s ease}
+.field input::placeholder,.field textarea::placeholder{color:var(--muted)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--orange);background:#fff;box-shadow:0 0 0 3px rgba(255,90,31,.12)}
+.field select{cursor:pointer;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236f6f6a' stroke-width='2.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.field textarea{resize:vertical;min-height:130px;line-height:1.5}
+.form-actions{margin-top:8px;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.form-fine{margin-top:16px;font-size:12.5px;color:var(--muted)}
+.form-fine a{color:var(--ink);border-bottom:1px solid var(--border)}
+.form-fine a:hover{color:var(--orange);border-color:var(--orange)}
+.form-success{display:none;align-items:center;gap:10px;margin-top:16px;background:rgba(255,90,31,.1);border:1px solid rgba(255,90,31,.3);color:var(--ink);border-radius:14px;padding:14px 18px;font-family:var(--disp);font-weight:600;font-size:14px}
+.form-success.show{display:flex}
+.form-success svg{width:20px;height:20px;color:var(--orange);flex:none}
 
-/* POSTS GRID */
-.posts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,22px)}
-.post-card{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;
-  transition:transform .25s ease,box-shadow .25s ease;opacity:0;transform:translateY(16px)}
-.post-card.in{opacity:1;transform:none;transition:opacity .5s ease,transform .5s ease}
-.post-card:hover{transform:translateY(-5px);box-shadow:var(--shadow)}
-.post-thumb{aspect-ratio:16/10;position:relative;overflow:hidden;background:var(--canvas)}
-.post-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
-.post-card:hover .post-thumb img{transform:scale(1.04)}
-.post-thumb .grad{position:absolute;inset:0;display:flex;align-items:flex-end;padding:18px}
-.post-thumb .grad span{font-family:var(--disp);font-weight:700;font-size:18px;color:rgba(255,255,255,.96);letter-spacing:-.01em;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,.25)}
-.post-body{padding:clamp(20px,2vw,26px);display:flex;flex-direction:column;flex:1}
-.post-meta{display:flex;align-items:center;gap:10px;margin-bottom:12px}
-.post-cat{font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);background:rgba(255,90,31,.1);padding:5px 10px;border-radius:var(--r-pill)}
-.post-date{font-size:12.5px;color:var(--muted)}
-.post-card h3{font-family:var(--disp);font-weight:700;font-size:19px;letter-spacing:-.01em;line-height:1.22;margin-bottom:10px}
-.post-ex{color:var(--muted);font-size:14px;flex:1}
-.post-read{margin-top:16px;font-family:var(--disp);font-weight:600;font-size:14px;display:inline-flex;align-items:center;gap:7px;color:var(--ink)}
-.post-read svg{width:15px;height:15px;color:var(--orange);transition:transform .2s ease}
-.post-card:hover .post-read svg{transform:translateX(3px)}
-
-/* feature first card */
-.post-card.feature{grid-column:span 2;flex-direction:row}
-.post-card.feature .post-thumb{flex:1 1 50%;aspect-ratio:auto;min-height:300px}
-.post-card.feature .post-body{flex:1 1 50%;justify-content:center}
-.post-card.feature h3{font-size:clamp(24px,2.4vw,34px);line-height:1.08;margin-bottom:14px}
-.post-card.feature .post-ex{font-size:15px;flex:none}
-.post-card.feature .post-thumb .grad span{font-size:26px}
-
-/* skeleton */
-.sk{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden}
-.sk .skt{aspect-ratio:16/10;background:linear-gradient(90deg,#e9e9e6 25%,#f2f2ef 50%,#e9e9e6 75%);background-size:200% 100%;animation:sh 1.4s infinite}
-.sk .skb{padding:24px;display:flex;flex-direction:column;gap:12px}
-.sk .skl{height:13px;border-radius:6px;background:linear-gradient(90deg,#e9e9e6 25%,#f2f2ef 50%,#e9e9e6 75%);background-size:200% 100%;animation:sh 1.4s infinite}
-.sk .skl.s{width:45%;height:18px}.sk .skl.m{width:75%}
-@keyframes sh{0%{background-position:200% 0}100%{background-position:-200% 0}}
-
-/* pagination */
-.pagination{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:clamp(32px,4vw,52px)}
-.page-btn{font-family:var(--disp);font-weight:600;font-size:15px;min-width:46px;height:46px;padding:0 16px;border-radius:var(--r-pill);background:#fff;border:1px solid var(--border);display:inline-flex;align-items:center;justify-content:center;color:var(--ink);transition:background .2s ease,color .2s ease,border-color .2s ease}
-.page-btn:hover:not([disabled]):not(.ellipsis){border-color:var(--ink)}
-.page-btn.active{background:var(--orange);border-color:var(--orange);color:#fff}
-.page-btn[disabled]{opacity:.4;cursor:not-allowed}
-.page-btn.ellipsis{border:none;background:none;cursor:default}
-.empty{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--muted);font-family:var(--disp);font-weight:600}
-
-/* NEWSLETTER */
-.news .panel{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(20px,3vw,48px);align-items:center}
-.news h2{font-family:var(--disp);font-weight:700;font-size:clamp(24px,2.8vw,38px);letter-spacing:-.02em}
-.news p{margin-top:12px;color:var(--muted);font-size:15px;max-width:42ch}
-.news-form{display:flex;gap:10px;flex-wrap:wrap}
-.news-form input{flex:1;min-width:200px;border:1px solid var(--border);border-radius:var(--r-pill);padding:14px 20px;font-size:15px;background:var(--canvas)}
-.news-form input:focus{outline:none;border-color:var(--orange)}
+/* side */
+.side{display:flex;flex-direction:column;gap:clamp(16px,2vw,24px)}
+.why h3.sk{font-family:var(--disp);font-weight:700;font-size:18px;margin-bottom:18px}
+.why-item{display:flex;gap:14px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--border)}
+.why-item:first-of-type{border-top:none;padding-top:0}
+.why-item .wi{width:38px;height:38px;border-radius:11px;background:rgba(255,90,31,.1);display:flex;align-items:center;justify-content:center;flex:none}
+.why-item .wi svg{width:19px;height:19px;color:var(--orange);stroke-width:1.7}
+.why-item h4{font-family:var(--disp);font-weight:700;font-size:15px;margin-bottom:3px}
+.why-item p{color:var(--muted);font-size:13.5px;line-height:1.5}
+.direct{display:grid;gap:14px}
+.dcard .dk{font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.dcard h4{font-family:var(--disp);font-weight:700;font-size:18px;margin-bottom:4px}
+.dcard .role{color:var(--muted);font-size:13px;margin-bottom:12px}
+.dcard a{display:block;font-size:14px;font-weight:500;padding:2px 0}
+.dcard a:hover{color:var(--orange)}
 
 /* CTA */
 .cta-card{border-radius:var(--r-xl);background:var(--orange);color:#fff;text-align:center;padding:clamp(48px,7vw,104px) clamp(24px,5vw,72px)}
 .cta-card .kicker{justify-content:center;color:rgba(255,255,255,.85);margin-bottom:16px}.cta-card .kicker .dot{background:#fff}
-.cta-card h2{margin-bottom:16px;max-width:20ch;margin-left:auto;margin-right:auto;font-size:clamp(30px,4.4vw,58px)}
+.cta-card h2{margin-bottom:16px;max-width:20ch;margin-left:auto;margin-right:auto}
 .cta-card p{margin:0 auto;max-width:54ch;color:rgba(255,255,255,.92);font-size:clamp(16px,1.4vw,19px)}
 .cta-actions{margin-top:28px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center}
 .cta-card .btn-light{background:#fff;color:var(--ink);border:none}
@@ -196,25 +173,24 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
 .foot-col a:hover{opacity:1;color:var(--orange)}
 .foot-bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
 
+/* reveal */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
 /* responsive */
 @media (max-width:980px){
-  .posts-grid{grid-template-columns:repeat(2,1fr)}
-  .post-card.feature{grid-column:span 2;flex-direction:column}
-  .post-card.feature .post-thumb{min-height:0;aspect-ratio:16/10}
-  .news .panel{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:720px){.nav-pill{display:none}.burger{display:flex}}
 @media (max-width:560px){
-  .posts-grid{grid-template-columns:1fr}
-  .post-card.feature{grid-column:span 1}
+  .f-row{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .post-card{opacity:1!important;transform:none!important}
-  .btn,.post-card,.filter-pill,.page-btn{transition:none}
-  .sk .skt,.sk .skl{animation:none}
+  .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  .btn{transition:none}
 }
 </style>
 </head>
@@ -277,13 +253,13 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
         <a href="../about/">Company <i data-lucide="chevron-down" class="chev"></i></a>
         <div class="mega"><div class="mega-cols">
           <div class="mega-col"><h6>Company</h6>
-            <a href="../about/">About Us</a><a href="../blog/" class="active">Blog</a><a href="../contact/">Contact</a><a href="../faq/">FAQ</a>
+            <a href="../about/">About Us</a><a href="../blog/">Blog</a><a href="../contact/" class="active">Contact</a><a href="../faq/">FAQ</a>
           </div>
         </div></div>
       </div>
     </div>
     <div class="nav-right">
-      <a href="../contact/" class="btn btn-dark">Start a Project</a>
+      <a href="#start" class="btn btn-dark">Start a Project</a>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i data-lucide="menu"></i></button>
     </div>
   </nav>
@@ -321,63 +297,113 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
   <a class="d-direct" href="../process/">Process</a>
   <div class="acc active"><button type="button">Company <i data-lucide="chevron-down" class="chev"></i></button>
     <div class="acc-panel">
-      <a href="../about/">About Us</a><a href="../blog/" class="active">Blog</a><a href="../contact/">Contact</a><a href="../faq/">FAQ</a>
+      <a href="../about/">About Us</a><a href="../blog/">Blog</a><a href="../contact/" class="active">Contact</a><a href="../faq/">FAQ</a>
     </div>
   </div>
-  <a class="btn btn-dark" href="../contact/">Start a Project</a>
+  <a class="btn btn-dark" href="#start">Start a Project</a>
 </aside>
 <div class="scrim" id="scrim"></div>
 
 <!-- ===================== HERO ===================== -->
-<header class="bloghero">
+<header class="chero">
   <div class="wrap">
-    <span class="kicker"><span class="dot" aria-hidden="true"></span>Blog</span>
-    <h1 class="display">All <span class="tone">Posts.</span></h1>
-    <p class="lead">Insights on edge AI hardware, voice infrastructure, and the industries being transformed by on-device intelligence.</p>
+    <span class="kicker"><span class="dot" aria-hidden="true"></span>Contact Us</span>
+    <h1 class="display">Let's build something <span class="orange">real.</span></h1>
+    <p class="lead">Whether you have a finished spec or a napkin sketch — our team in Anaheim and Shenzhen is ready to help you move from idea to production-ready device.</p>
   </div>
 </header>
 
-<!-- ===================== FILTERS ===================== -->
-<div class="wrap">
-  <div class="filters" id="blogFilters" role="tablist" aria-label="Filter posts by category">
-    <button class="filter-pill active" data-filter="all">All Posts</button>
-  </div>
-</div>
-
-<!-- ===================== POSTS ===================== -->
-<section class="sec" style="padding-top:0">
+<!-- ===================== CONTACT ===================== -->
+<section class="sec" id="start">
   <div class="wrap">
-    <div class="posts-grid" id="postsGrid" aria-live="polite"></div>
-    <nav class="pagination" id="pagination" aria-label="Pagination"></nav>
-  </div>
-</section>
+    <div class="contact-grid">
 
-<!-- ===================== NEWSLETTER ===================== -->
-<section class="sec news">
-  <div class="wrap">
-    <div class="panel pad">
-      <div>
-        <h2>Get the latest from the edge.</h2>
-        <p>Monthly notes on hardware shipping, certifications, and the AI models running on our devices.</p>
+      <!-- FORM -->
+      <div class="panel pad reveal">
+        <div class="form-head">
+          <h2>Start a conversation</h2>
+          <p>We respond within 1 business day.</p>
+        </div>
+        <!-- TODO: wire up form — front-end only, no backend. Shows JS success state; falls back to mailto. -->
+        <form id="contactForm" novalidate>
+          <div class="f-row">
+            <div class="field"><label for="firstName">First Name</label><input type="text" id="firstName" name="firstName" placeholder="Jane" autocomplete="given-name" required></div>
+            <div class="field"><label for="lastName">Last Name</label><input type="text" id="lastName" name="lastName" placeholder="Doe" autocomplete="family-name" required></div>
+          </div>
+          <div class="field"><label for="email">Work Email</label><input type="email" id="email" name="email" placeholder="jane@company.com" autocomplete="email" required></div>
+          <div class="f-row">
+            <div class="field"><label for="company">Company</label><input type="text" id="company" name="company" placeholder="Company, Inc." autocomplete="organization"></div>
+            <div class="field"><label for="jobTitle">Job Title</label><input type="text" id="jobTitle" name="jobTitle" placeholder="Head of Product" autocomplete="organization-title"></div>
+          </div>
+          <div class="f-row">
+            <div class="field">
+              <label for="industry">Industry</label>
+              <select id="industry" name="industry">
+                <option value="" selected>Select your industry</option>
+                <option>Healthcare</option><option>MedTech</option><option>Enterprise</option><option>Workforce</option>
+                <option>Field Service</option><option>Industrial</option><option>Hospitality</option><option>Retail</option>
+                <option>Telecom</option><option>Smart Home</option><option>Consumer</option><option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="volume">Annual Volume</label>
+              <select id="volume" name="volume">
+                <option value="" selected>Expected unit volume</option>
+                <option>Prototype or under 500</option><option>500 to 5,000</option><option>5,000 to 50,000</option>
+                <option>50,000 to 500,000</option><option>500,000 plus</option>
+              </select>
+            </div>
+          </div>
+          <div class="field"><label for="project">Tell us about your project</label><textarea id="project" name="project" placeholder="What are you building? Where are you in the process?"></textarea></div>
+          <div class="form-actions">
+            <button type="submit" class="btn btn-dark">Send Message <i data-lucide="arrow-right"></i></button>
+          </div>
+          <p class="form-fine">By submitting, you agree to our <a href="#">Privacy Policy</a>. Your information is never shared.</p>
+          <div class="form-success" id="formSuccess" role="status" aria-live="polite"><i data-lucide="check-circle"></i> Thanks — we'll reply within 1 business day.</div>
+        </form>
       </div>
-      <form class="news-form" onsubmit="event.preventDefault();var i=this.querySelector('input');var b=this.querySelector('button');if(i.value){i.value='';b.textContent='Subscribed ✓';}">
-        <input type="email" required placeholder="Enter your email" aria-label="Email address">
-        <button type="submit" class="btn btn-dark">Subscribe</button>
-      </form>
+
+      <!-- SIDE -->
+      <div class="side">
+        <div class="panel pad why reveal">
+          <h3 class="sk">Why teams choose GMIC</h3>
+          <div class="why-item"><span class="wi" aria-hidden="true"><i data-lucide="clock"></i></span><div><h4>Responds in 24 hours</h4><p>A real human replies — not an autoresponder.</p></div></div>
+          <div class="why-item"><span class="wi" aria-hidden="true"><i data-lucide="shield-check"></i></span><div><h4>NDA on day one</h4><p>Your concept and IP are protected from the first conversation.</p></div></div>
+          <div class="why-item"><span class="wi" aria-hidden="true"><i data-lucide="filter"></i></span><div><h4>No generic ODM</h4><p>We only take projects where we can genuinely help.</p></div></div>
+          <div class="why-item"><span class="wi" aria-hidden="true"><i data-lucide="globe"></i></span><div><h4>US + Shenzhen team</h4><p>Engineering in Shenzhen, client support in Anaheim, CA.</p></div></div>
+        </div>
+        <div class="direct">
+          <div class="panel pad dcard reveal">
+            <div class="dk">North America</div>
+            <h4>Anaheim, CA</h4>
+            <div class="role">Client &amp; Product</div>
+            <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a>
+            <a href="tel:+16299000008">(629) 900-0008</a>
+          </div>
+          <div class="panel pad dcard reveal">
+            <div class="dk">Asia</div>
+            <h4>Shenzhen, CN</h4>
+            <div class="role">Engineering &amp; Mfg</div>
+            <a href="mailto:info@gmic.ai">info@gmic.ai</a>
+            <a href="#">Shenzhen HQ</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- ===================== CTA ===================== -->
-<section class="sec" style="padding-top:0">
+<section class="sec">
   <div class="wrap">
-    <div class="cta-card">
-      <span class="kicker"><span class="dot" aria-hidden="true"></span>Begin</span>
-      <h2 class="display">Ready to turn your AI into a real product?</h2>
-      <p>Bring us a concept, prototype, or pilot — we'll get you to production.</p>
+    <div class="cta-card reveal">
+      <span class="kicker"><span class="dot" aria-hidden="true"></span>Ready to build?</span>
+      <h2 class="display">Turn your AI idea into a real, production-ready device.</h2>
+      <p>From concept to mass production — our team in Shenzhen and California is ready to move fast with you.</p>
       <div class="cta-actions">
-        <a href="mailto:trigg@gmic.ai?subject=Book%20a%20Demo" class="btn btn-light">Book a Demo <i data-lucide="arrow-right"></i></a>
-        <a href="../contact/" class="cta-link">Talk to Sales <i data-lucide="arrow-right"></i></a>
+        <a href="#start" class="btn btn-light">Start Your Project <i data-lucide="arrow-right"></i></a>
+        <a href="../faq/" class="cta-link">Have a question? Read our FAQ <i data-lucide="arrow-right"></i></a>
       </div>
     </div>
   </div>
@@ -439,188 +465,6 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
   </div>
 </footer>
 
-<!-- ===================== BLOG DATA SCRIPT ===================== -->
-<script>
-/* Live sync from the WordPress REST API (gmic.ai). FALLBACK_POSTS render
-   when the API is unreachable (file:// / CORS). Same fetch + pagination +
-   category-filter + fallback flow as main; only buildCard() is restyled. */
-(function(){
-  const API_BASE = 'https://gmic.ai/wp-json/wp/v2';
-  const PER_PAGE = 9;
-  const grid = document.getElementById('postsGrid');
-  const pagination = document.getElementById('pagination');
-  const filtersEl = document.getElementById('blogFilters');
-
-  const DEFAULT_GRADIENT = 'linear-gradient(135deg,#1e3a8a,#2563eb,#0ea5e9)';
-  const CATEGORY_GRADIENTS = {
-    'enterprise ai':  'linear-gradient(135deg,#1e3a8a,#2563eb,#0ea5e9)',
-    'healthcare':     'linear-gradient(135deg,#134e4a,#0f766e,#14b8a6)',
-    'small business': 'linear-gradient(135deg,#1e3a5f,#1d6ed8,#38bdf8)',
-    'field service':  'linear-gradient(135deg,#1a1a2e,#16213e,#0f3460)',
-    'industry news':  'linear-gradient(135deg,#1c1917,#292524,#57534e)'
-  };
-
-  function fakePost(id,title,dateISO,excerpt,link,catName,catSlug){
-    return {id:id,link:link,date:dateISO,title:{rendered:title},excerpt:{rendered:excerpt},content:{rendered:''},
-      _embedded:{'wp:term':[[{name:catName,slug:catSlug}]]}};
-  }
-  const FALLBACK_POSTS = [
-    fakePost(1,'Speed-to-Lead Is Now Infrastructure','2026-05-28T00:00:00',
-      "Virtual receptionists are making response speed table stakes. Here's why AI-powered lead capture is no longer optional for enterprise sales teams.",
-      'https://gmic.ai/speed-to-lead-enterprise-memory/','Enterprise AI','enterprise-ai'),
-    fakePost(2,'CLINMIC V7: Clinical Memory for the Fastest Moments in Care','2026-05-23T00:00:00',
-      "GMIC AI's concept for a privacy-first wearable that captures clinical conversations at the point of care — without burdening clinicians.",
-      'https://gmic.ai/clinmic-v7-clinical-memory-fastest-moments-in-care-2/','Healthcare','healthcare'),
-    fakePost(3,"Companies Don't Just Need AI Customer Service. They Need Organization Memory.",'2026-05-21T00:00:00',
-      'Wellness and direct-selling companies do not just need faster responses — they need persistent organizational memory that compounds over time.',
-      'https://gmic.ai/wellness-organization-memory/','Enterprise AI','enterprise-ai'),
-    fakePost(4,"Most Small Businesses Don't Fail. They Forget.",'2026-05-21T00:00:00',
-      "Most small businesses don't fail because their team didn't work hard enough. They fail because no one built a memory layer to capture what matters.",
-      'https://gmic.ai/small-business-memory-layer/','Small Business','small-business'),
-    fakePost(5,'The Evening Your Phone Finally Goes Quiet','2026-05-21T00:00:00',
-      'AI voice reception is trending, but SMB owners need more than call routing — they need true time freedom that starts after 6 PM.',
-      'https://gmic.ai/ai-voice-receptionist-enterprise-memory-time-freedom/','Small Business','small-business'),
-    fakePost(6,"The Phone Shouldn't Own Your Weekend",'2026-05-19T00:00:00',
-      "For SMB operators juggling everything alone, weekend calls aren't just annoying — they're the last barrier between work and life. AI changes that.",
-      'https://gmic.ai/ai-receptionist-enterprise-memory-weekend-freedom/','Small Business','small-business'),
-    fakePost(7,'When Every Device Has a Microphone, Who Decides What Gets Captured?','2026-05-16T00:00:00',
-      'As ambient audio intelligence becomes standard in enterprise hardware, the conversation around consent, privacy, and edge processing has never been more urgent.',
-      'https://gmic.ai/blog/','Industry News','industry-news'),
-    fakePost(8,'The Revolution Math Changed. Memory Matters More.','2026-05-14T00:00:00',
-      'The bottleneck in AI deployment has shifted from model intelligence to memory persistence. On-device hardware is the only path to solving it at scale.',
-      'https://gmic.ai/blog/','Industry News','industry-news'),
-    fakePost(9,'AI in the Field: How MIC05 is Capturing Voice Intelligence at the Edge','2026-05-10T00:00:00',
-      'Field service teams generate thousands of hours of unstructured verbal data daily. MIC05 turns those conversations into structured intelligence — automatically.',
-      'https://gmic.ai/blog/','Field Service','field-service')
-  ];
-
-  const state = {page:1,categoryId:null,totalPages:1,useApi:true,firstRender:true};
-  let slugToId = {};
-
-  function stripHtml(html){var d=new DOMParser().parseFromString(html||'','text/html');return (d.body.textContent||'').replace(/\s+/g,' ').trim();}
-  function escapeHtml(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
-  function formatDate(iso){var d=new Date(iso);if(isNaN(d.getTime()))return '';return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
-  function runFadeIn(){var c=grid.querySelectorAll('.post-card');c.forEach(function(x){x.classList.remove('in');});void grid.offsetWidth;c.forEach(function(x,i){x.style.transitionDelay=(i*50)+'ms';x.classList.add('in');});}
-
-  async function fetchAndBuildCategoryMap(){
-    var res=await fetch(API_BASE+'/categories?per_page=100&_fields=id,name,slug,count');
-    if(!res.ok)throw new Error('HTTP '+res.status);
-    var cats=await res.json();slugToId={};var withPosts=[];
-    (cats||[]).forEach(function(c){var name=stripHtml(c.name);slugToId[c.slug]=c.id;if(c.count>0)withPosts.push({name:name,slug:c.slug});});
-    renderPills(withPosts);
-  }
-  function fetchPosts(page,categoryId){
-    var url=new URL(API_BASE+'/posts');
-    url.searchParams.set('per_page',String(PER_PAGE));
-    url.searchParams.set('page',String(page||1));
-    url.searchParams.set('_embed','wp:featuredmedia,wp:term');
-    url.searchParams.set('_fields',['id','title','date','excerpt','link','content','_links','_embedded'].join(','));
-    if(categoryId)url.searchParams.set('categories',categoryId);
-    return fetch(url).then(function(res){if(!res.ok)throw new Error('HTTP '+res.status);state.totalPages=parseInt(res.headers.get('X-WP-TotalPages'),10)||1;return res.json();});
-  }
-  function getPostImage(post){var emb=post._embedded||{};var m=emb['wp:featuredmedia']&&emb['wp:featuredmedia'][0];if(m&&m.source_url)return m.source_url;return null;}
-  function getCategoryGradient(post){var emb=post._embedded||{};var t=emb['wp:term']&&emb['wp:term'][0]&&emb['wp:term'][0][0];var n=stripHtml(t&&t.name?t.name:'').toLowerCase();return CATEGORY_GRADIENTS[n]||DEFAULT_GRADIENT;}
-
-  function buildCard(post,idx){
-    var emb=post._embedded||{};
-    var term=(emb['wp:term']&&emb['wp:term'][0]&&emb['wp:term'][0][0])||null;
-    var category=stripHtml((term&&term.name)||'')||'Insights';
-    var slug=(term&&term.slug)||'';
-    var title=stripHtml(post.title&&post.title.rendered);
-    var raw=stripHtml(post.excerpt&&post.excerpt.rendered);
-    var excerpt=raw.length>150?raw.slice(0,150).replace(/\s+\S*$/,'').trim()+'…':raw;
-    var date=formatDate(post.date);
-    var url=post.link||'#';
-    var img=getPostImage(post);
-    var grad=getCategoryGradient(post);
-    var feature=idx===0?' feature':'';
-
-    var thumb;
-    if(img){
-      var onerr="this.style.display='none';this.parentElement.style.background='"+grad+"';this.parentElement.insertAdjacentHTML('beforeend','<div class=\\'grad\\'><span>"+escapeHtml(title).replace(/'/g,"\\'")+"</span></div>');";
-      thumb='<div class="post-thumb"><img src="'+escapeHtml(img)+'" alt="'+escapeHtml(title)+'" loading="lazy" onerror="'+escapeHtml(onerr)+'"></div>';
-    } else {
-      thumb='<div class="post-thumb" style="background:'+grad+'"><div class="grad"><span>'+escapeHtml(title)+'</span></div></div>';
-    }
-    return '<a class="post-card'+feature+'" href="'+escapeHtml(url)+'" target="_blank" rel="noopener" data-tags="'+escapeHtml(slug)+'">'
-      + thumb
-      + '<div class="post-body">'
-      +   '<div class="post-meta"><span class="post-cat">'+escapeHtml(category)+'</span><span class="post-date">'+escapeHtml(date)+'</span></div>'
-      +   '<h3>'+escapeHtml(title)+'</h3>'
-      +   '<p class="post-ex">'+escapeHtml(excerpt)+'</p>'
-      +   '<span class="post-read">Read <i data-lucide="arrow-right"></i></span>'
-      + '</div></a>';
-  }
-
-  function showSkeletons(){
-    var h='';for(var i=0;i<PER_PAGE;i++){h+='<div class="sk"><div class="skt"></div><div class="skb"><div class="skl s"></div><div class="skl"></div><div class="skl m"></div></div></div>';}
-    grid.innerHTML=h;pagination.innerHTML='';
-  }
-
-  async function renderPosts(page,categoryId){
-    showSkeletons();var posts;
-    try{posts=await fetchPosts(page,categoryId);if(!Array.isArray(posts))throw new Error('bad');}
-    catch(e){renderFallback();return;}
-    state.page=page;state.categoryId=categoryId;var wasFirst=state.firstRender;state.firstRender=false;
-    if(!posts.length){grid.innerHTML='<div class="empty">No posts found.</div>';pagination.innerHTML='';return;}
-    grid.innerHTML=posts.map(buildCard).join('');
-    if(typeof lucide!=='undefined')lucide.createIcons();
-    runFadeIn();renderPagination(page);
-    if(!wasFirst)grid.scrollIntoView({behavior:'smooth',block:'start'});
-  }
-
-  function renderPagination(cur){
-    var total=state.totalPages;if(total<=1){pagination.innerHTML='';return;}
-    var pages=new Set([1,total]);for(var i=cur-1;i<=cur+1;i++)if(i>=1&&i<=total)pages.add(i);
-    var sorted=Array.from(pages).sort(function(a,b){return a-b;});
-    var html='<button class="page-btn" data-page="prev"'+(cur===1?' disabled':'')+'>←</button>';var prev=0;
-    sorted.forEach(function(p){if(p-prev>1)html+='<span class="page-btn ellipsis" aria-hidden="true">…</span>';html+='<button class="page-btn'+(p===cur?' active':'')+'" data-page="'+p+'">'+p+'</button>';prev=p;});
-    html+='<button class="page-btn" data-page="next"'+(cur===total?' disabled':'')+'>→</button>';
-    pagination.innerHTML=html;
-    pagination.querySelectorAll('.page-btn:not(.ellipsis):not([disabled])').forEach(function(btn){
-      btn.addEventListener('click',function(){var t;if(btn.dataset.page==='prev')t=state.page-1;else if(btn.dataset.page==='next')t=state.page+1;else t=parseInt(btn.dataset.page,10);if(!t||t<1||t>state.totalPages||t===state.page)return;renderPosts(t,state.categoryId);});
-    });
-  }
-
-  function renderPills(categories){
-    var html='<button class="filter-pill active" data-filter="all">All Posts</button>';
-    (categories||[]).forEach(function(c){html+='<button class="filter-pill" data-filter="'+escapeHtml(c.slug)+'">'+escapeHtml(c.name)+'</button>';});
-    filtersEl.innerHTML=html;bindPills();
-  }
-  function bindPills(){
-    filtersEl.querySelectorAll('.filter-pill').forEach(function(pill){
-      pill.addEventListener('click',function(){
-        filtersEl.querySelectorAll('.filter-pill').forEach(function(p){p.classList.remove('active');});
-        pill.classList.add('active');var slug=pill.dataset.filter;
-        if(state.useApi){var id=slug==='all'?null:(slugToId[slug]||null);renderPosts(1,id);}
-        else{renderFallbackGrid(slug);}
-      });
-    });
-  }
-  bindPills();
-
-  function renderFallback(){
-    state.useApi=false;state.firstRender=false;
-    var seen={},cats=[];
-    FALLBACK_POSTS.forEach(function(p){var t=p._embedded['wp:term'][0][0];if(!seen[t.slug]){seen[t.slug]=true;cats.push({name:t.name,slug:t.slug});}});
-    renderPills(cats);renderFallbackGrid('all');
-  }
-  function renderFallbackGrid(slug){
-    var posts=slug==='all'?FALLBACK_POSTS:FALLBACK_POSTS.filter(function(p){return p._embedded['wp:term'][0][0].slug===slug;});
-    grid.innerHTML=posts.length?posts.map(buildCard).join(''):'<div class="empty">No posts found.</div>';
-    if(typeof lucide!=='undefined')lucide.createIcons();
-    runFadeIn();pagination.innerHTML='';
-  }
-
-  document.addEventListener('DOMContentLoaded',async function(){
-    showSkeletons();
-    try{await fetchAndBuildCategoryMap();}catch(e){}
-    await renderPosts(1,null);
-  });
-})();
-</script>
-
-<!-- ===================== SHELL SCRIPT ===================== -->
 <script>
 (function(){
   var burger=document.getElementById('burger'),drawer=document.getElementById('drawer'),
@@ -633,6 +477,38 @@ h2.display{font-size:clamp(24px,2.8vw,40px)}
   document.querySelectorAll('.drawer a').forEach(function(a){a.addEventListener('click',close);});
   document.querySelectorAll('.acc>button').forEach(function(b){b.addEventListener('click',function(){b.parentElement.classList.toggle('open');});});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+
+  // Contact form: front-end only (TODO: wire up form to a backend/CRM)
+  var form=document.getElementById('contactForm');var success=document.getElementById('formSuccess');
+  if(form){
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){form.reportValidity();return;}
+      var d=new FormData(form);
+      try{
+        success.classList.add('show');
+        form.querySelector('button[type="submit"]').textContent='Sent ✓';
+        var subject=encodeURIComponent('New project inquiry — '+((d.get('company')||'').trim()||(d.get('firstName')||'')));
+        var body=encodeURIComponent(
+          'Name: '+(d.get('firstName')||'')+' '+(d.get('lastName')||'')+'\n'+
+          'Email: '+(d.get('email')||'')+'\n'+
+          'Company: '+(d.get('company')||'')+'\n'+
+          'Job Title: '+(d.get('jobTitle')||'')+'\n'+
+          'Industry: '+(d.get('industry')||'')+'\n'+
+          'Annual Volume: '+(d.get('volume')||'')+'\n\nProject:\n'+(d.get('project')||'')
+        );
+        window.location.href='mailto:trigg@gmic.ai?subject='+subject+'&body='+body;
+      }catch(err){window.location.href='mailto:trigg@gmic.ai';}
+    });
+  }
+
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('in');});
+  } else {
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -50px 0px',threshold:.08});
+    els.forEach(function(e){io.observe(e);});
+  }
   if(typeof lucide!=='undefined')lucide.createIcons();
 })();
 </script>

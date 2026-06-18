@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Proof — GMIC AI</title>
+<meta name="description" content="Case studies: GMIC helps AI companies, enterprise teams, and product innovators move from ideas to deployable hardware — engineering, prototyping, and manufacturing support." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<style>
+/* ============================================================
+   GMIC AI · v2 — Modular Bold (Fourmula-style) · Proof
+   ============================================================ */
+:root{
+  --canvas:#efefed;--panel:#ffffff;--border:#e6e6e3;
+  --ink:#111111;--ink-2:#3a3a38;--faint:#c2c2bc;--muted:#6f6f6a;
+  --orange:#ff5a1f;--indigo:#4b54e6;--blue-1:#cfe0ee;--blue-2:#eef4f8;
+  --green:#0e9f6e;
+  --disp:'Inter Tight','Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --r:20px;--r-lg:28px;--r-xl:36px;--r-pill:100px;
+  --shadow:0 18px 50px rgba(17,17,17,.08);--shadow-sm:0 8px 24px rgba(17,17,17,.06);
+  --maxw:1200px;--gut:clamp(16px,3.5vw,32px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--canvas);color:var(--ink);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input{font-family:inherit}
+::selection{background:rgba(255,90,31,.22)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:8px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--gut)}
+.sec{padding:clamp(26px,3.2vw,48px) 0}
+
+/* type */
+.display{font-family:var(--disp);font-weight:700;letter-spacing:-.03em;line-height:1.04}
+h1.display{font-size:clamp(34px,4.8vw,62px)}
+h2.display{font-size:clamp(26px,3.2vw,44px)}
+.tone{color:var(--faint)}
+.orange{color:var(--orange)}
+.lead{font-size:clamp(15px,1.35vw,18px);line-height:1.6;color:var(--muted)}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--disp);font-weight:600;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--orange)}
+.sec-head{max-width:760px;margin-bottom:clamp(22px,2.8vw,40px)}
+.sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+.sec-head h2{margin:12px 0 0}.sec-head .lead{margin-top:12px}
+
+/* panel + buttons */
+.panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--r-lg)}
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--disp);font-weight:600;font-size:15px;padding:14px 24px;border-radius:var(--r-pill);transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease,border-color .2s ease;white-space:nowrap}
+.btn svg{width:17px;height:17px}.btn.sm{padding:11px 19px;font-size:14px}
+.btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.btn-light{background:#fff;color:var(--ink);border:1px solid var(--border)}.btn-light:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+.txtlink{display:inline-flex;align-items:center;gap:7px;font-family:var(--disp);font-weight:600;font-size:15px;color:var(--ink);transition:gap .2s ease,color .2s ease}
+.txtlink svg{width:16px;height:16px;transition:transform .2s ease;color:var(--orange)}
+.txtlink:hover{color:var(--orange)}.txtlink:hover svg{transform:translateX(3px)}
+
+/* ---------- NAV (mega-menu) ---------- */
+.nav-shell{position:fixed;top:0;left:0;right:0;z-index:200;padding:16px var(--gut);transition:padding .3s ease}
+.nav{max-width:var(--maxw);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:var(--disp);font-weight:800;font-size:20px;letter-spacing:-.03em;display:inline-flex;align-items:center;gap:8px}
+.logo .mk{width:11px;height:11px;border-radius:50%;background:var(--orange)}
+.nav-pill{display:flex;align-items:center;gap:2px;background:rgba(255,255,255,.82);backdrop-filter:saturate(180%) blur(16px);-webkit-backdrop-filter:saturate(180%) blur(16px);border:1px solid var(--border);border-radius:var(--r-pill);padding:6px}
+.nav-item{position:relative;display:flex;align-items:center}
+.nav-item>a,.nav-item>button{display:inline-flex;align-items:center;gap:5px;font-family:var(--sans);font-size:14px;font-weight:500;color:var(--ink-2);padding:9px 14px;border-radius:var(--r-pill);transition:background .2s ease,color .2s ease;background:none;cursor:pointer;white-space:nowrap}
+.nav-item>a:hover,.nav-item:hover>a{background:var(--canvas);color:var(--ink)}
+.nav-item.active>a{color:var(--orange)}
+.nav-item .chev{width:13px;height:13px;opacity:.55;transition:transform .2s ease}
+.nav-item.has-mega:hover .chev{transform:rotate(180deg)}
+.nav-item.has-mega::after{content:"";position:absolute;top:100%;left:-12px;right:-12px;height:18px}
+.mega{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(8px);background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:22px;display:none;opacity:0;transition:opacity .2s ease,transform .2s ease;z-index:50}
+.nav-item.has-mega:hover .mega{display:block;opacity:1;transform:translateX(-50%) translateY(0)}
+.nav-item.alignR .mega{left:auto;right:0;transform:translateX(0) translateY(8px)}
+.nav-item.alignR.has-mega:hover .mega{transform:translateX(0) translateY(0)}
+.mega-cols{display:flex;gap:26px}
+.mega-col{min-width:172px}
+.mega-col h6{font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.mega-col a{display:block;font-size:14px;font-weight:500;color:var(--ink);padding:7px 0;transition:color .2s ease}
+.mega-col a:hover{color:var(--orange)}
+.mega-col a small{display:block;font-weight:400;font-size:12px;color:var(--muted);line-height:1.35;margin-top:1px}
+.nav-right{display:flex;align-items:center;gap:10px}
+.burger{display:none;width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid var(--border);align-items:center;justify-content:center}
+.burger svg{width:22px;height:22px}
+.drawer{position:fixed;inset:0 0 0 auto;width:88%;max-width:360px;background:#fff;z-index:400;transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);padding:22px 18px 40px;display:flex;flex-direction:column;box-shadow:var(--shadow);overflow-y:auto;border-left:1px solid var(--border)}
+.drawer.open{transform:translateX(0)}
+.drawer-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.drawer-close{width:42px;height:42px;border-radius:50%;background:var(--canvas);display:flex;align-items:center;justify-content:center}
+.acc{border-bottom:1px solid var(--border)}
+.acc>button,.d-direct{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:15px 8px;font-family:var(--disp);font-weight:600;font-size:16px;color:var(--ink);text-align:left;border-bottom:1px solid var(--border)}
+.acc>button{border-bottom:none}
+.d-direct.active,.acc.active>button{color:var(--orange)}
+.acc>button .chev{width:18px;height:18px;opacity:.55;transition:transform .25s ease}
+.acc.open>button .chev{transform:rotate(180deg)}
+.acc-panel{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.acc.open .acc-panel{max-height:720px}
+.acc-panel .grp{font-family:var(--disp);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:12px 8px 4px}
+.acc-panel a{display:block;padding:9px 8px 9px 18px;font-size:14.5px;color:var(--ink-2)}
+.acc-panel a:hover,.acc-panel a.active{color:var(--orange)}
+.drawer .btn{margin-top:18px;justify-content:center}
+.scrim{position:fixed;inset:0;background:rgba(17,17,17,.4);z-index:300;opacity:0;pointer-events:none;transition:opacity .3s}
+.scrim.open{opacity:1;pointer-events:auto}
+
+/* ---------- HEADER ---------- */
+.phead{padding:calc(92px + 1vw) 0 clamp(18px,2.4vw,32px)}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:16px}
+.crumb a:hover{color:var(--orange)}.crumb span{color:var(--ink)}
+.phead .kicker{margin-bottom:12px}
+.phead h1{max-width:22ch}
+.phead .lead{max-width:64ch;margin-top:14px}
+.phead .cta{margin-top:22px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+
+/* ---------- RESULTS ---------- */
+.results{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.5vw,18px)}
+.rstat{background:var(--panel);border:1px solid var(--border);border-radius:var(--r);padding:clamp(20px,2.2vw,30px)}
+.rstat .n{font-family:var(--disp);font-weight:800;font-size:clamp(30px,3.6vw,48px);letter-spacing:-.02em;line-height:1}
+.rstat .n.sm{font-size:clamp(24px,2.6vw,36px)}
+.rstat .l{margin-top:10px;color:var(--muted);font-size:14px}
+.trusted{margin-top:18px;display:flex;flex-wrap:wrap;align-items:center;gap:8px;color:var(--muted);font-size:13.5px}
+.trusted b{font-family:var(--disp);font-weight:600;color:var(--ink);margin-right:4px}
+.trusted .tg{background:#fff;border:1px solid var(--border);border-radius:var(--r-pill);padding:6px 13px;color:var(--ink-2);font-weight:500}
+
+/* ---------- CASE STUDIES ---------- */
+.cases{display:flex;flex-direction:column;gap:clamp(16px,1.8vw,22px)}
+.case{display:grid;grid-template-columns:.85fr 2.15fr;gap:0;overflow:hidden}
+.case-media{position:relative;background:var(--canvas);border-right:1px solid var(--border);min-height:240px;overflow:hidden}
+.case-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.case-media .metric{position:absolute;left:14px;bottom:14px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border:1px solid var(--border);border-radius:14px;padding:10px 14px}
+.case-media .metric b{font-family:var(--disp);font-weight:800;font-size:20px;display:block;letter-spacing:-.02em}
+.case-media .metric span{font-size:11.5px;color:var(--muted)}
+.case-body{padding:clamp(22px,2.6vw,36px)}
+.case-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.tag{font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;padding:6px 11px;border-radius:var(--r-pill)}
+.tag.cat{background:rgba(255,90,31,.1);color:var(--orange)}
+.tag.status{background:var(--canvas);color:var(--ink-2);border:1px solid var(--border)}
+.tag.status.live{background:rgba(14,159,110,.1);color:var(--green);border:none}
+.case-body h3{font-family:var(--disp);font-weight:700;font-size:clamp(20px,2vw,28px);letter-spacing:-.02em;margin-bottom:8px}
+.case-client{color:var(--muted);font-size:14.5px;margin-bottom:18px}
+.case-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,28px);padding-top:18px;border-top:1px solid var(--border)}
+.case-cols h6{font-family:var(--disp);font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.case-cols ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.case-cols li{display:flex;gap:8px;align-items:flex-start;font-size:13.5px;color:var(--ink-2);line-height:1.4}
+.case-cols li svg{width:14px;height:14px;flex:none;margin-top:3px;color:var(--ink-2)}
+.case-cols .res li svg{color:var(--orange)}
+.case-mean{margin-top:18px;font-size:14px;color:var(--ink);background:var(--canvas);border-radius:14px;padding:13px 16px;border-left:3px solid var(--orange)}
+/* feature (case 01) — bolder, results inline */
+.case.feature{grid-template-columns:1fr 1fr}
+.case.feature .case-media{min-height:320px}
+.case.feature .case-media .metric b{font-size:26px}
+.case.feature .case-body h3{font-size:clamp(24px,2.6vw,36px)}
+/* case accordion (cases 02-05) */
+.cacc{display:flex;flex-direction:column;gap:12px;margin-top:clamp(14px,1.6vw,20px)}
+.citem{overflow:hidden}
+.citem-head{width:100%;display:grid;grid-template-columns:54px 1fr auto auto;gap:14px;align-items:center;padding:15px clamp(16px,2vw,24px);text-align:left;transition:background .15s ease}
+.citem-head:hover{background:var(--canvas)}
+.cthumb{width:54px;height:54px;border-radius:12px;overflow:hidden;background:var(--canvas);flex:none}
+.cthumb img{width:100%;height:100%;object-fit:cover}
+.cmain{min-width:0}
+.cmain .ct{font-family:var(--disp);font-weight:600;font-size:clamp(16px,1.5vw,20px);letter-spacing:-.01em;line-height:1.2}
+.cmain .cmeta{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.cmetric{font-family:var(--disp);font-weight:700;font-size:13.5px;color:var(--orange);white-space:nowrap}
+.ctog{width:32px;height:32px;border-radius:50%;background:var(--canvas);display:flex;align-items:center;justify-content:center;flex:none;transition:background .2s ease}
+.ctog svg{width:18px;height:18px;color:var(--ink);transition:transform .25s ease}
+.citem.open .ctog{background:var(--orange)}
+.citem.open .ctog svg{color:#fff;transform:rotate(180deg)}
+.cdetail{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.citem.open .cdetail{max-height:620px}
+.cdetail-in{padding:2px clamp(16px,2vw,24px) 22px}
+.cdetail-in .cclient{color:var(--muted);font-size:14px;margin-bottom:16px;max-width:84ch}
+@media(max-width:680px){.citem-head{grid-template-columns:1fr auto}.cthumb,.cmetric{display:none}.cdetail-in .case-cols{grid-template-columns:1fr}.citem.open .cdetail{max-height:840px}}
+
+/* ---------- WHY MATTERS ---------- */
+.why-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.why-tags .wt{display:inline-flex;align-items:center;gap:9px;background:var(--panel);border:1px solid var(--border);border-radius:var(--r-pill);padding:11px 18px;font-family:var(--disp);font-weight:600;font-size:14px}
+.why-tags .wt svg{width:17px;height:17px;color:var(--orange)}
+
+/* ---------- CTA ---------- */
+.cta-card{border-radius:var(--r-xl);background:var(--orange);color:#fff;text-align:center;padding:clamp(48px,7vw,100px) clamp(24px,5vw,72px)}
+.cta-card .kicker{justify-content:center;color:rgba(255,255,255,.85);margin-bottom:16px}.cta-card .kicker .dot{background:#fff}
+.cta-card h2{margin-bottom:14px;max-width:20ch;margin-left:auto;margin-right:auto}
+.cta-card p{margin:0 auto;max-width:58ch;color:rgba(255,255,255,.92);font-size:clamp(16px,1.4vw,19px)}
+.cta-actions{margin-top:26px;display:flex;flex-wrap:wrap;gap:14px;justify-content:center;align-items:center}
+.cta-card .btn-light{background:#fff;color:var(--ink);border:none}
+.cta-link{font-family:var(--disp);font-weight:600;color:#fff;border-bottom:2px solid rgba(255,255,255,.5);padding-bottom:2px;display:inline-flex;align-items:center;gap:7px}
+.cta-link:hover{border-color:#fff}.cta-link svg{width:16px;height:16px}
+
+/* ---------- NEWSLETTER ---------- */
+.news .panel{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(20px,3vw,48px);align-items:center;padding:clamp(26px,3vw,44px)}
+.news h2{font-family:var(--disp);font-weight:700;font-size:clamp(22px,2.4vw,32px);letter-spacing:-.02em}
+.news p{margin-top:10px;color:var(--muted);font-size:15px;max-width:42ch}
+.news-form{display:flex;gap:10px;flex-wrap:wrap}
+.news-form input{flex:1;min-width:200px;border:1px solid var(--border);border-radius:var(--r-pill);padding:14px 20px;font-size:15px;background:var(--canvas)}
+.news-form input:focus{outline:none;border-color:var(--orange)}
+
+/* ---------- FOOTER ---------- */
+.footer{background:#fff;border-top:1px solid var(--border);position:relative;overflow:hidden}
+.footer::before{content:"";position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(var(--border) 1.2px, transparent 1.2px);background-size:16px 16px;-webkit-mask-image:linear-gradient(to bottom,#000,transparent 55%);mask-image:linear-gradient(to bottom,#000,transparent 55%);opacity:.7}
+.footer-inner{position:relative;padding:clamp(52px,6vw,84px) 0 36px}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:clamp(24px,3vw,44px)}
+.foot-brand .logo{font-size:22px}
+.foot-brand p{margin:16px 0 18px;color:var(--muted);font-size:14px;max-width:30ch}
+.foot-contact a{display:block;color:var(--muted);font-size:14px;padding:3px 0}
+.foot-contact a:hover{color:var(--ink)}
+.certs{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+.certs span{font-size:10.5px;letter-spacing:.06em;color:var(--muted);border:1px solid var(--border);border-radius:var(--r-pill);padding:5px 11px;background:#fff}
+.foot-col h5{font-family:var(--disp);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:14px;font-weight:600}
+.foot-col a{display:block;color:var(--ink);font-size:14px;padding:6px 0;opacity:.8;transition:opacity .2s,color .2s}
+.foot-col a:hover{opacity:1;color:var(--orange)}
+.foot-bottom{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;margin-top:48px;padding-top:24px;border-top:1px solid var(--border);color:var(--muted);font-size:13px}
+.foot-bottom a:hover{color:var(--orange)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* responsive */
+@media (max-width:980px){
+  .results{grid-template-columns:repeat(2,1fr)}
+  .case{grid-template-columns:1fr}
+  .case-media{border-right:none;border-bottom:1px solid var(--border);min-height:200px;aspect-ratio:16/9}
+  .news .panel{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){.nav-pill{display:none}.burger{display:flex}}
+@media (max-width:560px){
+  .results{grid-template-columns:1fr}
+  .case-cols{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1!important;transform:none!important;transition:none!important}.btn,.rstat,.case{transition:none}}
+</style>
+</head>
+<body>
+
+<!-- ===================== NAV ===================== -->
+<div class="nav-shell" id="navShell">
+  <nav class="nav" aria-label="Primary">
+    <a href="../index.html" class="logo" aria-label="GMIC AI home"><span class="mk" aria-hidden="true"></span>GMIC AI</a>
+    <div class="nav-pill">
+      <div class="nav-item has-mega">
+        <a href="../index.html#products">Products <i data-lucide="chevron-down" class="chev"></i></a>
+        <div class="mega"><div class="mega-cols">
+          <div class="mega-col">
+            <h6>Voice Capture</h6>
+            <a href="../index.html#products">MIC06 <small>Continuous voice capture for shift-based operations</small></a>
+            <a href="../index.html#products">MIC05 <small>Button-triggered capture for field notes</small></a>
+            <a href="../index.html#products">MIC01 <small>Entry-level pilot device</small></a>
+          </div>
+          <div class="mega-col">
+            <h6>Phone &amp; PCBA</h6>
+            <a href="../index.html#products">Telalive</a>
+            <a href="../index.html#products">Hearit.ai PCBA</a>
+            <a href="../index.html#products">View All Products</a><!-- TODO: link when page exists -->
+          </div>
+        </div></div>
+      </div>
+      <div class="nav-item has-mega">
+        <a href="../index.html#capabilities">Custom Devices <i data-lucide="chevron-down" class="chev"></i></a>
+        <div class="mega"><div class="mega-cols">
+          <div class="mega-col"><h6>Hardware</h6>
+            <a href="../index.html#capabilities">ODM / OEM</a><a href="../index.html#capabilities">Private Label</a><a href="../index.html#capabilities">Custom Enclosure</a><a href="../index.html#capabilities">3D Small-batch Prototype</a>
+          </div>
+          <div class="mega-col"><h6>Engineering</h6>
+            <a href="../index.html#capabilities">Firmware Integration</a><a href="../index.html#capabilities">Audio &amp; DSP Tuning</a><a href="../index.html#capabilities">AI SDK Integration</a><a href="../index.html#capabilities">Prototype Validation</a>
+          </div>
+          <div class="mega-col"><h6>Production</h6>
+            <a href="../index.html#capabilities">EVT / DVT / PVT</a><a href="../index.html#capabilities">SMT Manufacturing</a><a href="../index.html#capabilities">Certification Support</a><a href="../index.html#capabilities">Supply Chain Management</a>
+          </div>
+        </div></div><!-- TODO: link sub-items when pages exist -->
+      </div>
+      <div class="nav-item"><a href="../implementation/">Implementation</a></div>
+      <div class="nav-item active"><a href="../proof/">Proof</a></div>
+      <div class="nav-item has-mega">
+        <a href="../index.html#industries">Industries <i data-lucide="chevron-down" class="chev"></i></a>
+        <div class="mega"><div class="mega-cols">
+          <div class="mega-col"><h6>Healthcare &amp; Ops</h6>
+            <a href="../index.html#industries">Healthcare Voice AI</a><a href="../index.html#industries">Veterinary AI</a><a href="../index.html#industries">Hospitality AI</a>
+          </div>
+          <div class="mega-col"><h6>Enterprise &amp; Field</h6>
+            <a href="../index.html#industries">Enterprise AI</a><a href="../index.html#industries">Sales Intelligence</a><a href="../index.html#industries">Field Service</a><a href="../index.html#industries">Voice Agents</a><a href="../index.html#industries">Telecom AI</a>
+          </div>
+          <div class="mega-col"><h6>Safety &amp; Transport</h6>
+            <a href="../index.html#industries">Public Safety</a><a href="../index.html#industries">Logistics &amp; Transportation</a><a href="../index.html#industries">Smart Retail</a><a href="../index.html#industries">NEMT</a>
+          </div>
+        </div></div><!-- TODO: link sub-items when pages exist -->
+      </div>
+      <div class="nav-item"><a href="../process/">Process</a></div>
+      <div class="nav-item has-mega alignR">
+        <a href="../about/">Company <i data-lucide="chevron-down" class="chev"></i></a>
+        <div class="mega"><div class="mega-cols">
+          <div class="mega-col"><h6>Company</h6>
+            <a href="../about/">About Us</a><a href="../blog/">Blog</a><a href="../contact/">Contact</a><a href="../faq/">FAQ</a>
+          </div>
+        </div></div>
+      </div>
+    </div>
+    <div class="nav-right">
+      <a href="../contact/" class="btn btn-dark sm">Start a Project</a>
+      <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i data-lucide="menu"></i></button>
+    </div>
+  </nav>
+</div>
+
+<!-- mobile drawer (accordion) -->
+<aside class="drawer" id="drawer" aria-label="Menu">
+  <div class="drawer-top">
+    <span class="logo"><span class="mk" aria-hidden="true"></span>GMIC AI</span>
+    <button class="drawer-close" id="drawerClose" aria-label="Close menu"><i data-lucide="x"></i></button>
+  </div>
+  <div class="acc"><button type="button">Products <i data-lucide="chevron-down" class="chev"></i></button>
+    <div class="acc-panel">
+      <div class="grp">Voice Capture</div>
+      <a href="../index.html#products">MIC06</a><a href="../index.html#products">MIC05</a><a href="../index.html#products">MIC01</a>
+      <div class="grp">Phone &amp; PCBA</div>
+      <a href="../index.html#products">Telalive</a><a href="../index.html#products">Hearit.ai PCBA</a><a href="../index.html#products">View All Products</a>
+    </div>
+  </div>
+  <div class="acc"><button type="button">Custom Devices <i data-lucide="chevron-down" class="chev"></i></button>
+    <div class="acc-panel">
+      <div class="grp">Hardware</div><a href="../index.html#capabilities">ODM / OEM</a><a href="../index.html#capabilities">Private Label</a><a href="../index.html#capabilities">Custom Enclosure</a><a href="../index.html#capabilities">3D Small-batch Prototype</a>
+      <div class="grp">Engineering</div><a href="../index.html#capabilities">Firmware Integration</a><a href="../index.html#capabilities">Audio &amp; DSP Tuning</a><a href="../index.html#capabilities">AI SDK Integration</a><a href="../index.html#capabilities">Prototype Validation</a>
+      <div class="grp">Production</div><a href="../index.html#capabilities">EVT / DVT / PVT</a><a href="../index.html#capabilities">SMT Manufacturing</a><a href="../index.html#capabilities">Certification Support</a><a href="../index.html#capabilities">Supply Chain Management</a>
+    </div>
+  </div>
+  <a class="d-direct" href="../implementation/">Implementation</a>
+  <a class="d-direct active" href="../proof/">Proof</a>
+  <div class="acc"><button type="button">Industries <i data-lucide="chevron-down" class="chev"></i></button>
+    <div class="acc-panel">
+      <div class="grp">Healthcare &amp; Ops</div><a href="../index.html#industries">Healthcare Voice AI</a><a href="../index.html#industries">Veterinary AI</a><a href="../index.html#industries">Hospitality AI</a>
+      <div class="grp">Enterprise &amp; Field</div><a href="../index.html#industries">Enterprise AI</a><a href="../index.html#industries">Sales Intelligence</a><a href="../index.html#industries">Field Service</a><a href="../index.html#industries">Voice Agents</a><a href="../index.html#industries">Telecom AI</a>
+      <div class="grp">Safety &amp; Transport</div><a href="../index.html#industries">Public Safety</a><a href="../index.html#industries">Logistics &amp; Transportation</a><a href="../index.html#industries">Smart Retail</a><a href="../index.html#industries">NEMT</a>
+    </div>
+  </div>
+  <a class="d-direct" href="../process/">Process</a>
+  <div class="acc"><button type="button">Company <i data-lucide="chevron-down" class="chev"></i></button>
+    <div class="acc-panel">
+      <a href="../about/">About Us</a><a href="../blog/">Blog</a><a href="../contact/">Contact</a><a href="../faq/">FAQ</a>
+    </div>
+  </div>
+  <a class="btn btn-dark" href="../contact/">Start a Project</a>
+</aside>
+<div class="scrim" id="scrim"></div>
+
+<!-- ===================== HEADER ===================== -->
+<header class="phead">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">Home</a> / <span>Proof</span></div>
+    <span class="kicker"><span class="dot" aria-hidden="true"></span>Proof · Case Studies</span>
+    <h1 class="display">Trusted by AI Companies, Enterprise Teams, <span class="tone">and Product Innovators.</span></h1>
+    <p class="lead">GMIC helps companies move from ideas to deployable hardware. Whether the goal is validating a new workflow, launching a consumer product, or scaling an AI platform into the physical world, our customers rely on GMIC for engineering, prototyping, and manufacturing support.</p>
+    <div class="cta">
+      <a href="../contact/" class="btn btn-dark sm">Start a Project <i data-lucide="arrow-right"></i></a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== RESULTS AT A GLANCE ===================== -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal" style="margin-bottom:18px">
+      <span class="kicker"><span class="dot" aria-hidden="true"></span>Results at a glance</span>
+    </div>
+    <div class="results reveal">
+      <div class="rstat"><div class="n">~5,000</div><div class="l">Units sold in 3 months</div></div>
+      <div class="rstat"><div class="n n-sm" style="font-size:clamp(26px,3vw,40px)">3rd-Gen</div><div class="l">Prototype co-developed with an AI software company</div></div>
+      <div class="rstat"><div class="n">5</div><div class="l">Healthcare AI-scribe pilot devices delivered</div></div>
+      <div class="rstat"><div class="n n-sm" style="font-size:clamp(24px,2.6vw,34px)">Enterprise</div><div class="l">Active evaluations with large-scale AI organizations</div></div>
+    </div>
+    <div class="trusted reveal">
+      <b>Trusted across industries:</b>
+      <span class="tg">Consumer electronics</span><span class="tg">AI software</span><span class="tg">Healthcare AI</span><span class="tg">Field service</span><span class="tg">Enterprise AI</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CASE STUDIES ===================== -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="kicker"><span class="dot" aria-hidden="true"></span>Case Studies</span>
+      <h2 class="display">Proven outcomes, <span class="tone">project by project.</span></h2>
+    </div>
+    <!-- Feature: case 01 (large module) -->
+    <div class="cases">
+      <article class="case feature panel reveal">
+        <div class="case-media">
+          <img src="img/case1.png" alt="Bone-conduction consumer audio product" onerror="this.onerror=null;this.src='https://placehold.co/500x400/efefed/111111?text=Consumer+Audio';">
+          <div class="metric"><b>~5,000</b><span>units in 3 months</span></div>
+        </div>
+        <div class="case-body">
+          <div class="case-tags"><span class="tag cat">Manufacturing</span><span class="tag status live">Shipped · In production</span></div>
+          <h3>5,000 Units Sold in Three Months</h3>
+          <p class="case-client">A creator-led consumer-electronics brand — bone-conduction audio product.</p>
+          <div class="case-cols">
+            <div><h6>What GMIC did</h6><ul>
+              <li><i data-lucide="check"></i> Manufacturing</li><li><i data-lucide="check"></i> Supply-chain coordination</li><li><i data-lucide="check"></i> Production scaling</li>
+            </ul></div>
+            <div class="res"><h6>Results</h6><ul>
+              <li><i data-lucide="check"></i> Nearly 5,000 units sold within three months</li><li><i data-lucide="check"></i> Successful product launch</li><li><i data-lucide="check"></i> Demonstrated manufacturing scalability</li>
+            </ul></div>
+          </div>
+          <p class="case-mean">This project validates GMIC's ability to support customers beyond prototyping and into commercial production.</p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Accordion: cases 02–05 (compact, details collapse) -->
+    <div class="cacc reveal">
+
+      <article class="citem panel open">
+        <button class="citem-head" type="button" aria-expanded="true">
+          <span class="cthumb"><img src="img/case2.jpg" alt="" onerror="this.onerror=null;this.src='https://placehold.co/120x120/efefed/111111?text=HW';"></span>
+          <span class="cmain"><span class="ct">Co-Developing Dedicated Hardware with an AI Software Company</span>
+            <span class="cmeta"><span class="tag cat">AI Software</span><span class="tag status">Ongoing development</span></span></span>
+          <span class="cmetric">3rd-Gen</span>
+          <span class="ctog" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+        </button>
+        <div class="cdetail"><div class="cdetail-in">
+          <p class="cclient">A growing AI software company. Partnered with GMIC to transform its software workflow into a dedicated hardware experience.</p>
+          <div class="case-cols">
+            <div><h6>What GMIC did</h6><ul>
+              <li><i data-lucide="check"></i> Hardware platform development</li><li><i data-lucide="check"></i> Product customization</li><li><i data-lucide="check"></i> Firmware optimization</li><li><i data-lucide="check"></i> Workflow validation</li>
+            </ul></div>
+            <div class="res"><h6>Status</h6><ul>
+              <li><i data-lucide="check"></i> Third-generation prototype completed</li><li><i data-lucide="check"></i> Multiple development iterations completed</li><li><i data-lucide="check"></i> Ongoing joint product development</li>
+            </ul></div>
+          </div>
+          <p class="case-mean">This project demonstrates GMIC's ability to work closely with AI companies throughout the hardware development lifecycle.</p>
+        </div></div>
+      </article>
+
+      <article class="citem panel">
+        <button class="citem-head" type="button" aria-expanded="false">
+          <span class="cthumb"><img src="img/case3.png" alt="" onerror="this.onerror=null;this.src='https://placehold.co/120x120/efefed/111111?text=RX';"></span>
+          <span class="cmain"><span class="ct">Supporting Healthcare AI Hardware Pilots</span>
+            <span class="cmeta"><span class="tag cat">Healthcare AI</span><span class="tag status">5 pilots delivered</span></span></span>
+          <span class="cmetric">5 pilots</span>
+          <span class="ctog" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+        </button>
+        <div class="cdetail"><div class="cdetail-in">
+          <p class="cclient">An AI documentation company. Engaged GMIC to develop a dedicated voice-hardware solution for clinical documentation workflows.</p>
+          <div class="case-cols">
+            <div><h6>Project scope</h6><ul>
+              <li><i data-lucide="check"></i> Custom hardware evaluation</li><li><i data-lucide="check"></i> Workflow validation</li><li><i data-lucide="check"></i> Prototype deployment</li>
+            </ul></div>
+            <div class="res"><h6>Results</h6><ul>
+              <li><i data-lucide="check"></i> Five pilot devices delivered</li><li><i data-lucide="check"></i> Customer workflow validation completed</li><li><i data-lucide="check"></i> Hardware evaluation successfully launched</li>
+            </ul></div>
+          </div>
+          <p class="case-mean">This project highlights the growing demand for dedicated hardware in AI-powered documentation workflows.</p>
+        </div></div>
+      </article>
+
+      <article class="citem panel">
+        <button class="citem-head" type="button" aria-expanded="false">
+          <span class="cthumb"><img src="img/case4.png" alt="" onerror="this.onerror=null;this.src='https://placehold.co/120x120/efefed/111111?text=FS';"></span>
+          <span class="cmain"><span class="ct">Wearable Voice Hardware for Field Service Teams</span>
+            <span class="cmeta"><span class="tag cat">Field Service</span><span class="tag status live">Field deployed</span></span></span>
+          <span class="cmetric">Deployed</span>
+          <span class="ctog" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+        </button>
+        <div class="cdetail"><div class="cdetail-in">
+          <p class="cclient">A workflow automation platform. Selected GMIC's wearable voice hardware for real-world testing with field technicians. Initial pilot feedback showed strong adoption among users, particularly because the wearable form factor reduced workflow friction compared to traditional recording methods.</p>
+          <div class="case-cols">
+            <div class="res"><h6>Results</h6><ul>
+              <li><i data-lucide="check"></i> Successful field deployment</li><li><i data-lucide="check"></i> Positive technician feedback</li><li><i data-lucide="check"></i> Expansion planning underway</li>
+            </ul></div>
+            <div><h6>What's next</h6><ul>
+              <li><i data-lucide="trending-up"></i> Significant projected investment in contractor and home-services adoption over the next several years</li>
+            </ul></div>
+          </div>
+          <p class="case-mean">Future projections from the customer include significant investment in contractor and home-services adoption over the next several years.</p>
+        </div></div>
+      </article>
+
+      <article class="citem panel">
+        <button class="citem-head" type="button" aria-expanded="false">
+          <span class="cthumb"><img src="img/case5.png" alt="" onerror="this.onerror=null;this.src='https://placehold.co/120x120/efefed/111111?text=ENT';"></span>
+          <span class="cmain"><span class="ct">Evaluated by Large-Scale Enterprise AI Organizations</span>
+            <span class="cmeta"><span class="tag cat">Enterprise AI</span><span class="tag status">Under evaluation</span></span></span>
+          <span class="cmetric">Enterprise</span>
+          <span class="ctog" aria-hidden="true"><i data-lucide="chevron-down"></i></span>
+        </button>
+        <div class="cdetail"><div class="cdetail-in">
+          <p class="cclient">Enterprise software and conversation-intelligence organizations. GMIC is actively engaged with these organizations exploring dedicated voice hardware. They serve large customer bases and need hardware capable of enterprise-grade deployment, workflow adoption, and long-term scalability.</p>
+          <div class="case-cols">
+            <div><h6>Current activities</h6><ul>
+              <li><i data-lucide="check"></i> Hardware evaluation</li><li><i data-lucide="check"></i> Workflow validation</li><li><i data-lucide="check"></i> Prototype testing</li><li><i data-lucide="check"></i> Deployment-planning discussions</li>
+            </ul></div>
+            <div class="res"><h6>Status</h6><ul>
+              <li><i data-lucide="check"></i> Active enterprise evaluations</li>
+            </ul></div>
+          </div>
+          <p class="case-mean">These engagements reflect growing demand for dedicated hardware within enterprise AI ecosystems.</p>
+        </div></div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY THIS MATTERS ===================== -->
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div class="panel" style="padding:clamp(28px,3.4vw,52px)">
+      <div class="sec-head reveal" style="margin-bottom:0;max-width:820px">
+        <span class="kicker"><span class="dot" aria-hidden="true"></span>Why this matters</span>
+        <h2 class="display">Most manufacturers can build devices. <span class="tone">Few can turn software workflows into deployable products.</span></h2>
+        <p class="lead">GMIC combines AI hardware development, firmware engineering, prototype validation, manufacturing support, and deployment planning — so customers move from concept to real-world adoption.</p>
+      </div>
+      <div class="why-tags reveal">
+        <span class="wt"><i data-lucide="cpu"></i> AI hardware development</span>
+        <span class="wt"><i data-lucide="code-2"></i> Firmware engineering</span>
+        <span class="wt"><i data-lucide="flask-conical"></i> Prototype validation</span>
+        <span class="wt"><i data-lucide="factory"></i> Manufacturing support</span>
+        <span class="wt"><i data-lucide="truck"></i> Deployment planning</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="sec">
+  <div class="wrap">
+    <div class="cta-card reveal">
+      <span class="kicker"><span class="dot" aria-hidden="true"></span>Begin</span>
+      <h2 class="display">From prototype to scale.</h2>
+      <p>Whether you're building an AI scribe platform, a voice agent, an enterprise workflow solution, or a consumer product, GMIC bridges the gap between software and hardware.</p>
+      <div class="cta-actions">
+        <a href="../contact/" class="btn btn-light">Start Your Project <i data-lucide="arrow-right"></i></a>
+        <a href="../process/" class="cta-link">Learn our process <i data-lucide="arrow-right"></i></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== NEWSLETTER ===================== -->
+<section class="sec news" style="padding-top:0">
+  <div class="wrap">
+    <div class="panel">
+      <div>
+        <h2>Don't miss out.</h2>
+        <p>Monthly notes on hardware shipping, certifications, and the AI models running on our devices.</p>
+      </div>
+      <form class="news-form" onsubmit="event.preventDefault();var i=this.querySelector('input');var b=this.querySelector('button');if(i.value){i.value='';b.textContent='Subscribed ✓';}">
+        <input type="email" required placeholder="Enter your email" aria-label="Email address">
+        <button type="submit" class="btn btn-dark">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="footer-inner wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <span class="logo"><span class="mk" aria-hidden="true"></span>GMIC AI</span>
+        <p>Designing and manufacturing the embedded hardware behind the voice-first era.</p>
+        <div class="foot-contact">
+          <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a>
+          <a href="tel:+16699000008">+1 (669) 900-0008</a>
+          <a href="#">Anaheim, CA · Shenzhen, CN</a>
+        </div>
+        <div class="certs" aria-label="Certifications">
+          <span>FCC</span><span>CE</span><span>UKCA</span><span>TELEC</span><span>RoHS</span><span>ISED</span>
+        </div>
+      </div>
+      <div class="foot-col">
+        <h5>Solutions</h5>
+        <a href="../index.html#capabilities">Edge AI Hardware</a>
+        <a href="../index.html#capabilities">Voice AI Hardware</a>
+        <a href="../index.html#capabilities">AI Wearable Devices</a>
+        <a href="../index.html#capabilities">AI Hardware ODM</a>
+        <a href="../index.html#capabilities">Embedded AI Hardware</a>
+      </div>
+      <div class="foot-col">
+        <h5>Industries</h5>
+        <a href="../index.html#industries">Healthcare AI</a>
+        <a href="../index.html#industries">Enterprise AI</a>
+        <a href="../index.html#industries">Field Service AI</a>
+        <a href="../index.html#industries">Telecom AI</a>
+        <a href="../index.html#industries">Smart Retail</a>
+      </div>
+      <div class="foot-col">
+        <h5>Resources</h5>
+        <a href="../blog/">Blog</a>
+        <a href="../proof/">Case Studies</a>
+        <a href="../process/">Our Process</a>
+        <a href="../index.html#capabilities">Engineering Capabilities</a>
+        <a href="../contact/">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="../about/">About GMIC</a>
+        <a href="../proof/">Customer Stories</a>
+        <a href="../contact/">Book a Demo</a>
+        <a href="mailto:trigg@gmic.ai?subject=Careers">Careers</a>
+        <a href="#">Privacy</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <div>© 2026 GMIC.AI</div>
+      <div><a href="#">Privacy</a> · <a href="#">Terms</a> · <a href="#">Cookies</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var burger=document.getElementById('burger'),drawer=document.getElementById('drawer'),
+      scrim=document.getElementById('scrim'),dclose=document.getElementById('drawerClose');
+  function open(){drawer.classList.add('open');scrim.classList.add('open');burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden';}
+  function close(){drawer.classList.remove('open');scrim.classList.remove('open');burger.setAttribute('aria-expanded','false');document.body.style.overflow='';}
+  burger&&burger.addEventListener('click',open);
+  dclose&&dclose.addEventListener('click',close);
+  scrim&&scrim.addEventListener('click',close);
+  document.querySelectorAll('.drawer a').forEach(function(a){a.addEventListener('click',close);});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')close();});
+  document.querySelectorAll('.acc>button').forEach(function(b){b.addEventListener('click',function(){b.parentElement.classList.toggle('open');});});
+  // case studies accordion
+  document.querySelectorAll('.citem-head').forEach(function(b){b.addEventListener('click',function(){var it=b.closest('.citem');var op=it.classList.toggle('open');b.setAttribute('aria-expanded',op?'true':'false');});});
+
+  var els=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)||window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    els.forEach(function(e){e.classList.add('in');});
+  } else {
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -50px 0px',threshold:.08});
+    els.forEach(function(e){io.observe(e);});
+  }
+  if(typeof lucide!=='undefined')lucide.createIcons();
+})();
+</script>
+
+</body>
+</html>
