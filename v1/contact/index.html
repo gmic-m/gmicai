@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Journal — GMIC AI</title>
-<meta name="description" content="Insights on edge AI hardware, voice infrastructure, and the industries being transformed by on-device intelligence." />
+<title>Contact — GMIC AI</title>
+<meta name="description" content="Let's build something real. Whether you have a finished spec or a napkin sketch — our team in Anaheim and Shenzhen is ready to help you move from idea to production-ready device." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,7 +13,7 @@
 
 <style>
 /* ============================================================
-   GMIC AI — Journal (Editorial Premium). Standalone; v1 tokens.
+   GMIC AI — Contact (Editorial Premium). Standalone; v1 tokens.
    ============================================================ */
 :root{
   --white:#ffffff; --cream:#f6f5f1; --ink:#1a1a1a; --ink2:#6b6b66; --hair:#e7e6e1;
@@ -31,11 +31,11 @@ button{ font-family:inherit; cursor:pointer; border:none; background:none; color
 :focus-visible{ outline:2px solid var(--green-accent); outline-offset:3px; }
 .wrap{ max-width:1240px; width:100%; margin:0 auto; padding:0 clamp(20px,4vw,48px); }
 .section{ padding:clamp(56px,7vw,104px) 0; }
+section[id]{ scroll-margin-top:84px; }
 
 .eyebrow{ font-size:12px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--ink2); }
 .display{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line-height:1.04; }
 h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line-height:1.1; }
-.h-xl{ font-size:clamp(40px,6vw,76px); }
 .h-md{ font-size:clamp(24px,2.6vw,34px); }
 .lead{ font-size:clamp(16px,1.3vw,18.5px); line-height:1.6; color:var(--ink2); }
 .center{ text-align:center; }
@@ -46,22 +46,18 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line
 .btn-green:hover{ background:var(--green-accent); transform:translateY(-1px); }
 .btn-light{ background:#fff; color:var(--ink); }
 .btn-light:hover{ transform:translateY(-1px); box-shadow:0 8px 24px rgba(0,0,0,.14); }
-.btn-outline-ink{ background:transparent; color:var(--ink); border:1px solid var(--hair); }
-.btn-outline-ink:hover{ border-color:var(--ink); }
-.btn-outline-light{ background:transparent; color:#fff; border:1px solid rgba(255,255,255,.55); }
-.btn-outline-light:hover{ background:#fff; color:var(--green); border-color:#fff; }
+.btn-block{ width:100%; justify-content:center; padding:15px 22px; }
 .link-arrow{ font-size:14px; font-weight:500; color:var(--green); display:inline-flex; align-items:center; gap:6px; }
 .link-arrow:hover{ color:var(--green-accent); gap:9px; }
 
-/* ---------- top bar + nav ---------- */
+/* ---------- top bar + nav (solid sticky) ---------- */
 .topbar{ background:var(--green); color:#fff; }
 .topbar .wrap{ display:flex; align-items:center; justify-content:center; min-height:34px; }
 .topbar p{ font-size:12px; color:rgba(255,255,255,.92); }
-.topbar a{ font-weight:600; border-bottom:1px solid rgba(255,255,255,.5); }
-.nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.88); backdrop-filter:saturate(160%) blur(10px); border-bottom:1px solid var(--hair); }
+.nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:saturate(160%) blur(10px); border-bottom:1px solid var(--hair); }
 .nav-inner{ display:flex; align-items:center; justify-content:space-between; height:66px; gap:24px; }
 .brand{ font-family:var(--serif); font-weight:500; font-size:22px; letter-spacing:-.01em; color:var(--ink); }
-.nav-links{ display:flex; gap:30px; }
+.nav-links{ display:flex; gap:28px; }
 .nav-links a{ font-size:14.5px; color:var(--ink2); transition:color .18s; position:relative; }
 .nav-links a:hover{ color:var(--ink); }
 .nav-links a.active{ color:var(--green); }
@@ -109,82 +105,63 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line
 .drawer-sub{ font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink2); margin:10px 0 0; }
 .drawer .btn{ border-bottom:none; }
 
-/* ---------- HEADER ---------- */
-.blog-head{ background:var(--cream); border-bottom:1px solid var(--hair); text-align:center; padding:clamp(48px,7vw,96px) 0 clamp(40px,5vw,64px); }
-.blog-head .eyebrow{ display:block; margin-bottom:16px; }
-.blog-head h1{ margin-bottom:18px; }
-.blog-head .lead{ margin:0 auto; }
+/* ---------- HERO banner ---------- */
+.hero{ position:relative; min-height:clamp(360px,50vh,520px); display:flex; align-items:center; justify-content:center; text-align:center; overflow:hidden; background:var(--green-deep); }
+.hero img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.hero::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,26,18,.55), rgba(10,26,18,.42) 45%, rgba(10,26,18,.72)); }
+.hero-inner{ position:relative; z-index:2; color:#fff; padding:64px 22px; max-width:880px; }
+.hero .eyebrow{ color:rgba(255,255,255,.78); display:block; margin-bottom:18px; }
+.hero h1{ color:#fff; font-size:clamp(34px,4.6vw,60px); margin:0 auto 18px; max-width:16ch; }
+.hero p{ font-size:clamp(15px,1.3vw,18px); color:rgba(255,255,255,.88); max-width:60ch; margin:0 auto; }
 
-/* filters */
-.filters{ display:flex; flex-wrap:wrap; gap:10px 22px; justify-content:center; margin-top:clamp(28px,3.5vw,40px); }
-.filter-pill{ font-size:14px; color:var(--ink2); padding:6px 2px; position:relative; transition:color .15s; background:transparent; }
-.filter-pill:hover{ color:var(--ink); }
-.filter-pill.active{ color:var(--green); }
-.filter-pill.active::after{ content:""; position:absolute; left:0; right:0; bottom:-2px; height:2px; background:var(--green); }
+/* ---------- CONTACT layout ---------- */
+.contact-grid{ display:grid; grid-template-columns:1.35fr 1fr; gap:clamp(28px,4vw,56px); align-items:start; }
 
-/* ---------- POSTS ---------- */
-.posts{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
-.post{ display:flex; flex-direction:column; border:1px solid var(--hair); border-radius:var(--rl); overflow:hidden; background:#fff; transition:transform .2s ease, box-shadow .2s ease; }
-.post:hover{ transform:translateY(-4px); box-shadow:0 18px 44px rgba(24,74,55,.10); }
-.post-thumb{ position:relative; aspect-ratio:16/10; overflow:hidden; background:var(--cream); }
-.post-thumb img{ width:100%; height:100%; object-fit:cover; }
-.post-thumb.grad::after{ content:""; position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,.18), transparent 60%); }
-.post-body{ padding:22px 24px 24px; display:flex; flex-direction:column; flex:1; }
-.post-meta{ display:flex; align-items:center; gap:10px; margin-bottom:14px; }
-.post-cat{ font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--green); font-weight:600; }
-.post-dot{ width:3px; height:3px; border-radius:50%; background:var(--ink2); }
-.post-date{ font-size:12px; color:var(--ink2); }
-.post h3{ font-size:21px; line-height:1.22; margin-bottom:10px; letter-spacing:-.01em; }
-.post-excerpt{ font-size:14px; color:var(--ink2); line-height:1.6; margin-bottom:18px; flex:1; }
-.post .link-arrow{ font-size:13.5px; }
+/* form card */
+.form-card{ background:var(--cream); border:1px solid var(--hair); border-radius:var(--rl); padding:clamp(26px,3vw,40px); }
+.form-card h2{ font-size:28px; margin-bottom:6px; }
+.form-card .sub{ font-size:13.5px; color:var(--ink2); margin-bottom:24px; }
+.frow{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.field{ display:flex; flex-direction:column; margin-bottom:16px; }
+.field label{ font-size:12px; font-weight:500; color:var(--ink); margin-bottom:7px; }
+.field input, .field select, .field textarea{ font-family:var(--sans); font-size:14.5px; color:var(--ink); background:#fff; border:1px solid var(--hair); border-radius:10px; padding:12px 14px; width:100%; transition:border-color .15s, box-shadow .15s; }
+.field textarea{ resize:vertical; min-height:120px; }
+.field input::placeholder, .field textarea::placeholder{ color:#9a9a93; }
+.field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-color:var(--green); box-shadow:0 0 0 2px rgba(24,74,55,.15); }
+.field select{ appearance:none; -webkit-appearance:none; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b6b66' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 14px center; padding-right:38px; cursor:pointer; }
+.form-note{ font-size:12px; color:var(--ink2); margin-top:14px; line-height:1.6; }
+.form-note a{ color:var(--green); }
+.form-success{ display:none; margin-top:18px; border:1px solid var(--green); background:rgba(24,74,55,.06); border-radius:10px; padding:16px 18px; font-size:14px; color:var(--ink); }
+.form-success.show{ display:block; }
 
-/* feature (first card, full width) */
-.post.feature{ grid-column:1 / -1; flex-direction:row; }
-.post.feature .post-thumb{ aspect-ratio:auto; width:55%; min-height:300px; }
-.post.feature .post-body{ width:45%; justify-content:center; padding:clamp(28px,4vw,56px); }
-.post.feature .post-tag-feature{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--green); margin-bottom:14px; }
-.post.feature h3{ font-size:clamp(26px,3vw,38px); margin-bottom:14px; }
-.post.feature .post-excerpt{ font-size:15px; max-width:48ch; }
+/* sidebar */
+.side-block{ margin-bottom:clamp(24px,3vw,36px); }
+.side-tag{ font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--green); display:block; margin-bottom:18px; }
+.why-row{ display:grid; grid-template-columns:38px 1fr; gap:14px; align-items:start; padding:16px 0; border-bottom:1px solid var(--hair); }
+.why-row:first-of-type{ border-top:1px solid var(--hair); }
+.why-ico{ width:36px; height:36px; border-radius:10px; background:rgba(24,74,55,.08); display:flex; align-items:center; justify-content:center; }
+.why-ico [data-lucide]{ width:18px; height:18px; stroke:var(--green); stroke-width:1.7; }
+.why-row h3{ font-family:var(--sans); font-weight:600; font-size:15px; margin-bottom:4px; }
+.why-row p{ font-size:13px; color:var(--ink2); line-height:1.55; }
+.contact-cards{ display:grid; grid-template-columns:1fr; gap:12px; }
+.contact-card{ border:1px solid var(--hair); border-radius:var(--rl); padding:20px 22px; background:#fff; }
+.contact-card .k{ font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--green); display:block; margin-bottom:8px; }
+.contact-card h3{ font-size:19px; margin-bottom:2px; }
+.contact-card .role{ font-size:12px; color:var(--ink2); margin-bottom:14px; }
+.contact-card .rows{ font-size:13.5px; line-height:1.85; color:var(--ink2); border-top:1px solid var(--hair); padding-top:12px; }
+.contact-card .rows a:hover{ color:var(--green); }
 
-/* skeleton */
-.skeleton{ border:1px solid var(--hair); border-radius:var(--rl); overflow:hidden; }
-.sk-thumb{ aspect-ratio:16/10; }
-.sk-thumb, .sk-line{ background:linear-gradient(90deg,#efeee9 25%,#e6e5e0 50%,#efeee9 75%); background-size:200% 100%; animation:sk 1.3s linear infinite; }
-.sk-body{ padding:22px 24px; }
-.sk-line{ height:12px; border-radius:6px; margin-bottom:12px; }
-.sk-line.s{ width:40%; } .sk-line.m{ width:75%; }
-@keyframes sk{ 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-@media (prefers-reduced-motion: reduce){ .sk-thumb,.sk-line{ animation:none; } }
-
-/* pagination */
-.pagination{ display:flex; gap:8px; justify-content:center; align-items:center; flex-wrap:wrap; margin-top:clamp(36px,4vw,56px); }
-.page-btn{ min-width:42px; height:42px; padding:0 14px; border:1px solid var(--hair); border-radius:100px; background:#fff; font-size:14px; color:var(--ink); display:inline-flex; align-items:center; justify-content:center; transition:border-color .15s, background .15s, color .15s; }
-.page-btn:hover:not([disabled]):not(.active):not(.ellipsis){ border-color:var(--ink); }
-.page-btn.active{ background:var(--green); border-color:var(--green); color:#fff; }
-.page-btn[disabled]{ opacity:.4; cursor:not-allowed; }
-.page-btn.ellipsis{ border-color:transparent; }
-
-.empty{ display:none; text-align:center; padding:60px 0; color:var(--ink2); }
-.empty a{ color:var(--green); border-bottom:1px solid var(--green); }
-
-/* ---------- CTA ---------- */
+/* ---------- CTA card ---------- */
 .cta-card{ background:var(--green); color:#fff; border-radius:var(--rl); padding:clamp(40px,6vw,80px) clamp(28px,5vw,68px); }
 .cta-flex{ display:grid; grid-template-columns:1.3fr .7fr; gap:40px; align-items:center; }
 .cta-card .eyebrow{ color:rgba(255,255,255,.65); display:block; margin-bottom:18px; }
-.cta-card h2{ color:#fff; font-size:clamp(28px,3.6vw,46px); max-width:16ch; margin-bottom:18px; }
-.cta-card .sub{ color:rgba(255,255,255,.82); max-width:50ch; margin-bottom:28px; }
-.cta-actions{ display:flex; gap:14px; align-items:center; flex-wrap:wrap; }
+.cta-card h2{ color:#fff; font-size:clamp(28px,3.6vw,46px); max-width:16ch; margin-bottom:16px; }
+.cta-card .sub{ color:rgba(255,255,255,.82); max-width:52ch; margin-bottom:28px; }
+.cta-actions{ display:flex; gap:18px; align-items:center; flex-wrap:wrap; }
+.cta-link{ font-size:14px; color:rgba(255,255,255,.85); border-bottom:1px solid rgba(255,255,255,.4); padding-bottom:2px; }
+.cta-link:hover{ color:#fff; }
 .cta-illo{ justify-self:center; }
 .cta-illo svg{ width:100%; max-width:230px; height:auto; }
-
-/* ---------- NEWSLETTER ---------- */
-.news{ border-top:1px solid var(--hair); }
-.news-inner{ display:flex; justify-content:space-between; gap:28px; flex-wrap:wrap; align-items:center; }
-.news h3{ font-size:clamp(24px,2.6vw,32px); }
-.news p{ color:var(--ink2); margin-top:8px; max-width:46ch; font-size:14.5px; }
-.news-form{ display:flex; gap:10px; flex-wrap:wrap; }
-.news-form input{ border:1px solid var(--hair); border-radius:100px; background:#fff; padding:13px 18px; font-size:14.5px; min-width:260px; color:var(--ink); }
-.news-form input:focus{ outline:none; border-color:var(--green); }
 
 /* ---------- FOOTER ---------- */
 .footer{ background:var(--white); border-top:1px solid var(--hair); padding-top:clamp(56px,7vw,88px); }
@@ -210,25 +187,18 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line
 }
 
 /* responsive */
-@media (max-width:1080px){
-  .posts{ grid-template-columns:repeat(2,1fr); }
-  .footer-grid{ grid-template-columns:1fr 1fr 1fr; }
-  .f-brand{ grid-column:1 / -1; }
-}
+@media (max-width:1080px){ .footer-grid{ grid-template-columns:1fr 1fr 1fr; } .f-brand{ grid-column:1 / -1; } }
 @media (max-width:880px){
   .nav-links{ display:none; }
   .nav-right .btn{ display:none; }
   .burger{ display:flex; }
-  .post.feature{ flex-direction:column; }
-  .post.feature .post-thumb, .post.feature .post-body{ width:100%; }
-  .post.feature .post-thumb{ aspect-ratio:16/9; min-height:0; }
+  .contact-grid{ grid-template-columns:1fr; }
   .cta-flex{ grid-template-columns:1fr; }
   .cta-illo{ order:-1; }
 }
 @media (max-width:560px){
-  .posts{ grid-template-columns:1fr; }
+  .frow{ grid-template-columns:1fr; gap:0; }
   .footer-grid{ grid-template-columns:1fr 1fr; }
-  .news-form input{ min-width:0; flex:1; }
 }
 </style>
 </head>
@@ -239,7 +209,7 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line
   <div class="wrap"><p>The AI hardware division of Gainstrong — manufacturing for global brands since 2009.</p></div>
 </div>
 
-<!-- ===================== NAV (Blog active) ===================== -->
+<!-- ===================== NAV (Contact active) ===================== -->
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="../index.html" aria-label="GMIC AI home">GMIC AI</a>
@@ -316,15 +286,15 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line
         <div class="mega mega--right"><div class="mega-inner"><div class="mega-cols">
           <div class="mega-col"><h5>Company</h5>
             <a class="mega-link" href="../about/">About Us</a>
-            <a class="mega-link active" href="./" aria-current="page">Blog</a>
-            <a class="mega-link" href="../contact/">Contact</a>
+            <a class="mega-link" href="../blog/">Blog</a>
+            <a class="mega-link active" href="./" aria-current="page">Contact</a>
             <a class="mega-link" href="../faq/">FAQ</a>
           </div>
         </div></div></div>
       </div>
     </nav>
     <div class="nav-right">
-      <a class="btn btn-green" href="../contact/">Start a Project</a>
+      <a class="btn btn-green" href="#start">Start a Project</a>
       <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="drawer"><i data-lucide="menu" style="width:20px;height:20px;"></i></button>
     </div>
   </div>
@@ -393,34 +363,131 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line
     <button class="drawer-toggle" aria-expanded="false">Company <i data-lucide="chevron-down" class="chev"></i></button>
     <div class="drawer-panel">
       <a href="../about/">About Us</a>
-      <a href="./" class="active" aria-current="page">Blog</a>
-      <a href="../contact/">Contact</a>
+      <a href="../blog/">Blog</a>
+      <a href="./" class="active" aria-current="page">Contact</a>
       <a href="../faq/">FAQ</a>
     </div>
   </div>
-  <a class="btn btn-green" href="../contact/">Start a Project</a>
+  <a class="btn btn-green" href="#start">Start a Project</a>
 </aside>
 
 <main>
 
-  <!-- ===================== HEADER ===================== -->
-  <section class="blog-head">
-    <div class="wrap">
-      <span class="eyebrow reveal">Journal</span>
-      <h1 class="h-xl reveal">All Posts</h1>
-      <p class="lead measure reveal">Insights on edge AI hardware, voice infrastructure, and the industries being transformed by on-device intelligence.</p>
-      <div class="filters reveal" id="blogFilters" role="group" aria-label="Filter posts by category">
-        <button class="filter-pill active" data-filter="all">All Posts</button>
-      </div>
+  <!-- ===================== HERO ===================== -->
+  <section class="hero">
+    <img src="img/hero.jpg" alt="GMIC AI production line" onerror="this.onerror=null;this.src='https://placehold.co/1600x700/0f2a1f/ffffff?text=GMIC+AI';">
+    <div class="hero-inner">
+      <span class="eyebrow">Contact Us</span>
+      <h1 class="display">Let's build something real.</h1>
+      <p>Whether you have a finished spec or a napkin sketch — our team in Anaheim and Shenzhen is ready to help you move from idea to production-ready device.</p>
     </div>
   </section>
 
-  <!-- ===================== POSTS ===================== -->
-  <section class="section" style="padding-top:clamp(40px,5vw,64px);">
+  <!-- ===================== FORM + SIDEBAR ===================== -->
+  <section class="section" id="start">
     <div class="wrap">
-      <div class="posts" id="postsGrid" aria-live="polite"></div>
-      <div class="empty" id="blogEmpty">No results found. Try a different category or <a href="../contact/">contact us</a>.</div>
-      <nav class="pagination" id="pagination" aria-label="Posts pagination"></nav>
+      <div class="contact-grid">
+
+        <!-- FORM -->
+        <div class="form-card reveal">
+          <h2>Start a conversation</h2>
+          <p class="sub">We respond within 1 business day.</p>
+          <!-- TODO: wire up form — front-end only; no backend. Shows success, else falls back to mailto. -->
+          <form id="contactForm" novalidate>
+            <div class="frow">
+              <div class="field">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" placeholder="Jane" autocomplete="given-name" required>
+              </div>
+              <div class="field">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" placeholder="Doe" autocomplete="family-name" required>
+              </div>
+            </div>
+            <div class="field">
+              <label for="email">Work Email</label>
+              <input type="email" id="email" name="email" placeholder="jane@company.com" autocomplete="email" required>
+            </div>
+            <div class="frow">
+              <div class="field">
+                <label for="company">Company</label>
+                <input type="text" id="company" name="company" placeholder="Company, Inc." autocomplete="organization">
+              </div>
+              <div class="field">
+                <label for="jobTitle">Job Title</label>
+                <input type="text" id="jobTitle" name="jobTitle" placeholder="Head of Product" autocomplete="organization-title">
+              </div>
+            </div>
+            <div class="frow">
+              <div class="field">
+                <label for="industry">Industry</label>
+                <select id="industry" name="industry">
+                  <option value="" disabled selected>Select your industry</option>
+                  <option>Healthcare</option>
+                  <option>MedTech</option>
+                  <option>Enterprise</option>
+                  <option>Workforce</option>
+                  <option>Field Service</option>
+                  <option>Industrial</option>
+                  <option>Hospitality</option>
+                  <option>Retail</option>
+                  <option>Telecom</option>
+                  <option>Smart Home</option>
+                  <option>Consumer</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="volume">Annual Volume</label>
+                <select id="volume" name="volume">
+                  <option value="" disabled selected>Expected unit volume</option>
+                  <option>Prototype or under 500</option>
+                  <option>500 to 5,000</option>
+                  <option>5,000 to 50,000</option>
+                  <option>50,000 to 500,000</option>
+                  <option>500,000 plus</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="project">Tell us about your project</label>
+              <textarea id="project" name="project" placeholder="What are you building? Where are you in the process — spec, prototype, or pilot?"></textarea>
+            </div>
+            <button type="submit" class="btn btn-green btn-block">Send Message →</button>
+            <p class="form-note">By submitting, you agree to our <a href="#">Privacy Policy</a>. Your information is never shared.</p>
+            <div class="form-success" id="formSuccess" role="status" aria-live="polite">✓ Message received. A real human from our team will reply within 1 business day.</div>
+          </form>
+        </div>
+
+        <!-- SIDEBAR -->
+        <aside>
+          <div class="side-block reveal">
+            <span class="side-tag">Why teams choose GMIC</span>
+            <div class="why-row"><span class="why-ico"><i data-lucide="clock"></i></span><div><h3>Responds in 24 hours</h3><p>A real human replies — not an autoresponder.</p></div></div>
+            <div class="why-row"><span class="why-ico"><i data-lucide="shield-check"></i></span><div><h3>NDA on day one</h3><p>Your concept and IP are protected from the first conversation.</p></div></div>
+            <div class="why-row"><span class="why-ico"><i data-lucide="filter"></i></span><div><h3>No generic ODM</h3><p>We only take projects where we can genuinely help.</p></div></div>
+            <div class="why-row"><span class="why-ico"><i data-lucide="map-pin"></i></span><div><h3>US + Shenzhen team</h3><p>Engineering in Shenzhen, client support in Anaheim, CA.</p></div></div>
+          </div>
+          <div class="side-block reveal">
+            <span class="side-tag">Or reach us directly</span>
+            <div class="contact-cards">
+              <div class="contact-card">
+                <span class="k">US Office</span>
+                <h3>Anaheim, CA</h3>
+                <div class="role">Client &amp; Product</div>
+                <div class="rows"><a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a><br><a href="tel:+16299000008">(629) 900-0008</a></div>
+              </div>
+              <div class="contact-card">
+                <span class="k">CN Office</span>
+                <h3>Shenzhen, CN</h3>
+                <div class="role">Engineering &amp; Mfg</div>
+                <div class="rows"><a href="mailto:info@gmic.ai">info@gmic.ai</a><br>Shenzhen HQ</div>
+              </div>
+            </div>
+          </div>
+        </aside>
+
+      </div>
     </div>
   </section>
 
@@ -430,12 +497,12 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line
       <div class="cta-card reveal">
         <div class="cta-flex">
           <div>
-            <span class="eyebrow">Begin</span>
-            <h2 class="display">Ready to turn your AI into a real product?</h2>
-            <p class="sub">Bring us a concept, prototype, or pilot — we'll get you to production.</p>
+            <span class="eyebrow">Ready to build?</span>
+            <h2 class="display">Turn your AI idea into a real, production-ready device.</h2>
+            <p class="sub">From concept to mass production — our team in Shenzhen and California is ready to move fast with you.</p>
             <div class="cta-actions">
-              <a class="btn btn-light" href="../contact/">Book a Demo</a>
-              <a class="btn btn-outline-light" href="../contact/">Talk to Sales</a>
+              <a class="btn btn-light" href="#start">Start Your Project →</a>
+              <a class="cta-link" href="../faq/">Have a question? Read our FAQ →</a>
             </div>
           </div>
           <div class="cta-illo" aria-hidden="true">
@@ -451,20 +518,6 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ===================== NEWSLETTER ===================== -->
-  <section class="section news" style="padding-top:0;">
-    <div class="wrap news-inner" style="padding-top:clamp(40px,5vw,64px);">
-      <div class="reveal">
-        <h3>Get the latest from the edge.</h3>
-        <p>Monthly notes on hardware shipping, certifications, and the AI models running on our devices.</p>
-      </div>
-      <form class="news-form reveal" id="newsForm" novalidate>
-        <input type="email" id="newsEmail" placeholder="Enter your email" aria-label="Email address" required>
-        <button type="submit" class="btn btn-green">Subscribe</button>
-      </form>
     </div>
   </section>
 
@@ -506,11 +559,11 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line
       <div class="f-col">
         <h4>Resources</h4>
         <ul>
-          <li><a href="./" aria-current="page">Blog</a></li>
+          <li><a href="../blog/">Blog</a></li>
           <li><a href="../implementation/">Implementation</a></li>
           <li><a href="../process/">Our Process</a></li>
           <li><a href="../faq/">FAQ</a></li>
-          <li><a href="../contact/">Contact</a></li>
+          <li><a href="./" aria-current="page">Contact</a></li>
         </ul>
       </div>
       <div class="f-col">
@@ -518,7 +571,7 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line
         <ul>
           <li><a href="../about/">About GMIC</a></li>
           <li><a href="../index.html#industries">Customer Stories</a></li>
-          <li><a href="../contact/">Book a Demo</a></li>
+          <li><a href="#start">Book a Demo</a></li>
           <li><a href="#">Careers</a></li>
           <li><a href="#">Privacy</a></li>
         </ul>
@@ -542,235 +595,8 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line
 </footer>
 
 <script>
-/* ===== Live sync from the WordPress REST API (gmic.ai), with offline fallback.
-   Fetch/pagination/filter/fallback logic reused from the main site; only
-   buildCard() restyled for the v1 editorial card. ===== */
 (function(){
-  const API_BASE = 'https://gmic.ai/wp-json/wp/v2';
-  const PER_PAGE = 9;
-
-  const grid       = document.getElementById('postsGrid');
-  const pagination = document.getElementById('pagination');
-  const filtersEl  = document.getElementById('blogFilters');
-  const emptyEl    = document.getElementById('blogEmpty');
-
-  const DEFAULT_GRADIENT = 'linear-gradient(135deg, #1e3a8a, #2563eb, #0ea5e9)';
-  const CATEGORY_GRADIENTS = {
-    'enterprise ai':  'linear-gradient(135deg, #1e3a8a, #2563eb, #0ea5e9)',
-    'healthcare':     'linear-gradient(135deg, #134e4a, #0f766e, #14b8a6)',
-    'small business': 'linear-gradient(135deg, #1e3a5f, #1d6ed8, #38bdf8)',
-    'field service':  'linear-gradient(135deg, #1a1a2e, #16213e, #0f3460)',
-    'industry news':  'linear-gradient(135deg, #1c1917, #292524, #57534e)'
-  };
-
-  function fakePost(id, title, dateISO, excerpt, link, catName, catSlug){
-    return { id, link, date: dateISO,
-      title:{ rendered:title }, excerpt:{ rendered:excerpt }, content:{ rendered:'' },
-      _embedded:{ 'wp:term':[[{ name:catName, slug:catSlug }]] } };
-  }
-  const FALLBACK_POSTS = [
-    fakePost(1, 'Speed-to-Lead Is Now Infrastructure', '2026-05-28T00:00:00',
-      "Virtual receptionists are making response speed table stakes. Here's why AI-powered lead capture is no longer optional for enterprise sales teams.",
-      'https://gmic.ai/speed-to-lead-enterprise-memory/', 'Enterprise AI', 'enterprise-ai'),
-    fakePost(2, 'CLINMIC V7: Clinical Memory for the Fastest Moments in Care', '2026-05-23T00:00:00',
-      "GMIC AI's concept for a privacy-first wearable that captures clinical conversations at the point of care — without burdening clinicians.",
-      'https://gmic.ai/clinmic-v7-clinical-memory-fastest-moments-in-care-2/', 'Healthcare', 'healthcare'),
-    fakePost(3, "Companies Don't Just Need AI Customer Service. They Need Organization Memory.", '2026-05-21T00:00:00',
-      'Wellness and direct-selling companies do not just need faster responses — they need persistent organizational memory that compounds over time.',
-      'https://gmic.ai/wellness-organization-memory/', 'Enterprise AI', 'enterprise-ai'),
-    fakePost(4, "Most Small Businesses Don't Fail. They Forget.", '2026-05-21T00:00:00',
-      "Most small businesses don't fail because their team didn't work hard enough. They fail because no one built a memory layer to capture what matters.",
-      'https://gmic.ai/small-business-memory-layer/', 'Small Business', 'small-business'),
-    fakePost(5, 'The Evening Your Phone Finally Goes Quiet', '2026-05-21T00:00:00',
-      'AI voice reception is trending, but SMB owners need more than call routing — they need true time freedom that starts after 6 PM.',
-      'https://gmic.ai/ai-voice-receptionist-enterprise-memory-time-freedom/', 'Small Business', 'small-business'),
-    fakePost(6, "The Phone Shouldn't Own Your Weekend", '2026-05-19T00:00:00',
-      "For SMB operators juggling everything alone, weekend calls aren't just annoying — they're the last barrier between work and life. AI changes that.",
-      'https://gmic.ai/ai-receptionist-enterprise-memory-weekend-freedom/', 'Small Business', 'small-business'),
-    fakePost(7, 'When Every Device Has a Microphone, Who Decides What Gets Captured?', '2026-05-16T00:00:00',
-      'As ambient audio intelligence becomes standard in enterprise hardware, the conversation around consent, privacy, and edge processing has never been more urgent.',
-      'https://gmic.ai/blog/', 'Industry News', 'industry-news'),
-    fakePost(8, 'The Revolution Math Changed. Memory Matters More.', '2026-05-14T00:00:00',
-      'The bottleneck in AI deployment has shifted from model intelligence to memory persistence. On-device hardware is the only path to solving it at scale.',
-      'https://gmic.ai/blog/', 'Industry News', 'industry-news'),
-    fakePost(9, 'AI in the Field: How MIC05 is Capturing Voice Intelligence at the Edge', '2026-05-10T00:00:00',
-      'Field service teams generate thousands of hours of unstructured verbal data daily. MIC05 turns those conversations into structured intelligence — automatically.',
-      'https://gmic.ai/blog/', 'Field Service', 'field-service')
-  ];
-
-  const state = { page:1, categoryId:null, totalPages:1, useApi:true, firstRender:true };
-  let slugToId = {};
-
-  function stripHtml(html){ const d = new DOMParser().parseFromString(html||'','text/html'); return (d.body.textContent||'').replace(/\s+/g,' ').trim(); }
-  function escapeHtml(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
-  function formatDate(iso){ const d = new Date(iso); if (isNaN(d.getTime())) return ''; return d.toLocaleDateString('en-US',{ month:'short', day:'numeric', year:'numeric' }); }
-
-  async function fetchAndBuildCategoryMap(){
-    const res = await fetch(API_BASE + '/categories?per_page=100&_fields=id,name,slug,count');
-    if (!res.ok) throw new Error('HTTP ' + res.status);
-    const cats = await res.json();
-    slugToId = {};
-    const withPosts = [];
-    (cats || []).forEach(c => { slugToId[c.slug] = c.id; if (c.count > 0) withPosts.push({ name: stripHtml(c.name), slug: c.slug }); });
-    renderPills(withPosts);
-  }
-
-  function fetchPosts(page = 1, categoryId = null){
-    const url = new URL(API_BASE + '/posts');
-    url.searchParams.set('per_page', String(PER_PAGE));
-    url.searchParams.set('page', String(page));
-    url.searchParams.set('_embed', 'wp:featuredmedia,wp:term');
-    url.searchParams.set('_fields', ['id','title','date','excerpt','link','content','_links','_embedded'].join(','));
-    if (categoryId) url.searchParams.set('categories', categoryId);
-    return fetch(url).then(res => {
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      state.totalPages = parseInt(res.headers.get('X-WP-TotalPages'), 10) || 1;
-      return res.json();
-    });
-  }
-
-  function getPostImage(post){
-    const emb = post._embedded || {};
-    const m = emb['wp:featuredmedia'] && emb['wp:featuredmedia'][0];
-    const src = m && (m.source_url || (m.media_details && m.media_details.sizes && m.media_details.sizes.medium_large && m.media_details.sizes.medium_large.source_url));
-    return src || null;
-  }
-  function getCategoryGradient(post){
-    const emb = post._embedded || {};
-    const term = emb['wp:term'] && emb['wp:term'][0] && emb['wp:term'][0][0];
-    const name = stripHtml(term && term.name ? term.name : '').toLowerCase();
-    return CATEGORY_GRADIENTS[name] || DEFAULT_GRADIENT;
-  }
-
-  /* v1 editorial thumbnail: soft featured image, or category gradient */
-  function renderThumb(post, feature){
-    const src = getPostImage(post);
-    const gradient = getCategoryGradient(post);
-    if (src){
-      const onerr = "this.style.display='none';this.parentElement.classList.add('grad');this.parentElement.style.background='" + gradient + "';";
-      return '<div class="post-thumb"><img src="' + escapeHtml(src) + '" alt="" loading="lazy" onerror="' + escapeHtml(onerr) + '"></div>';
-    }
-    return '<div class="post-thumb grad" style="background:' + gradient + '"></div>';
-  }
-
-  function buildCard(post, i){
-    const emb = post._embedded || {};
-    const term = (emb['wp:term'] && emb['wp:term'][0] && emb['wp:term'][0][0]) || null;
-    const category = stripHtml((term && term.name) || '') || 'Insights';
-    const categorySlug = (term && term.slug) || '';
-    const title = stripHtml(post.title && post.title.rendered);
-    const raw = stripHtml(post.excerpt && post.excerpt.rendered);
-    const max = (i === 0) ? 180 : 130;
-    const excerpt = raw.length > max ? raw.slice(0,max).replace(/\s+\S*$/,'').trim() + '…' : raw;
-    const date = formatDate(post.date);
-    const url = post.link || '#';
-    const feature = (i === 0);
-    return '<a class="post' + (feature ? ' feature' : '') + '" href="' + escapeHtml(url) + '" target="_blank" rel="noopener" data-tags="' + escapeHtml(categorySlug) + '">'
-      +   renderThumb(post, feature)
-      +   '<div class="post-body">'
-      +     '<div class="post-meta"><span class="post-cat">' + escapeHtml(category) + '</span><span class="post-dot"></span><span class="post-date">' + escapeHtml(date) + '</span></div>'
-      +     '<h3>' + escapeHtml(title) + '</h3>'
-      +     '<p class="post-excerpt">' + escapeHtml(excerpt) + '</p>'
-      +     '<span class="link-arrow">Read more →</span>'
-      +   '</div>'
-      + '</a>';
-  }
-
-  function showSkeletons(){
-    let html = '';
-    for (let i = 0; i < PER_PAGE; i++){
-      html += '<div class="skeleton"><div class="sk-thumb"></div><div class="sk-body"><div class="sk-line s"></div><div class="sk-line"></div><div class="sk-line m"></div></div></div>';
-    }
-    grid.innerHTML = html; pagination.innerHTML = ''; emptyEl.style.display = 'none';
-  }
-
-  async function renderPosts(page = 1, categoryId = null){
-    showSkeletons();
-    let posts;
-    try {
-      posts = await fetchPosts(page, categoryId);
-      if (!Array.isArray(posts)) throw new Error('Bad response');
-    } catch (e){ renderFallback(); return; }
-    state.page = page; state.categoryId = categoryId;
-    const wasFirst = state.firstRender; state.firstRender = false;
-    if (!posts.length){ grid.innerHTML = ''; emptyEl.style.display = 'block'; pagination.innerHTML = ''; return; }
-    emptyEl.style.display = 'none';
-    grid.innerHTML = posts.map(buildCard).join('');
-    renderPagination(page);
-    if (!wasFirst) grid.scrollIntoView({ behavior:'smooth', block:'start' });
-  }
-
-  function renderPagination(cur){
-    const total = state.totalPages;
-    if (total <= 1){ pagination.innerHTML = ''; return; }
-    const pages = new Set([1, total]);
-    for (let i = cur - 1; i <= cur + 1; i++) if (i >= 1 && i <= total) pages.add(i);
-    const sorted = Array.from(pages).sort((a,b)=>a-b);
-    let html = '<button class="page-btn" data-page="prev"' + (cur === 1 ? ' disabled' : '') + '>← Prev</button>';
-    let prev = 0;
-    sorted.forEach(p => {
-      if (p - prev > 1) html += '<span class="page-btn ellipsis" aria-hidden="true">…</span>';
-      html += '<button class="page-btn' + (p === cur ? ' active' : '') + '" data-page="' + p + '">' + p + '</button>';
-      prev = p;
-    });
-    html += '<button class="page-btn" data-page="next"' + (cur === total ? ' disabled' : '') + '>Next →</button>';
-    pagination.innerHTML = html;
-    pagination.querySelectorAll('.page-btn:not(.ellipsis):not([disabled])').forEach(btn => {
-      btn.addEventListener('click', () => {
-        let target;
-        if (btn.dataset.page === 'prev') target = state.page - 1;
-        else if (btn.dataset.page === 'next') target = state.page + 1;
-        else target = parseInt(btn.dataset.page, 10);
-        if (!target || target < 1 || target > state.totalPages || target === state.page) return;
-        renderPosts(target, state.categoryId);
-      });
-    });
-  }
-
-  function renderPills(categories){
-    let html = '<button class="filter-pill active" data-filter="all">All Posts</button>';
-    (categories || []).forEach(c => { html += '<button class="filter-pill" data-filter="' + escapeHtml(c.slug) + '">' + escapeHtml(c.name) + '</button>'; });
-    filtersEl.innerHTML = html;
-    bindPills();
-  }
-  function bindPills(){
-    filtersEl.querySelectorAll('.filter-pill').forEach(pill => {
-      pill.addEventListener('click', () => {
-        filtersEl.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-        pill.classList.add('active');
-        const slug = pill.dataset.filter;
-        if (state.useApi){ renderPosts(1, slug === 'all' ? null : (slugToId[slug] || null)); }
-        else { renderFallbackGrid(slug); }
-      });
-    });
-  }
-  bindPills();
-
-  function renderFallback(){
-    state.useApi = false; state.firstRender = false;
-    const seen = {}, cats = [];
-    FALLBACK_POSTS.forEach(p => { const t = p._embedded['wp:term'][0][0]; if (!seen[t.slug]){ seen[t.slug] = true; cats.push({ name:t.name, slug:t.slug }); } });
-    renderPills(cats);
-    renderFallbackGrid('all');
-  }
-  function renderFallbackGrid(slug){
-    const posts = slug === 'all' ? FALLBACK_POSTS : FALLBACK_POSTS.filter(p => p._embedded['wp:term'][0][0].slug === slug);
-    if (!posts.length){ grid.innerHTML = ''; emptyEl.style.display = 'block'; pagination.innerHTML = ''; return; }
-    emptyEl.style.display = 'none';
-    grid.innerHTML = posts.map(buildCard).join('');
-    pagination.innerHTML = '';
-  }
-
-  document.addEventListener('DOMContentLoaded', async () => {
-    showSkeletons();
-    try { await fetchAndBuildCategoryMap(); } catch (e){ /* keep default pill; posts fetch falls back */ }
-    await renderPosts(1, null);
-  });
-})();
-</script>
-
-<script>
-(function(){
+  // Mobile drawer
   var burger = document.getElementById('burger'), drawer = document.getElementById('drawer'),
       scrim = document.getElementById('scrim'), closeBtn = document.getElementById('drawerClose');
   function open(){ drawer.classList.add('open'); scrim.classList.add('open'); burger.setAttribute('aria-expanded','true'); drawer.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
@@ -787,6 +613,7 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line
   });
   document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
 
+  // Reveal
   var reveals = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
   var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if(rm || !('IntersectionObserver' in window)){ reveals.forEach(function(el){ el.classList.add('in'); }); }
@@ -795,11 +622,27 @@ h1,h2,h3{ font-family:var(--serif); font-weight:400; letter-spacing:-.02em; line
     reveals.forEach(function(el){ io.observe(el); });
   }
 
-  var form = document.getElementById('newsForm');
-  if(form){ form.addEventListener('submit', function(e){ e.preventDefault();
-    var input = document.getElementById('newsEmail'), btn = form.querySelector('button');
-    if(input && input.value){ input.value=''; if(btn) btn.textContent='Subscribed ✓'; }
-  }); }
+  // ---- Contact form: front-end only (TODO: wire up form to a backend) ----
+  var form = document.getElementById('contactForm');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      var get = function(n){ var el = form.querySelector('[name="'+n+'"]'); return el ? el.value.trim() : ''; };
+      var success = document.getElementById('formSuccess');
+      if(success){
+        success.classList.add('show');
+        success.scrollIntoView({ behavior:'smooth', block:'center' });
+      } else {
+        var body = encodeURIComponent(
+          'Name: ' + get('firstName') + ' ' + get('lastName') + '\n' +
+          'Email: ' + get('email') + '\nCompany: ' + get('company') + '\nTitle: ' + get('jobTitle') + '\n' +
+          'Industry: ' + get('industry') + '\nVolume: ' + get('volume') + '\n\n' + get('project'));
+        window.location.href = 'mailto:trigg@gmic.ai?subject=' + encodeURIComponent('GMIC AI — Project inquiry') + '&body=' + body;
+      }
+      form.reset();
+    });
+  }
 
   if(window.lucide && typeof lucide.createIcons === 'function'){ lucide.createIcons(); }
 })();
