@@ -674,6 +674,14 @@
 .co-body h3{font-family:var(--sans);font-size:1.15rem;font-weight:700;color:#0f172a;line-height:1.3;margin:0;transition:color .2s ease}
 .co-body p{font-family:var(--sans);font-size:0.95rem;line-height:1.5;color:#6b7280;margin:0;transition:color .2s ease}
 .co-card:hover h3,.co-card:hover p{color:#fff}
+
+/* co-card image support */
+.co-card { overflow: hidden; }
+.co-card > img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px 10px 0 0; display: block; }
+.co-card .co-icon { margin-top: 16px; }
+@media (max-width: 768px) {
+  .co-card > img { height: 140px; }
+}
 /* Full-bleed alignment for the Services track ONLY (scoped to #ceTrack so the contained
    Form Factors #tpTrack carousel is unaffected): first card lines up with the centered
    container's left edge while the track still bleeds full width to the right. */
@@ -797,25 +805,15 @@
         <div class="nav-dropdown nav-dropdown--text">
           <div class="dropdown-inner">
             <div class="dropdown-col">
-              <p class="dropdown-col-head">Healthcare & Ops</p>
-              <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare Voice AI</a>
-              <a href="../../industries/veterinary/index.html" class="dropdown-link">Veterinary AI</a>
-              <a href="../../industries/hospitality/index.html" class="dropdown-link">Hospitality AI</a>
-            </div>
-            <div class="dropdown-col">
-              <p class="dropdown-col-head">Enterprise & Field</p>
-              <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise AI</a>
-              <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
+              <p class="dropdown-col-head">Industries</p>
+              <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise</a>
               <a href="../../industries/field-service/index.html" class="dropdown-link">Field Service</a>
-              <a href="../../industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
-              <a href="../../industries/telecom/index.html" class="dropdown-link">Telecom AI</a>
-            </div>
-            <div class="dropdown-col">
-              <p class="dropdown-col-head">Safety & Transport</p>
+              <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare</a>
+              <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics</a>
               <a href="../../industries/public-safety/index.html" class="dropdown-link">Public Safety</a>
-              <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics & Transportation</a>
-              <a href="../../industries/smart-retail/index.html" class="dropdown-link">Smart Retail</a>
-              <a href="https://gmic-nemt-demo.vercel.app/" class="dropdown-link dropdown-link--external" target="_blank" rel="noopener">NEMT</a>
+              <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
+              <a href="../../industries/veterinary/index.html" class="dropdown-link">Veterinary</a>
+              <a href="../../industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
             </div>
           </div>
         </div>
@@ -863,51 +861,16 @@
   <div class="mobile-nav-inner">
 
     <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Products</p>
-      <a href="../../products/mic06/" class="mobile-nav-link">MIC06</a>
-      <a href="../../products/mic05/" class="mobile-nav-link">MIC05</a>
-      <a href="../../products/mic01/" class="mobile-nav-link">MIC01</a>
-    </div>
-
-        <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Custom Devices · Hardware</p>
-      <a href="../../custom-devices/odm-oem/index.html" class="mobile-nav-link">ODM / OEM</a>
-      <a href="../../custom-devices/private-label/index.html" class="mobile-nav-link">Private Label</a>
-      <a href="../../custom-devices/custom-enclosure/index.html" class="mobile-nav-link" style="color:#2563eb;font-weight:700;" aria-current="page">Custom Enclosure</a>
-      <a href="../../custom-devices/3d-prototype/index.html" class="mobile-nav-link">3D Small-batch Prototype</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Custom Devices · Engineering</p>
-      <a href="../../custom-devices/firmware-integration/index.html" class="mobile-nav-link">Firmware Integration</a>
-      <a href="../../custom-devices/audio-dsp-tuning/index.html" class="mobile-nav-link">Audio &amp; DSP Tuning</a>
-      <a href="../../custom-devices/ai-sdk-integration/index.html" class="mobile-nav-link">AI SDK Integration</a>
-      <a href="../../custom-devices/prototype-validation/index.html" class="mobile-nav-link">Prototype Validation</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Custom Devices · Production</p>
-      <a href="../../custom-devices/evt-dvt-pvt/index.html" class="mobile-nav-link">EVT / DVT / PVT</a>
-      <a href="../../custom-devices/smt-manufacturing/index.html" class="mobile-nav-link">SMT Manufacturing</a>
-      <a href="../../custom-devices/certification-support/index.html" class="mobile-nav-link">Certification Support</a>
-      <a href="../../custom-devices/supply-chain/index.html" class="mobile-nav-link">Supply Chain Management</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Industries</p>
-      <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare Voice AI</a>
-      <a href="../../industries/veterinary/index.html" class="mobile-nav-link">Veterinary AI</a>
-      <a href="../../industries/hospitality/index.html" class="mobile-nav-link">Hospitality AI</a>
-      <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise AI</a>
-      <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
-      <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
-      <a href="../../industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
-      <a href="../../industries/telecom/index.html" class="mobile-nav-link">Telecom AI</a>
-      <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
-      <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics & Transportation</a>
-      <a href="../../industries/smart-retail/index.html" class="mobile-nav-link">Smart Retail</a>
-      <a href="https://gmic-nemt-demo.vercel.app/" class="mobile-nav-link mobile-nav-link--external" target="_blank" rel="noopener">NEMT ↗</a>
-    </div>
+  <p class="mobile-nav-head">Industries</p>
+  <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise</a>
+  <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
+  <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare</a>
+  <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics</a>
+  <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
+  <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
+  <a href="../../industries/veterinary/index.html" class="mobile-nav-link">Veterinary</a>
+  <a href="../../industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
+</div>
 
     <div class="mobile-nav-section">
       <a href="../../implementation/index.html" class="mobile-nav-link">Implementation</a>
@@ -971,7 +934,7 @@
       </div>
     </div>
     <div class="odm-hero-banner">
-      <img src="../../img/platform/03.jpg" alt="Custom device enclosures and industrial design at GMIC" onerror="this.style.display='none'">
+      <img src="../../img/custom-devices/custom-enclosure/hero.png" alt="Custom device enclosures and industrial design at GMIC" onerror="this.style.display='none'">
     </div>
   </header>
 
@@ -999,6 +962,7 @@
     <div class="tp-viewport">
       <div class="tp-track" id="ceTrack">
           <div class="tp-card co-card">
+            <img src="../../img/custom-devices/custom-enclosure/industrial%20design.png" alt="Industrial design sketches" style="width:100%;height:180px;object-fit:cover;border-radius:10px 10px 0 0;" onerror="this.style.display='none'">
             <div class="co-icon"><i data-lucide="pen-tool" aria-hidden="true"></i></div>
             <div class="co-body">
               <h3>Industrial design</h3>
@@ -1006,6 +970,7 @@
             </div>
           </div>
           <div class="tp-card co-card">
+            <img src="../../img/custom-devices/custom-enclosure/Mechanical%20Engineering.png" alt="3D printed prototype internal structure" style="width:100%;height:180px;object-fit:cover;border-radius:10px 10px 0 0;" onerror="this.style.display='none'">
             <div class="co-icon"><i data-lucide="cog" aria-hidden="true"></i></div>
             <div class="co-body">
               <h3>Mechanical engineering</h3>
@@ -1013,6 +978,7 @@
             </div>
           </div>
           <div class="tp-card co-card">
+            <img src="../../img/custom-devices/custom-enclosure/CAD%20Modeling%20CAD.png" alt="CAD software showing enclosure model" style="width:100%;height:180px;object-fit:cover;border-radius:10px 10px 0 0;" onerror="this.style.display='none'">
             <div class="co-icon"><i data-lucide="box" aria-hidden="true"></i></div>
             <div class="co-body">
               <h3>CAD modeling</h3>
@@ -1020,6 +986,7 @@
             </div>
           </div>
           <div class="tp-card co-card">
+            <img src="../../img/custom-devices/custom-enclosure/Injection%20Mold%20Design.png" alt="Steel injection mold tool" style="width:100%;height:180px;object-fit:cover;border-radius:10px 10px 0 0;" onerror="this.style.display='none'">
             <div class="co-icon"><i data-lucide="layers" aria-hidden="true"></i></div>
             <div class="co-body">
               <h3>Injection mold design</h3>
@@ -1027,6 +994,7 @@
             </div>
           </div>
           <div class="tp-card co-card">
+            <img src="../../img/custom-devices/custom-enclosure/Material%20Selection.png" alt="Plastic material samples and swatches" style="width:100%;height:180px;object-fit:cover;border-radius:10px 10px 0 0;" onerror="this.style.display='none'">
             <div class="co-icon"><i data-lucide="palette" aria-hidden="true"></i></div>
             <div class="co-body">
               <h3>Material selection</h3>
@@ -1060,35 +1028,35 @@
       <div class="tp-viewport">
         <div class="tp-track" id="tpTrack">
           <a class="tp-card odm-proj-card" href="#">
-            <div class="odm-proj-media"><img src="../../img/product/opsmic-main.png" alt="Badge form factor" onerror="this.style.display='none'"></div>
+            <div class="odm-proj-media"><img src="../../img/products/opsmic-main.png" alt="Badge form factor" onerror="this.style.display='none'"></div>
             <div class="odm-proj-body">
               <h3>Badge</h3>
               <span class="odm-proj-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a class="tp-card odm-proj-card" href="#">
-            <div class="odm-proj-media"><img src="../../img/product/fleetmic.png" alt="Clip-on recorder form factor" onerror="this.style.display='none'"></div>
+            <div class="odm-proj-media"><img src="../../img/products/fleetmic.png" alt="Clip-on recorder form factor" onerror="this.style.display='none'"></div>
             <div class="odm-proj-body">
               <h3>Clip-on recorder</h3>
               <span class="odm-proj-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a class="tp-card odm-proj-card" href="#">
-            <div class="odm-proj-media"><img src="../../img/product/AI%20Chatmic.png" alt="Handheld device form factor" onerror="this.style.display='none'"></div>
+            <div class="odm-proj-media"><img src="../../img/products/AI%20Chatmic.png" alt="Handheld device form factor" onerror="this.style.display='none'"></div>
             <div class="odm-proj-body">
               <h3>Handheld device</h3>
               <span class="odm-proj-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a class="tp-card odm-proj-card" href="#">
-            <div class="odm-proj-media"><img src="../../img/product/AI%20noise%20reduction%20voice%20recorder.png" alt="Desktop microphone form factor" onerror="this.style.display='none'"></div>
+            <div class="odm-proj-media"><img src="../../img/products/AI%20noise%20reduction%20voice%20recorder.png" alt="Desktop microphone form factor" onerror="this.style.display='none'"></div>
             <div class="odm-proj-body">
               <h3>Desktop microphone</h3>
               <span class="odm-proj-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>
             </div>
           </a>
           <a class="tp-card odm-proj-card" href="#">
-            <div class="odm-proj-media"><img src="../../img/product/product-1.png" alt="Embedded module form factor" onerror="this.style.display='none'"></div>
+            <div class="odm-proj-media"><img src="../../img/products/product-1.png" alt="Embedded module form factor" onerror="this.style.display='none'"></div>
             <div class="odm-proj-body">
               <h3>Embedded module</h3>
               <span class="odm-proj-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>

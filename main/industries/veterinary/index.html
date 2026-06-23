@@ -492,8 +492,29 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 .ind-grid { display:grid; gap:20px; }
 .grid-4 { grid-template-columns:repeat(4,1fr); }
 .grid-3 { grid-template-columns:repeat(3,1fr); }
-.cs-card { max-width:360px; }
+/* CASE STUDY preview — full-width horizontal card, logo (left) + copy (right) */
+.cs-card {
+  display:grid; grid-template-columns:minmax(0,2fr) minmax(0,3fr);
+  gap:48px; align-items:center;
+  background:#f8fafc; border-radius:16px; padding:48px;
+}
 .cs-card:hover { transform:none; box-shadow:none; }
+.cs-logo { display:flex; flex-direction:column; align-items:flex-start; gap:16px; }
+.cs-logo-box {
+  width:100%; aspect-ratio:16/9; border-radius:14px;
+  background:#fff; border:1px solid rgba(0,0,0,.06);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem; font-weight:700; letter-spacing:-.01em; color:#0f172a;
+}
+.cs-body { display:flex; flex-direction:column; align-items:flex-start; }
+.cs-body .eyebrow { display:block; margin-bottom:12px; }
+.cs-body h3 { font-size:clamp(24px,2.4vw,32px); font-weight:700; letter-spacing:-.02em; margin:0 0 14px; line-height:1.15; color:#0f172a; }
+.cs-desc { font-size:1.0625rem; line-height:1.7; color:#64748b; margin:0 0 24px; max-width:46ch; }
+.cs-link { display:inline-flex; align-items:center; gap:8px; font-size:.95rem; font-weight:600; color:#2563eb; text-decoration:none; transition:gap .2s ease; }
+.cs-link:hover { gap:12px; }
+@media (max-width:760px){
+  .cs-card { grid-template-columns:1fr; gap:32px; padding:32px; }
+}
 .ind-card { background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:28px 24px; transition:transform .25s ease, box-shadow .25s ease; }
 .ind-card:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(15,23,42,.10); }
 /* Use Cases grid: fully static — no lift, shadow, or color change on hover */
@@ -747,25 +768,15 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
         <div class="nav-dropdown nav-dropdown--text">
           <div class="dropdown-inner">
             <div class="dropdown-col">
-              <p class="dropdown-col-head">Healthcare & Ops</p>
-              <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare Voice AI</a>
-              <a href="../../industries/veterinary/index.html" class="dropdown-link nav-current" aria-current="page">Veterinary AI</a>
-              <a href="../../industries/hospitality/index.html" class="dropdown-link">Hospitality AI</a>
-            </div>
-            <div class="dropdown-col">
-              <p class="dropdown-col-head">Enterprise & Field</p>
-              <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise AI</a>
-              <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
+              <p class="dropdown-col-head">Industries</p>
+              <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise</a>
               <a href="../../industries/field-service/index.html" class="dropdown-link">Field Service</a>
-              <a href="../../industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
-              <a href="../../industries/telecom/index.html" class="dropdown-link">Telecom AI</a>
-            </div>
-            <div class="dropdown-col">
-              <p class="dropdown-col-head">Safety & Transport</p>
+              <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare</a>
+              <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics</a>
               <a href="../../industries/public-safety/index.html" class="dropdown-link">Public Safety</a>
-              <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics & Transportation</a>
-              <a href="../../industries/smart-retail/index.html" class="dropdown-link">Smart Retail</a>
-              <a href="https://gmic-nemt-demo.vercel.app/" class="dropdown-link dropdown-link--external" target="_blank" rel="noopener">NEMT</a>
+              <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
+              <a href="../../industries/veterinary/index.html" class="dropdown-link">Veterinary</a>
+              <a href="../../industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
             </div>
           </div>
         </div>
@@ -813,52 +824,16 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   <div class="mobile-nav-inner">
 
     <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Products</p>
-      <a href="../../products/mic06/" class="mobile-nav-link">MIC06</a>
-      <a href="../../products/mic05/" class="mobile-nav-link">MIC05</a>
-      <a href="../../products/mic01/" class="mobile-nav-link">MIC01</a>
-      <a href="../../products/hearit/" class="mobile-nav-link">Hearit.ai PCBA</a>
-    </div>
-
-        <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Custom Devices · Hardware</p>
-      <a href="../../custom-devices/odm-oem/index.html" class="mobile-nav-link">ODM / OEM</a>
-      <a href="../../custom-devices/private-label/index.html" class="mobile-nav-link">Private Label</a>
-      <a href="../../custom-devices/custom-enclosure/index.html" class="mobile-nav-link">Custom Enclosure</a>
-      <a href="../../custom-devices/3d-prototype/index.html" class="mobile-nav-link">3D Small-batch Prototype</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Custom Devices · Engineering</p>
-      <a href="../../custom-devices/firmware-integration/index.html" class="mobile-nav-link">Firmware Integration</a>
-      <a href="../../custom-devices/audio-dsp-tuning/index.html" class="mobile-nav-link">Audio &amp; DSP Tuning</a>
-      <a href="../../custom-devices/ai-sdk-integration/index.html" class="mobile-nav-link">AI SDK Integration</a>
-      <a href="../../custom-devices/prototype-validation/index.html" class="mobile-nav-link">Prototype Validation</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Custom Devices · Production</p>
-      <a href="../../custom-devices/evt-dvt-pvt/index.html" class="mobile-nav-link">EVT / DVT / PVT</a>
-      <a href="../../custom-devices/smt-manufacturing/index.html" class="mobile-nav-link">SMT Manufacturing</a>
-      <a href="../../custom-devices/certification-support/index.html" class="mobile-nav-link">Certification Support</a>
-      <a href="../../custom-devices/supply-chain/index.html" class="mobile-nav-link">Supply Chain Management</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Industries</p>
-      <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare Voice AI</a>
-      <a href="../../industries/veterinary/index.html" class="mobile-nav-link active" aria-current="page" style="color:#2563eb;font-weight:700;">Veterinary AI</a>
-      <a href="../../industries/hospitality/index.html" class="mobile-nav-link">Hospitality AI</a>
-      <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise AI</a>
-      <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
-      <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
-      <a href="../../industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
-      <a href="../../industries/telecom/index.html" class="mobile-nav-link">Telecom AI</a>
-      <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
-      <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics & Transportation</a>
-      <a href="../../industries/smart-retail/index.html" class="mobile-nav-link">Smart Retail</a>
-      <a href="https://gmic-nemt-demo.vercel.app/" class="mobile-nav-link mobile-nav-link--external" target="_blank" rel="noopener">NEMT ↗</a>
-    </div>
+  <p class="mobile-nav-head">Industries</p>
+  <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise</a>
+  <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
+  <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare</a>
+  <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics</a>
+  <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
+  <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
+  <a href="../../industries/veterinary/index.html" class="mobile-nav-link">Veterinary</a>
+  <a href="../../industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
+</div>
 
     <div class="mobile-nav-section">
       <a href="../../implementation/index.html" class="mobile-nav-link">Implementation</a>
@@ -982,7 +957,21 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
       <div class="eyebrow">/ CASE STUDY</div>
     </div>
     <div class="reveal">
-      <div class="ind-card cs-card"><h3>ScribbleVet</h3></div>
+      <div class="ind-card cs-card">
+        <div class="cs-logo">
+          <!-- TODO: 换成 ScribbleVet logo 图 -->
+          <div class="cs-logo-box">ScribbleVet</div>
+          <span class="chip">Veterinary AI</span>
+        </div>
+        <div class="cs-body">
+          <span class="eyebrow">Case Study</span>
+          <h3>ScribbleVet</h3>
+          <!-- TODO: 补充 ScribbleVet case study 描述 -->
+          <p class="cs-desc">See how ScribbleVet uses GMIC hardware to power their veterinary AI documentation platform.</p>
+          <!-- TODO: 补 case study 链接 -->
+          <a href="#" class="cs-link">Read Case Study <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

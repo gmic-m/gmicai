@@ -637,58 +637,26 @@
   .odm-proj-card,.odm-proj-more svg{transition-property:background,border-color,color}
 }
 
-/* ---------- Customization Options — card carousel (big icon on top, text below) ----------
-   Reuses the .tp-* carousel track. Cards: white, no border, no shadow, rounded; taller than
-   the old feature grid (large icon panel on top, title + one-line description below). On hover
-   the card fills blue and the text turns white, while the icon panel keeps its light fill and
-   blue icon (mirrors how the product cards keep their image panel legible on hover). */
-.co-card{display:flex;flex-direction:column;background:#ffffff;border-radius:14px;overflow:hidden;height:100%;transition:transform .2s ease, background .2s ease}
-.co-card:hover{transform:translateY(-4px);background:#2563eb}
-.co-icon{aspect-ratio:1 / 1;width:100%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#eef2ff;border-top-left-radius:14px;border-top-right-radius:14px}
-.co-icon [data-lucide]{width:60px;height:60px;stroke:#2563eb;stroke-width:1.6}
-.co-body{padding:22px;display:flex;flex-direction:column;gap:8px;flex:1}
-.co-body h3{font-family:var(--sans);font-size:1.15rem;font-weight:700;color:#0f172a;line-height:1.3;margin:0;transition:color .2s ease}
-.co-body p{font-family:var(--sans);font-size:0.95rem;line-height:1.5;color:#6b7280;margin:0;transition:color .2s ease}
-.co-card:hover h3,.co-card:hover p{color:#fff}
-
-/* ---------- Typical-projects carousel (§5) — single-row sliding track ---------- */
-/* Clip horizontally only; keep the vertical axis open so the card's hover lift
-   (+ shadow) isn't cut off at the top. The vertical padding — not card overflow —
-   contains the lift, so no stray vertical scrollbar appears. */
-.tp-viewport{overflow-x:hidden;overflow-y:visible;padding-top:12px;padding-bottom:12px}
-.tp-track{
-  --tp-gap:24px;
-  display:flex;gap:var(--tp-gap);align-items:stretch;
-  transition:transform .55s cubic-bezier(0.2,0.8,0.2,1);
-  will-change:transform;
-  touch-action:pan-y;            /* let JS own horizontal drags, keep vertical scroll */
-  cursor:grab;
-  /* The viewport runs full-bleed (outside .container). This pad lines the FIRST card's
-     left edge up with the centered container content edge, while the track still
-     extends full width to the right (cards bleed past the viewport edge, scroll via arrows).
-     100% = viewport width, so this stays scrollbar-safe (no 100vw). */
-  padding-left:calc(max((100% - 1512px) / 2, 0px) + clamp(20px, 4vw, 40px));
+/* ---------- Customization Options — static icon card grid (no carousel) ----------
+   3-up desktop → 2-up tablet → 1-up mobile. White cards, no border / no shadow, rounded;
+   each card centers a blue Lucide icon on a soft rounded-square tile, with a bold title and
+   one-line description below. Subtle hover lift only. */
+.co-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.co-card{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  background:#ffffff;border-radius:14px;padding:28px 24px;
+  transition:transform .2s ease;
 }
-.tp-track.is-dragging{cursor:grabbing;transition:none;user-select:none}
-/* Desktop ≥1024px → ~3.5 cards visible (next card peeks) */
-.tp-card{flex:0 0 auto;width:calc((100% - 2.5 * var(--tp-gap)) / 3.5)}
-.tp-card img{pointer-events:none}   /* don't let image drag-ghost hijack swipes */
-/* Tablet 640–1023px → 2 cards */
-@media (max-width:1023px){
-  .tp-card{width:calc((100% - 1 * var(--tp-gap)) / 2)}
+.co-card:hover{transform:translateY(-2px)}  /* subtle lift only — no shadow, no border, no blue fill */
+.co-icon{
+  width:56px;height:56px;border-radius:12px;background:#eef2ff;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-bottom:16px;
 }
-/* Mobile <640px → ~1.2 cards (peek) */
-@media (max-width:639px){
-  .tp-card{width:calc((100% - 0.2 * var(--tp-gap)) / 1.2)}
-}
-/* This section's 5 cards always overflow, so arrows stay visible at EVERY width —
-   override the homepage rule that hides .carousel-controls at ≥1200px. */
-.tp-controls{display:flex !important}
-/* Arrow clamp state (in addition to native :disabled styling) */
-.carousel-btn[aria-disabled="true"]{opacity:.35;pointer-events:none}
-@media (prefers-reduced-motion:reduce){
-  .tp-track{transition:none}
-}
+.co-icon [data-lucide]{width:28px;height:28px;stroke:#2563eb;stroke-width:1.8}
+.co-card h3{font-family:var(--sans);font-size:1.1rem;font-weight:700;color:#0f172a;line-height:1.3;margin:0}
+.co-card p{font-family:var(--sans);font-size:0.95rem;line-height:1.5;color:#6b7280;margin:8px 0 0}
+@media(max-width:1000px){.co-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){.co-grid{grid-template-columns:1fr}}
 
 /* ============================================================
    PAGE-SPECIFIC STYLES — PRIVATE LABEL
@@ -832,25 +800,15 @@
         <div class="nav-dropdown nav-dropdown--text">
           <div class="dropdown-inner">
             <div class="dropdown-col">
-              <p class="dropdown-col-head">Healthcare & Ops</p>
-              <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare Voice AI</a>
-              <a href="../../industries/veterinary/index.html" class="dropdown-link">Veterinary AI</a>
-              <a href="../../industries/hospitality/index.html" class="dropdown-link">Hospitality AI</a>
-            </div>
-            <div class="dropdown-col">
-              <p class="dropdown-col-head">Enterprise & Field</p>
-              <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise AI</a>
-              <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
+              <p class="dropdown-col-head">Industries</p>
+              <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise</a>
               <a href="../../industries/field-service/index.html" class="dropdown-link">Field Service</a>
-              <a href="../../industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
-              <a href="../../industries/telecom/index.html" class="dropdown-link">Telecom AI</a>
-            </div>
-            <div class="dropdown-col">
-              <p class="dropdown-col-head">Safety & Transport</p>
+              <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare</a>
+              <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics</a>
               <a href="../../industries/public-safety/index.html" class="dropdown-link">Public Safety</a>
-              <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics & Transportation</a>
-              <a href="../../industries/smart-retail/index.html" class="dropdown-link">Smart Retail</a>
-              <a href="https://gmic-nemt-demo.vercel.app/" class="dropdown-link dropdown-link--external" target="_blank" rel="noopener">NEMT</a>
+              <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
+              <a href="../../industries/veterinary/index.html" class="dropdown-link">Veterinary</a>
+              <a href="../../industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
             </div>
           </div>
         </div>
@@ -898,51 +856,16 @@
   <div class="mobile-nav-inner">
 
     <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Products</p>
-      <a href="../../products/mic06/" class="mobile-nav-link">MIC06</a>
-      <a href="../../products/mic05/" class="mobile-nav-link">MIC05</a>
-      <a href="../../products/mic01/" class="mobile-nav-link">MIC01</a>
-    </div>
-
-        <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Custom Devices · Hardware</p>
-      <a href="../../custom-devices/odm-oem/index.html" class="mobile-nav-link">ODM / OEM</a>
-      <a href="../../custom-devices/private-label/index.html" class="mobile-nav-link" style="color:#2563eb;font-weight:700;" aria-current="page">Private Label</a>
-      <a href="../../custom-devices/custom-enclosure/index.html" class="mobile-nav-link">Custom Enclosure</a>
-      <a href="../../custom-devices/3d-prototype/index.html" class="mobile-nav-link">3D Small-batch Prototype</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Custom Devices · Engineering</p>
-      <a href="../../custom-devices/firmware-integration/index.html" class="mobile-nav-link">Firmware Integration</a>
-      <a href="../../custom-devices/audio-dsp-tuning/index.html" class="mobile-nav-link">Audio &amp; DSP Tuning</a>
-      <a href="../../custom-devices/ai-sdk-integration/index.html" class="mobile-nav-link">AI SDK Integration</a>
-      <a href="../../custom-devices/prototype-validation/index.html" class="mobile-nav-link">Prototype Validation</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Custom Devices · Production</p>
-      <a href="../../custom-devices/evt-dvt-pvt/index.html" class="mobile-nav-link">EVT / DVT / PVT</a>
-      <a href="../../custom-devices/smt-manufacturing/index.html" class="mobile-nav-link">SMT Manufacturing</a>
-      <a href="../../custom-devices/certification-support/index.html" class="mobile-nav-link">Certification Support</a>
-      <a href="../../custom-devices/supply-chain/index.html" class="mobile-nav-link">Supply Chain Management</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Industries</p>
-      <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare Voice AI</a>
-      <a href="../../industries/veterinary/index.html" class="mobile-nav-link">Veterinary AI</a>
-      <a href="../../industries/hospitality/index.html" class="mobile-nav-link">Hospitality AI</a>
-      <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise AI</a>
-      <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
-      <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
-      <a href="../../industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
-      <a href="../../industries/telecom/index.html" class="mobile-nav-link">Telecom AI</a>
-      <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
-      <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics & Transportation</a>
-      <a href="../../industries/smart-retail/index.html" class="mobile-nav-link">Smart Retail</a>
-      <a href="https://gmic-nemt-demo.vercel.app/" class="mobile-nav-link mobile-nav-link--external" target="_blank" rel="noopener">NEMT ↗</a>
-    </div>
+  <p class="mobile-nav-head">Industries</p>
+  <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise</a>
+  <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
+  <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare</a>
+  <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics</a>
+  <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
+  <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
+  <a href="../../industries/veterinary/index.html" class="mobile-nav-link">Veterinary</a>
+  <a href="../../industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
+</div>
 
     <div class="mobile-nav-section">
       <a href="../../implementation/index.html" class="mobile-nav-link">Implementation</a>
@@ -1006,7 +929,7 @@
       </div>
     </div>
     <div class="odm-hero-banner">
-      <img src="../../img/platform/02.jpg" alt="Branded AI voice hardware on a GMIC production line" onerror="this.style.display='none'">
+      <img src="../../img/custom-devices/private-label/hero.png" alt="Branded AI voice hardware on a GMIC production line" onerror="this.style.display='none'">
     </div>
   </header>
 
@@ -1044,66 +967,41 @@
     </div>
   </section>
 
-  <!-- ========== 3) CUSTOMIZATION OPTIONS (card carousel — big icon on top) ========== -->
+  <!-- ========== 3) CUSTOMIZATION OPTIONS (static icon card grid) ========== -->
   <section class="odm-sec alt fade-section" aria-labelledby="custom-h">
     <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <div class="eyebrow">/ CUSTOMIZATION OPTIONS</div>
-          <h2 class="section" id="custom-h">Customization Options</h2>
+      <div class="odm-head reveal">
+        <div class="eyebrow">/ CUSTOMIZATION OPTIONS</div>
+        <h2 class="section" id="custom-h">Customization Options</h2>
+      </div>
+      <div class="co-grid reveal">
+        <div class="co-card">
+          <div class="co-icon"><i data-lucide="stamp" aria-hidden="true"></i></div>
+          <h3>Logo printing</h3>
+          <p>Your logo printed or etched on the device.</p>
         </div>
-        <div class="section-head-right">
-          <div class="carousel-controls tp-controls">
-            <button class="carousel-btn" id="coPrev" type="button" aria-label="Previous customization options">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button>
-            <button class="carousel-btn" id="coNext" type="button" aria-label="Next customization options">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
-          </div>
+        <div class="co-card">
+          <div class="co-icon"><i data-lucide="package" aria-hidden="true"></i></div>
+          <h3>Packaging</h3>
+          <p>Branded retail and shipping packaging.</p>
+        </div>
+        <div class="co-card">
+          <div class="co-icon"><i data-lucide="binary" aria-hidden="true"></i></div>
+          <h3>Firmware branding</h3>
+          <p>Your identity inside the device firmware.</p>
+        </div>
+        <div class="co-card">
+          <div class="co-icon"><i data-lucide="smartphone" aria-hidden="true"></i></div>
+          <h3>Mobile app branding</h3>
+          <p>A companion app styled to your brand.</p>
+        </div>
+        <div class="co-card">
+          <div class="co-icon"><i data-lucide="book-open" aria-hidden="true"></i></div>
+          <h3>User manuals</h3>
+          <p>Docs written and branded for your product.</p>
         </div>
       </div>
     </div>
-
-    <div class="tp-viewport">
-      <div class="tp-track" id="coTrack">
-          <div class="tp-card co-card">
-            <div class="co-icon"><i data-lucide="stamp" aria-hidden="true"></i></div>
-            <div class="co-body">
-              <h3>Logo printing</h3>
-              <p>Your logo printed or etched on the device.</p>
-            </div>
-          </div>
-          <div class="tp-card co-card">
-            <div class="co-icon"><i data-lucide="package" aria-hidden="true"></i></div>
-            <div class="co-body">
-              <h3>Packaging</h3>
-              <p>Branded retail and shipping packaging.</p>
-            </div>
-          </div>
-          <div class="tp-card co-card">
-            <div class="co-icon"><i data-lucide="binary" aria-hidden="true"></i></div>
-            <div class="co-body">
-              <h3>Firmware branding</h3>
-              <p>Your identity inside the device firmware.</p>
-            </div>
-          </div>
-          <div class="tp-card co-card">
-            <div class="co-icon"><i data-lucide="smartphone" aria-hidden="true"></i></div>
-            <div class="co-body">
-              <h3>Mobile app branding</h3>
-              <p>A companion app styled to your brand.</p>
-            </div>
-          </div>
-          <div class="tp-card co-card">
-            <div class="co-icon"><i data-lucide="book-open" aria-hidden="true"></i></div>
-            <div class="co-body">
-              <h3>User manuals</h3>
-              <p>Docs written and branded for your product.</p>
-            </div>
-          </div>
-        </div>
-      </div>
   </section>
 
   <!-- ========== 4) IDEAL FOR (pill tags + supporting image) ========== -->
@@ -1116,21 +1014,21 @@
       </div>
       <div class="pl-ideal reveal">
         <div class="pl-ideal-card">
-          <div class="pl-ideal-media"><img src="../../img/platform/01.jpg" alt="AI SaaS team building on GMIC voice hardware" onerror="this.style.display='none'"></div>
+          <div class="pl-ideal-media"><img src="../../img/custom-devices/private-label/AI%20SaaS.jpg" alt="AI SaaS team building on GMIC voice hardware" onerror="this.style.display='none'"></div>
           <div class="pl-ideal-body">
             <i data-lucide="cloud" aria-hidden="true"></i>
             <h3>AI SaaS companies</h3>
           </div>
         </div>
         <div class="pl-ideal-card">
-          <div class="pl-ideal-media"><img src="../../img/platform/02.jpg" alt="Healthcare team using GMIC hardware" onerror="this.style.display='none'"></div>
+          <div class="pl-ideal-media"><img src="../../img/custom-devices/private-label/Healthcare.png" alt="Healthcare team using GMIC hardware" onerror="this.style.display='none'"></div>
           <div class="pl-ideal-body">
             <i data-lucide="stethoscope" aria-hidden="true"></i>
             <h3>Healthcare software vendors</h3>
           </div>
         </div>
         <div class="pl-ideal-card">
-          <div class="pl-ideal-media"><img src="../../img/platform/03.jpg" alt="Enterprise solution provider deploying branded devices" onerror="this.style.display='none'"></div>
+          <div class="pl-ideal-media"><img src="../../img/custom-devices/private-label/Enterprise.png" alt="Enterprise solution provider deploying branded devices" onerror="this.style.display='none'"></div>
           <div class="pl-ideal-body">
             <i data-lucide="building-2" aria-hidden="true"></i>
             <h3>Enterprise solution providers</h3>
@@ -1374,106 +1272,5 @@ document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
 });
 </script>
 
-<!-- Customization Options carousel — self-contained, scoped to #coTrack.
-     Independent of main.js / the homepage #cTrack carousel. -->
-<script>
-(function(){
-  var track = document.getElementById('coTrack');
-  if(!track) return;
-  var viewport = track.parentElement;
-  var prevBtn = document.getElementById('coPrev');
-  var nextBtn = document.getElementById('coNext');
-  var cards = track.querySelectorAll('.tp-card');
-  if(!cards.length || !prevBtn || !nextBtn) return;
-
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var pos = 0;     // current scroll offset in px (applied as translateX(-pos))
-  var step = 0;    // one card width + gap
-  var maxPos = 0;  // furthest the track can travel
-
-  function gap(){
-    var cs = getComputedStyle(track);
-    var g = parseFloat(cs.columnGap || cs.gap || '0');
-    return isNaN(g) ? 0 : g;
-  }
-  function measure(){
-    step = cards[0].getBoundingClientRect().width + gap();
-    maxPos = Math.max(0, track.scrollWidth - viewport.clientWidth);
-  }
-  function clamp(v){ return Math.max(0, Math.min(maxPos, v)); }
-
-  function render(animate){
-    if(animate && !reduce.matches){
-      track.style.transform = 'translateX(' + (-pos) + 'px)';
-    } else {
-      var t = track.style.transition;
-      track.style.transition = 'none';
-      track.style.transform = 'translateX(' + (-pos) + 'px)';
-      void track.offsetWidth;            // flush, then restore transition
-      track.style.transition = t;
-    }
-    updateArrows();
-  }
-  function updateArrows(){
-    var atStart = pos <= 0.5;
-    var atEnd = pos >= maxPos - 0.5;
-    prevBtn.setAttribute('aria-disabled', atStart ? 'true' : 'false');
-    nextBtn.setAttribute('aria-disabled', atEnd ? 'true' : 'false');
-    prevBtn.disabled = atStart;
-    nextBtn.disabled = atEnd;
-  }
-  function move(dir){
-    measure();
-    pos = clamp(pos + dir * step);
-    render(true);
-  }
-
-  prevBtn.addEventListener('click', function(){ move(-1); });
-  nextBtn.addEventListener('click', function(){ move(1); });
-
-  // Recompute on resize so steps stay aligned to the new card width.
-  var rid;
-  window.addEventListener('resize', function(){
-    clearTimeout(rid);
-    rid = setTimeout(function(){ measure(); pos = clamp(pos); render(false); }, 120);
-  });
-
-  // Touch / pointer drag (horizontal). touch-action:pan-y keeps vertical scroll.
-  var dragging = false, startX = 0, startPos = 0, moved = false;
-  track.addEventListener('pointerdown', function(e){
-    if(e.pointerType === 'mouse' && e.button !== 0) return;
-    measure();
-    dragging = true; moved = false;
-    startX = e.clientX; startPos = pos;
-    track.classList.add('is-dragging');
-    try { track.setPointerCapture(e.pointerId); } catch(_){}
-  });
-  track.addEventListener('pointermove', function(e){
-    if(!dragging) return;
-    var dx = e.clientX - startX;
-    if(Math.abs(dx) > 4) moved = true;
-    pos = clamp(startPos - dx);
-    track.style.transform = 'translateX(' + (-pos) + 'px)';
-  });
-  function endDrag(){
-    if(!dragging) return;
-    dragging = false;
-    track.classList.remove('is-dragging');
-    if(step > 0) pos = clamp(Math.round(pos / step) * step);  // snap to nearest card
-    render(true);
-  }
-  track.addEventListener('pointerup', endDrag);
-  track.addEventListener('pointercancel', endDrag);
-  track.addEventListener('lostpointercapture', endDrag);
-  // Swallow the click that follows a real drag so cards don't trigger.
-  track.addEventListener('click', function(e){
-    if(moved){ e.preventDefault(); e.stopPropagation(); }
-  }, true);
-
-  function init(){ measure(); pos = clamp(pos); render(false); }
-  init();
-  window.addEventListener('load', init);   // re-measure once images have loaded
-})();
-</script>
 </body>
 </html>

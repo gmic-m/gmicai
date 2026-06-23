@@ -130,6 +130,13 @@
 .m5-light .m5-card,.m5-soft .m5-card{border-color:rgba(0,0,0,.08);background:#fff;}
 .m5-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.18);}
 .m5-light .m5-card:hover,.m5-soft .m5-card:hover{box-shadow:0 12px 32px rgba(0,0,0,.08);}
+/* Platform section cards — no hover (nothing is clickable) */
+.m5-light .m5-grid-3 .m5-card:hover,
+.m5-soft .m5-grid-3 .m5-card:hover {
+  transform: none;
+  box-shadow: none;
+  cursor: default;
+}
 .m5-card-ico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(37,99,235,.14);color:#60a5fa;margin-bottom:16px;}
 .m5-light .m5-card-ico,.m5-soft .m5-card-ico{background:#eef3ff;color:#2563eb;}
 .m5-card-ico svg{width:22px;height:22px;}
@@ -212,6 +219,12 @@
 /* ---- Integration flow diagram (pure HTML+CSS, no images) ---- */
 .m5-flow{margin-top:clamp(44px,6vw,68px);display:flex;align-items:stretch;justify-content:center;gap:0;}
 .m5-flow-node{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:24px 14px;border:1px solid rgba(0,0,0,.08);border-radius:12px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.05);}
+/* Flow nodes inside the framed process box — remove individual borders */
+.m5-flow .m5-flow-node {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
 .m5-flow-ico{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#eef3ff;color:#2563eb;}
 .m5-flow-ico svg{width:22px;height:22px;}
 .m5-flow-node span{font-size:.9rem;font-weight:600;color:#0f172a;line-height:1.35;}
@@ -333,25 +346,15 @@
         <div class="nav-dropdown nav-dropdown--text">
           <div class="dropdown-inner">
             <div class="dropdown-col">
-              <p class="dropdown-col-head">Healthcare & Ops</p>
-              <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare Voice AI</a>
-              <a href="../../industries/veterinary/index.html" class="dropdown-link">Veterinary AI</a>
-              <a href="../../industries/hospitality/index.html" class="dropdown-link">Hospitality AI</a>
-            </div>
-            <div class="dropdown-col">
-              <p class="dropdown-col-head">Enterprise & Field</p>
-              <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise AI</a>
-              <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
+              <p class="dropdown-col-head">Industries</p>
+              <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise</a>
               <a href="../../industries/field-service/index.html" class="dropdown-link">Field Service</a>
-              <a href="../../industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
-              <a href="../../industries/telecom/index.html" class="dropdown-link">Telecom AI</a>
-            </div>
-            <div class="dropdown-col">
-              <p class="dropdown-col-head">Safety & Transport</p>
+              <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare</a>
+              <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics</a>
               <a href="../../industries/public-safety/index.html" class="dropdown-link">Public Safety</a>
-              <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics & Transportation</a>
-              <a href="../../industries/smart-retail/index.html" class="dropdown-link">Smart Retail</a>
-              <a href="https://gmic-nemt-demo.vercel.app/" class="dropdown-link dropdown-link--external" target="_blank" rel="noopener">NEMT</a>
+              <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
+              <a href="../../industries/veterinary/index.html" class="dropdown-link">Veterinary</a>
+              <a href="../../industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
             </div>
           </div>
         </div>
@@ -400,51 +403,16 @@
   <div class="mobile-nav-inner">
 
     <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Products</p>
-      <a href="../../products/mic06/index.html" class="mobile-nav-link">MIC06</a>
-      <a href="../../products/mic05/index.html" class="mobile-nav-link">MIC05</a>
-      <a href="../../products/mic01/index.html" class="mobile-nav-link">MIC01</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Custom Devices · Hardware</p>
-      <a href="../../custom-devices/odm-oem/index.html" class="mobile-nav-link">ODM / OEM</a>
-      <a href="../../custom-devices/private-label/index.html" class="mobile-nav-link">Private Label</a>
-      <a href="../../custom-devices/custom-enclosure/index.html" class="mobile-nav-link">Custom Enclosure</a>
-      <a href="../../custom-devices/3d-prototype/index.html" class="mobile-nav-link">3D Small-batch Prototype</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Custom Devices · Engineering</p>
-      <a href="../../custom-devices/firmware-integration/index.html" class="mobile-nav-link">Firmware Integration</a>
-      <a href="../../custom-devices/audio-dsp-tuning/index.html" class="mobile-nav-link">Audio &amp; DSP Tuning</a>
-      <a href="../../custom-devices/ai-sdk-integration/index.html" class="mobile-nav-link">AI SDK Integration</a>
-      <a href="../../custom-devices/prototype-validation/index.html" class="mobile-nav-link">Prototype Validation</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Custom Devices · Production</p>
-      <a href="../../custom-devices/evt-dvt-pvt/index.html" class="mobile-nav-link">EVT / DVT / PVT</a>
-      <a href="../../custom-devices/smt-manufacturing/index.html" class="mobile-nav-link">SMT Manufacturing</a>
-      <a href="../../custom-devices/certification-support/index.html" class="mobile-nav-link">Certification Support</a>
-      <a href="../../custom-devices/supply-chain/index.html" class="mobile-nav-link">Supply Chain Management</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Industries</p>
-      <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare Voice AI</a>
-      <a href="../../industries/veterinary/index.html" class="mobile-nav-link">Veterinary AI</a>
-      <a href="../../industries/hospitality/index.html" class="mobile-nav-link">Hospitality AI</a>
-      <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise AI</a>
-      <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
-      <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
-      <a href="../../industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
-      <a href="../../industries/telecom/index.html" class="mobile-nav-link">Telecom AI</a>
-      <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
-      <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics & Transportation</a>
-      <a href="../../industries/smart-retail/index.html" class="mobile-nav-link">Smart Retail</a>
-      <a href="https://gmic-nemt-demo.vercel.app/" class="mobile-nav-link mobile-nav-link--external" target="_blank" rel="noopener">NEMT ↗</a>
-    </div>
+  <p class="mobile-nav-head">Industries</p>
+  <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise</a>
+  <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
+  <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare</a>
+  <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics</a>
+  <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
+  <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
+  <a href="../../industries/veterinary/index.html" class="mobile-nav-link">Veterinary</a>
+  <a href="../../industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
+</div>
 
     <div class="mobile-nav-section">
       <a href="../../implementation/index.html" class="mobile-nav-link">Implementation</a>
@@ -709,32 +677,38 @@
     </div>
 
     <!-- Integration flow diagram — horizontal on desktop, stacks vertically (arrows point down) on narrow -->
-    <div class="m5-flow reveal" role="img" aria-label="Integration flow: MIC06 to Wi-Fi or Bluetooth to Cloud or API to AI transcription to your platform">
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="mic"></i></span>
-        <span>MIC06</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="wifi"></i></span>
-        <span>Wi-Fi / Bluetooth</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="cloud"></i></span>
-        <span>Cloud / API</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="file-text"></i></span>
-        <span>AI Transcription</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="layout-grid"></i></span>
-        <span>Your Platform</span>
-      </div>
-    </div>
+    <div class="m5-flow reveal" role="img" aria-label="Integration flow: MIC06 to Wi-Fi or Bluetooth to Cloud or API to AI transcription to your platform" style="
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  background: #f8fafc;
+  padding: 32px 40px;
+  margin-bottom: clamp(28px,4vw,40px);
+">
+  <div class="m5-flow-node" style="border:none;background:transparent;">
+    <span class="m5-flow-ico"><i data-lucide="mic"></i></span>
+    <span>MIC06</span>
+  </div>
+  <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
+  <div class="m5-flow-node" style="border:none;background:transparent;">
+    <span class="m5-flow-ico"><i data-lucide="wifi"></i></span>
+    <span>Wi-Fi / Bluetooth</span>
+  </div>
+  <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
+  <div class="m5-flow-node" style="border:none;background:transparent;">
+    <span class="m5-flow-ico"><i data-lucide="cloud"></i></span>
+    <span>Cloud / API</span>
+  </div>
+  <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
+  <div class="m5-flow-node" style="border:none;background:transparent;">
+    <span class="m5-flow-ico"><i data-lucide="file-text"></i></span>
+    <span>AI Transcription</span>
+  </div>
+  <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
+  <div class="m5-flow-node" style="border:none;background:transparent;">
+    <span class="m5-flow-ico"><i data-lucide="layout-grid"></i></span>
+    <span>Your Platform</span>
+  </div>
+</div>
 
     <!-- Deployment models — 3 cards (same card style, 3-up / single column on narrow) -->
     <div class="m5-grid-3" style="margin-top:clamp(28px,4vw,40px);">
