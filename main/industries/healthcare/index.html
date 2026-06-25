@@ -555,11 +555,41 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 .cap-col-body li { font-size:.95rem; color:#475569; padding-left:18px; position:relative; }
 .cap-col-body li::before { content:''; position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%; background:#2563eb; }
 
-/* PROCESS */
-.proc-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:16px; }
-.proc-step { padding:24px 18px; border-radius:12px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); }
-.proc-num { font-size:1.5rem; font-weight:700; color:#3b82f6; letter-spacing:-.02em; margin-bottom:12px; }
-.proc-step h3 { font-size:.95rem; font-weight:600; color:#fff; margin:0; line-height:1.35; }
+/* ===== PROCESS component (windowed auto-carousel + left image cross-fade) ===== */
+.impl-proc{--rowH:104px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,4vw,56px);align-items:stretch}
+.impl-proc-media{position:relative;border-radius:16px;overflow:hidden;background:#e8eeff;min-height:calc(var(--rowH) * 3)}
+.impl-proc-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease}
+.impl-proc-img.active{opacity:1}
+.impl-proc-badge{position:absolute;left:16px;bottom:16px;z-index:2;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.92);border-radius:100px;padding:8px 15px;font-family:var(--sans);font-size:0.85rem;font-weight:700;color:#0f172a;box-shadow:0 8px 22px -10px rgba(15,23,42,0.45)}
+.impl-proc-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:#2563eb;flex:none}
+.impl-proc-right{display:flex;flex-direction:column;gap:14px}
+.impl-proc-nav{display:flex;justify-content:flex-end;gap:8px}
+.impl-proc-navbtn{width:34px;height:34px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;background:transparent;border:0;outline:none;cursor:pointer;color:#475569;transition:background .2s ease,color .2s ease}
+.impl-proc-navbtn:hover{background:#eef2ff;color:#2563eb}
+.impl-proc-navbtn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(37,99,235,0.35)}
+.impl-proc-navbtn [data-lucide]{width:18px;height:18px;stroke-width:2.2}
+.impl-proc-window{height:calc(var(--rowH) * 3);overflow:hidden}
+.impl-proc-track{position:relative;display:flex;flex-direction:column;transition:transform .3s ease;will-change:transform}
+.impl-proc-track::before{content:"";position:absolute;z-index:0;left:46px;top:calc(var(--rowH)/2);bottom:calc(var(--rowH)/2);width:2px;transform:translateX(-1px);background:#e2e8f0}
+.impl-proc-step{position:relative;box-sizing:border-box;height:var(--rowH);width:100%;display:flex;align-items:center;gap:16px;padding:0 8px 0 22px;text-align:left;background:none;border:0;outline:none;cursor:pointer}
+.impl-proc-step:focus-visible{outline:none}
+.impl-proc-step:focus-visible .impl-proc-ico{box-shadow:0 0 0 3px rgba(37,99,235,0.35)}
+.impl-proc-bar{position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:34px;border-radius:99px;background:#2563eb;opacity:0;transition:opacity .3s ease}
+.impl-proc-step.active .impl-proc-bar{opacity:1}
+.impl-proc-ico{position:relative;z-index:1;flex:none;width:48px;height:48px;border-radius:12px;background:#eef2ff;display:flex;align-items:center;justify-content:center;transition:background .3s ease,box-shadow .2s ease}
+.impl-proc-ico [data-lucide]{width:22px;height:22px;stroke:#64748b;stroke-width:1.9;transition:stroke .3s ease}
+.impl-proc-step.active .impl-proc-ico{background:#2563eb}
+.impl-proc-step.active .impl-proc-ico [data-lucide]{stroke:#fff}
+.impl-proc-text{display:flex;flex-direction:column;gap:3px;min-width:0;opacity:.5;transition:opacity .3s ease}
+.impl-proc-step.active .impl-proc-text{opacity:1}
+.impl-proc-title{font-family:var(--sans);font-size:1.05rem;font-weight:700;color:#0f172a;line-height:1.25;margin:0}
+.impl-proc-desc{font-family:var(--sans);font-size:0.9rem;color:#475569;line-height:1.4;margin:0}
+@media (max-width:900px){
+  .impl-proc{grid-template-columns:1fr;gap:24px}
+  .impl-proc-media{min-height:240px;order:-1}
+  .impl-proc-window{height:auto;overflow:visible}
+  .impl-proc-track{transform:none !important}
+}
 
 /* RELATED */
 .rel-row { display:flex; flex-wrap:wrap; gap:10px; }
@@ -575,7 +605,6 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 /* RESPONSIVE */
 @media (max-width:900px){
   .grid-4 { grid-template-columns:repeat(2,1fr); }
-  .proc-grid { grid-template-columns:repeat(3,1fr); }
   /* Hero: stack to single column, left-aligned (eyebrow → H1 → subtitle → buttons → banner) */
   .ind-hero-top { grid-template-columns:1fr; gap:24px; align-items:start; }
   .ind-hero-aside { padding-bottom:0; }
@@ -596,7 +625,6 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .ind-hero { padding:110px 0 48px; }
   .ind-hero-banner { margin-top:32px; }
   .grid-4 { grid-template-columns:1fr; }
-  .proc-grid { grid-template-columns:repeat(2,1fr); }
   .ind-hero .lede { font-size:.95rem; }
   .ind-hero-cta .btn { width:100%; text-align:center; }
 }
@@ -1008,8 +1036,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
         </ul>
       </div>
       <div class="why-hw-media reveal">
-        <!-- TODO: img/platform/01.jpg 可替换为更贴合 healthcare 的实拍 -->
-        <img src="../../img/industries/why hardware.png" alt="GMIC hardware engineering and manufacturing">
+        <img src="../../img/industries/healthcare/why-hardware.png" alt="GMIC hardware engineering and manufacturing">
       </div>
     </div>
   </div>
@@ -1057,19 +1084,62 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 </section>
 
 <!-- ========== 8) IMPLEMENTATION PROCESS ========== -->
-<section class="ind-sec ind-sec--dark fade-section">
+<section class="ind-sec ind-sec--soft fade-section">
   <div class="container">
     <div class="ind-head reveal">
-      <div class="eyebrow dark">/ PROCESS</div>
+      <div class="eyebrow">/ PROCESS</div>
       <h2 class="section measure-wide">From workflow to scale.</h2>
     </div>
-    <div class="proc-grid reveal">
-      <div class="proc-step"><div class="proc-num">01</div><h3>Workflow Discovery</h3></div>
-      <div class="proc-step"><div class="proc-num">02</div><h3>Solution Architecture</h3></div>
-      <div class="proc-step"><div class="proc-num">03</div><h3>Prototype Development</h3></div>
-      <div class="proc-step"><div class="proc-num">04</div><h3>Platform Integration</h3></div>
-      <div class="proc-step"><div class="proc-num">05</div><h3>Pilot Deployment</h3></div>
-      <div class="proc-step"><div class="proc-num">06</div><h3>Manufacturing &amp; Scaling</h3></div>
+    <div class="impl-proc reveal" id="procFlow">
+      <div class="impl-proc-media">
+        <img class="impl-proc-img active" data-step="0" src="../../img/industries/healthcare/process-discover.png" alt="Discovery: reviewing AI hardware requirements" onerror="this.style.display='none'">
+        <img class="impl-proc-img" data-step="1" src="../../img/industries/healthcare/process-architecture-design.png" alt="Architecture design for voice hardware" onerror="this.style.display='none'">
+        <img class="impl-proc-img" data-step="2" src="../../img/industries/healthcare/process-prototype-development.png" alt="Device prototype development" onerror="this.style.display='none'">
+        <img class="impl-proc-img" data-step="3" src="../../img/industries/healthcare/process-integration.png" alt="Platform and firmware integration testing" onerror="this.style.display='none'">
+        <img class="impl-proc-img" data-step="4" src="../../img/industries/healthcare/process-pilot-testing.png" alt="Pilot testing and quality validation" onerror="this.style.display='none'">
+        <img class="impl-proc-img" data-step="5" src="../../img/industries/healthcare/process-mass-production.png" alt="Scalable manufacturing and mass production" onerror="this.style.display='none'">
+        <span class="impl-proc-badge" id="procBadge" aria-hidden="true">Discovery</span>
+      </div>
+      <div class="impl-proc-right">
+        <div class="impl-proc-nav">
+          <button type="button" class="impl-proc-navbtn" data-dir="-1" aria-label="Previous step"><i data-lucide="chevron-up" aria-hidden="true"></i></button>
+          <button type="button" class="impl-proc-navbtn" data-dir="1" aria-label="Next step"><i data-lucide="chevron-down" aria-hidden="true"></i></button>
+        </div>
+        <div class="impl-proc-window">
+          <div class="impl-proc-track" id="procTrack" role="tablist" aria-label="Development process steps">
+            <button type="button" class="impl-proc-step active" data-step="0" role="tab" aria-selected="true">
+              <span class="impl-proc-bar" aria-hidden="true"></span>
+              <span class="impl-proc-ico"><i data-lucide="search" aria-hidden="true"></i></span>
+              <span class="impl-proc-text"><span class="impl-proc-title">Discovery</span><span class="impl-proc-desc">Understand your AI use case, target environment, and hardware requirements.</span></span>
+            </button>
+            <button type="button" class="impl-proc-step" data-step="1" role="tab" aria-selected="false">
+              <span class="impl-proc-bar" aria-hidden="true"></span>
+              <span class="impl-proc-ico"><i data-lucide="pencil-ruler" aria-hidden="true"></i></span>
+              <span class="impl-proc-text"><span class="impl-proc-title">Architecture Design</span><span class="impl-proc-desc">Define the hardware architecture, components, and system design.</span></span>
+            </button>
+            <button type="button" class="impl-proc-step" data-step="2" role="tab" aria-selected="false">
+              <span class="impl-proc-bar" aria-hidden="true"></span>
+              <span class="impl-proc-ico"><i data-lucide="package" aria-hidden="true"></i></span>
+              <span class="impl-proc-text"><span class="impl-proc-title">Prototype Development</span><span class="impl-proc-desc">Build working prototypes for early validation and testing.</span></span>
+            </button>
+            <button type="button" class="impl-proc-step" data-step="3" role="tab" aria-selected="false">
+              <span class="impl-proc-bar" aria-hidden="true"></span>
+              <span class="impl-proc-ico"><i data-lucide="git-merge" aria-hidden="true"></i></span>
+              <span class="impl-proc-text"><span class="impl-proc-title">Integration</span><span class="impl-proc-desc">Connect the device with your AI platform, firmware, and software.</span></span>
+            </button>
+            <button type="button" class="impl-proc-step" data-step="4" role="tab" aria-selected="false">
+              <span class="impl-proc-bar" aria-hidden="true"></span>
+              <span class="impl-proc-ico"><i data-lucide="clipboard-check" aria-hidden="true"></i></span>
+              <span class="impl-proc-text"><span class="impl-proc-title">Pilot Testing</span><span class="impl-proc-desc">Validate real-world performance with users before scaling.</span></span>
+            </button>
+            <button type="button" class="impl-proc-step" data-step="5" role="tab" aria-selected="false">
+              <span class="impl-proc-bar" aria-hidden="true"></span>
+              <span class="impl-proc-ico"><i data-lucide="factory" aria-hidden="true"></i></span>
+              <span class="impl-proc-text"><span class="impl-proc-title">Mass Production</span><span class="impl-proc-desc">SMT, assembly, QC, and scalable manufacturing.</span></span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1471,6 +1541,42 @@ document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
   if (fabWechat && wechat) fabWechat.addEventListener('click', function () {
     wechat.style.display = (wechat.style.display === 'none' || !wechat.style.display) ? 'block' : 'none';
   });
+})();
+</script>
+<!-- ===== PROCESS component JS (windowed auto-carousel) ===== -->
+<script>
+(function(){
+  var flow = document.getElementById('procFlow'); if(!flow) return;
+  var track = document.getElementById('procTrack');
+  var badge = document.getElementById('procBadge');
+  var steps = Array.prototype.slice.call(flow.querySelectorAll('.impl-proc-step'));
+  var imgs  = Array.prototype.slice.call(flow.querySelectorAll('.impl-proc-img'));
+  if(!steps.length) return;
+  var STEP=3500, RESUME=10000, VISIBLE=3, total=steps.length;
+  var idx=0, timer=null, resumeTimer=null;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mobile=window.matchMedia('(max-width: 900px)');
+  function rowH(){ return steps[0]?steps[0].offsetHeight:104; }
+  function show(i){
+    idx=i;
+    steps.forEach(function(s,n){var on=n===i;s.classList.toggle('active',on);s.setAttribute('aria-selected',on?'true':'false');});
+    imgs.forEach(function(m,n){m.classList.toggle('active',n===i);});
+    if(badge){var t=steps[i].querySelector('.impl-proc-title');if(t)badge.textContent=t.textContent;}
+    var scroll=Math.min(i,total-VISIBLE); if(scroll<0)scroll=0;
+    var ty=mobile.matches?0:-(scroll*rowH());
+    track.style.transform='translateY('+ty+'px)';
+  }
+  function next(){ show((idx+1)%total); }
+  function start(){ if(reduce.matches)return; stop(); timer=setInterval(next,STEP); }
+  function stop(){ if(timer){clearInterval(timer);timer=null;} }
+  function manual(i){ show(i); stop(); clearTimeout(resumeTimer); resumeTimer=setTimeout(start,RESUME); }
+  steps.forEach(function(s,i){ s.addEventListener('click',function(){manual(i);}); });
+  Array.prototype.slice.call(flow.querySelectorAll('.impl-proc-navbtn')).forEach(function(b){
+    b.addEventListener('click',function(){var dir=parseInt(b.getAttribute('data-dir'),10)||0;manual((idx+dir+total)%total);});
+  });
+  document.addEventListener('visibilitychange',function(){ if(document.hidden){stop();}else{start();} });
+  window.addEventListener('resize',function(){ show(idx); });
+  show(0); start();
 })();
 </script>
 </body>
