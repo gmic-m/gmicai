@@ -118,8 +118,8 @@
 .m5-chip{display:inline-flex;align-items:center;gap:6px;font-size:.8125rem;font-weight:500;color:rgba(255,255,255,.78);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:6px 12px;border-radius:999px;}
 .m5-chip svg{width:14px;height:14px;}
 /* Hero image / placeholder panel (4:3 to avoid layout shift) */
-.m5-hero-media{position:relative;aspect-ratio:4/3;width:100%;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.10);box-shadow:0 24px 60px rgba(0,0,0,.35);background:linear-gradient(135deg,#f1f5f9 0%,#e2e8f0 100%);}
-.m5-hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:28px;}
+.m5-hero-media{position:relative;aspect-ratio:4/3;width:100%;border-radius:0;overflow:visible;border:none;box-shadow:none;background:transparent;}
+.m5-hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:0;}
 .m5-hero-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#f1f5f9 0%,#e2e8f0 100%);}
 .m5-hero-ph span{font-family:var(--sans);font-weight:800;letter-spacing:.06em;font-size:clamp(40px,6vw,72px);color:#94a3b8;}
 .m5-hero-ph small{font-size:.8125rem;letter-spacing:.14em;text-transform:uppercase;color:#b6c0cf;}
@@ -136,6 +136,12 @@
 .m5-light .m5-card,.m5-soft .m5-card{border-color:rgba(0,0,0,.08);background:#fff;}
 .m5-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.18);}
 .m5-light .m5-card:hover,.m5-soft .m5-card:hover{box-shadow:0 12px 32px rgba(0,0,0,.08);}
+.m5-light .m5-grid-3 .m5-card:hover,
+.m5-soft .m5-grid-3 .m5-card:hover {
+  transform: none;
+  box-shadow: none;
+  cursor: default;
+}
 .m5-card-ico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(37,99,235,.14);color:#60a5fa;margin-bottom:16px;}
 .m5-light .m5-card-ico,.m5-soft .m5-card-ico{background:#eef3ff;color:#2563eb;}
 .m5-card-ico svg{width:22px;height:22px;}
@@ -224,6 +230,11 @@
 .m5-flow-node span{font-size:.9rem;font-weight:600;color:#0f172a;line-height:1.35;}
 .m5-flow-arrow{flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:#2563eb;padding:0 6px;}
 .m5-flow-arrow svg{width:26px;height:26px;}
+.m5-flow .m5-flow-node {
+  border: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
 @media(max-width:760px){
   .m5-flow{flex-direction:column;align-items:stretch;}
   .m5-flow-node{flex:none;}
@@ -458,11 +469,7 @@
         </div>
       </div>
       <div class="m5-hero-media reveal">
-        <!-- TODO: replace with official MIC01 hero photo -->
-        <div class="m5-hero-ph">
-          <span>MIC01</span>
-          <small>Product image coming soon</small>
-        </div>
+        <img src="../../img/products/mic01/mic01.png" alt="MIC01 wearable voice capture device">
       </div>
     </div>
   </div>
@@ -506,8 +513,7 @@
         <p class="m5-lead">MIC01 is built around one principle: capture voice instantly, with zero friction. Unlike larger recording devices, it focuses on portability, ease of use, and fast interaction — ideal for applications where users need quick voice input throughout the day.</p>
       </div>
       <figure class="m5-scene reveal">
-        <!-- TODO: replace with official MIC01 in-use scene photo -->
-        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1100&q=80" alt="Teams using MIC01 for instant push-to-talk voice capture" loading="lazy">
+        <img src="../../img/products/mic01/Zero-friction.png" alt="MIC01 zero friction voice capture" loading="lazy">
       </figure>
     </div>
   </div>
@@ -523,7 +529,7 @@
       <div class="eyebrow dark">Key Features</div>
       <h2 class="section">Everything you need — nothing you don't.</h2>
     </div>
-    <div class="m5-grid-flex">
+    <div class="m5-grid-3">
 
       <div class="m5-card reveal">
         <div class="m5-card-ico"><i data-lucide="radio"></i></div>
@@ -651,13 +657,13 @@
       </div>
       <div class="m5-mfg-grid reveal">
         <figure>
-          <img src="../../img/platform/02.jpg" alt="SMT line operator inspecting a populated MIC01 circuit board" loading="lazy">
+          <img src="../../img/products/mic01/Manufacturer-1.jpg" alt="MIC01 manufacturing — SMT line" loading="lazy">
         </figure>
         <figure>
-          <img src="../../img/platform/01.jpg" alt="Technician assembling MIC01 devices on the production line" loading="lazy">
+          <img src="../../img/products/mic01/Manufacturer-2.png" alt="MIC01 manufacturing — assembly" loading="lazy">
         </figure>
         <figure>
-          <img src="../../img/platform/04.jpg" alt="MIC01 unit undergoing automated quality-assurance testing" loading="lazy">
+          <img src="../../img/products/mic01/Manufacturer-3.png" alt="MIC01 manufacturing — QC inspection" loading="lazy">
         </figure>
       </div>
     </div>
@@ -677,38 +683,44 @@
         <p class="m5-lead">MIC01 can be configured for multiple deployment models:</p>
       </div>
       <div class="m5-split-media reveal">
-        <!-- TODO: replace with official photo -->
-        <img src="../../img/platform/03.jpg" alt="GMIC engineering and manufacturing facility supporting MIC01 integration" loading="lazy">
+        <img src="../../img/products/mic01/Built-to-plug.png" alt="MIC01 built to plug into your stack" loading="lazy">
       </div>
     </div>
 
     <!-- Integration flow diagram — horizontal on desktop, stacks vertically (arrows point down) on narrow -->
-    <div class="m5-flow reveal" role="img" aria-label="Integration flow: MIC01 to Bluetooth to mobile app to AI platform to your workflow">
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="mic"></i></span>
-        <span>MIC01</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="bluetooth"></i></span>
-        <span>Bluetooth</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="smartphone"></i></span>
-        <span>Mobile App</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="cpu"></i></span>
-        <span>AI Platform</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="layout-grid"></i></span>
-        <span>Your Workflow</span>
-      </div>
-    </div>
+    <div class="m5-flow reveal" role="img" aria-label="Integration flow: MIC01 to Bluetooth to mobile app to AI platform to your workflow" style="
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  background: #f8fafc;
+  padding: 32px 40px;
+  margin-bottom: clamp(28px,4vw,40px);
+  box-shadow: none;
+">
+  <div class="m5-flow-node" style="border:none;background:transparent;box-shadow:none;">
+    <span class="m5-flow-ico"><i data-lucide="mic"></i></span>
+    <span>MIC01</span>
+  </div>
+  <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
+  <div class="m5-flow-node" style="border:none;background:transparent;box-shadow:none;">
+    <span class="m5-flow-ico"><i data-lucide="bluetooth"></i></span>
+    <span>Bluetooth</span>
+  </div>
+  <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
+  <div class="m5-flow-node" style="border:none;background:transparent;box-shadow:none;">
+    <span class="m5-flow-ico"><i data-lucide="smartphone"></i></span>
+    <span>Mobile App</span>
+  </div>
+  <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
+  <div class="m5-flow-node" style="border:none;background:transparent;box-shadow:none;">
+    <span class="m5-flow-ico"><i data-lucide="cpu"></i></span>
+    <span>AI Platform</span>
+  </div>
+  <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
+  <div class="m5-flow-node" style="border:none;background:transparent;box-shadow:none;">
+    <span class="m5-flow-ico"><i data-lucide="layout-grid"></i></span>
+    <span>Your Workflow</span>
+  </div>
+</div>
 
     <!-- Deployment models — 2 cards (same card style, 2-up / single column on narrow) -->
     <div class="m5-grid-2" style="margin-top:clamp(28px,4vw,40px);">

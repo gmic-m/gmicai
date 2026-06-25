@@ -219,7 +219,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
   transform: translateY(-2px);
 }
 .po-card-img {
-  height: 200px;
+  aspect-ratio: 1 / 1;
   background: #f8f8f8;
   display: flex;
   align-items: center;
@@ -228,9 +228,9 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
   position: relative;
 }
 .po-card-img img {
-  max-height: 160px;
-  max-width: 75%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .po-card-badge {
   position: absolute;
@@ -254,20 +254,20 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
   flex: 1;
 }
 .po-card-sku {
-  font-size: 0.72rem;
-  color: #bbb;
-  font-weight: 500;
+  font-size: 17px;
+  color: #111;
+  font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 .po-card-name {
-  font-size: 0.9375rem;
-  font-weight: 700;
-  color: #111;
+  font-size: 14px;
+  font-weight: 500;
+  color: #888;
   line-height: 1.3;
 }
 .po-card-desc {
-  font-size: 0.8125rem;
+  font-size: 14px;
   color: #777;
   line-height: 1.6;
   margin-top: 2px;
@@ -280,7 +280,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
   margin-top: 8px;
 }
 .po-card-tag {
-  font-size: 0.7rem;
+  font-size: 14px;
   background: #f5f5f5;
   color: #666;
   padding: 2px 8px;
@@ -295,11 +295,12 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
   border-top: 1px solid #f5f5f5;
 }
 .po-btn-learn {
+  display: none;
   flex: 1;
   text-align: center;
   padding: 8px 12px;
   border: 1px solid #e0e0e0;
-  border-radius: 6px;
+  border-radius: 100px;
   font-size: 0.8125rem;
   font-weight: 500;
   color: #111;
@@ -313,7 +314,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
   flex: 1;
   text-align: center;
   padding: 8px 12px;
-  border-radius: 6px;
+  border-radius: 100px;
   font-size: 0.8125rem;
   font-weight: 600;
   color: #fff;
@@ -678,7 +679,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 1. HA-MIC06B -->
       <div class="po-card" data-category="wearable">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-MIC06B" alt="Hearit.ai Noise Voice Recorder">
+          <img src="../img/products/overview/HA-MIC06B.jpg" alt="Hearit.ai Noise Voice Recorder">
           <span class="po-card-badge po-card-badge--blue">WiFi + BT</span>
         </div>
         <div class="po-card-body">
@@ -694,7 +695,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -702,7 +703,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 2. HA-MIC06A -->
       <div class="po-card" data-category="wearable">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-MIC06A" alt="Hearit.ai ClinicMic">
+          <img src="../img/products/overview/HA-MIC06A.jpg" alt="Hearit.ai ClinicMic">
           <span class="po-card-badge po-card-badge--blue">BT + WiFi</span>
         </div>
         <div class="po-card-body">
@@ -718,7 +719,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -726,7 +727,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 3. HA-MIC05 -->
       <div class="po-card" data-category="wearable">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-MIC05" alt="Hearit.ai VoiceRec Pro">
+          <img src="../img/products/overview/HA-MIC05.jpg" alt="Hearit.ai VoiceRec Pro">
           <span class="po-card-badge po-card-badge--blue">WiFi + BT</span>
         </div>
         <div class="po-card-body">
@@ -741,7 +742,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="mic05/index.html" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -749,7 +750,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 4. HA-MIC04 -->
       <div class="po-card" data-category="wearable">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-MIC04" alt="Hearit.ai VoiceRec">
+          <img src="../img/products/overview/HA-MIC04.jpg" alt="Hearit.ai VoiceRec">
           <span class="po-card-badge po-card-badge--blue">WiFi + BT</span>
         </div>
         <div class="po-card-body">
@@ -763,7 +764,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -771,7 +772,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 5. HA-MIC01 -->
       <div class="po-card" data-category="wearable">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-MIC01" alt="Hearit.ai ChatMic">
+          <img src="../img/products/overview/HA-MIC01.png" alt="Hearit.ai ChatMic">
           <span class="po-card-badge">Bluetooth</span>
         </div>
         <div class="po-card-body">
@@ -785,7 +786,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -793,7 +794,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 6. HA-MIC02 -->
       <div class="po-card" data-category="wearable">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-MIC02" alt="Hearit.ai MagMic">
+          <img src="../img/products/overview/HA-MIC02.png" alt="Hearit.ai MagMic">
           <span class="po-card-badge">Bluetooth</span>
         </div>
         <div class="po-card-body">
@@ -807,7 +808,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -817,7 +818,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 7. Telalive -->
       <div class="po-card" data-category="phone">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=Telalive" alt="Hearit.ai Telalive">
+          <img src="../img/products/overview/Telalive.jpg" alt="Hearit.ai Telalive">
           <span class="po-card-badge po-card-badge--blue">AI Phone</span>
         </div>
         <div class="po-card-body">
@@ -832,7 +833,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="telalive/index.html" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -840,7 +841,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 8. HA-TEL02 -->
       <div class="po-card" data-category="phone">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-TEL02" alt="4G AI Mobile Phone Assistant">
+          <img src="../img/products/overview/HA-TEL02.jpg" alt="4G AI Mobile Phone Assistant">
           <span class="po-card-badge po-card-badge--blue">AI Phone</span>
         </div>
         <div class="po-card-body">
@@ -855,7 +856,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -865,7 +866,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 9. HA-SPK01 -->
       <div class="po-card" data-category="speaker">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-SPK01" alt="Hearit.ai Magnetic SpeakAI Mini">
+          <img src="../img/products/overview/HA-SPK01.jpg" alt="Hearit.ai Magnetic SpeakAI Mini">
           <span class="po-card-badge">Bluetooth</span>
         </div>
         <div class="po-card-body">
@@ -880,7 +881,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -888,7 +889,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 10. HA-SPK02 -->
       <div class="po-card" data-category="speaker">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-SPK02" alt="Hearit.ai Magnetic AI Speaker">
+          <img src="../img/products/overview/HA-SPK02.jpg" alt="Hearit.ai Magnetic AI Speaker">
           <span class="po-card-badge">Bluetooth</span>
         </div>
         <div class="po-card-body">
@@ -904,7 +905,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -912,7 +913,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 11. HA-SPK03 (Bluetooth) -->
       <div class="po-card" data-category="speaker">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-SPK03-BT" alt="Hearit.ai SpeakAI">
+          <img src="../img/products/overview/HA-SPK03_Bluetooth.jpg" alt="Hearit.ai SpeakAI">
           <span class="po-card-badge">Bluetooth</span>
         </div>
         <div class="po-card-body">
@@ -927,7 +928,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -935,7 +936,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 12. HA-SPK03 (WiFi) -->
       <div class="po-card" data-category="speaker">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-SPK03-WIFI" alt="Hearit.ai SpeakAI Pro">
+          <img src="../img/products/overview/HA-SPK03_WIFI.jpg" alt="Hearit.ai SpeakAI Pro">
           <span class="po-card-badge po-card-badge--blue">WiFi + BT</span>
         </div>
         <div class="po-card-body">
@@ -949,7 +950,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -957,7 +958,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 13. HA-TR01 -->
       <div class="po-card" data-category="speaker">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-TR01" alt="Hearit.ai VoiceLink">
+          <img src="../img/products/overview/HA-TR01.jpg" alt="Hearit.ai VoiceLink">
           <span class="po-card-badge po-card-badge--blue">WiFi + BT</span>
         </div>
         <div class="po-card-body">
@@ -972,7 +973,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -982,7 +983,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 14. HA-BC01 -->
       <div class="po-card" data-category="headset">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-BC01" alt="Hearit.ai BoneSonix">
+          <img src="../img/products/overview/HA-BC01.jpg" alt="Hearit.ai BoneSonix">
           <span class="po-card-badge">Bluetooth</span>
         </div>
         <div class="po-card-body">
@@ -997,7 +998,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -1005,7 +1006,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 15. HA-OWS03 -->
       <div class="po-card" data-category="headset">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-OWS03" alt="Hearit.ai AirSonix">
+          <img src="../img/products/overview/HA-OWS03.jpg" alt="Hearit.ai AirSonix">
           <span class="po-card-badge">Bluetooth</span>
         </div>
         <div class="po-card-body">
@@ -1020,7 +1021,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -1028,7 +1029,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 16. HA-TWS01 -->
       <div class="po-card" data-category="headset">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-TWS01" alt="Hearit.ai BudsAI">
+          <img src="../img/products/overview/HA-TWS01.jpg" alt="Hearit.ai BudsAI">
           <span class="po-card-badge">Bluetooth</span>
         </div>
         <div class="po-card-body">
@@ -1043,7 +1044,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -1053,7 +1054,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 17. HA-GLS01 -->
       <div class="po-card" data-category="smart">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-GLS01" alt="Hearit.ai SmartGlass">
+          <img src="../img/products/overview/HA-GLS01.jpg" alt="Hearit.ai SmartGlass">
           <span class="po-card-badge">Bluetooth</span>
         </div>
         <div class="po-card-body">
@@ -1068,7 +1069,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -1076,7 +1077,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 18. HA-PEN01 -->
       <div class="po-card" data-category="smart">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-PEN01" alt="Hearit.ai SmartPen">
+          <img src="../img/products/overview/HA-PEN01.jpg" alt="Hearit.ai SmartPen">
           <span class="po-card-badge">Bluetooth</span>
         </div>
         <div class="po-card-body">
@@ -1091,7 +1092,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -1099,7 +1100,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 19. HA-TOY01 -->
       <div class="po-card" data-category="smart">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-TOY01" alt="Hearit.ai BirthdayBird">
+          <img src="../img/products/overview/HA-TOY01.jpg" alt="Hearit.ai BirthdayBird">
           <span class="po-card-badge po-card-badge--blue">BT + WiFi</span>
         </div>
         <div class="po-card-body">
@@ -1114,7 +1115,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -1122,7 +1123,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 20. HA-TOY02 -->
       <div class="po-card" data-category="smart">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-TOY02" alt="Hearit.ai BuddyBear">
+          <img src="../img/products/overview/HA-TOY02.png" alt="Hearit.ai BuddyBear">
           <span class="po-card-badge po-card-badge--blue">BT + WiFi</span>
         </div>
         <div class="po-card-body">
@@ -1137,7 +1138,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
@@ -1147,7 +1148,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <!-- 21. HA-ESP32 KIT -->
       <div class="po-card" data-category="dev">
         <div class="po-card-img">
-          <img src="https://placehold.co/300x200/f8f8f8/cccccc?text=HA-ESP32" alt="Hearit.ai DevKit ESP32">
+          <img src="../img/products/overview/HA-ESP32-KIT.jpg" alt="Hearit.ai DevKit ESP32">
           <span class="po-card-badge po-card-badge--blue">BT + WiFi</span>
         </div>
         <div class="po-card-body">
@@ -1162,7 +1163,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </div>
           <div class="po-card-cta">
             <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="../index.html#contact" class="po-btn-contact">Get a Quote</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>

@@ -118,9 +118,9 @@
 .m5-chip{display:inline-flex;align-items:center;gap:6px;font-size:.8125rem;font-weight:500;color:rgba(255,255,255,.78);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:6px 12px;border-radius:999px;}
 .m5-chip svg{width:14px;height:14px;}
 /* Hero image / placeholder panel (4:3 to avoid layout shift) */
-.m5-hero-media{position:relative;aspect-ratio:4/3;width:100%;border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.10);box-shadow:0 24px 60px rgba(0,0,0,.35);background:linear-gradient(135deg,#f1f5f9 0%,#e2e8f0 100%);}
+.m5-hero-media{position:relative;aspect-ratio:4/3;width:100%;border-radius:16px;overflow:hidden;border:none;box-shadow:none;background:transparent;}
 .m5-hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:28px;}
-.m5-hero-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#f1f5f9 0%,#e2e8f0 100%);}
+.m5-hero-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:transparent;}
 .m5-hero-ph span{font-family:var(--sans);font-weight:800;letter-spacing:.06em;font-size:clamp(40px,6vw,72px);color:#94a3b8;}
 .m5-hero-ph small{font-size:.8125rem;letter-spacing:.14em;text-transform:uppercase;color:#b6c0cf;}
 
@@ -210,8 +210,9 @@
 }
 
 /* ---- Integration flow diagram (pure HTML+CSS, no images) ---- */
-.m5-flow{margin-top:clamp(44px,6vw,68px);display:flex;align-items:stretch;justify-content:center;gap:0;}
-.m5-flow-node{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:24px 14px;border:1px solid rgba(0,0,0,.08);border-radius:12px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.05);}
+.m5-flow-outer{margin-top:clamp(44px,6vw,68px);background:#f8fafc;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:32px 24px;}
+.m5-flow{display:flex;align-items:stretch;justify-content:center;gap:0;}
+.m5-flow-node{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:24px 14px;border:none;border-radius:12px;background:transparent;box-shadow:none;}
 .m5-flow-ico{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#eef3ff;color:#2563eb;}
 .m5-flow-ico svg{width:22px;height:22px;}
 .m5-flow-node span{font-size:.9rem;font-weight:600;color:#0f172a;line-height:1.35;}
@@ -450,7 +451,7 @@
         </div>
       </div>
       <div class="m5-hero-media reveal">
-        <img src="../../img/products/mic05.png" alt="MIC05 secure AI voice capture device">
+        <img src="../../img/products/mic05/mic05.png" alt="MIC05 secure AI voice capture device">
       </div>
     </div>
   </div>
@@ -494,8 +495,7 @@
         <p class="m5-lead">Unlike consumer voice recorders, MIC05 is engineered for organizations that rely on voice data as part of their operational workflows. It combines local storage, wireless connectivity, and intelligent security features in a compact wearable form factor — ready to integrate into your existing software platforms and AI systems.</p>
       </div>
       <figure class="m5-scene reveal">
-        <!-- TODO: replace with official MIC05 in-use scene photo -->
-        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?auto=format&fit=crop&w=1100&q=80" alt="Teams capturing business-critical conversations with MIC05" loading="lazy">
+        <img src="../../img/products/mic05/Built-for-business.png" alt="Teams capturing business-critical conversations with MIC05" loading="lazy">
       </figure>
     </div>
   </div>
@@ -631,13 +631,13 @@
       </div>
       <div class="m5-mfg-grid reveal">
         <figure>
-          <img src="../../img/platform/02.jpg" alt="SMT line operator inspecting a populated MIC05 circuit board" loading="lazy">
+          <img src="../../img/products/mic05/Manufacturer-1.png" alt="SMT line operator inspecting a populated MIC05 circuit board" loading="lazy">
         </figure>
         <figure>
-          <img src="../../img/platform/01.jpg" alt="Technician assembling MIC05 devices on the production line" loading="lazy">
+          <img src="../../img/products/mic05/Manufacturer-2.png" alt="Technician assembling MIC05 devices on the production line" loading="lazy">
         </figure>
         <figure>
-          <img src="../../img/platform/04.jpg" alt="MIC05 unit undergoing automated quality-assurance testing" loading="lazy">
+          <img src="../../img/products/mic05/Manufacturer-3.png" alt="MIC05 unit undergoing automated quality-assurance testing" loading="lazy">
         </figure>
       </div>
     </div>
@@ -665,13 +665,13 @@
         </ul>
       </div>
       <div class="m5-split-media reveal">
-        <!-- TODO: replace with official photo -->
-        <img src="../../img/platform/03.jpg" alt="GMIC engineering and manufacturing facility supporting MIC05 integration" loading="lazy">
+        <img src="../../img/products/mic05/Built-for-Your%20Stack.png" alt="GMIC engineering and manufacturing facility supporting MIC05 integration" loading="lazy">
       </div>
     </div>
 
     <!-- Integration flow diagram — horizontal on desktop, stacks vertically (arrows point down) on narrow -->
-    <div class="m5-flow reveal" role="img" aria-label="Integration flow: MIC05 to Wi-Fi or Bluetooth to Cloud or API to AI transcription to your platform">
+    <div class="m5-flow-outer reveal">
+    <div class="m5-flow" role="img" aria-label="Integration flow: MIC05 to Wi-Fi or Bluetooth to Cloud or API to AI transcription to your platform">
       <div class="m5-flow-node">
         <span class="m5-flow-ico"><i data-lucide="mic"></i></span>
         <span>MIC05</span>
@@ -696,6 +696,7 @@
         <span class="m5-flow-ico"><i data-lucide="layout-grid"></i></span>
         <span>Your Platform</span>
       </div>
+    </div>
     </div>
   </div>
 </section>
