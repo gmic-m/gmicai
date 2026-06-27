@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Veterinary AI Documentation Hardware | GMIC.AI</title>
+<meta name="description" content="Veterinary AI documentation hardware from GMIC — voice recorders and wearable hardware for veterinary AI platforms, veterinary scribe, and clinical documentation." />
+<link rel="canonical" href="https://gmic.ai/industries/veterinary/" />
+<link rel="icon" type="image/png" href="../../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/grid.css">
+<style>
+/* ===== Dropdown navigation — full-width mega menu ===== */
+/* ── Mega Menu Base ── */
+.nav-item {
+  position: relative; /* anchors the hover-bridge pseudo-element */
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Pseudo-element bridge so the mouse doesn't lose hover
+   when moving from the nav link down to the dropdown panel */
+.nav-item.has-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  right: -20px;
+  height: 20px; /* bridges the gap */
+  background: transparent;
+}
+
+.nav-dropdown {
+  display: none;
+  position: fixed;
+  top: 64px; /* height of nav bar */
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  z-index: 999;
+  padding: 32px 0 40px; /* generous top/bottom padding, flush against nav */
+}
+
+.nav-item.has-dropdown:hover .nav-dropdown {
+  display: block;
+}
+.nav-item.has-dropdown:hover .nav-arrow {
+  transform: rotate(90deg);
+  opacity: 1;
+}
+
+.dropdown-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  padding-top: 8px;
+  display: flex;
+  gap: 0;
+}
+
+/* ── Products Mega Menu ── */
+.nav-dropdown--products .dropdown-inner {
+  flex-direction: row;
+  gap: 0;
+}
+
+.dropdown-sidebar {
+  width: 200px;
+  flex-shrink: 0;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  padding-right: 32px;
+  margin-right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dropdown-sidebar-label {
+  font-size: 1rem; /* 16px */
+  font-weight: 700;
+  color: #0f172a;
+  padding: 10px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.dropdown-sidebar-label:hover {
+  background: #f0f4ff;
+  color: #2563eb;
+}
+.dropdown-sidebar-label.active {
+  background: #f0f4ff;
+  color: #2563eb;
+}
+.dropdown-product-card.hidden {
+  display: none;
+}
+
+.dropdown-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.dropdown-product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.15s;
+  border: 1px solid transparent;
+}
+
+.dropdown-product-card:hover {
+  background: #f5f7ff;
+  border-color: rgba(37,99,235,0.15);
+}
+
+.dropdown-all {
+  background: transparent;
+  border: 1px solid transparent !important;
+  /* 与其他卡片一样 top-aligned */
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.dropdown-all:hover {
+  background: #f0f4ff !important;
+  border-color: rgba(37,99,235,0.5) !important;
+}
+
+.dp-all-icon {
+  width: 100%;
+  height: 94px;          /* 与 .dropdown-product-card img 的 height 相同 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 6px;
+  margin-bottom: 10px;   /* 与 .dropdown-product-card img 的 margin-bottom 相同 */
+  transition: background 0.15s;
+}
+
+.dropdown-all .dp-all-icon svg {
+  stroke: #9ca3af;
+  transition: stroke 0.15s;
+}
+
+.dropdown-all:hover .dp-all-icon {
+  background: #e8eeff;
+}
+
+.dropdown-all:hover .dp-all-icon svg {
+  stroke: #2563eb;
+}
+
+.dropdown-all .dp-name {
+  color: #0f172a;   /* 默认深色，不要蓝色 */
+  transition: color 0.15s;
+}
+
+.dropdown-all:hover .dp-name {
+  color: #2563eb;   /* hover 才变蓝 */
+}
+
+.dropdown-product-card img {
+  width: 100%;
+  height: 94px;             /* 从 72px 放大到 94px */
+  object-fit: contain;
+  margin-bottom: 10px;
+  background: transparent;  /* 去掉灰色背景 */
+  border-radius: 6px;
+  padding: 0;
+}
+
+.dp-name {
+  font-size: 1rem; /* 16px */
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 3px;
+}
+
+.dp-desc {
+  font-size: 0.875rem; /* 14px */
+  color: #888;
+  line-height: 1.5;
+  display: none;
+}
+
+.dropdown-all {
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent !important;
+}
+
+.dp-arrow {
+  font-size: 22px;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+/* ── Text Mega Menu (Custom Devices & Industries) ── */
+.nav-dropdown--text .dropdown-inner {
+  gap: 0;
+}
+
+.dropdown-col {
+  flex: 1;
+  padding: 0 32px;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-col:first-child { padding-left: 0; }
+.dropdown-col:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.dropdown-col-head {
+  font-size: 0.75rem; /* 12px — kept small as it's a label */
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.dropdown-link {
+  font-size: 1rem; /* 16px */
+  color: #0f172a;
+  text-decoration: none;
+  padding: 7px 0;
+  font-weight: 500;
+  transition: color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dropdown-link:hover { color: #2563eb; }
+
+.dropdown-link--external {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.dropdown-link--external::after {
+  content: '↗';
+  font-size: 11px;
+}
+
+/* ── Nav arrow ── */
+.nav-arrow {
+  font-size: 10px;
+  margin-left: 3px;
+  opacity: 0.5;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+/* ── Overlay behind mega menu ── */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 998;
+}
+.nav-item.has-dropdown:hover ~ .nav-overlay,
+.nav-overlay:hover { display: block; }
+
+/* ── Mobile: hide mega menu ── */
+@media (max-width: 768px) {
+  .nav-dropdown { display: none !important; }
+  .nav-arrow { display: none; }
+}
+
+/* ── Hamburger button ── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1001;
+}
+.nav-burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+  transform-origin: center;
+}
+/* X state when open */
+.nav-burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-burger.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile nav drawer ── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0; right: 0;
+  width: 85%;
+  max-width: 360px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 1002;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  padding-top: 80px;
+}
+.mobile-nav.open {
+  transform: translateX(0);
+}
+.mobile-nav-inner {
+  padding: 24px 28px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mobile-nav-section {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.mobile-nav-section:last-of-type {
+  border-bottom: none;
+}
+.mobile-nav-head {
+  font-size: 0.75rem; /* 12px — label only */
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.mobile-nav-link {
+  display: block;
+  font-size: 1rem; /* 16px */
+  font-weight: 500;
+  color: #0f172a;
+  text-decoration: none;
+  padding: 8px 0;
+  transition: color 0.15s;
+}
+.mobile-nav-link:hover { color: #2563eb; }
+.mobile-nav-link--external {
+  color: #2563eb;
+  font-weight: 600;
+}
+.mobile-nav-cta {
+  padding-top: 24px;
+}
+.mobile-nav-cta .btn-nav {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 14px;
+}
+
+/* ── Overlay ── */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1001;
+}
+.mobile-nav-overlay.open {
+  display: block;
+}
+
+/* ── Show burger on mobile, hide desktop links ── */
+@media (max-width: 768px) {
+  .nav-burger { display: flex; }
+  .nav-links { display: none; }
+  .nav-right { display: none; }
+  .mobile-nav { display: block; }
+}
+
+/* ── Force black text in all dropdown panels ── */
+.nav-dropdown {
+  background: #ffffff;
+  color: #0f172a;
+}
+.dropdown-col-head {
+  color: #aaaaaa !important;
+}
+.dropdown-link {
+  color: #0f172a !important;
+}
+.dropdown-link:hover {
+  color: #2563eb !important;
+}
+.dropdown-link--external {
+  color: #2563eb !important;
+}
+.dropdown-sidebar-label {
+  color: #0f172a !important;
+}
+.dropdown-sidebar-label:hover {
+  color: #2563eb !important;
+}
+
+/* ============================================================
+   PAGE-SPECIFIC STYLES — ODM / OEM (Custom Devices)
+   Reuses global tokens & classes from style.css / grid.css.
+   ============================================================ */
+
+/* Dark hero on this page → reuse the homepage's nav dark→scrolled behavior
+   (transparent + white logo/links initially; white bg + dark text once .scrolled).
+   That behavior is defined in global style.css; the bottom script toggles .scrolled. */
+/* Active / current treatment for this page's nav entry */
+.dropdown-link.nav-current{color:#2563eb !important;font-weight:700}
+
+/* ============================================================
+   INDUSTRY PAGE TEMPLATE — Healthcare (reusable across 7 pages)
+   ============================================================ */
+body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
+.mobile-nav-link.active { color:#2563eb !important; font-weight:700; }
+
+/* width helpers — constrain TEXT only, never section backgrounds */
+.measure { max-width:680px; }
+.measure-wide { max-width:760px; }
+
+/* section shells & light/dark alternation */
+.ind-sec { padding:96px 0; }
+.ind-sec--light { background:#ffffff; }
+.ind-sec--soft  { background:#f8fafc; }
+.ind-sec--dark  { background:#0f172a; color:#fff; }
+.ind-sec--dark h2.section, .ind-sec--dark h3 { color:#fff; }
+.ind-sec--dark p { color:rgba(255,255,255,.72); }
+.ind-head { margin-bottom:48px; }
+.ind-head .eyebrow { display:block; margin-bottom:16px; }
+.ind-head h2.section { margin:0; }
+
+/* HERO */
+.ind-hero { background:#0b1220; color:#fff; padding:140px 0 64px; }
+.ind-hero .eyebrow.dark { display:block; margin-bottom:20px; }
+/* Axion-style two-column top: left = pill+eyebrow+H1, right = subtitle+buttons (bottom-aligned) */
+.ind-hero-top { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:48px; align-items:end; }
+.ind-hero h1.display { color:#fff; font-size:clamp(2rem,7vw,3.4rem); line-height:1.05; letter-spacing:-.03em; margin:0; }
+.ind-hero-aside { padding-bottom:6px; }
+.ind-hero .lede { font-size:1.0625rem; line-height:1.7; color:rgba(255,255,255,.75); margin:0 0 22px; max-width:440px; }
+.ind-tag { display:inline-flex; align-items:center; gap:8px; font-size:.78rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:#93c5fd; background:rgba(37,99,235,.14); border:1px solid rgba(147,197,253,.25); padding:7px 14px; border-radius:100px; margin-bottom:18px; }
+.ind-tag svg { width:15px; height:15px; }
+.ind-hero-cta { display:flex; flex-wrap:wrap; gap:14px; }
+.ind-hero-banner { margin-top:48px; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.08); box-shadow:0 30px 80px rgba(0,0,0,.35); }
+.ind-hero-banner img { display:block; width:100%; height:auto; }
+
+/* INTRO */
+.intro-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+.intro-lead { font-size:clamp(1.4rem,2.4vw,1.6rem); line-height:1.35; font-weight:600; color:#0f172a; margin:0; }
+.intro-lead em { font-style:italic; color:#2563eb; }
+.intro-body { display:flex; flex-direction:column; gap:16px; padding-top:6px; border-left:1px solid rgba(0,0,0,.06); padding-left:40px; }
+.intro-body p { font-size:1rem; line-height:1.75; color:#64748b; margin:0; }
+
+/* CARD GRIDS (Challenges / Use Cases) */
+.ind-grid { display:grid; gap:20px; }
+.grid-4 { grid-template-columns:repeat(4,1fr); }
+.grid-3 { grid-template-columns:repeat(3,1fr); }
+/* CASE STUDY preview — full-width horizontal card, logo (left) + copy (right) */
+.cs-card {
+  display:grid; grid-template-columns:minmax(0,2fr) minmax(0,3fr);
+  gap:48px; align-items:center;
+  background:#f8fafc; border-radius:16px; padding:48px;
+}
+.cs-card:hover { transform:none; box-shadow:none; }
+.cs-logo { display:flex; flex-direction:column; align-items:flex-start; gap:16px; }
+.cs-logo-box {
+  width:100%; aspect-ratio:16/9; border-radius:14px;
+  background:#fff; border:1px solid rgba(0,0,0,.06);
+  display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem; font-weight:700; letter-spacing:-.01em; color:#0f172a;
+}
+.cs-body { display:flex; flex-direction:column; align-items:flex-start; }
+.cs-body .eyebrow { display:block; margin-bottom:12px; }
+.cs-body h3 { font-size:clamp(24px,2.4vw,32px); font-weight:700; letter-spacing:-.02em; margin:0 0 14px; line-height:1.15; color:#0f172a; }
+.cs-desc { font-size:1.0625rem; line-height:1.7; color:#64748b; margin:0 0 24px; max-width:46ch; }
+.cs-link { display:inline-flex; align-items:center; gap:8px; font-size:.95rem; font-weight:600; color:#2563eb; text-decoration:none; transition:gap .2s ease; }
+.cs-link:hover { gap:12px; }
+@media (max-width:760px){
+  .cs-card { grid-template-columns:1fr; gap:32px; padding:32px; }
+}
+.ind-card { background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:28px 24px; transition:transform .25s ease, box-shadow .25s ease; }
+.ind-card:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(15,23,42,.10); }
+/* Use Cases grid: fully static — no lift, shadow, or color change on hover */
+.uc-static .ind-card:hover { transform:none; box-shadow:none; }
+.ind-card-ic { width:44px; height:44px; border-radius:10px; background:#eff4ff; display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+.ind-card-ic svg { width:22px; height:22px; color:#2563eb; }
+.ind-card h3 { font-size:1.0625rem; font-weight:600; margin:0 0 8px; line-height:1.3; }
+.ind-card p { font-size:.9rem; line-height:1.6; color:#64748b; margin:0; }
+.ind-sec--dark .ind-card { background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.10); }
+.ind-sec--dark .ind-card-ic { background:rgba(37,99,235,.18); }
+.ind-sec--dark .ind-card-ic svg { color:#93c5fd; }
+.ind-sec--dark .ind-card p { color:rgba(255,255,255,.65); }
+
+/* SOLUTIONS — equal-height two columns; one card active at a time (hover/click), left image cross-fades; NO border */
+.sol-flip { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+/* Fixed pixel height so swapping the active image NEVER changes the container height (no jitter).
+   Both imgs are absolute inset:0 inside this fixed box, so the image never participates in layout height. */
+.sol-media { position:relative; height:520px; border-radius:14px; overflow:hidden; background:#f1f5f9; }
+.sol-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s ease; }
+.sol-img.is-active { opacity:1; }
+.sol-panel { display:flex; flex-direction:column; justify-content:center; }
+.sol-panel .eyebrow { display:block; margin-bottom:16px; }
+.sol-panel h2.section { margin:0 0 18px; }
+.sol-cards { display:flex; flex-direction:column; }
+.sol-card { padding:18px 0; cursor:pointer; opacity:.4; transition:opacity .3s ease, filter .3s ease; }
+.sol-card + .sol-card { border-top:1px solid rgba(0,0,0,.08); }
+.sol-card:not(.is-active) { filter:blur(.4px); }
+.sol-card.is-active { opacity:1; filter:none; }
+.sol-card:focus-visible { outline:2px solid #2563eb; outline-offset:4px; }
+.sol-card-head { display:flex; align-items:center; gap:12px; }
+.sol-ic { width:40px; height:40px; border-radius:10px; background:#eef2f7; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background .25s ease; }
+.sol-ic svg { width:20px; height:20px; color:#64748b; transition:color .25s ease; }
+.sol-card.is-active .sol-ic { background:#2563eb; }
+.sol-card.is-active .sol-ic svg { color:#fff; }
+.sol-card h3 { font-size:1.125rem; font-weight:600; color:#0f172a; margin:0; }
+/* expandable body: collapsed by default, expands only on the active card (title row always visible) */
+.sol-card-body { max-height:0; overflow:hidden; opacity:0; padding-left:52px; transition:max-height .45s ease, opacity .3s ease, margin .45s ease; }
+.sol-card.is-active .sol-card-body { max-height:260px; opacity:1; margin-top:12px; }
+.sol-card-body p { font-size:.95rem; line-height:1.7; color:#475569; margin:0 0 12px; }
+.sol-chips { display:flex; flex-wrap:wrap; gap:8px; }
+.chip { font-size:.8rem; font-weight:500; color:#2563eb; background:#eff4ff; border-radius:100px; padding:6px 14px; }
+
+/* WHY HARDWARE */
+.why-hw-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+.why-hw-lead { font-size:1.0625rem; line-height:1.7; margin:18px 0 24px; color:rgba(255,255,255,.78); }
+.check-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px; }
+.check-list li { display:flex; align-items:center; gap:12px; font-size:1rem; color:#fff; }
+.check-list .ck { width:26px; height:26px; border-radius:50%; background:rgba(37,99,235,.20); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.check-list .ck svg { width:15px; height:15px; color:#93c5fd; }
+.why-hw-media { border-radius:14px; overflow:hidden; }
+.why-hw-media img { display:block; width:100%; height:100%; object-fit:cover; }
+
+/* CAPABILITIES — two NO-border cards, image-topped */
+.cap2-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.cap-col { background:#fff; border-radius:12px; overflow:hidden; transition:transform .25s ease, box-shadow .25s ease; }
+.cap-col:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(15,23,42,.10); }
+.cap-col-img { display:block; width:100%; height:200px; object-fit:cover; border-radius:12px 12px 0 0; }
+.cap-col-body { padding:26px 26px 30px; }
+.cap-col-body h3 { display:flex; align-items:center; gap:10px; font-size:1.125rem; font-weight:600; margin:0 0 16px; }
+.cap-col-body h3 svg { width:20px; height:20px; color:#2563eb; }
+.cap-col-body ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+.cap-col-body li { font-size:.95rem; color:#475569; padding-left:18px; position:relative; }
+.cap-col-body li::before { content:''; position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%; background:#2563eb; }
+
+/* PROCESS */
+.proc-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:16px; }
+.proc-step { padding:24px 18px; border-radius:12px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); }
+.proc-num { font-size:1.5rem; font-weight:700; color:#3b82f6; letter-spacing:-.02em; margin-bottom:12px; }
+.proc-step h3 { font-size:.95rem; font-weight:600; color:#fff; margin:0; line-height:1.35; }
+
+/* RELATED */
+.rel-row { display:flex; flex-wrap:wrap; gap:10px; }
+.rel-link { font-size:.9rem; font-weight:500; color:#475569; background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:100px; padding:9px 18px; text-decoration:none; transition:color .2s ease, border-color .2s ease; }
+.rel-link:hover { color:#2563eb; border-color:rgba(37,99,235,.40); }
+
+/* REVEAL / FADE — self-contained (page may run without main.js) */
+.reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.in, .reveal.visible { opacity:1; transform:none; }
+.fade-section { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.fade-section.in, .fade-section.in-view, .fade-section.visible { opacity:1; transform:none; }
+
+/* RESPONSIVE */
+@media (max-width:900px){
+  .grid-4 { grid-template-columns:repeat(2,1fr); }
+  .grid-3 { grid-template-columns:1fr; }
+  .proc-grid { grid-template-columns:repeat(3,1fr); }
+  /* Hero: stack to single column, left-aligned (eyebrow → H1 → subtitle → buttons → banner) */
+  .ind-hero-top { grid-template-columns:1fr; gap:24px; align-items:start; }
+  .ind-hero-aside { padding-bottom:0; }
+  .ind-hero h1.display { margin:0 0 4px; }
+  .ind-hero .lede { max-width:560px; }
+  .intro-grid, .why-hw-grid, .cap2-grid { grid-template-columns:1fr; gap:32px; }
+  .intro-body { border-left:none; padding-left:0; }
+  .why-hw-media { order:2; }
+  /* Solutions: stack, image on top (normal aspect, not sticky), all steps visible */
+  /* Solutions: stack (image on top), all cards expanded & full opacity, no switching */
+  .sol-flip { grid-template-columns:1fr; gap:24px; }
+  .sol-media { min-height:0; height:clamp(220px,55vw,320px); }
+  .sol-card { opacity:1; filter:none; cursor:default; }
+  .sol-card-body { max-height:none; opacity:1; margin-top:12px; }
+}
+@media (max-width:640px){
+  .ind-sec { padding:64px 0; }
+  .ind-hero { padding:110px 0 48px; }
+  .ind-hero-banner { margin-top:32px; }
+  .grid-4 { grid-template-columns:1fr; }
+  .proc-grid { grid-template-columns:repeat(2,1fr); }
+  .ind-hero .lede { font-size:.95rem; }
+  .ind-hero-cta .btn { width:100%; text-align:center; }
+}
+
+/* ===== PROCESS component (windowed auto-carousel + left image cross-fade) ===== */
+.impl-proc{--rowH:104px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,4vw,56px);align-items:stretch}
+.impl-proc-media{position:relative;border-radius:16px;overflow:hidden;background:#e8eeff;min-height:calc(var(--rowH) * 3)}
+.impl-proc-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease}
+.impl-proc-img.active{opacity:1}
+.impl-proc-badge{position:absolute;left:16px;bottom:16px;z-index:2;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.92);border-radius:100px;padding:8px 15px;font-family:var(--sans);font-size:0.85rem;font-weight:700;color:#0f172a;box-shadow:0 8px 22px -10px rgba(15,23,42,0.45)}
+.impl-proc-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:#2563eb;flex:none}
+.impl-proc-right{display:flex;flex-direction:column;gap:14px}
+.impl-proc-nav{display:flex;justify-content:flex-end;gap:8px}
+.impl-proc-navbtn{width:34px;height:34px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;background:transparent;border:0;outline:none;cursor:pointer;color:#475569;transition:background .2s ease,color .2s ease}
+.impl-proc-navbtn:hover{background:#eef2ff;color:#2563eb}
+.impl-proc-navbtn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(37,99,235,0.35)}
+.impl-proc-navbtn [data-lucide]{width:18px;height:18px;stroke-width:2.2}
+.impl-proc-window{height:calc(var(--rowH) * 3);overflow:hidden}
+.impl-proc-track{position:relative;display:flex;flex-direction:column;transition:transform .3s ease;will-change:transform}
+.impl-proc-track::before{content:"";position:absolute;z-index:0;left:46px;top:calc(var(--rowH)/2);bottom:calc(var(--rowH)/2);width:2px;transform:translateX(-1px);background:#e2e8f0}
+.impl-proc-step{position:relative;box-sizing:border-box;height:var(--rowH);width:100%;display:flex;align-items:center;gap:16px;padding:0 8px 0 22px;text-align:left;background:none;border:0;outline:none;cursor:pointer}
+.impl-proc-step:focus-visible{outline:none}
+.impl-proc-step:focus-visible .impl-proc-ico{box-shadow:0 0 0 3px rgba(37,99,235,0.35)}
+.impl-proc-bar{position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:34px;border-radius:99px;background:#2563eb;opacity:0;transition:opacity .3s ease}
+.impl-proc-step.active .impl-proc-bar{opacity:1}
+.impl-proc-ico{position:relative;z-index:1;flex:none;width:48px;height:48px;border-radius:12px;background:#eef2ff;display:flex;align-items:center;justify-content:center;transition:background .3s ease,box-shadow .2s ease}
+.impl-proc-ico [data-lucide]{width:22px;height:22px;stroke:#64748b;stroke-width:1.9;transition:stroke .3s ease}
+.impl-proc-step.active .impl-proc-ico{background:#2563eb}
+.impl-proc-step.active .impl-proc-ico [data-lucide]{stroke:#fff}
+.impl-proc-text{display:flex;flex-direction:column;gap:3px;min-width:0;opacity:.5;transition:opacity .3s ease}
+.impl-proc-step.active .impl-proc-text{opacity:1}
+.impl-proc-title{font-family:var(--sans);font-size:1.05rem;font-weight:700;color:#0f172a;line-height:1.25;margin:0}
+.impl-proc-desc{font-family:var(--sans);font-size:0.9rem;color:#475569;line-height:1.4;margin:0}
+@media (max-width:900px){
+  .impl-proc{grid-template-columns:1fr;gap:24px}
+  .impl-proc-media{min-height:240px;order:-1}
+  .impl-proc-window{height:auto;overflow:visible}
+  .impl-proc-track{transform:none !important}
+}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="../../index.html" class="nav-logo" aria-label="GMIC.AI">
+      <svg class="nav-logo-svg" width="287" height="64" viewBox="0 0 287 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20.625 19.7969L23.7139 25.1582L23.8672 25.4238L23.6358 25.624C22.0052 27.035 20.9736 29.1214 20.9736 31.4492C20.9737 33.7322 21.9655 35.7823 23.542 37.1914L23.7666 37.3926L23.6162 37.6533L20.5225 43.0244L20.3135 43.3857L19.9785 43.1367C16.4213 40.4831 14.1163 36.2357 14.1162 31.4492C14.1162 26.6153 16.4676 22.3307 20.085 19.6826L20.419 19.4385L20.625 19.7969Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.742097"/>
+        <path d="M47.0339 3.14062C62.6878 3.14063 75.3784 15.8305 75.3787 31.4844C75.3787 37.0582 73.768 42.2562 70.989 46.6396L76.5984 60.6572L76.7273 60.9785L76.406 60.8496L62.4578 55.2676C58.0188 58.1522 52.722 59.8291 47.0339 59.8291H29.0369C28.1388 59.8291 27.2505 59.7868 26.3738 59.7051L26.1433 59.6836L26.2585 59.4834L30.575 52.0078L30.6179 51.9336H47.0339C58.3273 51.9336 67.4832 42.7778 67.4832 31.4844C67.4829 20.1912 58.3272 11.0361 47.0339 11.0361H30.7996L30.7566 10.9619L26.4314 3.4707L26.3152 3.26855L26.5476 3.24902C27.3679 3.17764 28.1981 3.14063 29.0369 3.14062H47.0339Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.296839"/>
+        <path d="M13.9384 7.53125L17.7431 14.1211L17.8837 14.3633L17.6493 14.5176C12.1313 18.1468 8.48923 24.3932 8.48918 31.4902C8.48918 38.5314 12.0742 44.7355 17.5195 48.377L17.7509 48.5312L17.6122 48.7725L13.8056 55.3643L13.6503 55.6348L13.3876 55.4658C5.51302 50.3968 0.296799 41.5526 0.296799 31.4902C0.29685 21.3707 5.5727 12.4833 13.5224 7.42871L13.7841 7.2627L13.9384 7.53125Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.593678"/>
+        <circle cx="35.3099" cy="31.3871" r="4.78653" fill="#2563eb"/>
+        <ellipse cx="51.0754" cy="31.3871" rx="4.74942" ry="4.78653" fill="#2563eb"/>
+        <path d="M109.406 42.317C106.805 42.317 104.408 41.9096 102.214 41.0948C100.051 40.2486 98.1554 39.0577 96.5258 37.5221C94.9275 35.9865 93.6739 34.1845 92.765 32.1161C91.8875 30.0477 91.4488 27.7756 91.4488 25.2998C91.4488 22.8239 91.8875 20.5518 92.765 18.4834C93.6739 16.415 94.9431 14.613 96.5728 13.0774C98.2024 11.5418 100.114 10.3665 102.308 9.55172C104.502 8.70555 106.915 8.28247 109.547 8.28247C112.462 8.28247 115.079 8.76823 117.398 9.73975C119.748 10.7113 121.723 12.1215 123.321 13.9706L118.432 18.4834C117.241 17.2299 115.941 16.3054 114.53 15.7099C113.12 15.0831 111.584 14.7697 109.923 14.7697C108.325 14.7697 106.868 15.0204 105.552 15.5219C104.235 16.0233 103.091 16.7441 102.12 17.6843C101.18 18.6245 100.443 19.737 99.9104 21.0219C99.409 22.3068 99.1583 23.7328 99.1583 25.2998C99.1583 26.8354 99.409 28.2457 99.9104 29.5306C100.443 30.8155 101.18 31.9437 102.12 32.9152C103.091 33.8554 104.22 34.5762 105.504 35.0776C106.821 35.5791 108.262 35.8298 109.829 35.8298C111.334 35.8298 112.791 35.5947 114.201 35.1247C115.643 34.6232 117.037 33.7927 118.385 32.6332L122.71 38.1332C120.923 39.4808 118.839 40.515 116.458 41.2358C114.107 41.9566 111.757 42.317 109.406 42.317ZM122.71 38.1332L115.752 37.146V24.7827H122.71V38.1332ZM129.784 41.7529V8.84658H136.083L150.092 32.0691H146.754L160.528 8.84658H166.78L166.874 41.7529H159.729L159.682 19.7997H160.998L149.998 38.2743H146.566L135.331 19.7997H136.929V41.7529H129.784ZM174.681 41.7529V8.84658H182.297V41.7529H174.681ZM205.854 42.317C203.316 42.317 200.95 41.9096 198.756 41.0948C196.593 40.2486 194.713 39.0577 193.115 37.5221C191.516 35.9865 190.263 34.1845 189.354 32.1161C188.476 30.0477 188.038 27.7756 188.038 25.2998C188.038 22.8239 188.476 20.5518 189.354 18.4834C190.263 16.415 191.516 14.613 193.115 13.0774C194.744 11.5418 196.64 10.3665 198.803 9.55172C200.965 8.70555 203.331 8.28247 205.901 8.28247C208.753 8.28247 211.323 8.7839 213.611 9.78676C215.93 10.7583 217.873 12.1999 219.44 14.1116L214.551 18.6245C213.423 17.3396 212.169 16.3837 210.79 15.7569C209.411 15.0988 207.907 14.7697 206.277 14.7697C204.742 14.7697 203.331 15.0204 202.046 15.5219C200.762 16.0233 199.649 16.7441 198.709 17.6843C197.769 18.6245 197.032 19.737 196.499 21.0219C195.998 22.3068 195.747 23.7328 195.747 25.2998C195.747 26.8667 195.998 28.2927 196.499 29.5776C197.032 30.8625 197.769 31.975 198.709 32.9152C199.649 33.8554 200.762 34.5762 202.046 35.0776C203.331 35.5791 204.742 35.8298 206.277 35.8298C207.907 35.8298 209.411 35.5164 210.79 34.8896C212.169 34.2315 213.423 33.2443 214.551 31.928L219.44 36.4409C217.873 38.3526 215.93 39.8099 213.611 40.8127C211.323 41.8156 208.737 42.317 205.854 42.317ZM233.112 41.7529L247.779 8.84658H255.3L270.014 41.7529H262.022L249.988 12.7013H252.997L240.915 41.7529H233.112ZM240.445 34.7016L242.467 28.9195H259.39L261.458 34.7016H240.445ZM273.428 41.7529V8.84658H281.043V41.7529H273.428Z" fill="currentColor"/>
+        <path d="M98.5933 52.8272V53.6687H94.3082V56.1822H98.1504V57.0237H94.3082V60.7109H93.3781V52.8272H98.5933ZM102.018 60.8438C100.412 60.8438 99.2496 59.6812 99.2496 57.8542C99.2496 56.0272 100.412 54.8646 102.018 54.8646C103.623 54.8646 104.786 56.0272 104.786 57.8542C104.786 59.6812 103.623 60.8438 102.018 60.8438ZM102.018 60.0466C103.125 60.0466 103.856 59.2383 103.856 57.8542C103.856 56.4701 103.125 55.6618 102.018 55.6618C100.91 55.6618 100.18 56.4701 100.18 57.8542C100.18 59.2383 100.91 60.0466 102.018 60.0466ZM108.543 60.8438C106.982 60.8438 105.897 59.6923 105.897 57.8542C105.897 56.0161 106.96 54.8646 108.543 54.8646C109.905 54.8646 110.824 55.6729 111.001 56.9352H110.082C109.927 56.0715 109.263 55.6618 108.543 55.6618C107.569 55.6618 106.827 56.3594 106.827 57.8542C106.827 59.349 107.591 60.0466 108.543 60.0466C109.274 60.0466 109.938 59.6258 110.093 58.7511H111.001C110.813 60.0577 109.827 60.8438 108.543 60.8438ZM116.045 58.2307V54.9975H116.93V60.7109H116.089V59.8583C115.712 60.4341 115.092 60.8438 114.295 60.8438C113.022 60.8438 112.28 60.1241 112.28 58.8618V54.9975H113.166V58.7732C113.166 59.659 113.653 60.0466 114.472 60.0466C115.214 60.0466 116.045 59.4929 116.045 58.2307ZM120.607 60.8438C119.156 60.8438 118.271 60.2348 118.182 58.895H119.079C119.179 59.7587 119.599 60.0798 120.607 60.0798C121.57 60.0798 121.98 59.7587 121.98 59.194C121.98 58.6846 121.67 58.4521 120.673 58.2639L120.142 58.1642C118.902 57.9317 118.359 57.367 118.359 56.4812C118.359 55.5068 119.134 54.8646 120.441 54.8646C121.969 54.8646 122.744 55.54 122.766 56.758H121.88C121.836 55.8722 121.316 55.6286 120.441 55.6286C119.677 55.6286 119.245 55.9386 119.245 56.4701C119.245 57.0127 119.666 57.212 120.397 57.3559L120.906 57.4556C122.312 57.7324 122.877 58.2085 122.877 59.1386C122.877 60.2237 122.013 60.8438 120.607 60.8438ZM132.668 57.5774L133.476 54.9975H134.428L132.524 60.7109H131.593L130.752 58.0646C130.553 57.4334 130.353 56.7691 130.176 56.1269C129.988 56.7691 129.789 57.4334 129.589 58.0646L128.759 60.7109H127.829L125.924 54.9975H126.877L127.685 57.5774C127.906 58.275 128.106 58.9615 128.305 59.659C128.493 58.9615 128.692 58.275 128.914 57.5774L129.711 54.9975H130.641L131.438 57.5774C131.649 58.2639 131.859 58.9504 132.059 59.6369C132.247 58.9504 132.457 58.2639 132.668 57.5774ZM136.337 54.2224H135.385V53.1372H136.337V54.2224ZM136.315 60.7109H135.429V54.9975H136.315V60.7109ZM140.481 54.9975V55.7725H139.307V59.4708C139.307 59.7698 139.451 59.958 139.96 59.958H140.481V60.7109C140.259 60.722 140.027 60.7331 139.85 60.7331C138.964 60.7331 138.421 60.423 138.421 59.5483V55.7725H137.48V54.9975H138.421V53.3808H139.307V54.9975H140.481ZM144.384 54.8646C145.658 54.8646 146.4 55.5843 146.4 56.8466V60.7109H145.514V56.9352C145.514 56.0494 145.027 55.6618 144.207 55.6618C143.465 55.6618 142.635 56.2154 142.635 57.4777V60.7109H141.749V52.8272H142.635V55.7836C143.011 55.2521 143.609 54.8646 144.384 54.8646ZM157.378 60.7109H156.392L155.473 58.4189H151.886L150.978 60.7109H150.003L153.148 52.8272H154.189L157.378 60.7109ZM152.251 57.4888L152.218 57.5774H155.141L155.097 57.4777C154.754 56.6251 154.134 55.0528 153.657 53.8348C153.203 55.0528 152.594 56.6251 152.251 57.4888ZM160.549 54.9975V55.7725H159.375V59.4708C159.375 59.7698 159.519 59.958 160.028 59.958H160.549V60.7109C160.327 60.722 160.095 60.7331 159.917 60.7331C159.032 60.7331 158.489 60.423 158.489 59.5483V55.7725H157.548V54.9975H158.489V53.3808H159.375V54.9975H160.549ZM164.319 54.9975V55.7725H163.146V59.4708C163.146 59.7698 163.29 59.958 163.799 59.958H164.319V60.7109C164.098 60.722 163.865 60.7331 163.688 60.7331C162.802 60.7331 162.26 60.423 162.26 59.5483V55.7725H161.319V54.9975H162.26V53.3808H163.146V54.9975H164.319ZM167.86 60.8438C166.299 60.8438 165.203 59.7033 165.203 57.8542C165.203 56.0604 166.255 54.8646 167.838 54.8646C169.543 54.8646 170.462 56.2154 170.462 57.8542V58.1642H166.122C166.21 59.4487 166.886 60.0355 167.882 60.0355C168.691 60.0355 169.2 59.6147 169.399 58.9725H170.318C170.042 60.0466 169.222 60.8438 167.86 60.8438ZM166.144 57.367H169.51C169.421 56.4258 168.857 55.6729 167.838 55.6729C166.941 55.6729 166.288 56.2376 166.144 57.367ZM174.481 54.8646C175.754 54.8646 176.496 55.5843 176.496 56.8466V60.7109H175.61V56.9352C175.61 56.0494 175.123 55.6618 174.304 55.6618C173.562 55.6618 172.731 56.2154 172.731 57.4777V60.7109H171.845V54.9975H172.687V55.85C173.063 55.2743 173.684 54.8646 174.481 54.8646ZM180.443 54.9975V55.7725H179.27V59.4708C179.27 59.7698 179.414 59.958 179.923 59.958H180.443V60.7109C180.222 60.722 179.99 60.7331 179.812 60.7331C178.927 60.7331 178.384 60.423 178.384 59.5483V55.7725H177.443V54.9975H178.384V53.3808H179.27V54.9975H180.443ZM182.62 54.2224H181.668V53.1372H182.62V54.2224ZM182.598 60.7109H181.712V54.9975H182.598V60.7109ZM186.752 60.8438C185.147 60.8438 183.984 59.6812 183.984 57.8542C183.984 56.0272 185.147 54.8646 186.752 54.8646C188.358 54.8646 189.52 56.0272 189.52 57.8542C189.52 59.6812 188.358 60.8438 186.752 60.8438ZM186.752 60.0466C187.859 60.0466 188.59 59.2383 188.59 57.8542C188.59 56.4701 187.859 55.6618 186.752 55.6618C185.645 55.6618 184.914 56.4701 184.914 57.8542C184.914 59.2383 185.645 60.0466 186.752 60.0466ZM193.543 54.8646C194.816 54.8646 195.558 55.5843 195.558 56.8466V60.7109H194.672V56.9352C194.672 56.0494 194.185 55.6618 193.366 55.6618C192.624 55.6618 191.794 56.2154 191.794 57.4777V60.7109H190.908V54.9975H191.749V55.85C192.126 55.2743 192.746 54.8646 193.543 54.8646ZM197.053 60.7109V59.6037H198.172V60.8106C198.172 61.7739 197.818 62.1725 197.164 62.239L197.053 62.25V61.6521L197.131 61.641C197.43 61.5967 197.541 61.3199 197.541 60.8881V60.7109H197.053ZM208.988 60.7109H208.003L207.083 58.4189H203.496L202.588 60.7109H201.614L204.758 52.8272H205.799L208.988 60.7109ZM203.861 57.4888L203.828 57.5774H206.751L206.707 57.4777C206.364 56.6251 205.744 55.0528 205.268 53.8348C204.814 55.0528 204.205 56.6251 203.861 57.4888ZM212.361 60.8438C210.8 60.8438 209.715 59.6923 209.715 57.8542C209.715 56.0161 210.778 54.8646 212.361 54.8646C213.723 54.8646 214.642 55.6729 214.819 56.9352H213.9C213.745 56.0715 213.081 55.6618 212.361 55.6618C211.387 55.6618 210.645 56.3594 210.645 57.8542C210.645 59.349 211.409 60.0466 212.361 60.0466C213.092 60.0466 213.756 59.6258 213.911 58.7511H214.819C214.631 60.0577 213.646 60.8438 212.361 60.8438ZM218.384 54.9975V55.7725H217.21V59.4708C217.21 59.7698 217.354 59.958 217.864 59.958H218.384V60.7109C218.163 60.722 217.93 60.7331 217.753 60.7331C216.867 60.7331 216.325 60.423 216.325 59.5483V55.7725H215.383V54.9975H216.325V53.3808H217.21V54.9975H218.384ZM228.227 57.5774L229.036 54.9975H229.988L228.084 60.7109H227.153L226.312 58.0646C226.113 57.4334 225.913 56.7691 225.736 56.1269C225.548 56.7691 225.349 57.4334 225.149 58.0646L224.319 60.7109H223.389L221.484 54.9975H222.436L223.245 57.5774C223.466 58.275 223.666 58.9615 223.865 59.659C224.053 58.9615 224.252 58.275 224.474 57.5774L225.271 54.9975H226.201L226.998 57.5774C227.209 58.2639 227.419 58.9504 227.618 59.6369C227.807 58.9504 228.017 58.2639 228.227 57.5774ZM231.897 54.2224H230.945V53.1372H231.897V54.2224ZM231.875 60.7109H230.989V54.9975H231.875V60.7109ZM236.041 54.9975V55.7725H234.867V59.4708C234.867 59.7698 235.011 59.958 235.52 59.958H236.041V60.7109C235.819 60.722 235.587 60.7331 235.41 60.7331C234.524 60.7331 233.981 60.423 233.981 59.5483V55.7725H233.04V54.9975H233.981V53.3808H234.867V54.9975H236.041ZM239.944 54.8646C241.218 54.8646 241.96 55.5843 241.96 56.8466V60.7109H241.074V56.9352C241.074 56.0494 240.587 55.6618 239.767 55.6618C239.025 55.6618 238.195 56.2154 238.195 57.4777V60.7109H237.309V52.8272H238.195V55.7836C238.571 55.2521 239.169 54.8646 239.944 54.8646ZM249.007 60.8881C247.125 60.8881 245.752 60.0798 245.729 58.1089H246.693C246.715 59.5705 247.723 60.0466 249.007 60.0466C250.269 60.0466 251 59.5483 251 58.5739C251 57.821 250.48 57.4556 249.084 57.1455L248.387 56.9905C247.047 56.6916 245.995 56.149 245.995 54.7096C245.995 53.4473 247.047 52.6501 248.686 52.6501C251.011 52.6501 251.731 53.8348 251.764 55.1193H250.812C250.734 54.1006 250.258 53.4916 248.686 53.4916C247.545 53.4916 246.959 53.9677 246.959 54.7096C246.959 55.4625 247.324 55.839 248.808 56.1712L249.505 56.3262C251.321 56.7248 251.963 57.4334 251.963 58.5739C251.963 59.9691 250.9 60.8881 249.007 60.8881ZM256.04 54.8646C257.645 54.8646 258.697 56.0272 258.697 57.8542C258.697 59.6812 257.645 60.8438 256.04 60.8438C255.209 60.8438 254.556 60.5006 254.124 59.8916V62.8812H253.239V54.9975H254.08V55.8833C254.512 55.23 255.187 54.8646 256.04 54.8646ZM255.929 60.0466C257.036 60.0466 257.767 59.194 257.767 57.8099C257.767 56.4258 257.036 55.6618 255.929 55.6618C254.822 55.6618 254.091 56.4701 254.091 57.8542C254.091 59.2383 254.822 60.0466 255.929 60.0466ZM262.461 60.8438C260.9 60.8438 259.803 59.7033 259.803 57.8542C259.803 56.0604 260.855 54.8646 262.439 54.8646C264.144 54.8646 265.063 56.2154 265.063 57.8542V58.1642H260.722C260.811 59.4487 261.486 60.0355 262.483 60.0355C263.291 60.0355 263.801 59.6147 264 58.9725H264.919C264.642 60.0466 263.823 60.8438 262.461 60.8438ZM260.745 57.367H264.111C264.022 56.4258 263.457 55.6729 262.439 55.6729C261.542 55.6729 260.889 56.2376 260.745 57.367ZM268.827 60.8438C267.265 60.8438 266.169 59.7033 266.169 57.8542C266.169 56.0604 267.221 54.8646 268.805 54.8646C270.51 54.8646 271.429 56.2154 271.429 57.8542V58.1642H267.088C267.177 59.4487 267.852 60.0355 268.849 60.0355C269.657 60.0355 270.167 59.6147 270.366 58.9725H271.285C271.008 60.0466 270.189 60.8438 268.827 60.8438ZM267.11 57.367H270.477C270.388 56.4258 269.823 55.6729 268.805 55.6729C267.908 55.6729 267.254 56.2376 267.11 57.367ZM277.108 55.8168V52.8272H277.994V60.7109H277.152V59.8251C276.721 60.4784 276.045 60.8438 275.193 60.8438C273.587 60.8438 272.535 59.6812 272.535 57.8542C272.535 56.0272 273.587 54.8646 275.193 54.8646C276.023 54.8646 276.676 55.2078 277.108 55.8168ZM275.303 60.0466C276.411 60.0466 277.141 59.2383 277.141 57.8542C277.141 56.4701 276.411 55.6618 275.303 55.6618C274.196 55.6618 273.465 56.5144 273.465 57.8985C273.465 59.2826 274.196 60.0466 275.303 60.0466ZM280.318 58.6514H279.742L279.587 54.9975V52.8272H280.517V54.9975L280.318 58.6514ZM280.606 60.7109H279.488V59.6037H280.606V60.7109Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <div class="nav-links">
+
+      <!-- Products -->
+      <div class="nav-item has-dropdown">
+        <a href="../../index.html#hardware" class="nav-link">
+          Products <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--products">
+          <div class="dropdown-inner">
+            <div class="dropdown-sidebar">
+              <p class="dropdown-sidebar-label" data-filter="all">All Products</p>
+              <p class="dropdown-sidebar-label" data-filter="voice">Voice Capture</p>
+              <p class="dropdown-sidebar-label" data-filter="pcba">Phone & PCBA</p>
+            </div>
+            <div class="dropdown-grid">
+              <a href="../../products/mic06/" class="dropdown-product-card" data-category="voice">
+                <img src="../../img/cap/MIC06.png" alt="MIC06">
+                <span class="dp-name">MIC06</span>
+                <span class="dp-desc">Continuous voice capture for shift-based operations</span>
+              </a>
+              <a href="../../products/mic05/" class="dropdown-product-card" data-category="voice">
+                <img src="../../img/cap/MIC05.png" alt="MIC05">
+                <span class="dp-name">MIC05</span>
+                <span class="dp-desc">Button-triggered capture for field notes</span>
+              </a>
+              <a href="../../products/mic01/" class="dropdown-product-card" data-category="voice">
+                <img src="../../img/cap/MIC01.png" alt="MIC01">
+                <span class="dp-name">MIC01</span>
+                <span class="dp-desc">Entry-level pilot device</span>
+              </a>
+              <a href="../../products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
+                <div class="dp-all-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+                <span class="dp-name">View All</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Devices -->
+      <div class="nav-item has-dropdown">
+        <a href="../../custom-devices/index.html" class="nav-link">
+          Custom Devices <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Hardware</p>
+              <a href="../../custom-devices/odm-oem/index.html" class="dropdown-link">ODM / OEM</a>
+              <a href="../../custom-devices/private-label/index.html" class="dropdown-link">Private Label</a>
+              <a href="../../custom-devices/custom-enclosure/index.html" class="dropdown-link">Custom Enclosure</a>
+              <a href="../../custom-devices/3d-prototype/index.html" class="dropdown-link">3D Small-batch Prototype</a>
+            </div>
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Engineering</p>
+              <a href="../../custom-devices/firmware-integration/index.html" class="dropdown-link">Firmware Integration</a>
+              <a href="../../custom-devices/audio-dsp-tuning/index.html" class="dropdown-link">Audio & DSP Tuning</a>
+              <a href="../../custom-devices/ai-sdk-integration/index.html" class="dropdown-link">AI SDK Integration</a>
+              <a href="../../custom-devices/prototype-validation/index.html" class="dropdown-link">Prototype Validation</a>
+            </div>
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Production</p>
+              <a href="../../custom-devices/evt-dvt-pvt/index.html" class="dropdown-link">EVT / DVT / PVT</a>
+              <a href="../../custom-devices/smt-manufacturing/index.html" class="dropdown-link">SMT Manufacturing</a>
+              <a href="../../custom-devices/certification-support/index.html" class="dropdown-link">Certification Support</a>
+              <a href="../../custom-devices/supply-chain/index.html" class="dropdown-link">Supply Chain Management</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Implementation -->
+      <div class="nav-item">
+        <a href="../../implementation/index.html" class="nav-link">Implementation</a>
+      </div>
+
+      <!-- Proof -->
+      <div class="nav-item">
+        <a href="../../proof/index.html" class="nav-link">Proof</a>
+      </div>
+
+      <!-- Industries -->
+      <div class="nav-item has-dropdown">
+        <a href="../../index.html#industries" class="nav-link">
+          Industries <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Industries</p>
+              <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise</a>
+              <a href="../../industries/field-service/index.html" class="dropdown-link">Field Service</a>
+              <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare</a>
+              <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics</a>
+              <a href="../../industries/public-safety/index.html" class="dropdown-link">Public Safety</a>
+              <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
+              <a href="../../industries/veterinary/index.html" class="dropdown-link">Veterinary</a>
+              <a href="../../industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="nav-item">
+        <a href="../../process/index.html" class="nav-link">Process</a>
+      </div>
+
+      <!-- Company -->
+      <div class="nav-item has-dropdown">
+        <a href="../../about/index.html" class="nav-link">
+          Company <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Company</p>
+              <a href="../../about/index.html" class="dropdown-link">About Us</a>
+              <a href="../../blog/index.html" class="dropdown-link">Blog</a>
+              <a href="../../contact/index.html" class="dropdown-link">Contact</a>
+              <a href="../../faq/index.html" class="dropdown-link">FAQ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Overlay -->
+    <div class="nav-overlay"></div>
+    <div class="nav-right">
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-nav">Start a Project</a>
+    </div>
+    <button class="nav-burger" id="navBurger"
+      aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-inner">
+
+    <div class="mobile-nav-section">
+  <p class="mobile-nav-head">Industries</p>
+  <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise</a>
+  <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
+  <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare</a>
+  <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics</a>
+  <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
+  <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
+  <a href="../../industries/veterinary/index.html" class="mobile-nav-link">Veterinary</a>
+  <a href="../../industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
+</div>
+
+    <div class="mobile-nav-section">
+      <a href="../../implementation/index.html" class="mobile-nav-link">Implementation</a>
+      <a href="../../proof/index.html" class="mobile-nav-link">Proof</a>
+      <a href="../../process/index.html" class="mobile-nav-link">Process</a>
+    </div>
+
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Company</p>
+      <a href="../../about/index.html" class="mobile-nav-link">About Us</a>
+      <a href="../../blog/index.html" class="mobile-nav-link">Blog</a>
+      <a href="../../contact/index.html" class="mobile-nav-link">Contact</a>
+      <a href="../../faq/index.html" class="mobile-nav-link">FAQ</a>
+    </div>
+
+    <div class="mobile-nav-cta">
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb"
+         target="_blank" rel="noopener" class="btn btn-nav">
+        Start a Project
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+
+<!-- Sentinel for ../../js/main.js (reads .hero offsetHeight); hidden, harmless. -->
+<div class="hero" aria-hidden="true" style="display:none"></div>
+
+<!-- ========== 1) HERO — text above a full-width banner ========== -->
+<header class="ind-hero fade-section">
+  <div class="container">
+    <div class="ind-hero-top reveal">
+      <div class="ind-hero-lead">
+        <div class="eyebrow dark">/ INDUSTRIES — VETERINARY</div>
+        <h1 class="display">Veterinary AI <em class="italic">Documentation</em> Hardware</h1>
+      </div>
+      <div class="ind-hero-aside">
+        <p class="lede">Voice hardware designed for veterinary AI platforms and clinical documentation.</p>
+        <div class="ind-hero-cta">
+          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Start a Project</a>
+          <a href="../../index.html#products" class="btn btn-ghost">View Hardware</a>
+        </div>
+      </div>
+    </div>
+    <div class="ind-hero-banner reveal">
+      <img src="../../img/industries/veterinary/hero.png" alt="Veterinary professional using voice AI documentation">
+    </div>
+  </div>
+</header>
+
+<!-- ========== CHALLENGES ========== -->
+<section class="ind-sec ind-sec--dark fade-section">
+  <div class="container">
+    <div class="ind-head reveal">
+      <div class="eyebrow dark">/ CHALLENGES</div>
+    </div>
+    <div class="ind-grid grid-3 reveal">
+      <div class="ind-card">
+        <div class="ind-card-ic"><i data-lucide="door-open"></i></div>
+        <h3>Veterinarians move between rooms</h3>
+      </div>
+      <div class="ind-card">
+        <div class="ind-card-ic"><i data-lucide="hand"></i></div>
+        <h3>Hands-free workflow required</h3>
+      </div>
+      <div class="ind-card">
+        <div class="ind-card-ic"><i data-lucide="smartphone"></i></div>
+        <h3>Mobile phones create workflow friction</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 4) SOLUTIONS — equal-height two columns, in-place card switching ========== -->
+<section class="ind-sec ind-sec--soft fade-section">
+  <div class="container">
+    <div class="sol-flip reveal" id="solFlip">
+      <!-- Left: image cross-fades to match the active card (Wearable recorders / All-day battery / Automatic upload) -->
+      <div class="sol-media">
+        <img class="sol-img is-active" src="../../img/industries/veterinary/wearable-recorders.png" alt="Wearable voice recorder for veterinary clinics">
+        <img class="sol-img" src="../../img/industries/veterinary/wearable-recorders-alt.png" alt="All-day battery life wearable recorder for veterinary use">
+        <img class="sol-img" src="../../img/industries/veterinary/automatic-upload.png" alt="Automatic upload of veterinary voice recordings to the cloud">
+      </div>
+      <!-- Right: heading + 4 cards; one active (expanded) at a time, others dimmed/collapsed -->
+      <div class="sol-panel">
+        <div class="eyebrow">/ SOLUTIONS</div>
+        <h2 class="section measure-wide">GMIC Veterinary Solutions</h2>
+        <div class="sol-cards">
+          <div class="sol-card is-active" tabindex="0">
+            <div class="sol-card-head">
+              <span class="sol-ic"><i data-lucide="mic"></i></span>
+              <h3>Wearable recorders</h3>
+            </div>
+          </div>
+          <div class="sol-card" tabindex="0">
+            <div class="sol-card-head">
+              <span class="sol-ic"><i data-lucide="battery-full"></i></span>
+              <h3>All-day battery life</h3>
+            </div>
+          </div>
+          <div class="sol-card" tabindex="0">
+            <div class="sol-card-head">
+              <span class="sol-ic"><i data-lucide="upload-cloud"></i></span>
+              <h3>Automatic upload</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CASE STUDY（暂时隐藏，内容待补充后去掉 display:none 即可恢复）========== -->
+<section class="ind-sec ind-sec--light fade-section" style="display:none">
+  <div class="container">
+    <div class="ind-head reveal">
+      <div class="eyebrow">/ CASE STUDY</div>
+    </div>
+    <div class="reveal">
+      <div class="ind-card cs-card">
+        <div class="cs-logo">
+          <img class="cs-logo-box" src="../../img/industries/veterinary/scribblevet.png" alt="ScribbleVet veterinary AI platform" style="object-fit:cover;">
+          <span class="chip">Veterinary AI</span>
+        </div>
+        <div class="cs-body">
+          <span class="eyebrow">Case Study</span>
+          <h3>ScribbleVet</h3>
+          <!-- TODO: 补充 ScribbleVet case study 描述 -->
+          <p class="cs-desc">See how ScribbleVet uses GMIC hardware to power their veterinary AI documentation platform.</p>
+          <!-- TODO: 补 case study 链接 -->
+          <a href="#" class="cs-link">Read Case Study <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 6) WHY DEDICATED HARDWARE ========== -->
+<section class="ind-sec ind-sec--dark fade-section">
+  <div class="container">
+    <div class="why-hw-grid">
+      <div class="reveal">
+        <div class="eyebrow dark">/ WHY HARDWARE</div>
+        <h2 class="section measure-wide">Why dedicated hardware?</h2>
+        <p class="why-hw-lead measure">Many healthcare AI companies start with mobile apps. As deployments scale, dedicated hardware becomes necessary.</p>
+        <ul class="check-list">
+          <li><span class="ck"><i data-lucide="check"></i></span> Consistent user experience</li>
+          <li><span class="ck"><i data-lucide="check"></i></span> Improved adoption</li>
+          <li><span class="ck"><i data-lucide="check"></i></span> Better audio quality</li>
+          <li><span class="ck"><i data-lucide="check"></i></span> Reduced workflow friction</li>
+          <li><span class="ck"><i data-lucide="check"></i></span> Enterprise deployment support</li>
+        </ul>
+      </div>
+      <div class="why-hw-media reveal">
+        <img src="../../img/industries/veterinary/why-hardware.png" alt="Why dedicated hardware for veterinary AI">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 7) HARDWARE CAPABILITIES ========== -->
+<section class="ind-sec ind-sec--soft fade-section">
+  <div class="container">
+    <div class="ind-head reveal">
+      <div class="eyebrow">/ CAPABILITIES</div>
+      <h2 class="section measure-wide">Hardware capabilities</h2>
+    </div>
+    <div class="cap2-grid reveal">
+      <div class="cap-col">
+        <img class="cap-col-img" src="../../img/industries/veterinary/veterinary-cap-builds.png" alt="GMIC veterinary hardware product lineup">
+        <div class="cap-col-body">
+          <h3><i data-lucide="package"></i> What we build</h3>
+          <ul>
+            <li>Wearable recorders</li>
+            <li>Badge-style devices</li>
+            <li>Voice capture modules</li>
+            <li>Custom enclosures</li>
+            <li>Private label</li>
+            <li>OEM / ODM development</li>
+          </ul>
+        </div>
+      </div>
+      <div class="cap-col">
+        <img class="cap-col-img" src="../../img/industries/veterinary/veterinary-cap-engineering.png" alt="GMIC veterinary hardware engineering">
+        <div class="cap-col-body">
+          <h3><i data-lucide="wrench"></i> Engineering support</h3>
+          <ul>
+            <li>Firmware integration</li>
+            <li>Audio DSP tuning</li>
+            <li>SDK integration</li>
+            <li>Prototype validation</li>
+            <li>Manufacturing support</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 8) IMPLEMENTATION PROCESS ========== -->
+<section class="ind-sec ind-sec--soft fade-section">
+  <div class="container">
+    <div class="ind-head reveal">
+      <div class="eyebrow">/ PROCESS</div>
+      <h2 class="section measure-wide">From workflow to scale.</h2>
+    </div>
+    <div class="impl-proc reveal" id="procFlow">
+      <div class="impl-proc-media">
+        <img class="impl-proc-img active" data-step="0" src="../../img/industries/veterinary/process-discover.png" alt="Discovery: reviewing veterinary AI hardware requirements" onerror="this.style.display='none'">
+        <img class="impl-proc-img" data-step="1" src="../../img/industries/veterinary/process-architecture-design.png" alt="Architecture design for veterinary voice hardware" onerror="this.style.display='none'">
+        <img class="impl-proc-img" data-step="2" src="../../img/industries/veterinary/process-prototype-development.png" alt="Veterinary device prototype development" onerror="this.style.display='none'">
+        <img class="impl-proc-img" data-step="3" src="../../img/industries/veterinary/process-integration.png" alt="Platform and firmware integration testing" onerror="this.style.display='none'">
+        <img class="impl-proc-img" data-step="4" src="../../img/industries/veterinary/process-pilot-testing.png" alt="Pilot testing and quality validation" onerror="this.style.display='none'">
+        <img class="impl-proc-img" data-step="5" src="../../img/industries/veterinary/process-mass-production.png" alt="Scalable manufacturing and mass production" onerror="this.style.display='none'">
+        <span class="impl-proc-badge" id="procBadge" aria-hidden="true">Discovery</span>
+      </div>
+      <div class="impl-proc-right">
+        <div class="impl-proc-nav">
+          <button type="button" class="impl-proc-navbtn" data-dir="-1" aria-label="Previous step"><i data-lucide="chevron-up" aria-hidden="true"></i></button>
+          <button type="button" class="impl-proc-navbtn" data-dir="1" aria-label="Next step"><i data-lucide="chevron-down" aria-hidden="true"></i></button>
+        </div>
+        <div class="impl-proc-window">
+          <div class="impl-proc-track" id="procTrack" role="tablist" aria-label="Development process steps">
+            <button type="button" class="impl-proc-step active" data-step="0" role="tab" aria-selected="true">
+              <span class="impl-proc-bar" aria-hidden="true"></span>
+              <span class="impl-proc-ico"><i data-lucide="search" aria-hidden="true"></i></span>
+              <span class="impl-proc-text"><span class="impl-proc-title">Discovery</span><span class="impl-proc-desc">Understand your AI use case, target environment, and hardware requirements.</span></span>
+            </button>
+            <button type="button" class="impl-proc-step" data-step="1" role="tab" aria-selected="false">
+              <span class="impl-proc-bar" aria-hidden="true"></span>
+              <span class="impl-proc-ico"><i data-lucide="pencil-ruler" aria-hidden="true"></i></span>
+              <span class="impl-proc-text"><span class="impl-proc-title">Architecture Design</span><span class="impl-proc-desc">Define the hardware architecture, components, and system design.</span></span>
+            </button>
+            <button type="button" class="impl-proc-step" data-step="2" role="tab" aria-selected="false">
+              <span class="impl-proc-bar" aria-hidden="true"></span>
+              <span class="impl-proc-ico"><i data-lucide="package" aria-hidden="true"></i></span>
+              <span class="impl-proc-text"><span class="impl-proc-title">Prototype Development</span><span class="impl-proc-desc">Build working prototypes for early validation and testing.</span></span>
+            </button>
+            <button type="button" class="impl-proc-step" data-step="3" role="tab" aria-selected="false">
+              <span class="impl-proc-bar" aria-hidden="true"></span>
+              <span class="impl-proc-ico"><i data-lucide="git-merge" aria-hidden="true"></i></span>
+              <span class="impl-proc-text"><span class="impl-proc-title">Integration</span><span class="impl-proc-desc">Connect the device with your AI platform, firmware, and software.</span></span>
+            </button>
+            <button type="button" class="impl-proc-step" data-step="4" role="tab" aria-selected="false">
+              <span class="impl-proc-bar" aria-hidden="true"></span>
+              <span class="impl-proc-ico"><i data-lucide="clipboard-check" aria-hidden="true"></i></span>
+              <span class="impl-proc-text"><span class="impl-proc-title">Pilot Testing</span><span class="impl-proc-desc">Validate real-world performance with users before scaling.</span></span>
+            </button>
+            <button type="button" class="impl-proc-step" data-step="5" role="tab" aria-selected="false">
+              <span class="impl-proc-bar" aria-hidden="true"></span>
+              <span class="impl-proc-ico"><i data-lucide="factory" aria-hidden="true"></i></span>
+              <span class="impl-proc-text"><span class="impl-proc-title">Mass Production</span><span class="impl-proc-desc">SMT, assembly, QC, and scalable manufacturing.</span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 9) RELATED INDUSTRIES ========== -->
+<section class="ind-sec ind-sec--light fade-section" style="padding:56px 0;">
+  <div class="container">
+    <div class="reveal" style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;justify-content:space-between;">
+      <div class="eyebrow">/ RELATED INDUSTRIES</div>
+      <div class="rel-row">
+        <a class="rel-link" href="../healthcare/index.html">Healthcare Voice AI</a>
+        <a class="rel-link" href="../enterprise/index.html">Enterprise AI</a>
+        <a class="rel-link" href="../field-service/index.html">Field Service</a>
+        <a class="rel-link" href="../telecom/index.html">Telecom AI</a>
+        <a class="rel-link" href="../smart-retail/index.html">Smart Retail</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 10) FINAL CTA ========== -->
+<section class="final-cta fade-section">
+  <div class="container">
+    <div class="eyebrow reveal">Begin</div>
+    <h2 class="section reveal">Ready to build veterinary AI hardware?</h2>
+    <p class="reveal measure" style="margin-left:auto;margin-right:auto;">Whether you're developing an AI scribe platform, clinical documentation solution, or senior care technology, GMIC can take your product from concept to deployment.</p>
+    <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue-deep reveal">Start a Project</a>
+  </div>
+</section>
+
+
+<footer class="footer" id="company">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../../index.html" class="logo">GMIC.AI</a>
+        <p>Designing and manufacturing the embedded hardware behind the voice-first era.</p>
+        <div class="footer-contact">
+          <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a><br>
+          <a href="tel:+16699000008">+1 (669) 900-0008</a><br>
+          Anaheim, CA · Shenzhen, CN
+        </div>
+        <div class="cert-pills">
+          <span class="pill">FCC</span>
+          <span class="pill">CE</span>
+          <span class="pill">UKCA</span>
+          <span class="pill">TELEC</span>
+          <span class="pill">RoHS</span>
+          <span class="pill">ISED</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="../../index.html#capabilities">Edge AI Hardware</a></li>
+          <li><a href="../../index.html#capabilities">Voice AI Hardware</a></li>
+          <li><a href="../../index.html#capabilities">AI Wearable Devices</a></li>
+          <li><a href="../../index.html#capabilities">AI Hardware ODM</a></li>
+          <li><a href="../../index.html#capabilities">Embedded AI Hardware</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="../../index.html#industries">Healthcare AI</a></li>
+          <li><a href="../../index.html#industries">Enterprise AI</a></li>
+          <li><a href="../../index.html#industries">Field Service AI</a></li>
+          <li><a href="../../index.html#industries">Telecom AI</a></li>
+          <li><a href="../../index.html#industries">Smart Retail</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://gmic.ai/blog/" target="_blank" rel="noopener">Blog</a></li>
+          <li><a href="../../index.html#insights">Case Studies</a></li>
+          <li><a href="../../index.html#process">Our Process</a></li>
+          <li><a href="../../index.html#why-gmic">Engineering Capabilities</a></li>
+          <li><a href="mailto:trigg@gmic.ai">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../../index.html#why-gmic">About GMIC</a></li>
+          <li><a href="../../index.html#industries">Customer Stories</a></li>
+          <li><a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener">Book a Demo</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 GMIC.AI · All rights reserved.</div>
+      <div>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="fab" role="toolbar" aria-label="Quick actions">
+  <a class="fab-btn" href="https://t.me/gmicai" target="_blank" rel="noopener" aria-label="Telegram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+  </a>
+  <a class="fab-btn" href="https://api.whatsapp.com/send/?phone=16699000008&text=Hi%21+I+just+left+a+voice+note+on+your+site+%E2%80%94+looking+forward+to+your+reply.&type=phone_number&app_absent=0" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+  <button class="fab-btn wechat-fab-btn" id="fabWechat" aria-label="WeChat">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor">
+      <path d="M9.5 4C5.36 4 2 6.91 2 10.5c0 1.99 1.03 3.76 2.64 4.95L4 17l2.19-1.09c.96.27 1.99.42 3.04.42.18 0 .36 0 .54-.01C9.63 15.83 9.5 15.17 9.5 14.5 9.5 11.09 12.91 8.5 17 8.5c.35 0 .7.02 1.04.06C17.14 5.72 13.63 4 9.5 4zm-2 4.5a1 1 0 110-2 1 1 0 010 2zm4 0a1 1 0 110-2 1 1 0 010 2z"/>
+      <path d="M17 10.5c-3.31 0-6 2.24-6 5 0 1.5.75 2.84 1.93 3.77L12.5 21l1.96-.98c.82.22 1.67.34 2.54.34 3.31 0 6-2.24 6-5s-2.69-5-6-5zm-2 5.5a1 1 0 110-2 1 1 0 010 2zm4 0a1 1 0 110-2 1 1 0 010 2z"/>
+    </svg>
+  </button>
+  <span class="fab-divider"></span>
+  <button class="fab-btn active" id="fabMic" aria-label="Microphone" onclick="var vp=document.getElementById('voice-panel');vp.style.display=(vp.style.display==='none'||!vp.style.display)?'block':'none';">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+  </button>
+  <button class="fab-btn" id="fabConnect" data-connect aria-label="More" onclick="var cm=document.getElementById('connect-menu');cm.style.display=(cm.style.display==='none'||!cm.style.display)?'block':'none';">
+    <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></svg>
+  </button>
+</div>
+
+<!-- ========== BACK TO TOP ========== -->
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</button>
+<!-- ========== WeChat QR popup ========== -->
+<div id="wechat-popup" style="display:none;position:fixed;z-index:500;background:#fff;border-radius:16px;padding:20px 20px 16px;box-shadow:0 8px 40px rgba(0,0,0,.2);border:1px solid #e2e8f0;width:240px;text-align:center;">
+  <button onclick="document.getElementById('wechat-popup').style.display='none'" style="position:absolute;top:8px;right:12px;background:none;border:none;font-size:16px;cursor:pointer;color:#aaa;font-family:var(--sans);" aria-label="Close">×</button>
+  <img src="../../img/wechat-qr.png" alt="WeChat QR" style="width:100%;border-radius:8px;display:block;">
+</div>
+
+<!-- ========== Voice assistant panel ========== -->
+<div id="voice-panel" style="display:none;position:fixed;bottom:96px;left:50%;transform:translateX(-50%);z-index:500;background:#fff;border-radius:16px;padding:24px 28px;box-shadow:0 8px 40px rgba(0,0,0,.18);border:1px solid #e2e8f0;width:320px;text-align:center;">
+  <div style="font-family:var(--sans);font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px;">Talk to GMIC</div>
+  <div style="font-family:var(--sans);font-size:13px;color:#6b7280;margin-bottom:20px;line-height:1.5;">Ask about our products, request a sample, or start a demo inquiry.</div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;">
+    <div id="voice-indicator" style="width:56px;height:56px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.4);animation:pulse-ring 2s ease infinite;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/>
+        <path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/>
+      </svg>
+    </div>
+  </div>
+  <div style="font-family:var(--sans);font-size:12px;color:#9ca3af;">Tap the mic to speak · or <a href="mailto:trigg@gmic.ai" style="color:#2563eb;text-decoration:none;">email us</a></div>
+  <button onclick="document.getElementById('voice-panel').style.display='none'" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:16px;cursor:pointer;color:#aaa;" aria-label="Close">×</button>
+</div>
+
+<!-- ========== Connect dropdown menu ========== -->
+<div id="connect-menu" style="display:none;position:fixed;bottom:auto;z-index:500;background:#fff;border-radius:14px;padding:12px 0;box-shadow:0 8px 40px rgba(0,0,0,.18);border:1px solid #e2e8f0;min-width:200px;">
+  <div style="font-family:var(--sans);font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.08em;text-transform:uppercase;padding:4px 18px 10px;">CONNECT</div>
+  <a href="https://twitter.com/gmicai" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <span style="font-size:16px;font-weight:700;">𝕏</span> X / Twitter
+  </a>
+  <a href="https://linkedin.com/company/gmicai" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="#0077b5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    LinkedIn
+  </a>
+  <a href="https://gmic.ai" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+    GMIC.ai
+  </a>
+  <a href="mailto:trigg@gmic.ai" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+    Trigg@gmic.ai
+  </a>
+</div>
+
+<script>
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-item')) {
+    document.querySelectorAll('.nav-dropdown').forEach(d => {
+      d.style.display = '';
+    });
+  }
+});
+
+// Products mega menu — filter cards by sidebar category
+document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label) {
+  label.addEventListener('click', function() {
+    // Update active state
+    document.querySelectorAll('.dropdown-sidebar-label')
+      .forEach(l => l.classList.remove('active'));
+    this.classList.add('active');
+
+    // Filter cards
+    var filter = this.getAttribute('data-filter');
+    document.querySelectorAll('.dropdown-product-card').forEach(function(card) {
+      if (filter === 'all' || card.getAttribute('data-category') === filter) {
+        card.classList.remove('hidden');
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  });
+});
+
+// Mobile nav
+const navBurger = document.getElementById('navBurger');
+const mobileNav = document.getElementById('mobileNav');
+const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+function openMobileNav() {
+  mobileNav.classList.add('open');
+  mobileNavOverlay.classList.add('open');
+  navBurger.classList.add('open');
+  navBurger.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileNav() {
+  mobileNav.classList.remove('open');
+  mobileNavOverlay.classList.remove('open');
+  navBurger.classList.remove('open');
+  navBurger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+navBurger.addEventListener('click', function() {
+  if (mobileNav.classList.contains('open')) {
+    closeMobileNav();
+  } else {
+    openMobileNav();
+  }
+});
+
+mobileNavOverlay.addEventListener('click', closeMobileNav);
+
+// Close on mobile nav link click
+document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+  link.addEventListener('click', closeMobileNav);
+});
+</script>
+
+<!-- Typical Projects carousel — self-contained, scoped to #tpTrack.
+     Independent of main.js / the homepage #cTrack carousel. -->
+<script>
+(function(){
+  var track = document.getElementById('tpTrack');
+  if(!track) return;
+  var viewport = track.parentElement;
+  var prevBtn = document.getElementById('tpPrev');
+  var nextBtn = document.getElementById('tpNext');
+  var cards = track.querySelectorAll('.tp-card');
+  if(!cards.length || !prevBtn || !nextBtn) return;
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var pos = 0;     // current scroll offset in px (applied as translateX(-pos))
+  var step = 0;    // one card width + gap
+  var maxPos = 0;  // furthest the track can travel
+
+  function gap(){
+    var cs = getComputedStyle(track);
+    var g = parseFloat(cs.columnGap || cs.gap || '0');
+    return isNaN(g) ? 0 : g;
+  }
+  function measure(){
+    step = cards[0].getBoundingClientRect().width + gap();
+    maxPos = Math.max(0, track.scrollWidth - viewport.clientWidth);
+  }
+  function clamp(v){ return Math.max(0, Math.min(maxPos, v)); }
+
+  function render(animate){
+    if(animate && !reduce.matches){
+      track.style.transform = 'translateX(' + (-pos) + 'px)';
+    } else {
+      var t = track.style.transition;
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(' + (-pos) + 'px)';
+      void track.offsetWidth;            // flush, then restore transition
+      track.style.transition = t;
+    }
+    updateArrows();
+  }
+  function updateArrows(){
+    var atStart = pos <= 0.5;
+    var atEnd = pos >= maxPos - 0.5;
+    prevBtn.setAttribute('aria-disabled', atStart ? 'true' : 'false');
+    nextBtn.setAttribute('aria-disabled', atEnd ? 'true' : 'false');
+    prevBtn.disabled = atStart;
+    nextBtn.disabled = atEnd;
+  }
+  function move(dir){
+    measure();
+    pos = clamp(pos + dir * step);
+    render(true);
+  }
+
+  prevBtn.addEventListener('click', function(){ move(-1); });
+  nextBtn.addEventListener('click', function(){ move(1); });
+
+  // Recompute on resize so steps stay aligned to the new card width.
+  var rid;
+  window.addEventListener('resize', function(){
+    clearTimeout(rid);
+    rid = setTimeout(function(){ measure(); pos = clamp(pos); render(false); }, 120);
+  });
+
+  // Touch / pointer drag (horizontal). touch-action:pan-y keeps vertical scroll.
+  var dragging = false, startX = 0, startPos = 0, moved = false;
+  track.addEventListener('pointerdown', function(e){
+    if(e.pointerType === 'mouse' && e.button !== 0) return;
+    measure();
+    dragging = true; moved = false;
+    startX = e.clientX; startPos = pos;
+    track.classList.add('is-dragging');
+    try { track.setPointerCapture(e.pointerId); } catch(_){}
+  });
+  track.addEventListener('pointermove', function(e){
+    if(!dragging) return;
+    var dx = e.clientX - startX;
+    if(Math.abs(dx) > 4) moved = true;
+    pos = clamp(startPos - dx);
+    track.style.transform = 'translateX(' + (-pos) + 'px)';
+  });
+  function endDrag(){
+    if(!dragging) return;
+    dragging = false;
+    track.classList.remove('is-dragging');
+    if(step > 0) pos = clamp(Math.round(pos / step) * step);  // snap to nearest card
+    render(true);
+  }
+  track.addEventListener('pointerup', endDrag);
+  track.addEventListener('pointercancel', endDrag);
+  track.addEventListener('lostpointercapture', endDrag);
+  // Swallow the click that follows a real drag so cards don't trigger.
+  track.addEventListener('click', function(e){
+    if(moved){ e.preventDefault(); e.stopPropagation(); }
+  }, true);
+
+  function init(){ measure(); pos = clamp(pos); render(false); }
+  init();
+  window.addEventListener('load', init);   // re-measure once images have loaded
+})();
+</script>
+<!-- ========== Self-contained reveal + Solutions scrollytelling + icons ========== -->
+<script>
+(function () {
+  // Reveal: never let .reveal/.fade-section stay hidden if main.js is absent or fails.
+  var els = document.querySelectorAll('.reveal, .fade-section');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (e) { e.classList.add('in', 'visible'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in', 'visible'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (e) { io.observe(e); });
+    window.addEventListener('load', function () {
+      setTimeout(function () { els.forEach(function (e) { e.classList.add('in', 'visible'); }); }, 1200);
+    });
+  }
+  if (window.lucide && typeof window.lucide.createIcons === 'function') { window.lucide.createIcons(); }
+})();
+
+(function () {
+  // Solutions: in-place card switching (hover / click / focus) + linked left image cross-fade.
+  // If this never runs, the default HTML state stays (card 0 expanded, others collapsed but visible).
+  var flip = document.getElementById('solFlip');
+  if (!flip) return;
+  var cards = [].slice.call(flip.querySelectorAll('.sol-card'));
+  var imgs = [].slice.call(flip.querySelectorAll('.sol-img'));
+  function setActive(i) {
+    cards.forEach(function (c, idx) { c.classList.toggle('is-active', idx === i); });
+    // Single static image on this page → only cross-fade when there are multiple images.
+    if (imgs.length > 1) imgs.forEach(function (im, idx) { im.classList.toggle('is-active', idx === i); });
+  }
+  cards.forEach(function (c, i) {
+    c.addEventListener('mouseenter', function () { setActive(i); });
+    c.addEventListener('click', function () { setActive(i); });
+    c.addEventListener('focus', function () { setActive(i); });
+  });
+})();
+
+(function () {
+  // FAB / nav helpers — self-contained, since main.js is not loaded on this page.
+  var nav = document.getElementById('nav');
+  if (nav) window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  var backTop = document.getElementById('backTop');
+  if (backTop) {
+    window.addEventListener('scroll', function () {
+      backTop.classList.toggle('show', window.scrollY > 600);
+    }, { passive: true });
+    backTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+
+  var fabWechat = document.getElementById('fabWechat');
+  var wechat = document.getElementById('wechat-popup');
+  if (fabWechat && wechat) fabWechat.addEventListener('click', function () {
+    wechat.style.display = (wechat.style.display === 'none' || !wechat.style.display) ? 'block' : 'none';
+  });
+})();
+</script>
+<!-- ===== PROCESS component JS (windowed auto-carousel) ===== -->
+<script>
+(function(){
+  var flow = document.getElementById('procFlow'); if(!flow) return;
+  var track = document.getElementById('procTrack');
+  var badge = document.getElementById('procBadge');
+  var steps = Array.prototype.slice.call(flow.querySelectorAll('.impl-proc-step'));
+  var imgs  = Array.prototype.slice.call(flow.querySelectorAll('.impl-proc-img'));
+  if(!steps.length) return;
+  var STEP=3500, RESUME=10000, VISIBLE=3, total=steps.length;
+  var idx=0, timer=null, resumeTimer=null;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mobile=window.matchMedia('(max-width: 900px)');
+  function rowH(){ return steps[0]?steps[0].offsetHeight:104; }
+  function show(i){
+    idx=i;
+    steps.forEach(function(s,n){var on=n===i;s.classList.toggle('active',on);s.setAttribute('aria-selected',on?'true':'false');});
+    imgs.forEach(function(m,n){m.classList.toggle('active',n===i);});
+    if(badge){var t=steps[i].querySelector('.impl-proc-title');if(t)badge.textContent=t.textContent;}
+    var scroll=Math.min(i,total-VISIBLE); if(scroll<0)scroll=0;
+    var ty=mobile.matches?0:-(scroll*rowH());
+    track.style.transform='translateY('+ty+'px)';
+  }
+  function next(){ show((idx+1)%total); }
+  function start(){ if(reduce.matches)return; stop(); timer=setInterval(next,STEP); }
+  function stop(){ if(timer){clearInterval(timer);timer=null;} }
+  function manual(i){ show(i); stop(); clearTimeout(resumeTimer); resumeTimer=setTimeout(start,RESUME); }
+  steps.forEach(function(s,i){ s.addEventListener('click',function(){manual(i);}); });
+  Array.prototype.slice.call(flow.querySelectorAll('.impl-proc-navbtn')).forEach(function(b){
+    b.addEventListener('click',function(){var dir=parseInt(b.getAttribute('data-dir'),10)||0;manual((idx+dir+total)%total);});
+  });
+  document.addEventListener('visibilitychange',function(){ if(document.hidden){stop();}else{start();} });
+  window.addEventListener('resize',function(){ show(idx); });
+  show(0); start();
+})();
+</script>
+</body>
+</html>
