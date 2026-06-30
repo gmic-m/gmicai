@@ -1023,6 +1023,8 @@ img.post-thumb-bg{
         || firstPageImageMap[link.replace(/\/$/, '') + '/'];
       if (img) return img;
     }
+    var fm = post && post._embedded && post._embedded['wp:featuredmedia'] && post._embedded['wp:featuredmedia'][0];
+    if (fm && fm.source_url) return fm.source_url;
     return null;
   }
 
