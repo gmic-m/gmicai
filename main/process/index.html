@@ -81,42 +81,11 @@
 
 /* ── Products Mega Menu ── */
 .nav-dropdown--products .dropdown-inner {
-  flex-direction: row;
   gap: 0;
 }
 
-.dropdown-sidebar {
-  width: 200px;
-  flex-shrink: 0;
-  border-right: 1px solid rgba(0,0,0,0.06);
-  padding-right: 32px;
-  margin-right: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
 
-.dropdown-sidebar-label {
-  font-size: 1rem; /* 16px */
-  font-weight: 700;
-  color: #0f172a;
-  padding: 10px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
 
-.dropdown-sidebar-label:hover {
-  background: #f0f4ff;
-  color: #2563eb;
-}
-.dropdown-sidebar-label.active {
-  background: #f0f4ff;
-  color: #2563eb;
-}
-.dropdown-product-card.hidden {
-  display: none;
-}
 
 .dropdown-grid {
   flex: 1;
@@ -438,12 +407,6 @@
   color: #2563eb !important;
 }
 .dropdown-link--external {
-  color: #2563eb !important;
-}
-.dropdown-sidebar-label {
-  color: #0f172a !important;
-}
-.dropdown-sidebar-label:hover {
   color: #2563eb !important;
 }
 
@@ -1015,9 +978,6 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         </a>
         <div class="nav-dropdown nav-dropdown--products">
           <div class="dropdown-inner">
-            <div class="dropdown-sidebar">
-              <p class="dropdown-sidebar-label" data-filter="voice">Voice Capture</p>
-            </div>
             <div class="dropdown-grid">
               <a href="../products/mic06/index.html" class="dropdown-product-card" data-category="voice">
                 <img src="../img/cap/MIC06.png" alt="MIC06">
@@ -1034,7 +994,12 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
                 <span class="dp-name">MIC01</span>
                 <span class="dp-desc">Entry-level pilot device</span>
               </a>
-              <a href="../products/index.html" class="dropdown-product-card dropdown-all" data-category="voice">
+              <a href="../products/telalive/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../img/products/telalive.png" alt="Telalive">
+                <span class="dp-name">Telalive</span>
+                <span class="dp-desc">AI-powered desk phone & wearable platform</span>
+              </a>
+              <a href="../products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
                 <div class="dp-all-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </div>
@@ -1212,7 +1177,10 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <p class="reveal">GMIC helps AI companies transform software products into real-world hardware solutions. Our process is designed to reduce risk, accelerate validation, and support long-term deployment.</p>
     </div>
     <div class="process-hero-banner reveal">
-      <img src="../img/about/assembly-line.jpg" alt="GMIC production line in Shenzhen" onerror="this.onerror=null;this.src='https://placehold.co/1600x520?text=GMIC+Production+Line';">
+      <picture>
+        <source srcset="../img/about/assembly-line-1520.webp 1x, ../img/about/assembly-line-1520@2x.webp 2x" type="image/webp">
+        <img src="../img/about/assembly-line-1520.jpg" srcset="../img/about/assembly-line-1520.jpg 1x, ../img/about/assembly-line-1520@2x.jpg 2x" alt="GMIC production line in Shenzhen" onerror="this.onerror=null;this.src='https://placehold.co/1600x520?text=GMIC+Production+Line';" width="1512" height="520">
+      </picture>
     </div>
   </header>
 
@@ -1237,7 +1205,10 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </header>
           <div class="step-grid">
             <figure class="step-figure">
-              <img src="../img/about/reception-logo.jpg" alt="GMIC reception and brand wall in Shenzhen" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Discovery';">
+              <picture>
+                <source srcset="../img/about/reception-logo-600.webp 1x, ../img/about/reception-logo-600@2x.webp 2x" type="image/webp">
+                <img src="../img/about/reception-logo-600.jpg" srcset="../img/about/reception-logo-600.jpg 1x, ../img/about/reception-logo-600@2x.jpg 2x" alt="GMIC reception and brand wall in Shenzhen" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Discovery';" width="594" height="396">
+              </picture>
             </figure>
             <div class="step-content">
               <p class="step-intro">Every project begins with understanding your workflow. We work with your team to identify:</p>
@@ -1269,7 +1240,10 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </header>
           <div class="step-grid">
             <figure class="step-figure">
-              <img src="../img/about/bv50p.jpg" alt="GMIC hardware platform device" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Solution+Architecture';">
+              <picture>
+                <source srcset="../img/about/bv50p-600.webp 1x, ../img/about/bv50p-600@2x.webp 2x" type="image/webp">
+                <img src="../img/about/bv50p-600.jpg" srcset="../img/about/bv50p-600.jpg 1x, ../img/about/bv50p-600@2x.jpg 2x" alt="GMIC hardware platform device" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Solution+Architecture';" width="594" height="396">
+              </picture>
             </figure>
             <div class="step-content">
               <p class="step-intro">Once requirements are defined, we recommend the best hardware strategy. Depending on your project, this may include:</p>
@@ -1300,7 +1274,10 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </header>
           <div class="step-grid">
             <figure class="step-figure">
-              <img src="../img/about/reflow-solder.jpg" alt="Reflow soldering of prototype boards" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Prototype';">
+              <picture>
+                <source srcset="../img/about/reflow-solder-600.webp 1x, ../img/about/reflow-solder-600@2x.webp 2x" type="image/webp">
+                <img src="../img/about/reflow-solder-600.jpg" srcset="../img/about/reflow-solder-600.jpg 1x, ../img/about/reflow-solder-600@2x.jpg 2x" alt="Reflow soldering of prototype boards" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Prototype';" width="594" height="396">
+              </picture>
             </figure>
             <div class="step-content">
               <p class="step-intro">Before committing to production, we create evaluation units for validation. This stage allows teams to test:</p>
@@ -1331,7 +1308,10 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </header>
           <div class="step-grid">
             <figure class="step-figure">
-              <img src="../img/about/qc-inspection.jpg" alt="Engineer validating hardware during QC inspection" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Validation';">
+              <picture>
+                <source srcset="../img/about/qc-inspection-600.webp 1x, ../img/about/qc-inspection-600@2x.webp 2x" type="image/webp">
+                <img src="../img/about/qc-inspection-600.jpg" srcset="../img/about/qc-inspection-600.jpg 1x, ../img/about/qc-inspection-600@2x.jpg 2x" alt="Engineer validating hardware during QC inspection" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Validation';" width="594" height="396">
+              </picture>
             </figure>
             <div class="step-content">
               <p class="step-intro">Hardware becomes valuable when integrated into your AI workflow. GMIC supports:</p>
@@ -1369,7 +1349,10 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </header>
           <div class="step-grid">
             <figure class="step-figure">
-              <img src="../img/about/wave-solder.jpg" alt="Finished boards moving through wave soldering" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Pilot+Deployment';">
+              <picture>
+                <source srcset="../img/about/wave-solder-600.webp 1x, ../img/about/wave-solder-600@2x.webp 2x" type="image/webp">
+                <img src="../img/about/wave-solder-600.jpg" srcset="../img/about/wave-solder-600.jpg 1x, ../img/about/wave-solder-600@2x.jpg 2x" alt="Finished boards moving through wave soldering" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Pilot+Deployment';" width="594" height="396">
+              </picture>
             </figure>
             <div class="step-content">
               <p class="step-intro">Pilot programs help validate real-world usage before scaling. Typical pilot objectives include:</p>
@@ -1399,7 +1382,10 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </header>
           <div class="step-grid">
             <figure class="step-figure">
-              <img src="../img/about/aoi-inspection.jpg" alt="AOI optical inspection machine on the GMIC line" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Production+Preparation';">
+              <picture>
+                <source srcset="../img/about/aoi-inspection-600.webp 1x, ../img/about/aoi-inspection-600@2x.webp 2x" type="image/webp">
+                <img src="../img/about/aoi-inspection-600.jpg" srcset="../img/about/aoi-inspection-600.jpg 1x, ../img/about/aoi-inspection-600@2x.jpg 2x" alt="AOI optical inspection machine on the GMIC line" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Production+Preparation';" width="594" height="396">
+              </picture>
             </figure>
             <div class="step-content">
               <p class="step-intro">After successful validation, projects move toward manufacturing readiness. Activities may include:</p>
@@ -1430,7 +1416,10 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </header>
           <div class="step-grid">
             <figure class="step-figure">
-              <img src="../img/about/assembly-workers.jpg" alt="Assembly line workers at the GMIC factory" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Manufacturing';">
+              <picture>
+                <source srcset="../img/about/assembly-workers-600.webp 1x, ../img/about/assembly-workers-600@2x.webp 2x" type="image/webp">
+                <img src="../img/about/assembly-workers-600.jpg" srcset="../img/about/assembly-workers-600.jpg 1x, ../img/about/assembly-workers-600@2x.jpg 2x" alt="Assembly line workers at the GMIC factory" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Manufacturing';" width="594" height="396">
+              </picture>
             </figure>
             <div class="step-content">
               <p class="step-intro">GMIC supports volume production and deployment planning. Capabilities include:</p>
@@ -1461,7 +1450,10 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           </header>
           <div class="step-grid">
             <figure class="step-figure">
-              <img src="../img/about/smt-machines.jpg" alt="SMT machines on the GMIC production floor" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Scaling';">
+              <picture>
+                <source srcset="../img/about/smt-machines-600.webp 1x, ../img/about/smt-machines-600@2x.webp 2x" type="image/webp">
+                <img src="../img/about/smt-machines-600.jpg" srcset="../img/about/smt-machines-600.jpg 1x, ../img/about/smt-machines-600@2x.jpg 2x" alt="SMT machines on the GMIC production floor" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/900x600?text=Scaling';" width="594" height="396">
+              </picture>
             </figure>
             <div class="step-content">
               <p class="step-intro">Successful hardware products continue to evolve. GMIC supports:</p>
@@ -1580,8 +1572,6 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           <li><a href="../index.html#industries">Healthcare AI</a></li>
           <li><a href="../index.html#industries">Enterprise AI</a></li>
           <li><a href="../index.html#industries">Field Service AI</a></li>
-          <li><a href="../index.html#industries">Telecom AI</a></li>
-          <li><a href="../index.html#industries">Smart Retail</a></li>
         </ul>
       </div>
 
@@ -1704,26 +1694,6 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         d.style.display = '';
       });
     }
-  });
-
-  // Products mega menu — filter cards by sidebar category
-  document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label) {
-    label.addEventListener('click', function() {
-      // Update active state
-      document.querySelectorAll('.dropdown-sidebar-label')
-        .forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-
-      // Filter cards
-      var filter = this.getAttribute('data-filter');
-      document.querySelectorAll('.dropdown-product-card').forEach(function(card) {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    });
   });
 
   // Mobile nav

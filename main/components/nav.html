@@ -68,20 +68,7 @@
 .nav-item.has-dropdown:hover .nav-arrow { transform: rotate(90deg); opacity: 1; }
 .dropdown-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; display: flex; gap: 0; }
 .nav-dropdown--products .dropdown-inner { flex-direction: row; gap: 0; }
-.dropdown-sidebar {
-  width: 200px; flex-shrink: 0;
-  border-right: 1px solid rgba(0,0,0,0.06);
-  padding-right: 32px; margin-right: 40px;
-  display: flex; flex-direction: column; gap: 4px;
-}
-.dropdown-sidebar-label {
-  font-size: 13px; font-weight: 700; color: #0f172a;
-  padding: 10px 12px; border-radius: 6px; cursor: pointer; transition: background 0.15s;
-}
-.dropdown-sidebar-label:hover { background: #f0f4ff; color: #2563eb; }
-.dropdown-sidebar-label.active { background: #f0f4ff; color: #2563eb; }
-.dropdown-product-card.hidden { display: none; }
-.dropdown-grid { flex: 1; display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; align-items: start; }
+.dropdown-grid { flex: 1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; align-items: start; }
 .dropdown-product-card {
   display: flex; flex-direction: column; align-items: flex-start;
   padding: 16px 12px; border-radius: 10px; text-decoration: none;
@@ -191,11 +178,6 @@
         </a>
         <div class="nav-dropdown nav-dropdown--products">
           <div class="dropdown-inner">
-            <div class="dropdown-sidebar">
-              <p class="dropdown-sidebar-label" data-filter="all">All Products →</p>
-              <p class="dropdown-sidebar-label" data-filter="voice">Voice Capture</p>
-              <p class="dropdown-sidebar-label" data-filter="pcba">Phone & PCBA</p>
-            </div>
             <div class="dropdown-grid">
               <a href="/products/mic06/" class="dropdown-product-card" data-category="voice">
                 <img src="/img/cap/mic06-main.png" alt="MIC06">
@@ -217,11 +199,6 @@
                 <span class="dp-name">Telalive</span>
                 <span class="dp-desc">AI phone front desk and wearables</span>
               </a>
-              <a href="/products/hearit/" class="dropdown-product-card" data-category="pcba">
-                <img src="/img/cap/mic06-main.png" alt="Hearit.ai PCBA">
-                <span class="dp-name">Hearit.ai PCBA</span>
-                <span class="dp-desc">Module and PCBA path</span>
-              </a>
             </div>
           </div>
         </div>
@@ -236,24 +213,24 @@
           <div class="dropdown-inner">
             <div class="dropdown-col">
               <p class="dropdown-col-head">Hardware</p>
-              <a href="/custom-devices/" class="dropdown-link">ODM / OEM</a>
-              <a href="/custom-devices/" class="dropdown-link">Private Label</a>
-              <a href="/custom-devices/" class="dropdown-link">Custom Enclosure</a>
-              <a href="/custom-devices/" class="dropdown-link">3D Small-batch Prototype</a>
+              <a href="/custom-devices/odm-oem/" class="dropdown-link">ODM / OEM</a>
+              <a href="/custom-devices/private-label/" class="dropdown-link">Private Label</a>
+              <a href="/custom-devices/custom-enclosure/" class="dropdown-link">Custom Enclosure</a>
+              <a href="/custom-devices/3d-prototype/" class="dropdown-link">3D Small-batch Prototype</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Engineering</p>
-              <a href="/custom-devices/" class="dropdown-link">Firmware Integration</a>
-              <a href="/custom-devices/" class="dropdown-link">Audio & DSP Tuning</a>
-              <a href="/custom-devices/" class="dropdown-link">AI SDK Integration</a>
-              <a href="/custom-devices/" class="dropdown-link">Prototype Validation</a>
+              <a href="/custom-devices/firmware-integration/" class="dropdown-link">Firmware Integration</a>
+              <a href="/custom-devices/audio-dsp-tuning/" class="dropdown-link">Audio & DSP Tuning</a>
+              <a href="/custom-devices/ai-sdk-integration/" class="dropdown-link">AI SDK Integration</a>
+              <a href="/custom-devices/prototype-validation/" class="dropdown-link">Prototype Validation</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Production</p>
-              <a href="/custom-devices/" class="dropdown-link">EVT / DVT / PVT</a>
-              <a href="/custom-devices/" class="dropdown-link">SMT Manufacturing</a>
-              <a href="/custom-devices/" class="dropdown-link">Certification Support</a>
-              <a href="/custom-devices/" class="dropdown-link">Supply Chain Management</a>
+              <a href="/custom-devices/evt-dvt-pvt/" class="dropdown-link">EVT / DVT / PVT</a>
+              <a href="/custom-devices/smt-manufacturing/" class="dropdown-link">SMT Manufacturing</a>
+              <a href="/custom-devices/certification-support/" class="dropdown-link">Certification Support</a>
+              <a href="/custom-devices/supply-chain/" class="dropdown-link">Supply Chain Management</a>
             </div>
           </div>
         </div>
@@ -279,21 +256,12 @@
             <div class="dropdown-col">
               <p class="dropdown-col-head">Healthcare & Ops</p>
               <a href="/industries/healthcare/" class="dropdown-link">Healthcare Voice AI</a>
-              <a href="/industries/hospitality/" class="dropdown-link">Hospitality AI</a>
-              <a href="/industries/hvac/" class="dropdown-link">HVAC</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Enterprise & Field</p>
               <a href="/industries/enterprise/" class="dropdown-link">Enterprise AI</a>
               <a href="/industries/field-service/" class="dropdown-link">Field Service</a>
-              <a href="/industries/telecom/" class="dropdown-link">Telecom AI</a>
-            </div>
-            <div class="dropdown-col">
-              <p class="dropdown-col-head">Retail & Transport</p>
-              <a href="/industries/smart-retail/" class="dropdown-link">Smart Retail</a>
-              <a href="https://gmic-nemt-demo.vercel.app/"
-                 class="dropdown-link dropdown-link--external"
-                 target="_blank" rel="noopener">NEMT</a>
+              <a href="https://nemt.gmic.ai/" class="dropdown-link" target="_blank" rel="noopener noreferrer">NEMT</a>
             </div>
           </div>
         </div>
@@ -351,15 +319,14 @@
       <a href="/products/mic05/" class="mobile-nav-link">MIC05</a>
       <a href="/products/mic01/" class="mobile-nav-link">MIC01</a>
       <a href="/products/telalive/" class="mobile-nav-link">Telalive</a>
-      <a href="/products/hearit/" class="mobile-nav-link">Hearit.ai PCBA</a>
     </div>
 
     <div class="mobile-nav-section">
       <p class="mobile-nav-head">Custom Devices</p>
-      <a href="/custom-devices/" class="mobile-nav-link">ODM / OEM</a>
-      <a href="/custom-devices/" class="mobile-nav-link">Private Label</a>
-      <a href="/custom-devices/" class="mobile-nav-link">Firmware Integration</a>
-      <a href="/custom-devices/" class="mobile-nav-link">Prototype Path</a>
+      <a href="/custom-devices/odm-oem/" class="mobile-nav-link">ODM / OEM</a>
+      <a href="/custom-devices/private-label/" class="mobile-nav-link">Private Label</a>
+      <a href="/custom-devices/firmware-integration/" class="mobile-nav-link">Firmware Integration</a>
+      <a href="/custom-devices/3d-prototype/" class="mobile-nav-link">Prototype Path</a>
     </div>
 
     <div class="mobile-nav-section">
@@ -367,13 +334,7 @@
       <a href="/industries/healthcare/" class="mobile-nav-link">Healthcare Voice AI</a>
       <a href="/industries/enterprise/" class="mobile-nav-link">Enterprise AI</a>
       <a href="/industries/field-service/" class="mobile-nav-link">Field Service</a>
-      <a href="/industries/telecom/" class="mobile-nav-link">Telecom AI</a>
-      <a href="/industries/hospitality/" class="mobile-nav-link">Hospitality AI</a>
-      <a href="/industries/smart-retail/" class="mobile-nav-link">Smart Retail</a>
-      <a href="/industries/hvac/" class="mobile-nav-link">HVAC</a>
-      <a href="https://gmic-nemt-demo.vercel.app/"
-         class="mobile-nav-link mobile-nav-link--external"
-         target="_blank" rel="noopener">NEMT ↗</a>
+      <a href="https://nemt.gmic.ai/" class="mobile-nav-link" target="_blank" rel="noopener noreferrer">NEMT</a>
     </div>
 
     <div class="mobile-nav-section">
@@ -409,19 +370,6 @@
     if (!e.target.closest('.nav-item')) {
       document.querySelectorAll('.nav-dropdown').forEach(function (d) { d.style.display = ''; });
     }
-  });
-
-  // ----- Products mega menu: filter cards by sidebar category -----
-  document.querySelectorAll('.dropdown-sidebar-label').forEach(function (label) {
-    label.addEventListener('click', function () {
-      document.querySelectorAll('.dropdown-sidebar-label').forEach(function (l) { l.classList.remove('active'); });
-      this.classList.add('active');
-      var filter = this.getAttribute('data-filter');
-      document.querySelectorAll('.dropdown-product-card').forEach(function (card) {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) card.classList.remove('hidden');
-        else card.classList.add('hidden');
-      });
-    });
   });
 
   // ----- Mobile burger menu -----

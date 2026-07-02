@@ -34,11 +34,7 @@
 .nav-item.has-dropdown:hover .nav-dropdown{display:block;}
 .nav-item.has-dropdown:hover .nav-arrow{transform:rotate(90deg);opacity:1;}
 .dropdown-inner{max-width:1200px;margin:0 auto;padding:0 40px;padding-top:8px;display:flex;gap:0;}
-.nav-dropdown--products .dropdown-inner{flex-direction:row;gap:0;}
-.dropdown-sidebar{width:200px;flex-shrink:0;border-right:1px solid rgba(0,0,0,0.06);padding-right:32px;margin-right:40px;display:flex;flex-direction:column;gap:4px;}
-.dropdown-sidebar-label{font-size:1rem;font-weight:700;color:#0f172a!important;padding:10px 12px;border-radius:6px;cursor:pointer;transition:background .15s;}
-.dropdown-sidebar-label:hover,.dropdown-sidebar-label.active{background:#f0f4ff;color:#2563eb!important;}
-.dropdown-product-card.hidden{display:none;}
+.nav-dropdown--products .dropdown-inner{gap:0;}
 .dropdown-grid{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;align-items:start;}
 .dropdown-product-card{display:flex;flex-direction:column;align-items:flex-start;padding:16px 12px;border-radius:10px;text-decoration:none;transition:background .15s;border:1px solid transparent;}
 .dropdown-product-card:hover{background:#f5f7ff;border-color:rgba(37,99,235,0.15);}
@@ -272,9 +268,6 @@
         </a>
         <div class="nav-dropdown nav-dropdown--products">
           <div class="dropdown-inner">
-            <div class="dropdown-sidebar">
-              <p class="dropdown-sidebar-label" data-filter="voice">Voice Capture</p>
-            </div>
             <div class="dropdown-grid">
               <a href="../../products/mic06/index.html" class="dropdown-product-card" data-category="voice">
                 <img src="../../img/cap/MIC06.png" alt="MIC06">
@@ -288,7 +281,11 @@
                 <img src="../../img/cap/MIC01.png" alt="MIC01">
                 <span class="dp-name">MIC01</span>
               </a>
-              <a href="../../products/index.html" class="dropdown-product-card dropdown-all" data-category="voice">
+              <a href="../../products/telalive/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../../img/products/telalive.png" alt="Telalive">
+                <span class="dp-name">Telalive</span>
+              </a>
+              <a href="../../products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
                 <div class="dp-all-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </div>
@@ -838,8 +835,6 @@
           <li><a href="../../index.html#industries">Healthcare AI</a></li>
           <li><a href="../../index.html#industries">Enterprise AI</a></li>
           <li><a href="../../index.html#industries">Field Service AI</a></li>
-          <li><a href="../../index.html#industries">Telecom AI</a></li>
-          <li><a href="../../index.html#industries">Smart Retail</a></li>
         </ul>
       </div>
 
@@ -990,19 +985,6 @@
   if(mobileNavOverlay){ mobileNavOverlay.addEventListener('click', closeMobileNav); }
   document.querySelectorAll('.mobile-nav-link').forEach(function(link){
     link.addEventListener('click', closeMobileNav);
-  });
-
-  // ---- Products mega-menu sidebar filter ----
-  document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label){
-    label.addEventListener('click', function(){
-      document.querySelectorAll('.dropdown-sidebar-label').forEach(function(l){ l.classList.remove('active'); });
-      this.classList.add('active');
-      var filter = this.getAttribute('data-filter');
-      document.querySelectorAll('.dropdown-product-card').forEach(function(card){
-        if(filter==='all'||card.getAttribute('data-category')===filter){ card.classList.remove('hidden'); }
-        else { card.classList.add('hidden'); }
-      });
-    });
   });
 
   // ---- Close any open desktop dropdown when clicking outside a nav item ----

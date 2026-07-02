@@ -81,42 +81,11 @@
 
 /* ── Products Mega Menu ── */
 .nav-dropdown--products .dropdown-inner {
-  flex-direction: row;
   gap: 0;
 }
 
-.dropdown-sidebar {
-  width: 200px;
-  flex-shrink: 0;
-  border-right: 1px solid rgba(0,0,0,0.06);
-  padding-right: 32px;
-  margin-right: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
 
-.dropdown-sidebar-label {
-  font-size: 1rem; /* 16px */
-  font-weight: 700;
-  color: #0f172a;
-  padding: 10px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
 
-.dropdown-sidebar-label:hover {
-  background: #f0f4ff;
-  color: #2563eb;
-}
-.dropdown-sidebar-label.active {
-  background: #f0f4ff;
-  color: #2563eb;
-}
-.dropdown-product-card.hidden {
-  display: none;
-}
 
 .dropdown-grid {
   flex: 1;
@@ -438,12 +407,6 @@
   color: #2563eb !important;
 }
 .dropdown-link--external {
-  color: #2563eb !important;
-}
-.dropdown-sidebar-label {
-  color: #0f172a !important;
-}
-.dropdown-sidebar-label:hover {
   color: #2563eb !important;
 }
 
@@ -923,6 +886,30 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 .pf-hero-note p{font-size:1.05rem;line-height:1.6;color:#666;max-width:420px;margin:0;}
 .pf-hero-banner{margin-top:56px;width:100%;height:clamp(420px,42vw,520px);overflow:hidden;border-radius:14px;background:#e8eeff;}
 .pf-hero-banner img{width:100%;height:100%;object-fit:cover;display:block;}
+.pf-hero-btns {
+  display: flex;
+  gap: 14px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+}
+.btn-outline-dark {
+  background: transparent;
+  color: #0f172a;
+  border: 1.5px solid #cbd5e1;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-size: .95rem;
+  font-weight: 600;
+  transition: all .2s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+.btn-outline-dark:hover {
+  border-color: #0f172a;
+  background: #f8fafc;
+  transform: translateY(-1px);
+}
 
 /* ---------- Generic section heads ---------- */
 .pf-sec{background:#fff;padding:96px 0;}
@@ -1038,9 +1025,6 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         </a>
         <div class="nav-dropdown nav-dropdown--products">
           <div class="dropdown-inner">
-            <div class="dropdown-sidebar">
-              <p class="dropdown-sidebar-label" data-filter="voice">Voice Capture</p>
-            </div>
             <div class="dropdown-grid">
               <a href="../products/mic06/index.html" class="dropdown-product-card" data-category="voice">
                 <img src="../img/cap/MIC06.png" alt="MIC06">
@@ -1057,7 +1041,12 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
                 <span class="dp-name">MIC01</span>
                 <span class="dp-desc">Entry-level pilot device</span>
               </a>
-              <a href="../products/index.html" class="dropdown-product-card dropdown-all" data-category="voice">
+              <a href="../products/telalive/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../img/products/telalive.png" alt="Telalive">
+                <span class="dp-name">Telalive</span>
+                <span class="dp-desc">AI-powered desk phone & wearable platform</span>
+              </a>
+              <a href="../products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
                 <div class="dp-all-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </div>
@@ -1221,14 +1210,20 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <div class="pf-hero-lead reveal">
         <div class="ab-eyebrow">PROOF · CASE STUDIES</div>
         <h1>Trusted by AI Companies, <span class="accent">Enterprise Teams</span>, and Product Innovators</h1>
-        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Start a Project</a>
+        <div class="pf-hero-btns">
+          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Start a Project</a>
+          <a href="../contact/index.html" class="btn btn-outline-dark">Get in Touch</a>
+        </div>
       </div>
       <div class="pf-hero-note reveal">
         <p>GMIC helps companies move from ideas to deployable hardware. Whether the goal is validating a new workflow, launching a consumer product, or scaling an AI platform into the physical world, our customers rely on GMIC for engineering, prototyping, and manufacturing support.</p>
       </div>
     </div>
     <div class="pf-hero-banner reveal">
-      <img src="../img/about/assembly-workers.jpg" alt="GMIC production floor in Shenzhen" onerror="this.onerror=null;this.src='https://placehold.co/1512x520?text=GMIC+Manufacturing';">
+      <picture>
+        <source srcset="../img/about/assembly-workers-1400.webp 1x, ../img/about/assembly-workers-1400@2x.webp 2x" type="image/webp">
+        <img alt="GMIC production floor in Shenzhen" onerror="this.onerror=null;this.src='https://placehold.co/1512x520?text=GMIC+Manufacturing';" src="../img/about/assembly-workers-1400.jpg" srcset="../img/about/assembly-workers-1400.jpg 1x, ../img/about/assembly-workers-1400@2x.jpg 2x" width="1391" height="520">
+      </picture>
     </div>
   </div>
 </header>
@@ -1277,7 +1272,10 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
     <!-- (a) Flagship case — Manufacturing -->
     <article class="pf-flagship reveal">
       <div class="pf-flagship-media">
-        <img src="../img/about/bv50p.jpg" alt="Bone-conduction audio hardware manufactured by GMIC" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Manufacturing';">
+        <picture>
+          <source srcset="../img/about/bv50p-720.webp 1x, ../img/about/bv50p-720@2x.webp 2x" type="image/webp">
+          <img alt="Bone-conduction audio hardware manufactured by GMIC" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=Manufacturing';" src="../img/about/bv50p-720.jpg" srcset="../img/about/bv50p-720.jpg 1x, ../img/about/bv50p-720@2x.jpg 2x" loading="lazy" width="694" height="440">
+        </picture>
       </div>
       <div class="pf-flagship-body">
         <div class="pf-cardhead">
@@ -1481,8 +1479,6 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           <li><a href="../index.html#industries">Healthcare AI</a></li>
           <li><a href="../index.html#industries">Enterprise AI</a></li>
           <li><a href="../index.html#industries">Field Service AI</a></li>
-          <li><a href="../index.html#industries">Telecom AI</a></li>
-          <li><a href="../index.html#industries">Smart Retail</a></li>
         </ul>
       </div>
 
@@ -1552,26 +1548,6 @@ if (typeof lucide !== 'undefined') lucide.createIcons();
         d.style.display = '';
       });
     }
-  });
-
-  // Products mega menu — filter cards by sidebar category
-  document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label) {
-    label.addEventListener('click', function() {
-      // Update active state
-      document.querySelectorAll('.dropdown-sidebar-label')
-        .forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-
-      // Filter cards
-      var filter = this.getAttribute('data-filter');
-      document.querySelectorAll('.dropdown-product-card').forEach(function(card) {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    });
   });
 
   // Mobile nav
