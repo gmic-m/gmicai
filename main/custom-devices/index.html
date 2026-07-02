@@ -587,6 +587,62 @@ h2.sec{
   .acc-img-col{display:none}
   .cta-sec{padding:88px 0}
 }
+
+/* View-all dropdown card (unified from standard nav) */
+.dropdown-all {
+  background: transparent;
+  border: 1px solid transparent !important;
+  /* 与其他卡片一样 top-aligned */
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.dropdown-all:hover {
+  background: #f0f4ff !important;
+  border-color: rgba(37,99,235,0.5) !important;
+}
+
+.dp-all-icon {
+  width: 100%;
+  height: 94px;          /* 与 .dropdown-product-card img 的 height 相同 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 6px;
+  margin-bottom: 10px;   /* 与 .dropdown-product-card img 的 margin-bottom 相同 */
+  transition: background 0.15s;
+}
+
+.dropdown-all .dp-all-icon svg {
+  stroke: #9ca3af;
+  transition: stroke 0.15s;
+}
+
+.dropdown-all:hover .dp-all-icon {
+  background: #e8eeff;
+}
+
+.dropdown-all:hover .dp-all-icon svg {
+  stroke: #2563eb;
+}
+
+.dropdown-all .dp-name {
+  color: #0f172a;   /* 默认深色，不要蓝色 */
+  transition: color 0.15s;
+}
+
+.dropdown-all:hover .dp-name {
+  color: #2563eb;   /* hover 才变蓝 */
+}
+
+.dropdown-all {
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent !important;
+}
+
 </style>
 </head>
 <body>
@@ -615,61 +671,77 @@ h2.sec{
         <div class="nav-dropdown nav-dropdown--products">
           <div class="dropdown-inner">
             <div class="dropdown-grid">
-              <a href="/products/mic06/" class="dropdown-product-card" data-category="voice">
-                <img src="../img/cap/mic06-main.png" alt="MIC06">
+              <a href="../products/mic06/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../img/cap/MIC06.png" alt="MIC06">
                 <span class="dp-name">MIC06</span>
                 <span class="dp-desc">Continuous voice capture for shift-based operations</span>
               </a>
-              <a href="/products/mic05/" class="dropdown-product-card" data-category="voice">
-                <img src="../img/cap/mic05-main.png" alt="MIC05">
+              <a href="../products/mic05/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../img/cap/MIC05.png" alt="MIC05">
                 <span class="dp-name">MIC05</span>
                 <span class="dp-desc">Button-triggered capture for field notes</span>
               </a>
-              <a href="/products/mic01/" class="dropdown-product-card" data-category="voice">
-                <img src="../img/cap/mic01-main.png" alt="MIC01">
+              <a href="../products/mic01/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../img/cap/MIC01.png" alt="MIC01">
                 <span class="dp-name">MIC01</span>
                 <span class="dp-desc">Entry-level pilot device</span>
               </a>
-              <a href="/products/telalive/" class="dropdown-product-card" data-category="pcba">
+              <a href="../products/telalive/index.html" class="dropdown-product-card" data-category="voice">
                 <img src="../img/products/telalive.png" alt="Telalive">
                 <span class="dp-name">Telalive</span>
-                <span class="dp-desc">AI phone front desk and wearables</span>
+                <span class="dp-desc">AI-powered desk phone & wearable platform</span>
+              </a>
+              <a href="../products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
+                <div class="dp-all-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+                <span class="dp-name">View All</span>
               </a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Solutions (active — this page) -->
+      <!-- Custom Devices -->
       <div class="nav-item has-dropdown">
-        <a href="index.html" class="nav-link nav-link--active">
-          Solutions <span class="nav-arrow">›</span>
+        <a href="../index.html#capabilities" class="nav-link">
+          Custom Devices <span class="nav-arrow">›</span>
         </a>
         <div class="nav-dropdown nav-dropdown--text">
           <div class="dropdown-inner">
             <div class="dropdown-col">
               <p class="dropdown-col-head">Hardware</p>
-              <a href="odm-oem/index.html" class="dropdown-link" style="color:#2563eb !important;font-weight:600">Custom Devices / ODM-OEM</a>
-              <a href="private-label/index.html" class="dropdown-link">Private Label</a>
-              <a href="custom-enclosure/index.html" class="dropdown-link">Custom Enclosure</a>
-              <a href="3d-prototype/index.html" class="dropdown-link">3D Small-batch Prototype</a>
+              <a href="../custom-devices/odm-oem/index.html" class="dropdown-link">ODM / OEM</a>
+              <a href="../custom-devices/private-label/index.html" class="dropdown-link">Private Label</a>
+              <a href="../custom-devices/custom-enclosure/index.html" class="dropdown-link">Custom Enclosure</a>
+              <a href="../custom-devices/3d-prototype/index.html" class="dropdown-link">3D Small-batch Prototype</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Engineering</p>
-              <a href="firmware-integration/index.html" class="dropdown-link">Firmware Integration</a>
-              <a href="audio-dsp-tuning/index.html" class="dropdown-link">Audio &amp; DSP Tuning</a>
-              <a href="ai-sdk-integration/index.html" class="dropdown-link">AI SDK Integration</a>
-              <a href="prototype-validation/index.html" class="dropdown-link">Prototype Validation</a>
+              <a href="../custom-devices/firmware-integration/index.html" class="dropdown-link">Firmware Integration</a>
+              <a href="../custom-devices/audio-dsp-tuning/index.html" class="dropdown-link">Audio & DSP Tuning</a>
+              <a href="../custom-devices/ai-sdk-integration/index.html" class="dropdown-link">AI SDK Integration</a>
+              <a href="../custom-devices/prototype-validation/index.html" class="dropdown-link">Prototype Validation</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Production</p>
-              <a href="evt-dvt-pvt/index.html" class="dropdown-link">EVT / DVT / PVT</a>
-              <a href="smt-manufacturing/index.html" class="dropdown-link">SMT Manufacturing</a>
-              <a href="certification-support/index.html" class="dropdown-link">Certification Support</a>
-              <a href="supply-chain/index.html" class="dropdown-link">Supply Chain Management</a>
+              <a href="../custom-devices/evt-dvt-pvt/index.html" class="dropdown-link">EVT / DVT / PVT</a>
+              <a href="../custom-devices/smt-manufacturing/index.html" class="dropdown-link">SMT Manufacturing</a>
+              <a href="../custom-devices/certification-support/index.html" class="dropdown-link">Certification Support</a>
+              <a href="../custom-devices/supply-chain/index.html" class="dropdown-link">Supply Chain Management</a>
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Implementation -->
+      <div class="nav-item">
+        <a href="../implementation/index.html" class="nav-link">Implementation</a>
+      </div>
+
+      <!-- Proof -->
+      <div class="nav-item">
+        <a href="../proof/index.html" class="nav-link">Proof</a>
       </div>
 
       <!-- Industries -->
@@ -680,32 +752,41 @@ h2.sec{
         <div class="nav-dropdown nav-dropdown--text">
           <div class="dropdown-inner">
             <div class="dropdown-col">
-              <p class="dropdown-col-head">Healthcare &amp; Ops</p>
-              <a href="/industries/healthcare/" class="dropdown-link">Healthcare Voice AI</a>
-            </div>
-            <div class="dropdown-col">
-              <p class="dropdown-col-head">Enterprise &amp; Field</p>
-              <a href="/industries/enterprise/" class="dropdown-link">Enterprise AI</a>
-              <a href="/industries/field-service/" class="dropdown-link">Field Service</a>
-            </div>
-            <div class="dropdown-col">
-              <p class="dropdown-col-head">Retail &amp; Transport</p>
-              <a href="https://gmic-nemt-demo.vercel.app/"
-                 class="dropdown-link dropdown-link--external"
-                 target="_blank" rel="noopener">NEMT</a>
+              <p class="dropdown-col-head">Industries</p>
+              <a href="../industries/enterprise/index.html" class="dropdown-link">Enterprise</a>
+              <a href="../industries/field-service/index.html" class="dropdown-link">Field Service</a>
+              <a href="../industries/healthcare/index.html" class="dropdown-link">Healthcare</a>
+              <a href="../industries/logistics/index.html" class="dropdown-link">Logistics</a>
+              <a href="../industries/public-safety/index.html" class="dropdown-link">Public Safety</a>
+              <a href="../industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
+              <a href="../industries/veterinary/index.html" class="dropdown-link">Veterinary</a>
+              <a href="../industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Manufacturing -->
+      <!-- Process -->
       <div class="nav-item">
-        <a href="#manufacturing" class="nav-link">Manufacturing</a>
+        <a href="../process/index.html" class="nav-link">Process</a>
       </div>
 
-      <!-- Blog -->
-      <div class="nav-item">
-        <a href="/blog/" class="nav-link">Blog</a>
+      <!-- Company -->
+      <div class="nav-item has-dropdown">
+        <a href="../about/index.html" class="nav-link">
+          Company <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Company</p>
+              <a href="../about/index.html" class="dropdown-link">About Us</a>
+              <a href="../blog/index.html" class="dropdown-link">Blog</a>
+              <a href="../contact/index.html" class="dropdown-link">Contact</a>
+              <a href="../faq/index.html" class="dropdown-link">FAQ</a>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
@@ -729,31 +810,29 @@ h2.sec{
   <div class="mobile-nav-inner">
 
     <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Products</p>
-      <a href="/products/mic06/" class="mobile-nav-link">MIC06</a>
-      <a href="/products/mic05/" class="mobile-nav-link">MIC05</a>
-      <a href="/products/mic01/" class="mobile-nav-link">MIC01</a>
-      <a href="/products/telalive/" class="mobile-nav-link">Telalive</a>
+  <p class="mobile-nav-head">Industries</p>
+  <a href="../industries/enterprise/index.html" class="mobile-nav-link">Enterprise</a>
+  <a href="../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
+  <a href="../industries/healthcare/index.html" class="mobile-nav-link">Healthcare</a>
+  <a href="../industries/logistics/index.html" class="mobile-nav-link">Logistics</a>
+  <a href="../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
+  <a href="../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
+  <a href="../industries/veterinary/index.html" class="mobile-nav-link">Veterinary</a>
+  <a href="../industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
+</div>
+
+    <div class="mobile-nav-section">
+      <a href="../implementation/index.html" class="mobile-nav-link">Implementation</a>
+      <a href="../proof/index.html" class="mobile-nav-link">Proof</a>
+      <a href="../process/index.html" class="mobile-nav-link">Process</a>
     </div>
 
     <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Solutions</p>
-      <a href="index.html" class="mobile-nav-link mobile-nav-link--active">Custom Devices / ODM-OEM</a>
-      <a href="private-label/index.html" class="mobile-nav-link">Private Label</a>
-      <a href="firmware-integration/index.html" class="mobile-nav-link">Firmware Integration</a>
-      <a href="prototype-validation/index.html" class="mobile-nav-link">Prototype Path</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <p class="mobile-nav-head">Industries</p>
-      <a href="/industries/healthcare/" class="mobile-nav-link">Healthcare Voice AI</a>
-      <a href="/industries/enterprise/" class="mobile-nav-link">Enterprise AI</a>
-      <a href="/industries/field-service/" class="mobile-nav-link">Field Service</a>
-    </div>
-
-    <div class="mobile-nav-section">
-      <a href="#manufacturing" class="mobile-nav-link">Manufacturing</a>
-      <a href="/blog/" class="mobile-nav-link">Blog</a>
+      <p class="mobile-nav-head">Company</p>
+      <a href="../about/index.html" class="mobile-nav-link">About Us</a>
+      <a href="../blog/index.html" class="mobile-nav-link">Blog</a>
+      <a href="../contact/index.html" class="mobile-nav-link">Contact</a>
+      <a href="../faq/index.html" class="mobile-nav-link">FAQ</a>
     </div>
 
     <div class="mobile-nav-cta">
@@ -1386,15 +1465,15 @@ h2.sec{
       </div>
       <div>
         <p class="f-head">Industries</p>
-        <a href="/industries/healthcare/" class="f-link">Healthcare Voice AI</a>
-        <a href="/industries/enterprise/" class="f-link">Enterprise AI</a>
-        <a href="/industries/field-service/" class="f-link">Field Service</a>
+        <a href="../industries/healthcare/index.html" class="f-link">Healthcare Voice AI</a>
+        <a href="../industries/enterprise/index.html" class="f-link">Enterprise AI</a>
+        <a href="../industries/field-service/index.html" class="f-link">Field Service</a>
       </div>
       <div>
         <p class="f-head">Company</p>
         <a href="https://gmic-m.github.io/gmicai/main/about/index.html" class="f-link">About Us</a>
         <a href="#manufacturing" class="f-link">Manufacturing</a>
-        <a href="/blog/" class="f-link">Blog</a>
+        <a href="../blog/index.html" class="f-link">Blog</a>
         <a href="mailto:hello@gmic.ai" class="f-link">Contact</a>
       </div>
     </div>
