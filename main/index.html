@@ -67,42 +67,11 @@
 
 /* ── Products Mega Menu ── */
 .nav-dropdown--products .dropdown-inner {
-  flex-direction: row;
   gap: 0;
 }
 
-.dropdown-sidebar {
-  width: 200px;
-  flex-shrink: 0;
-  border-right: 1px solid rgba(0,0,0,0.06);
-  padding-right: 32px;
-  margin-right: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
 
-.dropdown-sidebar-label {
-  font-size: 1rem; /* 16px */
-  font-weight: 700;
-  color: #0f172a;
-  padding: 10px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
 
-.dropdown-sidebar-label:hover {
-  background: #f0f4ff;
-  color: #2563eb;
-}
-.dropdown-sidebar-label.active {
-  background: #f0f4ff;
-  color: #2563eb;
-}
-.dropdown-product-card.hidden {
-  display: none;
-}
 
 .dropdown-grid {
   flex: 1;
@@ -426,12 +395,6 @@
 .dropdown-link--external {
   color: #2563eb !important;
 }
-.dropdown-sidebar-label {
-  color: #0f172a !important;
-}
-.dropdown-sidebar-label:hover {
-  color: #2563eb !important;
-}
 
 .nav { border-bottom: none !important; box-shadow: none !important; }
 </style>
@@ -461,9 +424,6 @@
         </a>
         <div class="nav-dropdown nav-dropdown--products">
           <div class="dropdown-inner">
-            <div class="dropdown-sidebar">
-              <p class="dropdown-sidebar-label" data-filter="voice">Voice Capture</p>
-            </div>
             <div class="dropdown-grid">
               <a href="./products/mic06/index.html" class="dropdown-product-card" data-category="voice">
                 <img src="img/cap/MIC06.png" alt="MIC06">
@@ -480,7 +440,12 @@
                 <span class="dp-name">MIC01</span>
                 <span class="dp-desc">Entry-level pilot device</span>
               </a>
-              <a href="./products/index.html" class="dropdown-product-card dropdown-all" data-category="voice">
+              <a href="./products/telalive/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="img/products/telalive.png" alt="Telalive">
+                <span class="dp-name">Telalive</span>
+                <span class="dp-desc">AI-powered desk phone & wearable platform</span>
+              </a>
+              <a href="./products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
                 <div class="dp-all-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </div>
@@ -550,6 +515,7 @@
               <a href="./industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
               <a href="./industries/veterinary/index.html" class="dropdown-link">Veterinary</a>
               <a href="./industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
+              <a href="https://nemt.gmic.ai/" class="dropdown-link" target="_blank" rel="noopener noreferrer">NEMT</a>
             </div>
           </div>
         </div>
@@ -608,6 +574,7 @@
   <a href="./industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
   <a href="./industries/veterinary/index.html" class="mobile-nav-link">Veterinary</a>
   <a href="./industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
+  <a href="https://nemt.gmic.ai/" class="mobile-nav-link" target="_blank" rel="noopener noreferrer">NEMT</a>
 </div>
 
     <div class="mobile-nav-section">
@@ -651,7 +618,7 @@
     <p class="lede">We help AI companies design, prototype, and manufacture voice-first and edge AI devices — from concept to 50,000+ units/month.</p>
     <div class="hero-cta">
       <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Start a Project</a>
-      <a href="#proof" class="btn btn-ghost">Review Proof Path</a>
+      <a href="./proof/index.html" class="btn btn-ghost">Review Proof Path</a>
     </div>
     <p class="hero-trust">270+ hardware programs shipped · US + Shenzhen · 15+ years manufacturing</p>
   </div>
@@ -663,12 +630,11 @@
       <div class="mosaic-tile"><img src="img/products/opsmic-main.png" alt=""></div>
     </div>
 
-    <!-- Row 2: 4 tiles, full-width -->
+    <!-- Row 2: 3 tiles, full-width -->
     <div class="mosaic-row row-2">
       <div class="mosaic-tile"><img src="img/products/AI Chatmic.png" alt=""></div>
       <div class="mosaic-tile"><img src="img/products/mic04.png" alt=""></div>
       <div class="mosaic-tile"><img src="img/products/Phone assistant.png" alt=""></div>
-      <div class="mosaic-tile"><img src="img/products/hearitai.png" alt=""></div>
     </div>
 
     <!-- Row 3: text only, no image -->
@@ -935,77 +901,8 @@
           </span>
           <span class="arrow">→</span>
         </a>
-        <a class="industries-line" href="#" data-photo="telecom">
-          <span class="idx">04</span>
-          <span class="dash">—</span>
-          <span class="ind-text">
-            <span class="name">Telecom <span class="italic">AI</span></span>
-            <span class="ind-product-tag">
-              <span class="ind-product-label">Powered by</span>
-              <span class="ind-product-name">MIC05</span>
-            </span>
-            <span class="description">Voice infrastructure · Connected edge · Network devices</span>
-            <span class="ind-quote">
-              <span class="ind-stars">★★★★★</span>
-              <span class="ind-quote-tag">Telecom</span>
-              <span class="ind-quote-pull">
-                <span class="ind-quote-mark">“</span>
-                <strong>Give field technicians voice-first tools that work in the toughest network environments — no phone required.</strong>
-                <span class="ind-quote-mark">”</span>
-              </span>
-              <span class="ind-quote-sub">Telalive — Field Operations AI</span>
-            </span>
-          </span>
-          <span class="arrow">→</span>
-        </a>
-        <a class="industries-line" href="#" data-photo="hospitality">
-          <span class="idx">05</span>
-          <span class="dash">—</span>
-          <span class="ind-text">
-            <span class="name">Hospitality <span class="italic">AI</span></span>
-            <span class="ind-product-tag">
-              <span class="ind-product-label">Powered by</span>
-              <span class="ind-product-name">MIC01</span>
-            </span>
-            <span class="description">Hands-free ops · Front-of-house · AI-assisted service</span>
-            <span class="ind-quote">
-              <span class="ind-stars">★★★★★</span>
-              <span class="ind-quote-tag">Hospitality</span>
-              <span class="ind-quote-pull">
-                <span class="ind-quote-mark">“</span>
-                <strong>Hands-free communication and AI-assisted operations that let your team focus on the guest, not the device.</strong>
-                <span class="ind-quote-mark">”</span>
-              </span>
-              <span class="ind-quote-sub">MIC01 — Enterprise Workflow AI</span>
-            </span>
-          </span>
-          <span class="arrow">→</span>
-        </a>
-        <a class="industries-line" href="#" data-photo="retail">
-          <span class="idx">06</span>
-          <span class="dash">—</span>
-          <span class="ind-text">
-            <span class="name">Smart <span class="italic">Retail</span></span>
-            <span class="ind-product-tag">
-              <span class="ind-product-label">Powered by</span>
-              <span class="ind-product-name">MIC05</span>
-            </span>
-            <span class="description">Voice interaction · Workforce tools · Customer AI</span>
-            <span class="ind-quote">
-              <span class="ind-stars">★★★★★</span>
-              <span class="ind-quote-tag">Smart Retail</span>
-              <span class="ind-quote-pull">
-                <span class="ind-quote-mark">“</span>
-                <strong>Capture field sales interactions and revenue conversations beyond Zoom and CRM workflows.</strong>
-                <span class="ind-quote-mark">”</span>
-              </span>
-              <span class="ind-quote-sub">MIC05 — Revenue &amp; Sales AI</span>
-            </span>
-          </span>
-          <span class="arrow">→</span>
-        </a>
         <a class="industries-line" href="https://gmic-nemt-demo.vercel.app/" target="_blank" rel="noopener" data-photo="nemt">
-          <span class="idx">07</span>
+          <span class="idx">04</span>
           <span class="dash">—</span>
           <span class="ind-text">
             <span class="name">NEMT <span class="italic">Transport AI</span></span>
@@ -1024,14 +921,26 @@
           <span class="arrow">→</span>
         </a>
       </div>
+      <!-- 产品场景照：显示宽度约 540px（>500px），但源图仅 1000px 宽，
+           故 2x 实际输出为 1000px（field 为 783px），非真正的 1080px 2x。
+           需重新生成更高分辨率源图以获得完整视网膜清晰度；此处不使用 CSS 强行放大。 -->
       <div class="industries-photo">
-        <img class="active" data-photo="healthcare" src="img/indus/healthcare.png" alt="Healthcare Voice AI">
-        <img data-photo="enterprise" src="img/indus/enterprise.png" alt="Enterprise AI">
-        <img data-photo="field" src="img/indus/field.png" alt="Field Service">
-        <img data-photo="telecom" src="img/indus/telecom.png" alt="Telecom AI">
-        <img data-photo="hospitality" src="img/indus/hospitality.png" alt="Hospitality AI">
-        <img data-photo="retail" src="img/indus/smartretail.png" alt="Smart Retail">
-        <img data-photo="nemt" src="img/indus/nemt.png" alt="NEMT Transport AI">
+        <picture>
+          <source srcset="img/indus/healthcare-540.webp 1x, img/indus/healthcare-540@2x.webp 2x" type="image/webp">
+          <img class="active" data-photo="healthcare" src="img/indus/healthcare-540.jpg" srcset="img/indus/healthcare-540.jpg 1x, img/indus/healthcare-540@2x.jpg 2x" alt="Healthcare Voice AI" loading="lazy" width="540" height="720">
+        </picture>
+        <picture>
+          <source srcset="img/indus/enterprise-540.webp 1x, img/indus/enterprise-540@2x.webp 2x" type="image/webp">
+          <img data-photo="enterprise" src="img/indus/enterprise-540.jpg" srcset="img/indus/enterprise-540.jpg 1x, img/indus/enterprise-540@2x.jpg 2x" alt="Enterprise AI" loading="lazy" width="540" height="720">
+        </picture>
+        <picture>
+          <source srcset="img/indus/field-540.webp 1x, img/indus/field-540@2x.webp 2x" type="image/webp">
+          <img data-photo="field" src="img/indus/field-540.jpg" srcset="img/indus/field-540.jpg 1x, img/indus/field-540@2x.jpg 2x" alt="Field Service" loading="lazy" width="540" height="720">
+        </picture>
+        <picture>
+          <source srcset="img/indus/nemt-540.webp 1x, img/indus/nemt-540@2x.webp 2x" type="image/webp">
+          <img data-photo="nemt" src="img/indus/nemt-540.jpg" srcset="img/indus/nemt-540.jpg 1x, img/indus/nemt-540@2x.jpg 2x" alt="NEMT Transport AI" loading="lazy" width="540" height="720">
+        </picture>
       </div>
     </div>
   </div>
@@ -1228,8 +1137,6 @@
           <li><a href="#industries">Healthcare AI</a></li>
           <li><a href="#industries">Enterprise AI</a></li>
           <li><a href="#industries">Field Service AI</a></li>
-          <li><a href="#industries">Telecom AI</a></li>
-          <li><a href="#industries">Smart Retail</a></li>
         </ul>
       </div>
 
@@ -1347,26 +1254,6 @@ document.addEventListener('click', function(e) {
       d.style.display = '';
     });
   }
-});
-
-// Products mega menu — filter cards by sidebar category
-document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label) {
-  label.addEventListener('click', function() {
-    // Update active state
-    document.querySelectorAll('.dropdown-sidebar-label')
-      .forEach(l => l.classList.remove('active'));
-    this.classList.add('active');
-
-    // Filter cards
-    var filter = this.getAttribute('data-filter');
-    document.querySelectorAll('.dropdown-product-card').forEach(function(card) {
-      if (filter === 'all' || card.getAttribute('data-category') === filter) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
-    });
-  });
 });
 
 // Mobile nav

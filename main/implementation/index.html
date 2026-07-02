@@ -81,42 +81,11 @@
 
 /* ── Products Mega Menu ── */
 .nav-dropdown--products .dropdown-inner {
-  flex-direction: row;
   gap: 0;
 }
 
-.dropdown-sidebar {
-  width: 200px;
-  flex-shrink: 0;
-  border-right: 1px solid rgba(0,0,0,0.06);
-  padding-right: 32px;
-  margin-right: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
 
-.dropdown-sidebar-label {
-  font-size: 1rem; /* 16px */
-  font-weight: 700;
-  color: #0f172a;
-  padding: 10px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
 
-.dropdown-sidebar-label:hover {
-  background: #f0f4ff;
-  color: #2563eb;
-}
-.dropdown-sidebar-label.active {
-  background: #f0f4ff;
-  color: #2563eb;
-}
-.dropdown-product-card.hidden {
-  display: none;
-}
 
 .dropdown-grid {
   flex: 1;
@@ -438,12 +407,6 @@
   color: #2563eb !important;
 }
 .dropdown-link--external {
-  color: #2563eb !important;
-}
-.dropdown-sidebar-label {
-  color: #0f172a !important;
-}
-.dropdown-sidebar-label:hover {
   color: #2563eb !important;
 }
 
@@ -1148,9 +1111,6 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         </a>
         <div class="nav-dropdown nav-dropdown--products">
           <div class="dropdown-inner">
-            <div class="dropdown-sidebar">
-              <p class="dropdown-sidebar-label" data-filter="voice">Voice Capture</p>
-            </div>
             <div class="dropdown-grid">
               <a href="../products/mic06/index.html" class="dropdown-product-card" data-category="voice">
                 <img src="../img/cap/MIC06.png" alt="MIC06">
@@ -1167,7 +1127,12 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
                 <span class="dp-name">MIC01</span>
                 <span class="dp-desc">Entry-level pilot device</span>
               </a>
-              <a href="../products/index.html" class="dropdown-product-card dropdown-all" data-category="voice">
+              <a href="../products/telalive/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../img/products/telalive.png" alt="Telalive">
+                <span class="dp-name">Telalive</span>
+                <span class="dp-desc">AI-powered desk phone & wearable platform</span>
+              </a>
+              <a href="../products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
                 <div class="dp-all-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </div>
@@ -1399,8 +1364,14 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             </ul>
           </div>
           <div class="impl-build-imgs">
-            <img class="impl-build-img impl-build-img--drop" src="../img/about/smt-machines.jpg" alt="SMT pick-and-place machines populating circuit boards for AI hardware at the GMIC factory" onerror="this.style.display='none'">
-            <img class="impl-build-img" src="../img/about/assembly-workers.jpg" alt="GMIC technicians assembling custom AI hardware devices on the production line" onerror="this.style.display='none'">
+            <picture>
+              <source srcset="../img/about/smt-machines-720.webp 1x, ../img/about/smt-machines-720@2x.webp 2x" type="image/webp">
+              <img class="impl-build-img impl-build-img--drop" alt="SMT pick-and-place machines populating circuit boards for AI hardware at the GMIC factory" onerror="this.style.display='none'" src="../img/about/smt-machines-720.jpg" srcset="../img/about/smt-machines-720.jpg 1x, ../img/about/smt-machines-720@2x.jpg 2x" loading="lazy" width="325" height="433">
+            </picture>
+            <picture>
+              <source srcset="../img/about/assembly-workers-680.webp 1x, ../img/about/assembly-workers-680@2x.webp 2x" type="image/webp">
+              <img class="impl-build-img" alt="GMIC technicians assembling custom AI hardware devices on the production line" onerror="this.style.display='none'" src="../img/about/assembly-workers-680.jpg" srcset="../img/about/assembly-workers-680.jpg 1x, ../img/about/assembly-workers-680@2x.jpg 2x" loading="lazy" width="325" height="433">
+            </picture>
           </div>
         </div>
 
@@ -1533,22 +1504,34 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
                 <h3><i data-lucide="building-2" aria-hidden="true"></i>Enterprise software</h3>
                 <p>Connect devices to CRMs, EHRs, and internal tools with AI firmware integration.</p>
               </button>
-              <div class="impl-int-acc"><img src="../img/about/assembly-workers.jpg" alt="Enterprise software integration during device assembly" onerror="this.style.display='none'"></div>
+              <div class="impl-int-acc"><picture>
+                <source srcset="../img/about/assembly-workers-760.webp 1x, ../img/about/assembly-workers-760@2x.webp 2x" type="image/webp">
+                <img alt="Enterprise software integration during device assembly" onerror="this.style.display='none'" src="../img/about/assembly-workers-760.jpg" srcset="../img/about/assembly-workers-760.jpg 1x, ../img/about/assembly-workers-760@2x.jpg 2x" loading="lazy" width="667" height="417">
+              </picture></div>
             </div>
             <div class="impl-int-item" data-int="4">
               <button type="button" class="impl-int-card" role="tab" aria-selected="false">
                 <h3><i data-lucide="server" aria-hidden="true"></i>On-premise AI systems</h3>
                 <p>Keep voice data and inference inside your own network for private, secure deployments.</p>
               </button>
-              <div class="impl-int-acc"><img src="../img/about/factory-exterior.jpg" alt="On-premise AI systems at the GMIC manufacturing facility" onerror="this.style.display='none'"></div>
+              <div class="impl-int-acc"><picture>
+                <source srcset="../img/about/factory-exterior-700.webp 1x, ../img/about/factory-exterior-700@2x.webp 2x" type="image/webp">
+                <img alt="On-premise AI systems at the GMIC manufacturing facility" onerror="this.style.display='none'" src="../img/about/factory-exterior-700.jpg" srcset="../img/about/factory-exterior-700.jpg 1x, ../img/about/factory-exterior-700@2x.jpg 2x" loading="lazy" width="667" height="417">
+              </picture></div>
             </div>
           </div>
           <div class="impl-int-panel" id="intPanel">
             <img class="impl-int-img active" data-int="0" src="../img/platform/05.jpg" alt="AI transcription platform integration on the GMIC production floor" onerror="this.style.display='none'">
             <img class="impl-int-img" data-int="1" src="../img/platform/04.jpg" alt="Voice agent hardware undergoing integration testing" onerror="this.style.display='none'">
             <img class="impl-int-img" data-int="2" src="../img/platform/01.jpg" alt="LLM application hardware on the SMT line" onerror="this.style.display='none'">
-            <img class="impl-int-img" data-int="3" src="../img/about/assembly-workers.jpg" alt="Enterprise software integration during device assembly" onerror="this.style.display='none'">
-            <img class="impl-int-img" data-int="4" src="../img/about/factory-exterior.jpg" alt="On-premise AI systems at the GMIC manufacturing facility" onerror="this.style.display='none'">
+            <picture>
+              <source srcset="../img/about/assembly-workers-960.webp 1x, ../img/about/assembly-workers-960@2x.webp 2x" type="image/webp">
+              <img class="impl-int-img" data-int="3" alt="Enterprise software integration during device assembly" onerror="this.style.display='none'" src="../img/about/assembly-workers-960.jpg" srcset="../img/about/assembly-workers-960.jpg 1x, ../img/about/assembly-workers-960@2x.jpg 2x" loading="lazy" width="708" height="520">
+            </picture>
+            <picture>
+              <source srcset="../img/about/factory-exterior-960.webp 1x, ../img/about/factory-exterior-960@2x.webp 2x" type="image/webp">
+              <img class="impl-int-img" data-int="4" alt="On-premise AI systems at the GMIC manufacturing facility" onerror="this.style.display='none'" src="../img/about/factory-exterior-960.jpg" srcset="../img/about/factory-exterior-960.jpg 1x, ../img/about/factory-exterior-960@2x.jpg 2x" loading="lazy" width="708" height="520">
+            </picture>
           </div>
         </div>
       </div>
@@ -1704,12 +1687,21 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <div class="impl-proc reveal" id="procFlow">
         <!-- LEFT: image panel (crossfades per active step) + floating step badge -->
         <div class="impl-proc-media">
-          <img class="impl-proc-img active" data-step="0" src="../img/about/factory-exterior.jpg" alt="GMIC engineers reviewing AI hardware requirements and use cases" onerror="this.style.display='none'">
+          <picture>
+            <source srcset="../img/about/factory-exterior-700.webp 1x, ../img/about/factory-exterior-700@2x.webp 2x" type="image/webp">
+            <img class="impl-proc-img active" data-step="0" alt="GMIC engineers reviewing AI hardware requirements and use cases" onerror="this.style.display='none'" src="../img/about/factory-exterior-700.jpg" srcset="../img/about/factory-exterior-700.jpg 1x, ../img/about/factory-exterior-700@2x.jpg 2x" loading="lazy" width="651" height="360">
+          </picture>
           <img class="impl-proc-img" data-step="1" src="../img/platform/01.jpg" alt="Hardware architecture and engineering design of a GMIC AI device" onerror="this.style.display='none'">
           <img class="impl-proc-img" data-step="2" src="../img/platform/03.jpg" alt="Working AI device prototype on the GMIC engineering bench" onerror="this.style.display='none'">
           <img class="impl-proc-img" data-step="3" src="../img/platform/04.jpg" alt="AI platform, firmware, and software integration testing" onerror="this.style.display='none'">
-          <img class="impl-proc-img" data-step="4" src="../img/about/qc-inspection.jpg" alt="Pilot testing and quality inspection of GMIC AI hardware" onerror="this.style.display='none'">
-          <img class="impl-proc-img" data-step="5" src="../img/about/smt-machines.jpg" alt="SMT and scalable mass production line for AI hardware" onerror="this.style.display='none'">
+          <picture>
+            <source srcset="../img/about/qc-inspection-700.webp 1x, ../img/about/qc-inspection-700@2x.webp 2x" type="image/webp">
+            <img class="impl-proc-img" data-step="4" alt="Pilot testing and quality inspection of GMIC AI hardware" onerror="this.style.display='none'" src="../img/about/qc-inspection-700.jpg" srcset="../img/about/qc-inspection-700.jpg 1x, ../img/about/qc-inspection-700@2x.jpg 2x" loading="lazy" width="651" height="360">
+          </picture>
+          <picture>
+            <source srcset="../img/about/smt-machines-720.webp 1x, ../img/about/smt-machines-720@2x.webp 2x" type="image/webp">
+            <img class="impl-proc-img" data-step="5" alt="SMT and scalable mass production line for AI hardware" onerror="this.style.display='none'" src="../img/about/smt-machines-720.jpg" srcset="../img/about/smt-machines-720.jpg 1x, ../img/about/smt-machines-720@2x.jpg 2x" loading="lazy" width="651" height="360">
+          </picture>
           <span class="impl-proc-badge" id="procBadge" aria-hidden="true">Discovery</span>
         </div>
         <!-- RIGHT: nav controls + windowed step list (3 visible, auto-advancing) -->
@@ -1868,8 +1860,6 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           <li><a href="../index.html#industries">Healthcare AI</a></li>
           <li><a href="../index.html#industries">Enterprise AI</a></li>
           <li><a href="../index.html#industries">Field Service AI</a></li>
-          <li><a href="../index.html#industries">Telecom AI</a></li>
-          <li><a href="../index.html#industries">Smart Retail</a></li>
         </ul>
       </div>
 
@@ -1992,26 +1982,6 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         d.style.display = '';
       });
     }
-  });
-
-  // Products mega menu — filter cards by sidebar category
-  document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label) {
-    label.addEventListener('click', function() {
-      // Update active state
-      document.querySelectorAll('.dropdown-sidebar-label')
-        .forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-
-      // Filter cards
-      var filter = this.getAttribute('data-filter');
-      document.querySelectorAll('.dropdown-product-card').forEach(function(card) {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    });
   });
 
   // Mobile nav

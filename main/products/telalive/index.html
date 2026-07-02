@@ -34,11 +34,7 @@
 .nav-item.has-dropdown:hover .nav-dropdown{display:block;}
 .nav-item.has-dropdown:hover .nav-arrow{transform:rotate(90deg);opacity:1;}
 .dropdown-inner{max-width:1200px;margin:0 auto;padding:0 40px;padding-top:8px;display:flex;gap:0;}
-.nav-dropdown--products .dropdown-inner{flex-direction:row;gap:0;}
-.dropdown-sidebar{width:200px;flex-shrink:0;border-right:1px solid rgba(0,0,0,0.06);padding-right:32px;margin-right:40px;display:flex;flex-direction:column;gap:4px;}
-.dropdown-sidebar-label{font-size:1rem;font-weight:700;color:#0f172a!important;padding:10px 12px;border-radius:6px;cursor:pointer;transition:background .15s;}
-.dropdown-sidebar-label:hover,.dropdown-sidebar-label.active{background:#f0f4ff;color:#2563eb!important;}
-.dropdown-product-card.hidden{display:none;}
+.nav-dropdown--products .dropdown-inner{gap:0;}
 .dropdown-grid{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;align-items:start;}
 .dropdown-product-card{display:flex;flex-direction:column;align-items:flex-start;padding:16px 12px;border-radius:10px;text-decoration:none;transition:background .15s;border:1px solid transparent;}
 .dropdown-product-card:hover{background:#f5f7ff;border-color:rgba(37,99,235,0.15);}
@@ -128,7 +124,7 @@
 .m5-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
 /* Telalive: 5-card grid (wraps 3+2, short last row centered) */
 .m5-grid-flex{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
-.m5-grid-flex>.m5-card{flex:1 1 300px;max-width:380px;}
+.m5-grid-flex>.m5-card{flex:1 1 calc((100% - 80px) / 5);max-width:none;}
 /* Telalive: industry tag wall (auto-wrapping pills) */
 .m5-tags{display:flex;flex-wrap:wrap;gap:12px;}
 .m5-tag{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid rgba(0,0,0,.1);background:#fff;font-size:.95rem;font-weight:500;color:#0f172a;transition:border-color .2s,transform .2s,box-shadow .2s;}
@@ -188,6 +184,7 @@
   .m5-hero-media{order:-1;max-width:520px;}
   .m5-grid-3{grid-template-columns:1fr 1fr;}
   .m5-check-row{grid-template-columns:1fr 1fr;}
+  .m5-grid-flex>.m5-card{flex:1 1 calc((100% - 20px) / 2);}
 }
 @media(max-width:640px){
   .m5-grid-3,.m5-check-row,.m5-specs,.m5-list{grid-template-columns:1fr;}
@@ -199,7 +196,7 @@
 .m5-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
 .m5-stat{text-align:center;padding:6px 14px;border-left:1px solid rgba(15,23,42,.08);}
 .m5-stat:first-child{border-left:none;}
-.m5-stat-v{font-family:var(--sans);font-weight:700;font-size:clamp(36px,4.6vw,56px);line-height:1;letter-spacing:-0.02em;color:#0f172a;}
+.m5-stat-v{font-family:var(--sans);font-weight:700;font-size:48px;line-height:1;letter-spacing:-0.02em;color:#0f172a;}
 .m5-stat-k{font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#64748b;margin-top:10px;}
 @media(max-width:640px){
   .m5-stats-grid{grid-template-columns:1fr 1fr;gap:30px 0;}
@@ -264,9 +261,6 @@
         </a>
         <div class="nav-dropdown nav-dropdown--products">
           <div class="dropdown-inner">
-            <div class="dropdown-sidebar">
-              <p class="dropdown-sidebar-label" data-filter="voice">Voice Capture</p>
-            </div>
             <div class="dropdown-grid">
               <a href="../../products/mic06/index.html" class="dropdown-product-card" data-category="voice">
                 <img src="../../img/cap/MIC06.png" alt="MIC06">
@@ -280,7 +274,11 @@
                 <img src="../../img/cap/MIC01.png" alt="MIC01">
                 <span class="dp-name">MIC01</span>
               </a>
-              <a href="../../products/index.html" class="dropdown-product-card dropdown-all" data-category="voice">
+              <a href="../../products/telalive/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../../img/products/telalive.png" alt="Telalive">
+                <span class="dp-name">Telalive</span>
+              </a>
+              <a href="../../products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
                 <div class="dp-all-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </div>
@@ -344,7 +342,6 @@
               <p class="dropdown-col-head">Healthcare & Ops</p>
               <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare Voice AI</a>
               <a href="../../industries/veterinary/index.html" class="dropdown-link">Veterinary AI</a>
-              <a href="../../industries/hospitality/index.html" class="dropdown-link">Hospitality AI</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Enterprise & Field</p>
@@ -352,13 +349,11 @@
               <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales Intelligence</a>
               <a href="../../industries/field-service/index.html" class="dropdown-link">Field Service</a>
               <a href="../../industries/voice-agents/index.html" class="dropdown-link">Voice Agents</a>
-              <a href="../../industries/telecom/index.html" class="dropdown-link">Telecom AI</a>
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Safety & Transport</p>
               <a href="../../industries/public-safety/index.html" class="dropdown-link">Public Safety</a>
               <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics & Transportation</a>
-              <a href="../../industries/smart-retail/index.html" class="dropdown-link">Smart Retail</a>
               <a href="https://gmic-nemt-demo.vercel.app/" class="dropdown-link dropdown-link--external" target="_blank" rel="noopener">NEMT</a>
             </div>
           </div>
@@ -442,15 +437,12 @@
       <p class="mobile-nav-head">Industries</p>
       <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare Voice AI</a>
       <a href="../../industries/veterinary/index.html" class="mobile-nav-link">Veterinary AI</a>
-      <a href="../../industries/hospitality/index.html" class="mobile-nav-link">Hospitality AI</a>
       <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise AI</a>
       <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales Intelligence</a>
       <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
       <a href="../../industries/voice-agents/index.html" class="mobile-nav-link">Voice Agents</a>
-      <a href="../../industries/telecom/index.html" class="mobile-nav-link">Telecom AI</a>
       <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
       <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics & Transportation</a>
-      <a href="../../industries/smart-retail/index.html" class="mobile-nav-link">Smart Retail</a>
       <a href="https://gmic-nemt-demo.vercel.app/" class="mobile-nav-link mobile-nav-link--external" target="_blank" rel="noopener">NEMT ↗</a>
     </div>
 
@@ -862,8 +854,6 @@
           <li><a href="../../index.html#industries">Healthcare AI</a></li>
           <li><a href="../../index.html#industries">Enterprise AI</a></li>
           <li><a href="../../index.html#industries">Field Service AI</a></li>
-          <li><a href="../../index.html#industries">Telecom AI</a></li>
-          <li><a href="../../index.html#industries">Smart Retail</a></li>
         </ul>
       </div>
 
@@ -1014,19 +1004,6 @@
   if(mobileNavOverlay){ mobileNavOverlay.addEventListener('click', closeMobileNav); }
   document.querySelectorAll('.mobile-nav-link').forEach(function(link){
     link.addEventListener('click', closeMobileNav);
-  });
-
-  // ---- Products mega-menu sidebar filter ----
-  document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label){
-    label.addEventListener('click', function(){
-      document.querySelectorAll('.dropdown-sidebar-label').forEach(function(l){ l.classList.remove('active'); });
-      this.classList.add('active');
-      var filter = this.getAttribute('data-filter');
-      document.querySelectorAll('.dropdown-product-card').forEach(function(card){
-        if(filter==='all'||card.getAttribute('data-category')===filter){ card.classList.remove('hidden'); }
-        else { card.classList.add('hidden'); }
-      });
-    });
   });
 
   // ---- Close any open desktop dropdown when clicking outside a nav item ----

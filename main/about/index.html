@@ -81,42 +81,11 @@
 
 /* ── Products Mega Menu ── */
 .nav-dropdown--products .dropdown-inner {
-  flex-direction: row;
   gap: 0;
 }
 
-.dropdown-sidebar {
-  width: 200px;
-  flex-shrink: 0;
-  border-right: 1px solid rgba(0,0,0,0.06);
-  padding-right: 32px;
-  margin-right: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
 
-.dropdown-sidebar-label {
-  font-size: 1rem; /* 16px */
-  font-weight: 700;
-  color: #0f172a;
-  padding: 10px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
 
-.dropdown-sidebar-label:hover {
-  background: #f0f4ff;
-  color: #2563eb;
-}
-.dropdown-sidebar-label.active {
-  background: #f0f4ff;
-  color: #2563eb;
-}
-.dropdown-product-card.hidden {
-  display: none;
-}
 
 .dropdown-grid {
   flex: 1;
@@ -438,12 +407,6 @@
   color: #2563eb !important;
 }
 .dropdown-link--external {
-  color: #2563eb !important;
-}
-.dropdown-sidebar-label {
-  color: #0f172a !important;
-}
-.dropdown-sidebar-label:hover {
   color: #2563eb !important;
 }
 
@@ -930,9 +893,6 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         </a>
         <div class="nav-dropdown nav-dropdown--products">
           <div class="dropdown-inner">
-            <div class="dropdown-sidebar">
-              <p class="dropdown-sidebar-label" data-filter="voice">Voice Capture</p>
-            </div>
             <div class="dropdown-grid">
               <a href="../products/mic06/index.html" class="dropdown-product-card" data-category="voice">
                 <img src="../img/cap/MIC06.png" alt="MIC06">
@@ -949,7 +909,12 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
                 <span class="dp-name">MIC01</span>
                 <span class="dp-desc">Entry-level pilot device</span>
               </a>
-              <a href="../products/index.html" class="dropdown-product-card dropdown-all" data-category="voice">
+              <a href="../products/telalive/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../img/products/telalive.png" alt="Telalive">
+                <span class="dp-name">Telalive</span>
+                <span class="dp-desc">AI-powered desk phone & wearable platform</span>
+              </a>
+              <a href="../products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
                 <div class="dp-all-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </div>
@@ -1115,23 +1080,71 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
   </div>
   <div class="ab-carousel" aria-label="GMIC manufacturing">
     <div class="ab-carousel-track">
-      <img src="../img/about/assembly-workers.jpg" alt="Assembly workers">
-      <img src="../img/about/smt-hanwha.jpg" alt="SMT line">
-      <img src="../img/about/aoi-inspection.jpg" alt="AOI inspection">
-      <img src="../img/about/reflow-solder.jpg" alt="Reflow solder">
-      <img src="../img/about/assembly-line.jpg" alt="Assembly line">
-      <img src="../img/about/qc-inspection.jpg" alt="QC inspection">
-      <img src="../img/about/bv50p.jpg" alt="Precision soldering">
-      <img src="../img/about/wave-solder.jpg" alt="Wave solder">
+      <picture>
+        <source srcset="../img/about/assembly-workers-520.webp 1x, ../img/about/assembly-workers-520@2x.webp 2x" type="image/webp">
+        <img alt="Assembly workers" src="../img/about/assembly-workers-520.jpg" srcset="../img/about/assembly-workers-520.jpg 1x, ../img/about/assembly-workers-520@2x.jpg 2x" width="420" height="340">
+      </picture>
+      <picture>
+        <source srcset="../img/about/smt-hanwha-520.webp 1x, ../img/about/smt-hanwha-520@2x.webp 2x" type="image/webp">
+        <img alt="SMT line" src="../img/about/smt-hanwha-520.jpg" srcset="../img/about/smt-hanwha-520.jpg 1x, ../img/about/smt-hanwha-520@2x.jpg 2x" width="420" height="340">
+      </picture>
+      <picture>
+        <source srcset="../img/about/aoi-inspection-520.webp 1x, ../img/about/aoi-inspection-520@2x.webp 2x" type="image/webp">
+        <img alt="AOI inspection" src="../img/about/aoi-inspection-520.jpg" srcset="../img/about/aoi-inspection-520.jpg 1x, ../img/about/aoi-inspection-520@2x.jpg 2x" width="420" height="340">
+      </picture>
+      <picture>
+        <source srcset="../img/about/reflow-solder-520.webp 1x, ../img/about/reflow-solder-520@2x.webp 2x" type="image/webp">
+        <img alt="Reflow solder" src="../img/about/reflow-solder-520.jpg" srcset="../img/about/reflow-solder-520.jpg 1x, ../img/about/reflow-solder-520@2x.jpg 2x" width="420" height="340">
+      </picture>
+      <picture>
+        <source srcset="../img/about/assembly-line-520.webp 1x, ../img/about/assembly-line-520@2x.webp 2x" type="image/webp">
+        <img alt="Assembly line" src="../img/about/assembly-line-520.jpg" srcset="../img/about/assembly-line-520.jpg 1x, ../img/about/assembly-line-520@2x.jpg 2x" width="420" height="340">
+      </picture>
+      <picture>
+        <source srcset="../img/about/qc-inspection-520.webp 1x, ../img/about/qc-inspection-520@2x.webp 2x" type="image/webp">
+        <img alt="QC inspection" src="../img/about/qc-inspection-520.jpg" srcset="../img/about/qc-inspection-520.jpg 1x, ../img/about/qc-inspection-520@2x.jpg 2x" width="420" height="340">
+      </picture>
+      <picture>
+        <source srcset="../img/about/bv50p-520.webp 1x, ../img/about/bv50p-520@2x.webp 2x" type="image/webp">
+        <img alt="Precision soldering" src="../img/about/bv50p-520.jpg" srcset="../img/about/bv50p-520.jpg 1x, ../img/about/bv50p-520@2x.jpg 2x" width="420" height="340">
+      </picture>
+      <picture>
+        <source srcset="../img/about/wave-solder-520.webp 1x, ../img/about/wave-solder-520@2x.webp 2x" type="image/webp">
+        <img alt="Wave solder" src="../img/about/wave-solder-520.jpg" srcset="../img/about/wave-solder-520.jpg 1x, ../img/about/wave-solder-520@2x.jpg 2x" width="420" height="340">
+      </picture>
       <!-- duplicate set for seamless loop -->
-      <img src="../img/about/assembly-workers.jpg" alt="" aria-hidden="true">
-      <img src="../img/about/smt-hanwha.jpg" alt="" aria-hidden="true">
-      <img src="../img/about/aoi-inspection.jpg" alt="" aria-hidden="true">
-      <img src="../img/about/reflow-solder.jpg" alt="" aria-hidden="true">
-      <img src="../img/about/assembly-line.jpg" alt="" aria-hidden="true">
-      <img src="../img/about/qc-inspection.jpg" alt="" aria-hidden="true">
-      <img src="../img/about/bv50p.jpg" alt="" aria-hidden="true">
-      <img src="../img/about/wave-solder.jpg" alt="" aria-hidden="true">
+      <picture>
+        <source srcset="../img/about/assembly-workers-520.webp 1x, ../img/about/assembly-workers-520@2x.webp 2x" type="image/webp">
+        <img alt="" aria-hidden="true" src="../img/about/assembly-workers-520.jpg" srcset="../img/about/assembly-workers-520.jpg 1x, ../img/about/assembly-workers-520@2x.jpg 2x" width="420" height="340">
+      </picture>
+      <picture>
+        <source srcset="../img/about/smt-hanwha-520.webp 1x, ../img/about/smt-hanwha-520@2x.webp 2x" type="image/webp">
+        <img alt="" aria-hidden="true" src="../img/about/smt-hanwha-520.jpg" srcset="../img/about/smt-hanwha-520.jpg 1x, ../img/about/smt-hanwha-520@2x.jpg 2x" width="420" height="340">
+      </picture>
+      <picture>
+        <source srcset="../img/about/aoi-inspection-520.webp 1x, ../img/about/aoi-inspection-520@2x.webp 2x" type="image/webp">
+        <img alt="" aria-hidden="true" src="../img/about/aoi-inspection-520.jpg" srcset="../img/about/aoi-inspection-520.jpg 1x, ../img/about/aoi-inspection-520@2x.jpg 2x" width="420" height="340">
+      </picture>
+      <picture>
+        <source srcset="../img/about/reflow-solder-520.webp 1x, ../img/about/reflow-solder-520@2x.webp 2x" type="image/webp">
+        <img alt="" aria-hidden="true" src="../img/about/reflow-solder-520.jpg" srcset="../img/about/reflow-solder-520.jpg 1x, ../img/about/reflow-solder-520@2x.jpg 2x" width="420" height="340">
+      </picture>
+      <picture>
+        <source srcset="../img/about/assembly-line-520.webp 1x, ../img/about/assembly-line-520@2x.webp 2x" type="image/webp">
+        <img alt="" aria-hidden="true" src="../img/about/assembly-line-520.jpg" srcset="../img/about/assembly-line-520.jpg 1x, ../img/about/assembly-line-520@2x.jpg 2x" width="420" height="340">
+      </picture>
+      <picture>
+        <source srcset="../img/about/qc-inspection-520.webp 1x, ../img/about/qc-inspection-520@2x.webp 2x" type="image/webp">
+        <img alt="" aria-hidden="true" src="../img/about/qc-inspection-520.jpg" srcset="../img/about/qc-inspection-520.jpg 1x, ../img/about/qc-inspection-520@2x.jpg 2x" width="420" height="340">
+      </picture>
+      <picture>
+        <source srcset="../img/about/bv50p-520.webp 1x, ../img/about/bv50p-520@2x.webp 2x" type="image/webp">
+        <img alt="" aria-hidden="true" src="../img/about/bv50p-520.jpg" srcset="../img/about/bv50p-520.jpg 1x, ../img/about/bv50p-520@2x.jpg 2x" width="420" height="340">
+      </picture>
+      <picture>
+        <source srcset="../img/about/wave-solder-520.webp 1x, ../img/about/wave-solder-520@2x.webp 2x" type="image/webp">
+        <img alt="" aria-hidden="true" src="../img/about/wave-solder-520.jpg" srcset="../img/about/wave-solder-520.jpg 1x, ../img/about/wave-solder-520@2x.jpg 2x" width="420" height="340">
+      </picture>
     </div>
   </div>
 </section>
@@ -1195,7 +1208,10 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         </div>
       </div>
       <div class="ab-office">
-        <img src="../img/shenzhen.png" style="width:100%;height:220px;object-fit:cover;display:block;" alt="Shenzhen">
+        <picture>
+          <source srcset="../img/shenzhen-700.webp 1x, ../img/shenzhen-700@2x.webp 2x" type="image/webp">
+          <img style="width:100%;height:220px;object-fit:cover;display:block;" alt="Shenzhen" src="../img/shenzhen-700.jpg" srcset="../img/shenzhen-700.jpg 1x, ../img/shenzhen-700@2x.jpg 2x" loading="lazy" width="682" height="220">
+        </picture>
         <div class="ab-office-body">
           <div class="ab-office-city">Shenzhen, China</div>
           <div class="ab-office-role">Manufacturing &amp; Engineering HQ</div>
@@ -1230,27 +1246,42 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
     </a>
     <div class="ab-mfg-grid">
       <div class="ab-mcell ab-mcell-tall">
-        <img src="../img/about/assembly-workers.jpg" alt="Assembly line workers">
+        <picture>
+          <source srcset="../img/about/assembly-workers-760.webp 1x, ../img/about/assembly-workers-760@2x.webp 2x" type="image/webp">
+          <img alt="Assembly line workers" src="../img/about/assembly-workers-760.jpg" srcset="../img/about/assembly-workers-760.jpg 1x, ../img/about/assembly-workers-760@2x.jpg 2x" loading="lazy" width="657" height="502">
+        </picture>
         <div class="ab-mcell-ov"></div>
         <span class="ab-mcell-label">Assembly lines</span>
       </div>
       <div class="ab-mcell">
-        <img src="../img/about/smt-hanwha.jpg" alt="Hanwha SMT line">
+        <picture>
+          <source srcset="../img/about/smt-hanwha-380.webp 1x, ../img/about/smt-hanwha-380@2x.webp 2x" type="image/webp">
+          <img alt="Hanwha SMT line" src="../img/about/smt-hanwha-380.jpg" srcset="../img/about/smt-hanwha-380.jpg 1x, ../img/about/smt-hanwha-380@2x.jpg 2x" loading="lazy" width="365" height="250">
+        </picture>
         <div class="ab-mcell-ov"></div>
         <span class="ab-mcell-label">SMT production</span>
       </div>
       <div class="ab-mcell">
-        <img src="../img/about/aoi-inspection.jpg" alt="AOI optical inspection">
+        <picture>
+          <source srcset="../img/about/aoi-inspection-380.webp 1x, ../img/about/aoi-inspection-380@2x.webp 2x" type="image/webp">
+          <img alt="AOI optical inspection" src="../img/about/aoi-inspection-380.jpg" srcset="../img/about/aoi-inspection-380.jpg 1x, ../img/about/aoi-inspection-380@2x.jpg 2x" loading="lazy" width="365" height="250">
+        </picture>
         <div class="ab-mcell-ov"></div>
         <span class="ab-mcell-label">AOI inspection</span>
       </div>
       <div class="ab-mcell">
-        <img src="../img/about/reflow-solder.jpg" alt="Reflow and wave solder">
+        <picture>
+          <source srcset="../img/about/reflow-solder-380.webp 1x, ../img/about/reflow-solder-380@2x.webp 2x" type="image/webp">
+          <img alt="Reflow and wave solder" src="../img/about/reflow-solder-380.jpg" srcset="../img/about/reflow-solder-380.jpg 1x, ../img/about/reflow-solder-380@2x.jpg 2x" loading="lazy" width="365" height="250">
+        </picture>
         <div class="ab-mcell-ov"></div>
         <span class="ab-mcell-label">Reflow &amp; wave solder</span>
       </div>
       <div class="ab-mcell">
-        <img src="../img/about/bv50p.jpg" alt="Quality control">
+        <picture>
+          <source srcset="../img/about/bv50p-380.webp 1x, ../img/about/bv50p-380@2x.webp 2x" type="image/webp">
+          <img alt="Quality control" src="../img/about/bv50p-380.jpg" srcset="../img/about/bv50p-380.jpg 1x, ../img/about/bv50p-380@2x.jpg 2x" loading="lazy" width="365" height="250">
+        </picture>
         <div class="ab-mcell-ov"></div>
         <span class="ab-mcell-label">Quality control</span>
       </div>
@@ -1353,7 +1384,10 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
     <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="ab-join-btn">Start Your Project</a>
     <a href="https://gmic.ai/our-process/" target="_blank" rel="noopener" class="ab-join-link">Learn our process <span style="font-size:1rem;line-height:1;">→</span></a>
   </div>
-  <img class="ab-join-img" src="../img/about/assembly-workers.jpg" alt="The GMIC team on the production floor">
+  <picture>
+    <source srcset="../img/about/assembly-workers-960.webp 1x, ../img/about/assembly-workers-960@2x.webp 2x" type="image/webp">
+    <img class="ab-join-img" alt="The GMIC team on the production floor" src="../img/about/assembly-workers-960.jpg" srcset="../img/about/assembly-workers-960.jpg 1x, ../img/about/assembly-workers-960@2x.jpg 2x" loading="lazy" width="756" height="505">
+  </picture>
 </section>
 
 <!-- ========== 10. NEWSLETTER ========== -->
@@ -1413,8 +1447,6 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           <li><a href="../index.html#industries">Healthcare AI</a></li>
           <li><a href="../index.html#industries">Enterprise AI</a></li>
           <li><a href="../index.html#industries">Field Service AI</a></li>
-          <li><a href="../index.html#industries">Telecom AI</a></li>
-          <li><a href="../index.html#industries">Smart Retail</a></li>
         </ul>
       </div>
 
@@ -1484,26 +1516,6 @@ if (typeof lucide !== 'undefined') lucide.createIcons();
         d.style.display = '';
       });
     }
-  });
-
-  // Products mega menu — filter cards by sidebar category
-  document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label) {
-    label.addEventListener('click', function() {
-      // Update active state
-      document.querySelectorAll('.dropdown-sidebar-label')
-        .forEach(l => l.classList.remove('active'));
-      this.classList.add('active');
-
-      // Filter cards
-      var filter = this.getAttribute('data-filter');
-      document.querySelectorAll('.dropdown-product-card').forEach(function(card) {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.classList.remove('hidden');
-        } else {
-          card.classList.add('hidden');
-        }
-      });
-    });
   });
 
   // Mobile nav

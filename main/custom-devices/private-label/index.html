@@ -69,42 +69,11 @@
 
 /* ── Products Mega Menu ── */
 .nav-dropdown--products .dropdown-inner {
-  flex-direction: row;
   gap: 0;
 }
 
-.dropdown-sidebar {
-  width: 200px;
-  flex-shrink: 0;
-  border-right: 1px solid rgba(0,0,0,0.06);
-  padding-right: 32px;
-  margin-right: 40px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
 
-.dropdown-sidebar-label {
-  font-size: 1rem; /* 16px */
-  font-weight: 700;
-  color: #0f172a;
-  padding: 10px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.15s;
-}
 
-.dropdown-sidebar-label:hover {
-  background: #f0f4ff;
-  color: #2563eb;
-}
-.dropdown-sidebar-label.active {
-  background: #f0f4ff;
-  color: #2563eb;
-}
-.dropdown-product-card.hidden {
-  display: none;
-}
 
 .dropdown-grid {
   flex: 1;
@@ -428,12 +397,6 @@
 .dropdown-link--external {
   color: #2563eb !important;
 }
-.dropdown-sidebar-label {
-  color: #0f172a !important;
-}
-.dropdown-sidebar-label:hover {
-  color: #2563eb !important;
-}
 
 /* ============================================================
    PAGE-SPECIFIC STYLES — ODM / OEM (Custom Devices)
@@ -718,9 +681,6 @@
         </a>
         <div class="nav-dropdown nav-dropdown--products">
           <div class="dropdown-inner">
-            <div class="dropdown-sidebar">
-              <p class="dropdown-sidebar-label" data-filter="voice">Voice Capture</p>
-            </div>
             <div class="dropdown-grid">
               <a href="../../products/mic06/" class="dropdown-product-card" data-category="voice">
                 <img src="../../img/cap/MIC06.png" alt="MIC06">
@@ -737,7 +697,12 @@
                 <span class="dp-name">MIC01</span>
                 <span class="dp-desc">Entry-level pilot device</span>
               </a>
-              <a href="../../products/index.html" class="dropdown-product-card dropdown-all" data-category="voice">
+              <a href="../../products/telalive/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../../img/products/telalive.png" alt="Telalive">
+                <span class="dp-name">Telalive</span>
+                <span class="dp-desc">AI-powered desk phone & wearable platform</span>
+              </a>
+              <a href="../../products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
                 <div class="dp-all-icon">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </div>
@@ -750,7 +715,7 @@
 
       <!-- Custom Devices -->
       <div class="nav-item has-dropdown">
-        <a href="../../custom-devices/index.html" class="nav-link">
+        <a href="../../index.html#capabilities" class="nav-link">
           Custom Devices <span class="nav-arrow">›</span>
         </a>
         <div class="nav-dropdown nav-dropdown--text">
@@ -903,7 +868,7 @@
     <ol>
       <li><a href="../../index.html">Home</a></li>
       <li class="sep" aria-hidden="true">/</li>
-      <li><a href="../../custom-devices/index.html">Custom Devices</a></li>
+      <li><a href="../../index.html#capabilities">Custom Devices</a></li>
       <li class="sep" aria-hidden="true">/</li>
       <li aria-current="page">Private Label</li>
     </ol>
@@ -1096,8 +1061,6 @@
           <li><a href="../../index.html#industries">Healthcare AI</a></li>
           <li><a href="../../index.html#industries">Enterprise AI</a></li>
           <li><a href="../../index.html#industries">Field Service AI</a></li>
-          <li><a href="../../index.html#industries">Telecom AI</a></li>
-          <li><a href="../../index.html#industries">Smart Retail</a></li>
         </ul>
       </div>
 
@@ -1211,26 +1174,6 @@ document.addEventListener('click', function(e) {
       d.style.display = '';
     });
   }
-});
-
-// Products mega menu — filter cards by sidebar category
-document.querySelectorAll('.dropdown-sidebar-label').forEach(function(label) {
-  label.addEventListener('click', function() {
-    // Update active state
-    document.querySelectorAll('.dropdown-sidebar-label')
-      .forEach(l => l.classList.remove('active'));
-    this.classList.add('active');
-
-    // Filter cards
-    var filter = this.getAttribute('data-filter');
-    document.querySelectorAll('.dropdown-product-card').forEach(function(card) {
-      if (filter === 'all' || card.getAttribute('data-category') === filter) {
-        card.classList.remove('hidden');
-      } else {
-        card.classList.add('hidden');
-      }
-    });
-  });
 });
 
 // Mobile nav
