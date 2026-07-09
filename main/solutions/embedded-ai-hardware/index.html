@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Firmware Integration Services | GMIC.AI</title>
-<meta name="description" content="GMIC firmware integration services: recording logic, Wi-Fi upload, BLE communication, OTA updates, battery management, and cloud integration for AI devices." />
-<link rel="canonical" href="https://gmic.ai/custom-devices/firmware-integration/" />
+<title>Embedded AI Hardware Development for AI Devices | GMIC AI</title>
+<meta name="description" content="GMIC AI provides embedded AI hardware development including PCB, firmware, MCU, Bluetooth, Wi-Fi, audio DSP, sensor integration, and power management for AI device companies." />
+<link rel="canonical" href="https://gmic.ai/solutions/embedded-ai-hardware/" />
 <link rel="icon" type="image/png" href="../../img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -403,258 +403,222 @@
    Reuses global tokens & classes from style.css / grid.css.
    ============================================================ */
 
-/* This is a light content page, so keep the fixed nav in its
-   solid/legible state at all times (the homepage nav starts
-   transparent over a dark hero — that would be invisible here). */
-.nav{
-  background:rgba(255,255,255,0.9);
-  backdrop-filter:saturate(180%) blur(14px);
-  -webkit-backdrop-filter:saturate(180%) blur(14px);
-  box-shadow:0 1px 0 var(--border-light);
-}
-.nav-logo-svg{color:#0f172a}
-.nav-links a{color:#333}
-.nav-links a:hover{color:#0a0a0a}
-.nav-burger{color:#0f172a}
+/* Dark hero on this page → reuse the homepage's nav dark→scrolled behavior
+   (transparent + white logo/links initially; white bg + dark text once .scrolled).
+   That behavior is defined in global style.css; the bottom script toggles .scrolled. */
 /* Active / current treatment for this page's nav entry */
 .dropdown-link.nav-current{color:#2563eb !important;font-weight:700}
-.container{max-width:1512px;padding-left:clamp(20px,4vw,40px);padding-right:clamp(20px,4vw,40px)}
-
-/* ---------- Breadcrumb (clears the fixed nav) ---------- */
-.breadcrumb{padding-top:84px}
-.breadcrumb .container{padding-top:18px;padding-bottom:18px}
-.breadcrumb ol{
-  list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px;
-  font-family:var(--sans);font-size:13px;color:#6b7280;
-}
-.breadcrumb a{color:#6b7280;transition:color .2s}
-.breadcrumb a:hover{color:#2563eb}
-.breadcrumb .sep{color:#cbd5e1}
-.breadcrumb li[aria-current="page"]{color:#0f172a;font-weight:600}
-
-/* ---------- Generic section scaffolding ---------- */
-.odm-sec{padding:96px 0;background:#ffffff}        /* default: pure white section */
-.odm-sec.alt{background:#f8fafc}                    /* full-width light-gray band */
-.odm-head{max-width:780px;margin-bottom:48px}
-.odm-head .eyebrow{display:block;margin-bottom:16px}
-.odm-head h2.section{color:#0f172a}
-
-/* ---------- Hero (two-column text row above a full-bleed image, Square style) ---------- */
-.odm-hero{padding:48px 0 0;background:#ffffff;border-bottom:1px solid rgba(0,0,0,0.06)}
-/* LEFT ~55% (title block) · RIGHT ~40% (supporting note), bottom-aligned to the title */
-.odm-hero-top{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(0,1fr);gap:56px;align-items:end}
-.odm-hero .eyebrow{display:block;margin-bottom:18px}
-.odm-hero h1.display{
-  font-size:clamp(34px,4.6vw,58px);line-height:1.05;letter-spacing:-0.03em;
-  margin:0 0 26px;color:#0f172a;font-weight:500;
-}
-.odm-hero-accent{color:#2563eb;font-weight:800}  /* emphasize ONLY "AI Hardware" — color + weight */
-.odm-hero-lead .btn{margin-top:4px}
-.odm-hero-note{padding-bottom:6px}   /* nudge the note's baseline toward the title */
-.odm-hero-note p{font-family:var(--sans);font-size:1.05rem;line-height:1.6;color:#475569;max-width:380px;margin:0}
-/* full-bleed image band (header has no side padding, so width:100% is edge-to-edge) */
-.odm-hero-banner{margin-top:56px;width:100%;height:clamp(420px,42vw,520px);overflow:hidden;background:#e8eeff}
-.odm-hero-banner img{width:100%;height:100%;object-fit:cover;display:block}
-@media (max-width:900px){
-  .odm-hero-top{grid-template-columns:1fr;gap:28px;align-items:start}  /* stack: title, then note */
-  .odm-hero-note{padding-bottom:0}
-  .odm-hero-note p{max-width:560px}
-  .odm-hero-banner{margin-top:36px;height:clamp(280px,56vw,420px)}
-}
-
-/* ---------- Grids ---------- */
-.odm-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-
-/* ---------- What is ODM vs OEM (§2) — two complementary, parallel modes ----------
-   Equal, calm panels (no versus, no badge, no opposition). Same neutral treatment on
-   both; separated only by one ultra-thin hairline. NO bordered cards, NO blue. */
-.odm-vs-intro{margin-top:14px;font-family:var(--sans);font-size:16px;color:#6b7280}
-.odm-vs{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
-.odm-vs-half{
-  display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
-  gap:14px;padding:40px 48px;
-}
-.odm-vs-half:first-child{padding-left:0}   /* content flush to container edges; */
-.odm-vs-half:last-child{padding-right:0}    /* breathing room around the hairline */
-/* one ultra-thin hairline between the two parallel panels */
-.odm-vs::before{
-  content:"";position:absolute;top:8px;bottom:8px;left:50%;width:1px;
-  background:rgba(0,0,0,0.08);transform:translateX(-0.5px);
-}
-.odm-vs-icon{line-height:0}
-.odm-vs-icon [data-lucide]{width:24px;height:24px;stroke:#0f172a;stroke-width:1.8}  /* neutral, no blue */
-.odm-vs-label{font-family:var(--sans);font-size:2rem;font-weight:800;letter-spacing:-0.02em;color:#0f172a;line-height:1}
-.odm-vs-line{font-family:var(--sans);font-size:1.05rem;color:#0f172a;line-height:1.5;margin:0;max-width:34ch}
-.odm-vs-flow{font-family:var(--sans);font-size:13px;color:#6b7280;margin:0}
-/* Mobile: stack; drop the vertical hairline; separate with a horizontal hairline */
-@media (max-width:768px){
-  .odm-vs{grid-template-columns:1fr}
-  .odm-vs::before{display:none}
-  .odm-vs-half{padding:32px 0}
-  .odm-vs-half + .odm-vs-half{border-top:1px solid rgba(0,0,0,0.08);padding-top:32px}
-}
-
-/* ---------- What We Provide (§3) — image cards grid, white cards on gray band ---------- */
-.odm-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px}
-.odm-pcard{
-  display:flex;flex-direction:column;background:#ffffff;border-radius:14px;overflow:hidden;
-  transition:transform .2s ease;
-}
-.odm-pcard:hover{transform:translateY(-3px)}  /* subtle lift only — no shadow, no border, no blue */
-.odm-pcard-media{height:160px;overflow:hidden;background:#e8eeff;flex-shrink:0}
-.odm-pcard-media img{width:100%;height:100%;object-fit:cover;display:block}
-.odm-pcard-body{padding:20px;display:flex;flex-direction:column;gap:10px;flex:1}
-.odm-pcard-icon{line-height:0}
-.odm-pcard-icon [data-lucide]{width:22px;height:22px;stroke:#0f172a;stroke-width:1.8}  /* neutral icon */
-.odm-pcard-body h3{font-family:var(--sans);font-size:1.15rem;font-weight:700;letter-spacing:-0.01em;color:#0f172a;line-height:1.3;margin:0}
-.odm-pcard-body p{font-family:var(--sans);font-size:0.95rem;line-height:1.55;color:#475569;margin:0}
-@media (max-width:1000px){.odm-cards{grid-template-columns:repeat(2,1fr)}}
-@media (max-width:768px){.odm-cards{grid-template-columns:1fr;gap:18px}}
-
-/* ---------- Why GMIC (§5) — two-line stats, NO border/fill/blue, vertical dividers only ---------- */
-.odm-stats{display:grid;grid-template-columns:repeat(4,1fr)}   /* no gap: dividers sit between columns */
-.odm-stat{
-  display:flex;flex-direction:column;gap:6px;
-  padding:8px 28px;border-left:1px solid rgba(0,0,0,0.10);     /* thin vertical divider between items */
-}
-.odm-stat:first-child{border-left:none;padding-left:0}
-.odm-stat-icon{margin-bottom:8px;line-height:0}
-.odm-stat-icon [data-lucide]{width:22px;height:22px;stroke:#0f172a;stroke-width:1.8}  /* neutral icon, no blue */
-.odm-stat-top{font-family:var(--sans);font-weight:800;font-size:2rem;line-height:1.05;letter-spacing:-0.02em;color:#0f172a}
-.odm-stat-cap{font-family:var(--sans);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#6b7280}
-/* 4 → 2 (divider between the two columns only) → 1 (no dividers when stacked) */
-@media (max-width:1000px){
-  .odm-stats{grid-template-columns:repeat(2,1fr);row-gap:36px}
-  .odm-stat:nth-child(odd){border-left:none;padding-left:0}
-  .odm-stat:nth-child(even){border-left:1px solid rgba(0,0,0,0.10)}
-}
-@media (max-width:768px){
-  .odm-stats{grid-template-columns:1fr;row-gap:32px}
-  .odm-stat{border-left:none;padding-left:0}
-}
-
-/* ---------- Responsive collapses ---------- */
-@media (max-width:1000px){
-  .odm-grid-3{grid-template-columns:repeat(2,1fr)}
-}
-@media (max-width:768px){
-  .odm-sec{padding:72px 0}
-  .odm-grid-3{grid-template-columns:1fr}
-}
-
-/* ---------- Typical-applications cards (§4) — clickable, blue-on-hover ---------- */
-.odm-proj-card{
-  display:flex;flex-direction:column;text-decoration:none;
-  border:1px solid rgba(0,0,0,0.08);border-radius:14px;overflow:hidden;
-  background:#fff;
-  transition:background .2s ease, border-color .2s ease, transform .2s ease, box-shadow .2s ease;
-}
-.odm-proj-card:hover,
-.odm-proj-card:focus-visible{
-  background:#2563eb;border-color:transparent;outline:none;
-  transform:translateY(-4px);
-  box-shadow:0 22px 48px -28px rgba(37,99,235,.6);
-}
-/* IMAGE PANEL — SQUARE; product shown whole on a WHITE fill so letterboxing reads
-   clean white (never blue), and stays white on hover. Top corners match card radius.
-   When final full-bleed photos arrive, switch this img to object-fit:cover. */
-.odm-proj-media{
-  aspect-ratio:1 / 1;width:100%;flex-shrink:0;overflow:hidden;
-  background:#ffffff;padding:16px;
-  border-top-left-radius:14px;border-top-right-radius:14px;
-  display:flex;align-items:center;justify-content:center;
-}
-.odm-proj-media img{width:100%;height:100%;object-fit:contain;object-position:center;display:block;pointer-events:none}
-/* CONTENT BLOCK — owns the padding */
-.odm-proj-body{padding:20px 22px;display:flex;flex-direction:column;gap:8px;flex:1}
-.odm-proj-body h3{
-  font-family:var(--sans);font-size:1.35rem;font-weight:700;line-height:1.2;
-  letter-spacing:-0.01em;color:#0f172a;margin:0;transition:color .2s ease;
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
-}
-.odm-proj-more{
-  margin-top:auto;display:inline-flex;align-items:center;gap:6px;
-  font-family:var(--sans);font-size:0.9rem;font-weight:600;color:#2563eb;
-  transition:color .2s ease;
-}
-.odm-proj-more svg{width:16px;height:16px;transition:transform .2s ease}
-.odm-proj-card:hover .odm-proj-more svg,
-.odm-proj-card:focus-visible .odm-proj-more svg{transform:translateX(4px)}
-/* Hover/focus: ONLY the content text turns white; image panel stays light */
-.odm-proj-card:hover .odm-proj-body h3,
-.odm-proj-card:focus-visible .odm-proj-body h3{color:#fff}
-.odm-proj-card:hover .odm-proj-more,
-.odm-proj-card:focus-visible .odm-proj-more{color:#fff}
-/* Reduced motion: keep the color change, drop the lift + transitions */
-@media (prefers-reduced-motion:reduce){
-  .odm-proj-card:hover,.odm-proj-card:focus-visible{transform:none;box-shadow:none}
-  .odm-proj-card,.odm-proj-more svg{transition-property:background,border-color,color}
-}
-
-/* ---------- Typical-projects carousel (§5) — single-row sliding track ---------- */
-/* Clip horizontally only; keep the vertical axis open so the card's hover lift
-   (+ shadow) isn't cut off at the top. The vertical padding — not card overflow —
-   contains the lift, so no stray vertical scrollbar appears. */
-.tp-viewport{overflow-x:hidden;overflow-y:visible;padding-top:12px;padding-bottom:12px}
-.tp-track{
-  --tp-gap:24px;
-  display:flex;gap:var(--tp-gap);align-items:stretch;
-  transition:transform .55s cubic-bezier(0.2,0.8,0.2,1);
-  will-change:transform;
-  touch-action:pan-y;            /* let JS own horizontal drags, keep vertical scroll */
-  cursor:grab;
-  /* The viewport runs full-bleed (outside .container). This pad lines the FIRST card's
-     left edge up with the centered container content edge, while the track still
-     extends full width to the right (cards bleed past the viewport edge, scroll via arrows).
-     100% = viewport width, so this stays scrollbar-safe (no 100vw). */
-  padding-left:calc(max((100% - 1512px) / 2, 0px) + clamp(20px, 4vw, 40px));
-}
-.tp-track.is-dragging{cursor:grabbing;transition:none;user-select:none}
-/* Desktop ≥1024px → ~3.5 cards visible (next card peeks) */
-.tp-card{flex:0 0 auto;width:calc((100% - 2.5 * var(--tp-gap)) / 3.5)}
-.tp-card img{pointer-events:none}   /* don't let image drag-ghost hijack swipes */
-/* Tablet 640–1023px → 2 cards */
-@media (max-width:1023px){
-  .tp-card{width:calc((100% - 1 * var(--tp-gap)) / 2)}
-}
-/* Mobile <640px → ~1.2 cards (peek) */
-@media (max-width:639px){
-  .tp-card{width:calc((100% - 0.2 * var(--tp-gap)) / 1.2)}
-}
-/* This section's 5 cards always overflow, so arrows stay visible at EVERY width —
-   override the homepage rule that hides .carousel-controls at ≥1200px. */
-.tp-controls{display:flex !important}
-/* Arrow clamp state (in addition to native :disabled styling) */
-.carousel-btn[aria-disabled="true"]{opacity:.35;pointer-events:none}
-@media (prefers-reduced-motion:reduce){
-  .tp-track{transition:none}
-}
-
-/* ---------- What We Handle — carousel cards (big icon on top, text below) ----------
-   Same card as Private Label's Customization Options: tall/square, white card, no border/
-   shadow, rounded; on hover the card fills blue and text turns white, while the icon panel
-   keeps its light fill + blue icon (stays legible). */
-.co-card{display:flex;flex-direction:column;background:#ffffff;border-radius:14px;overflow:hidden;height:100%;transition:transform .2s ease, background .2s ease}
-.co-card:hover{transform:translateY(-4px);background:#2563eb}
-.co-icon{aspect-ratio:1 / 1;width:100%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:#eef2ff;border-top-left-radius:14px;border-top-right-radius:14px}
-.co-icon [data-lucide]{width:60px;height:60px;stroke:#2563eb;stroke-width:1.6}
-.co-body{padding:22px;display:flex;flex-direction:column;gap:8px;flex:1}
-.co-body h3{font-family:var(--sans);font-size:1.15rem;font-weight:700;color:#0f172a;line-height:1.3;margin:0;transition:color .2s ease}
-.co-body p{font-family:var(--sans);font-size:0.95rem;line-height:1.5;color:#6b7280;margin:0;transition:color .2s ease}
-.co-card:hover h3,.co-card:hover p{color:#fff}
-
-/* co-card image support */
-.co-card { overflow: hidden; }
-.co-card > img { width: 100%; height: 180px; object-fit: cover; border-radius: 10px 10px 0 0; display: block; }
-@media (max-width: 768px) {
-  .co-card > img { height: 140px; }
-}
 
 /* ============================================================
-   PAGE-SPECIFIC STYLES — FIRMWARE INTEGRATION
+   INDUSTRY PAGE TEMPLATE — Healthcare (reusable across 7 pages)
    ============================================================ */
+body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
+.mobile-nav-link.active { color:#2563eb !important; font-weight:700; }
 
-.nav { border-bottom: none !important; box-shadow: none !important; }
+/* width helpers — constrain TEXT only, never section backgrounds */
+.measure { max-width:680px; }
+.measure-wide { max-width:760px; }
+
+/* section shells & light/dark alternation */
+.ind-sec { padding:96px 0; }
+.ind-sec--light { background:#ffffff; }
+.ind-sec--soft  { background:#f8fafc; }
+.ind-sec--dark  { background:#0f172a; color:#fff; }
+.ind-sec--dark h2.section, .ind-sec--dark h3 { color:#fff; }
+.ind-sec--dark p { color:rgba(255,255,255,.72); }
+.ind-head { margin-bottom:48px; }
+.ind-head .eyebrow { display:block; margin-bottom:16px; }
+.ind-head h2.section { margin:0; }
+
+/* HERO */
+.ind-hero { background:#0b1220; color:#fff; padding:140px 0 64px; }
+.ind-hero .eyebrow.dark { display:block; margin-bottom:20px; }
+/* Axion-style two-column top: left = pill+eyebrow+H1, right = subtitle+buttons (bottom-aligned) */
+.ind-hero-top { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:48px; align-items:end; }
+.ind-hero h1.display { color:#fff; font-size:clamp(2rem,7vw,3.4rem); line-height:1.05; letter-spacing:-.03em; margin:0; }
+.ind-hero-aside { padding-bottom:6px; }
+.ind-hero .lede { font-size:1.0625rem; line-height:1.7; color:rgba(255,255,255,.75); margin:0 0 22px; max-width:440px; }
+.ind-tag { display:inline-flex; align-items:center; gap:8px; font-size:.78rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:#93c5fd; background:rgba(37,99,235,.14); border:1px solid rgba(147,197,253,.25); padding:7px 14px; border-radius:100px; margin-bottom:18px; }
+.ind-tag svg { width:15px; height:15px; }
+.ind-hero-cta { display:flex; flex-wrap:wrap; gap:14px; }
+.ind-hero-banner { margin-top:48px; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.08); box-shadow:0 30px 80px rgba(0,0,0,.35); }
+.ind-hero-banner img { display:block; width:100%; height:auto; }
+
+/* INTRO */
+.intro-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+.intro-lead { font-size:clamp(1.4rem,2.4vw,1.6rem); line-height:1.35; font-weight:600; color:#0f172a; margin:0; }
+.intro-lead em { font-style:italic; color:#2563eb; }
+.intro-body { display:flex; flex-direction:column; gap:16px; padding-top:6px; border-left:1px solid rgba(0,0,0,.06); padding-left:40px; }
+.intro-body p { font-size:1rem; line-height:1.75; color:#64748b; margin:0; }
+
+/* CARD GRIDS (Challenges / Use Cases) */
+.ind-grid { display:grid; gap:20px; }
+.grid-4 { grid-template-columns:repeat(4,1fr); }
+.grid-3 { grid-template-columns:repeat(3,1fr); }
+.cs-card { max-width:360px; }
+.cs-card:hover { transform:none; box-shadow:none; }
+.ind-card { background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:28px 24px; transition:transform .25s ease, box-shadow .25s ease; }
+.ind-card:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(15,23,42,.10); }
+/* Use Cases grid: fully static — no lift, shadow, or color change on hover */
+.uc-static .ind-card:hover { transform:none; box-shadow:none; }
+.ind-card-ic { width:44px; height:44px; border-radius:10px; background:#eff4ff; display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+.ind-card-ic svg { width:22px; height:22px; color:#2563eb; }
+.ind-card h3 { font-size:1.0625rem; font-weight:600; margin:0 0 8px; line-height:1.3; }
+.ind-card p { font-size:.9rem; line-height:1.6; color:#64748b; margin:0; }
+.ind-sec--dark .ind-card { background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.10); }
+.ind-sec--dark .ind-card-ic { background:rgba(37,99,235,.18); }
+.ind-sec--dark .ind-card-ic svg { color:#93c5fd; }
+.ind-sec--dark .ind-card p { color:rgba(255,255,255,.65); }
+
+/* SOLUTIONS — equal-height two columns; one card active at a time (hover/click), left image cross-fades; NO border */
+.sol-flip { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+/* Fixed pixel height so swapping the active image NEVER changes the container height (no jitter).
+   Both imgs are absolute inset:0 inside this fixed box, so the image never participates in layout height. */
+.sol-media { position:relative; height:520px; border-radius:14px; overflow:hidden; background:#f1f5f9; }
+.sol-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s ease; }
+.sol-img.is-active { opacity:1; }
+.sol-panel { display:flex; flex-direction:column; justify-content:center; }
+.sol-panel .eyebrow { display:block; margin-bottom:16px; }
+.sol-panel h2.section { margin:0 0 18px; }
+.sol-cards { display:flex; flex-direction:column; }
+.sol-card { padding:18px 0; cursor:pointer; opacity:.4; transition:opacity .3s ease, filter .3s ease; }
+.sol-card + .sol-card { border-top:1px solid rgba(0,0,0,.08); }
+.sol-card:not(.is-active) { filter:blur(.4px); }
+.sol-card.is-active { opacity:1; filter:none; }
+.sol-card:focus-visible { outline:2px solid #2563eb; outline-offset:4px; }
+.sol-card-head { display:flex; align-items:center; gap:12px; }
+.sol-ic { width:40px; height:40px; border-radius:10px; background:#eef2f7; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background .25s ease; }
+.sol-ic svg { width:20px; height:20px; color:#64748b; transition:color .25s ease; }
+.sol-card.is-active .sol-ic { background:#2563eb; }
+.sol-card.is-active .sol-ic svg { color:#fff; }
+.sol-card h3 { font-size:1.125rem; font-weight:600; color:#0f172a; margin:0; }
+/* expandable body: collapsed by default, expands only on the active card (title row always visible) */
+.sol-card-body { max-height:0; overflow:hidden; opacity:0; padding-left:52px; transition:max-height .45s ease, opacity .3s ease, margin .45s ease; }
+.sol-card.is-active .sol-card-body { max-height:260px; opacity:1; margin-top:12px; }
+.sol-card-body p { font-size:.95rem; line-height:1.7; color:#475569; margin:0 0 12px; }
+.sol-chips { display:flex; flex-wrap:wrap; gap:8px; }
+.chip { font-size:.8rem; font-weight:500; color:#2563eb; background:#eff4ff; border-radius:100px; padding:6px 14px; }
+
+/* WHY HARDWARE */
+.why-hw-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+.why-hw-lead { font-size:1.0625rem; line-height:1.7; margin:18px 0 24px; color:rgba(255,255,255,.78); }
+.check-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px; }
+.check-list li { display:flex; align-items:center; gap:12px; font-size:1rem; color:#fff; }
+.check-list .ck { width:26px; height:26px; border-radius:50%; background:rgba(37,99,235,.20); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.check-list .ck svg { width:15px; height:15px; color:#93c5fd; }
+.why-hw-media { border-radius:14px; overflow:hidden; }
+.why-hw-media img { display:block; width:100%; height:100%; object-fit:cover; }
+
+/* CAPABILITIES — two NO-border cards, image-topped */
+.cap2-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.cap-col { background:#fff; border-radius:12px; overflow:hidden; transition:transform .25s ease, box-shadow .25s ease; }
+.cap-col:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(15,23,42,.10); }
+.cap-col-img { display:block; width:100%; height:200px; object-fit:cover; border-radius:12px 12px 0 0; }
+.cap-col-body { padding:26px 26px 30px; }
+.cap-col-body h3 { display:flex; align-items:center; gap:10px; font-size:1.125rem; font-weight:600; margin:0 0 16px; }
+.cap-col-body h3 svg { width:20px; height:20px; color:#2563eb; }
+.cap-col-body ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+.cap-col-body li { font-size:.95rem; color:#475569; padding-left:18px; position:relative; }
+.cap-col-body li::before { content:''; position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%; background:#2563eb; }
+
+/* PROCESS */
+.proc-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:16px; }
+.proc-step { padding:24px 18px; border-radius:12px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); }
+.proc-num { font-size:1.5rem; font-weight:700; color:#3b82f6; letter-spacing:-.02em; margin-bottom:12px; }
+.proc-step h3 { font-size:.95rem; font-weight:600; color:#fff; margin:0; line-height:1.35; }
+
+/* RELATED */
+.rel-row { display:flex; flex-wrap:wrap; gap:10px; }
+.rel-link { font-size:.9rem; font-weight:500; color:#475569; background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:100px; padding:9px 18px; text-decoration:none; transition:color .2s ease, border-color .2s ease; }
+.rel-link:hover { color:#2563eb; border-color:rgba(37,99,235,.40); }
+
+/* REVEAL / FADE — self-contained (page may run without main.js) */
+.reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.in, .reveal.visible { opacity:1; transform:none; }
+.fade-section { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.fade-section.in, .fade-section.in-view, .fade-section.visible { opacity:1; transform:none; }
+
+/* RESPONSIVE */
+@media (max-width:900px){
+  .grid-4 { grid-template-columns:repeat(2,1fr); }
+  .grid-3 { grid-template-columns:1fr; }
+  .proc-grid { grid-template-columns:repeat(3,1fr); }
+  /* Hero: stack to single column, left-aligned (eyebrow → H1 → subtitle → buttons → banner) */
+  .ind-hero-top { grid-template-columns:1fr; gap:24px; align-items:start; }
+  .ind-hero-aside { padding-bottom:0; }
+  .ind-hero h1.display { margin:0 0 4px; }
+  .ind-hero .lede { max-width:560px; }
+  .intro-grid, .why-hw-grid, .cap2-grid { grid-template-columns:1fr; gap:32px; }
+  .intro-body { border-left:none; padding-left:0; }
+  .why-hw-media { order:2; }
+  /* Solutions: stack, image on top (normal aspect, not sticky), all steps visible */
+  /* Solutions: stack (image on top), all cards expanded & full opacity, no switching */
+  .sol-flip { grid-template-columns:1fr; gap:24px; }
+  .sol-media { min-height:0; height:clamp(220px,55vw,320px); }
+  .sol-card { opacity:1; filter:none; cursor:default; }
+  .sol-card-body { max-height:none; opacity:1; margin-top:12px; }
+}
+@media (max-width:640px){
+  .ind-sec { padding:64px 0; }
+  .ind-hero { padding:110px 0 48px; }
+  .ind-hero-banner { margin-top:32px; }
+  .grid-4 { grid-template-columns:1fr; }
+  .proc-grid { grid-template-columns:repeat(2,1fr); }
+  .ind-hero .lede { font-size:.95rem; }
+  .ind-hero-cta .btn { width:100%; text-align:center; }
+}
+
+/* ===== PROCESS component (windowed auto-carousel + left image cross-fade) ===== */
+.impl-proc{--rowH:104px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,4vw,56px);align-items:stretch}
+.impl-proc-media{position:relative;border-radius:16px;overflow:hidden;background:#e8eeff;min-height:calc(var(--rowH) * 3)}
+.impl-proc-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease}
+.impl-proc-img.active{opacity:1}
+.impl-proc-badge{position:absolute;left:16px;bottom:16px;z-index:2;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.92);border-radius:100px;padding:8px 15px;font-family:var(--sans);font-size:0.85rem;font-weight:700;color:#0f172a;box-shadow:0 8px 22px -10px rgba(15,23,42,0.45)}
+.impl-proc-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:#2563eb;flex:none}
+.impl-proc-right{display:flex;flex-direction:column;gap:14px}
+.impl-proc-nav{display:flex;justify-content:flex-end;gap:8px}
+.impl-proc-navbtn{width:34px;height:34px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;background:transparent;border:0;outline:none;cursor:pointer;color:#475569;transition:background .2s ease,color .2s ease}
+.impl-proc-navbtn:hover{background:#eef2ff;color:#2563eb}
+.impl-proc-navbtn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(37,99,235,0.35)}
+.impl-proc-navbtn [data-lucide]{width:18px;height:18px;stroke-width:2.2}
+.impl-proc-window{height:calc(var(--rowH) * 3);overflow:hidden}
+.impl-proc-track{position:relative;display:flex;flex-direction:column;transition:transform .3s ease;will-change:transform}
+.impl-proc-track::before{content:"";position:absolute;z-index:0;left:46px;top:calc(var(--rowH)/2);bottom:calc(var(--rowH)/2);width:2px;transform:translateX(-1px);background:#e2e8f0}
+.impl-proc-step{position:relative;box-sizing:border-box;height:var(--rowH);width:100%;display:flex;align-items:center;gap:16px;padding:0 8px 0 22px;text-align:left;background:none;border:0;outline:none;cursor:pointer}
+.impl-proc-step:focus-visible{outline:none}
+.impl-proc-step:focus-visible .impl-proc-ico{box-shadow:0 0 0 3px rgba(37,99,235,0.35)}
+.impl-proc-bar{position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:34px;border-radius:99px;background:#2563eb;opacity:0;transition:opacity .3s ease}
+.impl-proc-step.active .impl-proc-bar{opacity:1}
+.impl-proc-ico{position:relative;z-index:1;flex:none;width:48px;height:48px;border-radius:12px;background:#eef2ff;display:flex;align-items:center;justify-content:center;transition:background .3s ease,box-shadow .2s ease}
+.impl-proc-ico [data-lucide]{width:22px;height:22px;stroke:#64748b;stroke-width:1.9;transition:stroke .3s ease}
+.impl-proc-step.active .impl-proc-ico{background:#2563eb}
+.impl-proc-step.active .impl-proc-ico [data-lucide]{stroke:#fff}
+.impl-proc-text{display:flex;flex-direction:column;gap:3px;min-width:0;opacity:.5;transition:opacity .3s ease}
+.impl-proc-step.active .impl-proc-text{opacity:1}
+.impl-proc-title{font-family:var(--sans);font-size:1.05rem;font-weight:700;color:#0f172a;line-height:1.25;margin:0}
+.impl-proc-desc{font-family:var(--sans);font-size:0.9rem;color:#475569;line-height:1.4;margin:0}
+@media (max-width:900px){
+  .impl-proc{grid-template-columns:1fr;gap:24px}
+  .impl-proc-media{min-height:240px;order:-1}
+  .impl-proc-window{height:auto;overflow:visible}
+  .impl-proc-track{transform:none !important}
+}
+</style>
+<style>
+/* ---- Solutions-page supplements (extends the shared ind-* toolkit) ---- */
+.ind-hero-trust{margin:18px 0 0;font-size:.8rem;line-height:1.5;color:rgba(255,255,255,.5);display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+.ind-hero-trust .dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.35)}
+.sol-link{color:#2563eb;font-weight:600;border-bottom:1px solid transparent;transition:border-color .2s ease}
+.sol-link:hover{border-color:#2563eb}
+.ind-sec--dark .sol-link{color:#93c5fd}
+.ind-sec--dark .sol-link:hover{border-color:#93c5fd}
+/* numbered workflow flow */
+.sol-flow{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.sol-flow-step{background:#fff;border:1px solid rgba(0,0,0,.06);border-radius:12px;padding:24px 20px;display:flex;flex-direction:column;gap:12px}
+.sol-flow-num{width:32px;height:32px;border-radius:50%;background:#2563eb;color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.sol-flow-step h3{font-size:.95rem;font-weight:600;color:#0f172a;margin:0;line-height:1.4}
+@media(max-width:900px){.sol-flow{grid-template-columns:1fr}}
+.final-cta-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:6px}
 </style>
 </head>
 <body>
@@ -728,7 +692,7 @@
             </div>
             <div class="dropdown-col">
               <p class="dropdown-col-head">Engineering</p>
-              <a href="../../custom-devices/firmware-integration/index.html" class="dropdown-link nav-current" aria-current="page">Firmware Integration</a>
+              <a href="../../custom-devices/firmware-integration/index.html" class="dropdown-link">Firmware Integration</a>
               <a href="../../custom-devices/audio-dsp-tuning/index.html" class="dropdown-link">Audio & DSP Tuning</a>
               <a href="../../custom-devices/ai-sdk-integration/index.html" class="dropdown-link">AI SDK Integration</a>
               <a href="../../custom-devices/prototype-validation/index.html" class="dropdown-link">Prototype Validation</a>
@@ -856,137 +820,175 @@
 <!-- Mobile nav overlay -->
 <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
 
-<!-- Sentinel: ../../js/main.js reads document.querySelector('.hero').offsetHeight
-     for its nav-scroll threshold; this hidden stub keeps that (and the rest of
-     main.js: reveal, fade, FAB, back-to-top, lucide) working without a full hero. -->
+<!-- Sentinel for ../../js/main.js (reads .hero offsetHeight); hidden, harmless. -->
 <div class="hero" aria-hidden="true" style="display:none"></div>
-
-<!-- ========== BREADCRUMB ========== -->
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <div class="container">
-    <ol>
-      <li><a href="../../index.html">Home</a></li>
-      <li class="sep" aria-hidden="true">/</li>
-      <li><a href="../../index.html#capabilities">Custom AI Hardware</a></li>
-      <li class="sep" aria-hidden="true">/</li>
-      <li aria-current="page">Firmware Integration</li>
-    </ol>
-  </div>
-</nav>
 
 <main id="main">
 
   <!-- ========== 1) HERO ========== -->
-  <header class="odm-hero fade-section">
+  <header class="ind-hero fade-section">
     <div class="container">
-      <div class="odm-hero-top">
-        <div class="odm-hero-lead reveal">
-          <div class="eyebrow">CUSTOM DEVICES · FIRMWARE INTEGRATION</div>
-          <h1 class="display"><span class="odm-hero-accent">Firmware</span> Integration Services</h1>
-          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Start a Project</a>
+      <div class="ind-hero-top reveal">
+        <div class="ind-hero-lead">
+          <div class="eyebrow dark">/ SOLUTIONS — EMBEDDED AI HARDWARE</div>
+          <h1 class="display">Embedded AI Hardware Development for AI Devices</h1>
         </div>
-        <div class="odm-hero-note reveal">
-          <!-- [PLACEHOLDER] hero copy — marketing to revise -->
-          <p>Embedded firmware that connects your hardware to recording, connectivity, and the cloud.</p>
+        <div class="ind-hero-aside">
+          <p class="lede">We help AI companies turn software intelligence into embedded hardware products.</p>
+          <div class="ind-hero-cta">
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Start Embedded Hardware Development</a>
+            <a href="../../products/index.html" class="btn btn-ghost">Explore Hardware Platforms</a>
+          </div>
+          <p class="ind-hero-trust"><span>From prototype to mass production</span><span class="dot" aria-hidden="true"></span><span>US + Shenzhen</span><span class="dot" aria-hidden="true"></span><span>FCC · CE · RoHS</span></p>
         </div>
       </div>
-    </div>
-    <div class="odm-hero-banner">
-      <img src="../../img/custom-devices/firmware-integration/hero.jpg" alt="Embedded firmware development for AI voice devices at GMIC" onerror="this.style.display='none'">
+      <div class="ind-hero-banner reveal">
+        <img src="../../img/about/reflow-solder.jpg" alt="GMIC embedded hardware reflow soldering line" onerror="this.onerror=null;this.src='https://placehold.co/1200x560?text=GMIC+AI+Hardware'">
+      </div>
     </div>
   </header>
 
-  <!-- ========== 2) WHAT WE HANDLE (card carousel — big icon on top) ========== -->
-  <section class="odm-sec alt fade-section" aria-labelledby="handle-h">
+  <!-- ========== 2) CORE CONTENT ========== -->
+  <section class="ind-sec ind-sec--light fade-section">
     <div class="container">
-      <div class="section-head reveal">
-        <div>
-          <div class="eyebrow">/ WHAT WE HANDLE</div>
-          <h2 class="section" id="handle-h">What We Handle</h2>
-        </div>
-        <div class="section-head-right">
-          <div class="carousel-controls tp-controls">
-            <button class="carousel-btn" id="fwPrev" type="button" aria-label="Previous capabilities">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
-            </button>
-            <button class="carousel-btn" id="fwNext" type="button" aria-label="Next capabilities">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
-            </button>
-          </div>
+      <div class="ind-head reveal">
+        <div class="eyebrow">/ OVERVIEW</div>
+        <h2 class="section measure-wide">The embedded engineering behind AI devices</h2>
+      </div>
+      <div class="intro-grid reveal">
+        <p class="intro-lead">An AI product is only as good as the embedded system inside it — the PCB, firmware, and radios that make it real.</p>
+        <div class="intro-body">
+          <p>GMIC provides embedded system design that turns your AI concept into a manufacturable device. We deliver PCB and firmware, MCU selection, Bluetooth and Wi-Fi, audio DSP, sensor integration, power management, and OTA update support.</p>
+          <p>Our strength is hardware-software integration — making the device, its firmware, and your platform work as one — delivered through our <a class="sol-link" href="../../custom-devices/odm-oem/index.html">AI hardware ODM/OEM services</a>. This is the layer beneath any wearable, edge, or voice product.</p>
+          <p>Start from one of our <a class="sol-link" href="../../products/index.html">customizable hardware platforms</a> and move from schematic to mass production with one team.</p>
         </div>
       </div>
     </div>
-
-    <div class="tp-viewport">
-      <div class="tp-track" id="fwTrack">
-          <div class="tp-card co-card">
-            <img src="../../img/custom-devices/firmware-integration/Recording-Logic.png" alt="Recording waveform on development board" style="width:100%;height:180px;object-fit:cover;border-radius:10px 10px 0 0;" onerror="this.style.display='none'">
-            <div class="co-body">
-              <h3>Recording logic</h3>
-              <p>On-device capture, triggering, and storage.</p>
-            </div>
-          </div>
-          <div class="tp-card co-card">
-            <img src="../../img/custom-devices/firmware-integration/Wi-Fi-Upload-Wi-Fi.png" alt="Terminal showing Wi-Fi upload logs" style="width:100%;height:180px;object-fit:cover;border-radius:10px 10px 0 0;" onerror="this.style.display='none'">
-            <div class="co-body">
-              <h3>Wi-Fi upload</h3>
-              <p>Uploading recordings and data over Wi-Fi.</p>
-            </div>
-          </div>
-          <div class="tp-card co-card">
-            <img src="../../img/custom-devices/firmware-integration/BLE-Communication.jpg" alt="BLE scanner on phone next to PCB" style="width:100%;height:180px;object-fit:cover;border-radius:10px 10px 0 0;" onerror="this.style.display='none'">
-            <div class="co-body">
-              <h3>BLE communication</h3>
-              <p>Low-energy pairing and data exchange.</p>
-            </div>
-          </div>
-          <div class="tp-card co-card">
-            <img src="../../img/custom-devices/firmware-integration/OTA-Updates.png" alt="Firmware flashing progress" style="width:100%;height:180px;object-fit:cover;border-radius:10px 10px 0 0;" onerror="this.style.display='none'">
-            <div class="co-body">
-              <h3>OTA updates</h3>
-              <p>Over-the-air firmware updates in the field.</p>
-            </div>
-          </div>
-          <div class="tp-card co-card">
-            <img src="../../img/custom-devices/firmware-integration/Battery-Management.png" alt="Battery charge discharge curve" style="width:100%;height:180px;object-fit:cover;border-radius:10px 10px 0 0;" onerror="this.style.display='none'">
-            <div class="co-body">
-              <h3>Battery management</h3>
-              <p>Charging, power states, and battery life.</p>
-            </div>
-          </div>
-          <div class="tp-card co-card">
-            <img src="../../img/custom-devices/firmware-integration/Cloud-Integration.png" alt="Cloud dashboard with device status" style="width:100%;height:180px;object-fit:cover;border-radius:10px 10px 0 0;" onerror="this.style.display='none'">
-            <div class="co-body">
-              <h3>Cloud integration</h3>
-              <p>Connecting the device to your cloud backend.</p>
-            </div>
-          </div>
-        </div>
-      </div>
   </section>
 
-  <!-- ========== 4) FINAL CTA ========== -->
+  <!-- ========== 3) USE CASES / SCENARIOS ========== -->
+  <section class="ind-sec ind-sec--dark fade-section">
+    <div class="container">
+      <div class="ind-head reveal">
+        <div class="eyebrow dark">/ CAPABILITIES</div>
+        <h2 class="section measure-wide">Embedded development capabilities</h2>
+      </div>
+      <div class="ind-grid grid-3 uc-static reveal">
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="circuit-board"></i></div>
+          <h3>PCB & firmware</h3>
+          <p>Schematic capture, layout, and embedded firmware for compact devices.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="cpu"></i></div>
+          <h3>MCU / SoC</h3>
+          <p>Right-sized processor selection for performance and power.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="bluetooth"></i></div>
+          <h3>Bluetooth / Wi-Fi</h3>
+          <p>Connectivity, pairing, and radio behavior tuned to your app.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="audio-lines"></i></div>
+          <h3>Audio DSP</h3>
+          <p>Microphone tuning, beamforming, and noise reduction.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="activity"></i></div>
+          <h3>Sensor integration</h3>
+          <p>Motion, touch, and environmental sensing built into the system.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="battery-charging"></i></div>
+          <h3>Power management</h3>
+          <p>Battery, charging, and power budgets for real duty cycles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4) HARDWARE FORM FACTORS ========== -->
+  <section class="ind-sec ind-sec--light fade-section">
+    <div class="container">
+      <div class="ind-head reveal">
+        <div class="eyebrow">/ WHAT WE DELIVER</div>
+        <h2 class="section measure-wide">From board to shippable device</h2>
+        <p class="measure" style="margin-top:14px;color:#64748b;font-size:1.0625rem;line-height:1.7;">The embedded building blocks that become your AI product.</p>
+      </div>
+      <div class="ind-grid grid-4 reveal">
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="circuit-board"></i></div>
+          <h3>Custom PCB / PCBA</h3>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="terminal"></i></div>
+          <h3>Embedded firmware</h3>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="radio"></i></div>
+          <h3>OTA update system</h3>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="git-merge"></i></div>
+          <h3>Hardware-software integration</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5) WHY DEDICATED HARDWARE ========== -->
+  <section class="ind-sec ind-sec--dark fade-section">
+    <div class="container">
+      <div class="why-hw-grid">
+        <div class="reveal">
+          <div class="eyebrow dark">/ WHY HARDWARE</div>
+          <h2 class="section measure-wide">Why an embedded hardware partner?</h2>
+          <p class="why-hw-lead measure">Embedded development is where most AI hardware projects stall. A partner who owns PCB, firmware, and integration keeps you shipping.</p>
+          <ul class="check-list">
+            <li><span class="ck"><i data-lucide="check"></i></span> One team from schematic to firmware</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Radios and audio tuned, not bolted on</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Power and thermals designed for real use</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> OTA and integration built in from day one</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> A clear path to certification and volume</li>
+          </ul>
+        </div>
+        <div class="why-hw-media reveal">
+          <img src="../../img/about/bv50p.jpg" alt="GMIC embedded hardware engineering and PCB assembly" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/800x600?text=GMIC+Manufacturing'">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RELATED / CROSS-LINKS ========== -->
+  <section class="ind-sec ind-sec--light fade-section" style="padding:56px 0;">
+    <div class="container">
+      <div class="reveal" style="display:flex;flex-wrap:wrap;align-items:center;gap:18px;justify-content:space-between;">
+        <div class="eyebrow">/ RELATED SOLUTIONS</div>
+        <div class="rel-row">
+        <a class="rel-link" href="../edge-ai-hardware/index.html">Edge AI Hardware</a>
+        <a class="rel-link" href="../ai-wearable-devices/index.html">AI Wearable Devices</a>
+        <a class="rel-link" href="../../custom-devices/odm-oem/index.html">AI hardware ODM/OEM services</a>
+        <a class="rel-link" href="../../products/index.html">Customizable hardware platforms</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 6) FINAL CTA ========== -->
   <section class="final-cta fade-section">
     <div class="container">
       <div class="eyebrow reveal">Begin</div>
-      <h2 class="section reveal">Start your project</h2>
-      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue-deep reveal">Start a Project</a>
+      <h2 class="section reveal">Build Your Embedded AI Hardware With GMIC AI</h2>
+      <p class="reveal measure" style="margin-left:auto;margin-right:auto;">Bring your AI software to GMIC and we will engineer the embedded hardware — PCB, firmware, radios, and integration — behind it.</p>
+      <div class="final-cta-actions reveal">
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue-deep">Start Embedded Hardware Development</a>
+        <a href="../../contact/index.html" class="btn btn-ghost">Contact Us</a>
+      </div>
     </div>
   </section>
 
 </main>
-<section class="email-bar fade-section">
-  <div class="container email-inner">
-    <div class="email-left">
-      <h3>Get the latest product from the edge.</h3>
-      <p>Monthly notes on hardware shipping, certifications, and the AI models running on our devices.</p>
-    </div>
-    <form class="email-form" onsubmit="event.preventDefault();this.querySelector('input').value='';this.querySelector('button').textContent='Subscribed ✓'">
-      <input type="email" placeholder="your@company.com" required>
-      <button type="submit" class="btn btn-blue">Subscribe</button>
-    </form>
-  </div>
-</section>
 <footer class="footer" id="company">
   <div class="container">
     <div class="footer-grid">
@@ -1011,11 +1013,13 @@
       <div class="footer-col">
         <h4>Solutions</h4>
         <ul>
-          <li><a href="../../solutions/edge-ai-hardware/index.html">Edge AI Hardware</a></li>
           <li><a href="../../solutions/voice-ai-hardware/index.html">Voice AI Hardware</a></li>
+          <li><a href="../ai-scribe-hardware/index.html">AI Scribe Hardware</a></li>
           <li><a href="../../solutions/ai-wearable-devices/index.html">AI Wearable Devices</a></li>
-          <li><a href="../../custom-devices/odm-oem/index.html">AI Hardware ODM</a></li>
+          <li><a href="../../solutions/edge-ai-hardware/index.html">Edge AI Hardware</a></li>
           <li><a href="../../solutions/embedded-ai-hardware/index.html">Embedded AI Hardware</a></li>
+          <li><a href="../field-service-voice-capture/index.html">Field Service Voice Capture</a></li>
+          <li><a href="../../custom-devices/odm-oem/index.html">AI Hardware ODM/OEM</a></li>
         </ul>
       </div>
 
@@ -1128,7 +1132,6 @@
     Trigg@gmic.ai
   </a>
 </div>
-<script src="../../js/main.js"></script>
 
 <script>
 // Close dropdown when clicking outside
@@ -1177,15 +1180,15 @@ document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
 });
 </script>
 
-<!-- What We Handle carousel — self-contained, scoped to #fwTrack.
+<!-- Typical Projects carousel — self-contained, scoped to #tpTrack.
      Independent of main.js / the homepage #cTrack carousel. -->
 <script>
 (function(){
-  var track = document.getElementById('fwTrack');
+  var track = document.getElementById('tpTrack');
   if(!track) return;
   var viewport = track.parentElement;
-  var prevBtn = document.getElementById('fwPrev');
-  var nextBtn = document.getElementById('fwNext');
+  var prevBtn = document.getElementById('tpPrev');
+  var nextBtn = document.getElementById('tpNext');
   var cards = track.querySelectorAll('.tp-card');
   if(!cards.length || !prevBtn || !nextBtn) return;
 
@@ -1276,6 +1279,104 @@ document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
   function init(){ measure(); pos = clamp(pos); render(false); }
   init();
   window.addEventListener('load', init);   // re-measure once images have loaded
+})();
+</script>
+<!-- ========== Self-contained reveal + Solutions scrollytelling + icons ========== -->
+<script>
+(function () {
+  // Reveal: never let .reveal/.fade-section stay hidden if main.js is absent or fails.
+  var els = document.querySelectorAll('.reveal, .fade-section');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (e) { e.classList.add('in', 'visible'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in', 'visible'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (e) { io.observe(e); });
+    window.addEventListener('load', function () {
+      setTimeout(function () { els.forEach(function (e) { e.classList.add('in', 'visible'); }); }, 1200);
+    });
+  }
+  if (window.lucide && typeof window.lucide.createIcons === 'function') { window.lucide.createIcons(); }
+})();
+
+(function () {
+  // Solutions: in-place card switching (hover / click / focus) + linked left image cross-fade.
+  // If this never runs, the default HTML state stays (card 0 expanded, others collapsed but visible).
+  var flip = document.getElementById('solFlip');
+  if (!flip) return;
+  var cards = [].slice.call(flip.querySelectorAll('.sol-card'));
+  var imgs = [].slice.call(flip.querySelectorAll('.sol-img'));
+  function setActive(i) {
+    cards.forEach(function (c, idx) { c.classList.toggle('is-active', idx === i); });
+    // Single static image on this page → only cross-fade when there are multiple images.
+    if (imgs.length > 1) imgs.forEach(function (im, idx) { im.classList.toggle('is-active', idx === i); });
+  }
+  cards.forEach(function (c, i) {
+    c.addEventListener('mouseenter', function () { setActive(i); });
+    c.addEventListener('click', function () { setActive(i); });
+    c.addEventListener('focus', function () { setActive(i); });
+  });
+})();
+
+(function () {
+  // FAB / nav helpers — self-contained, since main.js is not loaded on this page.
+  var nav = document.getElementById('nav');
+  if (nav) window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  var backTop = document.getElementById('backTop');
+  if (backTop) {
+    window.addEventListener('scroll', function () {
+      backTop.classList.toggle('show', window.scrollY > 600);
+    }, { passive: true });
+    backTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+
+  var fabWechat = document.getElementById('fabWechat');
+  var wechat = document.getElementById('wechat-popup');
+  if (fabWechat && wechat) fabWechat.addEventListener('click', function () {
+    wechat.style.display = (wechat.style.display === 'none' || !wechat.style.display) ? 'block' : 'none';
+  });
+})();
+</script>
+<!-- ===== PROCESS component JS (windowed auto-carousel) ===== -->
+<script>
+(function(){
+  var flow = document.getElementById('procFlow'); if(!flow) return;
+  var track = document.getElementById('procTrack');
+  var badge = document.getElementById('procBadge');
+  var steps = Array.prototype.slice.call(flow.querySelectorAll('.impl-proc-step'));
+  var imgs  = Array.prototype.slice.call(flow.querySelectorAll('.impl-proc-img'));
+  if(!steps.length) return;
+  var STEP=3500, RESUME=10000, VISIBLE=3, total=steps.length;
+  var idx=0, timer=null, resumeTimer=null;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mobile=window.matchMedia('(max-width: 900px)');
+  function rowH(){ return steps[0]?steps[0].offsetHeight:104; }
+  function show(i){
+    idx=i;
+    steps.forEach(function(s,n){var on=n===i;s.classList.toggle('active',on);s.setAttribute('aria-selected',on?'true':'false');});
+    imgs.forEach(function(m,n){m.classList.toggle('active',n===i);});
+    if(badge){var t=steps[i].querySelector('.impl-proc-title');if(t)badge.textContent=t.textContent;}
+    var scroll=Math.min(i,total-VISIBLE); if(scroll<0)scroll=0;
+    var ty=mobile.matches?0:-(scroll*rowH());
+    track.style.transform='translateY('+ty+'px)';
+  }
+  function next(){ show((idx+1)%total); }
+  function start(){ if(reduce.matches)return; stop(); timer=setInterval(next,STEP); }
+  function stop(){ if(timer){clearInterval(timer);timer=null;} }
+  function manual(i){ show(i); stop(); clearTimeout(resumeTimer); resumeTimer=setTimeout(start,RESUME); }
+  steps.forEach(function(s,i){ s.addEventListener('click',function(){manual(i);}); });
+  Array.prototype.slice.call(flow.querySelectorAll('.impl-proc-navbtn')).forEach(function(b){
+    b.addEventListener('click',function(){var dir=parseInt(b.getAttribute('data-dir'),10)||0;manual((idx+dir+total)%total);});
+  });
+  document.addEventListener('visibilitychange',function(){ if(document.hidden){stop();}else{start();} });
+  window.addEventListener('resize',function(){ show(idx); });
+  show(0); start();
 })();
 </script>
 </body>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>ODM &amp; OEM AI Hardware Development | GMIC.AI</title>
-<meta name="description" content="Turnkey OEM/ODM AI voice hardware — from concept validation to mass production. Hardware, firmware, audio, and manufacturing under one roof across US + Shenzhen." />
+<title>ODM &amp; OEM AI Hardware Development — Supplier Qualification | GMIC.AI</title>
+<meta name="description" content="Full-stack ODM/OEM services for AI voice hardware. From concept to mass production — industrial design, PCB, firmware, SMT manufacturing, QC, and certification support. Shenzhen factory with U.S. support team." />
 <link rel="canonical" href="https://gmic.ai/custom-devices/odm-oem/" />
 <link rel="icon" type="image/png" href="../../img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -638,6 +638,120 @@
   .tp-track{transition:none}
 }
 
+/* ---------- Hero action buttons (light bg) ---------- */
+.odm-hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:4px}
+.odm-btn-outline{background:transparent;color:#0f172a;border:1px solid rgba(0,0,0,0.18)}
+.odm-btn-outline:hover{border-color:#0f172a;background:rgba(0,0,0,0.03);transform:translateY(-1px)}
+
+/* ---------- §3 Full-stack capabilities — icon-card grid ---------- */
+.cap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:8px}
+.cap-card{
+  background:#ffffff;border:1px solid rgba(0,0,0,0.08);border-radius:14px;
+  padding:26px 24px;display:flex;flex-direction:column;gap:12px;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+}
+.cap-card:hover{transform:translateY(-3px);border-color:rgba(37,99,235,0.25);box-shadow:0 18px 40px -28px rgba(37,99,235,0.4)}
+.cap-card-icon{width:44px;height:44px;border-radius:11px;background:#eef3ff;display:flex;align-items:center;justify-content:center}
+.cap-card-icon [data-lucide]{width:22px;height:22px;stroke:#2563eb;stroke-width:1.8}
+.cap-card h3{font-family:var(--sans);font-size:1.1rem;font-weight:700;color:#0f172a;letter-spacing:-0.01em;line-height:1.3;margin:0}
+.cap-card p{font-family:var(--sans);font-size:0.95rem;line-height:1.55;color:#475569;margin:0}
+@media(max-width:1000px){.cap-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.cap-grid{grid-template-columns:1fr}}
+
+/* ---------- §4 Manufacturing facility — dark photo mosaic + stats ---------- */
+.mfg-sec{background:#0a0a0a;color:#ffffff;padding:96px 0}
+.mfg-sec .odm-head h2.section{color:#ffffff}
+.mfg-sec .eyebrow{color:rgba(255,255,255,0.55)}
+.mfg-lead{font-family:var(--sans);font-size:1.05rem;line-height:1.65;color:rgba(255,255,255,0.62);max-width:720px;margin-top:14px}
+.mfg-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px}
+.mfg-tile{position:relative;border-radius:12px;overflow:hidden;background:#161616;aspect-ratio:4/3;margin:0}
+.mfg-tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.mfg-tile:hover img{transform:scale(1.05)}
+.mfg-tile figcaption{
+  position:absolute;left:0;right:0;bottom:0;
+  padding:30px 16px 13px;
+  font-family:var(--sans);font-size:0.82rem;font-weight:600;color:#ffffff;
+  background:linear-gradient(to top,rgba(0,0,0,0.85),rgba(0,0,0,0));
+}
+.mfg-stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:52px;border-top:1px solid rgba(255,255,255,0.12);padding-top:40px}
+.mfg-stat{padding:0 28px;border-left:1px solid rgba(255,255,255,0.12)}
+.mfg-stat:first-child{border-left:none;padding-left:0}
+.mfg-stat-num{font-family:var(--sans);font-weight:800;font-size:2.2rem;letter-spacing:-0.02em;color:#ffffff;line-height:1}
+.mfg-stat-cap{font-family:var(--sans);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:rgba(255,255,255,0.5);margin-top:8px}
+@media(max-width:900px){.mfg-gallery{grid-template-columns:repeat(2,1fr)}.mfg-stats{grid-template-columns:repeat(2,1fr);row-gap:32px}.mfg-stat:nth-child(odd){border-left:none;padding-left:0}}
+@media(max-width:560px){.mfg-gallery{grid-template-columns:1fr}.mfg-stats{grid-template-columns:1fr;row-gap:28px}.mfg-stat{border-left:none;padding-left:0}}
+
+/* ---------- §5 Customization — two-column checklists ---------- */
+.cust-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:8px}
+.cust-col{background:#ffffff;border:1px solid rgba(0,0,0,0.08);border-radius:16px;padding:32px 30px}
+.cust-col-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.cust-col-tag{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2563eb;background:#eef3ff;border-radius:100px;padding:5px 13px}
+.cust-col h3{font-family:var(--sans);font-size:1.3rem;font-weight:700;color:#0f172a;letter-spacing:-0.01em;margin:0}
+.cust-list{list-style:none;display:flex;flex-direction:column;gap:12px}
+.cust-list li{display:flex;align-items:flex-start;gap:12px;font-family:var(--sans);font-size:1rem;color:#334155;line-height:1.5}
+.cust-list [data-lucide]{width:20px;height:20px;stroke:#2563eb;stroke-width:2;flex-shrink:0;margin-top:2px}
+@media(max-width:768px){.cust-grid{grid-template-columns:1fr}}
+
+/* ---------- §6 Development process — tabbed step timeline ---------- */
+.proc-tabs{display:inline-flex;gap:6px;background:#eef2f7;border-radius:100px;padding:5px;margin-bottom:40px}
+.proc-tab{font-family:var(--sans);font-size:14px;font-weight:600;color:#5b6472;background:transparent;border:none;border-radius:100px;padding:10px 22px;cursor:pointer;transition:all .2s ease}
+.proc-tab.active{background:#0a0a0a;color:#ffffff}
+.proc-panel{display:none}
+.proc-panel.active{display:block}
+.proc-steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px}
+.proc-step{position:relative;padding:20px 18px;background:#ffffff;border:1px solid rgba(0,0,0,0.08);border-radius:12px;display:flex;flex-direction:column;gap:12px}
+.proc-step-num{width:30px;height:30px;border-radius:50%;background:#2563eb;color:#ffffff;font-family:var(--sans);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.proc-step-label{font-family:var(--sans);font-size:0.95rem;font-weight:600;color:#0f172a;line-height:1.35}
+.proc-note{font-family:var(--sans);font-size:0.95rem;color:#475569;line-height:1.65;margin-top:28px;max-width:760px}
+
+/* ---------- §7 Quality control — numbered checkpoint flow + cert badges ---------- */
+.qc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px}
+.qc-item{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;background:#f8fafc;border-radius:12px}
+.qc-num{font-family:var(--sans);font-weight:800;font-size:13px;color:#2563eb;flex-shrink:0;width:26px;height:26px;border-radius:7px;background:#eef3ff;display:flex;align-items:center;justify-content:center}
+.qc-label{font-family:var(--sans);font-size:0.95rem;font-weight:500;color:#0f172a;line-height:1.4}
+.qc-note{font-family:var(--sans);font-size:0.95rem;color:#475569;line-height:1.65;margin-top:28px;max-width:780px}
+.cert-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px;align-items:center}
+.cert-badge{font-family:var(--sans);font-size:13px;font-weight:600;letter-spacing:0.04em;color:#0f172a;border:1px solid rgba(0,0,0,0.12);border-radius:100px;padding:8px 18px;background:#ffffff}
+@media(max-width:900px){.qc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.qc-grid{grid-template-columns:1fr}}
+
+/* ---------- §9 Supplier qualification FAQ — accordion on light-blue band ---------- */
+.faq-sec{background:#eef3fb;padding:96px 0}
+.faq-sec .odm-head h2.section{color:#0f172a}
+.faq-group{margin-top:32px}
+.faq-group-head{font-family:var(--sans);font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#2563eb;margin-bottom:12px}
+.faq-acc{background:#ffffff;border-radius:14px;overflow:hidden;border:1px solid rgba(0,0,0,0.06)}
+.faq-item{border-bottom:1px solid #eef2f7}
+.faq-item:last-child{border-bottom:none}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;padding:20px 24px;background:none;border:none;cursor:pointer;font-family:var(--sans)}
+.faq-q-text{font-size:1.0625rem;font-weight:600;color:#0a0a0a;line-height:1.4}
+.faq-icon{flex-shrink:0;width:28px;height:28px;position:relative;color:#9ca3af;transition:color .18s}
+.faq-icon::before,.faq-icon::after{content:'';position:absolute;background:currentColor;border-radius:2px;top:50%;left:50%}
+.faq-icon::before{width:14px;height:2px;transform:translate(-50%,-50%)}
+.faq-icon::after{width:2px;height:14px;transform:translate(-50%,-50%);transition:transform .25s ease}
+.faq-item.open .faq-icon{color:#2563eb}
+.faq-item.open .faq-icon::after{transform:translate(-50%,-50%) scaleY(0)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease}
+.faq-a-inner{padding:0 24px 22px;font-size:0.95rem;color:#5b6472;line-height:1.72}
+.faq-a-inner p{margin:0}
+@media(max-width:768px){.faq-q{padding:18px 18px}.faq-q-text{font-size:1rem}.faq-a-inner{padding:0 18px 18px}}
+
+/* ---------- §10 Why GMIC — 6-up stats + trust cards ---------- */
+.why-stats{display:grid;grid-template-columns:repeat(3,1fr);margin-bottom:56px;row-gap:36px}
+.why-stats .odm-stat{padding:8px 28px;border-left:1px solid rgba(0,0,0,0.10)}
+.why-stats .odm-stat:nth-child(3n+1){border-left:none;padding-left:0}
+.trust-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.trust-card{background:#f8fafc;border-radius:14px;padding:28px 26px;display:flex;flex-direction:column;gap:10px}
+.trust-card-icon{width:44px;height:44px;border-radius:11px;background:#eef3ff;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+.trust-card-icon [data-lucide]{width:22px;height:22px;stroke:#2563eb;stroke-width:1.8}
+.trust-card h3{font-family:var(--sans);font-size:1.1rem;font-weight:700;color:#0f172a;margin:0;letter-spacing:-0.01em}
+.trust-card p{font-family:var(--sans);font-size:0.95rem;line-height:1.6;color:#475569;margin:0}
+@media(max-width:1000px){.why-stats{grid-template-columns:repeat(2,1fr)}.why-stats .odm-stat:nth-child(3n+1){border-left:1px solid rgba(0,0,0,0.10);padding-left:28px}.why-stats .odm-stat:nth-child(2n+1){border-left:none;padding-left:0}}
+@media(max-width:768px){.why-stats{grid-template-columns:1fr}.why-stats .odm-stat{border-left:none!important;padding-left:0!important}.trust-grid{grid-template-columns:1fr}}
+
+/* ---------- Final CTA — dual actions ---------- */
+.final-cta-actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+
 .nav { border-bottom: none !important; box-shadow: none !important; }
 </style>
 </head>
@@ -699,7 +813,7 @@
       <!-- Custom Devices -->
       <div class="nav-item has-dropdown">
         <a href="../../custom-devices/index.html" class="nav-link">
-          Custom Devices <span class="nav-arrow">›</span>
+          Custom AI Hardware <span class="nav-arrow">›</span>
         </a>
         <div class="nav-dropdown nav-dropdown--text">
           <div class="dropdown-inner">
@@ -851,7 +965,7 @@
     <ol>
       <li><a href="../../index.html">Home</a></li>
       <li class="sep" aria-hidden="true">/</li>
-      <li><a href="../../index.html#capabilities">Custom Devices</a></li>
+      <li><a href="../../index.html#capabilities">Custom AI Hardware</a></li>
       <li class="sep" aria-hidden="true">/</li>
       <li aria-current="page">ODM &amp; OEM</li>
     </ol>
@@ -865,9 +979,13 @@
     <div class="container">
       <div class="odm-hero-top">
         <div class="odm-hero-lead reveal">
-          <div class="eyebrow">CUSTOM DEVICES · ODM / OEM</div>
+          <div class="eyebrow">/ ODM &amp; OEM</div>
           <h1 class="display">ODM &amp; OEM <span class="odm-hero-accent">AI Hardware</span> Development</h1>
-          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Start a Project</a>
+          <div class="odm-hero-actions">
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Start a Project</a>
+            <!-- TODO: link to the real capability overview PDF/deck once available -->
+            <a href="#" class="btn odm-btn-outline">Download Capability Overview</a>
+          </div>
         </div>
         <div class="odm-hero-note reveal">
           <p>Build custom AI voice hardware with an experienced OEM/ODM partner. From concept validation to mass production, GMIC helps software companies launch branded hardware products without building an internal hardware team.</p>
@@ -904,68 +1022,248 @@
     </div>
   </section>
 
-  <!-- ========== 3) WHAT WE PROVIDE ========== -->
-  <section class="odm-sec alt odm-provide fade-section" aria-labelledby="provide-h">
+  <!-- ========== 3) FULL-STACK CAPABILITIES ========== -->
+  <section class="odm-sec alt fade-section" id="capabilities" aria-labelledby="provide-h">
     <div class="container">
       <div class="odm-head reveal">
         <div class="eyebrow">/ WHAT WE PROVIDE</div>
-        <h2 class="section" id="provide-h">What We Provide</h2>
+        <h2 class="section" id="provide-h">Full-Stack OEM/ODM Services</h2>
+        <p class="odm-vs-intro">GMIC provides full OEM/ODM services covering the entire product development and manufacturing process.</p>
       </div>
-      <div class="svc-rows">
-      <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/custom-devices/odm-oem/Hardware-Architecture.png" alt="Hardware architecture — System and board-level design for on-device voice and edge AI." onerror="this.style.display='none'"></div>
-        <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="cpu" aria-hidden="true"></i></div>
-          <h3>Hardware architecture</h3>
+      <div class="cap-grid reveal">
+        <div class="cap-card">
+          <div class="cap-card-icon"><i data-lucide="cpu" aria-hidden="true"></i></div>
+          <h3>Hardware Architecture</h3>
           <p>System and board-level design for on-device voice and edge AI.</p>
         </div>
-      </div>
-      <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/custom-devices/odm-oem/PCB-Development-PCB.png" alt="PCB development — Schematic capture and PCB layout for compact, low-power devices." onerror="this.style.display='none'"></div>
-        <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="circuit-board" aria-hidden="true"></i></div>
-          <h3>PCB development</h3>
+        <div class="cap-card">
+          <div class="cap-card-icon"><i data-lucide="circuit-board" aria-hidden="true"></i></div>
+          <h3>PCB Development</h3>
           <p>Schematic capture and PCB layout for compact, low-power devices.</p>
         </div>
-      </div>
-      <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/custom-devices/odm-oem/Firmware-Development.png" alt="Firmware development — Embedded firmware for audio, connectivity, and power management." onerror="this.style.display='none'"></div>
-        <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="terminal" aria-hidden="true"></i></div>
-          <h3>Firmware development</h3>
+        <div class="cap-card">
+          <div class="cap-card-icon"><i data-lucide="terminal" aria-hidden="true"></i></div>
+          <h3>Firmware Development</h3>
           <p>Embedded firmware for audio, connectivity, and power management.</p>
         </div>
-      </div>
-      <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/custom-devices/odm-oem/Mechanical-Design.png" alt="Mechanical design — Industrial design and enclosures for wearable and desktop forms." onerror="this.style.display='none'"></div>
-        <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="box" aria-hidden="true"></i></div>
-          <h3>Mechanical design</h3>
+        <div class="cap-card">
+          <div class="cap-card-icon"><i data-lucide="box" aria-hidden="true"></i></div>
+          <h3>Mechanical Design</h3>
           <p>Industrial design and enclosures for wearable and desktop forms.</p>
         </div>
-      </div>
-      <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/custom-devices/odm-oem/Audio-Tuning.png" alt="Audio tuning — Microphone, beamforming, and noise-reduction tuning for clear capture." onerror="this.style.display='none'"></div>
-        <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="audio-lines" aria-hidden="true"></i></div>
-          <h3>Audio tuning</h3>
+        <div class="cap-card">
+          <div class="cap-card-icon"><i data-lucide="audio-lines" aria-hidden="true"></i></div>
+          <h3>Audio Tuning</h3>
           <p>Microphone, beamforming, and noise-reduction tuning for clear capture.</p>
         </div>
-      </div>
-      <div class="svc-row reveal">
-        <div class="svc-row-media"><img src="../../img/custom-devices/odm-oem/Manufacturing.png" alt="Manufacturing — SMT, assembly, testing, and QC for production at scale." onerror="this.style.display='none'"></div>
-        <div class="svc-row-text">
-          <div class="svc-row-icon"><i data-lucide="factory" aria-hidden="true"></i></div>
+        <div class="cap-card">
+          <div class="cap-card-icon"><i data-lucide="factory" aria-hidden="true"></i></div>
           <h3>Manufacturing</h3>
           <p>SMT, assembly, testing, and QC for production at scale.</p>
         </div>
-      </div>
+        <div class="cap-card">
+          <div class="cap-card-icon"><i data-lucide="code" aria-hidden="true"></i></div>
+          <h3>SDK &amp; API Integration</h3>
+          <p>Bluetooth/BLE behavior, Wi-Fi upload, OTA support, and cloud integration coordination.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-card-icon"><i data-lucide="flask-conical" aria-hidden="true"></i></div>
+          <h3>Prototype &amp; Validation</h3>
+          <p>EVT / DVT / PVT support from early prototype to production-ready hardware.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-card-icon"><i data-lucide="package" aria-hidden="true"></i></div>
+          <h3>Private Label &amp; Packaging</h3>
+          <p>Logo printing, laser engraving, custom packaging, retail-ready branding.</p>
+        </div>
+        <div class="cap-card">
+          <div class="cap-card-icon"><i data-lucide="badge-check" aria-hidden="true"></i></div>
+          <h3>Certification Support</h3>
+          <p>FCC, CE, UKCA, TELEC, RoHS, ISED testing coordination and documentation.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 4) TYPICAL APPLICATIONS (card carousel) ========== -->
-  <section class="odm-sec fade-section" aria-labelledby="apps-h">
+  <!-- ========== 4) MANUFACTURING FACILITY (dark, photo mosaic) ========== -->
+  <section class="mfg-sec fade-section" id="manufacturing" aria-labelledby="mfg-h">
+    <div class="container">
+      <div class="odm-head reveal" style="max-width:none">
+        <div class="eyebrow">/ MANUFACTURING</div>
+        <h2 class="section" id="mfg-h">Shenzhen Manufacturing Facility</h2>
+        <p class="mfg-lead">Our production facility in Shenzhen operates multiple SMT lines, assembly lines, and testing stations — supporting production from pilot runs to high-volume manufacturing.</p>
+      </div>
+      <div class="mfg-gallery reveal">
+        <figure class="mfg-tile">
+          <img src="../../img/custom-devices/odm-oem/factory/smt-line-1.jpg" alt="SMT production line" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=SMT+Line'">
+          <figcaption>SMT Production Line</figcaption>
+        </figure>
+        <figure class="mfg-tile">
+          <img src="../../img/custom-devices/odm-oem/factory/smt-line-2.jpg" alt="Automated SMT assembly" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=Automated+SMT'">
+          <figcaption>Automated SMT Assembly</figcaption>
+        </figure>
+        <figure class="mfg-tile">
+          <img src="../../img/custom-devices/odm-oem/factory/assembly-line.jpg" alt="Manual assembly line" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=Assembly+Line'">
+          <figcaption>Manual Assembly Line</figcaption>
+        </figure>
+        <figure class="mfg-tile">
+          <img src="../../img/custom-devices/odm-oem/factory/pcb-assembly.jpg" alt="PCB board assembly" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=PCB+Assembly'">
+          <figcaption>PCB Board Assembly</figcaption>
+        </figure>
+        <figure class="mfg-tile">
+          <img src="../../img/custom-devices/odm-oem/factory/aoi-inspection.jpg" alt="AOI inspection stations" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=AOI+Inspection'">
+          <figcaption>AOI Inspection</figcaption>
+        </figure>
+        <figure class="mfg-tile">
+          <img src="../../img/custom-devices/odm-oem/factory/testing-station.jpg" alt="Testing and validation station" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=Testing'">
+          <figcaption>Testing &amp; Validation</figcaption>
+        </figure>
+        <figure class="mfg-tile">
+          <img src="../../img/custom-devices/odm-oem/factory/burn-in-rack.jpg" alt="Aging and burn-in test racks" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=Burn-in+Test'">
+          <figcaption>Aging &amp; Burn-in Testing</figcaption>
+        </figure>
+        <figure class="mfg-tile">
+          <img src="../../img/custom-devices/odm-oem/factory/rd-design.jpg" alt="R&D and structural design" loading="lazy" onerror="this.src='https://placehold.co/600x400?text=R%26D+Design'">
+          <figcaption>R&amp;D &amp; Structural Design</figcaption>
+        </figure>
+      </div>
+      <div class="mfg-stats reveal">
+        <!-- TODO: confirm real numbers -->
+        <div class="mfg-stat"><div class="mfg-stat-num">8+</div><div class="mfg-stat-cap">SMT Lines</div></div>
+        <div class="mfg-stat"><div class="mfg-stat-num">200+</div><div class="mfg-stat-cap">Production Staff</div></div>
+        <div class="mfg-stat"><div class="mfg-stat-num">5,000m&sup2;</div><div class="mfg-stat-cap">Facility Area</div></div>
+        <div class="mfg-stat"><div class="mfg-stat-num">100K+</div><div class="mfg-stat-cap">Monthly Capacity</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5) CUSTOMIZATION OPTIONS ========== -->
+  <section class="odm-sec fade-section" id="customization" aria-labelledby="cust-h">
+    <div class="container">
+      <div class="odm-head reveal">
+        <div class="eyebrow">/ CUSTOMIZATION</div>
+        <h2 class="section" id="cust-h">Flexible Customization Options</h2>
+        <p class="odm-vs-intro">From light branding adjustments to full custom product development — we adapt to your project scope, budget, and timeline.</p>
+      </div>
+      <div class="cust-grid reveal">
+        <div class="cust-col">
+          <div class="cust-col-head">
+            <span class="cust-col-tag">OEM</span>
+            <h3>Light Customization</h3>
+          </div>
+          <ul class="cust-list">
+            <li><i data-lucide="check" aria-hidden="true"></i><span>Logo printing or laser engraving</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>Custom packaging and branding</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>Color, material, and surface finish changes</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>Firmware behavior adjustments</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>LED / vibration / notification customization</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>Battery capacity adjustment</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>Accessory customization</span></li>
+          </ul>
+        </div>
+        <div class="cust-col">
+          <div class="cust-col-head">
+            <span class="cust-col-tag">ODM</span>
+            <h3>Deep Customization</h3>
+          </div>
+          <ul class="cust-list">
+            <li><i data-lucide="check" aria-hidden="true"></i><span>Full industrial design and casing design</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>New PCB and hardware architecture</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>New mechanical structure design</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>Microphone and acoustic design</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>Custom button layout and interaction</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>Bluetooth / Wi-Fi / NFC / LTE configuration</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>Full firmware development</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>SDK / API / cloud integration</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>EVT / DVT / PVT validation</span></li>
+            <li><i data-lucide="check" aria-hidden="true"></i><span>Mass production setup</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 6) DEVELOPMENT PROCESS & TIMELINE ========== -->
+  <section class="odm-sec alt fade-section" id="process" aria-labelledby="proc-h">
+    <div class="container">
+      <div class="odm-head reveal">
+        <div class="eyebrow">/ PROCESS</div>
+        <h2 class="section" id="proc-h">From Concept to Mass Production</h2>
+        <p class="odm-vs-intro">Whether you're customizing an existing platform or building from scratch, we guide you through every milestone.</p>
+      </div>
+      <div class="reveal">
+        <div class="proc-tabs" role="tablist" aria-label="Development process">
+          <button class="proc-tab active" type="button" role="tab" aria-selected="true" data-panel="proc-oem">OEM Process</button>
+          <button class="proc-tab" type="button" role="tab" aria-selected="false" data-panel="proc-odm">ODM Process</button>
+        </div>
+
+        <div class="proc-panel active" id="proc-oem" role="tabpanel">
+          <div class="proc-steps">
+            <div class="proc-step"><div class="proc-step-num">1</div><div class="proc-step-label">Requirement Confirmation</div></div>
+            <div class="proc-step"><div class="proc-step-num">2</div><div class="proc-step-label">Sample Evaluation</div></div>
+            <div class="proc-step"><div class="proc-step-num">3</div><div class="proc-step-label">Logo / Packaging / Firmware Confirmation</div></div>
+            <div class="proc-step"><div class="proc-step-num">4</div><div class="proc-step-label">Pilot Production</div></div>
+            <div class="proc-step"><div class="proc-step-num">5</div><div class="proc-step-label">Mass Production</div></div>
+            <div class="proc-step"><div class="proc-step-num">6</div><div class="proc-step-label">QC Inspection &amp; Shipment</div></div>
+          </div>
+        </div>
+
+        <div class="proc-panel" id="proc-odm" role="tabpanel">
+          <div class="proc-steps">
+            <div class="proc-step"><div class="proc-step-num">1</div><div class="proc-step-label">Requirement Definition</div></div>
+            <div class="proc-step"><div class="proc-step-num">2</div><div class="proc-step-label">Product Architecture Planning</div></div>
+            <div class="proc-step"><div class="proc-step-num">3</div><div class="proc-step-label">Industrial Design &amp; Mechanical Design</div></div>
+            <div class="proc-step"><div class="proc-step-num">4</div><div class="proc-step-label">PCB &amp; Firmware Development</div></div>
+            <div class="proc-step"><div class="proc-step-num">5</div><div class="proc-step-label">Prototype Build</div></div>
+            <div class="proc-step"><div class="proc-step-num">6</div><div class="proc-step-label">EVT Testing</div></div>
+            <div class="proc-step"><div class="proc-step-num">7</div><div class="proc-step-label">DVT Testing</div></div>
+            <div class="proc-step"><div class="proc-step-num">8</div><div class="proc-step-label">PVT Pilot Production</div></div>
+            <div class="proc-step"><div class="proc-step-num">9</div><div class="proc-step-label">Mass Production</div></div>
+            <div class="proc-step"><div class="proc-step-num">10</div><div class="proc-step-label">Final QC &amp; Shipment</div></div>
+          </div>
+        </div>
+
+        <p class="proc-note">OEM projects with light customization typically take several weeks. Full ODM projects may take several months depending on complexity, tooling, and certification requirements.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 7) QUALITY CONTROL ========== -->
+  <section class="odm-sec fade-section" id="quality" aria-labelledby="qc-h">
+    <div class="container">
+      <div class="odm-head reveal">
+        <div class="eyebrow">/ QUALITY</div>
+        <h2 class="section" id="qc-h">Quality Control at Every Stage</h2>
+        <p class="odm-vs-intro">GMIC provides quality control throughout the production process and can provide QC reports for every order.</p>
+      </div>
+      <div class="qc-grid reveal">
+        <div class="qc-item"><span class="qc-num">1</span><span class="qc-label">Incoming Material Inspection</span></div>
+        <div class="qc-item"><span class="qc-num">2</span><span class="qc-label">PCB &amp; Component Inspection</span></div>
+        <div class="qc-item"><span class="qc-num">3</span><span class="qc-label">SMT Solder Paste Inspection</span></div>
+        <div class="qc-item"><span class="qc-num">4</span><span class="qc-label">Automated Optical Inspection (AOI)</span></div>
+        <div class="qc-item"><span class="qc-num">5</span><span class="qc-label">Functional Testing</span></div>
+        <div class="qc-item"><span class="qc-num">6</span><span class="qc-label">Audio &amp; Microphone Performance Test</span></div>
+        <div class="qc-item"><span class="qc-num">7</span><span class="qc-label">Bluetooth / Wi-Fi / BLE Connectivity Test</span></div>
+        <div class="qc-item"><span class="qc-num">8</span><span class="qc-label">Battery &amp; Charging Test</span></div>
+        <div class="qc-item"><span class="qc-num">9</span><span class="qc-label">Firmware Version Verification</span></div>
+        <div class="qc-item"><span class="qc-num">10</span><span class="qc-label">Aging &amp; Burn-in Test</span></div>
+        <div class="qc-item"><span class="qc-num">11</span><span class="qc-label">Appearance Inspection</span></div>
+        <div class="qc-item"><span class="qc-num">12</span><span class="qc-label">Final Random Inspection Before Shipment</span></div>
+      </div>
+      <p class="qc-note reveal">For customized projects, we align QC standards with your acceptance criteria and provide test reports, inspection records, and production quality documentation.</p>
+      <div class="cert-row reveal">
+        <span class="cert-badge">FCC</span>
+        <span class="cert-badge">CE</span>
+        <span class="cert-badge">UKCA</span>
+        <span class="cert-badge">TELEC</span>
+        <span class="cert-badge">RoHS</span>
+        <span class="cert-badge">ISED</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 8) TYPICAL APPLICATIONS (card carousel) ========== -->
+  <section class="odm-sec fade-section" id="applications" aria-labelledby="apps-h">
     <div class="container">
       <div class="section-head reveal">
         <div>
@@ -1036,14 +1334,131 @@
       </div>
   </section>
 
-  <!-- ========== 5) WHY GMIC — static label cards (no accordion, no stat band, no image tiles) ========== -->
+  <!-- ========== 9) SUPPLIER QUALIFICATION FAQ (accordion, light-blue band) ========== -->
+  <section class="faq-sec fade-section" id="supplier-faq" aria-labelledby="sfaq-h">
+    <div class="container">
+      <div class="odm-head reveal">
+        <div class="eyebrow">/ SUPPLIER FAQ</div>
+        <h2 class="section" id="sfaq-h">Supplier Qualification &amp; Partnership</h2>
+        <p class="odm-vs-intro">Everything procurement teams need to know about working with GMIC — from experience and references to business terms.</p>
+      </div>
+
+      <!-- Category 1 -->
+      <div class="faq-group reveal">
+        <div class="faq-group-head">Experience &amp; References</div>
+        <div class="faq-acc">
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span class="faq-q-text">How long has GMIC been in business? What products have you produced?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner"><p>GMIC is an AI hardware OEM/ODM company with manufacturing and engineering capabilities supported by our long-term factory and supply-chain team in China. We focus on purpose-built AI voice hardware, including wearable microphones, smart badges, voice recorders, AI scribe devices, Bluetooth/Wi-Fi audio devices, and customized voice-capture hardware. Our product portfolio includes MIC01, MIC02, MIC04, MIC05, MIC06, TR01, BC01, BZ01, Clinmic, Telalive, and Bizmic.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span class="faq-q-text">Do you work with international clients? Can you provide U.S. references?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner"><p>Yes. GMIC works with international clients, including companies and partners in the United States. Our U.S. presence supports business communication, sample coordination, and after-sales handling. Customer projects span AI voice companies, healthcare AI scribe solutions, field-service workflow tools, sales intelligence, and voice automation. We can provide relevant case studies or references under NDA.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 2 -->
+      <div class="faq-group reveal">
+        <div class="faq-group-head">Pricing &amp; MOQ</div>
+        <div class="faq-acc">
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span class="faq-q-text">What is your Minimum Order Quantity?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner"><p>MOQ depends on customization level. For existing platforms with light customization (logo, packaging, firmware), MOQ can be lower. For deeper ODM projects requiring new tooling and engineering, MOQ is usually higher. As a general reference, many customized projects start around 2,000 units, but final MOQ depends on product complexity.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span class="faq-q-text">What are the approximate costs per unit?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner"><p>Unit cost depends on product type, component selection, customization level, quantity, packaging, certification, and logistics. After reviewing your specification and quantity, GMIC provides an estimated BOM, tooling cost, NRE cost, sample cost, and unit price.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span class="faq-q-text">What payment methods and terms do you accept?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner"><p>Common terms include a deposit before production and balance before shipment. For ODM projects, payment may include sample fee, NRE fee, tooling fee, production deposit, and balance. Payment via bank wire transfer or other agreed business methods. Final terms confirmed in quotation or contract.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 3 -->
+      <div class="faq-group reveal">
+        <div class="faq-group-head">After-Sales &amp; Warranty</div>
+        <div class="faq-acc">
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span class="faq-q-text">Do you provide a warranty?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner"><p>Yes. Warranty covers manufacturing defects, functional defects, and hardware issues under normal use. Duration and specific terms are confirmed in the project agreement.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span class="faq-q-text">Do you offer after-sales technical support?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner"><p>Yes. Support includes product guidance, firmware troubleshooting, device testing, replacement coordination, technical documentation, SDK/API support, issue diagnosis, and production batch tracking. U.S. customers benefit from faster communication through our local presence.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span class="faq-q-text">How do you handle returns and warranty claims?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner"><p>We follow a structured process: issue reporting with evidence → GMIC review and diagnosis → sample return for inspection if needed → repair, replacement, credit, or agreed solution for confirmed defects → root cause investigation and corrective action for batch issues.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category 4 -->
+      <div class="faq-group reveal">
+        <div class="faq-group-head">Collaboration</div>
+        <div class="faq-acc">
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span class="faq-q-text">What does an ideal partnership look like?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner"><p>We work best with partners who provide clear product requirements, defined use cases, expected order quantities and timelines, branding needs, technical requirements for integration, timely feedback during development, and long-term business potential. GMIC's role is to help turn your product concept into reliable, manufacturable AI hardware.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span class="faq-q-text">Do you sign NDAs?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner"><p>Yes. We sign NDAs before discussing product concepts, proprietary technologies, firmware requirements, AI workflows, or manufacturing plans.</p></div></div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-q" type="button" aria-expanded="false">
+              <span class="faq-q-text">Do you have in-house software engineers?</span>
+              <span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-a"><div class="faq-a-inner"><p>For core device functions (firmware, BLE behavior, Wi-Fi, recording control, OTA, SDK/API integration), we provide direct engineering support. For larger software systems (mobile apps, cloud dashboards, AI platforms), we work with your software team or coordinate with trusted development partners. Our main strength is hardware, embedded firmware, device integration, and manufacturable product execution.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 10) WHY GMIC — stats + trust cards ========== -->
   <section class="odm-sec fade-section" id="why-gmic" aria-labelledby="why-h">
     <div class="container">
       <div class="odm-head reveal">
         <div class="eyebrow">/ WHY GMIC</div>
-        <h2 class="section" id="why-h">Why GMIC</h2>
+        <h2 class="section" id="why-h">Why Work With GMIC</h2>
       </div>
-      <div class="odm-stats reveal">
+      <div class="why-stats reveal">
+        <!-- TODO: confirm real numbers -->
         <div class="odm-stat">
           <div class="odm-stat-icon"><i data-lucide="award" aria-hidden="true"></i></div>
           <div class="odm-stat-top">15+ Years</div>
@@ -1056,24 +1471,59 @@
         </div>
         <div class="odm-stat">
           <div class="odm-stat-icon"><i data-lucide="headset" aria-hidden="true"></i></div>
-          <div class="odm-stat-top">US</div>
-          <div class="odm-stat-cap">Support team</div>
+          <div class="odm-stat-top">California</div>
+          <div class="odm-stat-cap">U.S. support team</div>
         </div>
         <div class="odm-stat">
           <div class="odm-stat-icon"><i data-lucide="clipboard-check" aria-hidden="true"></i></div>
           <div class="odm-stat-top">EVT / DVT / PVT</div>
-          <div class="odm-stat-cap">Experience</div>
+          <div class="odm-stat-cap">Full validation experience</div>
+        </div>
+        <div class="odm-stat">
+          <div class="odm-stat-icon"><i data-lucide="badge-check" aria-hidden="true"></i></div>
+          <div class="odm-stat-top">FCC · CE · RoHS</div>
+          <div class="odm-stat-cap">Certification support</div>
+        </div>
+        <div class="odm-stat">
+          <div class="odm-stat-icon"><i data-lucide="shield" aria-hidden="true"></i></div>
+          <div class="odm-stat-top">NDA</div>
+          <div class="odm-stat-cap">IP protection from day one</div>
+        </div>
+      </div>
+      <div class="trust-grid reveal">
+        <div class="trust-card">
+          <div class="trust-card-icon"><i data-lucide="globe" aria-hidden="true"></i></div>
+          <h3>U.S. + China Presence</h3>
+          <p>Engineering and manufacturing in Shenzhen, business support and after-sales in California.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-card-icon"><i data-lucide="workflow" aria-hidden="true"></i></div>
+          <h3>End-to-End Ownership</h3>
+          <p>One team from industrial design through firmware, manufacturing, QC, and global shipping.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-card-icon"><i data-lucide="mic" aria-hidden="true"></i></div>
+          <h3>AI Hardware Specialists</h3>
+          <p>Purpose-built for voice AI, wearable AI, and edge AI devices — not a generic contract manufacturer.</p>
+        </div>
+        <div class="trust-card">
+          <div class="trust-card-icon"><i data-lucide="sliders-horizontal" aria-hidden="true"></i></div>
+          <h3>Flexible Engagement</h3>
+          <p>From 2,000-unit pilot runs to high-volume production. Light OEM branding or full ODM development.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 6) FINAL CTA ========== -->
+  <!-- ========== 11) FINAL CTA ========== -->
   <section class="final-cta fade-section">
     <div class="container">
       <div class="eyebrow reveal">Begin</div>
       <h2 class="section reveal">Start your project</h2>
-      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue-deep reveal">Start a Project</a>
+      <div class="final-cta-actions reveal">
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue-deep">Start a Project</a>
+        <a href="../../contact/index.html" class="btn btn-ghost">Contact Us</a>
+      </div>
     </div>
   </section>
 
@@ -1114,20 +1564,20 @@
       <div class="footer-col">
         <h4>Solutions</h4>
         <ul>
-          <li><a href="../../index.html#capabilities">Edge AI Hardware</a></li>
-          <li><a href="../../index.html#capabilities">Voice AI Hardware</a></li>
-          <li><a href="../../index.html#capabilities">AI Wearable Devices</a></li>
-          <li><a href="../../index.html#capabilities">AI Hardware ODM</a></li>
-          <li><a href="../../index.html#capabilities">Embedded AI Hardware</a></li>
+          <li><a href="../../solutions/edge-ai-hardware/index.html">Edge AI Hardware</a></li>
+          <li><a href="../../solutions/voice-ai-hardware/index.html">Voice AI Hardware</a></li>
+          <li><a href="../../solutions/ai-wearable-devices/index.html">AI Wearable Devices</a></li>
+          <li><a href="../../custom-devices/odm-oem/index.html">AI Hardware ODM</a></li>
+          <li><a href="../../solutions/embedded-ai-hardware/index.html">Embedded AI Hardware</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>Industries</h4>
         <ul>
-          <li><a href="../../index.html#industries">Healthcare AI</a></li>
-          <li><a href="../../index.html#industries">Enterprise AI</a></li>
-          <li><a href="../../index.html#industries">Field Service AI</a></li>
+          <li><a href="../../industries/healthcare/index.html">Healthcare AI</a></li>
+          <li><a href="../../industries/enterprise/index.html">Enterprise AI</a></li>
+          <li><a href="../../industries/field-service/index.html">Field Service AI</a></li>
         </ul>
       </div>
 
@@ -1138,18 +1588,18 @@
           <li><a href="../../index.html#insights">Case Studies</a></li>
           <li><a href="../../index.html#process">Our Process</a></li>
           <li><a href="../../index.html#why-gmic">Engineering Capabilities</a></li>
-          <li><a href="mailto:trigg@gmic.ai">Contact</a></li>
+          <li><a href="../../contact/index.html">Contact</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>Company</h4>
         <ul>
-          <li><a href="../../index.html#why-gmic">About GMIC</a></li>
-          <li><a href="../../index.html#industries">Customer Stories</a></li>
+          <li><a href="../../about/index.html">About GMIC</a></li>
+          <li><a href="../../proof/index.html">Customer Stories</a></li>
           <li><a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener">Book a Demo</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Privacy</a></li>
+          <li style="display:none"><a href="#">Careers</a></li>
+          <li style="display:none"><a href="#">Privacy</a></li>
         </ul>
       </div>
     </div>
@@ -1157,9 +1607,9 @@
     <div class="footer-bottom">
       <div>© 2026 GMIC.AI · All rights reserved.</div>
       <div>
-        <a href="#">Privacy</a>
-        <a href="#">Terms</a>
-        <a href="#">Cookies</a>
+        <a href="#" style="display:none">Privacy</a>
+        <a href="#" style="display:none">Terms</a>
+        <a href="#" style="display:none">Cookies</a>
       </div>
     </div>
   </div>
@@ -1379,6 +1829,48 @@ document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
   function init(){ measure(); pos = clamp(pos); render(false); }
   init();
   window.addEventListener('load', init);   // re-measure once images have loaded
+})();
+</script>
+
+<!-- Supplier FAQ accordion + Development-process tabs — scoped to this page -->
+<script>
+(function(){
+  // ---- Accordion (Supplier Qualification FAQ) ----
+  document.querySelectorAll('.faq-sec .faq-q').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var ans = item.querySelector('.faq-a');
+      var isOpen = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      ans.style.maxHeight = isOpen ? (ans.scrollHeight + 'px') : '0px';
+    });
+  });
+  // Keep an open answer's height correct on resize (text reflow).
+  var rid;
+  window.addEventListener('resize', function(){
+    clearTimeout(rid);
+    rid = setTimeout(function(){
+      document.querySelectorAll('.faq-sec .faq-item.open .faq-a').forEach(function(a){
+        a.style.maxHeight = a.scrollHeight + 'px';
+      });
+    }, 120);
+  });
+
+  // ---- Process tabs (OEM / ODM) ----
+  document.querySelectorAll('.proc-tab').forEach(function(tab){
+    tab.addEventListener('click', function(){
+      var targetId = tab.getAttribute('data-panel');
+      var group = tab.parentElement;
+      group.querySelectorAll('.proc-tab').forEach(function(t){
+        var active = (t === tab);
+        t.classList.toggle('active', active);
+        t.setAttribute('aria-selected', active ? 'true' : 'false');
+      });
+      document.querySelectorAll('.proc-panel').forEach(function(p){
+        p.classList.toggle('active', p.id === targetId);
+      });
+    });
+  });
 })();
 </script>
 </body>
