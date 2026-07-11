@@ -518,17 +518,35 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 .ab-story-body { font-size: 0.9375rem; color: #666; line-height: 1.78; margin-top: 20px; }
 .ab-story-body p + p { margin-top: 16px; }
 .ab-story-logos {
-  background: #f8f8f8;
   width: 100%;
-  height: 460px;
-  border-radius: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  gap: 24px;
+}
+.ab-story-logos .divider { font-size: 1.5rem; color: #ccc; line-height: 1; }
+/* Company cards: individual bordered card; logo + description stacked and centered */
+.ab-company-card {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 48px;
+  text-align: center;
+  gap: 16px;
+  height: 100%;
+  padding: 32px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  transition: box-shadow .2s ease, transform .2s ease;
 }
-.ab-story-logos .divider { font-size: 1.5rem; color: #ccc; line-height: 1; }
+.ab-company-card:hover {
+  box-shadow: 0 10px 28px rgba(15,23,42,.10);
+  transform: translateY(-2px);
+}
+.ab-company-info { display: flex; flex-direction: column; align-items: center; gap: 12px; min-width: 0; }
+.ab-company-info img { max-height: 60px; width: auto; max-width: 100%; object-fit: contain; display: block; }
+.ab-company-desc { font-size: 0.85rem; color: #888; line-height: 1.4; text-align: center; }
 
 /* ---------- 4. GLOBAL OFFICES ---------- */
 .ab-offices { background: #fff; padding: 96px 0; border-top: 1px solid #f0f0f0; }
@@ -695,8 +713,8 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 .ab-team-name { font-size: 1rem; font-weight: 600; color: #fff; }
 .ab-team-role { font-size: 0.875rem; color: #555; margin-top: 5px; line-height: 1.4; }
 .ab-team-bio {
-  font-size: 0.875rem;
-  color: #666;
+  font-size: 14px;
+  color: #9ca3af;
   line-height: 1.72;
   margin-top: 14px;
   padding-top: 14px;
@@ -835,7 +853,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 
   .ab-story { padding: 64px 0; }
   .ab-story-grid { grid-template-columns: 1fr; gap: 40px; }
-  .ab-story-logos { height: 280px; }
+  .ab-story-logos { grid-template-columns: 1fr; gap: 20px; }
   .ab-story-logos img { max-width: 140px; }
 
   .ab-offices { padding: 64px 0; }
@@ -1162,8 +1180,8 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
       <div class="ab-stat-label">Projects delivered</div>
     </div>
     <div class="ab-stat">
-      <div class="ab-stat-num">2</div>
-      <div class="ab-stat-label">Offices — US &amp; Shenzhen</div>
+      <div class="ab-stat-num">3</div>
+      <div class="ab-stat-label">Offices — US, Shenzhen &amp; Changsha</div>
     </div>
   </div>
 </section>
@@ -1181,8 +1199,18 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
     </div>
     <div>
       <div class="ab-story-logos">
-        <img src="../img/gangstrong-logo.png" style="max-width:200px;width:100%;object-fit:contain;" alt="Gainstrong">
-        <img src="../img/gmic-logo.png" style="max-width:160px;width:100%;object-fit:contain;" alt="GMIC AI">
+        <div class="ab-company-card">
+          <div class="ab-company-info">
+            <img src="../img/gangstrong-logo.png" alt="Gainstrong">
+            <span class="ab-company-desc">Manufacturing group · since 2009</span>
+          </div>
+        </div>
+        <div class="ab-company-card">
+          <div class="ab-company-info">
+            <img src="../img/gmic-logo.png" alt="GMIC AI INC.">
+            <span class="ab-company-desc">AI hardware division</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1217,8 +1245,8 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           <div class="ab-office-city">Shenzhen, China</div>
           <div class="ab-office-role">Manufacturing &amp; Engineering HQ</div>
           <div class="ab-office-lines">
-            深圳市宝安区，广东省，中国<br>
-            <a href="mailto:info@gmic.ai">info@gmic.ai</a>
+            Bao'an District, Shenzhen, Guangdong, China<br>
+            <a href="mailto:swallow@gmic.ai">swallow@gmic.ai</a>
           </div>
           <div class="ab-office-chip">Manufacturing &amp; Engineering HQ</div>
         </div>
@@ -1557,5 +1585,6 @@ if (typeof lucide !== 'undefined') lucide.createIcons();
 })();
 </script>
 
+<script src="../js/products-mega-menu.js"></script>
 </body>
 </html>
