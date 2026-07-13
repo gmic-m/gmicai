@@ -642,7 +642,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
   <div class="ab-wrap">
     <div class="po-eyebrow">Products</div>
     <h1>AI hardware for voice capture, phone entry, and smart devices.</h1>
-    <p class="po-hero-sub">Browse the full hearit.ai product catalog. All devices are available for B2B evaluation, ODM/OEM, and private label programs.</p>
+    <p class="po-hero-sub">Browse the full gmic.ai product catalog. All devices are available for B2B evaluation, ODM/OEM, and private label programs.</p>
   </div>
 </section>
 
@@ -1400,6 +1400,21 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 
   // Initial render
   renderPage(1);
+
+  // Activate a tab on load via ?category= (e.g. homepage category cards link here).
+  // Accepts a data-filter value directly (wearable, phone, speaker, headset, smart, dev, all).
+  function applyCategoryFromQuery(){
+    var params = new URLSearchParams(location.search);
+    var cat = (params.get('category') || '').toLowerCase().trim();
+    if(!cat) return;
+    var tab = Array.prototype.find.call(tabs, function(t){ return t.getAttribute('data-filter') === cat; });
+    if(!tab) return;
+    tabs.forEach(function(t){ t.classList.remove('active'); });
+    tab.classList.add('active');
+    activeFilter = cat;
+    reset();
+  }
+  applyCategoryFromQuery();
 
   // Smooth-scroll to a product when arriving via #anchor (e.g. from the Products mega menu).
   // Flips to the pagination page holding the card first, since later pages are hidden.
