@@ -3,9 +3,31 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI Hardware ODM — Resource Guide | GMIC.AI</title>
-<meta name="description" content="A complete guide to AI hardware ODM — from prototype development and firmware to manufacturing and certifications." />
+<title>AI Hardware ODM — Complete Guide to AI Hardware Development &amp; Manufacturing | GMIC AI</title>
+<meta name="description" content="The definitive guide to AI hardware ODM for AI startups, enterprise teams, and product managers. Covers ODM vs OEM, prototype development, firmware, audio DSP, manufacturing, certifications, and choosing the right hardware partner." />
 <link rel="canonical" href="https://gmic.ai/resources/ai-hardware-odm/" />
+
+<!-- FAQ structured data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Question placeholder 1", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
+    { "@type": "Question", "name": "Question placeholder 2", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
+    { "@type": "Question", "name": "Question placeholder 3", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
+    { "@type": "Question", "name": "Question placeholder 4", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
+    { "@type": "Question", "name": "Question placeholder 5", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
+    { "@type": "Question", "name": "Question placeholder 6", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
+    { "@type": "Question", "name": "Question placeholder 7", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
+    { "@type": "Question", "name": "Question placeholder 8", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
+    { "@type": "Question", "name": "Question placeholder 9", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
+    { "@type": "Question", "name": "Question placeholder 10", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
+    { "@type": "Question", "name": "Question placeholder 11", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
+    { "@type": "Question", "name": "Question placeholder 12", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } }
+  ]
+}
+</script>
 <link rel="icon" type="image/png" href="../../img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -833,40 +855,741 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 <!-- Sentinel for ../../js/main.js (reads .hero offsetHeight); hidden, harmless. -->
 <div class="hero" aria-hidden="true" style="display:none"></div>
 
-<!-- ========== HERO ========== -->
-<header class="ind-hero fade-section">
+<!-- ================= PILLAR PAGE FRAMEWORK ================= -->
+<style>
+  /* ---- Page-scoped tokens (aligned to the main site design system) ---- */
+  .pz { --pz-blue:#2563eb; --pz-head:#0f172a; --pz-ink:#0a0a0a; --pz-body:#475569;
+        --pz-muted:#6b7280; --pz-line:rgba(0,0,0,0.08); --pz-hair:#eef2f7;
+        --pz-alt:#f8fafc; --pz-radius:14px; }
+
+  /* Keep the shared fixed nav legible on this white page (nav is transparent until scrolled) */
+  .nav:not(.scrolled) .nav-links a { color:#334155; }
+  .nav:not(.scrolled) .nav-links a:hover { color:#0f172a; }
+  .nav:not(.scrolled) .nav-logo-svg { color:#0f172a; }
+  .nav:not(.scrolled) .nav-burger span { background:#0f172a; }
+  .nav:not(.scrolled) .nav-arrow { color:#334155; }
+
+  /* ---- Reading progress bar (thin, site primary blue) ---- */
+  .pz-progress { position:fixed; top:0; left:0; height:2px; width:0%;
+    background:var(--pz-blue); z-index:200; transition:width .08s linear; }
+
+  /* ---- Hero (matches the site's hero scale & eyebrow) ---- */
+  .pz-hero { background:#fff; padding:128px 0 56px; border-bottom:1px solid rgba(0,0,0,0.06); }
+  .pz-hero .pz-eyebrow { font-family:var(--sans); font-size:12px; font-weight:500;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:18px; }
+  .pz-hero h1 { font-family:var(--sans); font-size:clamp(34px,4.6vw,58px); font-weight:800;
+    line-height:1.05; letter-spacing:-0.03em; color:var(--pz-head); margin-bottom:22px; }
+  .pz-hero .pz-sub { max-width:640px; font-family:var(--sans); font-size:1.05rem; line-height:1.6;
+    color:var(--pz-body); margin-bottom:32px; }
+  .pz-hero-cta { display:flex; flex-wrap:wrap; gap:14px; }
+
+  /* ---- Buttons: mirror the site's .btn + .btn-blue-deep / ghost ---- */
+  .pz-btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--sans);
+    font-size:14.5px; font-weight:500; padding:14px 22px; border-radius:100px;
+    transition:all .25s ease; white-space:nowrap; }
+  .pz-btn-primary { background:var(--pz-blue); color:#fff; }
+  .pz-btn-primary:hover { background:#1d4ed8; transform:translateY(-1px); }
+  .pz-btn-ghost { background:transparent; color:var(--pz-head); border:1px solid rgba(0,0,0,0.15); }
+  .pz-btn-ghost:hover { border-color:var(--pz-blue); color:var(--pz-blue); }
+
+  /* ---- 2-column layout ---- */
+  .pz-layout { padding:72px 0 96px; background:#fff; }
+  .pz-grid { display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:72px; align-items:start; }
+  .pz-main { min-width:0; }
+
+  /* ---- Content typography (site body: Inter, comfortable measure) ---- */
+  .pz-main p { max-width:720px; font-family:var(--sans); font-size:16px; line-height:1.7;
+    color:var(--pz-body); margin:0 0 18px; }
+  .pz-section { scroll-margin-top:96px; }
+  .pz-section h2 { font-family:var(--sans); font-weight:800; font-size:clamp(26px,2.4vw,34px);
+    line-height:1.15; letter-spacing:-0.025em; color:var(--pz-head);
+    margin:56px 0 20px; padding-top:48px; border-top:1px solid var(--pz-line); }
+  .pz-section:first-of-type h2 { margin-top:0; padding-top:0; border-top:none; }
+  .pz-section h3 { font-family:var(--sans); font-size:1.15rem; font-weight:700;
+    letter-spacing:-0.01em; color:var(--pz-head); margin:32px 0 10px; }
+
+  /* ---- Comparison tables (clean & minimal — subtle gray header, thin hairlines) ---- */
+  .pz-table-wrap { max-width:720px; overflow-x:auto; border:1px solid var(--pz-line);
+    border-radius:var(--pz-radius); margin:20px 0 28px; -webkit-overflow-scrolling:touch; }
+  table.pz-table { width:100%; border-collapse:collapse; font-size:14.5px; min-width:520px; }
+  .pz-table thead th { background:var(--pz-alt); color:var(--pz-head); font-weight:600; text-align:left;
+    padding:14px 18px; white-space:nowrap; border-bottom:1px solid var(--pz-line); }
+  .pz-table tbody td { padding:14px 18px; border-top:1px solid var(--pz-hair);
+    color:var(--pz-body); vertical-align:top; }
+  .pz-table tbody td:first-child { font-weight:600; color:var(--pz-head); }
+
+  /* ---- Callout boxes (simplified: 3px border, faint tint, quiet uppercase label) ---- */
+  .pz-callout { max-width:720px; padding:18px 22px; border-radius:var(--pz-radius);
+    border-left:3px solid; margin:22px 0 26px; }
+  .pz-callout .pz-callout-label { display:block; font-family:var(--sans); font-size:12px;
+    font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--pz-muted); margin-bottom:6px; }
+  .pz-callout p { font-family:var(--sans); font-size:15px; line-height:1.7; color:var(--pz-body); margin:0; }
+  .pz-callout.tip { border-color:#2563eb; background:#f6f9ff; }
+  .pz-callout.best { border-color:#16a34a; background:#f5faf6; }
+  .pz-callout.insight { border-color:#7c3aed; background:#f9f7fd; }
+
+  /* ---- Internal link cards (quiet, hairline border) ---- */
+  .pz-ilink { display:inline-flex; align-items:center; gap:10px; width:min(80%,560px);
+    background:#fff; border:1px solid var(--pz-line); border-radius:var(--pz-radius);
+    padding:14px 18px; margin:14px 0 22px; font-family:var(--sans); font-size:14.5px; font-weight:600;
+    color:var(--pz-head); transition:border-color .2s ease, color .2s ease; }
+  .pz-ilink:hover { border-color:var(--pz-blue); color:var(--pz-blue); }
+  .pz-ilink svg { flex:0 0 auto; width:18px; height:18px; stroke:var(--pz-blue); }
+  .pz-ilink .pz-ilink-txt { flex:1; }
+
+  /* ---- Image placeholder box (legacy; kept harmless) ---- */
+  .pz-imgph { max-width:720px; border:1px dashed rgba(0,0,0,0.14); border-radius:var(--pz-radius);
+    background:var(--pz-alt); color:var(--pz-muted); text-align:center; padding:40px 24px;
+    margin:20px 0 28px; font-family:var(--sans); font-size:14px; line-height:1.6; }
+  .pz-imgph strong { display:block; color:var(--pz-head); font-weight:600; margin-bottom:4px; }
+  /* Placeholder images (framed, cropped to a consistent ratio) */
+  .pz-img { max-width:720px; margin:20px 0 28px; border-radius:var(--pz-radius);
+    overflow:hidden; border:1px solid var(--pz-line); aspect-ratio:16/9; background:var(--pz-alt); }
+  .pz-img img { display:block; width:100%; height:100%; object-fit:cover; }
+
+  /* ---- Mid-article CTA bands (match the site's CTA sections) ---- */
+  .pz-cta-band { max-width:720px; border-radius:var(--pz-radius); padding:38px 40px; margin:44px 0;
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+  .pz-cta-band.light { background:var(--pz-alt); border:1px solid var(--pz-line); }
+  .pz-cta-band.dark  { background:var(--black); }
+  .pz-cta-band .pz-cta-text { font-family:var(--sans); font-size:1.25rem; font-weight:700;
+    letter-spacing:-0.015em; line-height:1.3; }
+  .pz-cta-band.light .pz-cta-text { color:var(--pz-head); }
+  .pz-cta-band.dark  .pz-cta-text { color:#fff; }
+
+  /* ---- External citation refs ---- */
+  .pz-ref { font-size:11px; font-weight:600; color:var(--pz-blue); vertical-align:super;
+    line-height:0; text-decoration:none; padding:0 1px; }
+  .pz-ref:hover { text-decoration:underline; }
+  .pz-references { max-width:720px; }
+  .pz-references ol { margin:16px 0 0; padding-left:20px; }
+  .pz-references li { font-family:var(--sans); font-size:14.5px; line-height:1.7; color:var(--pz-muted);
+    margin-bottom:8px; scroll-margin-top:96px; }
+  .pz-references li a { color:var(--pz-blue); word-break:break-word; }
+
+  /* ---- FAQ accordion (matches the ODM page FAQ exactly) ---- */
+  .pz-faq { max-width:760px; margin-top:8px; background:#fff;
+    border:1px solid rgba(0,0,0,0.06); border-radius:var(--pz-radius); overflow:hidden; }
+  .pz-faq-item { border-bottom:1px solid var(--pz-hair); }
+  .pz-faq-item:last-child { border-bottom:none; }
+  .pz-faq-q { width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    text-align:left; background:none; border:none; padding:20px 24px; cursor:pointer;
+    font-family:var(--sans); font-size:1.0625rem; font-weight:600; color:var(--pz-ink); line-height:1.4; }
+  .pz-faq-icon { flex-shrink:0; width:28px; height:28px; position:relative; color:#9ca3af; transition:color .18s; }
+  .pz-faq-icon::before, .pz-faq-icon::after { content:''; position:absolute; background:currentColor;
+    border-radius:2px; top:50%; left:50%; }
+  .pz-faq-icon::before { width:14px; height:2px; transform:translate(-50%,-50%); }
+  .pz-faq-icon::after  { width:2px; height:14px; transform:translate(-50%,-50%); transition:transform .25s ease; }
+  .pz-faq-item.open .pz-faq-icon { color:#2563eb; }
+  .pz-faq-item.open .pz-faq-icon::after { transform:translate(-50%,-50%) scaleY(0); }
+  .pz-faq-a { max-height:0; overflow:hidden; transition:max-height .3s ease; }
+  .pz-faq-a-inner { padding:0 24px 22px; font-family:var(--sans); font-size:0.95rem; color:#5b6472; line-height:1.72; }
+
+  /* ================= STICKY TOC (right sidebar) ================= */
+  .pz-toc-aside { position:sticky; top:100px; align-self:start; }
+  .pz-toc-title { font-family:var(--sans); font-size:12px; font-weight:500; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--text-muted); margin-bottom:16px; }
+  .pz-toc-list { list-style:none; margin:0; padding:0; border-left:1px solid var(--pz-line); }
+  .pz-toc-list a { display:block; font-family:var(--sans); font-size:13px; font-weight:500; color:var(--pz-muted);
+    line-height:1.45; padding:8px 0 8px 16px; margin-left:-1px; border-left:2px solid transparent;
+    transition:color .15s ease, border-color .15s ease; }
+  .pz-toc-list a:hover { color:var(--pz-head); }
+  .pz-toc-list a.active { color:var(--pz-blue); font-weight:600; border-left-color:var(--pz-blue); }
+
+  /* ---- Tablet: horizontal sticky bar with dropdown ---- */
+  .pz-toc-bar { display:none; }
+  .pz-toc-bar { position:sticky; top:64px; z-index:90; background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(180%) blur(10px); -webkit-backdrop-filter:saturate(180%) blur(10px);
+    border-bottom:1px solid var(--pz-line); }
+  .pz-toc-bar-inner { display:flex; align-items:center; gap:12px; padding:12px 0; }
+  .pz-toc-bar-btn { display:flex; align-items:center; gap:8px; font-family:var(--sans); font-size:14px;
+    font-weight:600; color:var(--pz-head); background:none; border:none; cursor:pointer; }
+  .pz-toc-bar-btn svg { width:16px; height:16px; stroke:var(--pz-blue); transition:transform .25s ease; }
+  .pz-toc-bar.open .pz-toc-bar-btn svg { transform:rotate(180deg); }
+  .pz-toc-bar-current { font-family:var(--sans); font-size:13px; color:var(--pz-muted); }
+
+  /* ---- Floating panel (shared by tablet dropdown + mobile slide-up) ---- */
+  /* bottom-LEFT to avoid the site's centered mic FAB and bottom-right back-to-top button */
+  .pz-toc-fab { display:none; position:fixed; left:20px; bottom:88px; z-index:320;
+    align-items:center; gap:8px; background:var(--pz-blue); color:#fff; border:none;
+    border-radius:100px; padding:13px 20px; font-family:var(--sans); font-size:14px; font-weight:500; cursor:pointer;
+    box-shadow:0 6px 18px rgba(0,0,0,0.16); }
+  .pz-toc-fab svg { width:18px; height:18px; stroke:#fff; }
+  .pz-toc-overlay { position:fixed; inset:0; background:rgba(10,22,40,.4); z-index:400;
+    opacity:0; visibility:hidden; transition:opacity .25s ease, visibility .25s ease; }
+  .pz-toc-overlay.open { opacity:1; visibility:visible; }
+  .pz-toc-floating { position:fixed; left:0; right:0; bottom:0; z-index:410; background:#fff;
+    border-radius:20px 20px 0 0; padding:8px 20px 28px; max-height:70vh; overflow-y:auto;
+    transform:translateY(100%); transition:transform .3s cubic-bezier(.4,0,.2,1); box-shadow:0 -8px 40px rgba(0,0,0,.15); }
+  .pz-toc-floating.open { transform:translateY(0); }
+  .pz-toc-floating .pz-toc-handle { width:40px; height:4px; border-radius:2px; background:#d5dae3; margin:8px auto 16px; }
+  .pz-toc-floating .pz-toc-title { padding:0 4px; }
+  .pz-toc-floating .pz-toc-list a { font-size:15px; padding:12px 16px; }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width:1024px) {
+    .pz-grid { grid-template-columns:1fr; gap:0; }
+    .pz-toc-aside { display:none; }
+    .pz-toc-bar { display:block; }
+    .pz-hero { padding-top:116px; }
+  }
+  /* Tablet: render the shared panel as a dropdown anchored under the sticky bar */
+  @media (min-width:641px) and (max-width:1024px) {
+    .pz-toc-overlay { background:transparent; }
+    .pz-toc-floating { top:112px; bottom:auto; left:clamp(20px,4vw,80px); right:auto;
+      width:360px; max-width:calc(100vw - 40px); max-height:60vh; border-radius:12px;
+      transform:translateY(-8px); opacity:0; visibility:hidden; pointer-events:none;
+      box-shadow:0 12px 32px rgba(0,0,0,.12); border:1px solid var(--pz-line);
+      transition:opacity .2s ease, transform .2s ease, visibility .2s ease; }
+    .pz-toc-floating.open { transform:translateY(0); opacity:1; visibility:visible; pointer-events:auto; }
+    .pz-toc-floating .pz-toc-handle { display:none; }
+    .pz-toc-floating .pz-toc-list a { font-size:14px; padding:9px 14px; }
+  }
+  @media (max-width:640px) {
+    .pz-toc-bar { display:none; }
+    .pz-toc-fab { display:inline-flex; }
+    .pz-cta-band { flex-direction:column; align-items:flex-start; padding:28px 26px; }
+  }
+  /* Desktop: no floating panel needed */
+  @media (min-width:1025px) {
+    .pz-toc-fab, .pz-toc-overlay, .pz-toc-floating { display:none !important; }
+  }
+</style>
+
+<div class="pz">
+<!-- Reading progress bar -->
+<div class="pz-progress" id="pzProgress" role="progressbar" aria-label="Reading progress"></div>
+
+<!-- ========== HERO (full-width) ========== -->
+<header class="pz-hero">
   <div class="container">
-    <div class="ind-hero-top reveal">
-      <div class="ind-hero-lead">
-        <div class="eyebrow dark">/ RESOURCES</div>
-        <h1 class="display">AI Hardware ODM</h1>
-      </div>
-      <div class="ind-hero-aside">
-        <p class="lede">A complete guide to AI hardware ODM — from prototype development and firmware to manufacturing and certifications.</p>
-      </div>
+    <div class="pz-eyebrow">Resource</div>
+    <h1>AI Hardware ODM</h1>
+    <p class="pz-sub">Placeholder subtitle — marketing copy will go here. A concise, benefit-led overview of what an AI hardware ODM does and why AI companies partner with one to develop and manufacture their devices.</p>
+    <div class="pz-hero-cta">
+      <a href="../../contact/index.html" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
+      <a href="../../contact/index.html" class="pz-btn pz-btn-ghost">Request a Prototype Consultation</a>
     </div>
   </div>
 </header>
 
-<!-- ========== CONTENT (placeholder) ========== -->
-<style>
-  .rz-soon { max-width: 640px; margin: 0 auto; text-align: center; padding: 40px 0; }
-  .rz-soon-badge { width: 56px; height: 56px; border-radius: 14px; background: #eef3ff;
-    display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; }
-  .rz-soon-badge [data-lucide] { width: 26px; height: 26px; stroke: #2563eb; stroke-width: 1.8; }
-  .rz-soon h2 { margin: 0 0 12px; }
-  .rz-soon p { color: #475569; font-size: 1.05rem; line-height: 1.6; margin: 0 auto 24px; max-width: 520px; }
-</style>
-<section class="ind-sec ind-sec--soft fade-section">
+<!-- ========== TABLET STICKY TOC BAR ========== -->
+<div class="pz-toc-bar" id="pzTocBar">
   <div class="container">
-    <div class="rz-soon reveal">
-      <div class="rz-soon-badge"><i data-lucide="hard-hat" aria-hidden="true"></i></div>
-      <h2 class="section">Content coming soon</h2>
-      <p>We're putting together an in-depth resource on this topic. Check back shortly — or reach out if you'd like to talk in the meantime.</p>
-      <a href="../../contact/index.html" class="btn btn-blue">Contact us</a>
+    <div class="pz-toc-bar-inner">
+      <button class="pz-toc-bar-btn" id="pzTocBarBtn" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        On this page
+      </button>
+      <span class="pz-toc-bar-current" id="pzTocBarCurrent"></span>
     </div>
   </div>
-</section>
+</div>
+
+<!-- ========== 2-COLUMN LAYOUT ========== -->
+<div class="pz-layout">
+  <div class="container">
+    <div class="pz-grid">
+
+      <!-- ===== MAIN CONTENT ===== -->
+      <main class="pz-main">
+
+        <!-- Scoped checklist component (only used on this page) -->
+        <style>
+          .pz-checklist { max-width:720px; list-style:none; margin:16px 0 8px; padding:0; }
+          .pz-checklist li { display:flex; align-items:flex-start; gap:12px; padding:13px 0;
+            border-bottom:1px solid var(--pz-line); font-size:16px; line-height:1.6; color:var(--pz-body); }
+          .pz-checklist li svg { flex:0 0 auto; width:20px; height:20px; stroke:#16a34a; margin-top:2px; }
+          .pz-checklist li strong { color:var(--pz-ink); font-weight:600; }
+        </style>
+
+        <section class="pz-section" id="what-is-ai-hardware-odm" data-toc="What Is AI Hardware ODM?">
+          <h2>What Is AI Hardware ODM?</h2>
+          <p>Content coming soon. This section will define AI hardware ODM and set the foundation for the rest of the guide.</p>
+        </section>
+
+        <section class="pz-section" id="odm-vs-oem" data-toc="ODM vs OEM">
+          <h2>ODM vs OEM</h2>
+          <p>Content coming soon. This section will explain the difference between ODM and OEM and when each model fits.</p>
+          <h3 style="font-size:16px;color:#555;font-weight:600;">ODM vs. OEM</h3>
+          <div class="pz-table-wrap">
+            <table class="pz-table">
+              <thead><tr><th>Feature</th><th>ODM</th><th>OEM</th></tr></thead>
+              <tbody>
+                <tr><td>Design ownership</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Time to market</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Customization</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Upfront cost</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Best for</td><td>Placeholder</td><td>Placeholder</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <a href="../../custom-devices/odm-oem/index.html" class="pz-ilink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="pz-ilink-txt">Read more: ODM vs OEM →</span>
+          </a>
+        </section>
+
+        <section class="pz-section" id="prototype-development" data-toc="Prototype Development">
+          <h2>Prototype Development</h2>
+          <p>Content coming soon. This section will walk through the journey from concept to a production-ready prototype.</p>
+
+          <h3>Product Discovery</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Industrial Design</h3>
+          <p>Content coming soon.</p>
+
+          <h3>PCB &amp; PCBA Design</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Firmware Development</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Mechanical Design &amp; Rapid Prototyping</h3>
+          <p>Content coming soon.</p>
+
+          <h3>EVT / DVT / PVT</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Pilot Production to Mass Production</h3>
+          <p>Content coming soon.</p>
+
+          <!-- TODO: replace with final image -->
+          <figure class="pz-img">
+            <img src="../../img/custom-devices/odm-oem/manufacturing/PCB-Board-Assembly.jpg" alt="Placeholder: manufacturing workflow from concept to mass production" loading="lazy">
+          </figure>
+
+          <h3 style="font-size:16px;color:#555;font-weight:600;">Prototype vs. Production</h3>
+          <div class="pz-table-wrap">
+            <table class="pz-table">
+              <thead><tr><th>Phase</th><th>Typical Activities</th><th>Timeline</th><th>Cost Drivers</th></tr></thead>
+              <tbody>
+                <tr><td>Prototype</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>EVT</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>DVT</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>PVT</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Mass Production</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <a href="../../process/index.html" class="pz-ilink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="pz-ilink-txt">Read more: Prototype Development →</span>
+          </a>
+
+          <div class="pz-cta-band light">
+            <span class="pz-cta-text">Have a product idea? Let's discuss your prototype.</span>
+            <a href="../../contact/index.html" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
+          </div>
+        </section>
+
+        <section class="pz-section" id="firmware-development" data-toc="Firmware Development">
+          <h2>Firmware Development</h2>
+          <p>Content coming soon. This section covers the firmware layer that brings AI hardware to life.</p>
+
+          <h3>Embedded Firmware &amp; MCU Programming</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Bluetooth &amp; Wi-Fi Connectivity</h3>
+          <p>Content coming soon.</p>
+
+          <h3>OTA Updates</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Power Management</h3>
+          <p>Content coming soon.</p>
+
+          <h3>SDK Integration &amp; Cloud Connectivity</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Security</h3>
+          <p>Content coming soon.</p>
+
+          <h3 style="font-size:16px;color:#555;font-weight:600;">Firmware Responsibilities</h3>
+          <div class="pz-table-wrap">
+            <table class="pz-table">
+              <thead><tr><th>Area</th><th>What It Covers</th><th>Why It Matters</th></tr></thead>
+              <tbody>
+                <tr><td>Connectivity</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>OTA Updates</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Power Management</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Security</td><td>Placeholder</td><td>Placeholder</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pz-callout insight">
+            <span class="pz-callout-label">Engineering Insight</span>
+            <p>Placeholder insight. A firmware engineering lesson relevant to AI hardware will appear here.</p>
+          </div>
+          <a href="../../solutions/embedded-ai-hardware/index.html" class="pz-ilink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="pz-ilink-txt">Read more: Firmware Development →</span>
+          </a>
+        </section>
+
+        <section class="pz-section" id="audio-dsp" data-toc="Audio DSP">
+          <h2>Audio DSP</h2>
+          <p>Content coming soon. This section covers the audio signal processing that makes voice capture reliable.</p>
+
+          <h3>Beamforming &amp; Microphone Arrays</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Echo Cancellation &amp; Noise Suppression</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Voice Activity Detection &amp; Speaker Diarization</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Audio DSP for Healthcare &amp; Voice AI</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Audio DSP for Field Service &amp; Enterprise</h3>
+          <p>Content coming soon.</p>
+
+          <div class="pz-callout tip">
+            <span class="pz-callout-label">Expert Tip</span>
+            <p>Placeholder tip. A practical audio DSP recommendation will appear here.</p>
+          </div>
+          <a href="../../solutions/voice-ai-hardware/index.html" class="pz-ilink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="pz-ilink-txt">Read more: Audio DSP →</span>
+          </a>
+        </section>
+
+        <section class="pz-section" id="manufacturing" data-toc="Manufacturing">
+          <h2>Manufacturing</h2>
+          <p>Content coming soon. This section covers taking a validated design into volume manufacturing.</p>
+
+          <h3>Supply Chain &amp; Component Sourcing</h3>
+          <p>Content coming soon.</p>
+
+          <h3>DFM &amp; DFA</h3>
+          <p>Content coming soon.</p>
+
+          <h3>SMT &amp; Assembly</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Testing &amp; Quality Control</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Mass Production &amp; Packaging</h3>
+          <p>Content coming soon.</p>
+
+          <h3>White-Label Manufacturing</h3>
+          <p>Content coming soon.</p>
+
+          <h3 style="font-size:16px;color:#555;font-weight:600;">Manufacturing Stages</h3>
+          <div class="pz-table-wrap">
+            <table class="pz-table">
+              <thead><tr><th>Stage</th><th>Description</th><th>Key Deliverables</th></tr></thead>
+              <tbody>
+                <tr><td>Sourcing</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>SMT &amp; Assembly</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Testing &amp; QC</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Packaging</td><td>Placeholder</td><td>Placeholder</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- TODO: replace with final image -->
+          <figure class="pz-img">
+            <img src="../../img/custom-devices/odm-oem/manufacturing/Manual-Assembly-Line.png" alt="Placeholder: factory floor with SMT line, assembly, and QA stations" loading="lazy">
+          </figure>
+
+          <div class="pz-callout best">
+            <span class="pz-callout-label">Best Practice</span>
+            <p>Placeholder best practice. A recommended approach for de-risking manufacturing will appear here.</p>
+          </div>
+          <a href="../../process/index.html" class="pz-ilink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="pz-ilink-txt">Read more: AI Hardware Manufacturing →</span>
+          </a>
+
+          <div class="pz-cta-band dark">
+            <span class="pz-cta-text">Ready for production? Talk to our manufacturing team.</span>
+            <a href="../../contact/index.html" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
+          </div>
+        </section>
+
+        <section class="pz-section" id="certifications" data-toc="Certifications">
+          <h2>Certifications</h2>
+          <p>Content coming soon. This section covers the certifications required to ship AI hardware globally.</p>
+
+          <h3>FCC &amp; CE</h3>
+          <p>Content coming soon.</p>
+
+          <h3>RoHS &amp; REACH</h3>
+          <p>Content coming soon.</p>
+
+          <h3>UL &amp; Battery Certifications</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Bluetooth SIG &amp; Wi-Fi Alliance</h3>
+          <p>Content coming soon.</p>
+
+          <h3>Medical Certifications</h3>
+          <p>Content coming soon.</p>
+
+          <h3 style="font-size:16px;color:#555;font-weight:600;">Certification Comparison</h3>
+          <div class="pz-table-wrap">
+            <table class="pz-table">
+              <thead><tr><th>Certification</th><th>Region</th><th>Applies To</th><th>Typical Timeline</th></tr></thead>
+              <tbody>
+                <tr><td>FCC</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>CE</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>RoHS</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>UL</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pz-callout best">
+            <span class="pz-callout-label">Best Practice</span>
+            <p>Placeholder — plan certifications early. Building certification requirements into the design phase avoids costly redesigns late in the program.</p>
+          </div>
+          <a href="../../contact/index.html" class="pz-ilink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+            <span class="pz-ilink-txt">Read more: AI Hardware Certifications →</span>
+          </a>
+        </section>
+
+        <section class="pz-section" id="choose-odm-partner" data-toc="Why Choose an ODM Partner?">
+          <h2>Why Choose an AI Hardware ODM Partner?</h2>
+          <p>Content coming soon. What to look for when evaluating an AI hardware ODM partner:</p>
+          <ul class="pz-checklist">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Engineering capability</strong> — placeholder.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Embedded systems &amp; firmware</strong> — placeholder.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Acoustics &amp; audio DSP</strong> — placeholder.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Supply chain &amp; manufacturing</strong> — placeholder.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Certification experience</strong> — placeholder.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Mass production capability</strong> — placeholder.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Long-term support</strong> — placeholder.</span></li>
+          </ul>
+        </section>
+
+        <section class="pz-section" id="why-gmic" data-toc="Why GMIC AI">
+          <h2>Why GMIC AI</h2>
+          <p>Content coming soon. Why AI companies choose GMIC AI as their hardware ODM partner.</p>
+          <div class="pz-cta-band light">
+            <span class="pz-cta-text">Ready to start your AI hardware project?</span>
+            <a href="../../contact/index.html" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
+          </div>
+        </section>
+
+        <div class="pz-cta-band dark">
+          <span class="pz-cta-text">Start your AI hardware ODM project today.</span>
+          <a href="../../contact/index.html" class="pz-btn pz-btn-primary">Request a Prototype Consultation</a>
+        </div>
+
+        <section class="pz-section" id="faq" data-toc="FAQ">
+          <h2>FAQ</h2>
+          <div class="pz-faq" id="pzFaq">
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Question placeholder 1<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Question placeholder 2<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Question placeholder 3<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Question placeholder 4<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Question placeholder 5<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Question placeholder 6<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Question placeholder 7<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Question placeholder 8<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Question placeholder 9<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Question placeholder 10<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Question placeholder 11<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Question placeholder 12<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== REFERENCES ===== -->
+        <section class="pz-section pz-references" id="references" aria-label="References">
+          <h2>References</h2>
+          <p>References will be added with final content.</p>
+        </section>
+
+      </main>
+
+      <!-- ===== STICKY TOC SIDEBAR (desktop) ===== -->
+      <aside class="pz-toc-aside">
+        <div class="pz-toc-title">On this page</div>
+        <ul class="pz-toc-list" id="pzTocPrimary"></ul>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== Mobile floating TOC ===== -->
+<button class="pz-toc-fab" id="pzTocFab" aria-label="Open table of contents">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+  Table of Contents
+</button>
+<div class="pz-toc-overlay" id="pzTocOverlay"></div>
+<div class="pz-toc-floating" id="pzTocFloating">
+  <div class="pz-toc-handle"></div>
+  <div class="pz-toc-title">On this page</div>
+  <ul class="pz-toc-list" id="pzTocSecondary"></ul>
+</div>
+</div><!-- /.pz -->
+
+<!-- ================= PILLAR PAGE JS ================= -->
+<script>
+(function(){
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.pz-section[data-toc]'));
+  if(!sections.length) return;
+
+  // ---- Build TOC lists (DRY: one source → primary sidebar + floating panel) ----
+  var primary = document.getElementById('pzTocPrimary');
+  var secondary = document.getElementById('pzTocSecondary');
+  function buildInto(ul){
+    if(!ul) return;
+    sections.forEach(function(sec){
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#' + sec.id;
+      a.textContent = sec.getAttribute('data-toc');
+      a.setAttribute('data-target', sec.id);
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+  }
+  buildInto(primary);
+  buildInto(secondary);
+  var allLinks = Array.prototype.slice.call(document.querySelectorAll('.pz-toc-list a'));
+
+  // ---- Smooth scroll + close mobile/tablet panels on click ----
+  allLinks.forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('data-target');
+      var target = document.getElementById(id);
+      if(target){
+        e.preventDefault();
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - 88, behavior:'smooth' });
+        history.replaceState(null, '', '#' + id);
+      }
+      closeFloating();
+      closeBarDropdown();
+    });
+  });
+
+  // ---- Active-section highlighting via IntersectionObserver ----
+  var barCurrent = document.getElementById('pzTocBarCurrent');
+  function setActive(id){
+    allLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('data-target') === id); });
+    var sec = document.getElementById(id);
+    if(barCurrent && sec) barCurrent.textContent = sec.getAttribute('data-toc');
+  }
+  if('IntersectionObserver' in window){
+    var visible = {};
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting) visible[en.target.id] = en.intersectionRatio;
+        else delete visible[en.target.id];
+      });
+      // pick the topmost visible section (first in document order that is visible)
+      var current = null;
+      for(var i=0;i<sections.length;i++){ if(visible[sections[i].id] != null){ current = sections[i].id; break; } }
+      if(current) setActive(current);
+    }, { rootMargin:'-88px 0px -55% 0px', threshold:[0,0.1,0.5,1] });
+    sections.forEach(function(s){ io.observe(s); });
+  }
+  setActive(sections[0].id);
+
+  // ---- Reading progress bar ----
+  var bar = document.getElementById('pzProgress');
+  function updateProgress(){
+    var doc = document.documentElement;
+    var scrollable = doc.scrollHeight - doc.clientHeight;
+    var pct = scrollable > 0 ? (window.pageYOffset / scrollable) * 100 : 0;
+    if(bar) bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive:true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  // ---- FAQ accordion ----
+  var faq = document.getElementById('pzFaq');
+  if(faq){
+    faq.querySelectorAll('.pz-faq-q').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var item = btn.closest('.pz-faq-item');
+        var panel = item.querySelector('.pz-faq-a');
+        var isOpen = item.classList.contains('open');
+        if(isOpen){
+          item.classList.remove('open');
+          btn.setAttribute('aria-expanded','false');
+          panel.style.maxHeight = null;
+        } else {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded','true');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      });
+    });
+  }
+
+  // ---- Floating TOC (mobile slide-up + shared) ----
+  var fab = document.getElementById('pzTocFab');
+  var floating = document.getElementById('pzTocFloating');
+  var overlay = document.getElementById('pzTocOverlay');
+  function openFloating(){ if(floating){ floating.classList.add('open'); overlay.classList.add('open'); } }
+  function closeFloating(){ if(floating){ floating.classList.remove('open'); overlay.classList.remove('open'); } }
+  if(fab) fab.addEventListener('click', openFloating);
+  if(overlay) overlay.addEventListener('click', closeFloating);
+
+  // ---- Tablet sticky bar dropdown (reuses the floating panel) ----
+  var tocBar = document.getElementById('pzTocBar');
+  var barBtn = document.getElementById('pzTocBarBtn');
+  function closeBarDropdown(){
+    if(tocBar) tocBar.classList.remove('open');
+    if(barBtn) barBtn.setAttribute('aria-expanded','false');
+  }
+  if(barBtn){
+    barBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var willOpen = !floating.classList.contains('open');
+      if(willOpen){ openFloating(); tocBar.classList.add('open'); barBtn.setAttribute('aria-expanded','true'); }
+      else { closeFloating(); closeBarDropdown(); }
+    });
+  }
+})();
+</script>
+<!-- ================= /PILLAR PAGE ================= -->
 
 <footer class="footer" id="company">
   <div class="container">
