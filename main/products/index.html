@@ -290,36 +290,58 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
   padding-top: 14px;
   border-top: 1px solid #f5f5f5;
 }
-.po-btn-learn {
-  display: none;
+.btn-read-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
   flex: 1;
   text-align: center;
   padding: 8px 12px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #2563eb;
   border-radius: 100px;
   font-size: 0.8125rem;
-  font-weight: 500;
-  color: #111;
+  font-weight: 600;
+  color: #fff;
   text-decoration: none;
-  background: transparent;
-  transition: background 0.15s;
+  background: #2563eb;
+  transition: background 0.15s, border-color 0.15s;
   font-family: var(--sans);
+  white-space: nowrap;
 }
-.po-btn-learn:hover { background: #f5f5f5; }
+.btn-read-more:hover { background: #1d4ed8; border-color: #1d4ed8; }
 .po-btn-contact {
   flex: 1;
   text-align: center;
   padding: 8px 12px;
   border-radius: 100px;
+  border: 1px solid #111;
   font-size: 0.8125rem;
   font-weight: 600;
   color: #fff;
   background: #111;
   text-decoration: none;
-  transition: opacity 0.15s;
+  transition: opacity 0.15s, background 0.15s, border-color 0.15s, color 0.15s;
   font-family: var(--sans);
+  white-space: nowrap;
 }
 .po-btn-contact:hover { opacity: 0.82; }
+/* When a card also has a "Learn More" (i.e. it has a detail page), demote
+   "Get a Quote" to a secondary/ghost button. Cards without Learn More keep
+   the original solid dark button unchanged. */
+.po-card-cta:has(.btn-read-more) .po-btn-contact {
+  background: transparent;
+  color: #0f172a;
+  border-color: #e2e8f0;
+}
+.po-card-cta:has(.btn-read-more) .po-btn-contact:hover {
+  opacity: 1;
+  background: #f8fafc;
+  border-color: #2563eb;
+}
+@media (max-width: 640px) {
+  .po-card-cta { flex-direction: column; }
+}
 
 /* ---------- 4. BOTTOM CTA ---------- */
 .po-cta { background: #111; padding: 80px 0; text-align: center; }
@@ -714,7 +736,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Encrypted</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="mic06b/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -738,7 +760,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Encrypted</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="mic06/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -761,7 +783,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Noise Reduction</span>
           </div>
           <div class="po-card-cta">
-            <a href="mic05/index.html" class="po-btn-learn">Learn More</a>
+            <a href="mic05/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -783,7 +805,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Multi-sensory Feedback</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="mic04/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -805,7 +827,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Push to Talk</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="mic01/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -827,7 +849,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Ultra-slim</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="mic02/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -852,7 +874,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Workflow Sync</span>
           </div>
           <div class="po-card-cta">
-            <a href="telalive/index.html" class="po-btn-learn">Learn More</a>
+            <a href="telalive/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -875,7 +897,30 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Mobile</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="tel02/index.html" class="btn-read-more">Read More</a>
+            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- TR01 -->
+      <div class="po-card" id="tr01" data-category="phone">
+        <div class="po-card-img">
+          <img src="../img/products/overview/HA-TR01.jpg" alt="hearit.ai Portable ChatGPT Translator">
+          <span class="po-card-badge po-card-badge--blue">WiFi + BT</span>
+        </div>
+        <div class="po-card-body">
+          <div class="po-card-sku">HA-TR01</div>
+          <div class="po-card-name">Hearit.ai Portable ChatGPT Translator</div>
+          <div class="po-card-desc">Handheld ChatGPT-4o-mini translator with 52+ languages, auto language recognition, plus AI Q&A, summarization, to-do, and custom AI prompts.</div>
+          <div class="po-card-tags">
+            <span class="po-card-tag">52+ Languages</span>
+            <span class="po-card-tag">ChatGPT-4o-mini</span>
+            <span class="po-card-tag">Low Latency</span>
+            <span class="po-card-tag">Custom AI Prompt</span>
+          </div>
+          <div class="po-card-cta">
+            <a href="tr01/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -900,7 +945,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Smart Speaker</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="spk01/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -924,7 +969,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Smart Speaker</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="spk02/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -947,7 +992,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Portable</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="spk03/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -969,30 +1014,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Smart Speaker</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
-            <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- 13. HA-TR01 -->
-      <div class="po-card" id="voicelink" data-category="speaker">
-        <div class="po-card-img">
-          <img src="../img/products/overview/HA-TR01.jpg" alt="Hearit.ai VoiceLink">
-          <span class="po-card-badge po-card-badge--blue">WiFi + BT</span>
-        </div>
-        <div class="po-card-body">
-          <div class="po-card-sku">HA-TR01</div>
-          <div class="po-card-name">Hearit.ai VoiceLink</div>
-          <div class="po-card-desc">Portable AI devices with high-power speakers and LED indicators for seamless multilingual translation.</div>
-          <div class="po-card-tags">
-            <span class="po-card-tag">WiFi + Bluetooth</span>
-            <span class="po-card-tag">LED</span>
-            <span class="po-card-tag">Translation</span>
-            <span class="po-card-tag">Portable</span>
-          </div>
-          <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="spk03-wifi/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -1017,7 +1039,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Open Ear</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="bc01/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -1040,7 +1062,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">AI Interaction</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="ows03/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -1063,7 +1085,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">AI Assistant</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="eb01/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -1088,7 +1110,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Hands-free</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="gl01/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -1111,53 +1133,52 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Voice Recording</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
 
-      <!-- 19. HA-TOY01 -->
-      <div class="po-card" id="buddybear" data-category="smart">
+      <!-- TOY01 -->
+      <div class="po-card" id="toy01" data-category="smart">
         <div class="po-card-img">
-          <img src="../img/products/overview/HA-TOY01.jpg" alt="Hearit.ai BirthdayBird">
-          <span class="po-card-badge po-card-badge--blue">BT + WiFi</span>
+          <img src="../img/products/overview/HA-TOY01.jpg" alt="hearit.ai AI Chat Plush Toy">
+          <span class="po-card-badge po-card-badge--blue">ChatGPT</span>
         </div>
         <div class="po-card-body">
           <div class="po-card-sku">HA-TOY01</div>
-          <div class="po-card-name">Hearit.ai BirthdayBird</div>
-          <div class="po-card-desc">AI-integrated voice speaker with a cute bird design, enabling natural voice conversations for a fun and authentic interactive experience.</div>
+          <div class="po-card-name">Hearit.ai AI Chat Plush Toy</div>
+          <div class="po-card-desc">Customizable AI plush toy with a removable ChatGPT module — AI chat, music playback, action interaction, and companion features inside any plush character.</div>
           <div class="po-card-tags">
-            <span class="po-card-tag">Bluetooth + WiFi</span>
-            <span class="po-card-tag">Interactive</span>
-            <span class="po-card-tag">Voice AI</span>
-            <span class="po-card-tag">Fun Design</span>
+            <span class="po-card-tag">ChatGPT</span>
+            <span class="po-card-tag">Custom Character</span>
+            <span class="po-card-tag">Play Music</span>
+            <span class="po-card-tag">AI Companion</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="toy01/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
       </div>
 
-      <!-- 20. HA-TOY02 -->
-      <div class="po-card" id="birthdaybird" data-category="smart">
+      <!-- TOY02 -->
+      <div class="po-card" id="toy02" data-category="smart">
         <div class="po-card-img">
-          <img src="../img/products/overview/HA-TOY02.png" alt="Hearit.ai BuddyBear">
-          <span class="po-card-badge po-card-badge--blue">BT + WiFi</span>
+          <img src="../img/products/overview/HA-TOY02.png" alt="hearit.ai ChatGPT AI Chat Toy">
+          <span class="po-card-badge po-card-badge--blue">ChatGPT</span>
         </div>
         <div class="po-card-body">
           <div class="po-card-sku">HA-TOY02</div>
-          <div class="po-card-name">Hearit.ai BuddyBear</div>
-          <div class="po-card-desc">AI-integrated plush companion enabling natural voice conversations with the doll for a lifelike, authentic interactive experience.</div>
+          <div class="po-card-name">Hearit.ai ChatGPT AI Chat Toy</div>
+          <div class="po-card-desc">Palm-sized ChatGPT AI character speaker with 50+ language translation, transcription, AI summary, deep conversation, and a custom wake word — ODM-ready.</div>
           <div class="po-card-tags">
-            <span class="po-card-tag">Bluetooth + WiFi</span>
-            <span class="po-card-tag">Interactive</span>
-            <span class="po-card-tag">Voice AI</span>
-            <span class="po-card-tag">Plush</span>
+            <span class="po-card-tag">50+ Languages</span>
+            <span class="po-card-tag">ChatGPT</span>
+            <span class="po-card-tag">Transcription</span>
+            <span class="po-card-tag">ODM-Ready</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="toy02/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>
@@ -1182,7 +1203,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
             <span class="po-card-tag">Prototyping</span>
           </div>
           <div class="po-card-cta">
-            <a href="#" class="po-btn-learn">Learn More</a>
+            <a href="esp32-kit/index.html" class="btn-read-more">Read More</a>
             <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" class="po-btn-contact" target="_blank" rel="noopener">Get a Quote</a>
           </div>
         </div>

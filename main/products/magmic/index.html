@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MIC01 — AI Smart Magnetic Speaker with 5 AI Capabilities | GMIC.AI</title>
-<meta name="description" content="MIC01 is an AI-powered wearable voice terminal with automatic translation, intelligent transcription, AI assistant, smart summary, and deep conversation — powered by a 6nm AI SoC with Wi-Fi 6 and Bluetooth 5.3." />
-<link rel="canonical" href="https://gmic.ai/products/mic01/">
+<title>MagMic — ChatGPT AI Chat MagSafe Microphone | GMIC.AI</title>
+<meta name="description" content="MagMic is a ChatGPT-powered MagSafe magnetic microphone available in 4 colors — affordable, zero learning curve, magnetic portable, background wake-up, and multilingual translation in a pebble-sized device." />
+<link rel="canonical" href="https://gmic.ai/products/magmic/">
 
 <!-- Favicon + Open Graph (mirrors homepage, paths rebased to ../../) -->
 <link rel="icon" type="image/png" href="../../img/favicon.png">
 <meta property="og:type" content="product">
-<meta property="og:title" content="MIC01 — AI Smart Magnetic Speaker with 5 AI Capabilities | GMIC.AI">
-<meta property="og:description" content="MIC01 is an AI-powered wearable voice terminal with automatic translation, intelligent transcription, AI assistant, smart summary, and deep conversation — powered by a 6nm AI SoC with Wi-Fi 6 and Bluetooth 5.3.">
-<meta property="og:url" content="https://gmic.ai/products/mic01/">
-<meta property="og:image" content="https://gmic.ai/img/cap/MIC01.png">
+<meta property="og:title" content="MagMic — ChatGPT AI Chat MagSafe Microphone | GMIC.AI">
+<meta property="og:description" content="MagMic is a ChatGPT-powered MagSafe magnetic microphone available in 4 colors — affordable, zero learning curve, magnetic portable, background wake-up, and multilingual translation in a pebble-sized device.">
+<meta property="og:url" content="https://gmic.ai/products/magmic/">
+<meta property="og:image" content="https://gmic.ai/img/cap/magmic.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,7 +86,7 @@
 .nav.scrolled .nav-link.active{color:#2563eb!important;}
 
 /* ===================================================================
-   MIC01 PRODUCT PAGE — page-specific styles (m5- prefix).
+   MAGMIC PRODUCT PAGE — page-specific styles (m5- prefix).
    Layout blocks are kept content-agnostic so this file works as the
    template for MIC06 / MIC01 / Telalive — swap the copy, keep the shell.
    =================================================================== */
@@ -114,30 +114,18 @@
 .m5-chip{display:inline-flex;align-items:center;gap:6px;font-size:.8125rem;font-weight:500;color:rgba(255,255,255,.78);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:6px 12px;border-radius:999px;}
 .m5-chip svg{width:14px;height:14px;}
 /* Hero image / placeholder panel (4:3 to avoid layout shift) */
-.m5-hero-media{position:relative;aspect-ratio:4/3;width:100%;border-radius:0;overflow:visible;border:none;box-shadow:none;background:transparent;}
-.m5-hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:0;}
-.m5-hero-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#f1f5f9 0%,#e2e8f0 100%);}
+.m5-hero-media{position:relative;aspect-ratio:4/3;width:100%;border-radius:16px;overflow:hidden;border:none;box-shadow:none;background:transparent;}
+.m5-hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:28px;}
+.m5-hero-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:transparent;}
 .m5-hero-ph span{font-family:var(--sans);font-weight:800;letter-spacing:.06em;font-size:clamp(40px,6vw,72px);color:#94a3b8;}
 .m5-hero-ph small{font-size:.8125rem;letter-spacing:.14em;text-transform:uppercase;color:#b6c0cf;}
 
 /* ---- C · FEATURE CARDS (reusable 3-col grid, single column on narrow) ---- */
 .m5-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-/* 5-card feature grid: wrap to 3+2 and keep the short last row centered */
-.m5-grid-flex{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;}
-.m5-grid-flex>.m5-card{flex:1 1 300px;max-width:380px;}
-/* 4-up card row (Why MIC01) and 2-up card row (deployment models) */
-.m5-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
-.m5-grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
 .m5-card{border-radius:12px;padding:26px 24px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);transition:transform .25s ease,box-shadow .25s ease,background .25s ease;}
 .m5-light .m5-card,.m5-soft .m5-card{border-color:rgba(0,0,0,.08);background:#fff;}
 .m5-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.18);}
 .m5-light .m5-card:hover,.m5-soft .m5-card:hover{box-shadow:0 12px 32px rgba(0,0,0,.08);}
-.m5-light .m5-grid-3 .m5-card:hover,
-.m5-soft .m5-grid-3 .m5-card:hover {
-  transform: none;
-  box-shadow: none;
-  cursor: default;
-}
 .m5-card-ico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(37,99,235,.14);color:#60a5fa;margin-bottom:16px;}
 .m5-light .m5-card-ico,.m5-soft .m5-card-ico{background:#eef3ff;color:#2563eb;}
 .m5-card-ico svg{width:22px;height:22px;}
@@ -157,7 +145,7 @@
 .m5-spec-v{font-size:.9375rem;font-weight:600;color:#0f172a;text-align:right;}
 
 /* ---- E · WHAT'S UNIQUE (check row) ---- */
-.m5-check-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.m5-check-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
 .m5-check{display:flex;align-items:center;gap:12px;padding:20px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);font-weight:600;font-size:.96rem;}
 .m5-check .m5-tick{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(37,99,235,.18);color:#60a5fa;}
 .m5-check .m5-tick svg{width:17px;height:17px;}
@@ -175,6 +163,12 @@
 .m5-custom-col .m5-card-ico{margin-bottom:0;width:36px;height:36px;border-radius:9px;}
 .m5-custom-col .m5-card-ico svg{width:18px;height:18px;}
 
+/* ---- Built-for tag cloud ---- */
+.m5-tags{display:flex;flex-wrap:wrap;gap:12px;}
+.m5-tag{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid rgba(0,0,0,.1);background:#fff;font-size:.95rem;font-weight:500;color:#0f172a;transition:border-color .2s,transform .2s,box-shadow .2s;}
+.m5-tag:hover{border-color:rgba(37,99,235,.5);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.06);}
+.m5-tag svg{width:16px;height:16px;color:#2563eb;}
+
 /* ---- H · CTA ---- */
 .m5-cta{background:radial-gradient(120% 140% at 50% 0%,#15264a 0%,#0a1326 60%,#070d1c 100%);text-align:center;}
 .m5-cta .m5-head{max-width:780px;margin:0 auto 30px;text-align:center;}
@@ -186,10 +180,9 @@
   .m5-hero-media{order:-1;max-width:520px;}
   .m5-grid-3{grid-template-columns:1fr 1fr;}
   .m5-check-row{grid-template-columns:1fr 1fr;}
-  .m5-grid-4{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:640px){
-  .m5-grid-3,.m5-check-row,.m5-grid-2,.m5-specs,.m5-list{grid-template-columns:1fr;}
+  .m5-grid-3,.m5-check-row,.m5-specs,.m5-list{grid-template-columns:1fr;}
   .m5-spec-row{padding:14px 0;}
 }
 
@@ -219,18 +212,14 @@
 }
 
 /* ---- Integration flow diagram (pure HTML+CSS, no images) ---- */
-.m5-flow{margin-top:clamp(44px,6vw,68px);display:flex;align-items:stretch;justify-content:center;gap:0;}
-.m5-flow-node{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:24px 14px;border:1px solid rgba(0,0,0,.08);border-radius:12px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.05);}
+.m5-flow-outer{margin-top:clamp(44px,6vw,68px);background:#f8fafc;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:32px 24px;}
+.m5-flow{display:flex;align-items:stretch;justify-content:center;gap:0;}
+.m5-flow-node{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:24px 14px;border:none;border-radius:12px;background:transparent;box-shadow:none;}
 .m5-flow-ico{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#eef3ff;color:#2563eb;}
 .m5-flow-ico svg{width:22px;height:22px;}
 .m5-flow-node span{font-size:.9rem;font-weight:600;color:#0f172a;line-height:1.35;}
 .m5-flow-arrow{flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:#2563eb;padding:0 6px;}
 .m5-flow-arrow svg{width:26px;height:26px;}
-.m5-flow .m5-flow-node {
-  border: none !important;
-  background: transparent !important;
-  box-shadow: none !important;
-}
 @media(max-width:760px){
   .m5-flow{flex-direction:column;align-items:stretch;}
   .m5-flow-node{flex:none;}
@@ -474,22 +463,22 @@
   <div class="container">
     <div class="m5-hero-grid">
       <div class="m5-hero-copy reveal">
-        <div class="eyebrow dark">MIC01 · AI Smart Magnetic Speaker</div>
-        <h1>Five AI capabilities. <em class="italic">One wearable device.</em></h1>
-        <p class="m5-hero-sub">MIC01 is an AI-powered wearable voice terminal with 5 core AI capabilities: Automatic Translation, Intelligent Transcription, AI Intelligent Assistant, AI Smart Summary, and Deep Conversation. Designed for business, media, and travel professionals in hands-free, real-world scenarios.</p>
+        <div class="eyebrow dark">MagMic · MagSafe AI Microphone</div>
+        <h1>ChatGPT on any surface. <em class="italic">Magnetically.</em></h1>
+        <p class="m5-hero-sub">MagMic is a ChatGPT-powered MagSafe magnetic microphone that sticks to any metal surface, phone back, or MagSafe accessory. With one-button AI access, multilingual translation, and background wake-up, it's the most affordable and accessible way to bring ChatGPT into daily life. Available in 4 colors.</p>
         <div class="m5-hero-cta">
-          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Book a Demo</a>
-          <a href="mailto:trigg@gmic.ai" class="btn btn-ghost">Talk to Sales</a>
+          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Request a Sample</a>
+          <a href="mailto:swallow@gmic.ai" class="btn btn-ghost">Talk to Sales</a>
         </div>
         <div class="m5-chips">
-          <span class="m5-chip"><i data-lucide="wifi"></i>Wi-Fi 6</span>
-          <span class="m5-chip"><i data-lucide="bluetooth"></i>BT 5.3</span>
-          <span class="m5-chip"><i data-lucide="cpu"></i>6nm AI SoC</span>
-          <span class="m5-chip"><i data-lucide="languages"></i>90+ Languages</span>
+          <span class="m5-chip"><i data-lucide="magnet"></i>MagSafe Magnetic</span>
+          <span class="m5-chip"><i data-lucide="bot"></i>ChatGPT Access</span>
+          <span class="m5-chip"><i data-lucide="palette"></i>4 Colors</span>
+          <span class="m5-chip"><i data-lucide="dollar-sign"></i>Affordable</span>
         </div>
       </div>
       <div class="m5-hero-media reveal">
-        <img src="../../img/cap/MIC01.png" alt="MIC01 AI Smart Magnetic Speaker">
+        <img src="../../img/cap/magmic.png" alt="MagMic ChatGPT AI MagSafe Microphone in 4 colors">
       </div>
     </div>
   </div>
@@ -503,37 +492,37 @@
   <div class="container">
     <div class="m5-stats-grid">
       <div class="m5-stat reveal">
-        <div class="m5-stat-v">5</div>
-        <div class="m5-stat-k">Core AI capabilities</div>
+        <div class="m5-stat-v">ChatGPT</div>
+        <div class="m5-stat-k">AI engine</div>
       </div>
       <div class="m5-stat reveal">
-        <div class="m5-stat-v">90+</div>
-        <div class="m5-stat-k">Languages</div>
+        <div class="m5-stat-v">4</div>
+        <div class="m5-stat-k">Color options</div>
       </div>
       <div class="m5-stat reveal">
-        <div class="m5-stat-v">6nm</div>
-        <div class="m5-stat-k">AI processor</div>
+        <div class="m5-stat-v">MagSafe</div>
+        <div class="m5-stat-k">Magnetic mount</div>
       </div>
       <div class="m5-stat reveal">
-        <div class="m5-stat-v">&lt;50ms</div>
-        <div class="m5-stat-k">Audio latency</div>
+        <div class="m5-stat-v">$0</div>
+        <div class="m5-stat-k">Learning cost</div>
       </div>
     </div>
   </div>
 </section>
 
 
-<!-- SECTION B: Built for business  (light · text + scene image, two-column) -->
+<!-- SECTION B: Positioning  (light · text + scene image, two-column) -->
 <section class="m5-sec m5-light fade-section">
   <div class="container">
     <div class="m5-split">
       <div class="reveal">
-        <div class="eyebrow">Wearable AI terminal</div>
-        <h2 class="section" style="margin-bottom:18px;">The smartest way to <em class="italic">capture and understand.</em></h2>
-        <p class="m5-lead">MIC01 combines five powerful AI capabilities in a compact magnetic clip-on device. Whether you're translating across languages in real-time, transcribing meetings with speaker diarization, or brainstorming with AI — MIC01 delivers lossless audio with ultra-low latency, powered by a cutting-edge 6nm AI processor.</p>
+        <div class="eyebrow">AI for everyone</div>
+        <h2 class="section" style="margin-bottom:18px;">The most accessible ChatGPT device. <em class="italic">Period.</em></h2>
+        <p class="m5-lead">MagMic removes every barrier to AI adoption. No screens, no apps to learn, no complex setup — just a single button on a beautiful pebble-shaped device that magnetically attaches to your phone, fridge, laptop, or any metal surface. Press to talk, release to listen. It wakes up in the background even when your phone is locked, and translates across languages instantly. Available in Black, Light Blue, Coral, and White.</p>
       </div>
       <figure class="m5-scene reveal">
-        <img src="../../img/products/mic01/Zero-friction.png" alt="MIC01 zero friction voice capture" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1100&q=80" alt="Minimal tech device on desk" loading="lazy">
       </figure>
     </div>
   </div>
@@ -541,50 +530,50 @@
 
 
 <!-- ====================================================================
-     SECTION C: Key Features  (dark · 5 cards, flex grid 3+2 centered)
+     SECTION C: Key Features  (dark · 6 cards, 3×2 grid)
      ==================================================================== -->
 <section class="m5-sec m5-dark fade-section">
   <div class="container">
     <div class="m5-head reveal">
       <div class="eyebrow dark">Key Features</div>
-      <h2 class="section">Everything you need — nothing you don't.</h2>
+      <h2 class="section">Simple. Affordable. <em class="italic">Everywhere.</em></h2>
     </div>
     <div class="m5-grid-3">
 
       <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="languages"></i></div>
-        <h3>Automatic Translation</h3>
-        <p>90+ languages with real-time bi-directional voice translation for cross-language communication, meetings, and travel.</p>
-      </div>
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="file-text"></i></div>
-        <h3>Intelligent Transcription</h3>
-        <p>AI speech-to-text with speaker diarization, punctuation, and timestamped output for accurate, searchable records.</p>
-      </div>
-
-      <div class="m5-card reveal">
         <div class="m5-card-ico"><i data-lucide="bot"></i></div>
-        <h3>AI Intelligent Assistant</h3>
-        <p>GPT-powered on-demand Q&amp;A, contextual suggestions, and voice-driven workflows — your AI co-pilot in your pocket.</p>
+        <h3>Access to ChatGPT</h3>
+        <p>One-button access to ChatGPT for voice conversations, questions, brainstorming, and real-time AI assistance — no app switching needed.</p>
       </div>
 
       <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="clipboard-list"></i></div>
-        <h3>AI Smart Summary</h3>
-        <p>Auto-generates meeting summaries with key decisions, action items, and highlights — never miss a takeaway.</p>
+        <div class="m5-card-ico"><i data-lucide="dollar-sign"></i></div>
+        <h3>Affordable</h3>
+        <p>Designed as the most cost-effective ChatGPT hardware device. Premium AI experience without premium pricing — perfect for mass deployment.</p>
       </div>
 
       <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="messages-square"></i></div>
-        <h3>Deep Conversation</h3>
-        <p>Multi-turn context-aware AI dialogue for brainstorming, analysis, and strategic decision support.</p>
+        <div class="m5-card-ico"><i data-lucide="box"></i></div>
+        <h3>No Learning Cost</h3>
+        <p>Single button. Press to talk, release to listen. Anyone — from a student to a grandparent — can use it immediately. Zero onboarding.</p>
       </div>
 
       <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="cpu"></i></div>
-        <h3>6nm Low-Power AI SoC</h3>
-        <p>Advanced 6nm processor delivers powerful AI processing with lossless audio codec and ultra-low latency (&lt;50ms) while minimizing energy consumption.</p>
+        <div class="m5-card-ico"><i data-lucide="magnet"></i></div>
+        <h3>Magnetic Portable</h3>
+        <p>MagSafe-compatible magnetic back attaches to phones, laptops, refrigerators, metal desks, and MagSafe accessories. Stick it anywhere.</p>
+      </div>
+
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="monitor"></i></div>
+        <h3>Wake Up Anytime in Background</h3>
+        <p>Stays connected in the background. Even when your phone is locked or in standby, press the button and MagMic wakes AI instantly.</p>
+      </div>
+
+      <div class="m5-card reveal">
+        <div class="m5-card-ico"><i data-lucide="languages"></i></div>
+        <h3>Multilingual Translation</h3>
+        <p>Real-time voice translation across multiple languages. Break language barriers in conversation, travel, or customer service.</p>
       </div>
 
     </div>
@@ -602,59 +591,67 @@
       <h2 class="section">The details.</h2>
     </div>
     <div class="m5-specs reveal">
-      <div class="m5-spec-row"><span class="m5-spec-k">Product Name</span><span class="m5-spec-v">hearit.ai AI Smart Magnetic Speaker</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">AI Engine</span><span class="m5-spec-v">GPT-powered Cloud AI + On-device Processing</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Core AI</span><span class="m5-spec-v">Translation, Transcription, Assistant, Summary, Conversation</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Translation</span><span class="m5-spec-v">90+ languages, real-time bi-directional</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Wireless</span><span class="m5-spec-v">Wi-Fi 6 (802.11ax) Dual-Band 2.4 / 5 GHz</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Bluetooth</span><span class="m5-spec-v">Bluetooth 5.3 (BLE)</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Processor</span><span class="m5-spec-v">6nm Low-Power AI SoC</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Audio</span><span class="m5-spec-v">Lossless codec, ultra-low latency &lt; 50 ms</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Microphone</span><span class="m5-spec-v">Dual MEMS Mic Array with noise cancellation</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Product Name</span><span class="m5-spec-v">hearit.ai ChatGPT AI Chat MagSafe Microphone</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Model</span><span class="m5-spec-v">MagMic</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">AI Engine</span><span class="m5-spec-v">ChatGPT (Cloud AI via Bluetooth + phone)</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Connectivity</span><span class="m5-spec-v">Bluetooth 5.3 BLE</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Mounting</span><span class="m5-spec-v">MagSafe magnetic (phone / laptop / metal surfaces)</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Colors</span><span class="m5-spec-v">Black / Light Blue / Coral / White</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Microphone</span><span class="m5-spec-v">Built-in MEMS microphone</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Speaker</span><span class="m5-spec-v">Built-in micro speaker</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Controls</span><span class="m5-spec-v">Single center button (press-to-talk)</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Translation</span><span class="m5-spec-v">Multilingual real-time voice translation</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Background Wake</span><span class="m5-spec-v">Yes (works with phone locked)</span></div>
       <div class="m5-spec-row"><span class="m5-spec-k">Battery</span><span class="m5-spec-v">Built-in Li-Po, all-day battery life</span></div>
       <div class="m5-spec-row"><span class="m5-spec-k">Charging</span><span class="m5-spec-v">USB Type-C</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Mounting</span><span class="m5-spec-v">Magnetic clip for clothing / badge / lanyard</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Compatibility</span><span class="m5-spec-v">iOS / Android / Windows / macOS / Linux</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Design</span><span class="m5-spec-v">Pebble / leaf-shaped, compact</span></div>
+      <div class="m5-spec-row"><span class="m5-spec-k">Compatibility</span><span class="m5-spec-v">iOS / Android (via companion app)</span></div>
     </div>
   </div>
 </section>
 
 
 <!-- ====================================================================
-     SECTION E: Why choose  (dark · 4 cards, 4-up / 2×2)
+     SECTION E: What Makes MagMic Different  (dark · check row, 3+3)
      ==================================================================== -->
 <section class="m5-sec m5-dark fade-section">
   <div class="container">
     <div class="m5-head reveal">
-      <div class="eyebrow dark">What makes it different</div>
-      <h2 class="section">Built for real-world scenarios.</h2>
+      <div class="eyebrow dark">Why MagMic</div>
+      <h2 class="section">Six reasons to stick with <em class="italic">MagMic.</em></h2>
     </div>
-    <div class="m5-grid-4">
+    <div class="m5-check-row reveal">
+      <div class="m5-check"><span class="m5-tick"><i data-lucide="check"></i></span>ChatGPT Access</div>
+      <div class="m5-check"><span class="m5-tick"><i data-lucide="check"></i></span>Affordable Price</div>
+      <div class="m5-check"><span class="m5-tick"><i data-lucide="check"></i></span>Zero Learning Curve</div>
+      <div class="m5-check"><span class="m5-tick"><i data-lucide="check"></i></span>Magnetic Portable</div>
+      <div class="m5-check"><span class="m5-tick"><i data-lucide="check"></i></span>Background Wake-Up</div>
+      <div class="m5-check"><span class="m5-tick"><i data-lucide="check"></i></span>Multilingual Translation</div>
+    </div>
+  </div>
+</section>
 
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="languages"></i></div>
-        <h3>Cross-Language Meetings</h3>
-        <p>Instant voice translation during face-to-face conversations, eliminating language barriers.</p>
-      </div>
 
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="brain"></i></div>
-        <h3>Focused Thinking &amp; Research</h3>
-        <p>AI-assisted deep dialogue for brainstorming, analysis, and strategic decision-making.</p>
-      </div>
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="briefcase"></i></div>
-        <h3>Business Meetings</h3>
-        <p>Records full meetings and auto-generates structured summaries with action items.</p>
-      </div>
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="mic"></i></div>
-        <h3>Interviews &amp; Media</h3>
-        <p>Hands-free clip-on recording with live transcription and speaker ID for creators.</p>
-      </div>
-
+<!-- ====================================================================
+     SECTION F: Built For  (light · tag cloud)
+     ==================================================================== -->
+<section class="m5-sec m5-light fade-section">
+  <div class="container">
+    <div class="m5-head reveal">
+      <div class="eyebrow">Built for</div>
+      <h2 class="section">Made for everyone who wants <em class="italic">AI made simple.</em></h2>
+    </div>
+    <div class="m5-tags reveal">
+      <span class="m5-tag"><i data-lucide="user"></i>Everyday Users</span>
+      <span class="m5-tag"><i data-lucide="graduation-cap"></i>Students</span>
+      <span class="m5-tag"><i data-lucide="heart"></i>Seniors</span>
+      <span class="m5-tag"><i data-lucide="store"></i>Small Business</span>
+      <span class="m5-tag"><i data-lucide="shopping-cart"></i>Retail Staff</span>
+      <span class="m5-tag"><i data-lucide="plane"></i>Travelers</span>
+      <span class="m5-tag"><i data-lucide="headphones"></i>Customer Service</span>
+      <span class="m5-tag"><i data-lucide="home"></i>Home Office</span>
+      <span class="m5-tag"><i data-lucide="book-open"></i>Education</span>
+      <span class="m5-tag"><i data-lucide="gift"></i>Gift Market</span>
     </div>
   </div>
 </section>
@@ -669,86 +666,18 @@
       <div class="reveal">
         <div class="eyebrow">Made by the manufacturer</div>
         <h2 class="section" style="margin-bottom:18px;">Engineered and built <em class="italic">in-house.</em></h2>
-        <p class="m5-lead">From SMT and assembly to QA, MIC01 is produced in our own Shenzhen facility — consistent quality from 100 to 100,000+ units.</p>
+        <p class="m5-lead">From SMT and assembly to QA, MagMic is produced in our own Shenzhen facility — consistent quality from 100 to 100,000+ units.</p>
       </div>
       <div class="m5-mfg-grid reveal">
         <figure>
-          <img src="../../img/products/mic01/Manufacturer-1.jpg" alt="MIC01 manufacturing — SMT line" loading="lazy">
+          <img src="../../img/products/mic05/Manufacturer-1.png" alt="SMT line operator inspecting a populated MagMic circuit board" loading="lazy">
         </figure>
         <figure>
-          <img src="../../img/products/mic01/Manufacturer-2.png" alt="MIC01 manufacturing — assembly" loading="lazy">
+          <img src="../../img/products/mic05/Manufacturer-2.png" alt="Technician assembling MagMic devices on the production line" loading="lazy">
         </figure>
         <figure>
-          <img src="../../img/products/mic01/Manufacturer-3.png" alt="MIC01 manufacturing — QC inspection" loading="lazy">
+          <img src="../../img/products/mic05/Manufacturer-3.png" alt="MagMic unit undergoing automated quality-assurance testing" loading="lazy">
         </figure>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ====================================================================
-     SECTION F: Built for Integration  (light · text + checklist + image)
-     ==================================================================== -->
-<section class="m5-sec m5-light fade-section">
-  <div class="container">
-    <div class="m5-split">
-      <div class="reveal">
-        <div class="eyebrow">A platform, not just a recorder</div>
-        <h2 class="section" style="margin-bottom:18px;">Built to plug into <em class="italic">your</em> stack.</h2>
-        <p class="m5-lead">MIC01 can be configured for multiple deployment models:</p>
-      </div>
-      <div class="m5-split-media reveal">
-        <img src="../../img/products/mic01/Built-to-plug.png" alt="MIC01 built to plug into your stack" loading="lazy">
-      </div>
-    </div>
-
-    <!-- Integration flow diagram — horizontal on desktop, stacks vertically (arrows point down) on narrow -->
-    <div class="m5-flow reveal" role="img" aria-label="Integration flow: MIC01 to Bluetooth to mobile app to AI platform to your workflow" style="
-  border: 1px solid rgba(0,0,0,0.08);
-  border-radius: 16px;
-  background: #f8fafc;
-  padding: 32px 40px;
-  margin-bottom: clamp(28px,4vw,40px);
-  box-shadow: none;
-">
-  <div class="m5-flow-node" style="border:none;background:transparent;box-shadow:none;">
-    <span class="m5-flow-ico"><i data-lucide="mic"></i></span>
-    <span>MIC01</span>
-  </div>
-  <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-  <div class="m5-flow-node" style="border:none;background:transparent;box-shadow:none;">
-    <span class="m5-flow-ico"><i data-lucide="bluetooth"></i></span>
-    <span>Bluetooth</span>
-  </div>
-  <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-  <div class="m5-flow-node" style="border:none;background:transparent;box-shadow:none;">
-    <span class="m5-flow-ico"><i data-lucide="smartphone"></i></span>
-    <span>Mobile App</span>
-  </div>
-  <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-  <div class="m5-flow-node" style="border:none;background:transparent;box-shadow:none;">
-    <span class="m5-flow-ico"><i data-lucide="cpu"></i></span>
-    <span>AI Platform</span>
-  </div>
-  <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-  <div class="m5-flow-node" style="border:none;background:transparent;box-shadow:none;">
-    <span class="m5-flow-ico"><i data-lucide="layout-grid"></i></span>
-    <span>Your Workflow</span>
-  </div>
-</div>
-
-    <!-- Deployment models — 2 cards (same card style, 2-up / single column on narrow) -->
-    <div class="m5-grid-2" style="margin-top:clamp(28px,4vw,40px);">
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="smartphone"></i></div>
-        <h3>Device → Mobile App → AI Platform</h3>
-        <p>Captures voice input and transmits through a companion app for processing and automation.</p>
-      </div>
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="building-2"></i></div>
-        <h3>Device → Enterprise Workflow</h3>
-        <p>Integrate voice interactions into CRM systems, productivity tools, knowledge management platforms, and custom software environments.</p>
       </div>
     </div>
   </div>
@@ -762,34 +691,34 @@
   <div class="container">
     <div class="m5-head reveal">
       <div class="eyebrow dark">Make it yours</div>
-      <h2 class="section">Available customization.</h2>
+      <h2 class="section">Customization options.</h2>
     </div>
     <div class="m5-grid-3">
 
       <div class="m5-card m5-custom-col reveal">
         <h3><span class="m5-card-ico"><i data-lucide="tag"></i></span>Branding</h3>
         <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>Logo printing</li>
-          <li><i data-lucide="check"></i>White-label production</li>
+          <li><i data-lucide="check"></i>Custom logo</li>
+          <li><i data-lucide="check"></i>Custom color options</li>
           <li><i data-lucide="check"></i>Custom packaging</li>
         </ul>
       </div>
 
       <div class="m5-card m5-custom-col reveal">
-        <h3><span class="m5-card-ico"><i data-lucide="cpu"></i></span>Firmware</h3>
+        <h3><span class="m5-card-ico"><i data-lucide="code"></i></span>Firmware</h3>
         <ul class="m5-bullets">
           <li><i data-lucide="check"></i>Custom button behavior</li>
-          <li><i data-lucide="check"></i>Voice workflow customization</li>
-          <li><i data-lucide="check"></i>Notification settings</li>
+          <li><i data-lucide="check"></i>Custom wake word</li>
+          <li><i data-lucide="check"></i>Custom AI persona</li>
         </ul>
       </div>
 
       <div class="m5-card m5-custom-col reveal">
-        <h3><span class="m5-card-ico"><i data-lucide="cloud"></i></span>Integration</h3>
+        <h3><span class="m5-card-ico"><i data-lucide="link"></i></span>Integration</h3>
         <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>Mobile app integration</li>
-          <li><i data-lucide="check"></i>API connectivity</li>
-          <li><i data-lucide="check"></i>Cloud platform integration</li>
+          <li><i data-lucide="check"></i>White-label companion app</li>
+          <li><i data-lucide="check"></i>Bulk enterprise deployment</li>
+          <li><i data-lucide="check"></i>API integration</li>
         </ul>
       </div>
 
@@ -804,14 +733,12 @@
 <section class="m5-sec m5-dark m5-cta fade-section">
   <div class="container">
     <div class="m5-head reveal">
-      <div class="eyebrow dark">Who MIC01 is for</div>
-      <p class="m5-lead" style="margin-bottom:18px;">Built for Business Executives, Journalists, Multilingual Teams, Researchers, Travel Professionals, Content Creators, Legal, and Media Production.</p>
-      <h2 class="section">Ready to put five AI capabilities in your pocket?</h2>
-      <p class="m5-lead" style="margin-top:16px;">Request a sample, schedule a demo, or talk to our team about deploying MIC01.</p>
+      <h2 class="section">Ready to put ChatGPT on every surface?</h2>
+      <p class="m5-lead" style="margin-top:16px;">Request a sample, schedule a demo, or talk to our team about bulk deployment.</p>
     </div>
     <div class="m5-cta-btns reveal">
-      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Book a Demo</a>
-      <a href="../../custom-devices/odm-oem/index.html" class="btn btn-ghost">Explore ODM/OEM</a>
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Request a Sample</a>
+      <a href="mailto:swallow@gmic.ai" class="btn btn-ghost">Talk to Sales</a>
     </div>
   </div>
 </section>
