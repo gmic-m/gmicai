@@ -13,18 +13,18 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Question placeholder 1", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 2", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 3", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 4", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 5", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 6", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 7", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 8", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 9", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 10", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 11", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 12", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } }
+    { "@type": "Question", "name": "What is AI hardware integration?", "acceptedAnswer": { "@type": "Answer", "text": "AI hardware integration is the engineering discipline of bringing AI models and software together with a physical device — the sensors, processor, memory, connectivity, power system, firmware, and cloud APIs — so they operate as one reliable product. It spans architecture decisions (edge vs. cloud vs. hybrid inference), audio and sensor pipelines, on-device model optimization, companion apps, OTA updates, and manufacturing. The goal is a device that captures real-world signals, runs or reaches the AI, and returns useful output within acceptable latency, power, and cost budgets." } },
+    { "@type": "Question", "name": "Should AI run on the device (edge) or in the cloud?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on your latency, privacy, cost, and connectivity requirements. Edge inference gives sub-100ms response, works offline, and keeps raw data on the device, but is constrained by the processor and memory you can afford in the bill of materials. Cloud inference gives you the largest models and easy updates but adds round-trip latency, recurring per-request cost, and a hard dependency on connectivity. Most shipping products are hybrid: wake-word, voice activity detection, and noise reduction run on-device, while heavier transcription or LLM reasoning runs in the cloud." } },
+    { "@type": "Question", "name": "How long does it take to build an integrated AI device?", "acceptedAnswer": { "@type": "Answer", "text": "A realistic timeline from concept to mass production is typically nine to fifteen months, depending on complexity and how much can be built on proven reference designs. Early prototyping and architecture takes one to three months, EVT and DVT builds another three to five months, DVT-to-PVT validation and certification a further two to four months, and ramp to volume production a month or more. Reusing a validated hardware platform and existing SDK integrations can compress this significantly." } },
+    { "@type": "Question", "name": "What does it cost to develop an AI hardware product?", "acceptedAnswer": { "@type": "Answer", "text": "Non-recurring engineering for a custom voice or edge-AI device commonly falls in the tens to low hundreds of thousands of dollars, driven by industrial and mechanical design, custom PCB layout, firmware and SDK integration, tooling, and certification. Per-unit cost then depends on the processor class, memory, radios, battery, enclosure, and volume. The largest cost lever is architecture: choosing the right processor and edge/cloud split early prevents expensive re-spins later." } },
+    { "@type": "Question", "name": "What is the difference between an MCU, MPU, and SoC?", "acceptedAnswer": { "@type": "Answer", "text": "An MCU (microcontroller) is a low-power, low-cost chip with integrated memory that runs a real-time OS or bare-metal firmware — ideal for sensor handling, wake-word detection, and power-sensitive wearables. An MPU (microprocessor) delivers far more compute but needs external memory and typically runs Linux, suiting richer edge workloads. An SoC integrates CPU, GPU/NPU, memory controllers, and connectivity on one die, and is the usual choice when you need meaningful on-device neural inference, a display, or camera processing." } },
+    { "@type": "Question", "name": "How do you optimize an AI model to run on-device?", "acceptedAnswer": { "@type": "Answer", "text": "The core techniques are quantization (converting weights from 32-bit float to 8-bit integer or lower to cut memory and speed up math), pruning and distillation to shrink the model, and compiling to a runtime that targets the chip's NPU, DSP, or vector extensions. You then profile latency, memory footprint, and power on the actual silicon, not an emulator. The practical trade-off is accuracy versus footprint — validation confirms the optimized model still meets your quality bar in real acoustic and lighting conditions." } },
+    { "@type": "Question", "name": "Should I use BLE or Wi-Fi for connectivity?", "acceptedAnswer": { "@type": "Answer", "text": "Use BLE for low-power, low-bandwidth links — pairing to a phone, syncing small payloads, and control — where battery life matters most. Use Wi-Fi when the device must upload audio or video, reach cloud AI directly, or receive large OTA updates without a phone in the loop. Many devices carry both: BLE for provisioning and companion-app control, Wi-Fi for bulk data, and sometimes 4G/LTE for standalone cellular operation where no local network exists." } },
+    { "@type": "Question", "name": "What is the difference between an ODM and an OEM partner?", "acceptedAnswer": { "@type": "Answer", "text": "An OEM (original equipment manufacturer) builds a product to your complete design and specification — you own the engineering. An ODM (original design manufacturer) also designs the product, contributing hardware architecture, firmware, and reference platforms so you can move faster without an in-house hardware team. For AI software companies without deep hardware expertise, a full-stack ODM shortens time to market and reduces risk because the partner has already solved the hard integration problems." } },
+    { "@type": "Question", "name": "How are OTA firmware updates handled on AI devices?", "acceptedAnswer": { "@type": "Answer", "text": "Over-the-air updates are delivered over Wi-Fi or cellular (or relayed through a companion app over BLE) and should always be signed, versioned, and installed to a secondary partition with automatic rollback if the update fails to boot. This lets you patch security issues, improve on-device models, and add features across the fleet after launch. Designing OTA in from day one — with a dual-bank flash layout and a staged rollout mechanism — is far cheaper than retrofitting it later." } },
+    { "@type": "Question", "name": "How is data privacy and security handled on AI devices?", "acceptedAnswer": { "@type": "Answer", "text": "Security spans the whole stack: secure boot and signed firmware to prevent tampering, encrypted storage and TLS transport for data in transit, and a hardware root of trust or secure element for key storage. Privacy is strongest when sensitive processing happens on the edge so raw audio or video never leaves the device, with only derived results sent to the cloud. For regulated markets like healthcare, this is paired with clear data-handling policies and compliance controls such as HIPAA-aligned pipelines." } },
+    { "@type": "Question", "name": "What certifications does an AI hardware product need?", "acceptedAnswer": { "@type": "Answer", "text": "Any device with a radio needs regulatory certification for each market it ships to — FCC in the US, CE and UKCA in Europe and the UK, TELEC in Japan, and ISED in Canada, plus RoHS for materials compliance. Bluetooth products also require SIG qualification, and battery shipments involve UN 38.3 testing. Certification should be planned during DVT because failures often require hardware changes, and building on pre-certified radio modules can save both time and money." } },
+    { "@type": "Question", "name": "Can I use my existing AI models and APIs with custom hardware?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. A well-designed device treats your AI as a service: on-device firmware handles capture and pre-processing, then calls your cloud endpoints or streams audio to your existing APIs, while edge models can be your own weights compiled to the device's accelerator. The integration work is building the SDK layer, authentication, and data pipeline that connect your software to the hardware reliably. This is exactly the gap a full-stack ODM closes — your team keeps owning the AI while the hardware and firmware are built around it." } }
   ]
 }
 </script>
@@ -874,14 +874,17 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     background:var(--pz-blue); z-index:200; transition:width .08s linear; }
 
   /* ---- Hero (matches the site's hero scale & eyebrow) ---- */
-  .pz-hero { background:#fff; padding:128px 0 56px; border-bottom:1px solid rgba(0,0,0,0.06); }
+  .pz-hero { background:#fff; padding:28px 0 56px; border-bottom:1px solid rgba(0,0,0,0.06); }
   .pz-hero .pz-eyebrow { font-family:var(--sans); font-size:12px; font-weight:500;
     letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:18px; }
   .pz-hero h1 { font-family:var(--sans); font-size:clamp(34px,4.6vw,58px); font-weight:800;
     line-height:1.05; letter-spacing:-0.03em; color:var(--pz-head); margin-bottom:22px; }
   .pz-hero .pz-sub { max-width:640px; font-family:var(--sans); font-size:1.05rem; line-height:1.6;
     color:var(--pz-body); margin-bottom:32px; }
-  .pz-hero-cta { display:flex; flex-wrap:wrap; gap:14px; }
+  .pz-hero-cta { display:flex; flex-direction:row; flex-wrap:wrap; gap:12px; flex:0 0 auto; }
+  .pz-hero-inner { display:flex; align-items:flex-end; justify-content:space-between; gap:48px; flex-wrap:wrap; }
+  .pz-hero-copy { flex:1 1 560px; min-width:0; }
+  @media (max-width:640px){ .pz-hero-inner { flex-direction:column; align-items:flex-start; gap:24px; } .pz-hero-cta { width:100%; } }
 
   /* ---- Buttons: mirror the site's .btn + .btn-blue-deep / ghost ---- */
   .pz-btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--sans);
@@ -894,11 +897,11 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
   /* ---- 2-column layout ---- */
   .pz-layout { padding:72px 0 96px; background:#fff; }
-  .pz-grid { display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:72px; align-items:start; }
+  .pz-grid { display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:64px; align-items:start; }
   .pz-main { min-width:0; }
 
   /* ---- Content typography (site body: Inter, comfortable measure) ---- */
-  .pz-main p { max-width:720px; font-family:var(--sans); font-size:16px; line-height:1.7;
+  .pz-main p { font-family:var(--sans); font-size:16px; line-height:1.7;
     color:var(--pz-body); margin:0 0 18px; }
   .pz-section { scroll-margin-top:96px; }
   .pz-section h2 { font-family:var(--sans); font-weight:800; font-size:clamp(26px,2.4vw,34px);
@@ -909,7 +912,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     letter-spacing:-0.01em; color:var(--pz-head); margin:32px 0 10px; }
 
   /* ---- Comparison tables (clean & minimal — subtle gray header, thin hairlines) ---- */
-  .pz-table-wrap { max-width:720px; overflow-x:auto; border:1px solid var(--pz-line);
+  .pz-table-wrap { overflow-x:auto; border:1px solid var(--pz-line);
     border-radius:var(--pz-radius); margin:20px 0 28px; -webkit-overflow-scrolling:touch; }
   table.pz-table { width:100%; border-collapse:collapse; font-size:14.5px; min-width:520px; }
   .pz-table thead th { background:var(--pz-alt); color:var(--pz-head); font-weight:600; text-align:left;
@@ -918,15 +921,14 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     color:var(--pz-body); vertical-align:top; }
   .pz-table tbody td:first-child { font-weight:600; color:var(--pz-head); }
 
-  /* ---- Callout boxes (simplified: 3px border, faint tint, quiet uppercase label) ---- */
-  .pz-callout { max-width:720px; padding:18px 22px; border-radius:var(--pz-radius);
-    border-left:3px solid; margin:22px 0 26px; }
-  .pz-callout .pz-callout-label { display:block; font-family:var(--sans); font-size:12px;
-    font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--pz-muted); margin-bottom:6px; }
-  .pz-callout p { font-family:var(--sans); font-size:15px; line-height:1.7; color:var(--pz-body); margin:0; }
-  .pz-callout.tip { border-color:#2563eb; background:#f6f9ff; }
-  .pz-callout.best { border-color:#16a34a; background:#f5faf6; }
-  .pz-callout.insight { border-color:#7c3aed; background:#f9f7fd; }
+  /* ---- Callout boxes (editorial: hairline rules top & bottom, quiet label, italic text) ---- */
+  .pz-callout { margin:28px 0; padding:18px 0;
+    border-top:1px solid var(--pz-line); border-bottom:1px solid var(--pz-line);
+    border-left:0; border-radius:0; background:none; }
+  .pz-callout .pz-callout-label { display:block; font-family:var(--sans); font-size:11px;
+    font-weight:500; letter-spacing:1px; text-transform:uppercase; color:var(--pz-muted); margin-bottom:8px; }
+  .pz-callout p { font-family:var(--sans); font-style:italic; font-size:1.05rem; line-height:1.7; color:var(--pz-body); margin:0; }
+  .pz-callout.tip, .pz-callout.best, .pz-callout.insight { border-color:var(--pz-line); background:none; }
 
   /* ---- Internal link cards (quiet, hairline border) ---- */
   .pz-ilink { display:inline-flex; align-items:center; gap:10px; width:min(80%,560px);
@@ -938,17 +940,17 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-ilink .pz-ilink-txt { flex:1; }
 
   /* ---- Image placeholder box (legacy; kept harmless) ---- */
-  .pz-imgph { max-width:720px; border:1px dashed rgba(0,0,0,0.14); border-radius:var(--pz-radius);
+  .pz-imgph { border:1px dashed rgba(0,0,0,0.14); border-radius:var(--pz-radius);
     background:var(--pz-alt); color:var(--pz-muted); text-align:center; padding:40px 24px;
     margin:20px 0 28px; font-family:var(--sans); font-size:14px; line-height:1.6; }
   .pz-imgph strong { display:block; color:var(--pz-head); font-weight:600; margin-bottom:4px; }
   /* Placeholder images (framed, cropped to a consistent ratio) */
-  .pz-img { max-width:720px; margin:20px 0 28px; border-radius:var(--pz-radius);
+  .pz-img { margin:20px 0 28px; border-radius:var(--pz-radius);
     overflow:hidden; border:1px solid var(--pz-line); aspect-ratio:16/9; background:var(--pz-alt); }
   .pz-img img { display:block; width:100%; height:100%; object-fit:cover; }
 
   /* ---- Mid-article CTA bands (match the site's CTA sections) ---- */
-  .pz-cta-band { max-width:720px; border-radius:var(--pz-radius); padding:38px 40px; margin:44px 0;
+  .pz-cta-band { border-radius:var(--pz-radius); padding:38px 40px; margin:44px 0;
     display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
   .pz-cta-band.light { background:var(--pz-alt); border:1px solid var(--pz-line); }
   .pz-cta-band.dark  { background:var(--black); }
@@ -961,14 +963,14 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-ref { font-size:11px; font-weight:600; color:var(--pz-blue); vertical-align:super;
     line-height:0; text-decoration:none; padding:0 1px; }
   .pz-ref:hover { text-decoration:underline; }
-  .pz-references { max-width:720px; }
+  .pz-references { }
   .pz-references ol { margin:16px 0 0; padding-left:20px; }
   .pz-references li { font-family:var(--sans); font-size:14.5px; line-height:1.7; color:var(--pz-muted);
     margin-bottom:8px; scroll-margin-top:96px; }
   .pz-references li a { color:var(--pz-blue); word-break:break-word; }
 
   /* ---- FAQ accordion (matches the ODM page FAQ exactly) ---- */
-  .pz-faq { max-width:760px; margin-top:8px; background:#fff;
+  .pz-faq { margin-top:8px; background:#fff;
     border:1px solid rgba(0,0,0,0.06); border-radius:var(--pz-radius); overflow:hidden; }
   .pz-faq-item { border-bottom:1px solid var(--pz-hair); }
   .pz-faq-item:last-child { border-bottom:none; }
@@ -987,10 +989,10 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
   /* ================= STICKY TOC (right sidebar) ================= */
   .pz-toc-aside { position:sticky; top:100px; align-self:start; }
-  .pz-toc-title { font-family:var(--sans); font-size:12px; font-weight:500; letter-spacing:0.12em;
+  .pz-toc-title { font-family:var(--sans); font-size:16px; font-weight:500; letter-spacing:0.12em;
     text-transform:uppercase; color:var(--text-muted); margin-bottom:16px; }
   .pz-toc-list { list-style:none; margin:0; padding:0; border-left:1px solid var(--pz-line); }
-  .pz-toc-list a { display:block; font-family:var(--sans); font-size:13px; font-weight:500; color:var(--pz-muted);
+  .pz-toc-list a { display:block; font-family:var(--sans); font-size:15px; font-weight:500; color:var(--pz-muted);
     line-height:1.45; padding:8px 0 8px 16px; margin-left:-1px; border-left:2px solid transparent;
     transition:color .15s ease, border-color .15s ease; }
   .pz-toc-list a:hover { color:var(--pz-head); }
@@ -1023,7 +1025,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     transform:translateY(100%); transition:transform .3s cubic-bezier(.4,0,.2,1); box-shadow:0 -8px 40px rgba(0,0,0,.15); }
   .pz-toc-floating.open { transform:translateY(0); }
   .pz-toc-floating .pz-toc-handle { width:40px; height:4px; border-radius:2px; background:#d5dae3; margin:8px auto 16px; }
-  .pz-toc-floating .pz-toc-title { padding:0 4px; }
+  .pz-toc-floating .pz-toc-title { padding:0 4px; font-size:16px; }
   .pz-toc-floating .pz-toc-list a { font-size:15px; padding:12px 16px; }
 
   /* ================= RESPONSIVE ================= */
@@ -1031,7 +1033,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     .pz-grid { grid-template-columns:1fr; gap:0; }
     .pz-toc-aside { display:none; }
     .pz-toc-bar { display:block; }
-    .pz-hero { padding-top:116px; }
+    .pz-hero { padding-top:24px; }
   }
   /* Tablet: render the shared panel as a dropdown anchored under the sticky bar */
   @media (min-width:641px) and (max-width:1024px) {
@@ -1060,15 +1062,63 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 <!-- Reading progress bar -->
 <div class="pz-progress" id="pzProgress" role="progressbar" aria-label="Reading progress"></div>
 
+<!-- ========== VIDEO HERO (full-width, above the page hero) ========== -->
+<!-- TODO: Replace with ai-hardware-integration-video.mp4 -->
+<style>
+  .rv-video-hero{width:100%;padding-top:128px;}
+  @media(max-width:1024px){.rv-video-hero{padding-top:116px;}}
+  .rv-video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#1a1a2e;overflow:hidden;border-radius:12px;}
+  @supports not (aspect-ratio:16/9){.rv-video-frame{height:0;padding-bottom:56.25%;}}
+  .rv-video-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+  .rv-video-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:20px;}
+  .rv-video-play{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.10);border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;transition:transform .2s ease,background .2s ease;}
+  .rv-video-ph:hover .rv-video-play{transform:scale(1.06);background:rgba(255,255,255,.18);}
+  .rv-video-play svg{width:30px;height:30px;margin-left:5px;fill:#fff;}
+  .rv-video-label{font-family:var(--sans,Inter,sans-serif);font-size:14px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.72);}
+  @media(max-width:640px){.rv-video-play{width:60px;height:60px}.rv-video-play svg{width:24px;height:24px}}
+</style>
+<section class="rv-video-hero" aria-label="Introduction video">
+  <div class="container">
+  <div class="rv-video-frame">
+
+    <!-- ===== PLACEHOLDER (delete this block once a real video is added) ===== -->
+    <div class="rv-video-ph">
+      <div class="rv-video-play" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+      </div>
+      <div class="rv-video-label">Video Coming Soon</div>
+    </div>
+
+    <!-- ===== OPTION A — background-style autoplay (uncomment when the video is ready) =====
+    <video autoplay muted loop playsinline preload="auto" poster="../../img/video/ai-hardware-integration-poster.jpg">
+      <source src="../../img/video/ai-hardware-integration-video.mp4" type="video/mp4">
+    </video>
+    ===== END OPTION A ===== -->
+
+    <!-- ===== OPTION B — click-to-play with poster + controls (uncomment to use instead of A) =====
+    <video controls playsinline preload="none" poster="../../img/video/ai-hardware-integration-poster.jpg" style="background:#1a1a2e;">
+      <source src="../../img/video/ai-hardware-integration-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    ===== END OPTION B ===== -->
+
+  </div>
+  </div>
+</section>
+
 <!-- ========== HERO (full-width) ========== -->
 <header class="pz-hero">
   <div class="container">
+    <div class="pz-hero-inner">
+    <div class="pz-hero-copy">
     <div class="pz-eyebrow">Resource</div>
     <h1>AI Hardware Integration</h1>
-    <p class="pz-sub">Placeholder subtitle — marketing copy will go here. A concise, benefit-led overview of what AI hardware integration is and why AI companies partner with a dedicated ODM to bring embedded systems to market.</p>
+    <p class="pz-sub">A practical guide to turning your AI software into a shipping physical product — from edge-vs-cloud architecture and on-device inference to connectivity, firmware, security, and manufacturing at scale. Written for AI teams who move fast in software but need a hardware partner to close the last mile.</p>
+    </div>
     <div class="pz-hero-cta">
       <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
       <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener noreferrer" class="pz-btn pz-btn-ghost">Discuss Your Integration Project</a>
+    </div>
     </div>
   </div>
 </header>
@@ -1096,17 +1146,23 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="what-is-ai-hardware-integration" data-toc="What Is AI Hardware Integration?">
           <h2>What Is AI Hardware Integration?</h2>
-          <p>Content coming soon. This section will define AI hardware integration and set the foundation for the rest of the guide.</p>
+          <p>AI hardware integration is the engineering work of bringing an AI model and its software together with a physical device so they function as one dependable product. It is not simply "putting a chip in a box." It is the coordinated design of the sensors that capture the real world, the processor that runs or reaches the model, the memory and power system that sustain it, the radios that connect it, the firmware that ties everything together, and the cloud APIs the device talks to. Get any one of these wrong and the AI that worked flawlessly on a laptop stutters, drains its battery, or fails in the field.</p>
+          <p>The central question in every integration project is where inference happens. Some processing must run on the device itself — wake-word detection, voice activity detection, noise reduction, and privacy-sensitive analysis. Other workloads, such as large-model transcription or LLM reasoning, are better served from the cloud. The architecture that splits work between edge and cloud, and the pipeline that moves data reliably between them, is the heart of the discipline.</p>
+          <p>For AI companies, integration is the bridge between a working demo and a manufacturable product. It answers concrete questions: which processor delivers the needed inference within your cost and power budget, how audio is captured cleanly in a noisy room, how the device updates itself after launch, how user data stays private, and how the whole thing survives certification and volume production. This guide walks through each of those layers in turn.</p>
         </section>
 
         <section class="pz-section" id="why-hardware-integration" data-toc="Why AI Companies Need Hardware Integration">
           <h2>Why AI Companies Need Hardware Integration</h2>
-          <p>Content coming soon. This section will explain why software-first AI companies invest in hardware integration.</p>
+          <p>The most capable AI models in the world are only as useful as their access to the real world. A medical scribe needs to hear a clinician and patient clearly across a busy exam room; a field-service assistant needs to capture a technician's notes hands-free in a noisy plant; a wearable needs to run for a full shift on a small battery. None of that is a software problem — it is a hardware problem that determines whether the AI ever gets clean input to work with.</p>
+          <p>Dedicated hardware also unlocks product categories that a phone app cannot serve: always-on voice capture, purpose-built form factors, offline operation, and data that never leaves a controlled device. It removes the friction of asking users to open an app, and it lets you own the full experience — and the recurring value — rather than renting attention on someone else's platform. For many AI companies, the device is what turns a feature into a defensible business.</p>
+          <p>The challenge is that building hardware is a fundamentally different discipline from shipping software. Silicon selection, PCB layout, RF design, acoustic tuning, thermal and power management, certification, and supply chain each carry their own hard-won expertise and long lead times. AI teams that try to learn all of it in-house typically lose a year to avoidable re-spins. Partnering with an experienced integration team lets you keep owning the model and the product vision while an expert closes the hardware gap.</p>
         </section>
 
         <section class="pz-section" id="integration-architecture" data-toc="AI Hardware Integration Architecture">
           <h2>AI Hardware Integration Architecture</h2>
-          <p>Content coming soon. This section will walk through a reference architecture for integrating AI into hardware.</p>
+          <p>A reference architecture for an integrated AI device flows from input to intelligence to output. At the front end sit the sensors — microphones, cameras, IMUs, or environmental sensors — that capture raw signal. That signal passes through a pre-processing stage, often on a dedicated DSP or the main processor, where audio is beamformed and denoised, or video is framed and compressed. The cleaned data is then handed to the inference layer, which either runs a model locally on an NPU or MCU, or packages the data and sends it to a cloud endpoint.</p>
+          <p>Surrounding this pipeline are the supporting subsystems: memory and storage to buffer data, a connectivity stack (BLE, Wi-Fi, or cellular) to reach the cloud and companion app, a power management system sized for the device's duty cycle, and firmware that orchestrates the whole sequence and manages state, security, and OTA updates. The companion app and backend SDK complete the loop, giving users control and delivering results.</p>
+          <p>The single most consequential architecture decision is the edge/cloud/hybrid split. A pure-edge design maximizes privacy, latency, and offline resilience but is bounded by the silicon you can afford. A cloud-first design gives you the biggest models and instant updates at the cost of connectivity dependence and per-request expense. Most successful products are hybrid — lightweight, latency-critical, and privacy-sensitive tasks run on-device, while heavy reasoning runs in the cloud. Deciding this split early, before PCB layout, is what prevents costly re-spins later.</p>
           <!-- TODO: replace with final image -->
           <figure class="pz-img">
             <img src="../../img/custom-devices/odm-oem/manufacturing/SMT-Production-Line.jpg" alt="Placeholder: AI hardware integration architecture diagram spanning sensors, MCU/SoC, memory, connectivity, power, firmware, and cloud SDK" loading="lazy">
@@ -1119,58 +1175,58 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="core-components" data-toc="Core Components">
           <h2>Core Components of AI Hardware Integration</h2>
-          <p>Content coming soon. An overview of the building blocks that make up an integrated AI hardware system.</p>
+          <p>Every integrated AI device is assembled from the same family of building blocks. Understanding what each one does — and how the choices interact — is the foundation for scoping a realistic bill of materials and avoiding late-stage surprises. The sections below walk through each core component and the trade-offs that matter most for AI workloads.</p>
 
           <h3>Sensors &amp; Input</h3>
-          <p>Content coming soon.</p>
+          <p>Sensors are the device's window onto the world, and their quality sets a ceiling on everything the AI can do downstream. For voice products, this means the microphone array — the number, placement, and quality of MEMS microphones directly determine how well beamforming and noise reduction can isolate a speaker. Other products add cameras, inertial measurement units, or environmental sensors. Because a model can never recover information the sensor failed to capture, sensor selection and placement are made early and validated in real acoustic and lighting conditions, not on a bench in isolation.</p>
 
           <h3>PCB &amp; PCBA</h3>
-          <p>Content coming soon.</p>
+          <p>The printed circuit board is the physical substrate that ties every component together, and the assembled board (PCBA) is where design meets manufacturing. For AI devices the layout is unusually demanding: high-speed data lines to processors and cameras, sensitive analog audio traces, and RF antennas must coexist without interfering with one another. Good layout keeps noise away from microphone signals, routes power cleanly, and leaves room for thermal dissipation. Board design also drives manufacturability — component choices and footprint decisions determine whether the design can be built reliably on an automated SMT line at volume.</p>
 
           <h3>Microcontrollers &amp; Processors</h3>
-          <p>Content coming soon.</p>
+          <p>The processor is the brain of the device and the biggest single lever on cost, power, and how much AI can run on-device. The choice spans a spectrum: simple microcontrollers (MCUs) for sensor handling and wake-word detection, application-class microprocessors (MPUs) running Linux for richer edge workloads, and integrated systems-on-chip (SoCs) with dedicated NPUs for meaningful on-device neural inference. Picking too little compute forces everything to the cloud; picking too much wastes battery and bill-of-materials cost. The table below summarizes how the three classes compare.</p>
           <h3 style="font-size:16px;color:#555;font-weight:600;">MCU vs. MPU vs. SoC</h3>
           <div class="pz-table-wrap">
             <table class="pz-table">
               <thead><tr><th>Feature</th><th>MCU</th><th>MPU</th><th>SoC</th></tr></thead>
               <tbody>
-                <tr><td>Compute</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Power draw</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Best for</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Cost</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Compute</td><td>Low — real-time control, DSP, wake-word</td><td>High — app-class, runs Linux</td><td>Highest — CPU + GPU/NPU on one die</td></tr>
+                <tr><td>Power draw</td><td>Very low (µA–mW sleep)</td><td>Moderate to high</td><td>Moderate to high; NPU is efficient per inference</td></tr>
+                <tr><td>Best for</td><td>Wearables, sensor hubs, always-on wake</td><td>Edge gateways, richer local processing</td><td>On-device neural inference, camera, display</td></tr>
+                <tr><td>Cost</td><td>$ — cents to a few dollars</td><td>$$ — needs external memory/PMIC</td><td>$$$ — highest BOM, most capability</td></tr>
               </tbody>
             </table>
           </div>
 
           <h3>Memory &amp; Storage</h3>
-          <p>Content coming soon.</p>
+          <p>Memory and storage are frequently underestimated and are a common cause of mid-project re-specs. RAM must hold the running model, its activations, and the audio or image buffers in flight, while flash storage holds firmware, any on-device model weights, and captured data awaiting upload. On-device AI is especially memory-hungry — a quantized speech or vision model can consume several megabytes, and OTA updates require enough spare flash for a second firmware image plus rollback. Sizing memory generously at the architecture stage is far cheaper than discovering a shortfall after the PCB is laid out.</p>
 
           <h3>Wireless Modules (BLE / WiFi)</h3>
-          <p>Content coming soon.</p>
+          <p>Connectivity is how the device reaches its companion app and cloud AI, and the radio choice shapes both user experience and battery life. Bluetooth Low Energy is ideal for pairing, control, and small data syncs at minimal power draw. Wi-Fi is the workhorse for uploading audio or video, reaching cloud inference directly, and pulling large OTA updates without a phone in the loop. Cellular (4G/LTE or LTE-M) adds standalone connectivity where no local network exists. Many products carry more than one radio; the table below contrasts the two most common.</p>
           <h3 style="font-size:16px;color:#555;font-weight:600;">BLE vs. WiFi</h3>
           <div class="pz-table-wrap">
             <table class="pz-table">
               <thead><tr><th>Feature</th><th>BLE</th><th>WiFi</th></tr></thead>
               <tbody>
-                <tr><td>Range</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Throughput</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Power draw</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Best for</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Range</td><td>~10–30 m indoors</td><td>~30–50 m indoors, via access point</td></tr>
+                <tr><td>Throughput</td><td>Low — up to ~1–2 Mbps practical</td><td>High — tens to hundreds of Mbps</td></tr>
+                <tr><td>Power draw</td><td>Very low — ideal for battery devices</td><td>High — meaningful battery impact</td></tr>
+                <tr><td>Best for</td><td>Pairing, control, small syncs via phone</td><td>Audio/video upload, cloud AI, large OTA</td></tr>
               </tbody>
             </table>
           </div>
 
           <h3>Power Management</h3>
-          <p>Content coming soon.</p>
+          <p>Power management determines whether a device lasts a full shift or dies at lunch, and it is tightly coupled to every other choice. The power management IC (PMIC), battery chemistry and capacity, charging circuit, and — most importantly — the firmware's sleep strategy together define battery life. AI workloads are bursty: the device idles in a low-power wake-word state most of the time, then spikes when capturing and processing. Designing aggressive sleep states and duty-cycling the processor and radios is usually more effective than simply adding a bigger battery, which adds size, weight, and cost.</p>
 
           <h3>Audio DSP</h3>
-          <p>Content coming soon.</p>
+          <p>For voice-first products, the audio DSP pipeline is what separates a usable device from a frustrating one. Before any AI ever sees the signal, the pipeline handles acoustic echo cancellation, beamforming across the microphone array to focus on the speaker, noise reduction to suppress background sound, and automatic gain control. This front-end processing — tuned to the specific enclosure, microphone placement, and acoustic environment — is what lets a cloud or on-device model transcribe accurately in a real exam room, factory, or vehicle. Audio tuning is specialized work and is one of the most common reasons voice devices underperform in the field.</p>
 
           <h3>Firmware &amp; OS</h3>
-          <p>Content coming soon.</p>
+          <p>Firmware is the software layer that orchestrates the hardware — managing sensors, the inference pipeline, connectivity, power states, security, and OTA updates. Constrained devices typically run a real-time operating system (such as FreeRTOS or Zephyr) or bare-metal code, while more capable SoCs run embedded Linux. The firmware is where timing, reliability, and the edge/cloud handoff are actually implemented, and it is also where security features like secure boot and signed updates live. Robust firmware is what makes a device dependable in the field long after launch.</p>
 
           <h3>Cloud Connectivity &amp; SDK</h3>
-          <p>Content coming soon.</p>
+          <p>The cloud layer and SDK connect the device to your AI services and to the user. The device authenticates, streams or uploads data to your endpoints, and receives results, model updates, and configuration in return. A well-designed SDK abstracts this so the device treats your AI as a service — calling your existing APIs or streaming audio to your pipeline — while handling authentication, retries, buffering during connectivity gaps, and secure transport. This is the layer that lets an AI software team keep owning the model and backend while the device is built around it.</p>
 
           <a href="../../custom-devices/odm-oem/index.html" class="pz-ilink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -1180,31 +1236,31 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="integration-examples" data-toc="Integration Examples">
           <h2>AI Hardware Integration Examples</h2>
-          <p>Content coming soon. Real-world examples of integrated AI hardware across product categories.</p>
+          <p>The principles above take concrete shape across product categories. The examples below illustrate how the edge/cloud split, sensor choices, connectivity, and power budget change depending on what the device is asked to do — and where the hard integration problems typically sit.</p>
 
           <h3>Medical AI Scribe</h3>
-          <p>Content coming soon.</p>
+          <p>A medical scribe device captures a clinician-patient conversation and turns it into structured notes. The integration challenge is acoustic: a multi-microphone array with strong beamforming and noise reduction must isolate two speakers in a reverberant exam room. Wake-word and voice activity detection run on-device for responsiveness and privacy, while transcription and clinical summarization run in the cloud. Because health data is involved, the pipeline is built for privacy and compliance, keeping raw audio controlled and encrypting everything in transit.</p>
 
           <h3>Smart Glasses</h3>
-          <p>Content coming soon.</p>
+          <p>Smart glasses pack microphones, speakers, sometimes a camera, and a battery into a tight, weight-sensitive form factor. The integration is dominated by thermal and power constraints — there is almost no room for battery, so aggressive duty-cycling and efficient on-device processing are essential. BLE links to a phone that provides heavier compute and connectivity, offloading cloud AI to the paired device to preserve the wearable's battery and keep it light enough to wear all day.</p>
 
           <h3>AI Earbuds</h3>
-          <p>Content coming soon.</p>
+          <p>AI earbuds combine audio playback, voice capture, and increasingly on-device intelligence in an extremely small enclosure. Bone-conduction or in-ear microphones, low-power Bluetooth audio, and tiny batteries make power management the defining constraint. Wake-word detection and audio processing run on a low-power DSP, while conversational AI runs in the cloud through the paired phone. The acoustic tuning to capture the wearer's voice cleanly while rejecting wind and ambient noise is the core integration work.</p>
 
           <h3>Smart Badge</h3>
-          <p>Content coming soon.</p>
+          <p>A smart badge is a lightweight, always-on wearable for frontline and shift-based workers — capturing voice notes, communications, or context throughout a shift. The priorities are all-day battery life, reliable connectivity across a large facility (often Wi-Fi with BLE for provisioning), and a rugged, comfortable form factor. Most processing is offloaded to the cloud to keep the badge small and inexpensive, with on-device wake and buffering to bridge connectivity gaps.</p>
 
           <h3>AI Cameras</h3>
-          <p>Content coming soon.</p>
+          <p>AI cameras run vision models — object detection, presence, or scene analysis — and are strong candidates for edge inference because streaming raw video to the cloud is bandwidth-hungry and privacy-sensitive. An SoC with a dedicated NPU runs the vision model locally, sending only events or metadata upstream. The integration challenges are image signal processing, thermal management under sustained inference load, and delivering enough compute within the power and cost budget.</p>
 
           <h3>Industrial Wearables</h3>
-          <p>Content coming soon.</p>
+          <p>Industrial wearables bring AI assistance to technicians and operators in demanding environments. Ruggedization, dust and water resistance, glove-friendly controls, and long battery life dominate the design, alongside audio tuning that works in high-noise settings. Connectivity may combine Wi-Fi, BLE, and cellular to stay online across a plant or field site, and hands-free voice interaction is central so workers can keep working while they capture data.</p>
 
           <h3>Voice Agents</h3>
-          <p>Content coming soon.</p>
+          <p>Standalone voice-agent devices — smart speakers, desk assistants, and communication devices — are built around clean far-field audio capture and low-latency response. A microphone array with beamforming handles the acoustics, on-device wake-word detection triggers capture, and cloud AI handles speech recognition and conversational reasoning. Because these devices are usually mains-powered or generously batteried, the integration focus shifts from power to audio quality and responsiveness.</p>
 
           <h3>Edge AI Gateway</h3>
-          <p>Content coming soon.</p>
+          <p>An edge AI gateway aggregates data from multiple sensors or devices and runs heavier local inference before deciding what to send to the cloud. Built around an MPU or SoC running Linux, it prioritizes compute, memory, and robust connectivity over battery life since it is typically powered. Gateways are the pattern of choice when latency, bandwidth, or privacy make it impractical to send everything upstream, acting as a local intelligence hub for a fleet of simpler endpoints.</p>
 
           <a href="../../proof/index.html" class="pz-ilink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -1219,29 +1275,32 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="common-challenges" data-toc="Common Challenges">
           <h2>Common AI Hardware Integration Challenges</h2>
-          <p>Content coming soon. The recurring pitfalls teams hit when integrating AI into hardware — and how to avoid them.</p>
+          <p>The recurring failures in AI hardware projects are rarely about the AI model itself. The first is the reality gap: a model that performs beautifully on clean recordings degrades sharply on real device audio, because the microphone, enclosure acoustics, and noise environment were not accounted for. The fix is to capture and validate on the actual hardware early, and to invest in the audio front-end rather than expecting the model to compensate.</p>
+          <p>The second is under-budgeting power and memory. On-device inference is far heavier than teams expect, and a design that ignores sleep states or under-sizes RAM and flash forces expensive re-spins. The third is deferring connectivity, security, and OTA to "later" — retrofitting signed updates, secure boot, and buffering into a shipped design is painful and sometimes impossible. The fourth is treating certification as an afterthought, when RF and safety failures discovered late can require hardware changes and reset the schedule by months.</p>
+          <p>Underlying most of these is a coordination problem: silicon, PCB, firmware, acoustics, cloud, and manufacturing decisions are deeply interdependent, and teams optimizing one in isolation create problems downstream. The most reliable way to avoid this is to make the big architecture decisions together, up front, with people who have shipped this class of device before.</p>
           <div class="pz-callout insight">
             <span class="pz-callout-label">Engineering Insight</span>
-            <p>Placeholder insight. A hard-won engineering lesson relevant to AI hardware integration will appear here.</p>
+            <p>The model is almost never the bottleneck — the audio front-end is. Teams routinely spend months improving accuracy that a properly tuned microphone array and DSP pipeline would have delivered for free.</p>
           </div>
           <div class="pz-callout best">
             <span class="pz-callout-label">Best Practice</span>
-            <p>Placeholder best practice. A recommended approach for de-risking integration will appear here.</p>
+            <p>Lock the edge-versus-cloud split and the processor class before PCB layout begins. Nearly every expensive re-spin traces back to an architecture decision that was left open too long.</p>
           </div>
         </section>
 
         <section class="pz-section" id="development-cost" data-toc="Development Cost">
           <h2>AI Hardware Development Cost</h2>
-          <p>Content coming soon. How to think about the cost of taking an integrated AI device from prototype to production.</p>
+          <p>The cost of an integrated AI device breaks into two parts: non-recurring engineering (NRE) to design and validate the product, and per-unit cost to manufacture it. NRE covers industrial and mechanical design, custom PCB layout, firmware and SDK integration, audio tuning, tooling for the enclosure, and certification — commonly tens to low hundreds of thousands of dollars depending on complexity and how much can be built on proven reference designs. Reusing a validated platform is the single biggest way to reduce it.</p>
+          <p>Per-unit cost is driven by the processor class, memory, radios, battery, sensors, and enclosure, and it falls significantly with volume as tooling amortizes and component pricing improves. The architecture decisions made early — especially the processor and the edge/cloud split — set the floor on both NRE and unit cost, which is why they deserve the most scrutiny at the start. The table below maps the phases a device passes through and what drives cost at each stage.</p>
           <h3 style="font-size:16px;color:#555;font-weight:600;">Prototype vs. Production Cost Breakdown</h3>
           <div class="pz-table-wrap">
             <table class="pz-table">
               <thead><tr><th>Phase</th><th>Typical Activities</th><th>Cost Drivers</th></tr></thead>
               <tbody>
-                <tr><td>Prototype</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>EVT / DVT</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>PVT</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Production</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Prototype</td><td>Architecture, breadboard/dev-kit builds, feasibility, early firmware</td><td>Engineering time, dev boards, iteration cycles</td></tr>
+                <tr><td>EVT / DVT</td><td>Custom PCB, enclosure tooling, audio tuning, design validation</td><td>Tooling, board spins, test fixtures, lab time</td></tr>
+                <tr><td>PVT</td><td>Production-representative build, process validation, certification</td><td>Certification fees, pilot run, yield tuning</td></tr>
+                <tr><td>Production</td><td>Volume manufacturing, assembly, QC, packaging</td><td>BOM, labor, volume; unit cost drops with scale</td></tr>
               </tbody>
             </table>
           </div>
@@ -1253,16 +1312,17 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="embedded-ai-hardware" data-toc="Embedded AI Hardware">
           <h2>Embedded AI Hardware</h2>
-          <p>Content coming soon. Where AI computation happens — on the device, in the cloud, or both.</p>
+          <p>Embedded AI hardware is the class of device that runs neural inference on-device rather than relying solely on the cloud. The enabling technology is the accelerator — an NPU, DSP, or vector engine integrated into the processor — paired with a model that has been optimized to fit. Optimization means quantization (dropping weights from 32-bit float to 8-bit integer or lower to cut memory and speed up math), pruning and distillation to shrink the model, and compiling it to a runtime that targets the specific silicon.</p>
+          <p>Edge inference buys you low latency, offline operation, predictable cost at scale, and strong privacy because raw data can stay on the device. The trade-off is that you are bounded by the compute and memory you can afford in the bill of materials, and every optimization risks some accuracy that must be validated on real inputs. The practical answer for most products is hybrid: run the latency-critical and privacy-sensitive stages on the edge, and reach the cloud for the heaviest reasoning. The table below contrasts the two extremes.</p>
           <h3 style="font-size:16px;color:#555;font-weight:600;">Cloud AI vs. Edge AI</h3>
           <div class="pz-table-wrap">
             <table class="pz-table">
               <thead><tr><th>Feature</th><th>Cloud AI</th><th>Edge AI</th></tr></thead>
               <tbody>
-                <tr><td>Latency</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Privacy</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Cost at scale</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Offline capability</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Latency</td><td>Higher — network round-trip</td><td>Very low — local, often sub-100ms</td></tr>
+                <tr><td>Privacy</td><td>Raw data leaves the device</td><td>Raw data can stay on-device</td></tr>
+                <tr><td>Cost at scale</td><td>Recurring per-request/compute cost</td><td>One-time silicon cost, no per-use fee</td></tr>
+                <tr><td>Offline capability</td><td>None — requires connectivity</td><td>Full — works without a network</td></tr>
               </tbody>
             </table>
           </div>
@@ -1279,16 +1339,17 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="choose-a-partner" data-toc="How to Choose a Partner">
           <h2>How to Choose an AI Hardware Integration Partner</h2>
-          <p>Content coming soon. A framework for evaluating an AI hardware integration partner.</p>
+          <p>The right partner depends on how much of the hardware discipline you want to own. An OEM builds to your finished design, which suits teams with in-house hardware engineering. An ODM contributes the design itself — architecture, reference platforms, firmware, and acoustics — which is the better fit for AI software companies that want to move fast without hiring a full hardware team. The table below contrasts the two models.</p>
+          <p>Beyond the model, evaluate a partner on demonstrated experience with your device class, whether they cover the full stack (hardware, firmware, audio, SDK integration, and manufacturing) or only a slice, their ability to take you from prototype through certification to volume, and how they handle the AI-specific work of SDK integration and on-device optimization. A partner who has shipped similar products has already paid for the mistakes you would otherwise make. Ask to see relevant programs, understand who owns the IP, and confirm they can scale production to your forecast.</p>
           <h3 style="font-size:16px;color:#555;font-weight:600;">ODM vs. OEM</h3>
           <div class="pz-table-wrap">
             <table class="pz-table">
               <thead><tr><th>Feature</th><th>ODM</th><th>OEM</th></tr></thead>
               <tbody>
-                <tr><td>Design ownership</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Time to market</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Customization</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Best for</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Design ownership</td><td>Partner designs; may build on reference platforms</td><td>You own the complete design</td></tr>
+                <tr><td>Time to market</td><td>Faster — leverages proven designs and firmware</td><td>Slower — you engineer from scratch</td></tr>
+                <tr><td>Customization</td><td>High, guided by partner's platform and expertise</td><td>Total — bounded only by your own team</td></tr>
+                <tr><td>Best for</td><td>AI/software teams without in-house hardware</td><td>Teams with mature hardware engineering</td></tr>
               </tbody>
             </table>
           </div>
@@ -1296,7 +1357,9 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="why-gmic" data-toc="Why GMIC AI">
           <h2>Why GMIC AI</h2>
-          <p>Content coming soon. Why AI companies choose GMIC AI as their hardware integration partner.</p>
+          <p>GMIC AI is the AI-hardware division of Gainstrong, a contract manufacturer founded in 2009 with more than fifteen years of manufacturing experience and over 270 hardware programs shipped. We exist to close a specific gap: AI teams build software fast but struggle to build hardware. We take that hardware off your plate end to end — from concept and prototype to volume production of 50,000+ units per month — so your team stays focused on the model and the product.</p>
+          <p>Our engagement is full-stack OEM/ODM: hardware architecture, PCB design, embedded firmware, mechanical and industrial design, audio tuning (microphone arrays, beamforming, and noise reduction), SDK and API integration, prototype and validation, private label and packaging, and certification including FCC and CE. With operations in California and a vertically integrated Shenzhen facility spanning SMT through final assembly, we control quality and timeline across the entire path from design to shipped product.</p>
+          <p>We have shipped voice-first and edge-AI devices across categories — AI voice recorders, wearables such as smart glasses, earbuds, and bone-conduction devices, AI communication devices, speakers, and smart badges. That experience means the hard integration problems described throughout this guide are ones we have already solved, which is what lets AI companies reach market faster and with less risk.</p>
           <div class="pz-cta-band light">
             <span class="pz-cta-text">Ready to discuss your hardware integration project?</span>
             <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
@@ -1312,52 +1375,52 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
           <h2>FAQ</h2>
           <div class="pz-faq" id="pzFaq">
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 1<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">What is AI hardware integration?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">AI hardware integration is the engineering discipline of bringing AI models and software together with a physical device — the sensors, processor, memory, connectivity, power system, firmware, and cloud APIs — so they operate as one reliable product. It spans architecture decisions (edge vs. cloud vs. hybrid inference), audio and sensor pipelines, on-device model optimization, companion apps, OTA updates, and manufacturing. The goal is a device that captures real-world signals, runs or reaches the AI, and returns useful output within acceptable latency, power, and cost budgets.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 2<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">Should AI run on the device (edge) or in the cloud?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">It depends on your latency, privacy, cost, and connectivity requirements. Edge inference gives sub-100ms response, works offline, and keeps raw data on the device, but is constrained by the processor and memory you can afford in the bill of materials. Cloud inference gives you the largest models and easy updates but adds round-trip latency, recurring per-request cost, and a hard dependency on connectivity. Most shipping products are hybrid: wake-word, voice activity detection, and noise reduction run on-device, while heavier transcription or LLM reasoning runs in the cloud.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 3<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">How long does it take to build an integrated AI device?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">A realistic timeline from concept to mass production is typically nine to fifteen months, depending on complexity and how much can be built on proven reference designs. Early prototyping and architecture takes one to three months, EVT and DVT builds another three to five months, DVT-to-PVT validation and certification a further two to four months, and ramp to volume production a month or more. Reusing a validated hardware platform and existing SDK integrations can compress this significantly.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 4<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">What does it cost to develop an AI hardware product?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Non-recurring engineering for a custom voice or edge-AI device commonly falls in the tens to low hundreds of thousands of dollars, driven by industrial and mechanical design, custom PCB layout, firmware and SDK integration, tooling, and certification. Per-unit cost then depends on the processor class, memory, radios, battery, enclosure, and volume. The largest cost lever is architecture: choosing the right processor and edge/cloud split early prevents expensive re-spins later.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 5<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">What is the difference between an MCU, MPU, and SoC?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">An MCU (microcontroller) is a low-power, low-cost chip with integrated memory that runs a real-time OS or bare-metal firmware — ideal for sensor handling, wake-word detection, and power-sensitive wearables. An MPU (microprocessor) delivers far more compute but needs external memory and typically runs Linux, suiting richer edge workloads. An SoC integrates CPU, GPU/NPU, memory controllers, and connectivity on one die, and is the usual choice when you need meaningful on-device neural inference, a display, or camera processing.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 6<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">How do you optimize an AI model to run on-device?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">The core techniques are quantization (converting weights from 32-bit float to 8-bit integer or lower to cut memory and speed up math), pruning and distillation to shrink the model, and compiling to a runtime that targets the chip's NPU, DSP, or vector extensions. You then profile latency, memory footprint, and power on the actual silicon, not an emulator. The practical trade-off is accuracy versus footprint — validation confirms the optimized model still meets your quality bar in real acoustic and lighting conditions.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 7<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">Should I use BLE or Wi-Fi for connectivity?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Use BLE for low-power, low-bandwidth links — pairing to a phone, syncing small payloads, and control — where battery life matters most. Use Wi-Fi when the device must upload audio or video, reach cloud AI directly, or receive large OTA updates without a phone in the loop. Many devices carry both: BLE for provisioning and companion-app control, Wi-Fi for bulk data, and sometimes 4G/LTE for standalone cellular operation where no local network exists.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 8<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">What is the difference between an ODM and an OEM partner?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">An OEM (original equipment manufacturer) builds a product to your complete design and specification — you own the engineering. An ODM (original design manufacturer) also designs the product, contributing hardware architecture, firmware, and reference platforms so you can move faster without an in-house hardware team. For AI software companies without deep hardware expertise, a full-stack ODM shortens time to market and reduces risk because the partner has already solved the hard integration problems.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 9<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">How are OTA firmware updates handled on AI devices?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Over-the-air updates are delivered over Wi-Fi or cellular (or relayed through a companion app over BLE) and should always be signed, versioned, and installed to a secondary partition with automatic rollback if the update fails to boot. This lets you patch security issues, improve on-device models, and add features across the fleet after launch. Designing OTA in from day one — with a dual-bank flash layout and a staged rollout mechanism — is far cheaper than retrofitting it later.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 10<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">How is data privacy and security handled on AI devices?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Security spans the whole stack: secure boot and signed firmware to prevent tampering, encrypted storage and TLS transport for data in transit, and a hardware root of trust or secure element for key storage. Privacy is strongest when sensitive processing happens on the edge so raw audio or video never leaves the device, with only derived results sent to the cloud. For regulated markets like healthcare, this is paired with clear data-handling policies and compliance controls such as HIPAA-aligned pipelines.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 11<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">What certifications does an AI hardware product need?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Any device with a radio needs regulatory certification for each market it ships to — FCC in the US, CE and UKCA in Europe and the UK, TELEC in Japan, and ISED in Canada, plus RoHS for materials compliance. Bluetooth products also require SIG qualification, and battery shipments involve UN 38.3 testing. Certification should be planned during DVT because failures often require hardware changes, and building on pre-certified radio modules can save both time and money.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 12<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">Can I use my existing AI models and APIs with custom hardware?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Yes. A well-designed device treats your AI as a service: on-device firmware handles capture and pre-processing, then calls your cloud endpoints or streams audio to your existing APIs, while edge models can be your own weights compiled to the device's accelerator. The integration work is building the SDK layer, authentication, and data pipeline that connect your software to the hardware reliably. This is exactly the gap a full-stack ODM closes — your team keeps owning the AI while the hardware and firmware are built around it.</div></div>
             </div>
           </div>
         </section>
@@ -1365,7 +1428,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
         <!-- ===== REFERENCES ===== -->
         <section class="pz-section pz-references" id="references" aria-label="References">
           <h2>References</h2>
-          <p>References will be added with final content.</p>
+          <p>This guide draws on established embedded-systems and edge-AI engineering practice and on GMIC AI's experience shipping voice-first and edge-AI devices across more than 270 hardware programs. For deeper reading, see our related resources on <a href="../../solutions/embedded-ai-hardware/index.html">embedded AI hardware</a>, <a href="../../custom-devices/odm-oem/index.html">ODM/OEM services</a>, and <a href="../../resources/voice-ai-hardware/index.html">voice AI hardware</a>, or contact our engineering team to discuss the specifics of your product.</p>
         </section>
 
       </main>

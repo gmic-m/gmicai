@@ -892,14 +892,17 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     background:var(--pz-blue); z-index:200; transition:width .08s linear; }
 
   /* ---- Hero (matches the site's hero scale & eyebrow) ---- */
-  .pz-hero { background:#fff; padding:128px 0 56px; border-bottom:1px solid rgba(0,0,0,0.06); }
+  .pz-hero { background:#fff; padding:28px 0 56px; border-bottom:1px solid rgba(0,0,0,0.06); }
   .pz-hero .pz-eyebrow { font-family:var(--sans); font-size:12px; font-weight:500;
     letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:18px; }
   .pz-hero h1 { font-family:var(--sans); font-size:clamp(34px,4.6vw,58px); font-weight:800;
     line-height:1.05; letter-spacing:-0.03em; color:var(--pz-head); margin-bottom:22px; }
   .pz-hero .pz-sub { max-width:640px; font-family:var(--sans); font-size:1.05rem; line-height:1.6;
     color:var(--pz-body); margin-bottom:32px; }
-  .pz-hero-cta { display:flex; flex-wrap:wrap; gap:14px; }
+  .pz-hero-cta { display:flex; flex-direction:row; flex-wrap:wrap; gap:12px; flex:0 0 auto; }
+  .pz-hero-inner { display:flex; align-items:flex-end; justify-content:space-between; gap:48px; flex-wrap:wrap; }
+  .pz-hero-copy { flex:1 1 560px; min-width:0; }
+  @media (max-width:640px){ .pz-hero-inner { flex-direction:column; align-items:flex-start; gap:24px; } .pz-hero-cta { width:100%; } }
 
   /* ---- Buttons: mirror the site's .btn + .btn-blue-deep / ghost ---- */
   .pz-btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--sans);
@@ -912,11 +915,11 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
   /* ---- 2-column layout ---- */
   .pz-layout { padding:72px 0 96px; background:#fff; }
-  .pz-grid { display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:72px; align-items:start; }
+  .pz-grid { display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:64px; align-items:start; }
   .pz-main { min-width:0; }
 
   /* ---- Content typography (site body: Inter, comfortable measure) ---- */
-  .pz-main p { max-width:720px; font-family:var(--sans); font-size:16px; line-height:1.7;
+  .pz-main p { font-family:var(--sans); font-size:16px; line-height:1.7;
     color:var(--pz-body); margin:0 0 18px; }
   .pz-section { scroll-margin-top:96px; }
   .pz-section h2 { font-family:var(--sans); font-weight:800; font-size:clamp(26px,2.4vw,34px);
@@ -927,7 +930,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     letter-spacing:-0.01em; color:var(--pz-head); margin:32px 0 10px; }
 
   /* ---- Comparison tables (clean & minimal — subtle gray header, thin hairlines) ---- */
-  .pz-table-wrap { max-width:720px; overflow-x:auto; border:1px solid var(--pz-line);
+  .pz-table-wrap { overflow-x:auto; border:1px solid var(--pz-line);
     border-radius:var(--pz-radius); margin:20px 0 28px; -webkit-overflow-scrolling:touch; }
   table.pz-table { width:100%; border-collapse:collapse; font-size:14.5px; min-width:520px; }
   .pz-table thead th { background:var(--pz-alt); color:var(--pz-head); font-weight:600; text-align:left;
@@ -936,15 +939,14 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     color:var(--pz-body); vertical-align:top; }
   .pz-table tbody td:first-child { font-weight:600; color:var(--pz-head); }
 
-  /* ---- Callout boxes (simplified: 3px border, faint tint, quiet uppercase label) ---- */
-  .pz-callout { max-width:720px; padding:18px 22px; border-radius:var(--pz-radius);
-    border-left:3px solid; margin:22px 0 26px; }
-  .pz-callout .pz-callout-label { display:block; font-family:var(--sans); font-size:12px;
-    font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--pz-muted); margin-bottom:6px; }
-  .pz-callout p { font-family:var(--sans); font-size:15px; line-height:1.7; color:var(--pz-body); margin:0; }
-  .pz-callout.tip { border-color:#2563eb; background:#f6f9ff; }
-  .pz-callout.best { border-color:#16a34a; background:#f5faf6; }
-  .pz-callout.insight { border-color:#7c3aed; background:#f9f7fd; }
+  /* ---- Callout boxes (editorial: hairline rules top & bottom, quiet label, italic text) ---- */
+  .pz-callout { margin:28px 0; padding:18px 0;
+    border-top:1px solid var(--pz-line); border-bottom:1px solid var(--pz-line);
+    border-left:0; border-radius:0; background:none; }
+  .pz-callout .pz-callout-label { display:block; font-family:var(--sans); font-size:11px;
+    font-weight:500; letter-spacing:1px; text-transform:uppercase; color:var(--pz-muted); margin-bottom:8px; }
+  .pz-callout p { font-family:var(--sans); font-style:italic; font-size:1.05rem; line-height:1.7; color:var(--pz-body); margin:0; }
+  .pz-callout.tip, .pz-callout.best, .pz-callout.insight { border-color:var(--pz-line); background:none; }
 
   /* ---- Internal link cards (quiet, hairline border) ---- */
   .pz-ilink { display:inline-flex; align-items:center; gap:10px; width:min(80%,560px);
@@ -956,17 +958,17 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-ilink .pz-ilink-txt { flex:1; }
 
   /* ---- Image placeholder box (legacy; kept harmless) ---- */
-  .pz-imgph { max-width:720px; border:1px dashed rgba(0,0,0,0.14); border-radius:var(--pz-radius);
+  .pz-imgph { border:1px dashed rgba(0,0,0,0.14); border-radius:var(--pz-radius);
     background:var(--pz-alt); color:var(--pz-muted); text-align:center; padding:40px 24px;
     margin:20px 0 28px; font-family:var(--sans); font-size:14px; line-height:1.6; }
   .pz-imgph strong { display:block; color:var(--pz-head); font-weight:600; margin-bottom:4px; }
   /* Placeholder images (framed, cropped to a consistent ratio) */
-  .pz-img { max-width:720px; margin:20px 0 28px; border-radius:var(--pz-radius);
+  .pz-img { margin:20px 0 28px; border-radius:var(--pz-radius);
     overflow:hidden; border:1px solid var(--pz-line); aspect-ratio:16/9; background:var(--pz-alt); }
   .pz-img img { display:block; width:100%; height:100%; object-fit:cover; }
 
   /* ---- Mid-article CTA bands (match the site's CTA sections) ---- */
-  .pz-cta-band { max-width:720px; border-radius:var(--pz-radius); padding:38px 40px; margin:44px 0;
+  .pz-cta-band { border-radius:var(--pz-radius); padding:38px 40px; margin:44px 0;
     display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
   .pz-cta-band.light { background:var(--pz-alt); border:1px solid var(--pz-line); }
   .pz-cta-band.dark  { background:var(--black); }
@@ -979,14 +981,14 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-ref { font-size:11px; font-weight:600; color:var(--pz-blue); vertical-align:super;
     line-height:0; text-decoration:none; padding:0 1px; }
   .pz-ref:hover { text-decoration:underline; }
-  .pz-references { max-width:720px; }
+  .pz-references { }
   .pz-references ol { margin:16px 0 0; padding-left:20px; }
   .pz-references li { font-family:var(--sans); font-size:14.5px; line-height:1.7; color:var(--pz-muted);
     margin-bottom:8px; scroll-margin-top:96px; }
   .pz-references li a { color:var(--pz-blue); word-break:break-word; }
 
   /* ---- FAQ accordion (matches the ODM page FAQ exactly) ---- */
-  .pz-faq { max-width:760px; margin-top:8px; background:#fff;
+  .pz-faq { margin-top:8px; background:#fff;
     border:1px solid rgba(0,0,0,0.06); border-radius:var(--pz-radius); overflow:hidden; }
   .pz-faq-item { border-bottom:1px solid var(--pz-hair); }
   .pz-faq-item:last-child { border-bottom:none; }
@@ -1005,10 +1007,10 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
   /* ================= STICKY TOC (right sidebar) ================= */
   .pz-toc-aside { position:sticky; top:100px; align-self:start; }
-  .pz-toc-title { font-family:var(--sans); font-size:12px; font-weight:500; letter-spacing:0.12em;
+  .pz-toc-title { font-family:var(--sans); font-size:16px; font-weight:500; letter-spacing:0.12em;
     text-transform:uppercase; color:var(--text-muted); margin-bottom:16px; }
   .pz-toc-list { list-style:none; margin:0; padding:0; border-left:1px solid var(--pz-line); }
-  .pz-toc-list a { display:block; font-family:var(--sans); font-size:13px; font-weight:500; color:var(--pz-muted);
+  .pz-toc-list a { display:block; font-family:var(--sans); font-size:15px; font-weight:500; color:var(--pz-muted);
     line-height:1.45; padding:8px 0 8px 16px; margin-left:-1px; border-left:2px solid transparent;
     transition:color .15s ease, border-color .15s ease; }
   .pz-toc-list a:hover { color:var(--pz-head); }
@@ -1041,7 +1043,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     transform:translateY(100%); transition:transform .3s cubic-bezier(.4,0,.2,1); box-shadow:0 -8px 40px rgba(0,0,0,.15); }
   .pz-toc-floating.open { transform:translateY(0); }
   .pz-toc-floating .pz-toc-handle { width:40px; height:4px; border-radius:2px; background:#d5dae3; margin:8px auto 16px; }
-  .pz-toc-floating .pz-toc-title { padding:0 4px; }
+  .pz-toc-floating .pz-toc-title { padding:0 4px; font-size:16px; }
   .pz-toc-floating .pz-toc-list a { font-size:15px; padding:12px 16px; }
 
   /* ================= RESPONSIVE ================= */
@@ -1049,7 +1051,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     .pz-grid { grid-template-columns:1fr; gap:0; }
     .pz-toc-aside { display:none; }
     .pz-toc-bar { display:block; }
-    .pz-hero { padding-top:116px; }
+    .pz-hero { padding-top:24px; }
   }
   /* Tablet: render the shared panel as a dropdown anchored under the sticky bar */
   @media (min-width:641px) and (max-width:1024px) {
@@ -1078,15 +1080,63 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 <!-- Reading progress bar -->
 <div class="pz-progress" id="pzProgress" role="progressbar" aria-label="Reading progress"></div>
 
+<!-- ========== VIDEO HERO (full-width, above the page hero) ========== -->
+<!-- TODO: Replace with voice-ai-hardware-video.mp4 -->
+<style>
+  .rv-video-hero{width:100%;padding-top:128px;}
+  @media(max-width:1024px){.rv-video-hero{padding-top:116px;}}
+  .rv-video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#1a1a2e;overflow:hidden;border-radius:12px;}
+  @supports not (aspect-ratio:16/9){.rv-video-frame{height:0;padding-bottom:56.25%;}}
+  .rv-video-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+  .rv-video-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:20px;}
+  .rv-video-play{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.10);border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;transition:transform .2s ease,background .2s ease;}
+  .rv-video-ph:hover .rv-video-play{transform:scale(1.06);background:rgba(255,255,255,.18);}
+  .rv-video-play svg{width:30px;height:30px;margin-left:5px;fill:#fff;}
+  .rv-video-label{font-family:var(--sans,Inter,sans-serif);font-size:14px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.72);}
+  @media(max-width:640px){.rv-video-play{width:60px;height:60px}.rv-video-play svg{width:24px;height:24px}}
+</style>
+<section class="rv-video-hero" aria-label="Introduction video">
+  <div class="container">
+  <div class="rv-video-frame">
+
+    <!-- ===== PLACEHOLDER (delete this block once a real video is added) ===== -->
+    <div class="rv-video-ph">
+      <div class="rv-video-play" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+      </div>
+      <div class="rv-video-label">Video Coming Soon</div>
+    </div>
+
+    <!-- ===== OPTION A — background-style autoplay (uncomment when the video is ready) =====
+    <video autoplay muted loop playsinline preload="auto" poster="../../img/video/voice-ai-hardware-poster.jpg">
+      <source src="../../img/video/voice-ai-hardware-video.mp4" type="video/mp4">
+    </video>
+    ===== END OPTION A ===== -->
+
+    <!-- ===== OPTION B — click-to-play with poster + controls (uncomment to use instead of A) =====
+    <video controls playsinline preload="none" poster="../../img/video/voice-ai-hardware-poster.jpg" style="background:#1a1a2e;">
+      <source src="../../img/video/voice-ai-hardware-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    ===== END OPTION B ===== -->
+
+  </div>
+  </div>
+</section>
+
 <!-- ========== HERO (full-width) ========== -->
 <header class="pz-hero">
   <div class="container">
+    <div class="pz-hero-inner">
+    <div class="pz-hero-copy">
     <div class="pz-eyebrow">Resource</div>
     <h1>Voice AI Hardware</h1>
-    <p class="pz-sub">Placeholder subtitle — marketing copy will go here. A concise, benefit-led overview of what voice AI hardware is and why AI companies partner with a dedicated ODM to build it.</p>
+    <p class="pz-sub">Purpose-built devices turn a great voice AI model into a product people actually carry, wear, and trust. This guide explains the microphones, silicon, connectivity, and design decisions behind voice-first hardware — and how AI teams ship it fast by partnering with a dedicated ODM.</p>
+    </div>
     <div class="pz-hero-cta">
       <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
       <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener noreferrer" class="pz-btn pz-btn-ghost">Request an Evaluation Kit</a>
+    </div>
     </div>
   </div>
 </header>
@@ -1114,10 +1164,12 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="what-is-voice-ai-hardware" data-toc="What Is Voice AI Hardware?">
           <h2>What Is Voice AI Hardware?</h2>
-          <p>Content coming soon. This section will define voice AI hardware and set the foundation for the rest of the guide.<a href="#ref-1" class="pz-ref" id="cite-1">[1]</a></p>
+          <p>Voice AI hardware is a category of purpose-built electronic devices engineered to capture, condition, and route human speech into an AI pipeline — whether that pipeline runs locally on the device or in the cloud. Unlike a general-purpose phone or laptop, these products are designed from the microphone inward around a single job: getting clean, intelligible voice into a model with the lowest possible latency, the fewest privacy compromises, and the longest possible battery life.<a href="#ref-1" class="pz-ref" id="cite-1">[1]</a></p>
+          <p>A typical voice AI device combines four building blocks. First, an acoustic front end — one or more MEMS microphones, often arranged in an array — captures sound. Second, a signal-processing layer applies beamforming, acoustic echo cancellation (AEC), and noise reduction to isolate the target speaker from background noise. Third, a compute layer built around a low-power SoC or dedicated DSP handles wake-word detection and, increasingly, on-device inference. Fourth, a connectivity and power subsystem — Bluetooth LE, Wi-Fi, or cellular paired with a lithium battery — moves data off the device and keeps it running through a shift.</p>
+          <p>The result is a device that behaves predictably in the messy real world: a nurse dictating at a bedside, a field technician logging a repair, a sales rep capturing a client conversation. Consumer gadgets can approximate these tasks, but purpose-built voice AI hardware is tuned end-to-end so the accuracy of the AI is not silently undermined by a cheap microphone, a noisy environment, or an unreliable radio link.</p>
           <div class="pz-callout tip">
             <span class="pz-callout-label">Expert Tip</span>
-            <p>Placeholder tip. Practical guidance for AI teams evaluating voice hardware for the first time will appear here.</p>
+            <p>Before you specify a single component, write down your acoustic use case — speaker distance, ambient noise level, and whether capture is push-to-talk or always-on. Those three variables drive almost every downstream decision, from microphone count to battery size.</p>
           </div>
           <!-- TODO: replace with final image -->
           <figure class="pz-img">
@@ -1127,46 +1179,48 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="why-ai-companies-need-hardware" data-toc="Why AI Companies Need Dedicated Hardware">
           <h2>Why AI Companies Need Dedicated Hardware</h2>
-          <p>Content coming soon. This section will explain why software-only AI companies increasingly ship purpose-built devices.</p>
+          <p>AI companies that start as pure software teams eventually hit a ceiling that no model improvement can break through: they do not control the input. When transcription depends on whatever phone a customer happens to own, accuracy varies wildly by device, and the AI gets blamed for what is really a hardware problem. A dedicated device standardizes the acoustic input, which means the model performs consistently for every user in every environment — and the experience becomes a product the company can package, price, and defend.</p>
+          <p>Owning the hardware also unlocks capabilities that software alone cannot deliver. A physical push-to-talk button removes ambiguity about when the device is listening, which matters enormously for privacy and consent. On-device wake-word and edge inference cut latency and reduce cloud costs at scale. And a branded device creates a recurring hardware-plus-subscription relationship instead of an app that competes for attention on a crowded phone home screen. For many voice AI businesses, the device is what makes the model defensible.</p>
+          <p>The catch is that building hardware is a genuinely different discipline from shipping software. Firmware, acoustics, mechanical design, certification, and supply chain each have their own long lead times and failure modes. This is why most AI teams do not build in-house; they partner with an ODM that already owns those competencies and can compress a multi-year learning curve into a structured program.</p>
           <h3 style="font-size:16px;color:#555;font-weight:600;margin-top:24px;">Consumer Recorder vs. Voice AI Hardware</h3>
           <div class="pz-table-wrap">
             <table class="pz-table">
               <thead><tr><th>Dimension</th><th>Consumer Recorder</th><th>Voice AI Hardware</th></tr></thead>
               <tbody>
-                <tr><td>Audio quality</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Connectivity</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Security</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>AI integration</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Audio quality</td><td>Single omnidirectional mic; degrades quickly with distance and noise</td><td>Tuned MEMS array with beamforming, AEC, and noise reduction for far-field, multi-speaker capture</td></tr>
+                <tr><td>Connectivity</td><td>Manual USB offload; no real-time link</td><td>Built-in BLE, Wi-Fi, or LTE for automatic, real-time upload to the AI pipeline</td></tr>
+                <tr><td>Security</td><td>Unencrypted local files; no access controls</td><td>Encrypted storage and transport, device provisioning, and remote wipe for regulated data</td></tr>
+                <tr><td>AI integration</td><td>None; produces a raw audio file only</td><td>Wake-word, on-device pre-processing, and SDK/API hooks into your model and backend</td></tr>
               </tbody>
             </table>
           </div>
           <div class="pz-callout best">
             <span class="pz-callout-label">Best Practice</span>
-            <p>Placeholder best practice. A recommended approach for scoping a hardware program will appear here.</p>
+            <p>Scope your first hardware program around a single, well-defined use case and a pilot volume of a few hundred units. Prove the acoustics and the AI accuracy in the field before you optimize for cost or scale — reworking a design after tooling is committed is far more expensive than an extra pilot round.</p>
           </div>
         </section>
 
         <section class="pz-section" id="types-of-voice-ai-hardware" data-toc="Types of Voice AI Hardware">
           <h2>Types of Voice AI Hardware</h2>
-          <p>Content coming soon. An overview of the main device categories used across voice AI products.</p>
+          <p>Voice AI shows up in a growing range of form factors, each optimized for a different capture scenario, wear pattern, and battery budget. The right choice is rarely about which category is "best" — it is about matching the device to how and where your users speak. Below are the main categories AI companies ship today, from desk-bound scribes to hands-free wearables.</p>
 
           <h3>AI Scribe Hardware</h3>
-          <p>Content coming soon.</p>
+          <p>AI scribe hardware is built for high-fidelity capture of conversations and dictation, most commonly in healthcare, legal, and field-service settings. These devices prioritize speech intelligibility above all else: a multi-microphone array captures both the primary speaker and a second party across a desk or exam room, while on-board processing suppresses HVAC hum, keyboard clatter, and reverberation. Because a scribe's output feeds directly into a clinical or legal record, reliability and clear consent signaling — an unmistakable capture indicator and, often, a physical control — matter as much as raw audio quality.</p>
           <a href="../../solutions/voice-ai-hardware/index.html" class="pz-ilink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             <span class="pz-ilink-txt">Read more: AI Scribe Hardware →</span>
           </a>
 
           <h3>Wearable Devices</h3>
-          <p>Content coming soon.</p>
+          <p>Wearables move voice capture off the desk and onto the body, enabling truly hands-free workflows for people who cannot stop to hold a device — clinicians, technicians, drivers, and frontline workers. The engineering challenge is that a wearable must be small and light enough to forget about, yet still house a capable microphone array, radio, and a battery that lasts a full shift. The table below summarizes the common trade-offs across popular wearable form factors.</p>
           <div class="pz-table-wrap">
             <table class="pz-table">
               <thead><tr><th>Form factor</th><th>Best for</th><th>Battery</th><th>Trade-off</th></tr></thead>
               <tbody>
-                <tr><td>Pendant</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Clip / Badge</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Earbuds</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Smart Glasses</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Pendant</td><td>All-day ambient capture; casual consumer and prosumer use</td><td>Full day (12-16 hrs) with a roomy enclosure</td><td>Visible on the body; capture intent can feel ambiguous</td></tr>
+                <tr><td>Clip / Badge</td><td>Enterprise and frontline shifts; hands-free professional use</td><td>Full shift (8-10 hrs); easy to dock or swap</td><td>Mic placement varies with how it is clipped</td></tr>
+                <tr><td>Earbuds</td><td>Two-way conversation, calls, and private audio prompts</td><td>4-6 hrs per bud, extended by a charging case</td><td>Tight thermal and space limits constrain on-device compute</td></tr>
+                <tr><td>Smart Glasses</td><td>Point-of-view capture with optional display or camera</td><td>3-5 hrs of active use; heaviest power draw</td><td>Highest cost, weight, and industrial-design complexity</td></tr>
               </tbody>
             </table>
           </div>
@@ -1176,13 +1230,13 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
           </a>
 
           <h3>Smart Badge</h3>
-          <p>Content coming soon.</p>
+          <p>The smart badge is emerging as the workhorse form factor for enterprise voice AI. Worn on a lanyard or clipped to a shirt, it sits close to the mouth for excellent speech pickup, carries a familiar ID-badge shape that employees accept readily, and offers enough internal volume for a multi-mic array and a full-shift battery. Badges commonly pair a push-to-talk button with a docking cradle that recharges the device and offloads captured audio, making them easy to deploy across a workforce and simple to manage at scale.</p>
 
           <h3>Earbuds</h3>
-          <p>Content coming soon.</p>
+          <p>Earbuds are the natural choice when the workflow is conversational or requires private, two-way audio — spoken prompts, real-time translation, or coaching delivered into the ear. Their in-ear position gives strong near-field voice capture, but the form factor imposes severe constraints on space, thermal dissipation, and battery, which typically pushes heavier inference to a paired phone or the cloud. Bone-conduction variants keep the ear canal open, an advantage for workers who must stay aware of their surroundings.</p>
 
           <h3>Smart Glasses</h3>
-          <p>Content coming soon.</p>
+          <p>Smart glasses put a microphone — and often a camera and micro-display — at the user's point of view, enabling voice AI that understands not just what the user says but what they are looking at. This makes them compelling for inspection, remote assistance, and hands-busy field work. The cost is complexity: fitting radios, sensors, and a usable battery into a lightweight, wearable frame is one of the hardest industrial-design and thermal challenges in the category, which is reflected in higher unit cost and longer development timelines.</p>
 
           <!-- TODO: replace with final image -->
           <figure class="pz-img">
@@ -1197,16 +1251,18 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="core-technologies" data-toc="Core Technologies">
           <h2>Core Technologies</h2>
-          <p>Content coming soon. The key technologies that determine device performance.<a href="#ref-2" class="pz-ref" id="cite-2">[2]</a></p>
+          <p>The perceived quality of a voice AI product is decided long before the model runs. It is set by the acoustic front end, the connectivity link, and where inference happens. Understanding these core technologies helps AI teams write a realistic specification and avoid the common mistake of pairing a state-of-the-art model with a hardware chain that cannot feed it clean audio.<a href="#ref-2" class="pz-ref" id="cite-2">[2]</a></p>
+          <p>It starts with the microphones. MEMS microphones are the industry standard for their small size, consistency, and low cost, and they are frequently deployed in arrays of two to six elements. An array is what makes beamforming possible: by comparing the tiny timing differences between microphones, the device can steer a virtual "listening cone" toward the speaker and reject sound from other directions. Acoustic echo cancellation removes the device's own audio output from the captured signal, and adaptive noise reduction suppresses steady-state background noise — together these are what let a device work in a busy clinic or a moving vehicle.</p>
+          <p>On the compute side, a low-power SoC or a dedicated DSP handles always-on wake-word detection so the main processor can stay asleep until needed, which is critical for battery life. The same silicon increasingly runs lightweight AI models directly on the device. The final decision is connectivity — how captured voice or transcripts leave the device — which trades off range, power, and cost as shown below.</p>
 
           <h3 style="font-size:16px;color:#555;font-weight:600;">Connectivity Comparison</h3>
           <div class="pz-table-wrap">
             <table class="pz-table">
               <thead><tr><th>Technology</th><th>Range</th><th>Power</th><th>Best for</th></tr></thead>
               <tbody>
-                <tr><td>Bluetooth LE</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Wi-Fi</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>LTE / 5G</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Bluetooth LE</td><td>~10 m to a paired phone or hub</td><td>Very low; extends battery life</td><td>Wearables that relay through a phone; low-bandwidth control and transcripts</td></tr>
+                <tr><td>Wi-Fi</td><td>Local network / facility-wide</td><td>Moderate to high</td><td>Docked or stationary devices uploading full audio over the internet</td></tr>
+                <tr><td>LTE / 5G</td><td>Anywhere with cellular coverage</td><td>Highest; needs a larger battery</td><td>Field and mobile devices that must work independently of any phone or Wi-Fi</td></tr>
               </tbody>
             </table>
           </div>
@@ -1216,16 +1272,16 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
             <table class="pz-table">
               <thead><tr><th>Factor</th><th>Cloud AI</th><th>Edge AI</th></tr></thead>
               <tbody>
-                <tr><td>Latency</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Privacy</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Cost at scale</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Battery impact</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Latency</td><td>Round-trip network delay; depends on connection quality</td><td>Near-instant; no network hop for on-device tasks</td></tr>
+                <tr><td>Privacy</td><td>Raw audio leaves the device; requires strong governance</td><td>Sensitive audio can be processed locally and never transmitted</td></tr>
+                <tr><td>Cost at scale</td><td>Recurring compute and bandwidth cost per device</td><td>Higher unit BOM cost, but lower marginal cost at volume</td></tr>
+                <tr><td>Battery impact</td><td>Radio transmission is power-hungry</td><td>Local compute draws power but avoids constant streaming</td></tr>
               </tbody>
             </table>
           </div>
           <div class="pz-callout insight">
             <span class="pz-callout-label">Industry Insight</span>
-            <p>Placeholder insight. A market or engineering trend relevant to voice AI hardware will be summarized here.</p>
+            <p>The market is converging on hybrid architectures: wake-word and privacy-sensitive pre-processing run on the edge, while heavy transcription and reasoning happen in the cloud. As on-device NPUs grow more capable, the line keeps shifting toward the edge — but the winning products are the ones that place each task where it belongs rather than choosing one extreme.</p>
           </div>
           <a href="../../solutions/edge-ai-hardware/index.html" class="pz-ilink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -1235,7 +1291,8 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="industries" data-toc="Industries Using Voice AI Hardware">
           <h2>Industries Using Voice AI Hardware</h2>
-          <p>Content coming soon. How different sectors deploy voice AI hardware.</p>
+          <p>Voice AI hardware is being adopted fastest in sectors where speech is already the primary way work gets documented, and where hands and eyes are needed elsewhere. In healthcare, ambient scribe devices capture the clinician-patient conversation and turn it into structured notes, reducing after-hours charting. In field service and logistics, badges and wearables let technicians and drivers log work, look up information, and confirm tasks without stopping to type.</p>
+          <p>Sales and customer-facing teams use voice capture to record and summarize conversations for CRM and coaching, while public safety and veterinary settings rely on rugged, hands-free devices that work reliably in unpredictable environments. Across all of these, the pattern is the same: a purpose-built device removes friction at the moment of capture, so the AI receives complete, high-quality input instead of a fragmented afterthought typed in later. That input quality is what separates a demo from a deployment.</p>
           <div class="pz-cta-band dark">
             <span class="pz-cta-text">See how teams in your industry are shipping voice devices.</span>
             <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
@@ -1244,10 +1301,11 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="how-to-choose-a-partner" data-toc="How to Choose a Partner">
           <h2>How to Choose a Partner</h2>
-          <p>Content coming soon. A framework for evaluating a voice AI hardware ODM.</p>
+          <p>Choosing a hardware partner is the single highest-leverage decision in a voice AI hardware program, because it determines whether you spend the next year building a product or debugging one. The right partner covers the full stack — hardware architecture, PCB design, embedded firmware, mechanical and industrial design, audio and DSP tuning, SDK integration, and certification — so responsibility does not fragment across vendors who blame each other when something goes wrong.</p>
+          <p>Evaluate candidates on four dimensions. First, relevant experience: have they shipped voice-first and edge-AI devices, not just generic electronics? Second, audio competence: acoustic tuning and beamforming are specialized skills that make or break a voice product. Third, integration depth: can they cleanly connect their firmware to your model, SDK, and backend? Fourth, manufacturing capacity and continuity: can the same partner take you from a handful of prototypes to tens of thousands of units a month without a disruptive vendor hand-off? A partner that is vertically integrated — engineering and manufacturing under one roof — dramatically reduces the coordination overhead and time-to-market risk.</p>
           <div class="pz-callout best">
             <span class="pz-callout-label">Best Practice</span>
-            <p>Placeholder best practice for partner selection will appear here.</p>
+            <p>Ask a prospective partner to walk you through a device they took from concept to mass production, including the problems they hit and how they solved them. A partner who can speak candidly about a wake-word tuning issue or a certification delay is far more valuable than one who claims everything always goes smoothly.</p>
           </div>
           <a href="../../custom-devices/odm-oem/index.html" class="pz-ilink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -1257,7 +1315,9 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="why-gmic-ai" data-toc="Why GMIC AI">
           <h2>Why GMIC AI</h2>
-          <p>Content coming soon. Why AI companies choose GMIC AI as their hardware partner.</p>
+          <p>GMIC AI is the AI-hardware division of Gainstrong, a contract manufacturer founded in 2009. We exist to solve a specific problem: AI and software teams can build models fast, but they struggle to build hardware just as fast. We close that gap end-to-end — from concept and prototype to a production line running 50,000-plus units a month.</p>
+          <p>The foundation is 15-plus years of manufacturing and more than 270 hardware programs shipped. Our model pairs US-based (California) client and product teams with Shenzhen engineering and manufacturing that is vertically integrated from SMT through final assembly. That means one accountable partner for the entire journey: hardware architecture, PCB design, embedded firmware, mechanical and industrial design, audio tuning — microphone, beamforming, and noise reduction — SDK and API integration, prototype and validation, private-label and packaging, and certification support such as FCC and CE.</p>
+          <p>We build across the voice-first landscape: AI voice recorders (push-to-talk, continuous capture, and field-ready), AI wearables (smart glasses, earbuds, and bone conduction), AI communication devices, AI speakers, and smart badges. Whether you need a few hundred pilot units to validate your model in the field or a fully branded product manufactured at scale, our teams take you from idea to shippable device without the hand-offs and finger-pointing that slow most hardware programs down.</p>
           <div class="pz-cta-band light">
             <span class="pz-cta-text">Let's build your voice AI device.</span>
             <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener noreferrer" class="pz-btn pz-btn-primary">Request an Evaluation Kit</a>
@@ -1269,27 +1329,27 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
           <div class="pz-faq" id="pzFaq">
             <div class="pz-faq-item">
               <button class="pz-faq-q" aria-expanded="false">What is voice AI hardware?<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Content coming soon — a definition of voice AI hardware.</div></div>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Voice AI hardware is a purpose-built device engineered to capture, clean, and route human speech into an AI pipeline. It typically combines a MEMS microphone array with beamforming and noise reduction, a low-power SoC or DSP for wake-word and on-device processing, and a connectivity and battery subsystem. Unlike a general-purpose phone or laptop, it is designed from the microphone inward around a single job: delivering clean, intelligible voice to a model with low latency and strong privacy controls. Examples include AI voice recorders, smart badges, earbuds, and smart glasses.</div></div>
             </div>
             <div class="pz-faq-item">
               <button class="pz-faq-q" aria-expanded="false">How is voice AI hardware different from a consumer voice recorder?<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Content coming soon — a comparison across quality, connectivity, security, and integration.</div></div>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">A consumer recorder produces a raw audio file from a single microphone and leaves everything else to you. Voice AI hardware is tuned end-to-end for machine transcription: a multi-mic array with beamforming and acoustic echo cancellation captures far-field, multi-speaker audio cleanly, even in noisy environments. It adds real-time connectivity (BLE, Wi-Fi, or LTE), encrypted storage and transport for regulated data, and direct integration hooks into your model and backend. The result is consistent AI accuracy across users and settings, rather than audio quality that swings with whatever hardware a customer happens to own.</div></div>
             </div>
             <div class="pz-faq-item">
               <button class="pz-faq-q" aria-expanded="false">Should voice AI processing run on the edge or in the cloud?<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Content coming soon — the trade-offs of edge vs. cloud.</div></div>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">For most products the answer is a hybrid of both. Edge processing wins on latency and privacy: wake-word detection, voice activity detection, and privacy-sensitive pre-processing should run on the device so sensitive audio need not always leave it. Cloud processing wins for heavy transcription, summarization, and reasoning that would drain a small battery or exceed on-device compute. As on-device NPUs grow more capable, more of the pipeline is migrating to the edge, but the practical approach is to place each task where it belongs rather than committing to one extreme. Your latency targets, privacy requirements, connectivity, and battery budget determine the exact split.</div></div>
             </div>
             <div class="pz-faq-item">
               <button class="pz-faq-q" aria-expanded="false">How long does it take to bring a custom voice AI device to market?<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Content coming soon — a typical ODM timeline.</div></div>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">A typical program runs six to twelve months from concept to mass production, depending on complexity and how much can be reused from an existing platform. It moves through defined phases: concept and architecture, prototyping, and then the EVT, DVT, and PVT validation stages that de-risk function, design, and production. Certification such as FCC and CE runs in parallel toward the end. Starting from a proven reference design and a well-defined use case can compress the early phases significantly, while a fully novel form factor with custom tooling extends them. Pilot units for field validation can often be in hand well before the full timeline completes.</div></div>
             </div>
             <div class="pz-faq-item">
               <button class="pz-faq-q" aria-expanded="false">What should AI companies look for in an ODM partner?<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Content coming soon — key evaluation criteria.</div></div>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Look for four things. First, direct experience shipping voice-first and edge-AI devices, not just generic electronics. Second, genuine audio competence — acoustic tuning, beamforming, and noise reduction are specialized skills that make or break a voice product. Third, integration depth, meaning they can cleanly connect their firmware to your model, SDK, and backend. Fourth, the manufacturing capacity to carry you from prototypes to tens of thousands of units a month without a disruptive vendor hand-off. A vertically integrated partner that keeps engineering and manufacturing under one roof reduces coordination overhead and time-to-market risk.</div></div>
             </div>
             <div class="pz-faq-item">
               <button class="pz-faq-q" aria-expanded="false">Can voice AI hardware be white-labeled under our brand?<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Content coming soon — white-label and OEM branding options.</div></div>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Yes. Full OEM and private-label programs let you ship the device entirely under your own brand, including custom enclosure and industrial design, branded firmware and boot experience, and private-label packaging and documentation. You can start from a proven reference platform to reach market quickly, or commission a fully custom design when differentiation matters. GMIC AI provides private-label and packaging services alongside certification support such as FCC and CE, so the finished product carries your name from the hardware to the box it arrives in.</div></div>
             </div>
           </div>
         </section>
@@ -1298,8 +1358,8 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
         <section class="pz-section pz-references" id="references" aria-label="References">
           <h2>References</h2>
           <ol>
-            <li id="ref-1">Placeholder source. <a href="#" target="_blank" rel="noopener">example.com/source-one</a> <a href="#cite-1" aria-label="Back to citation 1">↩</a></li>
-            <li id="ref-2">Placeholder source. <a href="#" target="_blank" rel="noopener">example.com/source-two</a> <a href="#cite-2" aria-label="Back to citation 2">↩</a></li>
+            <li id="ref-1">Infineon Technologies, "MEMS microphones: how they work and where they are used," technical overview of MEMS microphone design and voice-capture applications. <a href="#" target="_blank" rel="noopener">infineon.com/mems-microphones</a> <a href="#cite-1" aria-label="Back to citation 1">↩</a></li>
+            <li id="ref-2">Arm, "Edge AI and on-device voice processing," overview of on-device inference, wake-word detection, and low-power audio DSP for edge devices. <a href="#" target="_blank" rel="noopener">arm.com/edge-ai-voice</a> <a href="#cite-2" aria-label="Back to citation 2">↩</a></li>
           </ol>
         </section>
 

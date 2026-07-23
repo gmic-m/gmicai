@@ -13,18 +13,18 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
-    { "@type": "Question", "name": "Question placeholder 1", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 2", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 3", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 4", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 5", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 6", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 7", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 8", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 9", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 10", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 11", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } },
-    { "@type": "Question", "name": "Question placeholder 12", "acceptedAnswer": { "@type": "Answer", "text": "Answer placeholder — content coming soon." } }
+    { "@type": "Question", "name": "What is the difference between ODM and OEM?", "acceptedAnswer": { "@type": "Answer", "text": "The difference comes down to who owns the design. With an OEM, you provide a complete design and the manufacturer builds it to your specification, so you own all the IP and control every detail. With an ODM, the manufacturer contributes an existing reference design and adapts it to your needs, which is faster and lower-risk but means the ODM retains rights to the underlying platform. Most AI-device programs are hybrids — an ODM platform for the non-differentiating parts plus custom work where the product needs to stand apart." } },
+    { "@type": "Question", "name": "How long does it take to develop an AI hardware device?", "acceptedAnswer": { "@type": "Answer", "text": "Timelines depend heavily on how much customization is involved. A light-customization program built on a proven platform can reach production in roughly three to six months. A deep-customization program with a custom PCB, enclosure, and firmware, plus the full EVT/DVT/PVT validation cycle and certification, typically runs nine to eighteen months. Building on an existing reference design is the single biggest lever for compressing the schedule." } },
+    { "@type": "Question", "name": "What is the minimum order quantity (MOQ) for AI hardware?", "acceptedAnswer": { "@type": "Answer", "text": "MOQ varies with the product and how much customization it carries. Light-customization programs built on an existing platform can often start in the low thousands, while deeply custom devices with dedicated tooling usually require higher volumes to justify the setup cost. Prototype and pilot runs are intentionally small — often a few hundred units — so you can validate the product and the production line before committing to volume." } },
+    { "@type": "Question", "name": "How much does it cost to develop an AI hardware product?", "acceptedAnswer": { "@type": "Answer", "text": "Cost splits into non-recurring engineering (NRE) — design, firmware, tooling, and certification paid once — and per-unit manufacturing cost at volume. Light customization on an existing platform keeps NRE low because you inherit proven engineering; deep customization with custom tooling and firmware carries meaningfully higher NRE. Certification, custom enclosures, and audio tuning are common cost drivers. The most reliable way to get a number is to define the product's requirements and volume, then scope the program against them." } },
+    { "@type": "Question", "name": "What are EVT, DVT, and PVT?", "acceptedAnswer": { "@type": "Answer", "text": "They are the three formal validation gates a hardware program passes through before mass production. EVT (Engineering Validation Test) proves the design works. DVT (Design Validation Test) proves the design is production-ready and meets every specification and certification requirement. PVT (Production Validation Test) proves the factory can build it at volume with consistent quality on production tooling. Passing all three de-risks the transition to full-scale manufacturing." } },
+    { "@type": "Question", "name": "Can I use my existing AI model or software with a custom device?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — that is the core of an AI hardware ODM engagement. You bring the model, SDK, or cloud service, and the ODM builds the device and firmware around it, integrating your APIs so captured data flows to your model and results flow back. A key early decision is what runs on-device at the edge versus in the cloud, which shapes the compute, memory, and power requirements. The firmware layer abstracts the hardware complexity so your software team works against a stable interface." } },
+    { "@type": "Question", "name": "What certifications does my AI device need?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on your target markets and the device's features, but most AI devices need several. Radio and emissions approvals (FCC for the US, CE for Europe) are required for anything wireless, along with RoHS and REACH for environmental compliance. Battery-powered devices additionally need UN 38.3 for shipping safety and typically IEC 62133 for cell safety, and Bluetooth or Wi-Fi products need SIG or Alliance qualification. Products with medical claims face a much higher bar, such as FDA clearance or MDR compliance." } },
+    { "@type": "Question", "name": "What is the difference between light and deep customization?", "acceptedAnswer": { "@type": "Answer", "text": "Light customization takes an existing, shipping platform and adapts the surface — branding, packaging, and often firmware or SDK integration — to get your product to market quickly and at lower cost and risk. Deep customization changes the core of the device, with a custom PCB, custom enclosure, and bespoke firmware built to your requirements. Light customization is faster and cheaper but shares the underlying platform; deep customization gives you a more differentiated product for more time and investment." } },
+    { "@type": "Question", "name": "Do I own the intellectual property for my device?", "acceptedAnswer": { "@type": "Answer", "text": "You always own your brand, your software, and your AI model. Ownership of the hardware design depends on the engagement model: in an OEM relationship you own the full design, while in an ODM relationship the manufacturer typically retains rights to the underlying reference platform. Custom work developed specifically for your product is negotiated per program and should be spelled out in the agreement. Clarifying IP ownership up front, before development begins, avoids friction later." } },
+    { "@type": "Question", "name": "How do you ensure audio quality for voice AI devices?", "acceptedAnswer": { "@type": "Answer", "text": "Audio quality is engineered through both hardware and DSP. On the hardware side, microphone selection, array geometry, and placement within the enclosure set the ceiling for what the device can capture. On the software side, beamforming, acoustic echo cancellation, noise suppression, and voice activity detection clean the signal before it reaches your model. The DSP should be tuned with recordings from the real deployment environment, because a device that sounds perfect on the bench can fail in the field." } },
+    { "@type": "Question", "name": "Can you scale from a small pilot to mass production?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — scaling smoothly from pilot to volume is one of the main reasons to work with a full-stack ODM. A pilot run of a few hundred to a few thousand units validates the assembly line, test fixtures, yield, and packaging before larger commitments. Once quality and yield are stable, production ramps up. GMIC AI's vertically integrated Shenzhen operation runs SMT through final assembly under one roof and scales to 50,000+ units per month." } },
+    { "@type": "Question", "name": "Why work with an ODM instead of building hardware in-house?", "acceptedAnswer": { "@type": "Answer", "text": "Building hardware in-house means hiring across a dozen specialties, sourcing components, and qualifying a factory before you ship a single unit. For AI and software companies, that is slower, riskier, and far more expensive than partnering with a team that already has the people, tooling, and factory relationships in place. An ODM lets you focus on your software and AI, where your differentiation lives, while the hardware partner closes the gap end to end. GMIC AI exists specifically because AI teams build software fast but struggle to build hardware." } }
   ]
 }
 </script>
@@ -874,14 +874,17 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     background:var(--pz-blue); z-index:200; transition:width .08s linear; }
 
   /* ---- Hero (matches the site's hero scale & eyebrow) ---- */
-  .pz-hero { background:#fff; padding:128px 0 56px; border-bottom:1px solid rgba(0,0,0,0.06); }
+  .pz-hero { background:#fff; padding:28px 0 56px; border-bottom:1px solid rgba(0,0,0,0.06); }
   .pz-hero .pz-eyebrow { font-family:var(--sans); font-size:12px; font-weight:500;
     letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:18px; }
   .pz-hero h1 { font-family:var(--sans); font-size:clamp(34px,4.6vw,58px); font-weight:800;
     line-height:1.05; letter-spacing:-0.03em; color:var(--pz-head); margin-bottom:22px; }
   .pz-hero .pz-sub { max-width:640px; font-family:var(--sans); font-size:1.05rem; line-height:1.6;
     color:var(--pz-body); margin-bottom:32px; }
-  .pz-hero-cta { display:flex; flex-wrap:wrap; gap:14px; }
+  .pz-hero-cta { display:flex; flex-direction:row; flex-wrap:wrap; gap:12px; flex:0 0 auto; }
+  .pz-hero-inner { display:flex; align-items:flex-end; justify-content:space-between; gap:48px; flex-wrap:wrap; }
+  .pz-hero-copy { flex:1 1 560px; min-width:0; }
+  @media (max-width:640px){ .pz-hero-inner { flex-direction:column; align-items:flex-start; gap:24px; } .pz-hero-cta { width:100%; } }
 
   /* ---- Buttons: mirror the site's .btn + .btn-blue-deep / ghost ---- */
   .pz-btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--sans);
@@ -894,11 +897,11 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
   /* ---- 2-column layout ---- */
   .pz-layout { padding:72px 0 96px; background:#fff; }
-  .pz-grid { display:grid; grid-template-columns:minmax(0,1fr) 260px; gap:72px; align-items:start; }
+  .pz-grid { display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:64px; align-items:start; }
   .pz-main { min-width:0; }
 
   /* ---- Content typography (site body: Inter, comfortable measure) ---- */
-  .pz-main p { max-width:720px; font-family:var(--sans); font-size:16px; line-height:1.7;
+  .pz-main p { font-family:var(--sans); font-size:16px; line-height:1.7;
     color:var(--pz-body); margin:0 0 18px; }
   .pz-section { scroll-margin-top:96px; }
   .pz-section h2 { font-family:var(--sans); font-weight:800; font-size:clamp(26px,2.4vw,34px);
@@ -909,7 +912,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     letter-spacing:-0.01em; color:var(--pz-head); margin:32px 0 10px; }
 
   /* ---- Comparison tables (clean & minimal — subtle gray header, thin hairlines) ---- */
-  .pz-table-wrap { max-width:720px; overflow-x:auto; border:1px solid var(--pz-line);
+  .pz-table-wrap { overflow-x:auto; border:1px solid var(--pz-line);
     border-radius:var(--pz-radius); margin:20px 0 28px; -webkit-overflow-scrolling:touch; }
   table.pz-table { width:100%; border-collapse:collapse; font-size:14.5px; min-width:520px; }
   .pz-table thead th { background:var(--pz-alt); color:var(--pz-head); font-weight:600; text-align:left;
@@ -918,15 +921,14 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     color:var(--pz-body); vertical-align:top; }
   .pz-table tbody td:first-child { font-weight:600; color:var(--pz-head); }
 
-  /* ---- Callout boxes (simplified: 3px border, faint tint, quiet uppercase label) ---- */
-  .pz-callout { max-width:720px; padding:18px 22px; border-radius:var(--pz-radius);
-    border-left:3px solid; margin:22px 0 26px; }
-  .pz-callout .pz-callout-label { display:block; font-family:var(--sans); font-size:12px;
-    font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--pz-muted); margin-bottom:6px; }
-  .pz-callout p { font-family:var(--sans); font-size:15px; line-height:1.7; color:var(--pz-body); margin:0; }
-  .pz-callout.tip { border-color:#2563eb; background:#f6f9ff; }
-  .pz-callout.best { border-color:#16a34a; background:#f5faf6; }
-  .pz-callout.insight { border-color:#7c3aed; background:#f9f7fd; }
+  /* ---- Callout boxes (editorial: hairline rules top & bottom, quiet label, italic text) ---- */
+  .pz-callout { margin:28px 0; padding:18px 0;
+    border-top:1px solid var(--pz-line); border-bottom:1px solid var(--pz-line);
+    border-left:0; border-radius:0; background:none; }
+  .pz-callout .pz-callout-label { display:block; font-family:var(--sans); font-size:11px;
+    font-weight:500; letter-spacing:1px; text-transform:uppercase; color:var(--pz-muted); margin-bottom:8px; }
+  .pz-callout p { font-family:var(--sans); font-style:italic; font-size:1.05rem; line-height:1.7; color:var(--pz-body); margin:0; }
+  .pz-callout.tip, .pz-callout.best, .pz-callout.insight { border-color:var(--pz-line); background:none; }
 
   /* ---- Internal link cards (quiet, hairline border) ---- */
   .pz-ilink { display:inline-flex; align-items:center; gap:10px; width:min(80%,560px);
@@ -938,17 +940,17 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-ilink .pz-ilink-txt { flex:1; }
 
   /* ---- Image placeholder box (legacy; kept harmless) ---- */
-  .pz-imgph { max-width:720px; border:1px dashed rgba(0,0,0,0.14); border-radius:var(--pz-radius);
+  .pz-imgph { border:1px dashed rgba(0,0,0,0.14); border-radius:var(--pz-radius);
     background:var(--pz-alt); color:var(--pz-muted); text-align:center; padding:40px 24px;
     margin:20px 0 28px; font-family:var(--sans); font-size:14px; line-height:1.6; }
   .pz-imgph strong { display:block; color:var(--pz-head); font-weight:600; margin-bottom:4px; }
   /* Placeholder images (framed, cropped to a consistent ratio) */
-  .pz-img { max-width:720px; margin:20px 0 28px; border-radius:var(--pz-radius);
+  .pz-img { margin:20px 0 28px; border-radius:var(--pz-radius);
     overflow:hidden; border:1px solid var(--pz-line); aspect-ratio:16/9; background:var(--pz-alt); }
   .pz-img img { display:block; width:100%; height:100%; object-fit:cover; }
 
   /* ---- Mid-article CTA bands (match the site's CTA sections) ---- */
-  .pz-cta-band { max-width:720px; border-radius:var(--pz-radius); padding:38px 40px; margin:44px 0;
+  .pz-cta-band { border-radius:var(--pz-radius); padding:38px 40px; margin:44px 0;
     display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
   .pz-cta-band.light { background:var(--pz-alt); border:1px solid var(--pz-line); }
   .pz-cta-band.dark  { background:var(--black); }
@@ -961,14 +963,14 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-ref { font-size:11px; font-weight:600; color:var(--pz-blue); vertical-align:super;
     line-height:0; text-decoration:none; padding:0 1px; }
   .pz-ref:hover { text-decoration:underline; }
-  .pz-references { max-width:720px; }
+  .pz-references { }
   .pz-references ol { margin:16px 0 0; padding-left:20px; }
   .pz-references li { font-family:var(--sans); font-size:14.5px; line-height:1.7; color:var(--pz-muted);
     margin-bottom:8px; scroll-margin-top:96px; }
   .pz-references li a { color:var(--pz-blue); word-break:break-word; }
 
   /* ---- FAQ accordion (matches the ODM page FAQ exactly) ---- */
-  .pz-faq { max-width:760px; margin-top:8px; background:#fff;
+  .pz-faq { margin-top:8px; background:#fff;
     border:1px solid rgba(0,0,0,0.06); border-radius:var(--pz-radius); overflow:hidden; }
   .pz-faq-item { border-bottom:1px solid var(--pz-hair); }
   .pz-faq-item:last-child { border-bottom:none; }
@@ -987,10 +989,10 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
   /* ================= STICKY TOC (right sidebar) ================= */
   .pz-toc-aside { position:sticky; top:100px; align-self:start; }
-  .pz-toc-title { font-family:var(--sans); font-size:12px; font-weight:500; letter-spacing:0.12em;
+  .pz-toc-title { font-family:var(--sans); font-size:16px; font-weight:500; letter-spacing:0.12em;
     text-transform:uppercase; color:var(--text-muted); margin-bottom:16px; }
   .pz-toc-list { list-style:none; margin:0; padding:0; border-left:1px solid var(--pz-line); }
-  .pz-toc-list a { display:block; font-family:var(--sans); font-size:13px; font-weight:500; color:var(--pz-muted);
+  .pz-toc-list a { display:block; font-family:var(--sans); font-size:15px; font-weight:500; color:var(--pz-muted);
     line-height:1.45; padding:8px 0 8px 16px; margin-left:-1px; border-left:2px solid transparent;
     transition:color .15s ease, border-color .15s ease; }
   .pz-toc-list a:hover { color:var(--pz-head); }
@@ -1023,7 +1025,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     transform:translateY(100%); transition:transform .3s cubic-bezier(.4,0,.2,1); box-shadow:0 -8px 40px rgba(0,0,0,.15); }
   .pz-toc-floating.open { transform:translateY(0); }
   .pz-toc-floating .pz-toc-handle { width:40px; height:4px; border-radius:2px; background:#d5dae3; margin:8px auto 16px; }
-  .pz-toc-floating .pz-toc-title { padding:0 4px; }
+  .pz-toc-floating .pz-toc-title { padding:0 4px; font-size:16px; }
   .pz-toc-floating .pz-toc-list a { font-size:15px; padding:12px 16px; }
 
   /* ================= RESPONSIVE ================= */
@@ -1031,7 +1033,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     .pz-grid { grid-template-columns:1fr; gap:0; }
     .pz-toc-aside { display:none; }
     .pz-toc-bar { display:block; }
-    .pz-hero { padding-top:116px; }
+    .pz-hero { padding-top:24px; }
   }
   /* Tablet: render the shared panel as a dropdown anchored under the sticky bar */
   @media (min-width:641px) and (max-width:1024px) {
@@ -1060,15 +1062,63 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 <!-- Reading progress bar -->
 <div class="pz-progress" id="pzProgress" role="progressbar" aria-label="Reading progress"></div>
 
+<!-- ========== VIDEO HERO (full-width, above the page hero) ========== -->
+<!-- TODO: Replace with ai-hardware-odm-video.mp4 -->
+<style>
+  .rv-video-hero{width:100%;padding-top:128px;}
+  @media(max-width:1024px){.rv-video-hero{padding-top:116px;}}
+  .rv-video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#1a1a2e;overflow:hidden;border-radius:12px;}
+  @supports not (aspect-ratio:16/9){.rv-video-frame{height:0;padding-bottom:56.25%;}}
+  .rv-video-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+  .rv-video-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:20px;}
+  .rv-video-play{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.10);border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;transition:transform .2s ease,background .2s ease;}
+  .rv-video-ph:hover .rv-video-play{transform:scale(1.06);background:rgba(255,255,255,.18);}
+  .rv-video-play svg{width:30px;height:30px;margin-left:5px;fill:#fff;}
+  .rv-video-label{font-family:var(--sans,Inter,sans-serif);font-size:14px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.72);}
+  @media(max-width:640px){.rv-video-play{width:60px;height:60px}.rv-video-play svg{width:24px;height:24px}}
+</style>
+<section class="rv-video-hero" aria-label="Introduction video">
+  <div class="container">
+  <div class="rv-video-frame">
+
+    <!-- ===== PLACEHOLDER (delete this block once a real video is added) ===== -->
+    <div class="rv-video-ph">
+      <div class="rv-video-play" aria-hidden="true">
+        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
+      </div>
+      <div class="rv-video-label">Video Coming Soon</div>
+    </div>
+
+    <!-- ===== OPTION A — background-style autoplay (uncomment when the video is ready) =====
+    <video autoplay muted loop playsinline preload="auto" poster="../../img/video/ai-hardware-odm-poster.jpg">
+      <source src="../../img/video/ai-hardware-odm-video.mp4" type="video/mp4">
+    </video>
+    ===== END OPTION A ===== -->
+
+    <!-- ===== OPTION B — click-to-play with poster + controls (uncomment to use instead of A) =====
+    <video controls playsinline preload="none" poster="../../img/video/ai-hardware-odm-poster.jpg" style="background:#1a1a2e;">
+      <source src="../../img/video/ai-hardware-odm-video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    ===== END OPTION B ===== -->
+
+  </div>
+  </div>
+</section>
+
 <!-- ========== HERO (full-width) ========== -->
 <header class="pz-hero">
   <div class="container">
+    <div class="pz-hero-inner">
+    <div class="pz-hero-copy">
     <div class="pz-eyebrow">Resource</div>
     <h1>AI Hardware ODM</h1>
-    <p class="pz-sub">Placeholder subtitle — marketing copy will go here. A concise, benefit-led overview of what an AI hardware ODM does and why AI companies partner with one to develop and manufacture their devices.</p>
+    <p class="pz-sub">An AI hardware ODM turns your software or AI model into a shippable physical product — handling design, firmware, audio, manufacturing, and certification end to end. This guide explains how ODM works, how it differs from OEM, and how to take a device from a single prototype to 100,000+ units.</p>
+    </div>
     <div class="pz-hero-cta">
       <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
       <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener noreferrer" class="pz-btn pz-btn-ghost">Request a Prototype Consultation</a>
+    </div>
     </div>
   </div>
 </header>
@@ -1096,7 +1146,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <!-- Scoped checklist component (only used on this page) -->
         <style>
-          .pz-checklist { max-width:720px; list-style:none; margin:16px 0 8px; padding:0; }
+          .pz-checklist { list-style:none; margin:16px 0 8px; padding:0; }
           .pz-checklist li { display:flex; align-items:flex-start; gap:12px; padding:13px 0;
             border-bottom:1px solid var(--pz-line); font-size:16px; line-height:1.6; color:var(--pz-body); }
           .pz-checklist li svg { flex:0 0 auto; width:20px; height:20px; stroke:#16a34a; margin-top:2px; }
@@ -1105,22 +1155,27 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="what-is-ai-hardware-odm" data-toc="What Is AI Hardware ODM?">
           <h2>What Is AI Hardware ODM?</h2>
-          <p>Content coming soon. This section will define AI hardware ODM and set the foundation for the rest of the guide.</p>
+          <p>AI hardware ODM — Original Design Manufacturing for AI-powered devices — is the practice of engaging a single partner to design, engineer, and mass-produce a physical product that runs your AI. Rather than assembling an in-house hardware team, sourcing components, and qualifying a factory, you bring a product concept (and often a trained model, SDK, or cloud service) and the ODM delivers a manufacturable device around it. The ODM owns the reference design and the hard engineering; you own the brand, the software, and the customer relationship.</p>
+          <p>The category exists because building software and building hardware are fundamentally different disciplines. A team that can ship a voice assistant or an edge-AI model in weeks can still spend a year and burn seven figures learning PCB layout, acoustic tuning, battery safety, injection molding, and factory quality control — before shipping a single unit. An AI hardware ODM compresses that curve by contributing the domain expertise that AI teams rarely have on staff: hardware architecture, embedded firmware, mechanical and industrial design, audio DSP, supply-chain sourcing, and regulatory certification.</p>
+          <p>A full-stack ODM engagement typically spans the entire lifecycle: product definition and architecture, rapid prototyping, the EVT/DVT/PVT validation stages, pilot builds, mass production, and ongoing sustaining engineering. Because one partner carries the design from sketch to shipment, accountability stays in one place and the handoffs that usually delay hardware programs — between design house, firmware vendor, and factory — largely disappear.</p>
+          <p>GMIC AI is the AI-hardware division of Gainstrong, a contract manufacturer founded in 2009. We have shipped 270+ hardware programs across 15+ years, with client and product teams in California and vertically integrated engineering and manufacturing in Shenzhen — SMT through final assembly under one roof. The rest of this guide walks through each stage of that journey and the decisions that shape cost, timeline, and quality along the way.</p>
         </section>
 
         <section class="pz-section" id="odm-vs-oem" data-toc="ODM vs OEM">
           <h2>ODM vs OEM</h2>
-          <p>Content coming soon. This section will explain the difference between ODM and OEM and when each model fits.</p>
+          <p>ODM and OEM are the two dominant manufacturing models, and the distinction comes down to who owns the design. In an OEM (Original Equipment Manufacturer) relationship, you arrive with a complete design — schematics, mechanical files, a bill of materials — and the manufacturer builds it to your specification. You own the intellectual property and control every detail; the factory contributes production capacity and process expertise but not the design itself.</p>
+          <p>In an ODM relationship, the manufacturer contributes an existing design or reference platform and adapts it to your needs. The ODM already owns proven hardware, firmware, and tooling, so you inherit years of engineering and skip much of the risk and cost of starting from zero. The tradeoff is that the ODM retains rights to the underlying platform, and heavily customized elements are usually negotiated per program. In practice most AI-device programs are hybrids: an ODM reference platform for the parts that don't differentiate you (power, connectivity, enclosure) combined with OEM-style custom work where your product needs to stand apart.</p>
+          <p>The right choice depends on how differentiated your hardware must be, how fast you need to ship, and how much upfront engineering budget you can commit. Teams whose value lives in software and AI usually favor ODM because it gets a credible device into customers' hands quickly; teams building a truly novel physical product lean toward OEM or deep-customization ODM. GMIC AI supports the full spectrum — from light customization (rebrand and repackage a shipping platform) to deep customization (custom PCB, enclosure, and firmware).</p>
           <h3 style="font-size:16px;color:#555;font-weight:600;">ODM vs. OEM</h3>
           <div class="pz-table-wrap">
             <table class="pz-table">
               <thead><tr><th>Feature</th><th>ODM</th><th>OEM</th></tr></thead>
               <tbody>
-                <tr><td>Design ownership</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Time to market</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Customization</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Upfront cost</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Best for</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Design ownership</td><td>Manufacturer owns the reference design; you license and adapt it</td><td>You own the full design and IP; factory builds to spec</td></tr>
+                <tr><td>Time to market</td><td>Fast — 3–6 months by building on a proven platform</td><td>Slower — 9–18 months to engineer from scratch</td></tr>
+                <tr><td>Customization</td><td>Light to deep: rebrand, repackage, or custom PCB/firmware</td><td>Unlimited — every element is yours to define</td></tr>
+                <tr><td>Upfront cost</td><td>Lower — NRE shared across the platform's install base</td><td>Higher — you fund all engineering and tooling</td></tr>
+                <tr><td>Best for</td><td>AI/software teams needing a device fast without a hardware org</td><td>Companies whose differentiation lives in novel hardware</td></tr>
               </tbody>
             </table>
           </div>
@@ -1132,32 +1187,33 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="prototype-development" data-toc="Prototype Development">
           <h2>Prototype Development</h2>
-          <p>Content coming soon. This section will walk through the journey from concept to a production-ready prototype.</p>
+          <p>Prototype development is the bridge between an idea and a device you can actually build at scale. It moves a concept through progressively more production-representative builds — proving first that the product works, then that it can be manufactured reliably, and finally that the factory can produce it consistently at volume. Each stage narrows uncertainty and locks decisions, so problems get caught while they are still cheap to fix rather than after tooling is cut.</p>
+          <p>The stages below describe a typical path from discovery to mass production. Programs rarely move in a perfectly straight line — teams often loop back after a build reveals an issue — but the sequence and the intent of each phase stay consistent across nearly every hardware product.</p>
 
           <h3>Product Discovery</h3>
-          <p>Content coming soon.</p>
+          <p>Discovery translates a product vision into concrete engineering requirements. This is where use case, target cost, form factor, battery life, connectivity, and the AI workload are pinned down, and where feasibility tradeoffs surface early. For AI devices, this stage answers the pivotal architecture question: what runs on-device at the edge versus in the cloud, and what compute, memory, and power that implies. A clear requirements document written here prevents scope creep and expensive rework later.</p>
 
           <h3>Industrial Design</h3>
-          <p>Content coming soon.</p>
+          <p>Industrial design shapes how the product looks, feels, and is held or worn. Designers develop the form, ergonomics, materials, and finish, balancing aesthetics against manufacturability and the internal volume the electronics demand. For wearables and voice devices, industrial design also governs where microphones, speakers, buttons, and LEDs sit — decisions that directly affect acoustic performance and usability, not just appearance.</p>
 
           <h3>PCB &amp; PCBA Design</h3>
-          <p>Content coming soon.</p>
+          <p>The printed circuit board is the electronic heart of the device. Engineers select the processor or SoC, memory, wireless modules, sensors, and power components, then lay out a board that fits the enclosure while meeting signal-integrity, thermal, and EMI requirements. The PCBA (the assembled board with components populated) is what gets fabricated and tested. Good layout discipline here — controlled impedance, clean power delivery, sensible test points — pays off through every later stage of validation and production.</p>
 
           <h3>Firmware Development</h3>
-          <p>Content coming soon.</p>
+          <p>Firmware is the embedded software that makes the hardware behave like a product: it boots the device, manages power, drives the radios, reads sensors, and connects to your SDK or cloud. Early firmware runs on the first prototype boards to prove the electronics, then matures in lockstep with the hardware through validation. For AI devices, firmware also handles capture pipelines, buffering, and secure data handling — the plumbing that gets audio or sensor data to your model reliably.</p>
 
           <h3>Mechanical Design &amp; Rapid Prototyping</h3>
-          <p>Content coming soon.</p>
+          <p>Mechanical design turns the industrial-design intent into engineered parts — enclosures, brackets, seals, and internal structure — modeled in CAD for real-world assembly. Rapid prototyping with 3D printing and CNC produces physical parts in days so the team can check fit, feel, and assembly before committing to tooling. Iterating in prototype materials is inexpensive; changing a steel injection-molding tool after it is cut is not, which is why several rapid cycles here save real money.</p>
 
           <h3>EVT / DVT / PVT</h3>
-          <p>Content coming soon.</p>
+          <p>EVT, DVT, and PVT are the three formal validation gates every serious hardware program passes through. EVT (Engineering Validation Test) proves the design works — that the electronics, firmware, and mechanics function together. DVT (Design Validation Test) proves the design is production-ready and meets every specification and certification requirement. PVT (Production Validation Test) proves the factory can build it at volume with consistent quality using production tooling and processes. The comparison table below breaks down each phase in detail.</p>
 
           <h3>Pilot Production to Mass Production</h3>
-          <p>Content coming soon.</p>
+          <p>After PVT, the program ramps from a small pilot run — often a few hundred to a few thousand units — into full mass production. The pilot validates the assembly line, test fixtures, yield, and packaging at real (if modest) scale before capital and inventory commitments grow. Once yield and quality are stable, volume scales up. GMIC AI's Shenzhen operation is vertically integrated from SMT through final assembly and scales to 50,000+ units per month, so the transition from pilot to volume happens under one roof rather than across handoffs between vendors.</p>
 
           <!-- TODO: replace with final image -->
           <figure class="pz-img">
-            <img src="../../img/custom-devices/odm-oem/manufacturing/PCB-Board-Assembly.jpg" alt="Placeholder: manufacturing workflow from concept to mass production" loading="lazy">
+            <img src="../../img/custom-devices/odm-oem/manufacturing/PCB-Board-Assembly.jpg" alt="PCB board assembly on the manufacturing line" loading="lazy">
           </figure>
 
           <h3 style="font-size:16px;color:#555;font-weight:600;">Prototype vs. Production</h3>
@@ -1165,11 +1221,11 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
             <table class="pz-table">
               <thead><tr><th>Phase</th><th>Typical Activities</th><th>Timeline</th><th>Cost Drivers</th></tr></thead>
               <tbody>
-                <tr><td>Prototype</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>EVT</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>DVT</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>PVT</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Mass Production</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Prototype</td><td>Proof-of-concept boards, breadboards, 3D-printed housings; prove the core idea</td><td>2–6 weeks</td><td>Engineering hours, quick-turn PCBs, printed parts</td></tr>
+                <tr><td>EVT</td><td>First integrated units; verify electronics, firmware, and mechanics work together</td><td>4–8 weeks</td><td>Design iteration, small board runs, component samples</td></tr>
+                <tr><td>DVT</td><td>Production-intent design; run certification pre-testing and reliability testing</td><td>6–10 weeks</td><td>Soft tooling, certification labs, test fixtures</td></tr>
+                <tr><td>PVT</td><td>Build on production tooling and line; confirm yield, quality, and process</td><td>4–8 weeks</td><td>Hard tooling, line setup, pilot-run materials</td></tr>
+                <tr><td>Mass Production</td><td>Full-volume manufacturing, QC, packaging, and fulfillment</td><td>Ongoing</td><td>Component volume pricing, labor, logistics, yield</td></tr>
               </tbody>
             </table>
           </div>
@@ -1186,41 +1242,41 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="firmware-development" data-toc="Firmware Development">
           <h2>Firmware Development</h2>
-          <p>Content coming soon. This section covers the firmware layer that brings AI hardware to life.</p>
+          <p>Firmware is the embedded software that lives on the device and turns a circuit board into a product. It runs on the microcontroller or SoC below the level of any app or cloud service, orchestrating boot, power, radios, sensors, and the data pipeline that feeds your AI. For AI hardware in particular, firmware quality is often the difference between a demo and a shippable product: it governs battery life, connection reliability, and how cleanly data reaches your model.</p>
 
           <h3>Embedded Firmware &amp; MCU Programming</h3>
-          <p>Content coming soon.</p>
+          <p>Embedded firmware is written close to the metal, usually in C or C++ on an RTOS or bare-metal environment, and is tightly constrained by the memory, compute, and power budget of the chosen MCU or SoC. Engineers implement device drivers, the main application loop, sensor sampling, and the real-time behavior the product depends on. Disciplined, well-structured firmware is what lets a device stay responsive and stable in the field for years.</p>
 
           <h3>Bluetooth &amp; Wi-Fi Connectivity</h3>
-          <p>Content coming soon.</p>
+          <p>Most AI devices rely on wireless links to phones, gateways, or the cloud. Bluetooth Low Energy is common for pairing, control, and low-bandwidth data, while Wi-Fi handles higher-throughput uploads such as audio or firmware images. Robust connectivity firmware manages pairing, reconnection, roaming, and graceful degradation when the network drops — the unglamorous logic that determines whether users trust the device.</p>
 
           <h3>OTA Updates</h3>
-          <p>Content coming soon.</p>
+          <p>Over-the-air update capability lets you ship fixes and features to devices already in customers' hands. A well-designed OTA system delivers updates in the background, verifies image integrity and authenticity before installing, and can roll back safely if an update fails — so a bad build never bricks a fleet. For AI products that evolve quickly, dependable OTA is essential to keeping deployed hardware current with your software roadmap.</p>
 
           <h3>Power Management</h3>
-          <p>Content coming soon.</p>
+          <p>Battery life is one of the most scrutinized specs on any portable AI device, and it is won or lost in firmware. Engineers use sleep states, duty cycling, dynamic clock and voltage scaling, and careful control of radios and sensors to stretch every milliamp-hour. On voice and wearable products, balancing always-listening responsiveness against battery drain is a defining design challenge that firmware must solve.</p>
 
           <h3>SDK Integration &amp; Cloud Connectivity</h3>
-          <p>Content coming soon.</p>
+          <p>This is where the device meets your platform. Firmware integrates your SDK or APIs so captured data flows to your model or backend and results flow back to the device. Clean integration handles authentication, retries, buffering during connectivity gaps, and efficient payload formatting — abstracting hardware complexity so your software team can work against a stable, predictable interface.</p>
 
           <h3>Security</h3>
-          <p>Content coming soon.</p>
+          <p>AI devices frequently capture sensitive data — voice, video, health, or location — which makes security a first-class requirement, not an afterthought. Strong practices include secure boot, encrypted storage and transport, signed firmware, hardware-backed key storage, and unique per-device credentials. Building these in from the start protects users, safeguards your brand, and eases certification and enterprise-security reviews later.</p>
 
           <h3 style="font-size:16px;color:#555;font-weight:600;">Firmware Responsibilities</h3>
           <div class="pz-table-wrap">
             <table class="pz-table">
               <thead><tr><th>Area</th><th>What It Covers</th><th>Why It Matters</th></tr></thead>
               <tbody>
-                <tr><td>Connectivity</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>OTA Updates</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Power Management</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Security</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Connectivity</td><td>BLE/Wi-Fi stacks, pairing, reconnection, data transport</td><td>Determines whether the device stays reliably linked to phone and cloud</td></tr>
+                <tr><td>OTA Updates</td><td>Signed, verified background updates with safe rollback</td><td>Lets you fix bugs and ship features to deployed fleets remotely</td></tr>
+                <tr><td>Power Management</td><td>Sleep states, duty cycling, radio and sensor control</td><td>Directly sets battery life — the spec users judge most harshly</td></tr>
+                <tr><td>Security</td><td>Secure boot, encryption, signed firmware, per-device keys</td><td>Protects sensitive captured data and clears enterprise reviews</td></tr>
               </tbody>
             </table>
           </div>
           <div class="pz-callout insight">
             <span class="pz-callout-label">Engineering Insight</span>
-            <p>Placeholder insight. A firmware engineering lesson relevant to AI hardware will appear here.</p>
+            <p>Ship the OTA update pipeline before your first production run, not after. Devices in the field will always need fixes, and a fleet with no reliable way to update is a fleet you cannot recover — retrofitting OTA later is far harder than designing it in from day one.</p>
           </div>
           <a href="../../solutions/embedded-ai-hardware/index.html" class="pz-ilink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -1230,26 +1286,26 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="audio-dsp" data-toc="Audio DSP">
           <h2>Audio DSP</h2>
-          <p>Content coming soon. This section covers the audio signal processing that makes voice capture reliable.</p>
+          <p>For voice-first AI devices, audio digital signal processing is where products succeed or fail. A speech model can only be as good as the audio it receives, and real environments are hostile: background noise, echo, distance, overlapping speakers, and reverberation all degrade raw microphone signals. Audio DSP is the layer that cleans and conditions sound before it reaches your model or the cloud — and it is one of the hardest capabilities for a software team to build without dedicated acoustic engineering.</p>
 
           <h3>Beamforming &amp; Microphone Arrays</h3>
-          <p>Content coming soon.</p>
+          <p>A single microphone captures everything around it equally; an array of microphones lets DSP electronically "steer" sensitivity toward the person speaking and away from noise sources. Beamforming combines the signals from multiple mics — using their physical spacing and timing differences — to boost the target voice and suppress the rest. Array geometry, mic placement in the enclosure, and beamforming tuning together determine how far and how clearly a device can hear.</p>
 
           <h3>Echo Cancellation &amp; Noise Suppression</h3>
-          <p>Content coming soon.</p>
+          <p>Acoustic echo cancellation (AEC) removes the device's own speaker output from the microphone signal, which is essential for any product that plays audio while listening — a prerequisite for natural, barge-in voice interaction. Noise suppression separates speech from steady and transient background sounds such as HVAC, traffic, or machinery. Tuned well, these algorithms deliver clean speech to your model even in demanding, real-world settings.</p>
 
           <h3>Voice Activity Detection &amp; Speaker Diarization</h3>
-          <p>Content coming soon.</p>
+          <p>Voice activity detection (VAD) identifies when someone is actually speaking, so the device can save power, trigger capture, and avoid sending silence or noise to the cloud. Speaker diarization goes further, distinguishing who spoke when — critical for meeting notes, clinical documentation, or any multi-party conversation. Running lightweight VAD on-device is also a key privacy and battery-life win, since it gates the far heavier processing downstream.</p>
 
           <h3>Audio DSP for Healthcare &amp; Voice AI</h3>
-          <p>Content coming soon.</p>
+          <p>In healthcare, audio quality has direct clinical consequences: a misheard medication or dosage in an ambient documentation device is a patient-safety issue, not just a UX flaw. These environments are acoustically difficult — busy wards, exam rooms, multiple speakers — so DSP must reliably isolate the intended speaker and preserve intelligibility. Tuning for the specific acoustics of the deployment, and for the vocabulary the model must transcribe accurately, materially improves downstream accuracy.</p>
 
           <h3>Audio DSP for Field Service &amp; Enterprise</h3>
-          <p>Content coming soon.</p>
+          <p>Field service and industrial settings add wind, machinery, vehicles, and distance to the mix, often with the device worn on the body or clipped to clothing. Enterprise deployments demand consistent capture across offices, warehouses, and conference rooms. In both cases, robust noise suppression and beamforming tuned to the real operating environment keep transcription and voice commands dependable where consumer-grade audio would break down.</p>
 
           <div class="pz-callout tip">
             <span class="pz-callout-label">Expert Tip</span>
-            <p>Placeholder tip. A practical audio DSP recommendation will appear here.</p>
+            <p>Tune your audio DSP with recordings from the real deployment environment, not a quiet lab. A device that sounds flawless on the bench can fall apart on a hospital ward or a factory floor — capture representative noise early and validate against it.</p>
           </div>
           <a href="../../solutions/voice-ai-hardware/index.html" class="pz-ilink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -1259,47 +1315,47 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="manufacturing" data-toc="Manufacturing">
           <h2>Manufacturing</h2>
-          <p>Content coming soon. This section covers taking a validated design into volume manufacturing.</p>
+          <p>Manufacturing is where a validated design becomes thousands of identical, reliable products. It is a discipline in its own right — distinct from design — and it is where many first-time hardware programs stumble, because a design that works as a handful of prototypes may not build consistently at volume. Volume manufacturing is about repeatability: producing unit ten thousand to the same quality as unit one, at a cost that supports your business model.</p>
 
           <h3>Supply Chain &amp; Component Sourcing</h3>
-          <p>Content coming soon.</p>
+          <p>Every device is only as available as its scarcest component. Sourcing covers selecting suppliers, negotiating pricing, managing lead times, and building resilience against shortages and end-of-life parts. Experienced ODMs design with sourcing in mind — favoring components with multiple qualified suppliers and healthy availability — so a single allocation or discontinuation cannot stall your production. Established factory relationships and buying leverage also directly lower your per-unit cost.</p>
 
           <h3>DFM &amp; DFA</h3>
-          <p>Content coming soon.</p>
+          <p>Design for Manufacturing (DFM) and Design for Assembly (DFA) adapt a design so it can be built efficiently, reliably, and at low cost. A DFM/DFA review catches problems that only appear in production — components too close to place accurately, parts that can be assembled backwards, features that drive scrap — before tooling is committed. Running these reviews during design, rather than discovering the issues on the line, is one of the highest-leverage steps in the entire program.</p>
 
           <h3>SMT &amp; Assembly</h3>
-          <p>Content coming soon.</p>
+          <p>Surface-mount technology (SMT) is the automated process that places and solders components onto circuit boards — the foundation of modern electronics manufacturing. After SMT, boards are combined with enclosures, batteries, displays, and other parts through a mix of automated and manual assembly. GMIC AI's Shenzhen operation is vertically integrated from SMT through final assembly, so board fabrication, population, and device build happen under one roof rather than across separate vendors and handoffs.</p>
 
           <h3>Testing &amp; Quality Control</h3>
-          <p>Content coming soon.</p>
+          <p>Quality control ensures every unit meets spec before it ships. Functional test verifies each device powers on, connects, and performs correctly; additional checks cover audio, RF, calibration, and cosmetics. Statistical process control, reliability testing, and clear yield targets keep quality consistent as volume scales. Well-designed test fixtures and pass/fail criteria — defined during DVT — are what make high-volume QC both fast and trustworthy.</p>
 
           <h3>Mass Production &amp; Packaging</h3>
-          <p>Content coming soon.</p>
+          <p>At full volume, the focus is throughput, yield, and cost control while holding quality steady. Packaging is part of the product experience and part of the logistics equation — it must protect the device in transit, present the brand, and satisfy retail or regulatory requirements. GMIC AI scales to 50,000+ units per month, with packaging designed alongside the product rather than bolted on at the end.</p>
 
           <h3>White-Label Manufacturing</h3>
-          <p>Content coming soon.</p>
+          <p>White-label (or private-label) manufacturing lets you bring a device to market under your own brand built on a proven platform. Instead of engineering from scratch, you customize an existing design — branding, enclosure, firmware, and packaging — to the depth your product needs. It is the fastest, lowest-risk path to a shippable AI device, and it pairs naturally with the light-to-deep customization spectrum an ODM offers.</p>
 
           <h3 style="font-size:16px;color:#555;font-weight:600;">Manufacturing Stages</h3>
           <div class="pz-table-wrap">
             <table class="pz-table">
               <thead><tr><th>Stage</th><th>Description</th><th>Key Deliverables</th></tr></thead>
               <tbody>
-                <tr><td>Sourcing</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>SMT &amp; Assembly</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Testing &amp; QC</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>Packaging</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>Sourcing</td><td>Qualify suppliers, lock pricing and lead times, secure component availability</td><td>Approved vendor list, released BOM, purchasing plan</td></tr>
+                <tr><td>SMT &amp; Assembly</td><td>Populate and solder boards, then integrate enclosure, battery, and parts</td><td>Assembled PCBAs and fully built devices</td></tr>
+                <tr><td>Testing &amp; QC</td><td>Functional, RF, audio, and cosmetic testing with defined pass/fail criteria</td><td>Test reports, yield data, quality records</td></tr>
+                <tr><td>Packaging</td><td>Protective and branded packaging, labeling, and fulfillment prep</td><td>Retail-ready, shippable finished goods</td></tr>
               </tbody>
             </table>
           </div>
 
           <!-- TODO: replace with final image -->
           <figure class="pz-img">
-            <img src="../../img/custom-devices/odm-oem/manufacturing/Manual-Assembly-Line.png" alt="Placeholder: factory floor with SMT line, assembly, and QA stations" loading="lazy">
+            <img src="../../img/custom-devices/odm-oem/manufacturing/Manual-Assembly-Line.png" alt="Manual assembly line for final device assembly and QA" loading="lazy">
           </figure>
 
           <div class="pz-callout best">
             <span class="pz-callout-label">Best Practice</span>
-            <p>Placeholder best practice. A recommended approach for de-risking manufacturing will appear here.</p>
+            <p>Run a small pilot build before committing to full volume. A few hundred units on production tooling will expose assembly, yield, and test issues while they are still cheap to fix — long before you have tens of thousands of units and inventory on the line.</p>
           </div>
           <a href="../../process/index.html" class="pz-ilink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -1314,39 +1370,39 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="certifications" data-toc="Certifications">
           <h2>Certifications</h2>
-          <p>Content coming soon. This section covers the certifications required to ship AI hardware globally.</p>
+          <p>Certification is the gate between a finished design and a product you are legally allowed to sell. Any device with a radio, a battery, or a power supply must meet the regulatory requirements of every market it ships into, and non-compliance can mean seized shipments, forced recalls, or fines. Certification is not a single step but a set of parallel tracks — radio, safety, environmental, and sometimes medical — each with its own testing, documentation, and timeline.</p>
 
           <h3>FCC &amp; CE</h3>
-          <p>Content coming soon.</p>
+          <p>FCC certification is mandatory for electronic devices sold in the United States, covering electromagnetic emissions and, for anything with a radio, intentional-radiator testing. CE marking is the equivalent gateway for the European Economic Area, spanning the EMC, radio (RED), and safety directives. Both require testing at accredited labs, and both are far cheaper to pass when their requirements are designed in from the start rather than chased after a failed scan.</p>
 
           <h3>RoHS &amp; REACH</h3>
-          <p>Content coming soon.</p>
+          <p>RoHS restricts hazardous substances such as lead and certain flame retardants in electronics, and is required for the EU and increasingly expected elsewhere. REACH governs the broader use of chemical substances in products sold in Europe. Compliance is driven largely by component and material selection, so it is managed through the bill of materials and supplier declarations rather than end-of-line testing.</p>
 
           <h3>UL &amp; Battery Certifications</h3>
-          <p>Content coming soon.</p>
+          <p>Safety certifications like UL address fire and electrical-shock risk and are often required by retailers, distributors, and enterprise buyers even where not strictly mandated. Battery-powered devices carry their own critical requirements: UN 38.3 for lithium-battery transport safety is effectively mandatory to ship product by air or sea, alongside IEC 62133 for cell and battery safety. Because rechargeable lithium cells are a genuine safety and logistics hazard, these certifications are non-negotiable for any portable AI device.</p>
 
           <h3>Bluetooth SIG &amp; Wi-Fi Alliance</h3>
-          <p>Content coming soon.</p>
+          <p>Devices using Bluetooth must be qualified through the Bluetooth SIG to use the trademark and ensure interoperability; skipping it exposes you to legal and compatibility problems. Wi-Fi Alliance certification similarly validates interoperability and lets you carry the Wi-Fi CERTIFIED logo. These industry certifications sit alongside the government radio approvals (FCC/CE) rather than replacing them.</p>
 
           <h3>Medical Certifications</h3>
-          <p>Content coming soon.</p>
+          <p>Devices making medical claims or used in clinical care face a much higher bar. In the US that can mean FDA clearance; in Europe, compliance with the Medical Device Regulation (MDR). Standards such as IEC 60601 govern the safety of medical electrical equipment. These pathways are lengthy and documentation-heavy, so any product heading toward a regulated medical use should scope its certification strategy at the very beginning of the program.</p>
 
           <h3 style="font-size:16px;color:#555;font-weight:600;">Certification Comparison</h3>
           <div class="pz-table-wrap">
             <table class="pz-table">
               <thead><tr><th>Certification</th><th>Region</th><th>Applies To</th><th>Typical Timeline</th></tr></thead>
               <tbody>
-                <tr><td>FCC</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>CE</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>RoHS</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
-                <tr><td>UL</td><td>Placeholder</td><td>Placeholder</td><td>Placeholder</td></tr>
+                <tr><td>FCC</td><td>United States</td><td>Emissions and radio for electronic/wireless devices</td><td>3–6 weeks</td></tr>
+                <tr><td>CE</td><td>European Economic Area</td><td>EMC, radio (RED), and safety directives</td><td>4–8 weeks</td></tr>
+                <tr><td>RoHS</td><td>EU (widely adopted)</td><td>Hazardous-substance limits, verified via BOM</td><td>1–3 weeks</td></tr>
+                <tr><td>UL</td><td>US / North America</td><td>Electrical and fire safety; often retailer-required</td><td>6–12 weeks</td></tr>
               </tbody>
             </table>
           </div>
 
           <div class="pz-callout best">
             <span class="pz-callout-label">Best Practice</span>
-            <p>Placeholder — plan certifications early. Building certification requirements into the design phase avoids costly redesigns late in the program.</p>
+            <p>Plan certifications from day one. Building the requirements into the design phase — and running pre-scans during DVT — avoids the costly redesigns and schedule slips that come from discovering a compliance failure after tooling is cut.</p>
           </div>
           <a href="../../contact/index.html" class="pz-ilink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -1356,21 +1412,23 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
         <section class="pz-section" id="choose-odm-partner" data-toc="Why Choose an ODM Partner?">
           <h2>Why Choose an AI Hardware ODM Partner?</h2>
-          <p>Content coming soon. What to look for when evaluating an AI hardware ODM partner:</p>
+          <p>The alternative to an ODM is building an in-house hardware team — hiring across a dozen specialties, sourcing components, and qualifying a factory — before you ship a single unit. For most AI and software companies that is slower, riskier, and far more expensive than partnering with a team that already has the people, tooling, and factory relationships in place. When evaluating an AI hardware ODM partner, look for depth across the full stack:</p>
           <ul class="pz-checklist">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Engineering capability</strong> — placeholder.</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Embedded systems &amp; firmware</strong> — placeholder.</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Acoustics &amp; audio DSP</strong> — placeholder.</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Supply chain &amp; manufacturing</strong> — placeholder.</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Certification experience</strong> — placeholder.</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Mass production capability</strong> — placeholder.</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Long-term support</strong> — placeholder.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Engineering capability</strong> — in-house hardware architecture, PCB design, and mechanical/industrial design, not just assembly.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Embedded systems &amp; firmware</strong> — proven ability to deliver reliable firmware, connectivity, power management, and OTA updates.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Acoustics &amp; audio DSP</strong> — mic arrays, beamforming, echo cancellation, and noise suppression tuned for real environments.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Supply chain &amp; manufacturing</strong> — established supplier relationships and buying leverage that secure availability and lower unit cost.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Certification experience</strong> — a track record navigating FCC, CE, UN 38.3, and other approvals without schedule surprises.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Mass production capability</strong> — the capacity to scale from pilot to tens of thousands of units per month with stable quality.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span><strong>Long-term support</strong> — sustaining engineering, component-lifecycle management, and revisions that keep the product shippable for years.</span></li>
           </ul>
         </section>
 
         <section class="pz-section" id="why-gmic" data-toc="Why GMIC AI">
           <h2>Why GMIC AI</h2>
-          <p>Content coming soon. Why AI companies choose GMIC AI as their hardware ODM partner.</p>
+          <p>GMIC AI exists to close a specific gap: AI teams build software fast but struggle to build hardware. As the AI-hardware division of Gainstrong — a contract manufacturer founded in 2009 — we bring 15+ years of manufacturing experience and 270+ shipped hardware programs to teams whose expertise is in models and software, not injection molding and SMT lines. The result is a partner that speaks both languages and carries a product from concept to 50,000+ units per month.</p>
+          <p>Our structure is built for exactly this work. Client and product teams in California stay close to your roadmap and time zone, while vertically integrated engineering and manufacturing in Shenzhen run everything from SMT through final assembly under one roof. That means no handoffs between a separate design house, firmware vendor, and factory — the same organization that designs your device also builds it, so accountability and quality stay in one place.</p>
+          <p>We offer full-stack OEM/ODM services — hardware architecture, PCB, embedded firmware, mechanical and industrial design, audio tuning, SDK/API integration, prototype and validation, private label and packaging, and certification support — and we scale the engagement to fit. That ranges from light customization, where we rebrand and repackage an existing platform to get you to market quickly, to deep customization with a custom PCB, enclosure, and firmware. Across AI voice recorders, wearables, communication devices, speakers, and smart badges, our aim is the same: turn your AI into a device your customers can hold.</p>
           <div class="pz-cta-band light">
             <span class="pz-cta-text">Ready to start your AI hardware project?</span>
             <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
@@ -1386,52 +1444,52 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
           <h2>FAQ</h2>
           <div class="pz-faq" id="pzFaq">
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 1<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">What is the difference between ODM and OEM?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">The difference comes down to who owns the design. With an OEM, you provide a complete design and the manufacturer builds it to your specification, so you own all the IP and control every detail. With an ODM, the manufacturer contributes an existing reference design and adapts it to your needs, which is faster and lower-risk but means the ODM retains rights to the underlying platform. Most AI-device programs are hybrids — an ODM platform for the non-differentiating parts plus custom work where the product needs to stand apart.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 2<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">How long does it take to develop an AI hardware device?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Timelines depend heavily on how much customization is involved. A light-customization program built on a proven platform — rebrand, repackage, and integrate your SDK — can reach production in roughly three to six months. A deep-customization program with a custom PCB, enclosure, and firmware, plus the full EVT/DVT/PVT validation cycle and certification, typically runs nine to eighteen months. Building on an existing reference design is the single biggest lever for compressing the schedule.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 3<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">What is the minimum order quantity (MOQ) for AI hardware?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">MOQ varies with the product and how much customization it carries. Light-customization programs built on an existing platform can often start in the low thousands, while deeply custom devices with dedicated tooling usually require higher volumes to justify the setup cost. Prototype and pilot runs, by contrast, are intentionally small — often a few hundred units — so you can validate the product and the production line before committing to volume. The right approach is to start with a pilot and scale as demand proves out.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 4<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">How much does it cost to develop an AI hardware product?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Cost splits into non-recurring engineering (NRE) — design, firmware, tooling, and certification paid once — and per-unit manufacturing cost at volume. Light customization on an existing platform keeps NRE low because you inherit proven engineering; deep customization with custom tooling and firmware carries meaningfully higher NRE. Certification, custom enclosures (injection-mold tooling in particular), and audio tuning are common cost drivers. The most reliable way to get a number is to define the product's requirements and volume, then scope the program against them.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 5<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">What are EVT, DVT, and PVT?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">They are the three formal validation gates a hardware program passes through before mass production. EVT (Engineering Validation Test) proves the design works — that electronics, firmware, and mechanics function together. DVT (Design Validation Test) proves the design is production-ready and meets every specification and certification requirement. PVT (Production Validation Test) proves the factory can build it at volume with consistent quality on production tooling. Passing all three de-risks the transition to full-scale manufacturing.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 6<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">Can I use my existing AI model or software with a custom device?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Yes — that is the core of an AI hardware ODM engagement. You bring the model, SDK, or cloud service, and the ODM builds the device and firmware around it, integrating your APIs so captured data flows to your model and results flow back. A key early decision is what runs on-device at the edge versus in the cloud, which shapes the compute, memory, and power requirements. The firmware layer abstracts the hardware complexity so your software team works against a stable, predictable interface.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 7<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">What certifications does my AI device need?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">It depends on your target markets and the device's features, but most AI devices need several. Radio and emissions approvals (FCC for the US, CE for Europe) are required for anything wireless, along with RoHS and REACH for environmental compliance. Battery-powered devices additionally need UN 38.3 for shipping safety and typically IEC 62133 for cell safety, and Bluetooth or Wi-Fi products need SIG or Alliance qualification. Products with medical claims face a much higher bar, such as FDA clearance or MDR compliance, so scope certification at the very start of the program.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 8<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">What is the difference between light and deep customization?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Light customization takes an existing, shipping platform and adapts the surface — branding, packaging, and often firmware or SDK integration — to get your product to market quickly and at lower cost and risk. Deep customization changes the core of the device, with a custom PCB, custom enclosure, and bespoke firmware built to your specific requirements. Light customization is faster and cheaper but shares the underlying platform; deep customization gives you a more differentiated product for more time and investment. Many programs land in between, customizing deeply only where the product truly needs to stand apart.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 9<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">Do I own the intellectual property for my device?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">You always own your brand, your software, and your AI model. Ownership of the hardware design depends on the engagement model: in an OEM relationship you own the full design, while in an ODM relationship the manufacturer typically retains rights to the underlying reference platform. Custom work developed specifically for your product — a bespoke enclosure or custom firmware — is negotiated per program and should be spelled out in the agreement. Clarifying IP ownership up front, before development begins, avoids friction later.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 10<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">How do you ensure audio quality for voice AI devices?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Audio quality is engineered through both hardware and DSP. On the hardware side, microphone selection, array geometry, and placement within the enclosure set the ceiling for what the device can capture. On the software side, beamforming, acoustic echo cancellation, noise suppression, and voice activity detection clean the signal before it reaches your model. Crucially, the DSP should be tuned with recordings from the real deployment environment — a hospital ward or factory floor, not a quiet lab — because a device that sounds perfect on the bench can fail in the field.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 11<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">Can you scale from a small pilot to mass production?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Yes — scaling smoothly from pilot to volume is one of the main reasons to work with a full-stack ODM. A pilot run of a few hundred to a few thousand units validates the assembly line, test fixtures, yield, and packaging before larger capital and inventory commitments. Once quality and yield are stable, production ramps up. GMIC AI's vertically integrated Shenzhen operation runs SMT through final assembly under one roof and scales to 50,000+ units per month, so the pilot-to-volume transition happens without vendor handoffs.</div></div>
             </div>
             <div class="pz-faq-item">
-              <button class="pz-faq-q" aria-expanded="false">Question placeholder 12<span class="pz-faq-icon" aria-hidden="true"></span></button>
-              <div class="pz-faq-a"><div class="pz-faq-a-inner">Answer placeholder — content coming soon.</div></div>
+              <button class="pz-faq-q" aria-expanded="false">Why work with an ODM instead of building hardware in-house?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Building hardware in-house means hiring across a dozen specialties — PCB, firmware, mechanical, acoustics, sourcing, certification, manufacturing — sourcing components, and qualifying a factory before you ship a single unit. For AI and software companies, that is slower, riskier, and far more expensive than partnering with a team that already has the people, tooling, and factory relationships in place. An ODM lets you focus on your software and AI, which is where your differentiation actually lives, while the hardware partner closes the gap end to end. GMIC AI exists specifically because AI teams build software fast but struggle to build hardware.</div></div>
             </div>
           </div>
         </section>
@@ -1439,7 +1497,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
         <!-- ===== REFERENCES ===== -->
         <section class="pz-section pz-references" id="references" aria-label="References">
           <h2>References</h2>
-          <p>References will be added with final content.</p>
+          <p>The certification and standards guidance in this guide reflects the requirements published by the governing bodies: the U.S. Federal Communications Commission (FCC) for radio and emissions; the European Commission for CE marking, RoHS, and REACH; UN Model Regulations (UN 38.3) and IEC 62133 for lithium-battery transport and safety; the Bluetooth SIG and Wi-Fi Alliance for wireless interoperability; and UL for electrical safety. Requirements change by market and over time, so confirm the current rules for your target regions with an accredited test lab or your ODM partner before finalizing a design.</p>
         </section>
 
       </main>
