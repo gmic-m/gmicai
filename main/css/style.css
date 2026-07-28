@@ -997,3 +997,28 @@ a.fab-btn{text-decoration:none}
   .svc-row:nth-child(even) .svc-row-media{order:0}
   .svc-row:nth-child(even) .svc-row-text{order:0}
 }
+
+/* ================================================================
+   ULTRA-WIDE SCALING (2560px and above)
+   ----------------------------------------------------------------
+   Below 2560px nothing here applies, so every page renders exactly
+   as it does today. At 2560px the scale is 1.0 (no change). Above
+   that, `zoom` scales the whole page proportionally — text, images,
+   padding, and gaps together.
+
+   Why zoom and not `html{font-size:...}`: this site sets 42% of its
+   font sizes in px (1071 of them, incl. the nav, buttons and footer
+   in this file). Those ignore the root size, so a root-only change
+   would grow page copy while leaving chrome fixed. zoom scales both.
+
+   Why stepped and not continuous: `zoom` takes a <number> or
+   <percentage>. calc(100vw / 2560) yields a <length>, which is
+   invalid for zoom and would be dropped, so the ramp is expressed
+   as 12.5% steps that track 100vw / 2560 closely.
+   ================================================================ */
+@media (min-width:2880px){ body{ zoom:1.125 } }   /* ~2880/2560 */
+@media (min-width:3200px){ body{ zoom:1.25  } }   /* ~3200/2560 */
+@media (min-width:3520px){ body{ zoom:1.375 } }
+@media (min-width:3840px){ body{ zoom:1.5   } }   /* 4K */
+@media (min-width:4480px){ body{ zoom:1.75  } }
+@media (min-width:5120px){ body{ zoom:2     } }   /* 5K */
