@@ -763,9 +763,9 @@ a.fab-btn{text-decoration:none}
   max-width:600px;
 }
 .gap-block{
-  background:var(--off-white);
+  background:transparent;
   border-radius:16px;
-  padding:36px 32px 40px;
+  padding:0;
   border:none;
   position:relative;
   overflow:hidden;

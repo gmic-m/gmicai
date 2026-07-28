@@ -892,17 +892,87 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     background:var(--pz-blue); z-index:200; transition:width .08s linear; }
 
   /* ---- Hero (matches the site's hero scale & eyebrow) ---- */
-  .pz-hero { background:#fff; padding:28px 0 56px; border-bottom:1px solid rgba(0,0,0,0.06); }
-  .pz-hero .pz-eyebrow { font-family:var(--sans); font-size:12px; font-weight:500;
-    letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:18px; }
+  /* padding-top clears the fixed .nav (64px), which is out of flow */
+  .pz-hero { background:#fff; padding:92px 0 56px; }
+  .pz-hero .pz-eyebrow { font-family:var(--sans); font-size:13px; font-weight:500;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--pz-blue); margin-bottom:18px; }
   .pz-hero h1 { font-family:var(--sans); font-size:clamp(34px,4.6vw,58px); font-weight:800;
     line-height:1.05; letter-spacing:-0.03em; color:var(--pz-head); margin-bottom:22px; }
   .pz-hero .pz-sub { max-width:640px; font-family:var(--sans); font-size:1.05rem; line-height:1.6;
     color:var(--pz-body); margin-bottom:32px; }
-  .pz-hero-cta { display:flex; flex-direction:row; flex-wrap:wrap; gap:12px; flex:0 0 auto; }
-  .pz-hero-inner { display:flex; align-items:flex-end; justify-content:space-between; gap:48px; flex-wrap:wrap; }
-  .pz-hero-copy { flex:1 1 560px; min-width:0; }
-  @media (max-width:640px){ .pz-hero-inner { flex-direction:column; align-items:flex-start; gap:24px; } .pz-hero-cta { width:100%; } }
+  /* Two-column hero: copy ~57%, media ~43%, vertically centred */
+  .pz-hero-inner { display:grid; grid-template-columns:minmax(0,57fr) minmax(0,43fr);
+    gap:48px; align-items:center; }
+  .pz-hero-copy { min-width:0; }
+  .pz-hero-cta { display:flex; flex-direction:row; flex-wrap:wrap; gap:12px; }
+  .pz-hero-media { min-width:0; }
+  .pz-hero-media img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover;
+    border-radius:8px; }
+  /* Product shots letterbox instead of cropping */
+  .pz-hero-media.is-contain img { object-fit:contain; background:var(--pz-alt); }
+  /* Stack below 900px: copy on top, image beneath */
+  @media (max-width:900px){
+    .pz-hero-inner { grid-template-columns:minmax(0,1fr); gap:32px; }
+  }
+  @media (max-width:640px){
+    .pz-hero-cta > .pz-btn { flex:1 1 auto; justify-content:center; }
+  }
+
+  /* ---- Breadcrumb: full container width, above the hero row ---- */
+  .pz-crumbs { margin-bottom:20px; font-family:var(--sans); font-size:13px; line-height:1.5; }
+  .pz-crumbs ol { list-style:none; display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:0; padding:0; }
+  .pz-crumbs a { color:var(--pz-blue); text-decoration:none; }
+  .pz-crumbs a:hover { text-decoration:underline; }
+  .pz-crumbs .pz-crumb-sep { color:rgba(0,0,0,0.28); }
+  /* "Resources" and the current page are plain text — there is no resources landing page yet */
+  .pz-crumbs li { color:var(--pz-muted); }
+
+
+  /* ---- Key Takeaways summary box ---- */
+  .pz-takeaways { background:#f8f9fa; border:1px solid var(--pz-line); border-radius:12px; padding:24px; }
+  .pz-takeaways h2 { font-family:var(--sans); font-size:17px; font-weight:700; letter-spacing:-0.01em;
+    color:var(--pz-head); margin:0 0 14px; padding:0; border:0; }
+  .pz-takeaways ul { list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+  .pz-takeaways li { position:relative; padding-left:22px; font-family:var(--sans); font-size:15px;
+    line-height:1.6; color:var(--pz-body); }
+  .pz-takeaways li::before { content:""; position:absolute; left:6px; top:9px; width:6px; height:6px;
+    border-radius:50%; background:var(--pz-blue); }
+
+  /* ---- Byline: author attribution (left) + share buttons (right) ---- */
+  .pz-byline { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    gap:16px; margin-top:36px; }
+  .pz-byline-who { display:inline-flex; align-items:center; gap:8px; font-family:var(--sans);
+    font-size:13px; color:var(--pz-muted); }
+  .pz-byline-who img { width:18px; height:18px; display:block; flex:0 0 auto; }
+  .pz-share { display:inline-flex; align-items:center; gap:6px; }
+  .pz-share-btn { position:relative; display:inline-flex; align-items:center; justify-content:center;
+    width:32px; height:32px; padding:0; border:1px solid var(--pz-line); border-radius:8px;
+    background:#fff; color:var(--pz-muted); cursor:pointer;
+    transition:color .15s ease, border-color .15s ease, background .15s ease; }
+  .pz-share-btn:hover { color:var(--pz-blue); border-color:var(--pz-blue); background:var(--pz-alt); }
+  .pz-share-btn svg { width:15px; height:15px; display:block; }
+  .pz-share-tip { position:absolute; bottom:calc(100% + 8px); left:50%; transform:translateX(-50%);
+    padding:6px 8px; border-radius:6px; background:var(--pz-head); color:#fff; font-family:var(--sans);
+    font-size:11px; line-height:1; white-space:nowrap; opacity:0; visibility:hidden;
+    transition:opacity .15s ease, visibility .15s ease; }
+  .pz-share-btn:hover .pz-share-tip,
+  .pz-share-btn:focus-visible .pz-share-tip,
+  .pz-share-btn.copied .pz-share-tip { opacity:1; visibility:visible; }
+
+  /* ---- Related resources cards ---- */
+  .pz-related-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+  .pz-related-card { display:flex; flex-direction:column; gap:8px; padding:20px; background:#fff;
+    border:1px solid var(--pz-line); border-radius:12px; text-decoration:none;
+    transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .pz-related-card:hover { border-color:var(--pz-blue); box-shadow:0 6px 24px rgba(0,0,0,0.06);
+    transform:translateY(-2px); }
+  .pz-related-card h3 { font-family:var(--sans); font-size:1.05rem; font-weight:700;
+    letter-spacing:-0.01em; color:var(--pz-head); margin:0; }
+  .pz-related-card p { font-family:var(--sans); font-size:14.5px; line-height:1.6;
+    color:var(--pz-body); margin:0; }
+  .pz-related-more { margin-top:auto;
+    font-family:var(--sans); font-size:14px; font-weight:600; color:var(--pz-blue); }
+  @media (max-width:640px){ .pz-related-grid { grid-template-columns:1fr; } }
 
   /* ---- Buttons: mirror the site's .btn + .btn-blue-deep / ghost ---- */
   .pz-btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--sans);
@@ -915,7 +985,9 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
   /* ---- 2-column layout ---- */
   .pz-layout { padding:72px 0 96px; background:#fff; }
-  .pz-grid { display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:64px; align-items:start; }
+  /* 244px = 220px of TOC content + the 24px padding-left below, so the TOC text
+     keeps its original width while the visual gutter grows to 64 + 24 = 88px. */
+  .pz-grid { display:grid; grid-template-columns:minmax(0,1fr) 244px; gap:64px; align-items:start; }
   .pz-main { min-width:0; }
 
   /* ---- Content typography (site body: Inter, comfortable measure) ---- */
@@ -924,8 +996,11 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-section { scroll-margin-top:96px; }
   .pz-section h2 { font-family:var(--sans); font-weight:800; font-size:clamp(26px,2.4vw,34px);
     line-height:1.15; letter-spacing:-0.025em; color:var(--pz-head);
-    margin:56px 0 20px; padding-top:48px; border-top:1px solid var(--pz-line); }
-  .pz-section:first-of-type h2 { margin-top:0; padding-top:0; border-top:none; }
+    margin:56px 0 20px; padding-top:56px; }
+  .pz-section:first-of-type h2 { margin-top:0; padding-top:0; }
+  /* Full-width section image: sits at the end of each section, before the next H2 */
+  .pz-section-img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover;
+    border-radius:8px; margin:32px 0 48px; }
   .pz-section h3 { font-family:var(--sans); font-size:1.15rem; font-weight:700;
     letter-spacing:-0.01em; color:var(--pz-head); margin:32px 0 10px; }
 
@@ -949,13 +1024,25 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-callout.tip, .pz-callout.best, .pz-callout.insight { border-color:var(--pz-line); background:none; }
 
   /* ---- Internal link cards (quiet, hairline border) ---- */
-  .pz-ilink { display:inline-flex; align-items:center; gap:10px; width:min(80%,560px);
-    background:#fff; border:1px solid var(--pz-line); border-radius:var(--pz-radius);
-    padding:14px 18px; margin:14px 0 22px; font-family:var(--sans); font-size:14.5px; font-weight:600;
-    color:var(--pz-head); transition:border-color .2s ease, color .2s ease; }
-  .pz-ilink:hover { border-color:var(--pz-blue); color:var(--pz-blue); }
-  .pz-ilink svg { flex:0 0 auto; width:18px; height:18px; stroke:var(--pz-blue); }
-  .pz-ilink .pz-ilink-txt { flex:1; }
+  /* Heading row: heading on the left, "Read more" on the right, vertically centred.
+     The row carries the heading's original margins/padding so vertical rhythm is unchanged. */
+  .pz-head-row { display:flex; align-items:center; justify-content:space-between;
+    gap:20px; flex-wrap:wrap; }
+  .pz-head-row > h2, .pz-head-row > h3 { margin:0; padding:0; }
+  .pz-section .pz-head-row.is-h3 { margin:32px 0 10px; }
+  .pz-section .pz-head-row.is-h2 { margin:56px 0 20px; padding-top:56px; }
+  .pz-section:first-of-type .pz-head-row.is-h2 { margin-top:0; padding-top:0; }
+  /* Small pill button sitting next to the heading */
+  .pz-ilink { flex:0 0 auto; display:inline-block; border:0; margin:0;
+    /* #2563eb = the hero "Talk to Our Engineers" blue (.pz-btn-primary / --pz-blue).
+       !important is defensive: the pill was reported rendering dark despite this rule. */
+    background:#2563eb !important; color:#fff !important;
+    padding:6px 16px; border-radius:9999px;
+    font-family:var(--sans);
+    font-size:13px;
+    font-weight:500; line-height:1.4; white-space:nowrap; text-decoration:none;
+    transition:background .15s ease; }
+  .pz-ilink:hover { background:#1d4ed8 !important; text-decoration:none; }
 
   /* ---- Image placeholder box (legacy; kept harmless) ---- */
   .pz-imgph { border:1px dashed rgba(0,0,0,0.14); border-radius:var(--pz-radius);
@@ -1006,21 +1093,20 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-faq-a-inner { padding:0 24px 22px; font-family:var(--sans); font-size:0.95rem; color:#5b6472; line-height:1.72; }
 
   /* ================= STICKY TOC (right sidebar) ================= */
-  .pz-toc-aside { position:sticky; top:100px; align-self:start; }
+  .pz-toc-aside { position:sticky; top:100px; align-self:start; padding-left:24px; }
   .pz-toc-title { font-family:var(--sans); font-size:16px; font-weight:500; letter-spacing:0.12em;
     text-transform:uppercase; color:var(--text-muted); margin-bottom:16px; }
   .pz-toc-list { list-style:none; margin:0; padding:0; border-left:1px solid var(--pz-line); }
   .pz-toc-list a { display:block; font-family:var(--sans); font-size:15px; font-weight:500; color:var(--pz-muted);
     line-height:1.45; padding:8px 0 8px 16px; margin-left:-1px; border-left:2px solid transparent;
-    transition:color .15s ease, border-color .15s ease; }
+    transition:color .2s ease, border-color .2s ease, font-weight .2s ease; }
   .pz-toc-list a:hover { color:var(--pz-head); }
   .pz-toc-list a.active { color:var(--pz-blue); font-weight:600; border-left-color:var(--pz-blue); }
 
   /* ---- Tablet: horizontal sticky bar with dropdown ---- */
   .pz-toc-bar { display:none; }
   .pz-toc-bar { position:sticky; top:64px; z-index:90; background:rgba(255,255,255,.92);
-    backdrop-filter:saturate(180%) blur(10px); -webkit-backdrop-filter:saturate(180%) blur(10px);
-    border-bottom:1px solid var(--pz-line); }
+    backdrop-filter:saturate(180%) blur(10px); -webkit-backdrop-filter:saturate(180%) blur(10px); }
   .pz-toc-bar-inner { display:flex; align-items:center; gap:12px; padding:12px 0; }
   .pz-toc-bar-btn { display:flex; align-items:center; gap:8px; font-family:var(--sans); font-size:14px;
     font-weight:600; color:var(--pz-head); background:none; border:none; cursor:pointer; }
@@ -1051,7 +1137,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     .pz-grid { grid-template-columns:1fr; gap:0; }
     .pz-toc-aside { display:none; }
     .pz-toc-bar { display:block; }
-    .pz-hero { padding-top:24px; }
+    .pz-hero { padding-top:88px; }
   }
   /* Tablet: render the shared panel as a dropdown anchored under the sticky bar */
   @media (min-width:641px) and (max-width:1024px) {
@@ -1080,63 +1166,31 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 <!-- Reading progress bar -->
 <div class="pz-progress" id="pzProgress" role="progressbar" aria-label="Reading progress"></div>
 
-<!-- ========== VIDEO HERO (full-width, above the page hero) ========== -->
-<!-- TODO: Replace with voice-ai-hardware-video.mp4 -->
-<style>
-  .rv-video-hero{width:100%;padding-top:128px;}
-  @media(max-width:1024px){.rv-video-hero{padding-top:116px;}}
-  .rv-video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#1a1a2e;overflow:hidden;border-radius:12px;}
-  @supports not (aspect-ratio:16/9){.rv-video-frame{height:0;padding-bottom:56.25%;}}
-  .rv-video-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
-  .rv-video-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:20px;}
-  .rv-video-play{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.10);border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;transition:transform .2s ease,background .2s ease;}
-  .rv-video-ph:hover .rv-video-play{transform:scale(1.06);background:rgba(255,255,255,.18);}
-  .rv-video-play svg{width:30px;height:30px;margin-left:5px;fill:#fff;}
-  .rv-video-label{font-family:var(--sans,Inter,sans-serif);font-size:14px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.72);}
-  @media(max-width:640px){.rv-video-play{width:60px;height:60px}.rv-video-play svg{width:24px;height:24px}}
-</style>
-<section class="rv-video-hero" aria-label="Introduction video">
-  <div class="container">
-  <div class="rv-video-frame">
-
-    <!-- ===== PLACEHOLDER (delete this block once a real video is added) ===== -->
-    <div class="rv-video-ph">
-      <div class="rv-video-play" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-      </div>
-      <div class="rv-video-label">Video Coming Soon</div>
-    </div>
-
-    <!-- ===== OPTION A — background-style autoplay (uncomment when the video is ready) =====
-    <video autoplay muted loop playsinline preload="auto" poster="../../img/video/voice-ai-hardware-poster.jpg">
-      <source src="../../img/video/voice-ai-hardware-video.mp4" type="video/mp4">
-    </video>
-    ===== END OPTION A ===== -->
-
-    <!-- ===== OPTION B — click-to-play with poster + controls (uncomment to use instead of A) =====
-    <video controls playsinline preload="none" poster="../../img/video/voice-ai-hardware-poster.jpg" style="background:#1a1a2e;">
-      <source src="../../img/video/voice-ai-hardware-video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    ===== END OPTION B ===== -->
-
-  </div>
-  </div>
-</section>
-
 <!-- ========== HERO (full-width) ========== -->
 <header class="pz-hero">
   <div class="container">
     <div class="pz-hero-inner">
-    <div class="pz-hero-copy">
-    <div class="pz-eyebrow">Resource</div>
-    <h1>Voice AI Hardware</h1>
-    <p class="pz-sub">Purpose-built devices turn a great voice AI model into a product people actually carry, wear, and trust. This guide explains the microphones, silicon, connectivity, and design decisions behind voice-first hardware — and how AI teams ship it fast by partnering with a dedicated ODM.</p>
-    </div>
-    <div class="pz-hero-cta">
-      <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
-      <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener noreferrer" class="pz-btn pz-btn-ghost">Request an Evaluation Kit</a>
-    </div>
+      <div class="pz-hero-copy">
+        <nav class="pz-crumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../../index.html">Home</a></li>
+            <li class="pz-crumb-sep" aria-hidden="true">&gt;</li>
+            <li>Resources</li>
+            <li class="pz-crumb-sep" aria-hidden="true">&gt;</li>
+            <li aria-current="page">Voice AI Hardware</li>
+          </ol>
+        </nav>
+        <div class="pz-eyebrow">Resource</div>
+        <h1>Voice AI Hardware</h1>
+        <p class="pz-sub">Purpose-built devices turn a great voice AI model into a product people actually carry, wear, and trust. This guide explains the microphones, silicon, connectivity, and design decisions behind voice-first hardware — and how AI teams ship it fast by partnering with a dedicated ODM.</p>
+        <div class="pz-hero-cta">
+          <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
+          <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener noreferrer" class="pz-btn pz-btn-ghost">Request an Evaluation Kit</a>
+        </div>
+      </div>
+      <div class="pz-hero-media is-contain">
+        <img src="../../img/mic05-grey.png" alt="GMIC AI MIC05 voice capture device">
+      </div>
     </div>
   </div>
 </header>
@@ -1162,6 +1216,37 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
       <!-- ===== MAIN CONTENT ===== -->
       <main class="pz-main">
 
+        <aside class="pz-takeaways" aria-labelledby="pz-takeaways-title">
+          <h2 id="pz-takeaways-title">Key Takeaways</h2>
+          <ul>
+            <li>Voice AI hardware is purpose-built from the microphone inward — the acoustic front end, signal processing, compute, and power subsystem are tuned as one system, not assembled from generic parts.</li>
+            <li>Software-only AI teams hit a ceiling because they do not control the input: when accuracy depends on whatever phone the customer owns, the model gets blamed for what is really a hardware problem.</li>
+            <li>Perceived model quality is largely decided before inference runs — microphone array design, beamforming, echo cancellation, and noise reduction set the ceiling on what any model can transcribe.</li>
+            <li>Form factor follows the capture scenario. Pendants, badges, earbuds, and glasses each trade off speaker distance, wear pattern, and battery budget differently.</li>
+            <li>The partner decision is the highest-leverage one in a program: a full-stack ODM covering architecture, PCB, firmware, acoustics, and manufacturing is what separates shipping a product from debugging one.</li>
+          </ul>
+        </aside>
+        <div class="pz-byline">
+          <span class="pz-byline-who">
+            <img src="../../img/favicon.svg" alt="" aria-hidden="true">
+            Written by GMIC AI Engineering Team
+          </span>
+          <span class="pz-share" data-share-url="https://gmic.ai/resources/voice-ai-hardware/" data-share-title="Voice AI Hardware">
+            <a class="pz-share-btn" data-share="linkedin" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 21.5h5.16V9.5H2.4v12zM9.9 9.5h4.94v1.64h.07c.69-1.2 2.37-2.03 4.11-2.03 3.4 0 4.58 2.03 4.58 5.5v6.89h-5.16v-6.1c0-1.53-.6-2.58-1.98-2.58-1.2 0-1.9.8-2.2 1.58-.12.28-.15.67-.15 1.06v6.04H9.9s.07-10.9 0-12z"/></svg>
+              <span class="pz-share-tip">Share on LinkedIn</span>
+            </a>
+            <a class="pz-share-btn" data-share="x" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.53 3h3.05l-6.66 7.61L21.75 21h-5.6l-4.39-5.74L6.7 21H3.65l6.9-7.88L2.6 3h5.74l4.11 5.43L17.53 3zm-1.07 16.17h1.69L7.63 4.73H5.82l10.64 14.44z"/></svg>
+              <span class="pz-share-tip">Share on X</span>
+            </a>
+            <button class="pz-share-btn" data-share="copy" type="button" aria-label="Copy link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07l-1.41 1.41"></path><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07l1.41-1.41"></path></svg>
+              <span class="pz-share-tip">Copy link</span>
+            </button>
+          </span>
+        </div>
+
         <section class="pz-section" id="what-is-voice-ai-hardware" data-toc="What Is Voice AI Hardware?">
           <h2>What Is Voice AI Hardware?</h2>
           <p>Voice AI hardware is a category of purpose-built electronic devices engineered to capture, condition, and route human speech into an AI pipeline — whether that pipeline runs locally on the device or in the cloud. Unlike a general-purpose phone or laptop, these products are designed from the microphone inward around a single job: getting clean, intelligible voice into a model with the lowest possible latency, the fewest privacy compromises, and the longest possible battery life.<a href="#ref-1" class="pz-ref" id="cite-1">[1]</a></p>
@@ -1171,10 +1256,6 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
             <span class="pz-callout-label">Expert Tip</span>
             <p>Before you specify a single component, write down your acoustic use case — speaker distance, ambient noise level, and whether capture is push-to-talk or always-on. Those three variables drive almost every downstream decision, from microphone count to battery size.</p>
           </div>
-          <!-- TODO: replace with final image -->
-          <figure class="pz-img">
-            <img src="../../img/custom-devices/odm-oem/manufacturing/SMT-Production-Line.jpg" alt="Placeholder: labeled diagram of a voice AI device showing mics, SoC, connectivity, and battery" loading="lazy">
-          </figure>
         </section>
 
         <section class="pz-section" id="why-ai-companies-need-hardware" data-toc="Why AI Companies Need Dedicated Hardware">
@@ -1198,20 +1279,24 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
             <span class="pz-callout-label">Best Practice</span>
             <p>Scope your first hardware program around a single, well-defined use case and a pilot volume of a few hundred units. Prove the acoustics and the AI accuracy in the field before you optimize for cost or scale — reworking a design after tooling is committed is far more expensive than an extra pilot round.</p>
           </div>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/Testing&amp;Validation.jpg" alt="Engineer running testing and validation on voice AI hardware" loading="lazy">
         </section>
 
         <section class="pz-section" id="types-of-voice-ai-hardware" data-toc="Types of Voice AI Hardware">
           <h2>Types of Voice AI Hardware</h2>
           <p>Voice AI shows up in a growing range of form factors, each optimized for a different capture scenario, wear pattern, and battery budget. The right choice is rarely about which category is "best" — it is about matching the device to how and where your users speak. Below are the main categories AI companies ship today, from desk-bound scribes to hands-free wearables.</p>
 
-          <h3>AI Scribe Hardware</h3>
+          <div class="pz-head-row is-h3">
+            <h3>AI Scribe Hardware</h3>
+            <a href="../../solutions/voice-ai-hardware/index.html" class="pz-ilink" aria-label="Read more: AI Scribe Hardware">Read more</a>
+          </div>
           <p>AI scribe hardware is built for high-fidelity capture of conversations and dictation, most commonly in healthcare, legal, and field-service settings. These devices prioritize speech intelligibility above all else: a multi-microphone array captures both the primary speaker and a second party across a desk or exam room, while on-board processing suppresses HVAC hum, keyboard clatter, and reverberation. Because a scribe's output feeds directly into a clinical or legal record, reliability and clear consent signaling — an unmistakable capture indicator and, often, a physical control — matter as much as raw audio quality.</p>
-          <a href="../../solutions/voice-ai-hardware/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: AI Scribe Hardware →</span>
-          </a>
 
-          <h3>Wearable Devices</h3>
+          <div class="pz-head-row is-h3">
+            <h3>Wearable Devices</h3>
+            <a href="../../solutions/ai-wearable-devices/index.html" class="pz-ilink" aria-label="Read more: AI Wearable Devices">Read more</a>
+          </div>
           <p>Wearables move voice capture off the desk and onto the body, enabling truly hands-free workflows for people who cannot stop to hold a device — clinicians, technicians, drivers, and frontline workers. The engineering challenge is that a wearable must be small and light enough to forget about, yet still house a capable microphone array, radio, and a battery that lasts a full shift. The table below summarizes the common trade-offs across popular wearable form factors.</p>
           <div class="pz-table-wrap">
             <table class="pz-table">
@@ -1224,10 +1309,6 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
               </tbody>
             </table>
           </div>
-          <a href="../../solutions/ai-wearable-devices/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: AI Wearable Devices →</span>
-          </a>
 
           <h3>Smart Badge</h3>
           <p>The smart badge is emerging as the workhorse form factor for enterprise voice AI. Worn on a lanyard or clipped to a shirt, it sits close to the mouth for excellent speech pickup, carries a familiar ID-badge shape that employees accept readily, and offers enough internal volume for a multi-mic array and a full-shift battery. Badges commonly pair a push-to-talk button with a docking cradle that recharges the device and offloads captured audio, making them easy to deploy across a workforce and simple to manage at scale.</p>
@@ -1238,19 +1319,19 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
           <h3>Smart Glasses</h3>
           <p>Smart glasses put a microphone — and often a camera and micro-display — at the user's point of view, enabling voice AI that understands not just what the user says but what they are looking at. This makes them compelling for inspection, remote assistance, and hands-busy field work. The cost is complexity: fitting radios, sensors, and a usable battery into a lightweight, wearable frame is one of the hardest industrial-design and thermal challenges in the category, which is reflected in higher unit cost and longer development timelines.</p>
 
-          <!-- TODO: replace with final image -->
-          <figure class="pz-img">
-            <img src="../../img/mic05-grey.png" alt="Placeholder: product lineup of voice AI wearables (pendant, badge, earbuds, glasses)" loading="lazy">
-          </figure>
-
           <div class="pz-cta-band light">
             <span class="pz-cta-text">Ready to discuss your hardware project?</span>
             <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
           </div>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/products/overview/HA-MIC05.jpg" alt="HA-MIC05 voice AI recording device" loading="lazy">
         </section>
 
         <section class="pz-section" id="core-technologies" data-toc="Core Technologies">
-          <h2>Core Technologies</h2>
+          <div class="pz-head-row is-h2">
+            <h2>Core Technologies</h2>
+            <a href="../../solutions/edge-ai-hardware/index.html" class="pz-ilink" aria-label="Read more: Edge AI Hardware">Read more</a>
+          </div>
           <p>The perceived quality of a voice AI product is decided long before the model runs. It is set by the acoustic front end, the connectivity link, and where inference happens. Understanding these core technologies helps AI teams write a realistic specification and avoid the common mistake of pairing a state-of-the-art model with a hardware chain that cannot feed it clean audio.<a href="#ref-2" class="pz-ref" id="cite-2">[2]</a></p>
           <p>It starts with the microphones. MEMS microphones are the industry standard for their small size, consistency, and low cost, and they are frequently deployed in arrays of two to six elements. An array is what makes beamforming possible: by comparing the tiny timing differences between microphones, the device can steer a virtual "listening cone" toward the speaker and reject sound from other directions. Acoustic echo cancellation removes the device's own audio output from the captured signal, and adaptive noise reduction suppresses steady-state background noise — together these are what let a device work in a busy clinic or a moving vehicle.</p>
           <p>On the compute side, a low-power SoC or a dedicated DSP handles always-on wake-word detection so the main processor can stay asleep until needed, which is critical for battery life. The same silicon increasingly runs lightweight AI models directly on the device. The final decision is connectivity — how captured voice or transcripts leave the device — which trades off range, power, and cost as shown below.</p>
@@ -1283,10 +1364,8 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
             <span class="pz-callout-label">Industry Insight</span>
             <p>The market is converging on hybrid architectures: wake-word and privacy-sensitive pre-processing run on the edge, while heavy transcription and reasoning happen in the cloud. As on-device NPUs grow more capable, the line keeps shifting toward the edge — but the winning products are the ones that place each task where it belongs rather than choosing one extreme.</p>
           </div>
-          <a href="../../solutions/edge-ai-hardware/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: Edge AI Hardware →</span>
-          </a>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/SMT-Production-Line.jpg" alt="SMT production line assembling voice AI hardware boards" loading="lazy">
         </section>
 
         <section class="pz-section" id="industries" data-toc="Industries Using Voice AI Hardware">
@@ -1297,20 +1376,23 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
             <span class="pz-cta-text">See how teams in your industry are shipping voice devices.</span>
             <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
           </div>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/Manual-Assembly-Line.png" alt="Manual assembly line for final device assembly and QA" loading="lazy">
         </section>
 
         <section class="pz-section" id="how-to-choose-a-partner" data-toc="How to Choose a Partner">
-          <h2>How to Choose a Partner</h2>
+          <div class="pz-head-row is-h2">
+            <h2>How to Choose a Partner</h2>
+            <a href="../../custom-devices/odm-oem/index.html" class="pz-ilink" aria-label="Read more: AI Hardware ODM">Read more</a>
+          </div>
           <p>Choosing a hardware partner is the single highest-leverage decision in a voice AI hardware program, because it determines whether you spend the next year building a product or debugging one. The right partner covers the full stack — hardware architecture, PCB design, embedded firmware, mechanical and industrial design, audio and DSP tuning, SDK integration, and certification — so responsibility does not fragment across vendors who blame each other when something goes wrong.</p>
           <p>Evaluate candidates on four dimensions. First, relevant experience: have they shipped voice-first and edge-AI devices, not just generic electronics? Second, audio competence: acoustic tuning and beamforming are specialized skills that make or break a voice product. Third, integration depth: can they cleanly connect their firmware to your model, SDK, and backend? Fourth, manufacturing capacity and continuity: can the same partner take you from a handful of prototypes to tens of thousands of units a month without a disruptive vendor hand-off? A partner that is vertically integrated — engineering and manufacturing under one roof — dramatically reduces the coordination overhead and time-to-market risk.</p>
           <div class="pz-callout best">
             <span class="pz-callout-label">Best Practice</span>
             <p>Ask a prospective partner to walk you through a device they took from concept to mass production, including the problems they hit and how they solved them. A partner who can speak candidly about a wake-word tuning issue or a certification delay is far more valuable than one who claims everything always goes smoothly.</p>
           </div>
-          <a href="../../custom-devices/odm-oem/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: AI Hardware ODM →</span>
-          </a>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/AOI-Inspection.jpg" alt="Automated optical inspection station checking assembled boards" loading="lazy">
         </section>
 
         <section class="pz-section" id="why-gmic-ai" data-toc="Why GMIC AI">
@@ -1363,6 +1445,23 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
           </ol>
         </section>
 
+
+        <!-- ===== RELATED RESOURCES ===== -->
+        <section class="pz-section pz-related" aria-labelledby="pz-related-title">
+          <h2 id="pz-related-title">Related Resources</h2>
+          <div class="pz-related-grid">
+            <a class="pz-related-card" href="../ai-hardware-integration/index.html">
+              <h3>AI Hardware Integration</h3>
+              <p>How AI software becomes a shipping device — edge-vs-cloud architecture, on-device inference, connectivity, firmware, security, and manufacturing at scale.</p>
+              <span class="pz-related-more">Read more</span>
+            </a>
+            <a class="pz-related-card" href="../ai-hardware-odm/index.html">
+              <h3>AI Hardware ODM</h3>
+              <p>What an ODM partner actually does: design ownership versus OEM, prototype stages, firmware and audio DSP, volume manufacturing, and certification.</p>
+              <span class="pz-related-more">Read more</span>
+            </a>
+          </div>
+        </section>
       </main>
 
       <!-- ===== STICKY TOC SIDEBAR (desktop) ===== -->
@@ -1898,6 +1997,57 @@ document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
   document.addEventListener('visibilitychange',function(){ if(document.hidden){stop();}else{start();} });
   window.addEventListener('resize',function(){ show(idx); });
   show(0); start();
+})();
+</script>
+<script>
+/* ---- Share buttons: build network URLs + copy-to-clipboard with "Copied!" feedback ---- */
+(function(){
+  var wrap = document.querySelector('.pz-share');
+  if(!wrap) return;
+  var url   = wrap.getAttribute('data-share-url')   || window.location.href;
+  var title = wrap.getAttribute('data-share-title') || document.title;
+  var eu = encodeURIComponent(url), et = encodeURIComponent(title);
+
+  var li = wrap.querySelector('[data-share="linkedin"]');
+  if(li) li.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + eu;
+  var x = wrap.querySelector('[data-share="x"]');
+  if(x) x.href = 'https://twitter.com/intent/tweet?url=' + eu + '&text=' + et;
+
+  var copy = wrap.querySelector('[data-share="copy"]');
+  if(!copy) return;
+  var tip = copy.querySelector('.pz-share-tip');
+  var idle = tip ? tip.textContent : '';
+  var timer;
+
+  function flash(ok){
+    if(tip) tip.textContent = ok ? 'Copied!' : 'Copy failed';
+    copy.classList.add('copied');
+    clearTimeout(timer);
+    timer = setTimeout(function(){
+      copy.classList.remove('copied');
+      if(tip) tip.textContent = idle;
+    }, 1600);
+  }
+  function fallback(){
+    var ta = document.createElement('textarea');
+    ta.value = url;
+    ta.setAttribute('readonly','');
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch(e) { ok = false; }
+    document.body.removeChild(ta);
+    flash(ok);
+  }
+  copy.addEventListener('click', function(){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){ flash(true); }, fallback);
+    } else {
+      fallback();
+    }
+  });
 })();
 </script>
 <script src="../../js/voice-widget.js"></script>

@@ -420,10 +420,10 @@
 .dropdown-link.nav-current{color:#2563eb !important;font-weight:700}
 
 /* ---------- Global content-width cap (wide-screen fix) ----------
-   The shared .container is max-width:156rem; on large monitors that lets
+   The shared .container is max-width:2496px; on large monitors that lets
    every section stretch edge-to-edge and pulls the hero's two columns apart.
    Cap it to the standard 1200px, centered, with calm ≤40px side padding. */
-.container{max-width:1512px;padding-left:clamp(20px,4vw,40px);padding-right:clamp(20px,4vw,40px)}
+.container{max-width:clamp(1512px, 88vw, 2200px);padding-left:clamp(20px,4vw,40px);padding-right:clamp(20px,4vw,40px)}
 
 /* ---------- Breadcrumb (clears the fixed nav) ---------- */
 .breadcrumb{padding-top:84px}

@@ -874,17 +874,87 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     background:var(--pz-blue); z-index:200; transition:width .08s linear; }
 
   /* ---- Hero (matches the site's hero scale & eyebrow) ---- */
-  .pz-hero { background:#fff; padding:28px 0 56px; border-bottom:1px solid rgba(0,0,0,0.06); }
-  .pz-hero .pz-eyebrow { font-family:var(--sans); font-size:12px; font-weight:500;
-    letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:18px; }
+  /* padding-top clears the fixed .nav (64px), which is out of flow */
+  .pz-hero { background:#fff; padding:92px 0 56px; }
+  .pz-hero .pz-eyebrow { font-family:var(--sans); font-size:13px; font-weight:500;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--pz-blue); margin-bottom:18px; }
   .pz-hero h1 { font-family:var(--sans); font-size:clamp(34px,4.6vw,58px); font-weight:800;
     line-height:1.05; letter-spacing:-0.03em; color:var(--pz-head); margin-bottom:22px; }
   .pz-hero .pz-sub { max-width:640px; font-family:var(--sans); font-size:1.05rem; line-height:1.6;
     color:var(--pz-body); margin-bottom:32px; }
-  .pz-hero-cta { display:flex; flex-direction:row; flex-wrap:wrap; gap:12px; flex:0 0 auto; }
-  .pz-hero-inner { display:flex; align-items:flex-end; justify-content:space-between; gap:48px; flex-wrap:wrap; }
-  .pz-hero-copy { flex:1 1 560px; min-width:0; }
-  @media (max-width:640px){ .pz-hero-inner { flex-direction:column; align-items:flex-start; gap:24px; } .pz-hero-cta { width:100%; } }
+  /* Two-column hero: copy ~57%, media ~43%, vertically centred */
+  .pz-hero-inner { display:grid; grid-template-columns:minmax(0,57fr) minmax(0,43fr);
+    gap:48px; align-items:center; }
+  .pz-hero-copy { min-width:0; }
+  .pz-hero-cta { display:flex; flex-direction:row; flex-wrap:wrap; gap:12px; }
+  .pz-hero-media { min-width:0; }
+  .pz-hero-media img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover;
+    border-radius:8px; }
+  /* Product shots letterbox instead of cropping */
+  .pz-hero-media.is-contain img { object-fit:contain; background:var(--pz-alt); }
+  /* Stack below 900px: copy on top, image beneath */
+  @media (max-width:900px){
+    .pz-hero-inner { grid-template-columns:minmax(0,1fr); gap:32px; }
+  }
+  @media (max-width:640px){
+    .pz-hero-cta > .pz-btn { flex:1 1 auto; justify-content:center; }
+  }
+
+  /* ---- Breadcrumb: full container width, above the hero row ---- */
+  .pz-crumbs { margin-bottom:20px; font-family:var(--sans); font-size:13px; line-height:1.5; }
+  .pz-crumbs ol { list-style:none; display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:0; padding:0; }
+  .pz-crumbs a { color:var(--pz-blue); text-decoration:none; }
+  .pz-crumbs a:hover { text-decoration:underline; }
+  .pz-crumbs .pz-crumb-sep { color:rgba(0,0,0,0.28); }
+  /* "Resources" and the current page are plain text — there is no resources landing page yet */
+  .pz-crumbs li { color:var(--pz-muted); }
+
+
+  /* ---- Key Takeaways summary box ---- */
+  .pz-takeaways { background:#f8f9fa; border:1px solid var(--pz-line); border-radius:12px; padding:24px; }
+  .pz-takeaways h2 { font-family:var(--sans); font-size:17px; font-weight:700; letter-spacing:-0.01em;
+    color:var(--pz-head); margin:0 0 14px; padding:0; border:0; }
+  .pz-takeaways ul { list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+  .pz-takeaways li { position:relative; padding-left:22px; font-family:var(--sans); font-size:15px;
+    line-height:1.6; color:var(--pz-body); }
+  .pz-takeaways li::before { content:""; position:absolute; left:6px; top:9px; width:6px; height:6px;
+    border-radius:50%; background:var(--pz-blue); }
+
+  /* ---- Byline: author attribution (left) + share buttons (right) ---- */
+  .pz-byline { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    gap:16px; margin-top:36px; }
+  .pz-byline-who { display:inline-flex; align-items:center; gap:8px; font-family:var(--sans);
+    font-size:13px; color:var(--pz-muted); }
+  .pz-byline-who img { width:18px; height:18px; display:block; flex:0 0 auto; }
+  .pz-share { display:inline-flex; align-items:center; gap:6px; }
+  .pz-share-btn { position:relative; display:inline-flex; align-items:center; justify-content:center;
+    width:32px; height:32px; padding:0; border:1px solid var(--pz-line); border-radius:8px;
+    background:#fff; color:var(--pz-muted); cursor:pointer;
+    transition:color .15s ease, border-color .15s ease, background .15s ease; }
+  .pz-share-btn:hover { color:var(--pz-blue); border-color:var(--pz-blue); background:var(--pz-alt); }
+  .pz-share-btn svg { width:15px; height:15px; display:block; }
+  .pz-share-tip { position:absolute; bottom:calc(100% + 8px); left:50%; transform:translateX(-50%);
+    padding:6px 8px; border-radius:6px; background:var(--pz-head); color:#fff; font-family:var(--sans);
+    font-size:11px; line-height:1; white-space:nowrap; opacity:0; visibility:hidden;
+    transition:opacity .15s ease, visibility .15s ease; }
+  .pz-share-btn:hover .pz-share-tip,
+  .pz-share-btn:focus-visible .pz-share-tip,
+  .pz-share-btn.copied .pz-share-tip { opacity:1; visibility:visible; }
+
+  /* ---- Related resources cards ---- */
+  .pz-related-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+  .pz-related-card { display:flex; flex-direction:column; gap:8px; padding:20px; background:#fff;
+    border:1px solid var(--pz-line); border-radius:12px; text-decoration:none;
+    transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .pz-related-card:hover { border-color:var(--pz-blue); box-shadow:0 6px 24px rgba(0,0,0,0.06);
+    transform:translateY(-2px); }
+  .pz-related-card h3 { font-family:var(--sans); font-size:1.05rem; font-weight:700;
+    letter-spacing:-0.01em; color:var(--pz-head); margin:0; }
+  .pz-related-card p { font-family:var(--sans); font-size:14.5px; line-height:1.6;
+    color:var(--pz-body); margin:0; }
+  .pz-related-more { margin-top:auto;
+    font-family:var(--sans); font-size:14px; font-weight:600; color:var(--pz-blue); }
+  @media (max-width:640px){ .pz-related-grid { grid-template-columns:1fr; } }
 
   /* ---- Buttons: mirror the site's .btn + .btn-blue-deep / ghost ---- */
   .pz-btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--sans);
@@ -897,7 +967,9 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
   /* ---- 2-column layout ---- */
   .pz-layout { padding:72px 0 96px; background:#fff; }
-  .pz-grid { display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:64px; align-items:start; }
+  /* 244px = 220px of TOC content + the 24px padding-left below, so the TOC text
+     keeps its original width while the visual gutter grows to 64 + 24 = 88px. */
+  .pz-grid { display:grid; grid-template-columns:minmax(0,1fr) 244px; gap:64px; align-items:start; }
   .pz-main { min-width:0; }
 
   /* ---- Content typography (site body: Inter, comfortable measure) ---- */
@@ -906,8 +978,11 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-section { scroll-margin-top:96px; }
   .pz-section h2 { font-family:var(--sans); font-weight:800; font-size:clamp(26px,2.4vw,34px);
     line-height:1.15; letter-spacing:-0.025em; color:var(--pz-head);
-    margin:56px 0 20px; padding-top:48px; border-top:1px solid var(--pz-line); }
-  .pz-section:first-of-type h2 { margin-top:0; padding-top:0; border-top:none; }
+    margin:56px 0 20px; padding-top:56px; }
+  .pz-section:first-of-type h2 { margin-top:0; padding-top:0; }
+  /* Full-width section image: sits at the end of each section, before the next H2 */
+  .pz-section-img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover;
+    border-radius:8px; margin:32px 0 48px; }
   .pz-section h3 { font-family:var(--sans); font-size:1.15rem; font-weight:700;
     letter-spacing:-0.01em; color:var(--pz-head); margin:32px 0 10px; }
 
@@ -931,13 +1006,25 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-callout.tip, .pz-callout.best, .pz-callout.insight { border-color:var(--pz-line); background:none; }
 
   /* ---- Internal link cards (quiet, hairline border) ---- */
-  .pz-ilink { display:inline-flex; align-items:center; gap:10px; width:min(80%,560px);
-    background:#fff; border:1px solid var(--pz-line); border-radius:var(--pz-radius);
-    padding:14px 18px; margin:14px 0 22px; font-family:var(--sans); font-size:14.5px; font-weight:600;
-    color:var(--pz-head); transition:border-color .2s ease, color .2s ease; }
-  .pz-ilink:hover { border-color:var(--pz-blue); color:var(--pz-blue); }
-  .pz-ilink svg { flex:0 0 auto; width:18px; height:18px; stroke:var(--pz-blue); }
-  .pz-ilink .pz-ilink-txt { flex:1; }
+  /* Heading row: heading on the left, "Read more" on the right, vertically centred.
+     The row carries the heading's original margins/padding so vertical rhythm is unchanged. */
+  .pz-head-row { display:flex; align-items:center; justify-content:space-between;
+    gap:20px; flex-wrap:wrap; }
+  .pz-head-row > h2, .pz-head-row > h3 { margin:0; padding:0; }
+  .pz-section .pz-head-row.is-h3 { margin:32px 0 10px; }
+  .pz-section .pz-head-row.is-h2 { margin:56px 0 20px; padding-top:56px; }
+  .pz-section:first-of-type .pz-head-row.is-h2 { margin-top:0; padding-top:0; }
+  /* Small pill button sitting next to the heading */
+  .pz-ilink { flex:0 0 auto; display:inline-block; border:0; margin:0;
+    /* #2563eb = the hero "Talk to Our Engineers" blue (.pz-btn-primary / --pz-blue).
+       !important is defensive: the pill was reported rendering dark despite this rule. */
+    background:#2563eb !important; color:#fff !important;
+    padding:6px 16px; border-radius:9999px;
+    font-family:var(--sans);
+    font-size:13px;
+    font-weight:500; line-height:1.4; white-space:nowrap; text-decoration:none;
+    transition:background .15s ease; }
+  .pz-ilink:hover { background:#1d4ed8 !important; text-decoration:none; }
 
   /* ---- Image placeholder box (legacy; kept harmless) ---- */
   .pz-imgph { border:1px dashed rgba(0,0,0,0.14); border-radius:var(--pz-radius);
@@ -988,21 +1075,20 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-faq-a-inner { padding:0 24px 22px; font-family:var(--sans); font-size:0.95rem; color:#5b6472; line-height:1.72; }
 
   /* ================= STICKY TOC (right sidebar) ================= */
-  .pz-toc-aside { position:sticky; top:100px; align-self:start; }
+  .pz-toc-aside { position:sticky; top:100px; align-self:start; padding-left:24px; }
   .pz-toc-title { font-family:var(--sans); font-size:16px; font-weight:500; letter-spacing:0.12em;
     text-transform:uppercase; color:var(--text-muted); margin-bottom:16px; }
   .pz-toc-list { list-style:none; margin:0; padding:0; border-left:1px solid var(--pz-line); }
   .pz-toc-list a { display:block; font-family:var(--sans); font-size:15px; font-weight:500; color:var(--pz-muted);
     line-height:1.45; padding:8px 0 8px 16px; margin-left:-1px; border-left:2px solid transparent;
-    transition:color .15s ease, border-color .15s ease; }
+    transition:color .2s ease, border-color .2s ease, font-weight .2s ease; }
   .pz-toc-list a:hover { color:var(--pz-head); }
   .pz-toc-list a.active { color:var(--pz-blue); font-weight:600; border-left-color:var(--pz-blue); }
 
   /* ---- Tablet: horizontal sticky bar with dropdown ---- */
   .pz-toc-bar { display:none; }
   .pz-toc-bar { position:sticky; top:64px; z-index:90; background:rgba(255,255,255,.92);
-    backdrop-filter:saturate(180%) blur(10px); -webkit-backdrop-filter:saturate(180%) blur(10px);
-    border-bottom:1px solid var(--pz-line); }
+    backdrop-filter:saturate(180%) blur(10px); -webkit-backdrop-filter:saturate(180%) blur(10px); }
   .pz-toc-bar-inner { display:flex; align-items:center; gap:12px; padding:12px 0; }
   .pz-toc-bar-btn { display:flex; align-items:center; gap:8px; font-family:var(--sans); font-size:14px;
     font-weight:600; color:var(--pz-head); background:none; border:none; cursor:pointer; }
@@ -1033,7 +1119,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     .pz-grid { grid-template-columns:1fr; gap:0; }
     .pz-toc-aside { display:none; }
     .pz-toc-bar { display:block; }
-    .pz-hero { padding-top:24px; }
+    .pz-hero { padding-top:88px; }
   }
   /* Tablet: render the shared panel as a dropdown anchored under the sticky bar */
   @media (min-width:641px) and (max-width:1024px) {
@@ -1062,63 +1148,31 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 <!-- Reading progress bar -->
 <div class="pz-progress" id="pzProgress" role="progressbar" aria-label="Reading progress"></div>
 
-<!-- ========== VIDEO HERO (full-width, above the page hero) ========== -->
-<!-- TODO: Replace with ai-hardware-odm-video.mp4 -->
-<style>
-  .rv-video-hero{width:100%;padding-top:128px;}
-  @media(max-width:1024px){.rv-video-hero{padding-top:116px;}}
-  .rv-video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#1a1a2e;overflow:hidden;border-radius:12px;}
-  @supports not (aspect-ratio:16/9){.rv-video-frame{height:0;padding-bottom:56.25%;}}
-  .rv-video-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
-  .rv-video-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:20px;}
-  .rv-video-play{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.10);border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;transition:transform .2s ease,background .2s ease;}
-  .rv-video-ph:hover .rv-video-play{transform:scale(1.06);background:rgba(255,255,255,.18);}
-  .rv-video-play svg{width:30px;height:30px;margin-left:5px;fill:#fff;}
-  .rv-video-label{font-family:var(--sans,Inter,sans-serif);font-size:14px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.72);}
-  @media(max-width:640px){.rv-video-play{width:60px;height:60px}.rv-video-play svg{width:24px;height:24px}}
-</style>
-<section class="rv-video-hero" aria-label="Introduction video">
-  <div class="container">
-  <div class="rv-video-frame">
-
-    <!-- ===== PLACEHOLDER (delete this block once a real video is added) ===== -->
-    <div class="rv-video-ph">
-      <div class="rv-video-play" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-      </div>
-      <div class="rv-video-label">Video Coming Soon</div>
-    </div>
-
-    <!-- ===== OPTION A — background-style autoplay (uncomment when the video is ready) =====
-    <video autoplay muted loop playsinline preload="auto" poster="../../img/video/ai-hardware-odm-poster.jpg">
-      <source src="../../img/video/ai-hardware-odm-video.mp4" type="video/mp4">
-    </video>
-    ===== END OPTION A ===== -->
-
-    <!-- ===== OPTION B — click-to-play with poster + controls (uncomment to use instead of A) =====
-    <video controls playsinline preload="none" poster="../../img/video/ai-hardware-odm-poster.jpg" style="background:#1a1a2e;">
-      <source src="../../img/video/ai-hardware-odm-video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    ===== END OPTION B ===== -->
-
-  </div>
-  </div>
-</section>
-
 <!-- ========== HERO (full-width) ========== -->
 <header class="pz-hero">
   <div class="container">
     <div class="pz-hero-inner">
-    <div class="pz-hero-copy">
-    <div class="pz-eyebrow">Resource</div>
-    <h1>AI Hardware ODM</h1>
-    <p class="pz-sub">An AI hardware ODM turns your software or AI model into a shippable physical product — handling design, firmware, audio, manufacturing, and certification end to end. This guide explains how ODM works, how it differs from OEM, and how to take a device from a single prototype to 100,000+ units.</p>
-    </div>
-    <div class="pz-hero-cta">
-      <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
-      <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener noreferrer" class="pz-btn pz-btn-ghost">Request a Prototype Consultation</a>
-    </div>
+      <div class="pz-hero-copy">
+        <nav class="pz-crumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../../index.html">Home</a></li>
+            <li class="pz-crumb-sep" aria-hidden="true">&gt;</li>
+            <li>Resources</li>
+            <li class="pz-crumb-sep" aria-hidden="true">&gt;</li>
+            <li aria-current="page">AI Hardware ODM</li>
+          </ol>
+        </nav>
+        <div class="pz-eyebrow">Resource</div>
+        <h1>AI Hardware ODM</h1>
+        <p class="pz-sub">An AI hardware ODM turns your software or AI model into a shippable physical product — handling design, firmware, audio, manufacturing, and certification end to end. This guide explains how ODM works, how it differs from OEM, and how to take a device from a single prototype to 100,000+ units.</p>
+        <div class="pz-hero-cta">
+          <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
+          <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener noreferrer" class="pz-btn pz-btn-ghost">Request a Prototype Consultation</a>
+        </div>
+      </div>
+      <div class="pz-hero-media">
+        <img src="../../img/custom-devices/odm-oem/manufacturing/SMT-Production-Line.jpg" alt="SMT production line assembling AI hardware boards">
+      </div>
     </div>
   </div>
 </header>
@@ -1153,6 +1207,37 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
           .pz-checklist li strong { color:var(--pz-ink); font-weight:600; }
         </style>
 
+        <aside class="pz-takeaways" aria-labelledby="pz-takeaways-title">
+          <h2 id="pz-takeaways-title">Key Takeaways</h2>
+          <ul>
+            <li>An AI hardware ODM engages one partner to design, engineer, and mass-produce the device that runs your AI — instead of building an in-house hardware team, sourcing components, and qualifying a factory yourself.</li>
+            <li>ODM versus OEM comes down to who owns the design: an OEM builds to schematics you supply, while an ODM contributes the design itself — the better fit for AI software teams without hardware engineering in house.</li>
+            <li>Prototyping moves through progressively production-representative builds, proving first that the product works, then that it can be manufactured reliably, then that the factory can hold quality at volume.</li>
+            <li>Firmware and audio DSP are where AI devices are won or lost — a speech model can only be as good as the audio it receives, and real environments bring noise, echo, distance, and reverberation.</li>
+            <li>Certification is a gate, not a formality: any device with a radio, battery, or power supply must meet each market's requirements, and non-compliance risks seized shipments, recalls, or fines.</li>
+          </ul>
+        </aside>
+        <div class="pz-byline">
+          <span class="pz-byline-who">
+            <img src="../../img/favicon.svg" alt="" aria-hidden="true">
+            Written by GMIC AI Engineering Team
+          </span>
+          <span class="pz-share" data-share-url="https://gmic.ai/resources/ai-hardware-odm/" data-share-title="AI Hardware ODM">
+            <a class="pz-share-btn" data-share="linkedin" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 21.5h5.16V9.5H2.4v12zM9.9 9.5h4.94v1.64h.07c.69-1.2 2.37-2.03 4.11-2.03 3.4 0 4.58 2.03 4.58 5.5v6.89h-5.16v-6.1c0-1.53-.6-2.58-1.98-2.58-1.2 0-1.9.8-2.2 1.58-.12.28-.15.67-.15 1.06v6.04H9.9s.07-10.9 0-12z"/></svg>
+              <span class="pz-share-tip">Share on LinkedIn</span>
+            </a>
+            <a class="pz-share-btn" data-share="x" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.53 3h3.05l-6.66 7.61L21.75 21h-5.6l-4.39-5.74L6.7 21H3.65l6.9-7.88L2.6 3h5.74l4.11 5.43L17.53 3zm-1.07 16.17h1.69L7.63 4.73H5.82l10.64 14.44z"/></svg>
+              <span class="pz-share-tip">Share on X</span>
+            </a>
+            <button class="pz-share-btn" data-share="copy" type="button" aria-label="Copy link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07l-1.41 1.41"></path><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07l1.41-1.41"></path></svg>
+              <span class="pz-share-tip">Copy link</span>
+            </button>
+          </span>
+        </div>
+
         <section class="pz-section" id="what-is-ai-hardware-odm" data-toc="What Is AI Hardware ODM?">
           <h2>What Is AI Hardware ODM?</h2>
           <p>AI hardware ODM — Original Design Manufacturing for AI-powered devices — is the practice of engaging a single partner to design, engineer, and mass-produce a physical product that runs your AI. Rather than assembling an in-house hardware team, sourcing components, and qualifying a factory, you bring a product concept (and often a trained model, SDK, or cloud service) and the ODM delivers a manufacturable device around it. The ODM owns the reference design and the hard engineering; you own the brand, the software, and the customer relationship.</p>
@@ -1162,7 +1247,10 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
         </section>
 
         <section class="pz-section" id="odm-vs-oem" data-toc="ODM vs OEM">
-          <h2>ODM vs OEM</h2>
+          <div class="pz-head-row is-h2">
+            <h2>ODM vs OEM</h2>
+            <a href="../../custom-devices/odm-oem/index.html" class="pz-ilink" aria-label="Read more: ODM vs OEM">Read more</a>
+          </div>
           <p>ODM and OEM are the two dominant manufacturing models, and the distinction comes down to who owns the design. In an OEM (Original Equipment Manufacturer) relationship, you arrive with a complete design — schematics, mechanical files, a bill of materials — and the manufacturer builds it to your specification. You own the intellectual property and control every detail; the factory contributes production capacity and process expertise but not the design itself.</p>
           <p>In an ODM relationship, the manufacturer contributes an existing design or reference platform and adapts it to your needs. The ODM already owns proven hardware, firmware, and tooling, so you inherit years of engineering and skip much of the risk and cost of starting from zero. The tradeoff is that the ODM retains rights to the underlying platform, and heavily customized elements are usually negotiated per program. In practice most AI-device programs are hybrids: an ODM reference platform for the parts that don't differentiate you (power, connectivity, enclosure) combined with OEM-style custom work where your product needs to stand apart.</p>
           <p>The right choice depends on how differentiated your hardware must be, how fast you need to ship, and how much upfront engineering budget you can commit. Teams whose value lives in software and AI usually favor ODM because it gets a credible device into customers' hands quickly; teams building a truly novel physical product lean toward OEM or deep-customization ODM. GMIC AI supports the full spectrum — from light customization (rebrand and repackage a shipping platform) to deep customization (custom PCB, enclosure, and firmware).</p>
@@ -1179,14 +1267,15 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
               </tbody>
             </table>
           </div>
-          <a href="../../custom-devices/odm-oem/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: ODM vs OEM →</span>
-          </a>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/PCB-Board-Assembly.jpg" alt="PCB board assembly on the manufacturing line" loading="lazy">
         </section>
 
         <section class="pz-section" id="prototype-development" data-toc="Prototype Development">
-          <h2>Prototype Development</h2>
+          <div class="pz-head-row is-h2">
+            <h2>Prototype Development</h2>
+            <a href="../../process/index.html" class="pz-ilink" aria-label="Read more: Prototype Development">Read more</a>
+          </div>
           <p>Prototype development is the bridge between an idea and a device you can actually build at scale. It moves a concept through progressively more production-representative builds — proving first that the product works, then that it can be manufactured reliably, and finally that the factory can produce it consistently at volume. Each stage narrows uncertainty and locks decisions, so problems get caught while they are still cheap to fix rather than after tooling is cut.</p>
           <p>The stages below describe a typical path from discovery to mass production. Programs rarely move in a perfectly straight line — teams often loop back after a build reveals an issue — but the sequence and the intent of each phase stay consistent across nearly every hardware product.</p>
 
@@ -1229,19 +1318,20 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
               </tbody>
             </table>
           </div>
-          <a href="../../process/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: Prototype Development →</span>
-          </a>
 
           <div class="pz-cta-band light">
             <span class="pz-cta-text">Have a product idea? Let's discuss your prototype.</span>
             <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
           </div>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/R&amp;D-Structural-Design.jpg" alt="R&amp;D structural design work during prototype development" loading="lazy">
         </section>
 
         <section class="pz-section" id="firmware-development" data-toc="Firmware Development">
-          <h2>Firmware Development</h2>
+          <div class="pz-head-row is-h2">
+            <h2>Firmware Development</h2>
+            <a href="../../solutions/embedded-ai-hardware/index.html" class="pz-ilink" aria-label="Read more: Firmware Development">Read more</a>
+          </div>
           <p>Firmware is the embedded software that lives on the device and turns a circuit board into a product. It runs on the microcontroller or SoC below the level of any app or cloud service, orchestrating boot, power, radios, sensors, and the data pipeline that feeds your AI. For AI hardware in particular, firmware quality is often the difference between a demo and a shippable product: it governs battery life, connection reliability, and how cleanly data reaches your model.</p>
 
           <h3>Embedded Firmware &amp; MCU Programming</h3>
@@ -1278,14 +1368,15 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
             <span class="pz-callout-label">Engineering Insight</span>
             <p>Ship the OTA update pipeline before your first production run, not after. Devices in the field will always need fixes, and a fleet with no reliable way to update is a fleet you cannot recover — retrofitting OTA later is far harder than designing it in from day one.</p>
           </div>
-          <a href="../../solutions/embedded-ai-hardware/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: Firmware Development →</span>
-          </a>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/Testing&amp;Validation.jpg" alt="Testing and validation of device firmware" loading="lazy">
         </section>
 
         <section class="pz-section" id="audio-dsp" data-toc="Audio DSP">
-          <h2>Audio DSP</h2>
+          <div class="pz-head-row is-h2">
+            <h2>Audio DSP</h2>
+            <a href="../../solutions/voice-ai-hardware/index.html" class="pz-ilink" aria-label="Read more: Audio DSP">Read more</a>
+          </div>
           <p>For voice-first AI devices, audio digital signal processing is where products succeed or fail. A speech model can only be as good as the audio it receives, and real environments are hostile: background noise, echo, distance, overlapping speakers, and reverberation all degrade raw microphone signals. Audio DSP is the layer that cleans and conditions sound before it reaches your model or the cloud — and it is one of the hardest capabilities for a software team to build without dedicated acoustic engineering.</p>
 
           <h3>Beamforming &amp; Microphone Arrays</h3>
@@ -1307,14 +1398,15 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
             <span class="pz-callout-label">Expert Tip</span>
             <p>Tune your audio DSP with recordings from the real deployment environment, not a quiet lab. A device that sounds flawless on the bench can fall apart on a hospital ward or a factory floor — capture representative noise early and validate against it.</p>
           </div>
-          <a href="../../solutions/voice-ai-hardware/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: Audio DSP →</span>
-          </a>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/AOI-Inspection.jpg" alt="Automated optical inspection of audio DSP hardware" loading="lazy">
         </section>
 
         <section class="pz-section" id="manufacturing" data-toc="Manufacturing">
-          <h2>Manufacturing</h2>
+          <div class="pz-head-row is-h2">
+            <h2>Manufacturing</h2>
+            <a href="../../process/index.html" class="pz-ilink" aria-label="Read more: AI Hardware Manufacturing">Read more</a>
+          </div>
           <p>Manufacturing is where a validated design becomes thousands of identical, reliable products. It is a discipline in its own right — distinct from design — and it is where many first-time hardware programs stumble, because a design that works as a handful of prototypes may not build consistently at volume. Volume manufacturing is about repeatability: producing unit ten thousand to the same quality as unit one, at a cost that supports your business model.</p>
 
           <h3>Supply Chain &amp; Component Sourcing</h3>
@@ -1357,10 +1449,6 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
             <span class="pz-callout-label">Best Practice</span>
             <p>Run a small pilot build before committing to full volume. A few hundred units on production tooling will expose assembly, yield, and test issues while they are still cheap to fix — long before you have tens of thousands of units and inventory on the line.</p>
           </div>
-          <a href="../../process/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: AI Hardware Manufacturing →</span>
-          </a>
 
           <div class="pz-cta-band dark">
             <span class="pz-cta-text">Ready for production? Talk to our manufacturing team.</span>
@@ -1369,7 +1457,10 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
         </section>
 
         <section class="pz-section" id="certifications" data-toc="Certifications">
-          <h2>Certifications</h2>
+          <div class="pz-head-row is-h2">
+            <h2>Certifications</h2>
+            <a href="../../contact/index.html" class="pz-ilink" aria-label="Read more: AI Hardware Certifications">Read more</a>
+          </div>
           <p>Certification is the gate between a finished design and a product you are legally allowed to sell. Any device with a radio, a battery, or a power supply must meet the regulatory requirements of every market it ships into, and non-compliance can mean seized shipments, forced recalls, or fines. Certification is not a single step but a set of parallel tracks — radio, safety, environmental, and sometimes medical — each with its own testing, documentation, and timeline.</p>
 
           <h3>FCC &amp; CE</h3>
@@ -1404,10 +1495,8 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
             <span class="pz-callout-label">Best Practice</span>
             <p>Plan certifications from day one. Building the requirements into the design phase — and running pre-scans during DVT — avoids the costly redesigns and schedule slips that come from discovering a compliance failure after tooling is cut.</p>
           </div>
-          <a href="../../contact/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: AI Hardware Certifications →</span>
-          </a>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/Automated-SMT-Assembly.jpg" alt="Automated SMT assembly line used for certification builds" loading="lazy">
         </section>
 
         <section class="pz-section" id="choose-odm-partner" data-toc="Why Choose an ODM Partner?">
@@ -1433,6 +1522,8 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
             <span class="pz-cta-text">Ready to start your AI hardware project?</span>
             <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
           </div>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/Aging&amp;Burn-in-Testing.jpg" alt="Aging and burn-in testing racks validating device reliability" loading="lazy">
         </section>
 
         <div class="pz-cta-band dark">
@@ -1500,6 +1591,23 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
           <p>The certification and standards guidance in this guide reflects the requirements published by the governing bodies: the U.S. Federal Communications Commission (FCC) for radio and emissions; the European Commission for CE marking, RoHS, and REACH; UN Model Regulations (UN 38.3) and IEC 62133 for lithium-battery transport and safety; the Bluetooth SIG and Wi-Fi Alliance for wireless interoperability; and UL for electrical safety. Requirements change by market and over time, so confirm the current rules for your target regions with an accredited test lab or your ODM partner before finalizing a design.</p>
         </section>
 
+
+        <!-- ===== RELATED RESOURCES ===== -->
+        <section class="pz-section pz-related" aria-labelledby="pz-related-title">
+          <h2 id="pz-related-title">Related Resources</h2>
+          <div class="pz-related-grid">
+            <a class="pz-related-card" href="../voice-ai-hardware/index.html">
+              <h3>Voice AI Hardware</h3>
+              <p>The microphones, silicon, connectivity, and design decisions behind voice-first devices — and why the acoustic front end sets the ceiling on model accuracy.</p>
+              <span class="pz-related-more">Read more</span>
+            </a>
+            <a class="pz-related-card" href="../ai-hardware-integration/index.html">
+              <h3>AI Hardware Integration</h3>
+              <p>How AI software becomes a shipping device — edge-vs-cloud architecture, on-device inference, connectivity, firmware, security, and manufacturing at scale.</p>
+              <span class="pz-related-more">Read more</span>
+            </a>
+          </div>
+        </section>
       </main>
 
       <!-- ===== STICKY TOC SIDEBAR (desktop) ===== -->
@@ -2035,6 +2143,57 @@ document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
   document.addEventListener('visibilitychange',function(){ if(document.hidden){stop();}else{start();} });
   window.addEventListener('resize',function(){ show(idx); });
   show(0); start();
+})();
+</script>
+<script>
+/* ---- Share buttons: build network URLs + copy-to-clipboard with "Copied!" feedback ---- */
+(function(){
+  var wrap = document.querySelector('.pz-share');
+  if(!wrap) return;
+  var url   = wrap.getAttribute('data-share-url')   || window.location.href;
+  var title = wrap.getAttribute('data-share-title') || document.title;
+  var eu = encodeURIComponent(url), et = encodeURIComponent(title);
+
+  var li = wrap.querySelector('[data-share="linkedin"]');
+  if(li) li.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + eu;
+  var x = wrap.querySelector('[data-share="x"]');
+  if(x) x.href = 'https://twitter.com/intent/tweet?url=' + eu + '&text=' + et;
+
+  var copy = wrap.querySelector('[data-share="copy"]');
+  if(!copy) return;
+  var tip = copy.querySelector('.pz-share-tip');
+  var idle = tip ? tip.textContent : '';
+  var timer;
+
+  function flash(ok){
+    if(tip) tip.textContent = ok ? 'Copied!' : 'Copy failed';
+    copy.classList.add('copied');
+    clearTimeout(timer);
+    timer = setTimeout(function(){
+      copy.classList.remove('copied');
+      if(tip) tip.textContent = idle;
+    }, 1600);
+  }
+  function fallback(){
+    var ta = document.createElement('textarea');
+    ta.value = url;
+    ta.setAttribute('readonly','');
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch(e) { ok = false; }
+    document.body.removeChild(ta);
+    flash(ok);
+  }
+  copy.addEventListener('click', function(){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){ flash(true); }, fallback);
+    } else {
+      fallback();
+    }
+  });
 })();
 </script>
 <script src="../../js/voice-widget.js"></script>

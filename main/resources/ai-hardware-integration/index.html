@@ -874,17 +874,87 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     background:var(--pz-blue); z-index:200; transition:width .08s linear; }
 
   /* ---- Hero (matches the site's hero scale & eyebrow) ---- */
-  .pz-hero { background:#fff; padding:28px 0 56px; border-bottom:1px solid rgba(0,0,0,0.06); }
-  .pz-hero .pz-eyebrow { font-family:var(--sans); font-size:12px; font-weight:500;
-    letter-spacing:0.12em; text-transform:uppercase; color:var(--text-muted); margin-bottom:18px; }
+  /* padding-top clears the fixed .nav (64px), which is out of flow */
+  .pz-hero { background:#fff; padding:92px 0 56px; }
+  .pz-hero .pz-eyebrow { font-family:var(--sans); font-size:13px; font-weight:500;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--pz-blue); margin-bottom:18px; }
   .pz-hero h1 { font-family:var(--sans); font-size:clamp(34px,4.6vw,58px); font-weight:800;
     line-height:1.05; letter-spacing:-0.03em; color:var(--pz-head); margin-bottom:22px; }
   .pz-hero .pz-sub { max-width:640px; font-family:var(--sans); font-size:1.05rem; line-height:1.6;
     color:var(--pz-body); margin-bottom:32px; }
-  .pz-hero-cta { display:flex; flex-direction:row; flex-wrap:wrap; gap:12px; flex:0 0 auto; }
-  .pz-hero-inner { display:flex; align-items:flex-end; justify-content:space-between; gap:48px; flex-wrap:wrap; }
-  .pz-hero-copy { flex:1 1 560px; min-width:0; }
-  @media (max-width:640px){ .pz-hero-inner { flex-direction:column; align-items:flex-start; gap:24px; } .pz-hero-cta { width:100%; } }
+  /* Two-column hero: copy ~57%, media ~43%, vertically centred */
+  .pz-hero-inner { display:grid; grid-template-columns:minmax(0,57fr) minmax(0,43fr);
+    gap:48px; align-items:center; }
+  .pz-hero-copy { min-width:0; }
+  .pz-hero-cta { display:flex; flex-direction:row; flex-wrap:wrap; gap:12px; }
+  .pz-hero-media { min-width:0; }
+  .pz-hero-media img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover;
+    border-radius:8px; }
+  /* Product shots letterbox instead of cropping */
+  .pz-hero-media.is-contain img { object-fit:contain; background:var(--pz-alt); }
+  /* Stack below 900px: copy on top, image beneath */
+  @media (max-width:900px){
+    .pz-hero-inner { grid-template-columns:minmax(0,1fr); gap:32px; }
+  }
+  @media (max-width:640px){
+    .pz-hero-cta > .pz-btn { flex:1 1 auto; justify-content:center; }
+  }
+
+  /* ---- Breadcrumb: full container width, above the hero row ---- */
+  .pz-crumbs { margin-bottom:20px; font-family:var(--sans); font-size:13px; line-height:1.5; }
+  .pz-crumbs ol { list-style:none; display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:0; padding:0; }
+  .pz-crumbs a { color:var(--pz-blue); text-decoration:none; }
+  .pz-crumbs a:hover { text-decoration:underline; }
+  .pz-crumbs .pz-crumb-sep { color:rgba(0,0,0,0.28); }
+  /* "Resources" and the current page are plain text — there is no resources landing page yet */
+  .pz-crumbs li { color:var(--pz-muted); }
+
+
+  /* ---- Key Takeaways summary box ---- */
+  .pz-takeaways { background:#f8f9fa; border:1px solid var(--pz-line); border-radius:12px; padding:24px; }
+  .pz-takeaways h2 { font-family:var(--sans); font-size:17px; font-weight:700; letter-spacing:-0.01em;
+    color:var(--pz-head); margin:0 0 14px; padding:0; border:0; }
+  .pz-takeaways ul { list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+  .pz-takeaways li { position:relative; padding-left:22px; font-family:var(--sans); font-size:15px;
+    line-height:1.6; color:var(--pz-body); }
+  .pz-takeaways li::before { content:""; position:absolute; left:6px; top:9px; width:6px; height:6px;
+    border-radius:50%; background:var(--pz-blue); }
+
+  /* ---- Byline: author attribution (left) + share buttons (right) ---- */
+  .pz-byline { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap;
+    gap:16px; margin-top:36px; }
+  .pz-byline-who { display:inline-flex; align-items:center; gap:8px; font-family:var(--sans);
+    font-size:13px; color:var(--pz-muted); }
+  .pz-byline-who img { width:18px; height:18px; display:block; flex:0 0 auto; }
+  .pz-share { display:inline-flex; align-items:center; gap:6px; }
+  .pz-share-btn { position:relative; display:inline-flex; align-items:center; justify-content:center;
+    width:32px; height:32px; padding:0; border:1px solid var(--pz-line); border-radius:8px;
+    background:#fff; color:var(--pz-muted); cursor:pointer;
+    transition:color .15s ease, border-color .15s ease, background .15s ease; }
+  .pz-share-btn:hover { color:var(--pz-blue); border-color:var(--pz-blue); background:var(--pz-alt); }
+  .pz-share-btn svg { width:15px; height:15px; display:block; }
+  .pz-share-tip { position:absolute; bottom:calc(100% + 8px); left:50%; transform:translateX(-50%);
+    padding:6px 8px; border-radius:6px; background:var(--pz-head); color:#fff; font-family:var(--sans);
+    font-size:11px; line-height:1; white-space:nowrap; opacity:0; visibility:hidden;
+    transition:opacity .15s ease, visibility .15s ease; }
+  .pz-share-btn:hover .pz-share-tip,
+  .pz-share-btn:focus-visible .pz-share-tip,
+  .pz-share-btn.copied .pz-share-tip { opacity:1; visibility:visible; }
+
+  /* ---- Related resources cards ---- */
+  .pz-related-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+  .pz-related-card { display:flex; flex-direction:column; gap:8px; padding:20px; background:#fff;
+    border:1px solid var(--pz-line); border-radius:12px; text-decoration:none;
+    transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .pz-related-card:hover { border-color:var(--pz-blue); box-shadow:0 6px 24px rgba(0,0,0,0.06);
+    transform:translateY(-2px); }
+  .pz-related-card h3 { font-family:var(--sans); font-size:1.05rem; font-weight:700;
+    letter-spacing:-0.01em; color:var(--pz-head); margin:0; }
+  .pz-related-card p { font-family:var(--sans); font-size:14.5px; line-height:1.6;
+    color:var(--pz-body); margin:0; }
+  .pz-related-more { margin-top:auto;
+    font-family:var(--sans); font-size:14px; font-weight:600; color:var(--pz-blue); }
+  @media (max-width:640px){ .pz-related-grid { grid-template-columns:1fr; } }
 
   /* ---- Buttons: mirror the site's .btn + .btn-blue-deep / ghost ---- */
   .pz-btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--sans);
@@ -897,7 +967,9 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 
   /* ---- 2-column layout ---- */
   .pz-layout { padding:72px 0 96px; background:#fff; }
-  .pz-grid { display:grid; grid-template-columns:minmax(0,1fr) 220px; gap:64px; align-items:start; }
+  /* 244px = 220px of TOC content + the 24px padding-left below, so the TOC text
+     keeps its original width while the visual gutter grows to 64 + 24 = 88px. */
+  .pz-grid { display:grid; grid-template-columns:minmax(0,1fr) 244px; gap:64px; align-items:start; }
   .pz-main { min-width:0; }
 
   /* ---- Content typography (site body: Inter, comfortable measure) ---- */
@@ -906,8 +978,11 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-section { scroll-margin-top:96px; }
   .pz-section h2 { font-family:var(--sans); font-weight:800; font-size:clamp(26px,2.4vw,34px);
     line-height:1.15; letter-spacing:-0.025em; color:var(--pz-head);
-    margin:56px 0 20px; padding-top:48px; border-top:1px solid var(--pz-line); }
-  .pz-section:first-of-type h2 { margin-top:0; padding-top:0; border-top:none; }
+    margin:56px 0 20px; padding-top:56px; }
+  .pz-section:first-of-type h2 { margin-top:0; padding-top:0; }
+  /* Full-width section image: sits at the end of each section, before the next H2 */
+  .pz-section-img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover;
+    border-radius:8px; margin:32px 0 48px; }
   .pz-section h3 { font-family:var(--sans); font-size:1.15rem; font-weight:700;
     letter-spacing:-0.01em; color:var(--pz-head); margin:32px 0 10px; }
 
@@ -931,13 +1006,25 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-callout.tip, .pz-callout.best, .pz-callout.insight { border-color:var(--pz-line); background:none; }
 
   /* ---- Internal link cards (quiet, hairline border) ---- */
-  .pz-ilink { display:inline-flex; align-items:center; gap:10px; width:min(80%,560px);
-    background:#fff; border:1px solid var(--pz-line); border-radius:var(--pz-radius);
-    padding:14px 18px; margin:14px 0 22px; font-family:var(--sans); font-size:14.5px; font-weight:600;
-    color:var(--pz-head); transition:border-color .2s ease, color .2s ease; }
-  .pz-ilink:hover { border-color:var(--pz-blue); color:var(--pz-blue); }
-  .pz-ilink svg { flex:0 0 auto; width:18px; height:18px; stroke:var(--pz-blue); }
-  .pz-ilink .pz-ilink-txt { flex:1; }
+  /* Heading row: heading on the left, "Read more" on the right, vertically centred.
+     The row carries the heading's original margins/padding so vertical rhythm is unchanged. */
+  .pz-head-row { display:flex; align-items:center; justify-content:space-between;
+    gap:20px; flex-wrap:wrap; }
+  .pz-head-row > h2, .pz-head-row > h3 { margin:0; padding:0; }
+  .pz-section .pz-head-row.is-h3 { margin:32px 0 10px; }
+  .pz-section .pz-head-row.is-h2 { margin:56px 0 20px; padding-top:56px; }
+  .pz-section:first-of-type .pz-head-row.is-h2 { margin-top:0; padding-top:0; }
+  /* Small pill button sitting next to the heading */
+  .pz-ilink { flex:0 0 auto; display:inline-block; border:0; margin:0;
+    /* #2563eb = the hero "Talk to Our Engineers" blue (.pz-btn-primary / --pz-blue).
+       !important is defensive: the pill was reported rendering dark despite this rule. */
+    background:#2563eb !important; color:#fff !important;
+    padding:6px 16px; border-radius:9999px;
+    font-family:var(--sans);
+    font-size:13px;
+    font-weight:500; line-height:1.4; white-space:nowrap; text-decoration:none;
+    transition:background .15s ease; }
+  .pz-ilink:hover { background:#1d4ed8 !important; text-decoration:none; }
 
   /* ---- Image placeholder box (legacy; kept harmless) ---- */
   .pz-imgph { border:1px dashed rgba(0,0,0,0.14); border-radius:var(--pz-radius);
@@ -988,21 +1075,20 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .pz-faq-a-inner { padding:0 24px 22px; font-family:var(--sans); font-size:0.95rem; color:#5b6472; line-height:1.72; }
 
   /* ================= STICKY TOC (right sidebar) ================= */
-  .pz-toc-aside { position:sticky; top:100px; align-self:start; }
+  .pz-toc-aside { position:sticky; top:100px; align-self:start; padding-left:24px; }
   .pz-toc-title { font-family:var(--sans); font-size:16px; font-weight:500; letter-spacing:0.12em;
     text-transform:uppercase; color:var(--text-muted); margin-bottom:16px; }
   .pz-toc-list { list-style:none; margin:0; padding:0; border-left:1px solid var(--pz-line); }
   .pz-toc-list a { display:block; font-family:var(--sans); font-size:15px; font-weight:500; color:var(--pz-muted);
     line-height:1.45; padding:8px 0 8px 16px; margin-left:-1px; border-left:2px solid transparent;
-    transition:color .15s ease, border-color .15s ease; }
+    transition:color .2s ease, border-color .2s ease, font-weight .2s ease; }
   .pz-toc-list a:hover { color:var(--pz-head); }
   .pz-toc-list a.active { color:var(--pz-blue); font-weight:600; border-left-color:var(--pz-blue); }
 
   /* ---- Tablet: horizontal sticky bar with dropdown ---- */
   .pz-toc-bar { display:none; }
   .pz-toc-bar { position:sticky; top:64px; z-index:90; background:rgba(255,255,255,.92);
-    backdrop-filter:saturate(180%) blur(10px); -webkit-backdrop-filter:saturate(180%) blur(10px);
-    border-bottom:1px solid var(--pz-line); }
+    backdrop-filter:saturate(180%) blur(10px); -webkit-backdrop-filter:saturate(180%) blur(10px); }
   .pz-toc-bar-inner { display:flex; align-items:center; gap:12px; padding:12px 0; }
   .pz-toc-bar-btn { display:flex; align-items:center; gap:8px; font-family:var(--sans); font-size:14px;
     font-weight:600; color:var(--pz-head); background:none; border:none; cursor:pointer; }
@@ -1033,7 +1119,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
     .pz-grid { grid-template-columns:1fr; gap:0; }
     .pz-toc-aside { display:none; }
     .pz-toc-bar { display:block; }
-    .pz-hero { padding-top:24px; }
+    .pz-hero { padding-top:88px; }
   }
   /* Tablet: render the shared panel as a dropdown anchored under the sticky bar */
   @media (min-width:641px) and (max-width:1024px) {
@@ -1062,63 +1148,31 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 <!-- Reading progress bar -->
 <div class="pz-progress" id="pzProgress" role="progressbar" aria-label="Reading progress"></div>
 
-<!-- ========== VIDEO HERO (full-width, above the page hero) ========== -->
-<!-- TODO: Replace with ai-hardware-integration-video.mp4 -->
-<style>
-  .rv-video-hero{width:100%;padding-top:128px;}
-  @media(max-width:1024px){.rv-video-hero{padding-top:116px;}}
-  .rv-video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#1a1a2e;overflow:hidden;border-radius:12px;}
-  @supports not (aspect-ratio:16/9){.rv-video-frame{height:0;padding-bottom:56.25%;}}
-  .rv-video-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
-  .rv-video-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:20px;}
-  .rv-video-play{width:76px;height:76px;border-radius:50%;background:rgba(255,255,255,.10);border:2px solid rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;transition:transform .2s ease,background .2s ease;}
-  .rv-video-ph:hover .rv-video-play{transform:scale(1.06);background:rgba(255,255,255,.18);}
-  .rv-video-play svg{width:30px;height:30px;margin-left:5px;fill:#fff;}
-  .rv-video-label{font-family:var(--sans,Inter,sans-serif);font-size:14px;font-weight:500;letter-spacing:.04em;text-transform:uppercase;color:rgba(255,255,255,.72);}
-  @media(max-width:640px){.rv-video-play{width:60px;height:60px}.rv-video-play svg{width:24px;height:24px}}
-</style>
-<section class="rv-video-hero" aria-label="Introduction video">
-  <div class="container">
-  <div class="rv-video-frame">
-
-    <!-- ===== PLACEHOLDER (delete this block once a real video is added) ===== -->
-    <div class="rv-video-ph">
-      <div class="rv-video-play" aria-hidden="true">
-        <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg>
-      </div>
-      <div class="rv-video-label">Video Coming Soon</div>
-    </div>
-
-    <!-- ===== OPTION A — background-style autoplay (uncomment when the video is ready) =====
-    <video autoplay muted loop playsinline preload="auto" poster="../../img/video/ai-hardware-integration-poster.jpg">
-      <source src="../../img/video/ai-hardware-integration-video.mp4" type="video/mp4">
-    </video>
-    ===== END OPTION A ===== -->
-
-    <!-- ===== OPTION B — click-to-play with poster + controls (uncomment to use instead of A) =====
-    <video controls playsinline preload="none" poster="../../img/video/ai-hardware-integration-poster.jpg" style="background:#1a1a2e;">
-      <source src="../../img/video/ai-hardware-integration-video.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    ===== END OPTION B ===== -->
-
-  </div>
-  </div>
-</section>
-
 <!-- ========== HERO (full-width) ========== -->
 <header class="pz-hero">
   <div class="container">
     <div class="pz-hero-inner">
-    <div class="pz-hero-copy">
-    <div class="pz-eyebrow">Resource</div>
-    <h1>AI Hardware Integration</h1>
-    <p class="pz-sub">A practical guide to turning your AI software into a shipping physical product — from edge-vs-cloud architecture and on-device inference to connectivity, firmware, security, and manufacturing at scale. Written for AI teams who move fast in software but need a hardware partner to close the last mile.</p>
-    </div>
-    <div class="pz-hero-cta">
-      <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
-      <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener noreferrer" class="pz-btn pz-btn-ghost">Discuss Your Integration Project</a>
-    </div>
+      <div class="pz-hero-copy">
+        <nav class="pz-crumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../../index.html">Home</a></li>
+            <li class="pz-crumb-sep" aria-hidden="true">&gt;</li>
+            <li>Resources</li>
+            <li class="pz-crumb-sep" aria-hidden="true">&gt;</li>
+            <li aria-current="page">AI Hardware Integration</li>
+          </ol>
+        </nav>
+        <div class="pz-eyebrow">Resource</div>
+        <h1>AI Hardware Integration</h1>
+        <p class="pz-sub">A practical guide to turning your AI software into a shipping physical product — from edge-vs-cloud architecture and on-device inference to connectivity, firmware, security, and manufacturing at scale. Written for AI teams who move fast in software but need a hardware partner to close the last mile.</p>
+        <div class="pz-hero-cta">
+          <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
+          <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener noreferrer" class="pz-btn pz-btn-ghost">Discuss Your Integration Project</a>
+        </div>
+      </div>
+      <div class="pz-hero-media">
+        <img src="../../img/custom-devices/odm-oem/manufacturing/PCB-Board-Assembly.jpg" alt="PCB board assembly on the production line">
+      </div>
     </div>
   </div>
 </header>
@@ -1144,6 +1198,37 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
       <!-- ===== MAIN CONTENT ===== -->
       <main class="pz-main">
 
+        <aside class="pz-takeaways" aria-labelledby="pz-takeaways-title">
+          <h2 id="pz-takeaways-title">Key Takeaways</h2>
+          <ul>
+            <li>Hardware integration is not "putting a chip in a box" — it is the coordinated design of sensors, processor, connectivity, power, firmware, and SDK so the model and the device behave as one dependable product.</li>
+            <li>The reference architecture runs input → intelligence → output: sensors capture raw signal, a DSP or main processor pre-processes it, inference happens on-device or in the cloud, and results return through your SDK.</li>
+            <li>The most common failure is the reality gap — a model that performs well on clean recordings degrades sharply on real device audio, because enclosure acoustics and noise were never accounted for.</li>
+            <li>Costs split into non-recurring engineering (design, PCB layout, firmware, audio tuning, tooling, certification) and per-unit manufacturing cost; certification should be planned during DVT, since failures often force hardware changes.</li>
+            <li>Your existing AI stays yours: firmware handles capture and pre-processing, then calls your endpoints or runs your own weights compiled to the device accelerator — the integration work is the SDK, auth, and data pipeline layer.</li>
+          </ul>
+        </aside>
+        <div class="pz-byline">
+          <span class="pz-byline-who">
+            <img src="../../img/favicon.svg" alt="" aria-hidden="true">
+            Written by GMIC AI Engineering Team
+          </span>
+          <span class="pz-share" data-share-url="https://gmic.ai/resources/ai-hardware-integration/" data-share-title="AI Hardware Integration">
+            <a class="pz-share-btn" data-share="linkedin" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on LinkedIn">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM2.4 21.5h5.16V9.5H2.4v12zM9.9 9.5h4.94v1.64h.07c.69-1.2 2.37-2.03 4.11-2.03 3.4 0 4.58 2.03 4.58 5.5v6.89h-5.16v-6.1c0-1.53-.6-2.58-1.98-2.58-1.2 0-1.9.8-2.2 1.58-.12.28-.15.67-.15 1.06v6.04H9.9s.07-10.9 0-12z"/></svg>
+              <span class="pz-share-tip">Share on LinkedIn</span>
+            </a>
+            <a class="pz-share-btn" data-share="x" href="#" target="_blank" rel="noopener noreferrer" aria-label="Share on X">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.53 3h3.05l-6.66 7.61L21.75 21h-5.6l-4.39-5.74L6.7 21H3.65l6.9-7.88L2.6 3h5.74l4.11 5.43L17.53 3zm-1.07 16.17h1.69L7.63 4.73H5.82l10.64 14.44z"/></svg>
+              <span class="pz-share-tip">Share on X</span>
+            </a>
+            <button class="pz-share-btn" data-share="copy" type="button" aria-label="Copy link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l2.83-2.83a5 5 0 0 0-7.07-7.07l-1.41 1.41"></path><path d="M14 11a5 5 0 0 0-7.07 0L4.1 13.83a5 5 0 0 0 7.07 7.07l1.41-1.41"></path></svg>
+              <span class="pz-share-tip">Copy link</span>
+            </button>
+          </span>
+        </div>
+
         <section class="pz-section" id="what-is-ai-hardware-integration" data-toc="What Is AI Hardware Integration?">
           <h2>What Is AI Hardware Integration?</h2>
           <p>AI hardware integration is the engineering work of bringing an AI model and its software together with a physical device so they function as one dependable product. It is not simply "putting a chip in a box." It is the coordinated design of the sensors that capture the real world, the processor that runs or reaches the model, the memory and power system that sustain it, the radios that connect it, the firmware that ties everything together, and the cloud APIs the device talks to. Get any one of these wrong and the AI that worked flawlessly on a laptop stutters, drains its battery, or fails in the field.</p>
@@ -1159,22 +1244,22 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
         </section>
 
         <section class="pz-section" id="integration-architecture" data-toc="AI Hardware Integration Architecture">
-          <h2>AI Hardware Integration Architecture</h2>
+          <div class="pz-head-row is-h2">
+            <h2>AI Hardware Integration Architecture</h2>
+            <a href="../../solutions/embedded-ai-hardware/index.html" class="pz-ilink" aria-label="Read more: AI Hardware Architecture">Read more</a>
+          </div>
           <p>A reference architecture for an integrated AI device flows from input to intelligence to output. At the front end sit the sensors — microphones, cameras, IMUs, or environmental sensors — that capture raw signal. That signal passes through a pre-processing stage, often on a dedicated DSP or the main processor, where audio is beamformed and denoised, or video is framed and compressed. The cleaned data is then handed to the inference layer, which either runs a model locally on an NPU or MCU, or packages the data and sends it to a cloud endpoint.</p>
           <p>Surrounding this pipeline are the supporting subsystems: memory and storage to buffer data, a connectivity stack (BLE, Wi-Fi, or cellular) to reach the cloud and companion app, a power management system sized for the device's duty cycle, and firmware that orchestrates the whole sequence and manages state, security, and OTA updates. The companion app and backend SDK complete the loop, giving users control and delivering results.</p>
           <p>The single most consequential architecture decision is the edge/cloud/hybrid split. A pure-edge design maximizes privacy, latency, and offline resilience but is bounded by the silicon you can afford. A cloud-first design gives you the biggest models and instant updates at the cost of connectivity dependence and per-request expense. Most successful products are hybrid — lightweight, latency-critical, and privacy-sensitive tasks run on-device, while heavy reasoning runs in the cloud. Deciding this split early, before PCB layout, is what prevents costly re-spins later.</p>
           <!-- TODO: replace with final image -->
-          <figure class="pz-img">
-            <img src="../../img/custom-devices/odm-oem/manufacturing/SMT-Production-Line.jpg" alt="Placeholder: AI hardware integration architecture diagram spanning sensors, MCU/SoC, memory, connectivity, power, firmware, and cloud SDK" loading="lazy">
-          </figure>
-          <a href="../../solutions/embedded-ai-hardware/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: AI Hardware Architecture →</span>
-          </a>
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/PCB-Board-Assembly.jpg" alt="PCB board assembly showing integrated SoC, memory, and connectivity modules" loading="lazy">
         </section>
 
         <section class="pz-section" id="core-components" data-toc="Core Components">
-          <h2>Core Components of AI Hardware Integration</h2>
+          <div class="pz-head-row is-h2">
+            <h2>Core Components of AI Hardware Integration</h2>
+            <a href="../../custom-devices/odm-oem/index.html" class="pz-ilink" aria-label="Read more: AI Hardware Components">Read more</a>
+          </div>
           <p>Every integrated AI device is assembled from the same family of building blocks. Understanding what each one does — and how the choices interact — is the foundation for scoping a realistic bill of materials and avoiding late-stage surprises. The sections below walk through each core component and the trade-offs that matter most for AI workloads.</p>
 
           <h3>Sensors &amp; Input</h3>
@@ -1228,14 +1313,15 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
           <h3>Cloud Connectivity &amp; SDK</h3>
           <p>The cloud layer and SDK connect the device to your AI services and to the user. The device authenticates, streams or uploads data to your endpoints, and receives results, model updates, and configuration in return. A well-designed SDK abstracts this so the device treats your AI as a service — calling your existing APIs or streaming audio to your pipeline — while handling authentication, retries, buffering during connectivity gaps, and secure transport. This is the layer that lets an AI software team keep owning the model and backend while the device is built around it.</p>
 
-          <a href="../../custom-devices/odm-oem/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: AI Hardware Components →</span>
-          </a>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/Automated-SMT-Assembly.jpg" alt="Automated SMT assembly placing components onto AI hardware boards" loading="lazy">
         </section>
 
         <section class="pz-section" id="integration-examples" data-toc="Integration Examples">
-          <h2>AI Hardware Integration Examples</h2>
+          <div class="pz-head-row is-h2">
+            <h2>AI Hardware Integration Examples</h2>
+            <a href="../../proof/index.html" class="pz-ilink" aria-label="Read more: AI Hardware Examples">Read more</a>
+          </div>
           <p>The principles above take concrete shape across product categories. The examples below illustrate how the edge/cloud split, sensor choices, connectivity, and power budget change depending on what the device is asked to do — and where the hard integration problems typically sit.</p>
 
           <h3>Medical AI Scribe</h3>
@@ -1262,15 +1348,13 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
           <h3>Edge AI Gateway</h3>
           <p>An edge AI gateway aggregates data from multiple sensors or devices and runs heavier local inference before deciding what to send to the cloud. Built around an MPU or SoC running Linux, it prioritizes compute, memory, and robust connectivity over battery life since it is typically powered. Gateways are the pattern of choice when latency, bandwidth, or privacy make it impractical to send everything upstream, acting as a local intelligence hub for a fleet of simpler endpoints.</p>
 
-          <a href="../../proof/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: AI Hardware Examples →</span>
-          </a>
 
           <div class="pz-cta-band light">
             <span class="pz-cta-text">Have a hardware integration challenge? Talk to our engineers.</span>
             <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
           </div>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/products/overview/HA-MIC06A.jpg" alt="HA-MIC06A AI hardware device" loading="lazy">
         </section>
 
         <section class="pz-section" id="common-challenges" data-toc="Common Challenges">
@@ -1286,10 +1370,15 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
             <span class="pz-callout-label">Best Practice</span>
             <p>Lock the edge-versus-cloud split and the processor class before PCB layout begins. Nearly every expensive re-spin traces back to an architecture decision that was left open too long.</p>
           </div>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/Testing&amp;Validation.jpg" alt="Engineer running testing and validation to catch integration issues" loading="lazy">
         </section>
 
         <section class="pz-section" id="development-cost" data-toc="Development Cost">
-          <h2>AI Hardware Development Cost</h2>
+          <div class="pz-head-row is-h2">
+            <h2>AI Hardware Development Cost</h2>
+            <a href="../../contact/index.html" class="pz-ilink" aria-label="Read more: AI Hardware Development Cost">Read more</a>
+          </div>
           <p>The cost of an integrated AI device breaks into two parts: non-recurring engineering (NRE) to design and validate the product, and per-unit cost to manufacture it. NRE covers industrial and mechanical design, custom PCB layout, firmware and SDK integration, audio tuning, tooling for the enclosure, and certification — commonly tens to low hundreds of thousands of dollars depending on complexity and how much can be built on proven reference designs. Reusing a validated platform is the single biggest way to reduce it.</p>
           <p>Per-unit cost is driven by the processor class, memory, radios, battery, sensors, and enclosure, and it falls significantly with volume as tooling amortizes and component pricing improves. The architecture decisions made early — especially the processor and the edge/cloud split — set the floor on both NRE and unit cost, which is why they deserve the most scrutiny at the start. The table below maps the phases a device passes through and what drives cost at each stage.</p>
           <h3 style="font-size:16px;color:#555;font-weight:600;">Prototype vs. Production Cost Breakdown</h3>
@@ -1304,14 +1393,15 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
               </tbody>
             </table>
           </div>
-          <a href="../../contact/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: AI Hardware Development Cost →</span>
-          </a>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/R&amp;D-Structural-Design.jpg" alt="R&amp;D structural design work during AI hardware development" loading="lazy">
         </section>
 
         <section class="pz-section" id="embedded-ai-hardware" data-toc="Embedded AI Hardware">
-          <h2>Embedded AI Hardware</h2>
+          <div class="pz-head-row is-h2">
+            <h2>Embedded AI Hardware</h2>
+            <a href="../../solutions/embedded-ai-hardware/index.html" class="pz-ilink" aria-label="Read more: Embedded AI Hardware">Read more</a>
+          </div>
           <p>Embedded AI hardware is the class of device that runs neural inference on-device rather than relying solely on the cloud. The enabling technology is the accelerator — an NPU, DSP, or vector engine integrated into the processor — paired with a model that has been optimized to fit. Optimization means quantization (dropping weights from 32-bit float to 8-bit integer or lower to cut memory and speed up math), pruning and distillation to shrink the model, and compiling it to a runtime that targets the specific silicon.</p>
           <p>Edge inference buys you low latency, offline operation, predictable cost at scale, and strong privacy because raw data can stay on the device. The trade-off is that you are bounded by the compute and memory you can afford in the bill of materials, and every optimization risks some accuracy that must be validated on real inputs. The practical answer for most products is hybrid: run the latency-critical and privacy-sensitive stages on the edge, and reach the cloud for the heaviest reasoning. The table below contrasts the two extremes.</p>
           <h3 style="font-size:16px;color:#555;font-weight:600;">Cloud AI vs. Edge AI</h3>
@@ -1326,15 +1416,13 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
               </tbody>
             </table>
           </div>
-          <a href="../../solutions/embedded-ai-hardware/index.html" class="pz-ilink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
-            <span class="pz-ilink-txt">Read more: Embedded AI Hardware →</span>
-          </a>
 
           <div class="pz-cta-band dark">
             <span class="pz-cta-text">Explore GMIC's embedded AI hardware capabilities.</span>
             <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
           </div>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/AOI-Inspection.jpg" alt="Automated optical inspection of embedded AI hardware boards" loading="lazy">
         </section>
 
         <section class="pz-section" id="choose-a-partner" data-toc="How to Choose a Partner">
@@ -1364,6 +1452,8 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
             <span class="pz-cta-text">Ready to discuss your hardware integration project?</span>
             <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
           </div>
+          <!-- TODO: replace with final image -->
+          <img class="pz-section-img" src="../../img/custom-devices/odm-oem/manufacturing/Manual-Assembly-Line.png" alt="Manual assembly line for final device assembly and QA" loading="lazy">
         </section>
 
         <div class="pz-cta-band dark">
@@ -1431,6 +1521,23 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
           <p>This guide draws on established embedded-systems and edge-AI engineering practice and on GMIC AI's experience shipping voice-first and edge-AI devices across more than 270 hardware programs. For deeper reading, see our related resources on <a href="../../solutions/embedded-ai-hardware/index.html">embedded AI hardware</a>, <a href="../../custom-devices/odm-oem/index.html">ODM/OEM services</a>, and <a href="../../resources/voice-ai-hardware/index.html">voice AI hardware</a>, or contact our engineering team to discuss the specifics of your product.</p>
         </section>
 
+
+        <!-- ===== RELATED RESOURCES ===== -->
+        <section class="pz-section pz-related" aria-labelledby="pz-related-title">
+          <h2 id="pz-related-title">Related Resources</h2>
+          <div class="pz-related-grid">
+            <a class="pz-related-card" href="../voice-ai-hardware/index.html">
+              <h3>Voice AI Hardware</h3>
+              <p>The microphones, silicon, connectivity, and design decisions behind voice-first devices — and why the acoustic front end sets the ceiling on model accuracy.</p>
+              <span class="pz-related-more">Read more</span>
+            </a>
+            <a class="pz-related-card" href="../ai-hardware-odm/index.html">
+              <h3>AI Hardware ODM</h3>
+              <p>What an ODM partner actually does: design ownership versus OEM, prototype stages, firmware and audio DSP, volume manufacturing, and certification.</p>
+              <span class="pz-related-more">Read more</span>
+            </a>
+          </div>
+        </section>
       </main>
 
       <!-- ===== STICKY TOC SIDEBAR (desktop) ===== -->
@@ -1966,6 +2073,57 @@ document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
   document.addEventListener('visibilitychange',function(){ if(document.hidden){stop();}else{start();} });
   window.addEventListener('resize',function(){ show(idx); });
   show(0); start();
+})();
+</script>
+<script>
+/* ---- Share buttons: build network URLs + copy-to-clipboard with "Copied!" feedback ---- */
+(function(){
+  var wrap = document.querySelector('.pz-share');
+  if(!wrap) return;
+  var url   = wrap.getAttribute('data-share-url')   || window.location.href;
+  var title = wrap.getAttribute('data-share-title') || document.title;
+  var eu = encodeURIComponent(url), et = encodeURIComponent(title);
+
+  var li = wrap.querySelector('[data-share="linkedin"]');
+  if(li) li.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + eu;
+  var x = wrap.querySelector('[data-share="x"]');
+  if(x) x.href = 'https://twitter.com/intent/tweet?url=' + eu + '&text=' + et;
+
+  var copy = wrap.querySelector('[data-share="copy"]');
+  if(!copy) return;
+  var tip = copy.querySelector('.pz-share-tip');
+  var idle = tip ? tip.textContent : '';
+  var timer;
+
+  function flash(ok){
+    if(tip) tip.textContent = ok ? 'Copied!' : 'Copy failed';
+    copy.classList.add('copied');
+    clearTimeout(timer);
+    timer = setTimeout(function(){
+      copy.classList.remove('copied');
+      if(tip) tip.textContent = idle;
+    }, 1600);
+  }
+  function fallback(){
+    var ta = document.createElement('textarea');
+    ta.value = url;
+    ta.setAttribute('readonly','');
+    ta.style.position = 'fixed';
+    ta.style.left = '-9999px';
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand('copy'); } catch(e) { ok = false; }
+    document.body.removeChild(ta);
+    flash(ok);
+  }
+  copy.addEventListener('click', function(){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(function(){ flash(true); }, fallback);
+    } else {
+      fallback();
+    }
+  });
 })();
 </script>
 <script src="../../js/voice-widget.js"></script>
