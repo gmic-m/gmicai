@@ -16,32 +16,32 @@
     {
       "@type": "Question",
       "name": "What is voice AI hardware?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Content coming soon — this answer will describe voice AI hardware: purpose-built devices that capture, process, and transmit voice for AI applications." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Voice AI hardware is a purpose-built device engineered to capture, clean, and route human speech into an AI pipeline. It typically combines a MEMS microphone array with beamforming and noise reduction, a low-power SoC or DSP for wake-word and on-device processing, and a connectivity and battery subsystem. Unlike a general-purpose phone or laptop, it is designed from the microphone inward around a single job: delivering clean, intelligible voice to a model with low latency and strong privacy controls. Examples include AI voice recorders, smart badges, earbuds, and smart glasses." }
     },
     {
       "@type": "Question",
       "name": "How is voice AI hardware different from a consumer voice recorder?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Content coming soon — this answer will compare purpose-built voice AI hardware with off-the-shelf consumer recorders across audio quality, connectivity, security, and integration." }
+      "acceptedAnswer": { "@type": "Answer", "text": "A consumer recorder produces a raw audio file from a single microphone and leaves everything else to you. Voice AI hardware is tuned end-to-end for machine transcription: a multi-mic array with beamforming and acoustic echo cancellation captures far-field, multi-speaker audio cleanly, even in noisy environments. It adds real-time connectivity (BLE, Wi-Fi, or LTE), encrypted storage and transport for regulated data, and direct integration hooks into your model and backend. The result is consistent AI accuracy across users and settings, rather than audio quality that swings with whatever hardware a customer happens to own." }
     },
     {
       "@type": "Question",
       "name": "Should voice AI processing run on the edge or in the cloud?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Content coming soon — this answer will cover the trade-offs between edge and cloud processing for latency, privacy, cost, and battery life." }
+      "acceptedAnswer": { "@type": "Answer", "text": "For most products the answer is a hybrid of both. Edge processing wins on latency and privacy: wake-word detection, voice activity detection, and privacy-sensitive pre-processing should run on the device so sensitive audio need not always leave it. Cloud processing wins for heavy transcription, summarization, and reasoning that would drain a small battery or exceed on-device compute. As on-device NPUs grow more capable, more of the pipeline is migrating to the edge, but the practical approach is to place each task where it belongs rather than committing to one extreme. Your latency targets, privacy requirements, connectivity, and battery budget determine the exact split." }
     },
     {
       "@type": "Question",
       "name": "How long does it take to bring a custom voice AI device to market?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Content coming soon — this answer will outline a typical ODM timeline from concept to mass production." }
+      "acceptedAnswer": { "@type": "Answer", "text": "A typical program runs six to twelve months from concept to mass production, depending on complexity and how much can be reused from an existing platform. It moves through defined phases: concept and architecture, prototyping, and then the EVT, DVT, and PVT validation stages that de-risk function, design, and production. Certification such as FCC and CE runs in parallel toward the end. Starting from a proven reference design and a well-defined use case can compress the early phases significantly, while a fully novel form factor with custom tooling extends them. Pilot units for field validation can often be in hand well before the full timeline completes." }
     },
     {
       "@type": "Question",
       "name": "What should AI companies look for in an ODM partner?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Content coming soon — this answer will list the key criteria for evaluating a voice AI hardware ODM partner." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Look for four things. First, direct experience shipping voice-first and edge-AI devices, not just generic electronics. Second, genuine audio competence — acoustic tuning, beamforming, and noise reduction are specialized skills that make or break a voice product. Third, integration depth, meaning they can cleanly connect their firmware to your model, SDK, and backend. Fourth, the manufacturing capacity to carry you from prototypes to tens of thousands of units a month without a disruptive vendor hand-off. A vertically integrated partner that keeps engineering and manufacturing under one roof reduces coordination overhead and time-to-market risk." }
     },
     {
       "@type": "Question",
       "name": "Can voice AI hardware be white-labeled under our brand?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Content coming soon — this answer will explain white-label and OEM branding options for voice AI hardware." }
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Full OEM and private-label programs let you ship the device entirely under your own brand, including custom enclosure and industrial design, branded firmware and boot experience, and private-label packaging and documentation. You can start from a proven reference platform to reach market quickly, or commission a fully custom design when differentiation matters. GMIC AI provides private-label and packaging services alongside certification support such as FCC and CE, so the finished product carries your name from the hardware to the box it arrives in." }
     }
   ]
 }
