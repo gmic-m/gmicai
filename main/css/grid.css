@@ -1,12 +1,12 @@
 /* ---------- Container ---------- */
 .container{
-  max-width:clamp(1512px, 88vw, 2200px);          /* logical CSS width of a 16" MacBook Pro — caps body content; centered on larger monitors */
+  max-width:1512px;          /* logical CSS width of a 16" MacBook Pro — caps body content; centered on larger monitors */
   width:100%;
   margin:0 auto;
   padding:0 clamp(20px, 4vw, 80px);
 }
 /* Navigation shares .container but must keep its original full width — do NOT cap the nav to 1512. */
-.nav .container{max-width:2496px}
+.nav .container{max-width:156rem}
 
 /* ---------- Buttons (base flex layout) ---------- */
 .btn{
@@ -470,7 +470,7 @@
 .gap-blocks{
   display:grid;
   grid-template-columns:repeat(3, 1fr);
-  gap:36px;
+  gap:20px;
   border:none;
 }
 .gap-block-icon{
@@ -481,8 +481,8 @@
   margin-bottom:20px;
 }
 @media (max-width:768px){
-  .gap-blocks{grid-template-columns:1fr;gap:32px}
-  .gap-block{padding:0;border-right:none !important}
+  .gap-blocks{grid-template-columns:1fr;gap:14px}
+  .gap-block{padding:28px 24px;border-right:none !important;padding-left:24px !important;padding-right:24px !important}
 }
 
 /* ---------- WHY GMIC section (layout) ---------- */
