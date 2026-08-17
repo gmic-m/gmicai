@@ -1,0 +1,2079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Hardware Integration — Complete Guide for AI Companies | GMIC AI</title>
+<meta name="description" content="A comprehensive guide to AI hardware integration for AI SaaS companies, startups, and enterprise teams. Covers embedded AI systems, PCB design, firmware, hardware-software integration, architecture, components, development cost, and choosing an ODM partner." />
+<link rel="canonical" href="https://gmic.ai/resources/ai-hardware-integration/" />
+
+<!-- FAQ structured data for SEO -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is AI hardware integration?", "acceptedAnswer": { "@type": "Answer", "text": "AI hardware integration is the engineering discipline of bringing AI models and software together with a physical device — the sensors, processor, memory, connectivity, power system, firmware, and cloud APIs — so they operate as one reliable product. It spans architecture decisions (edge vs. cloud vs. hybrid inference), audio and sensor pipelines, on-device model optimization, companion apps, OTA updates, and manufacturing. The goal is a device that captures real-world signals, runs or reaches the AI, and returns useful output within acceptable latency, power, and cost budgets." } },
+    { "@type": "Question", "name": "Should AI run on the device (edge) or in the cloud?", "acceptedAnswer": { "@type": "Answer", "text": "It depends on your latency, privacy, cost, and connectivity requirements. Edge inference gives sub-100ms response, works offline, and keeps raw data on the device, but is constrained by the processor and memory you can afford in the bill of materials. Cloud inference gives you the largest models and easy updates but adds round-trip latency, recurring per-request cost, and a hard dependency on connectivity. Most shipping products are hybrid: wake-word, voice activity detection, and noise reduction run on-device, while heavier transcription or LLM reasoning runs in the cloud." } },
+    { "@type": "Question", "name": "How long does it take to build an integrated AI device?", "acceptedAnswer": { "@type": "Answer", "text": "A realistic timeline from concept to mass production is typically nine to fifteen months, depending on complexity and how much can be built on proven reference designs. Early prototyping and architecture takes one to three months, EVT and DVT builds another three to five months, DVT-to-PVT validation and certification a further two to four months, and ramp to volume production a month or more. Reusing a validated hardware platform and existing SDK integrations can compress this significantly." } },
+    { "@type": "Question", "name": "What does it cost to develop an AI hardware product?", "acceptedAnswer": { "@type": "Answer", "text": "Non-recurring engineering for a custom voice or edge-AI device commonly falls in the tens to low hundreds of thousands of dollars, driven by industrial and mechanical design, custom PCB layout, firmware and SDK integration, tooling, and certification. Per-unit cost then depends on the processor class, memory, radios, battery, enclosure, and volume. The largest cost lever is architecture: choosing the right processor and edge/cloud split early prevents expensive re-spins later." } },
+    { "@type": "Question", "name": "What is the difference between an MCU, MPU, and SoC?", "acceptedAnswer": { "@type": "Answer", "text": "An MCU (microcontroller) is a low-power, low-cost chip with integrated memory that runs a real-time OS or bare-metal firmware — ideal for sensor handling, wake-word detection, and power-sensitive wearables. An MPU (microprocessor) delivers far more compute but needs external memory and typically runs Linux, suiting richer edge workloads. An SoC integrates CPU, GPU/NPU, memory controllers, and connectivity on one die, and is the usual choice when you need meaningful on-device neural inference, a display, or camera processing." } },
+    { "@type": "Question", "name": "How do you optimize an AI model to run on-device?", "acceptedAnswer": { "@type": "Answer", "text": "The core techniques are quantization (converting weights from 32-bit float to 8-bit integer or lower to cut memory and speed up math), pruning and distillation to shrink the model, and compiling to a runtime that targets the chip's NPU, DSP, or vector extensions. You then profile latency, memory footprint, and power on the actual silicon, not an emulator. The practical trade-off is accuracy versus footprint — validation confirms the optimized model still meets your quality bar in real acoustic and lighting conditions." } },
+    { "@type": "Question", "name": "Should I use BLE or Wi-Fi for connectivity?", "acceptedAnswer": { "@type": "Answer", "text": "Use BLE for low-power, low-bandwidth links — pairing to a phone, syncing small payloads, and control — where battery life matters most. Use Wi-Fi when the device must upload audio or video, reach cloud AI directly, or receive large OTA updates without a phone in the loop. Many devices carry both: BLE for provisioning and companion-app control, Wi-Fi for bulk data, and sometimes 4G/LTE for standalone cellular operation where no local network exists." } },
+    { "@type": "Question", "name": "What is the difference between an ODM and an OEM partner?", "acceptedAnswer": { "@type": "Answer", "text": "An OEM (original equipment manufacturer) builds a product to your complete design and specification — you own the engineering. An ODM (original design manufacturer) also designs the product, contributing hardware architecture, firmware, and reference platforms so you can move faster without an in-house hardware team. For AI software companies without deep hardware expertise, a full-stack ODM shortens time to market and reduces risk because the partner has already solved the hard integration problems." } },
+    { "@type": "Question", "name": "How are OTA firmware updates handled on AI devices?", "acceptedAnswer": { "@type": "Answer", "text": "Over-the-air updates are delivered over Wi-Fi or cellular (or relayed through a companion app over BLE) and should always be signed, versioned, and installed to a secondary partition with automatic rollback if the update fails to boot. This lets you patch security issues, improve on-device models, and add features across the fleet after launch. Designing OTA in from day one — with a dual-bank flash layout and a staged rollout mechanism — is far cheaper than retrofitting it later." } },
+    { "@type": "Question", "name": "How is data privacy and security handled on AI devices?", "acceptedAnswer": { "@type": "Answer", "text": "Security spans the whole stack: secure boot and signed firmware to prevent tampering, encrypted storage and TLS transport for data in transit, and a hardware root of trust or secure element for key storage. Privacy is strongest when sensitive processing happens on the edge so raw audio or video never leaves the device, with only derived results sent to the cloud. For regulated markets like healthcare, this is paired with clear data-handling policies and compliance controls such as HIPAA-aligned pipelines." } },
+    { "@type": "Question", "name": "What certifications does an AI hardware product need?", "acceptedAnswer": { "@type": "Answer", "text": "Any device with a radio needs regulatory certification for each market it ships to — FCC in the US, CE and UKCA in Europe and the UK, TELEC in Japan, and ISED in Canada, plus RoHS for materials compliance. Bluetooth products also require SIG qualification, and battery shipments involve UN 38.3 testing. Certification should be planned during DVT because failures often require hardware changes, and building on pre-certified radio modules can save both time and money." } },
+    { "@type": "Question", "name": "Can I use my existing AI models and APIs with custom hardware?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. A well-designed device treats your AI as a service: on-device firmware handles capture and pre-processing, then calls your cloud endpoints or streams audio to your existing APIs, while edge models can be your own weights compiled to the device's accelerator. The integration work is building the SDK layer, authentication, and data pipeline that connect your software to the hardware reliably. This is exactly the gap a full-stack ODM closes — your team keeps owning the AI while the hardware and firmware are built around it." } }
+  ]
+}
+</script>
+<link rel="icon" type="image/png" href="../../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/grid.css">
+<style>
+/* ===== Dropdown navigation — full-width mega menu ===== */
+/* ── Mega Menu Base ── */
+.nav-item {
+  position: relative; /* anchors the hover-bridge pseudo-element */
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Pseudo-element bridge so the mouse doesn't lose hover
+   when moving from the nav link down to the dropdown panel */
+.nav-item.has-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  right: -20px;
+  height: 20px; /* bridges the gap */
+  background: transparent;
+}
+
+.nav-dropdown {
+  display: none;
+  position: fixed;
+  top: 64px; /* height of nav bar */
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  z-index: 999;
+  padding: 32px 0 40px; /* generous top/bottom padding, flush against nav */
+}
+
+.nav-item.has-dropdown:hover .nav-dropdown {
+  display: block;
+}
+.nav-item.has-dropdown:hover .nav-arrow {
+  transform: rotate(90deg);
+  opacity: 1;
+}
+
+.dropdown-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  padding-top: 8px;
+  display: flex;
+  gap: 0;
+}
+
+/* ── Products Mega Menu ── */
+.nav-dropdown--products .dropdown-inner {
+  gap: 0;
+}
+
+
+
+
+.dropdown-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.dropdown-product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.15s;
+  border: 1px solid transparent;
+}
+
+.dropdown-product-card:hover {
+  background: #f5f7ff;
+  border-color: rgba(37,99,235,0.15);
+}
+
+.dropdown-all {
+  background: transparent;
+  border: 1px solid transparent !important;
+  /* 与其他卡片一样 top-aligned */
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.dropdown-all:hover {
+  background: #f0f4ff !important;
+  border-color: rgba(37,99,235,0.5) !important;
+}
+
+.dp-all-icon {
+  width: 100%;
+  height: 94px;          /* 与 .dropdown-product-card img 的 height 相同 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 6px;
+  margin-bottom: 10px;   /* 与 .dropdown-product-card img 的 margin-bottom 相同 */
+  transition: background 0.15s;
+}
+
+.dropdown-all .dp-all-icon svg {
+  stroke: #9ca3af;
+  transition: stroke 0.15s;
+}
+
+.dropdown-all:hover .dp-all-icon {
+  background: #e8eeff;
+}
+
+.dropdown-all:hover .dp-all-icon svg {
+  stroke: #2563eb;
+}
+
+.dropdown-all .dp-name {
+  color: #0f172a;   /* 默认深色，不要蓝色 */
+  transition: color 0.15s;
+}
+
+.dropdown-all:hover .dp-name {
+  color: #2563eb;   /* hover 才变蓝 */
+}
+
+.dropdown-product-card img {
+  width: 100%;
+  height: 94px;             /* 从 72px 放大到 94px */
+  object-fit: contain;
+  margin-bottom: 10px;
+  background: transparent;  /* 去掉灰色背景 */
+  border-radius: 6px;
+  padding: 0;
+}
+
+.dp-name {
+  font-size: 1rem; /* 16px */
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 3px;
+}
+
+.dp-desc {
+  font-size: 0.875rem; /* 14px */
+  color: #888;
+  line-height: 1.5;
+  display: none;
+}
+
+.dropdown-all {
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent !important;
+}
+
+.dp-arrow {
+  font-size: 22px;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+/* ── Text Mega Menu (Custom Devices & Industries) ── */
+.nav-dropdown--text .dropdown-inner {
+  gap: 0;
+}
+
+.dropdown-col {
+  flex: 1;
+  padding: 0 32px;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-col:first-child { padding-left: 0; }
+.dropdown-col:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.dropdown-col-head {
+  font-size: 0.75rem; /* 12px — kept small as it's a label */
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.dropdown-link {
+  font-size: 1rem; /* 16px */
+  color: #0f172a;
+  text-decoration: none;
+  padding: 7px 0;
+  font-weight: 500;
+  transition: color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dropdown-link:hover { color: #2563eb; }
+
+.dropdown-link--external {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.dropdown-link--external::after {
+  content: '↗';
+  font-size: 11px;
+}
+
+/* ── Nav arrow ── */
+.nav-arrow {
+  font-size: 10px;
+  margin-left: 3px;
+  opacity: 0.5;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+/* ── Overlay behind mega menu ── */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 998;
+}
+.nav-item.has-dropdown:hover ~ .nav-overlay,
+.nav-overlay:hover { display: block; }
+
+/* ── Mobile: hide mega menu ── */
+@media (max-width: 768px) {
+  .nav-dropdown { display: none !important; }
+  .nav-arrow { display: none; }
+}
+
+/* ── Hamburger button ── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1001;
+}
+.nav-burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+  transform-origin: center;
+}
+/* X state when open */
+.nav-burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-burger.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile nav drawer ── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0; right: 0;
+  width: 85%;
+  max-width: 360px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 1002;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  padding-top: 80px;
+}
+.mobile-nav.open {
+  transform: translateX(0);
+}
+.mobile-nav-inner {
+  padding: 24px 28px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mobile-nav-section {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.mobile-nav-section:last-of-type {
+  border-bottom: none;
+}
+.mobile-nav-head {
+  font-size: 0.75rem; /* 12px — label only */
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.mobile-nav-link {
+  display: block;
+  font-size: 1rem; /* 16px */
+  font-weight: 500;
+  color: #0f172a;
+  text-decoration: none;
+  padding: 8px 0;
+  transition: color 0.15s;
+}
+.mobile-nav-link:hover { color: #2563eb; }
+.mobile-nav-link--external {
+  color: #2563eb;
+  font-weight: 600;
+}
+.mobile-nav-cta {
+  padding-top: 24px;
+}
+.mobile-nav-cta .btn-nav {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 14px;
+}
+
+/* ── Overlay ── */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1001;
+}
+.mobile-nav-overlay.open {
+  display: block;
+}
+
+/* ── Show burger on mobile, hide desktop links ── */
+@media (max-width: 768px) {
+  .nav-burger { display: flex; }
+  .nav-links { display: none; }
+  .nav-right { display: none; }
+  .mobile-nav { display: block; }
+}
+
+/* ── Force black text in all dropdown panels ── */
+.nav-dropdown {
+  background: #ffffff;
+  color: #0f172a;
+}
+.dropdown-col-head {
+  color: #aaaaaa !important;
+}
+.dropdown-link {
+  color: #0f172a !important;
+}
+.dropdown-link:hover {
+  color: #2563eb !important;
+}
+.dropdown-link--external {
+  color: #2563eb !important;
+}
+
+/* ============================================================
+   PAGE-SPECIFIC STYLES — ODM / OEM (Custom Devices)
+   Reuses global tokens & classes from style.css / grid.css.
+   ============================================================ */
+
+/* Dark hero on this page → reuse the homepage's nav dark→scrolled behavior
+   (transparent + white logo/links initially; white bg + dark text once .scrolled).
+   That behavior is defined in global style.css; the bottom script toggles .scrolled. */
+/* Active / current treatment for this page's nav entry */
+.dropdown-link.nav-current{color:#2563eb !important;font-weight:700}
+
+/* ============================================================
+   INDUSTRY PAGE TEMPLATE — Healthcare (reusable across 7 pages)
+   ============================================================ */
+body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
+.mobile-nav-link.active { color:#2563eb !important; font-weight:700; }
+
+/* width helpers — constrain TEXT only, never section backgrounds */
+.measure { max-width:680px; }
+.measure-wide { max-width:760px; }
+
+/* section shells & light/dark alternation */
+.ind-sec { padding:96px 0; }
+.ind-sec--light { background:#ffffff; }
+.ind-sec--soft  { background:#f8fafc; }
+.ind-sec--dark  { background:#0f172a; color:#fff; }
+.ind-sec--dark h2.section, .ind-sec--dark h3 { color:#fff; }
+.ind-sec--dark p { color:rgba(255,255,255,.72); }
+.ind-head { margin-bottom:48px; }
+.ind-head .eyebrow { display:block; margin-bottom:16px; }
+.ind-head h2.section { margin:0; }
+
+/* HERO */
+.ind-hero { background:#0b1220; color:#fff; padding:140px 0 64px; }
+.ind-hero .eyebrow.dark { display:block; margin-bottom:20px; }
+/* Axion-style two-column top: left = pill+eyebrow+H1, right = subtitle+buttons (bottom-aligned) */
+.ind-hero-top { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:48px; align-items:end; }
+.ind-hero h1.display { color:#fff; font-size:clamp(2rem,7vw,3.4rem); line-height:1.05; letter-spacing:-.03em; margin:0; }
+.ind-hero-aside { padding-bottom:6px; }
+.ind-hero .lede { font-size:1.0625rem; line-height:1.7; color:rgba(255,255,255,.75); margin:0 0 22px; max-width:440px; }
+.ind-tag { display:inline-flex; align-items:center; gap:8px; font-size:.78rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:#93c5fd; background:rgba(37,99,235,.14); border:1px solid rgba(147,197,253,.25); padding:7px 14px; border-radius:100px; margin-bottom:18px; }
+.ind-tag svg { width:15px; height:15px; }
+.ind-hero-cta { display:flex; flex-wrap:wrap; gap:14px; }
+.ind-hero-banner { margin-top:48px; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.08); box-shadow:0 30px 80px rgba(0,0,0,.35); }
+.ind-hero-banner img { display:block; width:100%; height:auto; }
+
+/* INTRO */
+.intro-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+.intro-lead { font-size:clamp(1.4rem,2.4vw,1.6rem); line-height:1.35; font-weight:600; color:#0f172a; margin:0; }
+.intro-lead em { font-style:italic; color:#2563eb; }
+.intro-body { display:flex; flex-direction:column; gap:16px; padding-top:6px; border-left:1px solid rgba(0,0,0,.06); padding-left:40px; }
+.intro-body p { font-size:1rem; line-height:1.75; color:#64748b; margin:0; }
+
+/* CARD GRIDS (Challenges / Use Cases) */
+.ind-grid { display:grid; gap:20px; }
+.grid-4 { grid-template-columns:repeat(4,1fr); }
+.grid-3 { grid-template-columns:repeat(3,1fr); }
+.cs-card { max-width:360px; }
+.cs-card:hover { transform:none; box-shadow:none; }
+.ind-card { background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:28px 24px; transition:transform .25s ease, box-shadow .25s ease; }
+.ind-card:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(15,23,42,.10); }
+/* Use Cases grid: fully static — no lift, shadow, or color change on hover */
+.uc-static .ind-card:hover { transform:none; box-shadow:none; }
+.ind-card-ic { width:44px; height:44px; border-radius:10px; background:#eff4ff; display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+.ind-card-ic svg { width:22px; height:22px; color:#2563eb; }
+.ind-card h3 { font-size:1.0625rem; font-weight:600; margin:0 0 8px; line-height:1.3; }
+.ind-card p { font-size:.9rem; line-height:1.6; color:#64748b; margin:0; }
+.ind-sec--dark .ind-card { background:rgba(255,255,255,.04); border-color:rgba(255,255,255,.10); }
+.ind-sec--dark .ind-card-ic { background:rgba(37,99,235,.18); }
+.ind-sec--dark .ind-card-ic svg { color:#93c5fd; }
+.ind-sec--dark .ind-card p { color:rgba(255,255,255,.65); }
+
+/* SOLUTIONS — equal-height two columns; one card active at a time (hover/click), left image cross-fades; NO border */
+.sol-flip { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+/* Fixed pixel height so swapping the active image NEVER changes the container height (no jitter).
+   Both imgs are absolute inset:0 inside this fixed box, so the image never participates in layout height. */
+.sol-media { position:relative; height:520px; border-radius:14px; overflow:hidden; background:#f1f5f9; }
+.sol-img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .5s ease; }
+.sol-img.is-active { opacity:1; }
+.sol-panel { display:flex; flex-direction:column; justify-content:center; }
+.sol-panel .eyebrow { display:block; margin-bottom:16px; }
+.sol-panel h2.section { margin:0 0 18px; }
+.sol-cards { display:flex; flex-direction:column; }
+.sol-card { padding:18px 0; cursor:pointer; opacity:.4; transition:opacity .3s ease, filter .3s ease; }
+.sol-card + .sol-card { border-top:1px solid rgba(0,0,0,.08); }
+.sol-card:not(.is-active) { filter:blur(.4px); }
+.sol-card.is-active { opacity:1; filter:none; }
+.sol-card:focus-visible { outline:2px solid #2563eb; outline-offset:4px; }
+.sol-card-head { display:flex; align-items:center; gap:12px; }
+.sol-ic { width:40px; height:40px; border-radius:10px; background:#eef2f7; display:flex; align-items:center; justify-content:center; flex-shrink:0; transition:background .25s ease; }
+.sol-ic svg { width:20px; height:20px; color:#64748b; transition:color .25s ease; }
+.sol-card.is-active .sol-ic { background:#2563eb; }
+.sol-card.is-active .sol-ic svg { color:#fff; }
+.sol-card h3 { font-size:1.125rem; font-weight:600; color:#0f172a; margin:0; }
+/* expandable body: collapsed by default, expands only on the active card (title row always visible) */
+.sol-card-body { max-height:0; overflow:hidden; opacity:0; padding-left:52px; transition:max-height .45s ease, opacity .3s ease, margin .45s ease; }
+.sol-card.is-active .sol-card-body { max-height:260px; opacity:1; margin-top:12px; }
+.sol-card-body p { font-size:.95rem; line-height:1.7; color:#475569; margin:0 0 12px; }
+.sol-chips { display:flex; flex-wrap:wrap; gap:8px; }
+.chip { font-size:.8rem; font-weight:500; color:#2563eb; background:#eff4ff; border-radius:100px; padding:6px 14px; }
+
+/* WHY HARDWARE */
+.why-hw-grid { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
+.why-hw-lead { font-size:1.0625rem; line-height:1.7; margin:18px 0 24px; color:rgba(255,255,255,.78); }
+.check-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px; }
+.check-list li { display:flex; align-items:center; gap:12px; font-size:1rem; color:#fff; }
+.check-list .ck { width:26px; height:26px; border-radius:50%; background:rgba(37,99,235,.20); display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.check-list .ck svg { width:15px; height:15px; color:#93c5fd; }
+.why-hw-media { border-radius:14px; overflow:hidden; }
+.why-hw-media img { display:block; width:100%; height:100%; object-fit:cover; }
+
+/* CAPABILITIES — two NO-border cards, image-topped */
+.cap2-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.cap-col { background:#fff; border-radius:12px; overflow:hidden; transition:transform .25s ease, box-shadow .25s ease; }
+.cap-col:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(15,23,42,.10); }
+.cap-col-img { display:block; width:100%; height:200px; object-fit:cover; border-radius:12px 12px 0 0; }
+.cap-col-body { padding:26px 26px 30px; }
+.cap-col-body h3 { display:flex; align-items:center; gap:10px; font-size:1.125rem; font-weight:600; margin:0 0 16px; }
+.cap-col-body h3 svg { width:20px; height:20px; color:#2563eb; }
+.cap-col-body ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+.cap-col-body li { font-size:.95rem; color:#475569; padding-left:18px; position:relative; }
+.cap-col-body li::before { content:''; position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%; background:#2563eb; }
+
+/* PROCESS */
+.proc-grid { display:grid; grid-template-columns:repeat(6,1fr); gap:16px; }
+.proc-step { padding:24px 18px; border-radius:12px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); }
+.proc-num { font-size:1.5rem; font-weight:700; color:#3b82f6; letter-spacing:-.02em; margin-bottom:12px; }
+.proc-step h3 { font-size:.95rem; font-weight:600; color:#fff; margin:0; line-height:1.35; }
+
+/* RELATED */
+.rel-row { display:flex; flex-wrap:wrap; gap:10px; }
+.rel-link { font-size:.9rem; font-weight:500; color:#475569; background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:100px; padding:9px 18px; text-decoration:none; transition:color .2s ease, border-color .2s ease; }
+.rel-link:hover { color:#2563eb; border-color:rgba(37,99,235,.40); }
+
+/* REVEAL / FADE — self-contained (page may run without main.js) */
+.reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.in, .reveal.visible { opacity:1; transform:none; }
+.fade-section { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.fade-section.in, .fade-section.in-view, .fade-section.visible { opacity:1; transform:none; }
+
+/* RESPONSIVE */
+@media (max-width:900px){
+  .grid-4 { grid-template-columns:repeat(2,1fr); }
+  .grid-3 { grid-template-columns:1fr; }
+  .proc-grid { grid-template-columns:repeat(3,1fr); }
+  /* Hero: stack to single column, left-aligned (eyebrow → H1 → subtitle → buttons → banner) */
+  .ind-hero-top { grid-template-columns:1fr; gap:24px; align-items:start; }
+  .ind-hero-aside { padding-bottom:0; }
+  .ind-hero h1.display { margin:0 0 4px; }
+  .ind-hero .lede { max-width:560px; }
+  .intro-grid, .why-hw-grid, .cap2-grid { grid-template-columns:1fr; gap:32px; }
+  .intro-body { border-left:none; padding-left:0; }
+  .why-hw-media { order:2; }
+  /* Solutions: stack, image on top (normal aspect, not sticky), all steps visible */
+  /* Solutions: stack (image on top), all cards expanded & full opacity, no switching */
+  .sol-flip { grid-template-columns:1fr; gap:24px; }
+  .sol-media { min-height:0; height:clamp(220px,55vw,320px); }
+  .sol-card { opacity:1; filter:none; cursor:default; }
+  .sol-card-body { max-height:none; opacity:1; margin-top:12px; }
+}
+@media (max-width:640px){
+  .ind-sec { padding:64px 0; }
+  .ind-hero { padding:110px 0 48px; }
+  .ind-hero-banner { margin-top:32px; }
+  .grid-4 { grid-template-columns:1fr; }
+  .proc-grid { grid-template-columns:repeat(2,1fr); }
+  .ind-hero .lede { font-size:.95rem; }
+  .ind-hero-cta .btn { width:100%; text-align:center; }
+}
+
+/* ===== PROCESS component (windowed auto-carousel + left image cross-fade) ===== */
+.impl-proc{--rowH:104px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:clamp(28px,4vw,56px);align-items:stretch}
+.impl-proc-media{position:relative;border-radius:16px;overflow:hidden;background:#e8eeff;min-height:calc(var(--rowH) * 3)}
+.impl-proc-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .5s ease}
+.impl-proc-img.active{opacity:1}
+.impl-proc-badge{position:absolute;left:16px;bottom:16px;z-index:2;display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.92);border-radius:100px;padding:8px 15px;font-family:var(--sans);font-size:0.85rem;font-weight:700;color:#0f172a;box-shadow:0 8px 22px -10px rgba(15,23,42,0.45)}
+.impl-proc-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:#2563eb;flex:none}
+.impl-proc-right{display:flex;flex-direction:column;gap:14px}
+.impl-proc-nav{display:flex;justify-content:flex-end;gap:8px}
+.impl-proc-navbtn{width:34px;height:34px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;background:transparent;border:0;outline:none;cursor:pointer;color:#475569;transition:background .2s ease,color .2s ease}
+.impl-proc-navbtn:hover{background:#eef2ff;color:#2563eb}
+.impl-proc-navbtn:focus-visible{outline:none;box-shadow:0 0 0 3px rgba(37,99,235,0.35)}
+.impl-proc-navbtn [data-lucide]{width:18px;height:18px;stroke-width:2.2}
+.impl-proc-window{height:calc(var(--rowH) * 3);overflow:hidden}
+.impl-proc-track{position:relative;display:flex;flex-direction:column;transition:transform .3s ease;will-change:transform}
+.impl-proc-track::before{content:"";position:absolute;z-index:0;left:46px;top:calc(var(--rowH)/2);bottom:calc(var(--rowH)/2);width:2px;transform:translateX(-1px);background:#e2e8f0}
+.impl-proc-step{position:relative;box-sizing:border-box;height:var(--rowH);width:100%;display:flex;align-items:center;gap:16px;padding:0 8px 0 22px;text-align:left;background:none;border:0;outline:none;cursor:pointer}
+.impl-proc-step:focus-visible{outline:none}
+.impl-proc-step:focus-visible .impl-proc-ico{box-shadow:0 0 0 3px rgba(37,99,235,0.35)}
+.impl-proc-bar{position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:34px;border-radius:99px;background:#2563eb;opacity:0;transition:opacity .3s ease}
+.impl-proc-step.active .impl-proc-bar{opacity:1}
+.impl-proc-ico{position:relative;z-index:1;flex:none;width:48px;height:48px;border-radius:12px;background:#eef2ff;display:flex;align-items:center;justify-content:center;transition:background .3s ease,box-shadow .2s ease}
+.impl-proc-ico [data-lucide]{width:22px;height:22px;stroke:#64748b;stroke-width:1.9;transition:stroke .3s ease}
+.impl-proc-step.active .impl-proc-ico{background:#2563eb}
+.impl-proc-step.active .impl-proc-ico [data-lucide]{stroke:#fff}
+.impl-proc-text{display:flex;flex-direction:column;gap:3px;min-width:0;opacity:.5;transition:opacity .3s ease}
+.impl-proc-step.active .impl-proc-text{opacity:1}
+.impl-proc-title{font-family:var(--sans);font-size:1.05rem;font-weight:700;color:#0f172a;line-height:1.25;margin:0}
+.impl-proc-desc{font-family:var(--sans);font-size:0.9rem;color:#475569;line-height:1.4;margin:0}
+@media (max-width:900px){
+  .impl-proc{grid-template-columns:1fr;gap:24px}
+  .impl-proc-media{min-height:240px;order:-1}
+  .impl-proc-window{height:auto;overflow:visible}
+  .impl-proc-track{transform:none !important}
+}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="../../index.html" class="nav-logo" aria-label="GMIC.AI">
+      <svg class="nav-logo-svg" width="287" height="64" viewBox="0 0 287 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20.625 19.7969L23.7139 25.1582L23.8672 25.4238L23.6358 25.624C22.0052 27.035 20.9736 29.1214 20.9736 31.4492C20.9737 33.7322 21.9655 35.7823 23.542 37.1914L23.7666 37.3926L23.6162 37.6533L20.5225 43.0244L20.3135 43.3857L19.9785 43.1367C16.4213 40.4831 14.1163 36.2357 14.1162 31.4492C14.1162 26.6153 16.4676 22.3307 20.085 19.6826L20.419 19.4385L20.625 19.7969Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.742097"/>
+        <path d="M47.0339 3.14062C62.6878 3.14063 75.3784 15.8305 75.3787 31.4844C75.3787 37.0582 73.768 42.2562 70.989 46.6396L76.5984 60.6572L76.7273 60.9785L76.406 60.8496L62.4578 55.2676C58.0188 58.1522 52.722 59.8291 47.0339 59.8291H29.0369C28.1388 59.8291 27.2505 59.7868 26.3738 59.7051L26.1433 59.6836L26.2585 59.4834L30.575 52.0078L30.6179 51.9336H47.0339C58.3273 51.9336 67.4832 42.7778 67.4832 31.4844C67.4829 20.1912 58.3272 11.0361 47.0339 11.0361H30.7996L30.7566 10.9619L26.4314 3.4707L26.3152 3.26855L26.5476 3.24902C27.3679 3.17764 28.1981 3.14063 29.0369 3.14062H47.0339Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.296839"/>
+        <path d="M13.9384 7.53125L17.7431 14.1211L17.8837 14.3633L17.6493 14.5176C12.1313 18.1468 8.48923 24.3932 8.48918 31.4902C8.48918 38.5314 12.0742 44.7355 17.5195 48.377L17.7509 48.5312L17.6122 48.7725L13.8056 55.3643L13.6503 55.6348L13.3876 55.4658C5.51302 50.3968 0.296799 41.5526 0.296799 31.4902C0.29685 21.3707 5.5727 12.4833 13.5224 7.42871L13.7841 7.2627L13.9384 7.53125Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.593678"/>
+        <circle cx="35.3099" cy="31.3871" r="4.78653" fill="#2563eb"/>
+        <ellipse cx="51.0754" cy="31.3871" rx="4.74942" ry="4.78653" fill="#2563eb"/>
+        <path d="M109.406 42.317C106.805 42.317 104.408 41.9096 102.214 41.0948C100.051 40.2486 98.1554 39.0577 96.5258 37.5221C94.9275 35.9865 93.6739 34.1845 92.765 32.1161C91.8875 30.0477 91.4488 27.7756 91.4488 25.2998C91.4488 22.8239 91.8875 20.5518 92.765 18.4834C93.6739 16.415 94.9431 14.613 96.5728 13.0774C98.2024 11.5418 100.114 10.3665 102.308 9.55172C104.502 8.70555 106.915 8.28247 109.547 8.28247C112.462 8.28247 115.079 8.76823 117.398 9.73975C119.748 10.7113 121.723 12.1215 123.321 13.9706L118.432 18.4834C117.241 17.2299 115.941 16.3054 114.53 15.7099C113.12 15.0831 111.584 14.7697 109.923 14.7697C108.325 14.7697 106.868 15.0204 105.552 15.5219C104.235 16.0233 103.091 16.7441 102.12 17.6843C101.18 18.6245 100.443 19.737 99.9104 21.0219C99.409 22.3068 99.1583 23.7328 99.1583 25.2998C99.1583 26.8354 99.409 28.2457 99.9104 29.5306C100.443 30.8155 101.18 31.9437 102.12 32.9152C103.091 33.8554 104.22 34.5762 105.504 35.0776C106.821 35.5791 108.262 35.8298 109.829 35.8298C111.334 35.8298 112.791 35.5947 114.201 35.1247C115.643 34.6232 117.037 33.7927 118.385 32.6332L122.71 38.1332C120.923 39.4808 118.839 40.515 116.458 41.2358C114.107 41.9566 111.757 42.317 109.406 42.317ZM122.71 38.1332L115.752 37.146V24.7827H122.71V38.1332ZM129.784 41.7529V8.84658H136.083L150.092 32.0691H146.754L160.528 8.84658H166.78L166.874 41.7529H159.729L159.682 19.7997H160.998L149.998 38.2743H146.566L135.331 19.7997H136.929V41.7529H129.784ZM174.681 41.7529V8.84658H182.297V41.7529H174.681ZM205.854 42.317C203.316 42.317 200.95 41.9096 198.756 41.0948C196.593 40.2486 194.713 39.0577 193.115 37.5221C191.516 35.9865 190.263 34.1845 189.354 32.1161C188.476 30.0477 188.038 27.7756 188.038 25.2998C188.038 22.8239 188.476 20.5518 189.354 18.4834C190.263 16.415 191.516 14.613 193.115 13.0774C194.744 11.5418 196.64 10.3665 198.803 9.55172C200.965 8.70555 203.331 8.28247 205.901 8.28247C208.753 8.28247 211.323 8.7839 213.611 9.78676C215.93 10.7583 217.873 12.1999 219.44 14.1116L214.551 18.6245C213.423 17.3396 212.169 16.3837 210.79 15.7569C209.411 15.0988 207.907 14.7697 206.277 14.7697C204.742 14.7697 203.331 15.0204 202.046 15.5219C200.762 16.0233 199.649 16.7441 198.709 17.6843C197.769 18.6245 197.032 19.737 196.499 21.0219C195.998 22.3068 195.747 23.7328 195.747 25.2998C195.747 26.8667 195.998 28.2927 196.499 29.5776C197.032 30.8625 197.769 31.975 198.709 32.9152C199.649 33.8554 200.762 34.5762 202.046 35.0776C203.331 35.5791 204.742 35.8298 206.277 35.8298C207.907 35.8298 209.411 35.5164 210.79 34.8896C212.169 34.2315 213.423 33.2443 214.551 31.928L219.44 36.4409C217.873 38.3526 215.93 39.8099 213.611 40.8127C211.323 41.8156 208.737 42.317 205.854 42.317ZM233.112 41.7529L247.779 8.84658H255.3L270.014 41.7529H262.022L249.988 12.7013H252.997L240.915 41.7529H233.112ZM240.445 34.7016L242.467 28.9195H259.39L261.458 34.7016H240.445ZM273.428 41.7529V8.84658H281.043V41.7529H273.428Z" fill="currentColor"/>
+        <path d="M98.5933 52.8272V53.6687H94.3082V56.1822H98.1504V57.0237H94.3082V60.7109H93.3781V52.8272H98.5933ZM102.018 60.8438C100.412 60.8438 99.2496 59.6812 99.2496 57.8542C99.2496 56.0272 100.412 54.8646 102.018 54.8646C103.623 54.8646 104.786 56.0272 104.786 57.8542C104.786 59.6812 103.623 60.8438 102.018 60.8438ZM102.018 60.0466C103.125 60.0466 103.856 59.2383 103.856 57.8542C103.856 56.4701 103.125 55.6618 102.018 55.6618C100.91 55.6618 100.18 56.4701 100.18 57.8542C100.18 59.2383 100.91 60.0466 102.018 60.0466ZM108.543 60.8438C106.982 60.8438 105.897 59.6923 105.897 57.8542C105.897 56.0161 106.96 54.8646 108.543 54.8646C109.905 54.8646 110.824 55.6729 111.001 56.9352H110.082C109.927 56.0715 109.263 55.6618 108.543 55.6618C107.569 55.6618 106.827 56.3594 106.827 57.8542C106.827 59.349 107.591 60.0466 108.543 60.0466C109.274 60.0466 109.938 59.6258 110.093 58.7511H111.001C110.813 60.0577 109.827 60.8438 108.543 60.8438ZM116.045 58.2307V54.9975H116.93V60.7109H116.089V59.8583C115.712 60.4341 115.092 60.8438 114.295 60.8438C113.022 60.8438 112.28 60.1241 112.28 58.8618V54.9975H113.166V58.7732C113.166 59.659 113.653 60.0466 114.472 60.0466C115.214 60.0466 116.045 59.4929 116.045 58.2307ZM120.607 60.8438C119.156 60.8438 118.271 60.2348 118.182 58.895H119.079C119.179 59.7587 119.599 60.0798 120.607 60.0798C121.57 60.0798 121.98 59.7587 121.98 59.194C121.98 58.6846 121.67 58.4521 120.673 58.2639L120.142 58.1642C118.902 57.9317 118.359 57.367 118.359 56.4812C118.359 55.5068 119.134 54.8646 120.441 54.8646C121.969 54.8646 122.744 55.54 122.766 56.758H121.88C121.836 55.8722 121.316 55.6286 120.441 55.6286C119.677 55.6286 119.245 55.9386 119.245 56.4701C119.245 57.0127 119.666 57.212 120.397 57.3559L120.906 57.4556C122.312 57.7324 122.877 58.2085 122.877 59.1386C122.877 60.2237 122.013 60.8438 120.607 60.8438ZM132.668 57.5774L133.476 54.9975H134.428L132.524 60.7109H131.593L130.752 58.0646C130.553 57.4334 130.353 56.7691 130.176 56.1269C129.988 56.7691 129.789 57.4334 129.589 58.0646L128.759 60.7109H127.829L125.924 54.9975H126.877L127.685 57.5774C127.906 58.275 128.106 58.9615 128.305 59.659C128.493 58.9615 128.692 58.275 128.914 57.5774L129.711 54.9975H130.641L131.438 57.5774C131.649 58.2639 131.859 58.9504 132.059 59.6369C132.247 58.9504 132.457 58.2639 132.668 57.5774ZM136.337 54.2224H135.385V53.1372H136.337V54.2224ZM136.315 60.7109H135.429V54.9975H136.315V60.7109ZM140.481 54.9975V55.7725H139.307V59.4708C139.307 59.7698 139.451 59.958 139.96 59.958H140.481V60.7109C140.259 60.722 140.027 60.7331 139.85 60.7331C138.964 60.7331 138.421 60.423 138.421 59.5483V55.7725H137.48V54.9975H138.421V53.3808H139.307V54.9975H140.481ZM144.384 54.8646C145.658 54.8646 146.4 55.5843 146.4 56.8466V60.7109H145.514V56.9352C145.514 56.0494 145.027 55.6618 144.207 55.6618C143.465 55.6618 142.635 56.2154 142.635 57.4777V60.7109H141.749V52.8272H142.635V55.7836C143.011 55.2521 143.609 54.8646 144.384 54.8646ZM157.378 60.7109H156.392L155.473 58.4189H151.886L150.978 60.7109H150.003L153.148 52.8272H154.189L157.378 60.7109ZM152.251 57.4888L152.218 57.5774H155.141L155.097 57.4777C154.754 56.6251 154.134 55.0528 153.657 53.8348C153.203 55.0528 152.594 56.6251 152.251 57.4888ZM160.549 54.9975V55.7725H159.375V59.4708C159.375 59.7698 159.519 59.958 160.028 59.958H160.549V60.7109C160.327 60.722 160.095 60.7331 159.917 60.7331C159.032 60.7331 158.489 60.423 158.489 59.5483V55.7725H157.548V54.9975H158.489V53.3808H159.375V54.9975H160.549ZM164.319 54.9975V55.7725H163.146V59.4708C163.146 59.7698 163.29 59.958 163.799 59.958H164.319V60.7109C164.098 60.722 163.865 60.7331 163.688 60.7331C162.802 60.7331 162.26 60.423 162.26 59.5483V55.7725H161.319V54.9975H162.26V53.3808H163.146V54.9975H164.319ZM167.86 60.8438C166.299 60.8438 165.203 59.7033 165.203 57.8542C165.203 56.0604 166.255 54.8646 167.838 54.8646C169.543 54.8646 170.462 56.2154 170.462 57.8542V58.1642H166.122C166.21 59.4487 166.886 60.0355 167.882 60.0355C168.691 60.0355 169.2 59.6147 169.399 58.9725H170.318C170.042 60.0466 169.222 60.8438 167.86 60.8438ZM166.144 57.367H169.51C169.421 56.4258 168.857 55.6729 167.838 55.6729C166.941 55.6729 166.288 56.2376 166.144 57.367ZM174.481 54.8646C175.754 54.8646 176.496 55.5843 176.496 56.8466V60.7109H175.61V56.9352C175.61 56.0494 175.123 55.6618 174.304 55.6618C173.562 55.6618 172.731 56.2154 172.731 57.4777V60.7109H171.845V54.9975H172.687V55.85C173.063 55.2743 173.684 54.8646 174.481 54.8646ZM180.443 54.9975V55.7725H179.27V59.4708C179.27 59.7698 179.414 59.958 179.923 59.958H180.443V60.7109C180.222 60.722 179.99 60.7331 179.812 60.7331C178.927 60.7331 178.384 60.423 178.384 59.5483V55.7725H177.443V54.9975H178.384V53.3808H179.27V54.9975H180.443ZM182.62 54.2224H181.668V53.1372H182.62V54.2224ZM182.598 60.7109H181.712V54.9975H182.598V60.7109ZM186.752 60.8438C185.147 60.8438 183.984 59.6812 183.984 57.8542C183.984 56.0272 185.147 54.8646 186.752 54.8646C188.358 54.8646 189.52 56.0272 189.52 57.8542C189.52 59.6812 188.358 60.8438 186.752 60.8438ZM186.752 60.0466C187.859 60.0466 188.59 59.2383 188.59 57.8542C188.59 56.4701 187.859 55.6618 186.752 55.6618C185.645 55.6618 184.914 56.4701 184.914 57.8542C184.914 59.2383 185.645 60.0466 186.752 60.0466ZM193.543 54.8646C194.816 54.8646 195.558 55.5843 195.558 56.8466V60.7109H194.672V56.9352C194.672 56.0494 194.185 55.6618 193.366 55.6618C192.624 55.6618 191.794 56.2154 191.794 57.4777V60.7109H190.908V54.9975H191.749V55.85C192.126 55.2743 192.746 54.8646 193.543 54.8646ZM197.053 60.7109V59.6037H198.172V60.8106C198.172 61.7739 197.818 62.1725 197.164 62.239L197.053 62.25V61.6521L197.131 61.641C197.43 61.5967 197.541 61.3199 197.541 60.8881V60.7109H197.053ZM208.988 60.7109H208.003L207.083 58.4189H203.496L202.588 60.7109H201.614L204.758 52.8272H205.799L208.988 60.7109ZM203.861 57.4888L203.828 57.5774H206.751L206.707 57.4777C206.364 56.6251 205.744 55.0528 205.268 53.8348C204.814 55.0528 204.205 56.6251 203.861 57.4888ZM212.361 60.8438C210.8 60.8438 209.715 59.6923 209.715 57.8542C209.715 56.0161 210.778 54.8646 212.361 54.8646C213.723 54.8646 214.642 55.6729 214.819 56.9352H213.9C213.745 56.0715 213.081 55.6618 212.361 55.6618C211.387 55.6618 210.645 56.3594 210.645 57.8542C210.645 59.349 211.409 60.0466 212.361 60.0466C213.092 60.0466 213.756 59.6258 213.911 58.7511H214.819C214.631 60.0577 213.646 60.8438 212.361 60.8438ZM218.384 54.9975V55.7725H217.21V59.4708C217.21 59.7698 217.354 59.958 217.864 59.958H218.384V60.7109C218.163 60.722 217.93 60.7331 217.753 60.7331C216.867 60.7331 216.325 60.423 216.325 59.5483V55.7725H215.383V54.9975H216.325V53.3808H217.21V54.9975H218.384ZM228.227 57.5774L229.036 54.9975H229.988L228.084 60.7109H227.153L226.312 58.0646C226.113 57.4334 225.913 56.7691 225.736 56.1269C225.548 56.7691 225.349 57.4334 225.149 58.0646L224.319 60.7109H223.389L221.484 54.9975H222.436L223.245 57.5774C223.466 58.275 223.666 58.9615 223.865 59.659C224.053 58.9615 224.252 58.275 224.474 57.5774L225.271 54.9975H226.201L226.998 57.5774C227.209 58.2639 227.419 58.9504 227.618 59.6369C227.807 58.9504 228.017 58.2639 228.227 57.5774ZM231.897 54.2224H230.945V53.1372H231.897V54.2224ZM231.875 60.7109H230.989V54.9975H231.875V60.7109ZM236.041 54.9975V55.7725H234.867V59.4708C234.867 59.7698 235.011 59.958 235.52 59.958H236.041V60.7109C235.819 60.722 235.587 60.7331 235.41 60.7331C234.524 60.7331 233.981 60.423 233.981 59.5483V55.7725H233.04V54.9975H233.981V53.3808H234.867V54.9975H236.041ZM239.944 54.8646C241.218 54.8646 241.96 55.5843 241.96 56.8466V60.7109H241.074V56.9352C241.074 56.0494 240.587 55.6618 239.767 55.6618C239.025 55.6618 238.195 56.2154 238.195 57.4777V60.7109H237.309V52.8272H238.195V55.7836C238.571 55.2521 239.169 54.8646 239.944 54.8646ZM249.007 60.8881C247.125 60.8881 245.752 60.0798 245.729 58.1089H246.693C246.715 59.5705 247.723 60.0466 249.007 60.0466C250.269 60.0466 251 59.5483 251 58.5739C251 57.821 250.48 57.4556 249.084 57.1455L248.387 56.9905C247.047 56.6916 245.995 56.149 245.995 54.7096C245.995 53.4473 247.047 52.6501 248.686 52.6501C251.011 52.6501 251.731 53.8348 251.764 55.1193H250.812C250.734 54.1006 250.258 53.4916 248.686 53.4916C247.545 53.4916 246.959 53.9677 246.959 54.7096C246.959 55.4625 247.324 55.839 248.808 56.1712L249.505 56.3262C251.321 56.7248 251.963 57.4334 251.963 58.5739C251.963 59.9691 250.9 60.8881 249.007 60.8881ZM256.04 54.8646C257.645 54.8646 258.697 56.0272 258.697 57.8542C258.697 59.6812 257.645 60.8438 256.04 60.8438C255.209 60.8438 254.556 60.5006 254.124 59.8916V62.8812H253.239V54.9975H254.08V55.8833C254.512 55.23 255.187 54.8646 256.04 54.8646ZM255.929 60.0466C257.036 60.0466 257.767 59.194 257.767 57.8099C257.767 56.4258 257.036 55.6618 255.929 55.6618C254.822 55.6618 254.091 56.4701 254.091 57.8542C254.091 59.2383 254.822 60.0466 255.929 60.0466ZM262.461 60.8438C260.9 60.8438 259.803 59.7033 259.803 57.8542C259.803 56.0604 260.855 54.8646 262.439 54.8646C264.144 54.8646 265.063 56.2154 265.063 57.8542V58.1642H260.722C260.811 59.4487 261.486 60.0355 262.483 60.0355C263.291 60.0355 263.801 59.6147 264 58.9725H264.919C264.642 60.0466 263.823 60.8438 262.461 60.8438ZM260.745 57.367H264.111C264.022 56.4258 263.457 55.6729 262.439 55.6729C261.542 55.6729 260.889 56.2376 260.745 57.367ZM268.827 60.8438C267.265 60.8438 266.169 59.7033 266.169 57.8542C266.169 56.0604 267.221 54.8646 268.805 54.8646C270.51 54.8646 271.429 56.2154 271.429 57.8542V58.1642H267.088C267.177 59.4487 267.852 60.0355 268.849 60.0355C269.657 60.0355 270.167 59.6147 270.366 58.9725H271.285C271.008 60.0466 270.189 60.8438 268.827 60.8438ZM267.11 57.367H270.477C270.388 56.4258 269.823 55.6729 268.805 55.6729C267.908 55.6729 267.254 56.2376 267.11 57.367ZM277.108 55.8168V52.8272H277.994V60.7109H277.152V59.8251C276.721 60.4784 276.045 60.8438 275.193 60.8438C273.587 60.8438 272.535 59.6812 272.535 57.8542C272.535 56.0272 273.587 54.8646 275.193 54.8646C276.023 54.8646 276.676 55.2078 277.108 55.8168ZM275.303 60.0466C276.411 60.0466 277.141 59.2383 277.141 57.8542C277.141 56.4701 276.411 55.6618 275.303 55.6618C274.196 55.6618 273.465 56.5144 273.465 57.8985C273.465 59.2826 274.196 60.0466 275.303 60.0466ZM280.318 58.6514H279.742L279.587 54.9975V52.8272H280.517V54.9975L280.318 58.6514ZM280.606 60.7109H279.488V59.6037H280.606V60.7109Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <div class="nav-links">
+
+      <!-- Products -->
+      <div class="nav-item has-dropdown">
+        <a href="../../index.html#hardware" class="nav-link">
+          Products <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--products">
+          <div class="dropdown-inner">
+            <div class="dropdown-grid">
+              <a href="../../products/mic06/" class="dropdown-product-card" data-category="voice">
+                <img src="../../img/cap/MIC06.png" alt="MIC06">
+                <span class="dp-name">MIC06</span>
+                <span class="dp-desc">Continuous voice capture for shift-based operations</span>
+              </a>
+              <a href="../../products/mic05/" class="dropdown-product-card" data-category="voice">
+                <img src="../../img/cap/MIC05.png" alt="MIC05">
+                <span class="dp-name">MIC05</span>
+                <span class="dp-desc">Button-triggered capture for field notes</span>
+              </a>
+              <a href="../../products/mic01/" class="dropdown-product-card" data-category="voice">
+                <img src="../../img/cap/MIC01.png" alt="MIC01">
+                <span class="dp-name">MIC01</span>
+                <span class="dp-desc">Entry-level pilot device</span>
+              </a>
+              <a href="../../products/telalive/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../../img/products/telalive.png" alt="Telalive">
+                <span class="dp-name">Telalive</span>
+                <span class="dp-desc">AI-powered desk phone & wearable platform</span>
+              </a>
+              <a href="../../products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
+                <div class="dp-all-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+                <span class="dp-name">View All</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Devices -->
+      <div class="nav-item has-dropdown">
+        <a href="../../custom-devices/index.html" class="nav-link">
+          Service <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Hardware</p>
+              <a href="../../custom-devices/odm-oem/index.html" class="dropdown-link">ODM / OEM</a>
+              <a href="../../custom-devices/private-label/index.html" class="dropdown-link">Private Label</a>
+              <a href="../../custom-devices/custom-enclosure/index.html" class="dropdown-link">Custom Enclosure</a>
+              <a href="../../custom-devices/3d-prototype/index.html" class="dropdown-link">3D Small-batch Prototype</a>
+            </div>
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Engineering</p>
+              <a href="../../custom-devices/firmware-integration/index.html" class="dropdown-link">Firmware Integration</a>
+              <a href="../../custom-devices/audio-dsp-tuning/index.html" class="dropdown-link">Audio & DSP Tuning</a>
+              <a href="../../custom-devices/ai-sdk-integration/index.html" class="dropdown-link">AI SDK Integration</a>
+              <a href="../../custom-devices/prototype-validation/index.html" class="dropdown-link">Prototype Validation</a>
+            </div>
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Production</p>
+              <a href="../../custom-devices/evt-dvt-pvt/index.html" class="dropdown-link">EVT / DVT / PVT</a>
+              <a href="../../custom-devices/smt-manufacturing/index.html" class="dropdown-link">SMT Manufacturing</a>
+              <a href="../../custom-devices/certification-support/index.html" class="dropdown-link">Certification Support</a>
+              <a href="../../custom-devices/supply-chain/index.html" class="dropdown-link">Supply Chain Management</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Implementation -->
+      <div class="nav-item">
+        <a href="../../implementation/index.html" class="nav-link">Implementation</a>
+      </div>
+
+      <!-- Proof -->
+      <div class="nav-item">
+        <a href="../../proof/index.html" class="nav-link">Success Stories</a>
+      </div>
+
+      <!-- Industries -->
+      <div class="nav-item has-dropdown">
+        <a href="../../index.html#industries" class="nav-link">
+          Industries <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Industries</p>
+              <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare</a>
+              <a href="../../industries/field-service/index.html" class="dropdown-link">Field Service</a>
+              <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales</a>
+              <a href="../../industries/public-safety/index.html" class="dropdown-link">Public Safety</a>
+              <a href="../../industries/veterinary/index.html" class="dropdown-link">Veterinary</a>
+              <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics</a>
+              <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise</a>
+              <a href="https://nemt.gmic.ai/" class="dropdown-link" target="_blank" rel="noopener noreferrer">NEMT</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resource -->
+      <div class="nav-item has-dropdown">
+        <a href="#" class="nav-link">
+          Resource <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Resource</p>
+              <a href="../../resources/voice-ai-hardware/index.html" class="dropdown-link">Voice AI Hardware</a>
+              <a href="../../resources/ai-hardware-integration/index.html" class="dropdown-link">AI Hardware Integration</a>
+              <a href="../../resources/ai-hardware-odm/index.html" class="dropdown-link">AI Hardware ODM</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="nav-item">
+        <a href="../../process/index.html" class="nav-link">Process</a>
+      </div>
+
+      <!-- Company -->
+      <div class="nav-item has-dropdown">
+        <a href="../../about/index.html" class="nav-link">
+          Company <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Company</p>
+              <a href="../../about/index.html" class="dropdown-link">About Us</a>
+              <a href="../../blog/index.html" class="dropdown-link">Blog</a>
+              <a href="../../contact/index.html" class="dropdown-link">Contact</a>
+              <a href="../../faq/index.html" class="dropdown-link">FAQ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Overlay -->
+    <div class="nav-overlay"></div>
+    <div class="nav-right">
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-nav">Start a Project</a>
+    </div>
+    <button class="nav-burger" id="navBurger"
+      aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-inner">
+
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Industries</p>
+      <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare</a>
+      <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
+      <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales</a>
+      <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
+      <a href="../../industries/veterinary/index.html" class="mobile-nav-link">Veterinary</a>
+      <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics</a>
+      <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise</a>
+      <a href="https://nemt.gmic.ai/" class="mobile-nav-link" target="_blank" rel="noopener noreferrer">NEMT</a>
+    </div>
+
+    <!-- Resource -->
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Resource</p>
+      <a href="../../resources/voice-ai-hardware/index.html" class="mobile-nav-link">Voice AI Hardware</a>
+      <a href="../../resources/ai-hardware-integration/index.html" class="mobile-nav-link">AI Hardware Integration</a>
+      <a href="../../resources/ai-hardware-odm/index.html" class="mobile-nav-link">AI Hardware ODM</a>
+    </div>
+
+    <div class="mobile-nav-section">
+      <a href="../../implementation/index.html" class="mobile-nav-link">Implementation</a>
+      <a href="../../proof/index.html" class="mobile-nav-link">Success Stories</a>
+      <a href="../../process/index.html" class="mobile-nav-link">Process</a>
+    </div>
+
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Company</p>
+      <a href="../../about/index.html" class="mobile-nav-link">About Us</a>
+      <a href="../../blog/index.html" class="mobile-nav-link">Blog</a>
+      <a href="../../contact/index.html" class="mobile-nav-link">Contact</a>
+      <a href="../../faq/index.html" class="mobile-nav-link">FAQ</a>
+    </div>
+
+    <div class="mobile-nav-cta">
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb"
+         target="_blank" rel="noopener" class="btn btn-nav">
+        Start a Project
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+
+<!-- Sentinel for ../../js/main.js (reads .hero offsetHeight); hidden, harmless. -->
+<div class="hero" aria-hidden="true" style="display:none"></div>
+
+<!-- ================= PILLAR PAGE FRAMEWORK ================= -->
+<style>
+  /* ---- Page-scoped tokens (aligned to the main site design system) ---- */
+  .pz { --pz-blue:#2563eb; --pz-head:#0f172a; --pz-ink:#0a0a0a; --pz-body:#475569;
+        --pz-muted:#6b7280; --pz-line:rgba(0,0,0,0.08); --pz-hair:#eef2f7;
+        --pz-alt:#f8fafc; --pz-radius:14px; }
+
+  /* Keep the shared fixed nav legible on this white page (nav is transparent until scrolled) */
+  .nav:not(.scrolled) .nav-links a { color:#334155; }
+  .nav:not(.scrolled) .nav-links a:hover { color:#0f172a; }
+  .nav:not(.scrolled) .nav-logo-svg { color:#0f172a; }
+  .nav:not(.scrolled) .nav-burger span { background:#0f172a; }
+  .nav:not(.scrolled) .nav-arrow { color:#334155; }
+
+  /* ---- Reading progress bar (thin, site primary blue) ---- */
+  .pz-progress { position:fixed; top:0; left:0; height:2px; width:0%;
+    background:var(--pz-blue); z-index:200; transition:width .08s linear; }
+
+  /* ---- Hero (matches the site's hero scale & eyebrow) ---- */
+  /* padding-top clears the fixed .nav (64px), which is out of flow */
+  /* padding-top clears the fixed .nav (64px, out of flow) plus 78px breathing room */
+  .pz-hero { background:#fff; padding:142px 0 56px; }
+  .pz-hero .pz-eyebrow { font-family:var(--sans); font-size:13px; font-weight:500;
+    letter-spacing:0.12em; text-transform:uppercase; color:var(--pz-blue); margin-bottom:18px; }
+  .pz-hero h1 { font-family:var(--sans); font-size:clamp(34px,4.6vw,58px); font-weight:800;
+    line-height:1.05; letter-spacing:-0.03em; color:var(--pz-head); margin-bottom:22px; }
+  .pz-hero .pz-sub { max-width:640px; font-family:var(--sans); font-size:1.05rem; line-height:1.6;
+    color:var(--pz-body); margin-bottom:32px; }
+  /* Two-column hero: copy ~57%, media ~43%, vertically centred */
+  .pz-hero-inner { display:grid; grid-template-columns:minmax(0,57fr) minmax(0,43fr);
+    gap:48px; align-items:center; }
+  .pz-hero-copy { min-width:0; }
+  .pz-hero-cta { display:flex; flex-direction:row; flex-wrap:wrap; gap:12px; }
+  .pz-hero-media { min-width:0; }
+  .pz-hero-media img { display:block; width:100%; aspect-ratio:16/9; object-fit:cover;
+    border-radius:8px; }
+  /* Product shots letterbox instead of cropping */
+  .pz-hero-media.is-contain img { object-fit:contain; background:var(--pz-alt); }
+  /* Stack below 900px: copy on top, image beneath */
+  @media (max-width:900px){
+    .pz-hero-inner { grid-template-columns:minmax(0,1fr); gap:32px; }
+  }
+  @media (max-width:640px){
+    .pz-hero-cta > .pz-btn { flex:1 1 auto; justify-content:center; }
+  }
+
+  /* ---- Breadcrumb: full container width, above the hero row ---- */
+  .pz-crumbs { margin-bottom:20px; font-family:var(--sans); font-size:13px; line-height:1.5; }
+  .pz-crumbs ol { list-style:none; display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin:0; padding:0; }
+  .pz-crumbs a { color:var(--pz-blue); text-decoration:none; }
+  .pz-crumbs a:hover { text-decoration:underline; }
+  .pz-crumbs .pz-crumb-sep { color:rgba(0,0,0,0.28); }
+  /* "Resources" and the current page are plain text — there is no resources landing page yet */
+  .pz-crumbs li { color:var(--pz-muted); }
+
+
+  /* ---- Key Takeaways summary box ---- */
+  /* margin-bottom carries the whole gap to the first H2: .pz-section:first-of-type h2
+     zeroes its own margin-top and padding-top, so nothing else separates them. */
+  .pz-takeaways { background:#f8f9fa; border:1px solid var(--pz-line); border-radius:12px;
+    padding:24px; margin-bottom:56px; }
+  .pz-takeaways h2 { font-family:var(--sans); font-size:17px; font-weight:700; letter-spacing:-0.01em;
+    color:var(--pz-head); margin:0 0 14px; padding:0; border:0; }
+  .pz-takeaways ul { list-style:none; margin:0; padding:0; display:grid; gap:10px; }
+  .pz-takeaways li { position:relative; padding-left:22px; font-family:var(--sans); font-size:15px;
+    line-height:1.6; color:var(--pz-body); }
+  .pz-takeaways li::before { content:""; position:absolute; left:6px; top:9px; width:6px; height:6px;
+    border-radius:50%; background:var(--pz-blue); }
+
+
+  /* ---- Related resources cards ---- */
+  .pz-related-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px; }
+  .pz-related-card { display:flex; flex-direction:column; gap:8px; padding:20px; background:#fff;
+    border:1px solid var(--pz-line); border-radius:12px; text-decoration:none;
+    transition:border-color .15s ease, box-shadow .15s ease, transform .15s ease; }
+  .pz-related-card:hover { border-color:var(--pz-blue); box-shadow:0 6px 24px rgba(0,0,0,0.06);
+    transform:translateY(-2px); }
+  .pz-related-card h3 { font-family:var(--sans); font-size:1.05rem; font-weight:700;
+    letter-spacing:-0.01em; color:var(--pz-head); margin:0; }
+  .pz-related-card p { font-family:var(--sans); font-size:14.5px; line-height:1.6;
+    color:var(--pz-body); margin:0; }
+  .pz-related-more { margin-top:auto;
+    font-family:var(--sans); font-size:14px; font-weight:600; color:var(--pz-blue); }
+  @media (max-width:640px){ .pz-related-grid { grid-template-columns:1fr; } }
+
+  /* ---- Buttons: mirror the site's .btn + .btn-blue-deep / ghost ---- */
+  .pz-btn { display:inline-flex; align-items:center; gap:8px; font-family:var(--sans);
+    font-size:14.5px; font-weight:500; padding:14px 22px; border-radius:100px;
+    transition:all .25s ease; white-space:nowrap; }
+  .pz-btn-primary { background:var(--pz-blue); color:#fff; }
+  .pz-btn-primary:hover { background:#1d4ed8; transform:translateY(-1px); }
+  .pz-btn-ghost { background:transparent; color:var(--pz-head); border:1px solid rgba(0,0,0,0.15); }
+  .pz-btn-ghost:hover { border-color:var(--pz-blue); color:var(--pz-blue); }
+
+  /* ---- 2-column layout ---- */
+  .pz-layout { padding:72px 0 96px; background:#fff; }
+  /* 244px = 220px of TOC content + the 24px padding-left below, so the TOC text
+     keeps its original width while the visual gutter grows to 64 + 24 = 88px. */
+  /* Long-form reading width: the shared .container grows to 2200px, which would leave
+     this content column at ~1732px — too wide for prose. Cap the grid and centre it. */
+  .pz-grid { display:grid; grid-template-columns:minmax(0,1fr) 268px; gap:80px; align-items:start;
+    max-width:1512px; margin-inline:auto; }
+  /* padding-right holds body text, tables and images clear of the TOC gutter */
+  .pz-main { min-width:0; padding-right:48px; }
+
+  /* ---- Content typography (site body: Inter, comfortable measure) ---- */
+  .pz-main p { font-family:var(--sans); font-size:16px; line-height:1.7;
+    color:var(--pz-body); margin:0 0 18px; }
+  .pz-section { scroll-margin-top:96px; }
+  .pz-section h2 { font-family:var(--sans); font-weight:800; font-size:clamp(26px,2.4vw,34px);
+    line-height:1.15; letter-spacing:-0.025em; color:var(--pz-head);
+    margin:56px 0 20px; padding-top:56px; }
+  .pz-section:first-of-type h2 { margin-top:0; padding-top:0; }
+  /* Full-width section image: sits at the end of each section, before the next H2 */
+  /* Two-column section body: text 60% / portrait image 40%. Sits BELOW the H2 so the
+     heading stays full-width and the image aligns to the first paragraph. */
+  .pz-split { display:grid; grid-template-columns:minmax(0,60fr) minmax(0,40fr);
+    gap:32px; align-items:start; }
+  .pz-split-text { min-width:0; }
+  /* Tables, callouts and CTA bands placed as direct children of .pz-section sit OUTSIDE
+     .pz-split, so they span the whole split area, not just the 60% text column. */
+  .pz-section > .pz-table-wrap,
+  .pz-section > .pz-callout,
+  .pz-section > .pz-cta-band { width:100%; }
+  .pz-split + .pz-table-wrap { margin-top:8px; }
+  .pz-table-wrap + .pz-split { margin-top:4px; }
+  /* Full-height column gives the sticky image room to travel as the text scrolls. */
+  .pz-split-media { min-width:0; align-self:stretch; }
+  .pz-section-img { display:block; width:100%; aspect-ratio:3/4; object-fit:cover;
+    border-radius:8px; position:sticky; top:120px; }
+  /* ---- #common-challenges, #development-cost: image height tracks the text column ----
+     The grid row is sized by the text column; the media column stretches to it and the
+     image fills that height. aspect-ratio must be cancelled or it would fight height,
+     and sticky is pointless once the image already spans the full column. */
+  #common-challenges .pz-split,
+  #development-cost .pz-split { align-items:stretch; }
+  #common-challenges .pz-split-media,
+  #development-cost .pz-split-media { align-self:stretch; }
+  #common-challenges .pz-section-img,
+  #development-cost .pz-section-img {
+    height:100%; aspect-ratio:auto; object-fit:cover; position:static; }
+  @media (max-width:768px){
+    /* Single column: text first, image full-width beneath it, landscape. */
+    .pz-split { grid-template-columns:minmax(0,1fr); gap:0; }
+    .pz-split-media { align-self:auto; }
+    .pz-section-img { aspect-ratio:16/9; position:static; margin:24px 0 32px; }
+  }
+  @media (max-width:768px){
+    /* Stacked: no row to stretch into, so fall back to a fixed landscape ratio. */
+    #common-challenges .pz-section-img,
+    #development-cost .pz-section-img { height:auto; aspect-ratio:16/9; }
+  }
+  .pz-section h3 { font-family:var(--sans); font-size:1.15rem; font-weight:700;
+    letter-spacing:-0.01em; color:var(--pz-head); margin:32px 0 10px; }
+
+  /* ---- Comparison tables (clean & minimal — subtle gray header, thin hairlines) ---- */
+  .pz-table-wrap { overflow-x:auto; border:1px solid var(--pz-line);
+    border-radius:var(--pz-radius); margin:20px 0 28px; -webkit-overflow-scrolling:touch; }
+  table.pz-table { width:100%; border-collapse:collapse; font-size:14.5px; min-width:520px; }
+  .pz-table thead th { background:var(--pz-alt); color:var(--pz-head); font-weight:600; text-align:left;
+    padding:14px 18px; white-space:nowrap; border-bottom:1px solid var(--pz-line); }
+  .pz-table tbody td { padding:14px 18px; border-top:1px solid var(--pz-hair);
+    color:var(--pz-body); vertical-align:top; }
+  .pz-table tbody td:first-child { font-weight:600; color:var(--pz-head); }
+
+  /* ---- Callout boxes (editorial: hairline rules top & bottom, quiet label, italic text) ---- */
+  .pz-callout { margin:28px 0; padding:18px 0;
+    border-top:1px solid var(--pz-line); border-bottom:1px solid var(--pz-line);
+    border-left:0; border-radius:0; background:none; }
+  .pz-callout .pz-callout-label { display:block; font-family:var(--sans); font-size:11px;
+    font-weight:500; letter-spacing:1px; text-transform:uppercase; color:var(--pz-muted); margin-bottom:8px; }
+  .pz-callout p { font-family:var(--sans); font-style:italic; font-size:1.05rem; line-height:1.7; color:var(--pz-body); margin:0; }
+  .pz-callout.tip, .pz-callout.best, .pz-callout.insight { border-color:var(--pz-line); background:none; }
+
+  /* ---- Internal link cards (quiet, hairline border) ---- */
+  /* Heading row: heading on the left, "Read more" on the right, vertically centred.
+     The row carries the heading's original margins/padding so vertical rhythm is unchanged. */
+  .pz-head-row { display:flex; align-items:center; justify-content:space-between;
+    gap:20px; flex-wrap:wrap; }
+  .pz-head-row > h2, .pz-head-row > h3 { margin:0; padding:0; }
+  .pz-section .pz-head-row.is-h3 { margin:32px 0 10px; }
+  .pz-section .pz-head-row.is-h2 { margin:56px 0 20px; padding-top:56px; }
+  .pz-section:first-of-type .pz-head-row.is-h2 { margin-top:0; padding-top:0; }
+  /* Small pill button sitting next to the heading */
+  .pz-ilink { flex:0 0 auto; display:inline-block; border:0; margin:0;
+    /* #2563eb = the hero "Talk to Our Engineers" blue (.pz-btn-primary / --pz-blue).
+       !important is defensive: the pill was reported rendering dark despite this rule. */
+    background:#2563eb !important; color:#fff !important;
+    padding:6px 16px; border-radius:9999px;
+    font-family:var(--sans);
+    font-size:13px;
+    font-weight:500; line-height:1.4; white-space:nowrap; text-decoration:none;
+    transition:background .15s ease; }
+  .pz-ilink:hover { background:#1d4ed8 !important; text-decoration:none; }
+
+  /* ---- Image placeholder box (legacy; kept harmless) ---- */
+  .pz-imgph { border:1px dashed rgba(0,0,0,0.14); border-radius:var(--pz-radius);
+    background:var(--pz-alt); color:var(--pz-muted); text-align:center; padding:40px 24px;
+    margin:20px 0 28px; font-family:var(--sans); font-size:14px; line-height:1.6; }
+  .pz-imgph strong { display:block; color:var(--pz-head); font-weight:600; margin-bottom:4px; }
+  /* Placeholder images (framed, cropped to a consistent ratio) */
+  .pz-img { margin:20px 0 28px; border-radius:var(--pz-radius);
+    overflow:hidden; border:1px solid var(--pz-line); aspect-ratio:16/9; background:var(--pz-alt); }
+  .pz-img img { display:block; width:100%; height:100%; object-fit:cover; }
+
+  /* ---- Mid-article CTA bands (match the site's CTA sections) ---- */
+  .pz-cta-band { border-radius:var(--pz-radius); padding:38px 40px; margin:44px 0;
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap; }
+  .pz-cta-band.light { background:var(--pz-alt); border:1px solid var(--pz-line); }
+  .pz-cta-band.dark  { background:var(--black); }
+  .pz-cta-band .pz-cta-text { font-family:var(--sans); font-size:1.25rem; font-weight:700;
+    letter-spacing:-0.015em; line-height:1.3; }
+  .pz-cta-band.light .pz-cta-text { color:var(--pz-head); }
+  .pz-cta-band.dark  .pz-cta-text { color:#fff; }
+
+
+  /* ---- FAQ accordion (matches the ODM page FAQ exactly) ---- */
+  .pz-faq { margin-top:8px; background:#fff;
+    border:1px solid rgba(0,0,0,0.06); border-radius:var(--pz-radius); overflow:hidden; }
+  .pz-faq-item { border-bottom:1px solid var(--pz-hair); }
+  .pz-faq-item:last-child { border-bottom:none; }
+  .pz-faq-q { width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px;
+    text-align:left; background:none; border:none; padding:20px 24px; cursor:pointer;
+    font-family:var(--sans); font-size:1.0625rem; font-weight:600; color:var(--pz-ink); line-height:1.4; }
+  .pz-faq-icon { flex-shrink:0; width:28px; height:28px; position:relative; color:#9ca3af; transition:color .18s; }
+  .pz-faq-icon::before, .pz-faq-icon::after { content:''; position:absolute; background:currentColor;
+    border-radius:2px; top:50%; left:50%; }
+  .pz-faq-icon::before { width:14px; height:2px; transform:translate(-50%,-50%); }
+  .pz-faq-icon::after  { width:2px; height:14px; transform:translate(-50%,-50%); transition:transform .25s ease; }
+  .pz-faq-item.open .pz-faq-icon { color:#2563eb; }
+  .pz-faq-item.open .pz-faq-icon::after { transform:translate(-50%,-50%) scaleY(0); }
+  .pz-faq-a { max-height:0; overflow:hidden; transition:max-height .3s ease; }
+  .pz-faq-a-inner { padding:0 24px 22px; font-family:var(--sans); font-size:0.95rem; color:#5b6472; line-height:1.72; }
+
+  /* ================= STICKY TOC (right sidebar) ================= */
+  .pz-toc-aside { position:sticky; top:100px; align-self:start; padding-left:48px; }
+  .pz-toc-title { font-family:var(--sans); font-size:16px; font-weight:500; letter-spacing:0.12em;
+    text-transform:uppercase; color:var(--text-muted); margin-bottom:16px; }
+  .pz-toc-list { list-style:none; margin:0; padding:0; border-left:1px solid var(--pz-line); }
+  .pz-toc-list a { display:block; font-family:var(--sans); font-size:15px; font-weight:500; color:var(--pz-muted);
+    line-height:1.45; padding:8px 0 8px 16px; margin-left:-1px; border-left:2px solid transparent;
+    transition:color .2s ease, border-color .2s ease, font-weight .2s ease; }
+  .pz-toc-list a:hover { color:var(--pz-head); }
+  .pz-toc-list a.active { color:var(--pz-blue); font-weight:600; border-left-color:var(--pz-blue); }
+
+  /* ---- Tablet: horizontal sticky bar with dropdown ---- */
+  .pz-toc-bar { display:none; }
+  .pz-toc-bar { position:sticky; top:64px; z-index:90; background:rgba(255,255,255,.92);
+    backdrop-filter:saturate(180%) blur(10px); -webkit-backdrop-filter:saturate(180%) blur(10px); }
+  .pz-toc-bar-inner { display:flex; align-items:center; gap:12px; padding:12px 0; }
+  .pz-toc-bar-btn { display:flex; align-items:center; gap:8px; font-family:var(--sans); font-size:14px;
+    font-weight:600; color:var(--pz-head); background:none; border:none; cursor:pointer; }
+  .pz-toc-bar-btn svg { width:16px; height:16px; stroke:var(--pz-blue); transition:transform .25s ease; }
+  .pz-toc-bar.open .pz-toc-bar-btn svg { transform:rotate(180deg); }
+  .pz-toc-bar-current { font-family:var(--sans); font-size:13px; color:var(--pz-muted); }
+
+  /* ---- Floating panel (shared by tablet dropdown + mobile slide-up) ---- */
+  /* bottom-LEFT to avoid the site's centered mic FAB and bottom-right back-to-top button */
+  .pz-toc-fab { display:none; position:fixed; left:20px; bottom:88px; z-index:320;
+    align-items:center; gap:8px; background:var(--pz-blue); color:#fff; border:none;
+    border-radius:100px; padding:13px 20px; font-family:var(--sans); font-size:14px; font-weight:500; cursor:pointer;
+    box-shadow:0 6px 18px rgba(0,0,0,0.16); }
+  .pz-toc-fab svg { width:18px; height:18px; stroke:#fff; }
+  .pz-toc-overlay { position:fixed; inset:0; background:rgba(10,22,40,.4); z-index:400;
+    opacity:0; visibility:hidden; transition:opacity .25s ease, visibility .25s ease; }
+  .pz-toc-overlay.open { opacity:1; visibility:visible; }
+  .pz-toc-floating { position:fixed; left:0; right:0; bottom:0; z-index:410; background:#fff;
+    border-radius:20px 20px 0 0; padding:8px 20px 28px; max-height:70vh; overflow-y:auto;
+    transform:translateY(100%); transition:transform .3s cubic-bezier(.4,0,.2,1); box-shadow:0 -8px 40px rgba(0,0,0,.15); }
+  .pz-toc-floating.open { transform:translateY(0); }
+  .pz-toc-floating .pz-toc-handle { width:40px; height:4px; border-radius:2px; background:#d5dae3; margin:8px auto 16px; }
+  .pz-toc-floating .pz-toc-title { padding:0 4px; font-size:16px; }
+  .pz-toc-floating .pz-toc-list a { font-size:15px; padding:12px 16px; }
+
+  /* ================= RESPONSIVE ================= */
+  @media (max-width:1024px) {
+    .pz-grid { grid-template-columns:1fr; gap:0; }
+    .pz-toc-aside { display:none; }
+    .pz-toc-bar { display:block; }
+    .pz-hero { padding-top:138px; }
+  }
+  /* Tablet: render the shared panel as a dropdown anchored under the sticky bar */
+  @media (min-width:641px) and (max-width:1024px) {
+    .pz-toc-overlay { background:transparent; }
+    .pz-toc-floating { top:112px; bottom:auto; left:clamp(20px,4vw,80px); right:auto;
+      width:360px; max-width:calc(100vw - 40px); max-height:60vh; border-radius:12px;
+      transform:translateY(-8px); opacity:0; visibility:hidden; pointer-events:none;
+      box-shadow:0 12px 32px rgba(0,0,0,.12); border:1px solid var(--pz-line);
+      transition:opacity .2s ease, transform .2s ease, visibility .2s ease; }
+    .pz-toc-floating.open { transform:translateY(0); opacity:1; visibility:visible; pointer-events:auto; }
+    .pz-toc-floating .pz-toc-handle { display:none; }
+    .pz-toc-floating .pz-toc-list a { font-size:14px; padding:9px 14px; }
+  }
+  @media (max-width:640px) {
+    .pz-toc-bar { display:none; }
+    .pz-toc-fab { display:inline-flex; }
+    .pz-cta-band { flex-direction:column; align-items:flex-start; padding:28px 26px; }
+  }
+  /* Desktop: no floating panel needed */
+  @media (min-width:1025px) {
+    .pz-toc-fab, .pz-toc-overlay, .pz-toc-floating { display:none !important; }
+  }
+</style>
+
+<div class="pz">
+<!-- Reading progress bar -->
+<div class="pz-progress" id="pzProgress" role="progressbar" aria-label="Reading progress"></div>
+
+<!-- ========== HERO (full-width) ========== -->
+<header class="pz-hero">
+  <div class="container">
+    <div class="pz-hero-inner">
+      <div class="pz-hero-copy">
+        <nav class="pz-crumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="../../index.html">Home</a></li>
+            <li class="pz-crumb-sep" aria-hidden="true">&gt;</li>
+            <li>Resources</li>
+            <li class="pz-crumb-sep" aria-hidden="true">&gt;</li>
+            <li aria-current="page">AI Hardware Integration</li>
+          </ol>
+        </nav>
+        <div class="pz-eyebrow">Resource</div>
+        <h1>AI Hardware Integration</h1>
+        <p class="pz-sub">A practical guide to turning your AI software into a shipping physical product — from edge-vs-cloud architecture and on-device inference to connectivity, firmware, security, and manufacturing at scale. Written for AI teams who move fast in software but need a hardware partner to close the last mile.</p>
+        <div class="pz-hero-cta">
+          <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
+          <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener noreferrer" class="pz-btn pz-btn-ghost">Discuss Your Integration Project</a>
+        </div>
+      </div>
+      <div class="pz-hero-media">
+        <img src="../../img/resources/ai-hardware-integration/hero.png" alt="PCB board assembly on the production line">
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ========== TABLET STICKY TOC BAR ========== -->
+<div class="pz-toc-bar" id="pzTocBar">
+  <div class="container">
+    <div class="pz-toc-bar-inner">
+      <button class="pz-toc-bar-btn" id="pzTocBarBtn" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        On this page
+      </button>
+      <span class="pz-toc-bar-current" id="pzTocBarCurrent"></span>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 2-COLUMN LAYOUT ========== -->
+<div class="pz-layout">
+  <div class="container">
+    <div class="pz-grid">
+
+      <!-- ===== MAIN CONTENT ===== -->
+      <main class="pz-main">
+
+        <aside class="pz-takeaways" aria-labelledby="pz-takeaways-title">
+          <h2 id="pz-takeaways-title">Key Takeaways</h2>
+          <ul>
+            <li>Hardware integration is not "putting a chip in a box" — it is the coordinated design of sensors, processor, connectivity, power, firmware, and SDK so the model and the device behave as one dependable product.</li>
+            <li>The reference architecture runs input → intelligence → output: sensors capture raw signal, a DSP or main processor pre-processes it, inference happens on-device or in the cloud, and results return through your SDK.</li>
+            <li>The most common failure is the reality gap — a model that performs well on clean recordings degrades sharply on real device audio, because enclosure acoustics and noise were never accounted for.</li>
+            <li>Costs split into non-recurring engineering (design, PCB layout, firmware, audio tuning, tooling, certification) and per-unit manufacturing cost; certification should be planned during DVT, since failures often force hardware changes.</li>
+            <li>Your existing AI stays yours: firmware handles capture and pre-processing, then calls your endpoints or runs your own weights compiled to the device accelerator — the integration work is the SDK, auth, and data pipeline layer.</li>
+          </ul>
+        </aside>
+
+        <section class="pz-section" id="what-is-ai-hardware-integration" data-toc="What Is AI Hardware Integration?">
+          <h2>What Is AI Hardware Integration?</h2>
+          <p>AI hardware integration is the engineering work of bringing an AI model and its software together with a physical device so they function as one dependable product. It is not simply "putting a chip in a box." It is the coordinated design of the sensors that capture the real world, the processor that runs or reaches the model, the memory and power system that sustain it, the radios that connect it, the firmware that ties everything together, and the cloud APIs the device talks to. Get any one of these wrong and the AI that worked flawlessly on a laptop stutters, drains its battery, or fails in the field.</p>
+          <p>The central question in every integration project is where inference happens. Some processing must run on the device itself — wake-word detection, voice activity detection, noise reduction, and privacy-sensitive analysis. Other workloads, such as large-model transcription or LLM reasoning, are better served from the cloud. The architecture that splits work between edge and cloud, and the pipeline that moves data reliably between them, is the heart of the discipline.</p>
+          <p>For AI companies, integration is the bridge between a working demo and a manufacturable product. It answers concrete questions: which processor delivers the needed inference within your cost and power budget, how audio is captured cleanly in a noisy room, how the device updates itself after launch, how user data stays private, and how the whole thing survives certification and volume production. This guide walks through each of those layers in turn.</p>
+        </section>
+
+        <section class="pz-section" id="why-hardware-integration" data-toc="Why AI Companies Need Hardware Integration">
+          <h2>Why AI Companies Need Hardware Integration</h2>
+          <p>The most capable AI models in the world are only as useful as their access to the real world. A medical scribe needs to hear a clinician and patient clearly across a busy exam room; a field-service assistant needs to capture a technician's notes hands-free in a noisy plant; a wearable needs to run for a full shift on a small battery. None of that is a software problem — it is a hardware problem that determines whether the AI ever gets clean input to work with.</p>
+          <p>Dedicated hardware also unlocks product categories that a phone app cannot serve: always-on voice capture, purpose-built form factors, offline operation, and data that never leaves a controlled device. It removes the friction of asking users to open an app, and it lets you own the full experience — and the recurring value — rather than renting attention on someone else's platform. For many AI companies, the device is what turns a feature into a defensible business.</p>
+          <p>The challenge is that building hardware is a fundamentally different discipline from shipping software. Silicon selection, PCB layout, RF design, acoustic tuning, thermal and power management, certification, and supply chain each carry their own hard-won expertise and long lead times. AI teams that try to learn all of it in-house typically lose a year to avoidable re-spins. Partnering with an experienced integration team lets you keep owning the model and the product vision while an expert closes the hardware gap.</p>
+        </section>
+
+        <section class="pz-section" id="integration-architecture" data-toc="AI Hardware Integration Architecture">
+          <h2>AI Hardware Integration Architecture</h2>
+          <div class="pz-split">
+            <div class="pz-split-text">
+          <p>A reference architecture for an integrated AI device flows from input to intelligence to output. At the front end sit the sensors — microphones, cameras, IMUs, or environmental sensors — that capture raw signal. That signal passes through a pre-processing stage, often on a dedicated DSP or the main processor, where audio is beamformed and denoised, or video is framed and compressed. The cleaned data is then handed to the inference layer, which either runs a model locally on an NPU or MCU, or packages the data and sends it to a cloud endpoint.</p>
+          <p>Surrounding this pipeline are the supporting subsystems: memory and storage to buffer data, a connectivity stack (BLE, Wi-Fi, or cellular) to reach the cloud and companion app, a power management system sized for the device's duty cycle, and firmware that orchestrates the whole sequence and manages state, security, and OTA updates. The companion app and backend SDK complete the loop, giving users control and delivering results.</p>
+          <p>The single most consequential architecture decision is the edge/cloud/hybrid split. A pure-edge design maximizes privacy, latency, and offline resilience but is bounded by the silicon you can afford. A cloud-first design gives you the biggest models and instant updates at the cost of connectivity dependence and per-request expense. Most successful products are hybrid — lightweight, latency-critical, and privacy-sensitive tasks run on-device, while heavy reasoning runs in the cloud. Deciding this split early, before PCB layout, is what prevents costly re-spins later.</p>
+            </div>
+            <div class="pz-split-media">
+              <!-- TODO: replace with final image -->
+              <img class="pz-section-img" src="../../img/resources/ai-hardware-integration/architecture.png" alt="PCB board assembly showing integrated SoC, memory, and connectivity modules" loading="lazy">
+            </div>
+          </div>
+        </section>
+
+        <section class="pz-section" id="core-components" data-toc="Core Components">
+          <h2>Core Components of AI Hardware Integration</h2>
+          <p>Every integrated AI device is assembled from the same family of building blocks. Understanding what each one does — and how the choices interact — is the foundation for scoping a realistic bill of materials and avoiding late-stage surprises. The sections below walk through each core component and the trade-offs that matter most for AI workloads.</p>
+
+          <h3>Sensors &amp; Input</h3>
+          <p>Sensors are the device's window onto the world, and their quality sets a ceiling on everything the AI can do downstream. For voice products, this means the microphone array — the number, placement, and quality of MEMS microphones directly determine how well beamforming and noise reduction can isolate a speaker. Other products add cameras, inertial measurement units, or environmental sensors. Because a model can never recover information the sensor failed to capture, sensor selection and placement are made early and validated in real acoustic and lighting conditions, not on a bench in isolation.</p>
+
+          <h3>PCB &amp; PCBA</h3>
+          <p>The printed circuit board is the physical substrate that ties every component together, and the assembled board (PCBA) is where design meets manufacturing. For AI devices the layout is unusually demanding: high-speed data lines to processors and cameras, sensitive analog audio traces, and RF antennas must coexist without interfering with one another. Good layout keeps noise away from microphone signals, routes power cleanly, and leaves room for thermal dissipation. Board design also drives manufacturability — component choices and footprint decisions determine whether the design can be built reliably on an automated SMT line at volume.</p>
+
+          <h3>Microcontrollers &amp; Processors</h3>
+          <p>The processor is the brain of the device and the biggest single lever on cost, power, and how much AI can run on-device. The choice spans a spectrum: simple microcontrollers (MCUs) for sensor handling and wake-word detection, application-class microprocessors (MPUs) running Linux for richer edge workloads, and integrated systems-on-chip (SoCs) with dedicated NPUs for meaningful on-device neural inference. Picking too little compute forces everything to the cloud; picking too much wastes battery and bill-of-materials cost. The table below summarizes how the three classes compare.</p>
+          <h3 style="font-size:16px;color:#555;font-weight:600;">MCU vs. MPU vs. SoC</h3>
+          <div class="pz-table-wrap">
+            <table class="pz-table">
+              <thead><tr><th>Feature</th><th>MCU</th><th>MPU</th><th>SoC</th></tr></thead>
+              <tbody>
+                <tr><td>Compute</td><td>Low — real-time control, DSP, wake-word</td><td>High — app-class, runs Linux</td><td>Highest — CPU + GPU/NPU on one die</td></tr>
+                <tr><td>Power draw</td><td>Very low (µA–mW sleep)</td><td>Moderate to high</td><td>Moderate to high; NPU is efficient per inference</td></tr>
+                <tr><td>Best for</td><td>Wearables, sensor hubs, always-on wake</td><td>Edge gateways, richer local processing</td><td>On-device neural inference, camera, display</td></tr>
+                <tr><td>Cost</td><td>$ — cents to a few dollars</td><td>$$ — needs external memory/PMIC</td><td>$$$ — highest BOM, most capability</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Memory &amp; Storage</h3>
+          <p>Memory and storage are frequently underestimated and are a common cause of mid-project re-specs. RAM must hold the running model, its activations, and the audio or image buffers in flight, while flash storage holds firmware, any on-device model weights, and captured data awaiting upload. On-device AI is especially memory-hungry — a quantized speech or vision model can consume several megabytes, and OTA updates require enough spare flash for a second firmware image plus rollback. Sizing memory generously at the architecture stage is far cheaper than discovering a shortfall after the PCB is laid out.</p>
+
+          <h3>Wireless Modules (BLE / WiFi)</h3>
+          <p>Connectivity is how the device reaches its companion app and cloud AI, and the radio choice shapes both user experience and battery life. Bluetooth Low Energy is ideal for pairing, control, and small data syncs at minimal power draw. Wi-Fi is the workhorse for uploading audio or video, reaching cloud inference directly, and pulling large OTA updates without a phone in the loop. Cellular (4G/LTE or LTE-M) adds standalone connectivity where no local network exists. Many products carry more than one radio; the table below contrasts the two most common.</p>
+          <h3 style="font-size:16px;color:#555;font-weight:600;">BLE vs. WiFi</h3>
+          <div class="pz-table-wrap">
+            <table class="pz-table">
+              <thead><tr><th>Feature</th><th>BLE</th><th>WiFi</th></tr></thead>
+              <tbody>
+                <tr><td>Range</td><td>~10–30 m indoors</td><td>~30–50 m indoors, via access point</td></tr>
+                <tr><td>Throughput</td><td>Low — up to ~1–2 Mbps practical</td><td>High — tens to hundreds of Mbps</td></tr>
+                <tr><td>Power draw</td><td>Very low — ideal for battery devices</td><td>High — meaningful battery impact</td></tr>
+                <tr><td>Best for</td><td>Pairing, control, small syncs via phone</td><td>Audio/video upload, cloud AI, large OTA</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>Power Management</h3>
+          <p>Power management determines whether a device lasts a full shift or dies at lunch, and it is tightly coupled to every other choice. The power management IC (PMIC), battery chemistry and capacity, charging circuit, and — most importantly — the firmware's sleep strategy together define battery life. AI workloads are bursty: the device idles in a low-power wake-word state most of the time, then spikes when capturing and processing. Designing aggressive sleep states and duty-cycling the processor and radios is usually more effective than simply adding a bigger battery, which adds size, weight, and cost.</p>
+
+          <h3>Audio DSP</h3>
+          <p>For voice-first products, the audio DSP pipeline is what separates a usable device from a frustrating one. Before any AI ever sees the signal, the pipeline handles acoustic echo cancellation, beamforming across the microphone array to focus on the speaker, noise reduction to suppress background sound, and automatic gain control. This front-end processing — tuned to the specific enclosure, microphone placement, and acoustic environment — is what lets a cloud or on-device model transcribe accurately in a real exam room, factory, or vehicle. Audio tuning is specialized work and is one of the most common reasons voice devices underperform in the field.</p>
+
+          <h3>Firmware &amp; OS</h3>
+          <p>Firmware is the software layer that orchestrates the hardware — managing sensors, the inference pipeline, connectivity, power states, security, and OTA updates. Constrained devices typically run a real-time operating system (such as FreeRTOS or Zephyr) or bare-metal code, while more capable SoCs run embedded Linux. The firmware is where timing, reliability, and the edge/cloud handoff are actually implemented, and it is also where security features like secure boot and signed updates live. Robust firmware is what makes a device dependable in the field long after launch.</p>
+
+          <h3>Cloud Connectivity &amp; SDK</h3>
+          <p>The cloud layer and SDK connect the device to your AI services and to the user. The device authenticates, streams or uploads data to your endpoints, and receives results, model updates, and configuration in return. A well-designed SDK abstracts this so the device treats your AI as a service — calling your existing APIs or streaming audio to your pipeline — while handling authentication, retries, buffering during connectivity gaps, and secure transport. This is the layer that lets an AI software team keep owning the model and backend while the device is built around it.</p>
+        </section>
+
+        <section class="pz-section" id="integration-examples" data-toc="Integration Examples">
+          <h2>AI Hardware Integration Examples</h2>
+          <p>The principles above take concrete shape across product categories. The examples below illustrate how the edge/cloud split, sensor choices, connectivity, and power budget change depending on what the device is asked to do — and where the hard integration problems typically sit.</p>
+
+          <h3>Medical AI Scribe</h3>
+          <p>A medical scribe device captures a clinician-patient conversation and turns it into structured notes. The integration challenge is acoustic: a multi-microphone array with strong beamforming and noise reduction must isolate two speakers in a reverberant exam room. Wake-word and voice activity detection run on-device for responsiveness and privacy, while transcription and clinical summarization run in the cloud. Because health data is involved, the pipeline is built for privacy and compliance, keeping raw audio controlled and encrypting everything in transit.</p>
+
+          <h3>Smart Glasses</h3>
+          <p>Smart glasses pack microphones, speakers, sometimes a camera, and a battery into a tight, weight-sensitive form factor. The integration is dominated by thermal and power constraints — there is almost no room for battery, so aggressive duty-cycling and efficient on-device processing are essential. BLE links to a phone that provides heavier compute and connectivity, offloading cloud AI to the paired device to preserve the wearable's battery and keep it light enough to wear all day.</p>
+
+          <h3>AI Earbuds</h3>
+          <p>AI earbuds combine audio playback, voice capture, and increasingly on-device intelligence in an extremely small enclosure. Bone-conduction or in-ear microphones, low-power Bluetooth audio, and tiny batteries make power management the defining constraint. Wake-word detection and audio processing run on a low-power DSP, while conversational AI runs in the cloud through the paired phone. The acoustic tuning to capture the wearer's voice cleanly while rejecting wind and ambient noise is the core integration work.</p>
+
+          <h3>Smart Badge</h3>
+          <p>A smart badge is a lightweight, always-on wearable for frontline and shift-based workers — capturing voice notes, communications, or context throughout a shift. The priorities are all-day battery life, reliable connectivity across a large facility (often Wi-Fi with BLE for provisioning), and a rugged, comfortable form factor. Most processing is offloaded to the cloud to keep the badge small and inexpensive, with on-device wake and buffering to bridge connectivity gaps.</p>
+
+          <h3>AI Cameras</h3>
+          <p>AI cameras run vision models — object detection, presence, or scene analysis — and are strong candidates for edge inference because streaming raw video to the cloud is bandwidth-hungry and privacy-sensitive. An SoC with a dedicated NPU runs the vision model locally, sending only events or metadata upstream. The integration challenges are image signal processing, thermal management under sustained inference load, and delivering enough compute within the power and cost budget.</p>
+
+          <h3>Industrial Wearables</h3>
+          <p>Industrial wearables bring AI assistance to technicians and operators in demanding environments. Ruggedization, dust and water resistance, glove-friendly controls, and long battery life dominate the design, alongside audio tuning that works in high-noise settings. Connectivity may combine Wi-Fi, BLE, and cellular to stay online across a plant or field site, and hands-free voice interaction is central so workers can keep working while they capture data.</p>
+
+          <h3>Voice Agents</h3>
+          <p>Standalone voice-agent devices — smart speakers, desk assistants, and communication devices — are built around clean far-field audio capture and low-latency response. A microphone array with beamforming handles the acoustics, on-device wake-word detection triggers capture, and cloud AI handles speech recognition and conversational reasoning. Because these devices are usually mains-powered or generously batteried, the integration focus shifts from power to audio quality and responsiveness.</p>
+
+          <h3>Edge AI Gateway</h3>
+          <p>An edge AI gateway aggregates data from multiple sensors or devices and runs heavier local inference before deciding what to send to the cloud. Built around an MPU or SoC running Linux, it prioritizes compute, memory, and robust connectivity over battery life since it is typically powered. Gateways are the pattern of choice when latency, bandwidth, or privacy make it impractical to send everything upstream, acting as a local intelligence hub for a fleet of simpler endpoints.</p>
+
+
+          <div class="pz-cta-band light">
+            <span class="pz-cta-text">Have a hardware integration challenge? Talk to our engineers.</span>
+            <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
+          </div>
+        </section>
+
+        <section class="pz-section" id="common-challenges" data-toc="Common Challenges">
+          <h2>Common AI Hardware Integration Challenges</h2>
+          <div class="pz-split">
+            <div class="pz-split-text">
+          <p>The recurring failures in AI hardware projects are rarely about the AI model itself. The first is the reality gap: a model that performs beautifully on clean recordings degrades sharply on real device audio, because the microphone, enclosure acoustics, and noise environment were not accounted for. The fix is to capture and validate on the actual hardware early, and to invest in the audio front-end rather than expecting the model to compensate.</p>
+          <p>The second is under-budgeting power and memory. On-device inference is far heavier than teams expect, and a design that ignores sleep states or under-sizes RAM and flash forces expensive re-spins. The third is deferring connectivity, security, and OTA to "later" — retrofitting signed updates, secure boot, and buffering into a shipped design is painful and sometimes impossible. The fourth is treating certification as an afterthought, when RF and safety failures discovered late can require hardware changes and reset the schedule by months.</p>
+          <p>Underlying most of these is a coordination problem: silicon, PCB, firmware, acoustics, cloud, and manufacturing decisions are deeply interdependent, and teams optimizing one in isolation create problems downstream. The most reliable way to avoid this is to make the big architecture decisions together, up front, with people who have shipped this class of device before.</p>
+            </div>
+            <div class="pz-split-media">
+              <!-- TODO: replace with final image -->
+              <img class="pz-section-img" src="../../img/resources/ai-hardware-integration/challenges.png" alt="Engineer running testing and validation to catch integration issues" loading="lazy">
+            </div>
+          </div>
+          <div class="pz-callout insight">
+            <span class="pz-callout-label">Engineering Insight</span>
+            <p>The model is almost never the bottleneck — the audio front-end is. Teams routinely spend months improving accuracy that a properly tuned microphone array and DSP pipeline would have delivered for free.</p>
+          </div>
+          <div class="pz-callout best">
+            <span class="pz-callout-label">Best Practice</span>
+            <p>Lock the edge-versus-cloud split and the processor class before PCB layout begins. Nearly every expensive re-spin traces back to an architecture decision that was left open too long.</p>
+          </div>
+        </section>
+
+        <section class="pz-section" id="development-cost" data-toc="Development Cost">
+          <h2>AI Hardware Development Cost</h2>
+          <div class="pz-split">
+            <div class="pz-split-text">
+          <p>The cost of an integrated AI device breaks into two parts: non-recurring engineering (NRE) to design and validate the product, and per-unit cost to manufacture it. NRE covers industrial and mechanical design, custom PCB layout, firmware and SDK integration, audio tuning, tooling for the enclosure, and certification — commonly tens to low hundreds of thousands of dollars depending on complexity and how much can be built on proven reference designs. Reusing a validated platform is the single biggest way to reduce it.</p>
+          <p>Per-unit cost is driven by the processor class, memory, radios, battery, sensors, and enclosure, and it falls significantly with volume as tooling amortizes and component pricing improves. The architecture decisions made early — especially the processor and the edge/cloud split — set the floor on both NRE and unit cost, which is why they deserve the most scrutiny at the start. The table below maps the phases a device passes through and what drives cost at each stage.</p>
+          <h3 style="font-size:16px;color:#555;font-weight:600;">Prototype vs. Production Cost Breakdown</h3>
+            </div>
+            <div class="pz-split-media">
+              <!-- TODO: replace with final image -->
+              <img class="pz-section-img" src="../../img/resources/ai-hardware-integration/cost.png" alt="R&amp;D structural design work during AI hardware development" loading="lazy">
+            </div>
+          </div>
+          <div class="pz-table-wrap">
+            <table class="pz-table">
+              <thead><tr><th>Phase</th><th>Typical Activities</th><th>Cost Drivers</th></tr></thead>
+              <tbody>
+                <tr><td>Prototype</td><td>Architecture, breadboard/dev-kit builds, feasibility, early firmware</td><td>Engineering time, dev boards, iteration cycles</td></tr>
+                <tr><td>EVT / DVT</td><td>Custom PCB, enclosure tooling, audio tuning, design validation</td><td>Tooling, board spins, test fixtures, lab time</td></tr>
+                <tr><td>PVT</td><td>Production-representative build, process validation, certification</td><td>Certification fees, pilot run, yield tuning</td></tr>
+                <tr><td>Production</td><td>Volume manufacturing, assembly, QC, packaging</td><td>BOM, labor, volume; unit cost drops with scale</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="pz-section" id="embedded-ai-hardware" data-toc="Embedded AI Hardware">
+          <h2>Embedded AI Hardware</h2>
+          <div class="pz-split">
+            <div class="pz-split-text">
+          <p>Embedded AI hardware is the class of device that runs neural inference on-device rather than relying solely on the cloud. The enabling technology is the accelerator — an NPU, DSP, or vector engine integrated into the processor — paired with a model that has been optimized to fit. Optimization means quantization (dropping weights from 32-bit float to 8-bit integer or lower to cut memory and speed up math), pruning and distillation to shrink the model, and compiling it to a runtime that targets the specific silicon.</p>
+          <p>Edge inference buys you low latency, offline operation, predictable cost at scale, and strong privacy because raw data can stay on the device. The trade-off is that you are bounded by the compute and memory you can afford in the bill of materials, and every optimization risks some accuracy that must be validated on real inputs. The practical answer for most products is hybrid: run the latency-critical and privacy-sensitive stages on the edge, and reach the cloud for the heaviest reasoning. The table below contrasts the two extremes.</p>
+          <h3 style="font-size:16px;color:#555;font-weight:600;">Cloud AI vs. Edge AI</h3>
+            </div>
+            <div class="pz-split-media">
+              <!-- TODO: replace with final image -->
+              <img class="pz-section-img" src="../../img/resources/ai-hardware-integration/emed.png" alt="Automated optical inspection of embedded AI hardware boards" loading="lazy">
+            </div>
+          </div>
+          <div class="pz-table-wrap">
+            <table class="pz-table">
+              <thead><tr><th>Feature</th><th>Cloud AI</th><th>Edge AI</th></tr></thead>
+              <tbody>
+                <tr><td>Latency</td><td>Higher — network round-trip</td><td>Very low — local, often sub-100ms</td></tr>
+                <tr><td>Privacy</td><td>Raw data leaves the device</td><td>Raw data can stay on-device</td></tr>
+                <tr><td>Cost at scale</td><td>Recurring per-request/compute cost</td><td>One-time silicon cost, no per-use fee</td></tr>
+                <tr><td>Offline capability</td><td>None — requires connectivity</td><td>Full — works without a network</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="pz-cta-band dark">
+            <span class="pz-cta-text">Explore GMIC's embedded AI hardware capabilities.</span>
+            <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
+          </div>
+        </section>
+
+        <section class="pz-section" id="choose-a-partner" data-toc="How to Choose a Partner">
+          <h2>How to Choose an AI Hardware Integration Partner</h2>
+          <p>The right partner depends on how much of the hardware discipline you want to own. An OEM builds to your finished design, which suits teams with in-house hardware engineering. An ODM contributes the design itself — architecture, reference platforms, firmware, and acoustics — which is the better fit for AI software companies that want to move fast without hiring a full hardware team. The table below contrasts the two models.</p>
+          <p>Beyond the model, evaluate a partner on demonstrated experience with your device class, whether they cover the full stack (hardware, firmware, audio, SDK integration, and manufacturing) or only a slice, their ability to take you from prototype through certification to volume, and how they handle the AI-specific work of SDK integration and on-device optimization. A partner who has shipped similar products has already paid for the mistakes you would otherwise make. Ask to see relevant programs, understand who owns the IP, and confirm they can scale production to your forecast.</p>
+          <h3 style="font-size:16px;color:#555;font-weight:600;">ODM vs. OEM</h3>
+          <div class="pz-table-wrap">
+            <table class="pz-table">
+              <thead><tr><th>Feature</th><th>ODM</th><th>OEM</th></tr></thead>
+              <tbody>
+                <tr><td>Design ownership</td><td>Partner designs; may build on reference platforms</td><td>You own the complete design</td></tr>
+                <tr><td>Time to market</td><td>Faster — leverages proven designs and firmware</td><td>Slower — you engineer from scratch</td></tr>
+                <tr><td>Customization</td><td>High, guided by partner's platform and expertise</td><td>Total — bounded only by your own team</td></tr>
+                <tr><td>Best for</td><td>AI/software teams without in-house hardware</td><td>Teams with mature hardware engineering</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="pz-section" id="why-gmic" data-toc="Why GMIC AI">
+          <h2>Why GMIC AI</h2>
+          <div class="pz-split">
+            <div class="pz-split-text">
+          <p>GMIC AI is the AI-hardware division of Gainstrong, a contract manufacturer founded in 2009 with more than fifteen years of manufacturing experience and over 270 hardware programs shipped. We exist to close a specific gap: AI teams build software fast but struggle to build hardware. We take that hardware off your plate end to end — from concept and prototype to volume production of 50,000+ units per month — so your team stays focused on the model and the product.</p>
+          <p>Our engagement is full-stack OEM/ODM: hardware architecture, PCB design, embedded firmware, mechanical and industrial design, audio tuning (microphone arrays, beamforming, and noise reduction), SDK and API integration, prototype and validation, private label and packaging, and certification including FCC and CE. With operations in California and a vertically integrated Shenzhen facility spanning SMT through final assembly, we control quality and timeline across the entire path from design to shipped product.</p>
+          <p>We have shipped voice-first and edge-AI devices across categories — AI voice recorders, wearables such as smart glasses, earbuds, and bone-conduction devices, AI communication devices, speakers, and smart badges. That experience means the hard integration problems described throughout this guide are ones we have already solved, which is what lets AI companies reach market faster and with less risk.</p>
+            </div>
+            <div class="pz-split-media">
+              <!-- TODO: replace with final image -->
+              <img class="pz-section-img" src="../../img/resources/ai-hardware-integration/why.png" alt="Manual assembly line for final device assembly and QA" loading="lazy">
+            </div>
+          </div>
+          <div class="pz-cta-band light">
+            <span class="pz-cta-text">Ready to discuss your hardware integration project?</span>
+            <a href="mailto:swallow@gmic.ai" class="pz-btn pz-btn-primary">Talk to Our Engineers</a>
+          </div>
+        </section>
+
+        <div class="pz-cta-band dark">
+          <span class="pz-cta-text">Start your AI hardware integration project today.</span>
+          <a href="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener noreferrer" class="pz-btn pz-btn-primary">Discuss Your Integration Project</a>
+        </div>
+
+        <section class="pz-section" id="faq" data-toc="FAQ">
+          <h2>FAQ</h2>
+          <div class="pz-faq" id="pzFaq">
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">What is AI hardware integration?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">AI hardware integration is the engineering discipline of bringing AI models and software together with a physical device — the sensors, processor, memory, connectivity, power system, firmware, and cloud APIs — so they operate as one reliable product. It spans architecture decisions (edge vs. cloud vs. hybrid inference), audio and sensor pipelines, on-device model optimization, companion apps, OTA updates, and manufacturing. The goal is a device that captures real-world signals, runs or reaches the AI, and returns useful output within acceptable latency, power, and cost budgets.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Should AI run on the device (edge) or in the cloud?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">It depends on your latency, privacy, cost, and connectivity requirements. Edge inference gives sub-100ms response, works offline, and keeps raw data on the device, but is constrained by the processor and memory you can afford in the bill of materials. Cloud inference gives you the largest models and easy updates but adds round-trip latency, recurring per-request cost, and a hard dependency on connectivity. Most shipping products are hybrid: wake-word, voice activity detection, and noise reduction run on-device, while heavier transcription or LLM reasoning runs in the cloud.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">How long does it take to build an integrated AI device?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">A realistic timeline from concept to mass production is typically nine to fifteen months, depending on complexity and how much can be built on proven reference designs. Early prototyping and architecture takes one to three months, EVT and DVT builds another three to five months, DVT-to-PVT validation and certification a further two to four months, and ramp to volume production a month or more. Reusing a validated hardware platform and existing SDK integrations can compress this significantly.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">What does it cost to develop an AI hardware product?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Non-recurring engineering for a custom voice or edge-AI device commonly falls in the tens to low hundreds of thousands of dollars, driven by industrial and mechanical design, custom PCB layout, firmware and SDK integration, tooling, and certification. Per-unit cost then depends on the processor class, memory, radios, battery, enclosure, and volume. The largest cost lever is architecture: choosing the right processor and edge/cloud split early prevents expensive re-spins later.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">What is the difference between an MCU, MPU, and SoC?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">An MCU (microcontroller) is a low-power, low-cost chip with integrated memory that runs a real-time OS or bare-metal firmware — ideal for sensor handling, wake-word detection, and power-sensitive wearables. An MPU (microprocessor) delivers far more compute but needs external memory and typically runs Linux, suiting richer edge workloads. An SoC integrates CPU, GPU/NPU, memory controllers, and connectivity on one die, and is the usual choice when you need meaningful on-device neural inference, a display, or camera processing.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">How do you optimize an AI model to run on-device?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">The core techniques are quantization (converting weights from 32-bit float to 8-bit integer or lower to cut memory and speed up math), pruning and distillation to shrink the model, and compiling to a runtime that targets the chip's NPU, DSP, or vector extensions. You then profile latency, memory footprint, and power on the actual silicon, not an emulator. The practical trade-off is accuracy versus footprint — validation confirms the optimized model still meets your quality bar in real acoustic and lighting conditions.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Should I use BLE or Wi-Fi for connectivity?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Use BLE for low-power, low-bandwidth links — pairing to a phone, syncing small payloads, and control — where battery life matters most. Use Wi-Fi when the device must upload audio or video, reach cloud AI directly, or receive large OTA updates without a phone in the loop. Many devices carry both: BLE for provisioning and companion-app control, Wi-Fi for bulk data, and sometimes 4G/LTE for standalone cellular operation where no local network exists.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">What is the difference between an ODM and an OEM partner?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">An OEM (original equipment manufacturer) builds a product to your complete design and specification — you own the engineering. An ODM (original design manufacturer) also designs the product, contributing hardware architecture, firmware, and reference platforms so you can move faster without an in-house hardware team. For AI software companies without deep hardware expertise, a full-stack ODM shortens time to market and reduces risk because the partner has already solved the hard integration problems.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">How are OTA firmware updates handled on AI devices?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Over-the-air updates are delivered over Wi-Fi or cellular (or relayed through a companion app over BLE) and should always be signed, versioned, and installed to a secondary partition with automatic rollback if the update fails to boot. This lets you patch security issues, improve on-device models, and add features across the fleet after launch. Designing OTA in from day one — with a dual-bank flash layout and a staged rollout mechanism — is far cheaper than retrofitting it later.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">How is data privacy and security handled on AI devices?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Security spans the whole stack: secure boot and signed firmware to prevent tampering, encrypted storage and TLS transport for data in transit, and a hardware root of trust or secure element for key storage. Privacy is strongest when sensitive processing happens on the edge so raw audio or video never leaves the device, with only derived results sent to the cloud. For regulated markets like healthcare, this is paired with clear data-handling policies and compliance controls such as HIPAA-aligned pipelines.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">What certifications does an AI hardware product need?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Any device with a radio needs regulatory certification for each market it ships to — FCC in the US, CE and UKCA in Europe and the UK, TELEC in Japan, and ISED in Canada, plus RoHS for materials compliance. Bluetooth products also require SIG qualification, and battery shipments involve UN 38.3 testing. Certification should be planned during DVT because failures often require hardware changes, and building on pre-certified radio modules can save both time and money.</div></div>
+            </div>
+            <div class="pz-faq-item">
+              <button class="pz-faq-q" aria-expanded="false">Can I use my existing AI models and APIs with custom hardware?<span class="pz-faq-icon" aria-hidden="true"></span></button>
+              <div class="pz-faq-a"><div class="pz-faq-a-inner">Yes. A well-designed device treats your AI as a service: on-device firmware handles capture and pre-processing, then calls your cloud endpoints or streams audio to your existing APIs, while edge models can be your own weights compiled to the device's accelerator. The integration work is building the SDK layer, authentication, and data pipeline that connect your software to the hardware reliably. This is exactly the gap a full-stack ODM closes — your team keeps owning the AI while the hardware and firmware are built around it.</div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ===== REFERENCES ===== -->
+
+        <!-- ===== RELATED RESOURCES ===== -->
+        <section class="pz-section pz-related" aria-labelledby="pz-related-title">
+          <h2 id="pz-related-title">Related Resources</h2>
+          <div class="pz-related-grid">
+            <a class="pz-related-card" href="../voice-ai-hardware/index.html">
+              <h3>Voice AI Hardware</h3>
+              <p>The microphones, silicon, connectivity, and design decisions behind voice-first devices — and why the acoustic front end sets the ceiling on model accuracy.</p>
+              <span class="pz-related-more">Read more</span>
+            </a>
+            <a class="pz-related-card" href="../ai-hardware-odm/index.html">
+              <h3>AI Hardware ODM</h3>
+              <p>What an ODM partner actually does: design ownership versus OEM, prototype stages, firmware and audio DSP, volume manufacturing, and certification.</p>
+              <span class="pz-related-more">Read more</span>
+            </a>
+          </div>
+        </section>
+      </main>
+
+      <!-- ===== STICKY TOC SIDEBAR (desktop) ===== -->
+      <aside class="pz-toc-aside">
+        <div class="pz-toc-title">On this page</div>
+        <ul class="pz-toc-list" id="pzTocPrimary"></ul>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<!-- ===== Mobile floating TOC ===== -->
+<button class="pz-toc-fab" id="pzTocFab" aria-label="Open table of contents">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+  Table of Contents
+</button>
+<div class="pz-toc-overlay" id="pzTocOverlay"></div>
+<div class="pz-toc-floating" id="pzTocFloating">
+  <div class="pz-toc-handle"></div>
+  <div class="pz-toc-title">On this page</div>
+  <ul class="pz-toc-list" id="pzTocSecondary"></ul>
+</div>
+</div><!-- /.pz -->
+
+<!-- ================= PILLAR PAGE JS ================= -->
+<script>
+(function(){
+  var sections = Array.prototype.slice.call(document.querySelectorAll('.pz-section[data-toc]'));
+  if(!sections.length) return;
+
+  // ---- Build TOC lists (DRY: one source → primary sidebar + floating panel) ----
+  var primary = document.getElementById('pzTocPrimary');
+  var secondary = document.getElementById('pzTocSecondary');
+  function buildInto(ul){
+    if(!ul) return;
+    sections.forEach(function(sec){
+      var li = document.createElement('li');
+      var a = document.createElement('a');
+      a.href = '#' + sec.id;
+      a.textContent = sec.getAttribute('data-toc');
+      a.setAttribute('data-target', sec.id);
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+  }
+  buildInto(primary);
+  buildInto(secondary);
+  var allLinks = Array.prototype.slice.call(document.querySelectorAll('.pz-toc-list a'));
+
+  // ---- Smooth scroll + close mobile/tablet panels on click ----
+  allLinks.forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('data-target');
+      var target = document.getElementById(id);
+      if(target){
+        e.preventDefault();
+        window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - 88, behavior:'smooth' });
+        history.replaceState(null, '', '#' + id);
+      }
+      closeFloating();
+      closeBarDropdown();
+    });
+  });
+
+  // ---- Active-section highlighting via IntersectionObserver ----
+  var barCurrent = document.getElementById('pzTocBarCurrent');
+  function setActive(id){
+    allLinks.forEach(function(a){ a.classList.toggle('active', a.getAttribute('data-target') === id); });
+    var sec = document.getElementById(id);
+    if(barCurrent && sec) barCurrent.textContent = sec.getAttribute('data-toc');
+  }
+  if('IntersectionObserver' in window){
+    var visible = {};
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting) visible[en.target.id] = en.intersectionRatio;
+        else delete visible[en.target.id];
+      });
+      // pick the topmost visible section (first in document order that is visible)
+      var current = null;
+      for(var i=0;i<sections.length;i++){ if(visible[sections[i].id] != null){ current = sections[i].id; break; } }
+      if(current) setActive(current);
+    }, { rootMargin:'-88px 0px -55% 0px', threshold:[0,0.1,0.5,1] });
+    sections.forEach(function(s){ io.observe(s); });
+  }
+  setActive(sections[0].id);
+
+  // ---- Reading progress bar ----
+  var bar = document.getElementById('pzProgress');
+  function updateProgress(){
+    var doc = document.documentElement;
+    var scrollable = doc.scrollHeight - doc.clientHeight;
+    var pct = scrollable > 0 ? (window.pageYOffset / scrollable) * 100 : 0;
+    if(bar) bar.style.width = Math.min(100, Math.max(0, pct)) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, { passive:true });
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  // ---- FAQ accordion ----
+  var faq = document.getElementById('pzFaq');
+  if(faq){
+    faq.querySelectorAll('.pz-faq-q').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        var item = btn.closest('.pz-faq-item');
+        var panel = item.querySelector('.pz-faq-a');
+        var isOpen = item.classList.contains('open');
+        if(isOpen){
+          item.classList.remove('open');
+          btn.setAttribute('aria-expanded','false');
+          panel.style.maxHeight = null;
+        } else {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded','true');
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+        }
+      });
+    });
+  }
+
+  // ---- Floating TOC (mobile slide-up + shared) ----
+  var fab = document.getElementById('pzTocFab');
+  var floating = document.getElementById('pzTocFloating');
+  var overlay = document.getElementById('pzTocOverlay');
+  function openFloating(){ if(floating){ floating.classList.add('open'); overlay.classList.add('open'); } }
+  function closeFloating(){ if(floating){ floating.classList.remove('open'); overlay.classList.remove('open'); } }
+  if(fab) fab.addEventListener('click', openFloating);
+  if(overlay) overlay.addEventListener('click', closeFloating);
+
+  // ---- Tablet sticky bar dropdown (reuses the floating panel) ----
+  var tocBar = document.getElementById('pzTocBar');
+  var barBtn = document.getElementById('pzTocBarBtn');
+  function closeBarDropdown(){
+    if(tocBar) tocBar.classList.remove('open');
+    if(barBtn) barBtn.setAttribute('aria-expanded','false');
+  }
+  if(barBtn){
+    barBtn.addEventListener('click', function(e){
+      e.stopPropagation();
+      var willOpen = !floating.classList.contains('open');
+      if(willOpen){ openFloating(); tocBar.classList.add('open'); barBtn.setAttribute('aria-expanded','true'); }
+      else { closeFloating(); closeBarDropdown(); }
+    });
+  }
+})();
+</script>
+<!-- ================= /PILLAR PAGE ================= -->
+
+<footer class="footer" id="company">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../../index.html" class="logo">GMIC.AI</a>
+        <p>Designing and manufacturing the embedded hardware behind the voice-first era.</p>
+        <div class="footer-contact">
+          <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a><br>
+          <a href="tel:+16699000008">+1 (669) 900-0008</a><br>
+          Anaheim, CA · Shenzhen, CN
+        </div>
+        <div class="cert-pills">
+          <span class="pill">FCC</span>
+          <span class="pill">CE</span>
+          <span class="pill">UKCA</span>
+          <span class="pill">TELEC</span>
+          <span class="pill">RoHS</span>
+          <span class="pill">ISED</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="../../solutions/edge-ai-hardware/index.html">Edge AI Hardware</a></li>
+          <li><a href="../../solutions/voice-ai-hardware/index.html">Voice AI Hardware</a></li>
+          <li><a href="../../solutions/ai-wearable-devices/index.html">AI Wearable Devices</a></li>
+          <li><a href="../../custom-devices/odm-oem/index.html">AI Hardware ODM</a></li>
+          <li><a href="../../solutions/embedded-ai-hardware/index.html">Embedded AI Hardware</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="../../industries/healthcare/index.html">Healthcare AI</a></li>
+          <li><a href="../../industries/enterprise/index.html">Enterprise AI</a></li>
+          <li><a href="../../industries/field-service/index.html">Field Service AI</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://gmic.ai/blog/" target="_blank" rel="noopener">Blog</a></li>
+          <li><a href="../../index.html#insights">Case Studies</a></li>
+          <li><a href="../../index.html#process">Our Process</a></li>
+          <li><a href="../../index.html#why-gmic">Engineering Capabilities</a></li>
+          <li><a href="../../contact/index.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../../about/index.html">About GMIC</a></li>
+          <li><a href="../../proof/index.html">Customer Stories</a></li>
+          <li><a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener">Book a Demo</a></li>
+          <li style="display:none"><a href="#">Careers</a></li>
+          <li style="display:none"><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 GMIC.AI · All rights reserved.</div>
+      <div>
+        <a href="#" style="display:none">Privacy</a>
+        <a href="#" style="display:none">Terms</a>
+        <a href="#" style="display:none">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<div class="fab" role="toolbar" aria-label="Quick actions">
+  <a class="fab-btn" href="https://t.me/gmicai" target="_blank" rel="noopener" aria-label="Telegram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+  </a>
+  <a class="fab-btn" href="https://api.whatsapp.com/send/?phone=16699000008&text=Hi%21+I+just+left+a+voice+note+on+your+site+%E2%80%94+looking+forward+to+your+reply.&type=phone_number&app_absent=0" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+  <button class="fab-btn wechat-fab-btn" id="fabWechat" aria-label="WeChat">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor">
+      <path d="M9.5 4C5.36 4 2 6.91 2 10.5c0 1.99 1.03 3.76 2.64 4.95L4 17l2.19-1.09c.96.27 1.99.42 3.04.42.18 0 .36 0 .54-.01C9.63 15.83 9.5 15.17 9.5 14.5 9.5 11.09 12.91 8.5 17 8.5c.35 0 .7.02 1.04.06C17.14 5.72 13.63 4 9.5 4zm-2 4.5a1 1 0 110-2 1 1 0 010 2zm4 0a1 1 0 110-2 1 1 0 010 2z"/>
+      <path d="M17 10.5c-3.31 0-6 2.24-6 5 0 1.5.75 2.84 1.93 3.77L12.5 21l1.96-.98c.82.22 1.67.34 2.54.34 3.31 0 6-2.24 6-5s-2.69-5-6-5zm-2 5.5a1 1 0 110-2 1 1 0 010 2zm4 0a1 1 0 110-2 1 1 0 010 2z"/>
+    </svg>
+  </button>
+  <span class="fab-divider"></span>
+  <button class="fab-btn active" id="fabMic" aria-label="Microphone" onclick="var vp=document.getElementById('voice-panel');vp.style.display=(vp.style.display==='none'||!vp.style.display)?'block':'none';">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+  </button>
+  <button class="fab-btn" id="fabConnect" data-connect aria-label="More" onclick="var cm=document.getElementById('connect-menu');cm.style.display=(cm.style.display==='none'||!cm.style.display)?'block':'none';">
+    <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></svg>
+  </button>
+</div>
+
+<!-- ========== BACK TO TOP ========== -->
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</button>
+<!-- ========== WeChat QR popup ========== -->
+<div id="wechat-popup" style="display:none;position:fixed;z-index:500;background:#fff;border-radius:16px;padding:20px 20px 16px;box-shadow:0 8px 40px rgba(0,0,0,.2);border:1px solid #e2e8f0;width:240px;text-align:center;">
+  <button onclick="document.getElementById('wechat-popup').style.display='none'" style="position:absolute;top:8px;right:12px;background:none;border:none;font-size:16px;cursor:pointer;color:#aaa;font-family:var(--sans);" aria-label="Close">×</button>
+  <img src="../../img/wechat-qr.png" alt="WeChat QR" style="width:100%;border-radius:8px;display:block;">
+</div>
+
+<!-- ========== Voice assistant panel ========== -->
+<div id="voice-panel" style="display:none;position:fixed;bottom:96px;left:50%;transform:translateX(-50%);z-index:500;background:#fff;border-radius:16px;padding:24px 28px;box-shadow:0 8px 40px rgba(0,0,0,.18);border:1px solid #e2e8f0;width:320px;text-align:center;">
+  <div style="font-family:var(--sans);font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px;">Talk to GMIC</div>
+  <div style="font-family:var(--sans);font-size:13px;color:#6b7280;margin-bottom:20px;line-height:1.5;">Ask about our products, request a sample, or start a demo inquiry.</div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;">
+    <div id="voice-indicator" style="width:56px;height:56px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.4);animation:pulse-ring 2s ease infinite;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/>
+        <path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/>
+      </svg>
+    </div>
+  </div>
+  <div style="font-family:var(--sans);font-size:12px;color:#9ca3af;">Tap the mic to speak · or <a href="mailto:trigg@gmic.ai" style="color:#2563eb;text-decoration:none;">email us</a></div>
+  <button onclick="document.getElementById('voice-panel').style.display='none'" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:16px;cursor:pointer;color:#aaa;" aria-label="Close">×</button>
+</div>
+
+<!-- ========== Connect dropdown menu ========== -->
+<div id="connect-menu" style="display:none;position:fixed;bottom:auto;z-index:500;background:#fff;border-radius:14px;padding:12px 0;box-shadow:0 8px 40px rgba(0,0,0,.18);border:1px solid #e2e8f0;min-width:200px;">
+  <div style="font-family:var(--sans);font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.08em;text-transform:uppercase;padding:4px 18px 10px;">CONNECT</div>
+  <a href="https://twitter.com/gmicai" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <span style="font-size:16px;font-weight:700;">𝕏</span> X / Twitter
+  </a>
+  <a href="https://linkedin.com/company/gmicai" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="#0077b5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    LinkedIn
+  </a>
+  <a href="https://gmic.ai" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+    GMIC.ai
+  </a>
+  <a href="mailto:trigg@gmic.ai" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+    Trigg@gmic.ai
+  </a>
+</div>
+
+<script>
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-item')) {
+    document.querySelectorAll('.nav-dropdown').forEach(d => {
+      d.style.display = '';
+    });
+  }
+});
+
+// Mobile nav
+const navBurger = document.getElementById('navBurger');
+const mobileNav = document.getElementById('mobileNav');
+const mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+function openMobileNav() {
+  mobileNav.classList.add('open');
+  mobileNavOverlay.classList.add('open');
+  navBurger.classList.add('open');
+  navBurger.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileNav() {
+  mobileNav.classList.remove('open');
+  mobileNavOverlay.classList.remove('open');
+  navBurger.classList.remove('open');
+  navBurger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+
+navBurger.addEventListener('click', function() {
+  if (mobileNav.classList.contains('open')) {
+    closeMobileNav();
+  } else {
+    openMobileNav();
+  }
+});
+
+mobileNavOverlay.addEventListener('click', closeMobileNav);
+
+// Close on mobile nav link click
+document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+  link.addEventListener('click', closeMobileNav);
+});
+</script>
+
+<!-- Typical Projects carousel — self-contained, scoped to #tpTrack.
+     Independent of main.js / the homepage #cTrack carousel. -->
+<script>
+(function(){
+  var track = document.getElementById('tpTrack');
+  if(!track) return;
+  var viewport = track.parentElement;
+  var prevBtn = document.getElementById('tpPrev');
+  var nextBtn = document.getElementById('tpNext');
+  var cards = track.querySelectorAll('.tp-card');
+  if(!cards.length || !prevBtn || !nextBtn) return;
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var pos = 0;     // current scroll offset in px (applied as translateX(-pos))
+  var step = 0;    // one card width + gap
+  var maxPos = 0;  // furthest the track can travel
+
+  function gap(){
+    var cs = getComputedStyle(track);
+    var g = parseFloat(cs.columnGap || cs.gap || '0');
+    return isNaN(g) ? 0 : g;
+  }
+  function measure(){
+    step = cards[0].getBoundingClientRect().width + gap();
+    maxPos = Math.max(0, track.scrollWidth - viewport.clientWidth);
+  }
+  function clamp(v){ return Math.max(0, Math.min(maxPos, v)); }
+
+  function render(animate){
+    if(animate && !reduce.matches){
+      track.style.transform = 'translateX(' + (-pos) + 'px)';
+    } else {
+      var t = track.style.transition;
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(' + (-pos) + 'px)';
+      void track.offsetWidth;            // flush, then restore transition
+      track.style.transition = t;
+    }
+    updateArrows();
+  }
+  function updateArrows(){
+    var atStart = pos <= 0.5;
+    var atEnd = pos >= maxPos - 0.5;
+    prevBtn.setAttribute('aria-disabled', atStart ? 'true' : 'false');
+    nextBtn.setAttribute('aria-disabled', atEnd ? 'true' : 'false');
+    prevBtn.disabled = atStart;
+    nextBtn.disabled = atEnd;
+  }
+  function move(dir){
+    measure();
+    pos = clamp(pos + dir * step);
+    render(true);
+  }
+
+  prevBtn.addEventListener('click', function(){ move(-1); });
+  nextBtn.addEventListener('click', function(){ move(1); });
+
+  // Recompute on resize so steps stay aligned to the new card width.
+  var rid;
+  window.addEventListener('resize', function(){
+    clearTimeout(rid);
+    rid = setTimeout(function(){ measure(); pos = clamp(pos); render(false); }, 120);
+  });
+
+  // Touch / pointer drag (horizontal). touch-action:pan-y keeps vertical scroll.
+  var dragging = false, startX = 0, startPos = 0, moved = false;
+  track.addEventListener('pointerdown', function(e){
+    if(e.pointerType === 'mouse' && e.button !== 0) return;
+    measure();
+    dragging = true; moved = false;
+    startX = e.clientX; startPos = pos;
+    track.classList.add('is-dragging');
+    try { track.setPointerCapture(e.pointerId); } catch(_){}
+  });
+  track.addEventListener('pointermove', function(e){
+    if(!dragging) return;
+    var dx = e.clientX - startX;
+    if(Math.abs(dx) > 4) moved = true;
+    pos = clamp(startPos - dx);
+    track.style.transform = 'translateX(' + (-pos) + 'px)';
+  });
+  function endDrag(){
+    if(!dragging) return;
+    dragging = false;
+    track.classList.remove('is-dragging');
+    if(step > 0) pos = clamp(Math.round(pos / step) * step);  // snap to nearest card
+    render(true);
+  }
+  track.addEventListener('pointerup', endDrag);
+  track.addEventListener('pointercancel', endDrag);
+  track.addEventListener('lostpointercapture', endDrag);
+  // Swallow the click that follows a real drag so cards don't trigger.
+  track.addEventListener('click', function(e){
+    if(moved){ e.preventDefault(); e.stopPropagation(); }
+  }, true);
+
+  function init(){ measure(); pos = clamp(pos); render(false); }
+  init();
+  window.addEventListener('load', init);   // re-measure once images have loaded
+})();
+</script>
+<!-- ========== Self-contained reveal + Solutions scrollytelling + icons ========== -->
+<script>
+(function () {
+  // Reveal: never let .reveal/.fade-section stay hidden if main.js is absent or fails.
+  var els = document.querySelectorAll('.reveal, .fade-section');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (e) { e.classList.add('in', 'visible'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in', 'visible'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (e) { io.observe(e); });
+    window.addEventListener('load', function () {
+      setTimeout(function () { els.forEach(function (e) { e.classList.add('in', 'visible'); }); }, 1200);
+    });
+  }
+  if (window.lucide && typeof window.lucide.createIcons === 'function') { window.lucide.createIcons(); }
+})();
+
+(function () {
+  // Solutions: in-place card switching (hover / click / focus) + linked left image cross-fade.
+  // If this never runs, the default HTML state stays (card 0 expanded, others collapsed but visible).
+  var flip = document.getElementById('solFlip');
+  if (!flip) return;
+  var cards = [].slice.call(flip.querySelectorAll('.sol-card'));
+  var imgs = [].slice.call(flip.querySelectorAll('.sol-img'));
+  function setActive(i) {
+    cards.forEach(function (c, idx) { c.classList.toggle('is-active', idx === i); });
+    // Single static image on this page → only cross-fade when there are multiple images.
+    if (imgs.length > 1) imgs.forEach(function (im, idx) { im.classList.toggle('is-active', idx === i); });
+  }
+  cards.forEach(function (c, i) {
+    c.addEventListener('mouseenter', function () { setActive(i); });
+    c.addEventListener('click', function () { setActive(i); });
+    c.addEventListener('focus', function () { setActive(i); });
+  });
+})();
+
+(function () {
+  // FAB / nav helpers — self-contained, since main.js is not loaded on this page.
+  var nav = document.getElementById('nav');
+  if (nav) window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  var backTop = document.getElementById('backTop');
+  if (backTop) {
+    window.addEventListener('scroll', function () {
+      backTop.classList.toggle('visible', window.scrollY > 600);  // CSS defines .back-top.visible, not .show
+    }, { passive: true });
+    backTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+
+  var fabWechat = document.getElementById('fabWechat');
+  var wechat = document.getElementById('wechat-popup');
+  if (fabWechat && wechat) fabWechat.addEventListener('click', function () {
+    wechat.style.display = (wechat.style.display === 'none' || !wechat.style.display) ? 'block' : 'none';
+  });
+})();
+</script>
+<!-- ===== PROCESS component JS (windowed auto-carousel) ===== -->
+<script>
+(function(){
+  var flow = document.getElementById('procFlow'); if(!flow) return;
+  var track = document.getElementById('procTrack');
+  var badge = document.getElementById('procBadge');
+  var steps = Array.prototype.slice.call(flow.querySelectorAll('.impl-proc-step'));
+  var imgs  = Array.prototype.slice.call(flow.querySelectorAll('.impl-proc-img'));
+  if(!steps.length) return;
+  var STEP=3500, RESUME=10000, VISIBLE=3, total=steps.length;
+  var idx=0, timer=null, resumeTimer=null;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mobile=window.matchMedia('(max-width: 900px)');
+  function rowH(){ return steps[0]?steps[0].offsetHeight:104; }
+  function show(i){
+    idx=i;
+    steps.forEach(function(s,n){var on=n===i;s.classList.toggle('active',on);s.setAttribute('aria-selected',on?'true':'false');});
+    imgs.forEach(function(m,n){m.classList.toggle('active',n===i);});
+    if(badge){var t=steps[i].querySelector('.impl-proc-title');if(t)badge.textContent=t.textContent;}
+    var scroll=Math.min(i,total-VISIBLE); if(scroll<0)scroll=0;
+    var ty=mobile.matches?0:-(scroll*rowH());
+    track.style.transform='translateY('+ty+'px)';
+  }
+  function next(){ show((idx+1)%total); }
+  function start(){ if(reduce.matches)return; stop(); timer=setInterval(next,STEP); }
+  function stop(){ if(timer){clearInterval(timer);timer=null;} }
+  function manual(i){ show(i); stop(); clearTimeout(resumeTimer); resumeTimer=setTimeout(start,RESUME); }
+  steps.forEach(function(s,i){ s.addEventListener('click',function(){manual(i);}); });
+  Array.prototype.slice.call(flow.querySelectorAll('.impl-proc-navbtn')).forEach(function(b){
+    b.addEventListener('click',function(){var dir=parseInt(b.getAttribute('data-dir'),10)||0;manual((idx+dir+total)%total);});
+  });
+  document.addEventListener('visibilitychange',function(){ if(document.hidden){stop();}else{start();} });
+  window.addEventListener('resize',function(){ show(idx); });
+  show(0); start();
+})();
+</script>
+<script src="../../js/voice-widget.js"></script>
+<script src="../../js/products-mega-menu.js"></script>
+<script src="../../js/chat-widget.js"></script>
+</body>
+</html>
