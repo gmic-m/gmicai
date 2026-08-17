@@ -1200,10 +1200,10 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
       </div>
 
       <div class="reveal">
-        <p>Most AI scribe platforms start on hardware that was already in the room — a phone in a coat pocket, a laptop on the desk. That is the right way to validate the product, and it stops being the right way once the software works and the constraint moves to how the audio arrives.</p>
+        <p>Most AI scribe platforms start on hardware that was already in the room — a phone in a coat pocket, a laptop on the desk. That is the right way to validate the product. It stops being the right way once the software works and the constraint moves to how the audio arrives.</p>
         <p style="margin-top:18px;">At that point the requests are consistent: a hands-free workflow, a microphone that sits in the same place on every encounter, recording that survives a dead zone, device identity, your brand on the hardware, firmware you control, and a fleet that behaves the same way everywhere.</p>
         <!-- TODO [ADD WHEN LIVE]: link /dedicated-ai-scribe-hardware/ on the phrase below -->
-        <p style="margin-top:18px;">This page is about how that hardware gets built. If you are still deciding whether you need dedicated AI scribe hardware at all, settle that first — the broader category of <a class="sol-link" href="../medical-dictation-devices/index.html">medical dictation devices</a> covers the landscape it sits in.</p>
+        <p style="margin-top:18px;">This page is about how that hardware gets built. If you are still deciding whether you need dedicated AI scribe hardware at all, that question is worth settling first, and the broader category of <a class="sol-link" href="../medical-dictation-devices/index.html">medical dictation devices</a> covers the device landscape it sits in.</p>
       </div>
     </div>
   </section>
@@ -1213,7 +1213,7 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
     <div class="container">
       <div class="ind-head reveal">
         <h2 class="section measure-wide">Choose the Right Development&nbsp;Path</h2>
-        <p class="ind-intro measure-wide">Three routes, distinguished by how much of the hardware changes. Most programs are best served by the lightest path that meets the requirement.</p>
+        <p class="ind-intro measure-wide">Three routes, distinguished by how much of the hardware changes. Most programs are better served by the lightest path that still meets the requirement.</p>
       </div>
 
       <div class="reveal">
@@ -1286,7 +1286,7 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
         <div class="ind-card">
           <div class="ind-card-ic"><i data-lucide="drafting-compass"></i></div>
           <h3>Full ODM development</h3>
-          <p>A new product: custom PCB, microphone architecture, mechanical design, and firmware written for your workflow. The right path when the form factor or the audio requirement has no equivalent on the shelf.</p>
+          <p>A new product: custom PCB, custom microphone architecture, custom mechanical design, firmware written for your workflow. This is the right path when the form factor or the audio requirement has no equivalent on the shelf.</p>
           <a class="sol-link path-cta" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener">Start a requirements review <i data-lucide="arrow-right"></i></a>
         </div>
       </div>
@@ -1306,7 +1306,7 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
         <div class="ind-card">
           <div class="ind-card-ic"><i data-lucide="mic"></i></div>
           <h3>Microphone &amp; audio</h3>
-          <p>Element selection and topology, placement on the form factor, the analog and digital front end, and a DSP chain tuned as one system.</p>
+          <p>Element selection and topology, placement on the form factor, the analog and digital front end, and the DSP chain — noise reduction, beamforming, and echo cancellation tuned as one system.</p>
         </div>
         <div class="ind-card">
           <div class="ind-card-ic"><i data-lucide="cpu"></i></div>
@@ -1321,12 +1321,12 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
         <div class="ind-card">
           <div class="ind-card-ic"><i data-lucide="plug"></i></div>
           <h3>Software integration</h3>
-          <p>SDK and API work against your cloud, speech-to-text backend, AI platform, private server, or companion app — whichever the deployment already uses.</p>
+          <p>SDK and API work against your cloud, your speech-to-text backend, your AI platform, a private server, or a companion app — whichever the deployment already uses.</p>
         </div>
         <div class="ind-card">
           <div class="ind-card-ic"><i data-lucide="palette"></i></div>
           <h3>Branding</h3>
-          <p>Device logo and marking, enclosure finish, packaging, and the documentation that ships with the unit.</p>
+          <p>Device logo and marking, enclosure finish, retail or clinical packaging, and the documentation that ships with the unit.</p>
         </div>
         <div class="ind-card">
           <div class="ind-card-ic"><i data-lucide="box"></i></div>
@@ -1361,7 +1361,7 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
     <div class="container">
       <div class="ind-head reveal">
         <h2 class="section measure-wide">Firmware That Fits Your AI Scribe&nbsp;Workflow</h2>
-        <p class="ind-intro measure-wide">Firmware is where a hardware program either matches the clinical workflow or fights it — and it is the layer with the least existing code to reuse.</p>
+        <p class="ind-intro measure-wide">Firmware is where a hardware program either matches the clinical workflow or fights it. For a software company adding hardware, it is also the layer with the least existing code to reuse.</p>
       </div>
 
       <div class="mdd-2col reveal">
@@ -1384,7 +1384,7 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
       </div>
 
       <div class="mdd-note reveal">
-        <p>Depending on the selected platform and project requirements, these behaviors are configured rather than rebuilt. Scope is covered under <a class="sol-link" href="https://gmic.ai/firmware-integration-for-ai-devices/">firmware integration</a>.</p>
+        <p>Depending on the selected hardware platform and project requirements, these behaviors are configured rather than rebuilt. Scope and effort are covered under <a class="sol-link" href="https://gmic.ai/firmware-integration-for-ai-devices/">firmware integration</a>.</p>
       </div>
     </div>
   </section>
@@ -1475,19 +1475,19 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
     <div class="container">
       <div class="ind-head reveal">
         <h2 class="section measure-wide">Offline Recording, Upload, or Real-Time&nbsp;Streaming</h2>
-        <p class="ind-intro measure-wide">Four workable architectures. The right one follows from the network the devices will actually live on.</p>
+        <p class="ind-intro measure-wide">Four workable architectures. The right one follows from the network the devices will actually live on, not from a preference.</p>
       </div>
 
       <div class="ind-grid mdd-typegrid--2up reveal">
         <div class="ind-card">
           <div class="ind-card-ic"><i data-lucide="hard-drive"></i></div>
           <h3>Local recording + batch upload</h3>
-          <p>Audio is written to the device and uploaded when the clinician returns to coverage. Recording never depends on the network being there during the encounter.</p>
+          <p>Audio is written to the device and uploaded when the clinician returns to coverage. Recording never depends on the network being there at the moment of the encounter.</p>
         </div>
         <div class="ind-card">
           <div class="ind-card-ic"><i data-lucide="radio"></i></div>
           <h3>Real-time streaming</h3>
-          <p>Audio moves to your cloud during the encounter, so transcription can begin immediately. Requires stable coverage everywhere the device is used.</p>
+          <p>Audio moves to your cloud during the encounter, so transcription can begin immediately. It requires stable coverage everywhere the device is used.</p>
         </div>
         <div class="ind-card">
           <div class="ind-card-ic"><i data-lucide="refresh-cw"></i></div>
@@ -1497,7 +1497,7 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
         <div class="ind-card">
           <div class="ind-card-ic"><i data-lucide="shuffle"></i></div>
           <h3>Hybrid</h3>
-          <p>Stream when coverage allows, fall back to local recording when it does not — the most flexible option, and the most firmware logic to specify.</p>
+          <p>Stream when coverage allows, fall back to local recording when it does not. The most flexible option, and the one with the most firmware logic to specify.</p>
         </div>
       </div>
     </div>
@@ -1518,7 +1518,7 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
         </div>
         <div>
           <h3>Build a custom platform</h3>
-          <p style="margin-top:12px;">Worth it when the requirement genuinely exceeds what is on the shelf — an unusual form factor, a microphone geometry no existing device has, a battery target no existing enclosure can hold, or an integration that has to be in the firmware from the start.</p>
+          <p style="margin-top:12px;">Worth it when the requirement genuinely exceeds what is on the shelf — an unusual form factor, a microphone geometry no existing device has, a battery target no existing enclosure can hold, or an integration that has to be built into the firmware from the start.</p>
           <p style="margin-top:14px;">That path runs as <a class="sol-link" href="https://gmic.ai/ai-hardware-odm-oem/">AI hardware ODM/OEM</a>.</p>
         </div>
       </div>
@@ -1600,7 +1600,7 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
     <div class="container">
       <div class="ind-head reveal">
         <h2 class="section measure-wide">Development&nbsp;Process</h2>
-        <p class="ind-intro measure-wide">Eleven stages from first conversation to deployed fleet. Duration depends on the path chosen and the certification scope.</p>
+        <p class="ind-intro measure-wide">Eleven stages from first conversation to deployed fleet. Duration depends on the path chosen, the certification scope, and how much of the enclosure is custom.</p>
       </div>
 
       <ol class="mdd-steps mdd-steps--wrap reveal">
@@ -1670,7 +1670,7 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
     <div class="container">
       <div class="ind-head reveal">
         <h2 class="section measure-wide">Manufacturing &amp;&nbsp;QC</h2>
-        <p class="ind-intro measure-wide">GMIC is the AI hardware division of Gainstrong, a contract manufacturer founded in 2009. Engineering and production are in Shenzhen; the commercial team is in Anaheim, California.</p>
+        <p class="ind-intro measure-wide">GMIC is the AI hardware division of Gainstrong, a contract manufacturer founded in 2009. Engineering and production are in Shenzhen; the commercial team is in Anaheim, California. These are the lines the devices are built and tested on.</p>
       </div>
 
       <div class="mdd-photos reveal">
@@ -1709,7 +1709,7 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
     <div class="container">
       <div class="ind-head reveal">
         <h2 class="section measure-wide">What to Send&nbsp;Us</h2>
-        <p class="ind-intro measure-wide">Enough to give you a real answer instead of a generic one. Partial information is fine.</p>
+        <p class="ind-intro measure-wide">Enough to give you a real answer instead of a generic one. Partial information is fine — the gaps are usually the first thing worth discussing.</p>
       </div>
 
       <div class="mdd-2col reveal">

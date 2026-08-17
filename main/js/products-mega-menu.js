@@ -20,38 +20,34 @@
   var CATEGORIES = [
     { name: 'AI Voice Recorders', badge: 'Popular', products: [
       { name: 'MIC01', slug: 'products/mic01/index.html', img: OV + 'HA-MIC01.png', desc: 'Entry-level pilot device' },
-      { name: 'MIC02', slug: 'products/mic02/index.html', img: OV + 'HA-MIC02.png', desc: 'ChatGPT AI MagSafe microphone' },
-      { name: 'MIC04', slug: 'products/mic04/index.html', img: OV + 'HA-MIC04.jpg', desc: 'CES-featured GPT recorder in premium aluminum' },
+      { name: 'MIC02', slug: PV + 'mic02', img: OV + 'HA-MIC02.png' },
+      { name: 'MIC04', slug: PV + 'mic04', img: OV + 'HA-MIC04.jpg' },
       { name: 'MIC05', slug: 'products/mic05/index.html', img: OV + 'HA-MIC05.jpg', desc: 'Button-triggered capture for field notes' },
       { name: 'MIC06A', slug: 'products/mic06/index.html', img: OV + 'HA-MIC06A.jpg', desc: 'Continuous voice capture for shift-based operations' },
-      { name: 'MIC06B', slug: 'products/mic06b/index.html', img: OV + 'HA-MIC06B.jpg', desc: 'Next-gen AI voice terminal for real-world work' }
+      { name: 'MIC06B', slug: PV + 'mic06b', img: OV + 'HA-MIC06B.jpg' }
     ]},
     { name: 'AI Wearables', products: [
-      { name: 'GL01', slug: 'products/gl01/index.html', img: OV + 'HA-GLS01.jpg', desc: 'AI chat glasses (ChatGPT + camera)' },
-      { name: 'EB01', slug: 'products/eb01/index.html', img: OV + 'HA-TWS01.jpg', desc: 'AI Bluetooth headset (ChatGPT-4)' },
-      { name: 'BC01', slug: 'products/bc01/index.html', img: OV + 'HA-BC01.jpg', desc: 'AI chat bone conduction headset' },
-      { name: 'Smart Pen', slug: PV + 'smart-pen', img: OV + 'HA-PEN01.jpg' },
-      { name: 'OWS03', slug: 'products/ows03/index.html', img: OV + 'HA-OWS03.jpg', desc: 'AIChat OWS headset (5 AI, open-ear)' }
+      { name: 'Smart Glasses', slug: PV + 'smart-glasses', img: OV + 'HA-GLS01.jpg' },
+      { name: 'Earbuds', slug: PV + 'earbuds', img: OV + 'HA-TWS01.jpg' },
+      { name: 'Bone Conduction', slug: PV + 'bone-conduction', img: OV + 'HA-BC01.jpg' },
+      { name: 'Smart Pen', slug: PV + 'smart-pen', img: OV + 'HA-PEN01.jpg' }
     ]},
     { name: 'AI Communication', products: [
       { name: 'Telalive', slug: 'products/telalive/index.html', img: OV + 'telalive.png', desc: 'AI-powered desk phone & wearable platform' },
       { name: 'VoiceLink', slug: PV + 'voicelink', img: OV + 'HA-TR01.jpg' },
-      { name: 'TEL02', slug: 'products/tel02/index.html', img: OV + 'HA-TEL02.jpg', desc: '24/7 AI phone assistant for autonomous ordering' },
-      { name: 'TR01', slug: 'products/tr01/index.html', img: OV + 'HA-TR01.jpg', desc: 'Portable ChatGPT translator (52+ languages)' }
+      { name: 'AI Phone Assistant', slug: PV + 'ai-phone-assistant', img: OV + 'HA-TEL02.jpg' }
     ]},
     { name: 'AI Speakers', products: [
-      { name: 'SPK01', slug: 'products/spk01/index.html', img: OV + 'HA-SPK01.jpg', desc: 'ChatGPT AI chat portable speaker' },
-      { name: 'SPK02', slug: 'products/spk02/index.html', img: OV + 'HA-SPK02.jpg', desc: 'AI chat smart magnetic speaker' },
-      { name: 'SPK03', slug: 'products/spk03/index.html', img: OV + 'HA-SPK03_Bluetooth.jpg', desc: 'ChatGPT AI portable speaker (Bluetooth)' },
-      { name: 'SPK03W', slug: 'products/spk03-wifi/index.html', img: OV + 'HA-SPK03_WiFi.jpg', desc: 'Portable ChatGPT AI speaker (BT + WiFi)' }
+      { name: 'SPK01', slug: PV + 'spk01', img: OV + 'HA-SPK01.jpg' },
+      { name: 'SPK02', slug: PV + 'spk02', img: OV + 'HA-SPK02.jpg' },
+      { name: 'SPK03', slug: PV + 'spk03', img: OV + 'HA-SPK03_Bluetooth.jpg' }
     ]},
     { name: 'AI Companion', products: [
-      { name: 'BirthdayBird', slug: PV + 'birthdaybird', img: OV + 'HA-TOY02.png' },
-      { name: 'TOY01', slug: 'products/toy01/index.html', img: OV + 'HA-TOY01.jpg', desc: 'AI chat plush toy (ChatGPT)' },
-      { name: 'TOY02', slug: 'products/toy02/index.html', img: OV + 'HA-TOY02.png', desc: 'ChatGPT AI chat toy (50+ languages)' }
+      { name: 'BuddyBear', slug: PV + 'buddybear', img: OV + 'HA-TOY01.jpg' },
+      { name: 'BirthdayBird', slug: PV + 'birthdaybird', img: OV + 'HA-TOY02.png' }
     ]},
     { name: 'Developer Kits', products: [
-      { name: 'ESP32 Kit', slug: 'products/esp32-kit/index.html', img: OV + 'HA-ESP32-KIT.jpg', desc: 'ESP32-S3 AI development board kit' }
+      { name: 'ESP32 Kit', slug: PV + 'esp32-kit', img: OV + 'HA-ESP32-KIT.jpg' }
     ]}
   ];
 
