@@ -1,0 +1,2509 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Microphone for AI Scribe: A Hardware Selection Guide | GMIC</title>
+<meta name="description" content="How to choose a microphone for an AI scribe — speaker distance, array vs single mic, DSP, wearable vs room capture, and firmware integration. Technical guide for AI scribe companies." />
+<link rel="canonical" href="https://gmic.ai/microphone-for-ai-scribe/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+
+<meta property="og:type" content="article" />
+<meta property="og:site_name" content="GMIC AI" />
+<meta property="og:url" content="https://gmic.ai/microphone-for-ai-scribe/" />
+<meta property="og:title" content="Microphone for AI Scribe: Hardware Selection Guide | GMIC" />
+<meta property="og:description" content="Microphone architecture for AI scribe platforms — speaker distance, single vs array, wearable vs room, DSP, connectivity, and integration. Guide for product teams and engineers." />
+<meta property="og:image" content="https://gmic.ai/wp-content/uploads/gmic-site/main/img/cap/MIC06.png" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Microphone for AI Scribe: Hardware Selection Guide | GMIC" />
+<meta name="twitter:description" content="Microphone architecture for AI scribe platforms — speaker distance, single vs array, wearable vs room, DSP, connectivity, and integration. Guide for product teams and engineers." />
+<meta name="twitter:image" content="https://gmic.ai/wp-content/uploads/gmic-site/main/img/cap/MIC06.png" />
+
+<link rel="icon" type="image/png" href="../../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="../../css/style.css">
+<link rel="stylesheet" href="../../css/grid.css">
+
+<!-- ========== STRUCTURED DATA ========== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://gmic.ai/#organization",
+  "name": "GMIC AI",
+  "url": "https://gmic.ai/",
+  "logo": "https://gmic.ai/wp-content/uploads/gmic-site/main/img/gmic-logo.png",
+  "description": "GMIC AI designs and manufactures custom voice-capture and edge AI hardware for AI software companies, from prototype through mass production.",
+  "email": "trigg@gmic.ai",
+  "telephone": "+1-669-900-0008",
+  "address": [
+    { "@type": "PostalAddress", "addressLocality": "Anaheim", "addressRegion": "CA", "addressCountry": "US" },
+    { "@type": "PostalAddress", "addressLocality": "Shenzhen", "addressCountry": "CN" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is the best microphone for an AI scribe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "There is no universal best microphone. The right choice depends on speaker distance, the number of speakers, the recording environment, the form factor, and whether the workflow streams audio live or records locally. A wearable close-talk microphone suits mobile clinicians; a multi-microphone array suits room capture of a conversation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does an AI scribe need a special microphone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Consumer microphones can work for prototyping and early validation. Dedicated hardware becomes relevant when a company needs consistent capture across a fleet, hands-free operation, DSP tuned for clinical environments, or SDK and API integration with its own platform."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a single microphone enough for an AI scribe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For close-talk, doctor-only dictation, a single microphone is often sufficient. For ambient multi-speaker capture at a distance, an array with DSP may be more appropriate because a single element carries no spatial information to work with."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is a microphone array better for AI transcription?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not automatically. Adding microphones adds spatial capability, but also power draw, size, cost, and DSP complexity. Placement, acoustic design, enclosure design, and tuning matter as much as the number of microphones."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can an AI scribe use a wearable microphone?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. A wearable microphone provides predictable close-range capture of the person wearing it. Capturing the other speaker in the room clearly is a separate design consideration that depends on distance, orientation, and room acoustics."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can one microphone capture both doctor and patient?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on distance and environment. A close-talk wearable favors the wearer's voice. A room-positioned device or array may capture both, but usually needs DSP tuning to do so reliably. Audio capture is also separate from speaker identification, which is typically a software function performed after the audio reaches the platform."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does microphone quality affect speech-to-text accuracy?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Poor audio capture can create problems that are difficult to recover downstream. Final accuracy, however, depends on the complete chain: microphone quality, placement, DSP, room acoustics, speaker behavior, the speech recognition model, language, and vocabulary."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Should an AI scribe microphone use Wi-Fi or Bluetooth?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on the workflow. Wi-Fi enables direct, high-bandwidth streaming to a cloud or private server. BLE suits low-power wearables that connect through a companion app on a phone. USB works for wired desk setups where the device stays in one place."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can an AI scribe microphone record without internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, if the hardware supports local storage. Audio can be written to the device and uploaded when connectivity returns. This requires firmware built for offline recording, with retry logic and defined behavior when storage fills or an upload fails."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can an AI scribe company build custom microphone hardware?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. GMIC provides ODM and OEM services covering microphone architecture, acoustic design, DSP tuning, firmware development, SDK and API integration, and manufacturing from prototype through mass production."
+      }
+    }
+  ]
+}
+</script>
+
+<style>
+/* ===== Dropdown navigation — full-width mega menu ===== */
+.nav-item {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+.nav-item.has-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  right: -20px;
+  height: 20px;
+  background: transparent;
+}
+.nav-dropdown {
+  display: none;
+  position: fixed;
+  top: 64px;
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  z-index: 999;
+  padding: 32px 0 40px;
+}
+.nav-item.has-dropdown:hover .nav-dropdown { display: block; }
+.nav-item.has-dropdown:hover .nav-arrow { transform: rotate(90deg); opacity: 1; }
+.dropdown-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  padding-top: 8px;
+  display: flex;
+  gap: 0;
+}
+.nav-dropdown--products .dropdown-inner { gap: 0; }
+.dropdown-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.dropdown-product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.15s;
+  border: 1px solid transparent;
+}
+.dropdown-product-card:hover { background: #f5f7ff; border-color: rgba(37,99,235,0.15); }
+.dropdown-all {
+  background: transparent;
+  border: 1px solid transparent !important;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.dropdown-all:hover { background: #f0f4ff !important; border-color: rgba(37,99,235,0.5) !important; }
+.dp-all-icon {
+  width: 100%;
+  height: 94px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  transition: background 0.15s;
+}
+.dropdown-all .dp-all-icon svg { stroke: #9ca3af; transition: stroke 0.15s; }
+.dropdown-all:hover .dp-all-icon { background: #e8eeff; }
+.dropdown-all:hover .dp-all-icon svg { stroke: #2563eb; }
+.dropdown-all .dp-name { color: #0f172a; transition: color 0.15s; }
+.dropdown-all:hover .dp-name { color: #2563eb; }
+.dropdown-product-card img {
+  width: 100%;
+  height: 94px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  background: transparent;
+  border-radius: 6px;
+  padding: 0;
+}
+.dp-name { font-size: 1rem; font-weight: 700; color: #0f172a; margin-bottom: 3px; }
+.dp-desc { font-size: 0.875rem; color: #888; line-height: 1.5; display: none; }
+.dp-arrow { font-size: 22px; color: #2563eb; margin-bottom: 6px; }
+
+/* ── Text Mega Menu ── */
+.nav-dropdown--text .dropdown-inner { gap: 0; }
+.dropdown-col {
+  flex: 1;
+  padding: 0 32px;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+.dropdown-col:first-child { padding-left: 0; }
+.dropdown-col:last-child { border-right: none; padding-right: 0; }
+.dropdown-col-head {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.dropdown-link {
+  font-size: 1rem;
+  color: #0f172a;
+  text-decoration: none;
+  padding: 7px 0;
+  font-weight: 500;
+  transition: color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.dropdown-link:hover { color: #2563eb; }
+.dropdown-link--external { color: #2563eb; font-weight: 600; }
+.dropdown-link--external::after { content: '↗'; font-size: 11px; }
+
+.nav-arrow {
+  font-size: 10px;
+  margin-left: 3px;
+  opacity: 0.5;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 998;
+}
+.nav-item.has-dropdown:hover ~ .nav-overlay,
+.nav-overlay:hover { display: block; }
+
+@media (max-width: 768px) {
+  .nav-dropdown { display: none !important; }
+  .nav-arrow { display: none; }
+}
+
+/* ── Hamburger button ── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1001;
+}
+.nav-burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+  transform-origin: center;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile nav drawer ── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0; right: 0;
+  width: 85%;
+  max-width: 360px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 1002;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  padding-top: 80px;
+}
+.mobile-nav.open { transform: translateX(0); }
+.mobile-nav-inner {
+  padding: 24px 28px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mobile-nav-section { padding: 16px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+.mobile-nav-section:last-of-type { border-bottom: none; }
+.mobile-nav-head {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.mobile-nav-link {
+  display: block;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #0f172a;
+  text-decoration: none;
+  padding: 8px 0;
+  transition: color 0.15s;
+}
+.mobile-nav-link:hover { color: #2563eb; }
+.mobile-nav-link--external { color: #2563eb; font-weight: 600; }
+.mobile-nav-cta { padding-top: 24px; }
+.mobile-nav-cta .btn-nav { display: block; text-align: center; width: 100%; padding: 14px; }
+
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1001;
+}
+.mobile-nav-overlay.open { display: block; }
+
+@media (max-width: 768px) {
+  .nav-burger { display: flex; }
+  .nav-links { display: none; }
+  .nav-right { display: none; }
+  .mobile-nav { display: block; }
+}
+
+.nav-dropdown { background: #ffffff; color: #0f172a; }
+.dropdown-col-head { color: #aaaaaa !important; }
+.dropdown-link { color: #0f172a !important; }
+.dropdown-link:hover { color: #2563eb !important; }
+.dropdown-link--external { color: #2563eb !important; }
+.dropdown-link.nav-current { color: #2563eb !important; font-weight: 700; }
+.mobile-nav-link.active { color: #2563eb !important; font-weight: 700; }
+</style>
+<style>
+/* ============================================================
+   SHARED SECTION TOOLKIT (ind-*) — same as solutions/* pages
+   ============================================================ */
+body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
+html { scroll-behavior:smooth; }
+
+/* Reading measures removed on purpose: .measure and .measure-wide are now
+   no-ops, so every text block fills its section container. The classes stay in
+   the markup so a cap can be reinstated in one place if wanted. */
+
+
+/* Section shells. Three light tones alternate; there is no dark variant. */
+.ind-sec { padding:96px 0; }
+.ind-sec--light { background:#ffffff; }
+.ind-sec--soft  { background:#f7f8fa; }
+.ind-sec--tint  { background:#f0f4f8; }
+.ind-sec--dark  { background:#111827; }
+.ind-sec h2.section { color:#111827; }
+.ind-sec h3 { color:#1f2937; }
+.ind-sec p { color:#4b5563; }
+/* Dark-section inversions. These must come after the generic .ind-sec type
+   rules above: the selectors carry equal specificity, so order decides. */
+.ind-sec--dark h2.section, .ind-sec--dark h3 { color:#ffffff; }
+.ind-sec--dark p { color:rgba(255,255,255,.72); }
+.ind-sec--dark .ind-head .ind-intro { color:rgba(255,255,255,.68); }
+.ind-sec--dark .eyebrow { color:rgba(255,255,255,.5); }
+.ind-sec--dark .sol-link { color:#93c5fd; }
+.ind-sec--dark .sol-link:hover { border-color:#93c5fd; }
+.ind-head { margin-bottom:48px; }
+.ind-head .eyebrow { display:block; margin-bottom:16px; }
+/* Headings ignore the 760px reading measure that .measure-wide sets for the
+   intro paragraphs — a heading only needs to wrap when the container runs out,
+   not at a body-copy line length. Paragraphs keep the cap. */
+.ind-head h2.section { margin:0; max-width:none; }
+/* Even out heading line lengths so the last line never strands one word.
+   Non-breaking spaces in the markup cover browsers without text-wrap support. */
+h1.display, h2.section { text-wrap:balance; }
+.ind-head .ind-intro { margin-top:16px; color:#6b7280; font-size:1.0625rem; line-height:1.75; }
+.eyebrow { color:#6b7280; }
+
+/* HERO — one centred column, no eyebrow, no breadcrumb, no card wrapper:
+   headline → product centrepiece → copy → CTAs → trust strip. */
+.ind-hero { position:relative; overflow:hidden; background:#ffffff; color:#111827; padding:144px 0 96px; text-align:center; }
+.ind-hero::before { content:''; position:absolute; left:50%; top:12%; width:min(1200px,120%); aspect-ratio:16/9; transform:translateX(-50%); background:radial-gradient(ellipse at center, rgba(37,99,235,.06) 0%, rgba(37,99,235,0) 62%); pointer-events:none; }
+.ind-hero .container { position:relative; }
+.ind-hero h1.display { color:#111827; font-size:clamp(1.875rem,5.6vw,4.5rem); line-height:1.05; letter-spacing:-.03em; margin:0 auto; max-width:none; }
+
+/* Clinical-environment photo, directly under the headline. The inset vignette
+   darkens the edges so the frame melts into the dark page background. */
+.ind-hero-photo { position:relative; width:100%; max-width:1152px; margin:64px auto 0; border-radius:16px; overflow:hidden; }
+.ind-hero-photo img { display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; }
+.ind-hero-photo { box-shadow:0 18px 40px rgba(17,24,39,.10); }
+.ind-hero-photo::after { content:''; position:absolute; inset:0; border-radius:16px; box-shadow:inset 0 0 0 1px rgba(17,24,39,.08); pointer-events:none; }
+
+/* Copy — no width cap of its own, so it fills the page container. The first
+   paragraph sits directly under the H1; the rest follows the photo. */
+.ind-hero .lede { font-size:1.125rem; line-height:1.65; color:#4b5563; margin:24px auto 0; }
+.ind-hero-copy { margin:56px auto 0; text-align:center; }
+.ind-hero-copy .lede-sub { font-size:1.125rem; line-height:1.65; color:#6b7280; margin:0; }
+.ind-hero-cta { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:32px; }
+.ind-hero-trust { margin:24px 0 0; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:.75rem; line-height:1.7; color:#6b7280; display:flex; flex-wrap:wrap; gap:4px 10px; align-items:center; justify-content:center; }
+.ind-hero-trust .dot { width:3px; height:3px; border-radius:50%; background:#d1d5db; }
+
+/* Nav sits on white now, so it always wears its "scrolled" appearance. */
+.nav { background:rgba(255,255,255,.92); backdrop-filter:saturate(180%) blur(14px); -webkit-backdrop-filter:saturate(180%) blur(14px); box-shadow:0 1px 0 #e5e7eb; color:#111827; }
+.nav .nav-logo-svg { color:#0f172a; }
+.nav .nav-links a { color:#374151; }
+.nav .nav-links a:hover { color:#111827; }
+.nav .btn-nav { background:#2563eb; color:#fff; }
+.nav .btn-nav:hover { background:#1d4ed8; }
+/* Secondary buttons: dark outline instead of the dark-theme white ghost. */
+.btn-ghost { background:transparent; color:#111827; border:1px solid #d1d5db; }
+.btn-ghost:hover { background:#f3f4f6; border-color:#9ca3af; }
+
+/* INTRO two-column */
+.intro-grid { display:grid; grid-template-columns:1fr 1fr; gap:56px; align-items:start; }
+.intro-lead { font-size:clamp(1.4rem,2.4vw,1.6rem); line-height:1.35; font-weight:600; color:#0f172a; margin:0; }
+.intro-lead em { font-style:italic; color:#2563eb; }
+.intro-body { display:flex; flex-direction:column; gap:16px; padding-top:6px; padding-left:40px; }
+.intro-body p { font-size:1rem; line-height:1.75; color:#64748b; margin:0; }
+
+/* CARD GRIDS */
+.ind-grid { display:grid; gap:20px; }
+.grid-4 { grid-template-columns:repeat(4,1fr); }
+.grid-3 { grid-template-columns:repeat(3,1fr); }
+.grid-2 { grid-template-columns:repeat(2,1fr); }
+/* Informational cards — static. No hover: nothing here is clickable.
+   Contrast comes from the background shift, never a border: grey cards on
+   white sections, white cards on the tinted ones. */
+.ind-card { background:#f7f8fa; border:0; border-radius:12px; padding:28px 24px; }
+.ind-sec--soft .ind-card, .ind-sec--tint .ind-card { background:#ffffff; }
+.ind-card-ic { width:44px; height:44px; border-radius:10px; background:#eff4ff; display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
+.ind-card-ic svg { width:22px; height:22px; color:#2563eb; }
+.ind-card h3 { font-size:1.0625rem; font-weight:600; margin:0 0 8px; line-height:1.3; color:#1f2937; }
+.ind-card p { font-size:.9rem; line-height:1.6; color:#4b5563; margin:0; }
+
+/* CAPABILITY cards, image-topped. Same inversion as .ind-card: grey on white
+   sections, white on the tinted ones, so a card never matches its backdrop. */
+.cap-col { background:#f7f8fa; border-radius:12px; overflow:hidden; border:0; }
+.ind-sec--soft .cap-col, .ind-sec--tint .cap-col { background:#ffffff; }
+.cap-col-img { display:block; width:100%; height:200px; object-fit:cover; }
+.cap-col-body { padding:26px 26px 30px; }
+.cap-col-body h3 { display:flex; align-items:center; gap:10px; font-size:1.125rem; font-weight:600; margin:0 0 14px; }
+.cap-col-body h3 svg { width:20px; height:20px; color:#2563eb; flex:none; }
+.cap-col-body ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px; }
+.cap-col-body li { font-size:.925rem; line-height:1.6; color:#475569; padding-left:18px; position:relative; }
+.cap-col-body li::before { content:''; position:absolute; left:0; top:9px; width:6px; height:6px; border-radius:50%; background:#2563eb; }
+
+/* check list */
+.check-list { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:14px; }
+.check-list li { display:flex; align-items:flex-start; gap:12px; font-size:1rem; line-height:1.6; color:#4b5563; }
+.check-list .ck { width:26px; height:26px; border-radius:50%; background:rgba(37,99,235,.20); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+.check-list .ck svg { width:15px; height:15px; color:#2563eb; }
+
+/* inline link */
+.sol-link { color:#2563eb; font-weight:600; border-bottom:1px solid transparent; transition:border-color .2s ease; }
+.sol-link:hover { border-color:#2563eb; }
+
+/* chips */
+.chip { font-size:.8rem; font-weight:500; color:#2563eb; background:#eff4ff; border-radius:100px; padding:6px 14px; }
+
+/* RELATED pills */
+.rel-row { display:flex; flex-wrap:wrap; gap:10px; }
+.rel-link { font-size:.9rem; font-weight:500; color:#475569; background:#fff; border:1px solid rgba(0,0,0,.08); border-radius:100px; padding:9px 18px; text-decoration:none; transition:color .2s ease, border-color .2s ease; }
+.rel-link:hover { color:#2563eb; border-color:rgba(37,99,235,.40); }
+
+/* final CTA actions */
+.final-cta-actions { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-top:6px; }
+
+/* REVEAL / FADE — self-contained */
+.reveal { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.reveal.in, .reveal.visible { opacity:1; transform:none; }
+.fade-section { opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+.fade-section.in, .fade-section.in-view, .fade-section.visible { opacity:1; transform:none; }
+
+@media (max-width:900px){
+  .grid-4 { grid-template-columns:repeat(2,1fr); }
+  .grid-3 { grid-template-columns:1fr; }
+  .grid-2 { grid-template-columns:1fr; }
+  .ind-hero { padding:112px 0 72px; }
+  .ind-hero-photo { margin-top:48px; }
+  .ind-hero-copy { margin-top:48px; }
+  .intro-grid { grid-template-columns:1fr; gap:32px; }
+  .intro-body { padding-left:0; }
+}
+@media (max-width:640px){
+  .ind-sec { padding:64px 0; }
+  /* Mobile hero: smaller type, narrower copy measure, stacked buttons. */
+  .ind-hero { padding:96px 0 56px; }
+  .grid-4 { grid-template-columns:1fr; }
+  .ind-hero-photo, .ind-hero-photo::after { border-radius:12px; }
+  .ind-hero-photo { margin-top:32px; }
+  .ind-hero-copy { margin-top:36px; }
+  .ind-hero .lede, .ind-hero-copy .lede-sub { font-size:.875rem; line-height:1.6; }
+  .ind-hero .lede { margin-top:16px; }
+  .ind-hero-cta { gap:12px; margin-top:26px; }
+  .ind-hero-cta .btn { width:100%; text-align:center; }
+  .ind-hero-trust { margin-top:18px; font-size:.7rem; }
+}
+</style>
+<style>
+/* ============================================================
+   PAGE-SPECIFIC — Microphone for AI Scribe cluster page
+   Extends the shared ind-* toolkit; same tokens & language.
+   ============================================================ */
+
+/* Page content caps at 1440px on this page only — the shared rule in grid.css
+   is clamp(1512px, 88vw, 2200px). Scoped here rather than edited there so the
+   rest of the site is untouched. The nav keeps its own width: grid.css's
+   `.nav .container` is more specific than this and still wins. Sections that
+   need a reading measure set their own narrower max-width. */
+.container { max-width:1440px; }
+
+/* Section ids remain link targets, so keep them clear of the fixed navbar. */
+.ind-sec[id], .final-cta[id] { scroll-margin-top:92px; }
+
+/* ── Callouts ── */
+/* Subtle background shift only — no border, no left accent stripe. */
+.mdd-callout { display:flex; gap:16px; padding:26px 28px; border-radius:14px; background:#eff4ff; }
+.mdd-callout-ic { flex:none; width:38px; height:38px; border-radius:10px; background:rgba(37,99,235,.14); display:flex; align-items:center; justify-content:center; }
+.mdd-callout-ic svg { width:20px; height:20px; color:#2563eb; }
+.mdd-callout h3 { font-size:1rem; font-weight:700; margin:0 0 8px; color:#0f172a; line-height:1.35; }
+.mdd-callout p { font-size:.95rem; line-height:1.7; color:#475569; margin:0; }
+.mdd-callout p + p { margin-top:10px; }
+.mdd-callout--warn { background:#fff8ed; }
+.mdd-callout--warn .mdd-callout-ic { background:rgba(217,119,6,.14); }
+.mdd-callout--warn .mdd-callout-ic svg { color:#b45309; }
+
+/* Plain inline note — no box, no border, no accent stripe. Reads as body copy. */
+/* No width cap — spans the section container like the rest of its section. */
+.mdd-note { margin-top:40px; }
+.mdd-note p { font-size:1rem; line-height:1.75; color:#475569; margin:0; }
+.mdd-note p + p { margin-top:12px; }
+.mdd-note strong { color:#0f172a; font-weight:700; }
+
+
+/* ── Evolution blocks (definition section) ── */
+.mdd-evo { display:grid; grid-template-columns:repeat(4,1fr); gap:20px; }
+.mdd-evo-step { position:relative; background:#fff; border:0; border-radius:12px; padding:26px 22px; display:flex; flex-direction:column; gap:12px; }
+.mdd-evo-num { font-family:var(--sans); font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:#2563eb; }
+.mdd-evo-step h3 { font-size:1.0625rem; font-weight:700; margin:0; line-height:1.3; color:#0f172a; }
+.mdd-evo-step p { font-size:.9rem; line-height:1.65; color:#64748b; margin:0; }
+
+/* ── Device / use-case card meta rows ── */
+.mdd-meta { margin-top:16px; padding-top:14px; border-top:1px solid rgba(0,0,0,.07); display:flex; flex-direction:column; gap:9px; }
+.mdd-meta-row { display:flex; gap:10px; align-items:baseline; font-size:.84rem; line-height:1.5; }
+.mdd-meta-k { flex:none; font-family:var(--sans); font-size:.66rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:#94a3b8; min-width:66px; }
+.mdd-meta-v { color:#475569; }
+.mdd-fit { display:inline-block; font-family:var(--sans); font-size:.68rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; border-radius:100px; padding:4px 10px; }
+.mdd-fit--strong { color:#166534; background:#dcfce7; }
+.mdd-fit--good { color:#1d4ed8; background:#dbeafe; }
+.mdd-fit--ok { color:#92400e; background:#fef3c7; }
+.mdd-fit--limited { color:#9f1239; background:#ffe4e6; }
+.mdd-fit--built { color:#fff; background:#2563eb; }
+
+/* ── Comparison table ── */
+.mdd-tablewrap { overflow-x:auto; -webkit-overflow-scrolling:touch; border:1px solid #e5e7eb; border-radius:14px; background:#ffffff; }
+.mdd-table { width:100%; min-width:660px; border-collapse:collapse; font-family:var(--sans); font-size:.925rem; }
+.mdd-table th, .mdd-table td { text-align:left; padding:16px 20px; border-bottom:1px solid #e5e7eb; vertical-align:top; line-height:1.6; }
+.mdd-table thead th { font-size:.7rem; font-weight:700; letter-spacing:.11em; text-transform:uppercase; color:#2563eb; background:#f9fafb; }
+.mdd-table tbody td { color:#4b5563; }
+.mdd-table tbody th { font-weight:600; color:#111827; width:24%; }
+.mdd-table tbody tr:last-child th, .mdd-table tbody tr:last-child td { border-bottom:none; }
+.mdd-table .is-hi { background:rgba(37,99,235,.05); }
+/* Two-column variant (decision matrix): wider criteria column. */
+.mdd-table--2col tbody th { width:30%; }
+.mdd-scroll-hint { margin-top:12px; font-size:.78rem; color:#6b7280; display:none; }
+@media (max-width:760px){ .mdd-scroll-hint { display:block; } }
+
+/* ── Integration flow: one snaking diagram, hardware row then software row.
+   Row 2 uses row-reverse so it reads right-to-left on screen while the DOM
+   keeps the logical order (cloud → NLP → note → EHR) for screen readers. ── */
+/* No width cap — fills the section container like the card grids and tables. */
+/* Layer labels are badges; each one's hue matches the tint of its row's cards,
+   so the pairing reads without needing to compare text. */
+.mdd-snake-lane { display:inline-flex; align-items:center; border-radius:100px; padding:6px 14px; font-family:var(--sans); font-size:.875rem; font-weight:600; letter-spacing:.09em; text-transform:uppercase; margin-bottom:16px; }
+.mdd-snake-lane--hw { color:#1d4ed8; background:#dbeafe; }
+.mdd-snake-lane--sw { color:#15803d; background:#dcfce7; }
+
+.mdd-snake-row { display:flex; align-items:stretch; list-style:none; margin:0; padding:0; }
+.mdd-snake-row--rtl { flex-direction:row-reverse; }
+.mdd-snake-node { flex:1 1 0; min-width:0; background:#f1f5f9; border:1px solid transparent; border-radius:12px; padding:18px 20px 20px; }
+/* Row tints — subtle, but enough to read the two layers at a glance. */
+.mdd-snake-row--hw .mdd-snake-node { background:#eff6ff; border-color:rgba(37,99,235,.14); }
+.mdd-snake-row--sw .mdd-snake-node { background:#f0fdf4; border-color:rgba(22,163,74,.16); }
+.mdd-snake-node h4 { font-family:var(--sans); font-size:1rem; font-weight:600; line-height:1.35; color:#0f172a; margin:0 0 6px; }
+.mdd-snake-node p { font-size:.875rem; line-height:1.55; color:#64748b; margin:0; }
+
+/* Connectors: a hairline with a small chevron head. */
+.mdd-snake-arrow { flex:0 0 36px; position:relative; align-self:center; height:1px; background:#cbd5e1; }
+.mdd-snake-arrow::after { content:''; position:absolute; right:0; top:50%; width:6px; height:6px; border-top:1px solid #94a3b8; border-right:1px solid #94a3b8; transform:translateY(-50%) rotate(45deg); }
+.mdd-snake-row--rtl .mdd-snake-arrow { transform:scaleX(-1); }
+
+/* The turn: vertical drop aligned under the last column, transport modes beside it. */
+.mdd-snake-turn { display:flex; align-items:center; justify-content:flex-end; gap:20px; }
+.mdd-snake-modes { flex:1 1 auto; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:baseline; gap:6px 16px; margin:0; font-size:.875rem; line-height:1.5; color:#64748b; }
+.mdd-snake-modes dt { font-family:var(--sans); font-size:.75rem; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:#94a3b8; }
+.mdd-snake-modes dd { margin:0; }
+.mdd-snake-down { flex:0 0 calc((100% - 108px) / 4); position:relative; height:62px; }
+.mdd-snake-down::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:1px; background:#cbd5e1; }
+.mdd-snake-down::after { content:''; position:absolute; left:50%; bottom:0; width:6px; height:6px; border-right:1px solid #94a3b8; border-bottom:1px solid #94a3b8; transform:translate(-50%,-1px) rotate(45deg); }
+
+.mdd-snake-foot { margin:28px 0 0; font-size:1rem; line-height:1.7; color:#64748b; }
+
+/* ── Diagram on a dark section: keep the blue/green layer coding, invert the
+   surfaces and type. ── */
+.ind-sec--dark .mdd-snake-lane--hw { color:#93c5fd; background:rgba(37,99,235,.20); }
+.ind-sec--dark .mdd-snake-lane--sw { color:#86efac; background:rgba(22,163,74,.20); }
+.ind-sec--dark .mdd-snake-row--hw .mdd-snake-node { background:rgba(37,99,235,.10); border-color:rgba(147,197,253,.22); }
+.ind-sec--dark .mdd-snake-row--sw .mdd-snake-node { background:rgba(22,163,74,.10); border-color:rgba(134,239,172,.22); }
+.ind-sec--dark .mdd-snake-node h4 { color:#ffffff; }
+.ind-sec--dark .mdd-snake-node p { color:rgba(255,255,255,.66); }
+.ind-sec--dark .mdd-snake-arrow { background:rgba(255,255,255,.22); }
+.ind-sec--dark .mdd-snake-arrow::after { border-top-color:rgba(255,255,255,.45); border-right-color:rgba(255,255,255,.45); }
+.ind-sec--dark .mdd-snake-down::before { background:rgba(255,255,255,.22); }
+.ind-sec--dark .mdd-snake-down::after { border-right-color:rgba(255,255,255,.45); border-bottom-color:rgba(255,255,255,.45); }
+.ind-sec--dark .mdd-snake-modes { color:rgba(255,255,255,.6); }
+.ind-sec--dark .mdd-snake-modes dt { color:rgba(255,255,255,.42); }
+.ind-sec--dark .mdd-snake-foot { color:rgba(255,255,255,.7); }
+.ind-sec--dark .mdd-snake-foot strong { color:#ffffff; }
+/* Notes and inline CTAs carried by a dark section. */
+.ind-sec--dark .mdd-note p { color:rgba(255,255,255,.72); }
+.ind-sec--dark .mdd-note strong { color:#ffffff; }
+.ind-sec--dark .mdd-nextstep { color:rgba(255,255,255,.7); }
+.ind-sec--dark .mdd-nextstep strong { color:#ffffff; }
+.ind-sec--dark .mdd-nextstep-link { color:#93c5fd; }
+.ind-sec--dark .mdd-nextstep-link:hover { border-color:#93c5fd; }
+
+/* ── Numbered subsection headers ── */
+.mdd-sub { margin-top:56px; }
+.mdd-sub:first-of-type { margin-top:0; }
+.mdd-sub-head { display:flex; align-items:baseline; gap:14px; margin-bottom:22px; }
+.mdd-sub-num { font-family:var(--sans); font-size:.8rem; font-weight:800; letter-spacing:.06em; color:#2563eb; }
+.mdd-sub-head h3 { font-size:1.3rem; font-weight:700; margin:0; letter-spacing:-.015em; color:#0f172a; }
+.mdd-sub-note { font-size:.95rem; line-height:1.75; color:#64748b; margin:0 0 20px; }
+
+
+/* ── "Choose this if" recommendation cards — plain text, no box, no hover ── */
+.mdd-picks { display:grid; grid-template-columns:repeat(3,1fr); gap:32px; margin-top:48px; }
+.mdd-pick h3 { font-size:1.0625rem; font-weight:700; margin:0 0 8px; line-height:1.3; }
+.mdd-pick p { font-size:.925rem; line-height:1.65; margin:0; }
+.mdd-pick strong { font-weight:600; color:#111827; }
+
+/* ── Horizontal process flow ── */
+.mdd-steps { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(7,1fr); row-gap:36px; }
+.mdd-step { position:relative; padding:0 8px; text-align:center; }
+/* Connector: a hairline spanning the full cell, running behind the numbers.
+   Trimmed to the circle at the first and last cell of every row. */
+.mdd-step::before { content:''; position:absolute; top:15px; left:0; right:0; height:2px; background:#e2e8f0; }
+.mdd-step:first-child::before { left:calc(50% - 1px); }
+.mdd-step:last-child::before { right:calc(50% - 1px); }
+/* The ring punches the connector line out behind each number, so it has to be
+   painted in whatever tone the surrounding section uses. */
+.mdd-step-num { position:relative; display:flex; align-items:center; justify-content:center; margin:0 auto; width:32px; height:32px; border-radius:50%; background:#2563eb; color:#fff; font-family:var(--sans); font-size:.8125rem; font-weight:700; box-shadow:0 0 0 5px #ffffff; }
+.ind-sec--soft .mdd-step-num { box-shadow:0 0 0 5px #f7f8fa; }
+.ind-sec--tint .mdd-step-num { box-shadow:0 0 0 5px #f0f4f8; }
+.mdd-step h3 { font-size:.875rem; font-weight:700; line-height:1.35; color:#0f172a; margin:14px 0 5px; }
+.mdd-step p { font-size:.78rem; line-height:1.55; color:#64748b; margin:0; }
+
+/* ── Photo proof grid ── */
+.mdd-photos { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.mdd-photo { position:relative; margin:0; border-radius:14px; overflow:hidden; background:#0b1220; aspect-ratio:4/3; }
+.mdd-photo img { display:block; width:100%; height:100%; object-fit:cover; }
+.mdd-photo figcaption { position:absolute; left:0; right:0; bottom:0; padding:16px 18px; font-family:var(--sans); font-size:.85rem; font-weight:600; color:#fff; background:linear-gradient(to top, rgba(0,0,0,.78), rgba(0,0,0,0)); }
+
+/* ── Full-bleed photo band: a visual breather between two text-heavy
+   sections. Edge to edge, no radius, no overlay. The crop is biased upward so
+   the wide strip keeps the clinician and the badge device rather than the
+   floor. ── */
+.mdd-band { display:block; width:100%; overflow:hidden; line-height:0; }
+.mdd-band img { display:block; width:100%; height:auto; aspect-ratio:3/1; object-fit:cover; object-position:center 32%; }
+@media (max-width:640px){ .mdd-band img { aspect-ratio:2/1; } }
+
+/* ── Stats bar — full-width credibility strip directly under the hero ── */
+.mdd-statbar { background:#ffffff; padding:10px 0 46px; }
+.mdd-statbar .mdd-stats { margin-top:0; padding-top:0; border-top:none; }
+.mdd-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; margin-top:40px; padding-top:36px; border-top:1px solid #e5e7eb; }
+.mdd-stat-num { font-family:var(--sans); font-size:clamp(1.75rem,3.2vw,2.5rem); font-weight:800; letter-spacing:-.03em; color:#111827; line-height:1; }
+.mdd-stat-lb { margin-top:9px; font-size:.85rem; line-height:1.5; color:#6b7280; }
+
+/* ── Device-type cards: 1 → 2 → 3 → 4 columns.
+   Scoped to this grid; the shared .grid-3 utility is used by three other
+   grids on the page and must keep its own ramp. ── */
+.mdd-typegrid { grid-template-columns:1fr; }
+@media (min-width:768px){  .mdd-typegrid { grid-template-columns:repeat(2,1fr); } }
+@media (min-width:1024px){ .mdd-typegrid { grid-template-columns:repeat(3,1fr); } }
+@media (min-width:1280px){ .mdd-typegrid { grid-template-columns:repeat(4,1fr); } }
+
+/* ── 3-up variant: caps the ramp at three columns so a five-card set wraps to
+   3 + 2 instead of 4 + 1. The two cards on the second row fall into the first
+   two columns, left-aligned with the row above. Only the ≥1280 step needs
+   overriding — the 1 / 2 / 3 ramp below it is already correct. ── */
+@media (min-width:1024px){
+  .ind-grid.mdd-typegrid--3up { grid-template-columns:repeat(3,1fr); }
+}
+
+/* ── Generic responsive two-column block ── */
+.mdd-2col { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start; }
+
+/* ── B2B section: white zone, then a silver zone that carries the next step ── */
+.mdd-b2b { padding:0; }
+.mdd-zone { padding:96px 0; }
+/* One continuous tinted block: the section paints the background and the two
+   bands only carry the vertical rhythm, so there is no seam between them. */
+.mdd-zone--top { padding-bottom:78px; }
+.mdd-zone--bot { padding-top:78px; }
+.mdd-zone h3 { font-size:1.2rem; font-weight:700; color:#0f172a; margin:0 0 18px; }
+.mdd-zone p { color:#475569; }
+.mdd-zone--bot .ind-head { margin-bottom:32px; }
+.mdd-why { display:grid; grid-template-columns:repeat(3,1fr); gap:44px; }
+.mdd-why p { margin:0; font-size:1rem; line-height:1.75; }
+
+/* Check list on a light surface */
+.check-list--light li { color:#475569; font-size:.975rem; }
+.check-list--light .ck { background:rgba(37,99,235,.12); }
+.check-list--light .ck svg { color:#2563eb; }
+
+/* Inline next step — a line of text and a link, no card, no background */
+/* No width cap — spans the section container like the rest of its section. */
+.mdd-nextstep { margin:44px 0 0; font-family:var(--sans); font-size:1rem; line-height:1.8; color:#475569; }
+.mdd-nextstep strong { font-weight:600; color:#0f172a; }
+.mdd-nextstep-link { display:inline-flex; align-items:center; gap:7px; margin-left:10px; white-space:nowrap; font-weight:600; color:#2563eb; border-bottom:1px solid transparent; padding-bottom:2px; transition:border-color .2s ease; }
+.mdd-nextstep-link:hover { border-color:#2563eb; }
+.mdd-nextstep-link svg { width:16px; height:16px; }
+
+/* ── Related guide cards ── */
+.mdd-guides { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.mdd-guide { display:flex; flex-direction:column; gap:9px; background:#f7f8fa; border:0; border-radius:12px; padding:26px 24px; text-decoration:none; }
+.ind-sec--soft .mdd-guide, .ind-sec--tint .mdd-guide { background:#ffffff; }
+.ind-sec--soft a.mdd-guide:hover, .ind-sec--tint a.mdd-guide:hover { background:#f7f8fa; }
+a.mdd-guide { transition:transform .25s ease, box-shadow .25s ease, background .2s ease; }
+a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,24,39,.08); background:#eef2f7; }
+.mdd-guide h3 { font-size:1.0625rem; font-weight:700; margin:0; color:#0f172a; line-height:1.3; }
+.mdd-guide p { font-size:.9rem; line-height:1.6; color:#64748b; margin:0; }
+.mdd-guide-cue { margin-top:6px; font-family:var(--sans); font-size:.82rem; font-weight:600; color:#2563eb; display:inline-flex; align-items:center; gap:6px; }
+.mdd-guide-cue svg { width:15px; height:15px; }
+/* Topics without a published page yet: a normal static card, no marker, no hover. */
+.mdd-guide--pending { cursor:default; }
+
+/* ── FAQ accordion (vertical: question row, answer expands below) ── */
+.mdd-faq { border-top:1px solid rgba(0,0,0,.09); }
+.mdd-faq-item { border-bottom:1px solid rgba(0,0,0,.09); }
+.mdd-faq-item:last-child { border-bottom:none; }
+.mdd-faq-qwrap { margin:0; font-weight:inherit; font-size:inherit; }
+.mdd-faq-q { width:100%; display:flex; align-items:center; justify-content:space-between; gap:16px; background:none; border:0; padding:20px 0; text-align:left; cursor:pointer; font-family:var(--sans); font-size:1rem; font-weight:600; line-height:1.5; letter-spacing:-.01em; color:#0f172a; }
+.mdd-faq-q:focus-visible { outline:2px solid #2563eb; outline-offset:3px; border-radius:4px; }
+.mdd-faq-chev { flex:none; width:20px; height:20px; color:#94a3b8; transition:transform .3s ease; }
+.mdd-faq-q[aria-expanded="true"] .mdd-faq-chev { transform:rotate(180deg); }
+.mdd-faq-a { max-height:0; overflow:hidden; transition:max-height .35s ease; }
+.mdd-faq-a-inner { padding:0 0 20px; }
+.mdd-faq-a p { font-size:.9375rem; line-height:1.75; color:#475569; margin:0; }
+.mdd-faq-a p + p { margin-top:12px; }
+
+/* ── Why GMIC — the visitor's first introduction, so it runs larger ── */
+.mdd-why-gmic { padding:118px 0; }
+.mdd-why-gmic .ind-head { margin-bottom:56px; }
+.mdd-why-gmic .ind-head .ind-intro { font-size:1.15rem; }
+
+/* ── Final CTA — the page's conversion point ── */
+/* Final CTA — light tint, dark type. Overrides .final-cta's dark defaults. */
+/* Final CTA is dark and runs straight into the author strip and footer, so the
+   page closes on one uninterrupted dark block. */
+.mdd-final { padding:152px 0; background:#0a0a0a; color:#ffffff; }
+.mdd-final .eyebrow { color:rgba(255,255,255,.5); }
+.mdd-final h2.section, .mdd-final h2 { color:#ffffff; max-width:none; font-size:clamp(32px,5vw,58px); }
+.mdd-final p { max-width:none; margin-left:0; margin-right:0; font-size:1.0625rem; line-height:1.75; color:rgba(255,255,255,.72); }
+.mdd-final .btn-ghost { background:transparent; color:#ffffff; border-color:rgba(255,255,255,.35); }
+.mdd-final .btn-ghost:hover { background:rgba(255,255,255,.08); border-color:#ffffff; }
+.mdd-final .final-cta-actions { margin-top:34px; }
+
+/* ── Author / E-E-A-T module ── */
+.mdd-author { background:#0a0a0a; border-top:1px solid rgba(255,255,255,.10); padding:34px 0; }
+.mdd-author-inner { display:flex; flex-wrap:wrap; gap:10px 28px; align-items:center; font-family:var(--sans); font-size:.82rem; color:rgba(255,255,255,.55); }
+.mdd-author-inner strong { color:rgba(255,255,255,.85); font-weight:600; }
+.mdd-author-sep { width:1px; height:14px; background:rgba(255,255,255,.16); }
+
+/* ── Responsive ── */
+@media (max-width:1100px){
+  /* Process flow wraps 4 + 3; re-trim the connector at each row edge. */
+  .mdd-steps { grid-template-columns:repeat(4,1fr); }
+  .mdd-step:nth-child(4n+1)::before { left:calc(50% - 1px); }
+  .mdd-step:nth-child(4n)::before { right:calc(50% - 1px); }
+}
+@media (max-width:1000px){
+  .mdd-guides { grid-template-columns:repeat(2,1fr); }
+  .mdd-evo { grid-template-columns:repeat(2,1fr); }
+  .mdd-why { grid-template-columns:1fr 1fr; gap:32px 40px; }
+}
+@media (max-width:900px){
+  /* Flow diagram collapses to one vertical column; connectors turn downward
+     and row 2 drops its reversal so the stack follows the logical order. */
+  .mdd-snake-row, .mdd-snake-row--rtl { flex-direction:column; }
+  .mdd-snake-arrow, .mdd-snake-row--rtl .mdd-snake-arrow { flex:0 0 26px; width:1px; height:26px; margin:0 auto; transform:none; }
+  .mdd-snake-arrow::after { right:auto; left:50%; top:auto; bottom:0; border-top:0; border-right:1px solid #94a3b8; border-bottom:1px solid #94a3b8; transform:translate(-50%,-1px) rotate(45deg); }
+  .mdd-snake-turn { flex-direction:column; align-items:stretch; gap:0; }
+  .mdd-snake-down { flex:0 0 auto; width:100%; height:34px; order:-1; }
+  .mdd-snake-modes { justify-content:flex-start; padding:12px 0 14px; }
+  .mdd-2col { grid-template-columns:1fr; gap:36px; }
+  .mdd-why { grid-template-columns:1fr; gap:20px; }
+  .mdd-photos { grid-template-columns:repeat(2,1fr); }
+  .mdd-stats { grid-template-columns:repeat(2,1fr); gap:28px 20px; }
+  .mdd-picks { grid-template-columns:1fr; gap:24px; }
+}
+@media (max-width:640px){
+  .mdd-evo, .mdd-guides { grid-template-columns:1fr; }
+  .mdd-photos { grid-template-columns:1fr; }
+  .mdd-zone { padding:64px 0; }
+  .mdd-zone--top { padding-bottom:52px; }
+  .mdd-zone--bot { padding-top:52px; }
+  .mdd-statbar { padding:34px 0; }
+  .mdd-why-gmic { padding:64px 0; }
+  .mdd-final { padding:88px 0; }
+  .mdd-callout { flex-direction:column; gap:14px; padding:22px 20px; }
+  /* Two per row, still connected within each row. */
+  .mdd-steps { grid-template-columns:repeat(2,1fr); row-gap:28px; }
+  .mdd-step:nth-child(2n+1)::before { left:calc(50% - 1px); }
+  .mdd-step:nth-child(2n)::before { right:calc(50% - 1px); }
+}
+</style>
+</head>
+<body>
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="../../index.html" class="nav-logo" aria-label="GMIC.AI">
+      <svg class="nav-logo-svg" width="287" height="64" viewBox="0 0 287 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20.625 19.7969L23.7139 25.1582L23.8672 25.4238L23.6358 25.624C22.0052 27.035 20.9736 29.1214 20.9736 31.4492C20.9737 33.7322 21.9655 35.7823 23.542 37.1914L23.7666 37.3926L23.6162 37.6533L20.5225 43.0244L20.3135 43.3857L19.9785 43.1367C16.4213 40.4831 14.1163 36.2357 14.1162 31.4492C14.1162 26.6153 16.4676 22.3307 20.085 19.6826L20.419 19.4385L20.625 19.7969Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.742097"/>
+        <path d="M47.0339 3.14062C62.6878 3.14063 75.3784 15.8305 75.3787 31.4844C75.3787 37.0582 73.768 42.2562 70.989 46.6396L76.5984 60.6572L76.7273 60.9785L76.406 60.8496L62.4578 55.2676C58.0188 58.1522 52.722 59.8291 47.0339 59.8291H29.0369C28.1388 59.8291 27.2505 59.7868 26.3738 59.7051L26.1433 59.6836L26.2585 59.4834L30.575 52.0078L30.6179 51.9336H47.0339C58.3273 51.9336 67.4832 42.7778 67.4832 31.4844C67.4829 20.1912 58.3272 11.0361 47.0339 11.0361H30.7996L30.7566 10.9619L26.4314 3.4707L26.3152 3.26855L26.5476 3.24902C27.3679 3.17764 28.1981 3.14063 29.0369 3.14062H47.0339Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.296839"/>
+        <path d="M13.9384 7.53125L17.7431 14.1211L17.8837 14.3633L17.6493 14.5176C12.1313 18.1468 8.48923 24.3932 8.48918 31.4902C8.48918 38.5314 12.0742 44.7355 17.5195 48.377L17.7509 48.5312L17.6122 48.7725L13.8056 55.3643L13.6503 55.6348L13.3876 55.4658C5.51302 50.3968 0.296799 41.5526 0.296799 31.4902C0.29685 21.3707 5.5727 12.4833 13.5224 7.42871L13.7841 7.2627L13.9384 7.53125Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.593678"/>
+        <circle cx="35.3099" cy="31.3871" r="4.78653" fill="#2563eb"/>
+        <ellipse cx="51.0754" cy="31.3871" rx="4.74942" ry="4.78653" fill="#2563eb"/>
+        <path d="M109.406 42.317C106.805 42.317 104.408 41.9096 102.214 41.0948C100.051 40.2486 98.1554 39.0577 96.5258 37.5221C94.9275 35.9865 93.6739 34.1845 92.765 32.1161C91.8875 30.0477 91.4488 27.7756 91.4488 25.2998C91.4488 22.8239 91.8875 20.5518 92.765 18.4834C93.6739 16.415 94.9431 14.613 96.5728 13.0774C98.2024 11.5418 100.114 10.3665 102.308 9.55172C104.502 8.70555 106.915 8.28247 109.547 8.28247C112.462 8.28247 115.079 8.76823 117.398 9.73975C119.748 10.7113 121.723 12.1215 123.321 13.9706L118.432 18.4834C117.241 17.2299 115.941 16.3054 114.53 15.7099C113.12 15.0831 111.584 14.7697 109.923 14.7697C108.325 14.7697 106.868 15.0204 105.552 15.5219C104.235 16.0233 103.091 16.7441 102.12 17.6843C101.18 18.6245 100.443 19.737 99.9104 21.0219C99.409 22.3068 99.1583 23.7328 99.1583 25.2998C99.1583 26.8354 99.409 28.2457 99.9104 29.5306C100.443 30.8155 101.18 31.9437 102.12 32.9152C103.091 33.8554 104.22 34.5762 105.504 35.0776C106.821 35.5791 108.262 35.8298 109.829 35.8298C111.334 35.8298 112.791 35.5947 114.201 35.1247C115.643 34.6232 117.037 33.7927 118.385 32.6332L122.71 38.1332C120.923 39.4808 118.839 40.515 116.458 41.2358C114.107 41.9566 111.757 42.317 109.406 42.317ZM122.71 38.1332L115.752 37.146V24.7827H122.71V38.1332ZM129.784 41.7529V8.84658H136.083L150.092 32.0691H146.754L160.528 8.84658H166.78L166.874 41.7529H159.729L159.682 19.7997H160.998L149.998 38.2743H146.566L135.331 19.7997H136.929V41.7529H129.784ZM174.681 41.7529V8.84658H182.297V41.7529H174.681ZM205.854 42.317C203.316 42.317 200.95 41.9096 198.756 41.0948C196.593 40.2486 194.713 39.0577 193.115 37.5221C191.516 35.9865 190.263 34.1845 189.354 32.1161C188.476 30.0477 188.038 27.7756 188.038 25.2998C188.038 22.8239 188.476 20.5518 189.354 18.4834C190.263 16.415 191.516 14.613 193.115 13.0774C194.744 11.5418 196.64 10.3665 198.803 9.55172C200.965 8.70555 203.331 8.28247 205.901 8.28247C208.753 8.28247 211.323 8.7839 213.611 9.78676C215.93 10.7583 217.873 12.1999 219.44 14.1116L214.551 18.6245C213.423 17.3396 212.169 16.3837 210.79 15.7569C209.411 15.0988 207.907 14.7697 206.277 14.7697C204.742 14.7697 203.331 15.0204 202.046 15.5219C200.762 16.0233 199.649 16.7441 198.709 17.6843C197.769 18.6245 197.032 19.737 196.499 21.0219C195.998 22.3068 195.747 23.7328 195.747 25.2998C195.747 26.8667 195.998 28.2927 196.499 29.5776C197.032 30.8625 197.769 31.975 198.709 32.9152C199.649 33.8554 200.762 34.5762 202.046 35.0776C203.331 35.5791 204.742 35.8298 206.277 35.8298C207.907 35.8298 209.411 35.5164 210.79 34.8896C212.169 34.2315 213.423 33.2443 214.551 31.928L219.44 36.4409C217.873 38.3526 215.93 39.8099 213.611 40.8127C211.323 41.8156 208.737 42.317 205.854 42.317ZM233.112 41.7529L247.779 8.84658H255.3L270.014 41.7529H262.022L249.988 12.7013H252.997L240.915 41.7529H233.112ZM240.445 34.7016L242.467 28.9195H259.39L261.458 34.7016H240.445ZM273.428 41.7529V8.84658H281.043V41.7529H273.428Z" fill="currentColor"/>
+        <path d="M98.5933 52.8272V53.6687H94.3082V56.1822H98.1504V57.0237H94.3082V60.7109H93.3781V52.8272H98.5933ZM102.018 60.8438C100.412 60.8438 99.2496 59.6812 99.2496 57.8542C99.2496 56.0272 100.412 54.8646 102.018 54.8646C103.623 54.8646 104.786 56.0272 104.786 57.8542C104.786 59.6812 103.623 60.8438 102.018 60.8438ZM102.018 60.0466C103.125 60.0466 103.856 59.2383 103.856 57.8542C103.856 56.4701 103.125 55.6618 102.018 55.6618C100.91 55.6618 100.18 56.4701 100.18 57.8542C100.18 59.2383 100.91 60.0466 102.018 60.0466ZM108.543 60.8438C106.982 60.8438 105.897 59.6923 105.897 57.8542C105.897 56.0161 106.96 54.8646 108.543 54.8646C109.905 54.8646 110.824 55.6729 111.001 56.9352H110.082C109.927 56.0715 109.263 55.6618 108.543 55.6618C107.569 55.6618 106.827 56.3594 106.827 57.8542C106.827 59.349 107.591 60.0466 108.543 60.0466C109.274 60.0466 109.938 59.6258 110.093 58.7511H111.001C110.813 60.0577 109.827 60.8438 108.543 60.8438ZM116.045 58.2307V54.9975H116.93V60.7109H116.089V59.8583C115.712 60.4341 115.092 60.8438 114.295 60.8438C113.022 60.8438 112.28 60.1241 112.28 58.8618V54.9975H113.166V58.7732C113.166 59.659 113.653 60.0466 114.472 60.0466C115.214 60.0466 116.045 59.4929 116.045 58.2307ZM120.607 60.8438C119.156 60.8438 118.271 60.2348 118.182 58.895H119.079C119.179 59.7587 119.599 60.0798 120.607 60.0798C121.57 60.0798 121.98 59.7587 121.98 59.194C121.98 58.6846 121.67 58.4521 120.673 58.2639L120.142 58.1642C118.902 57.9317 118.359 57.367 118.359 56.4812C118.359 55.5068 119.134 54.8646 120.441 54.8646C121.969 54.8646 122.744 55.54 122.766 56.758H121.88C121.836 55.8722 121.316 55.6286 120.441 55.6286C119.677 55.6286 119.245 55.9386 119.245 56.4701C119.245 57.0127 119.666 57.212 120.397 57.3559L120.906 57.4556C122.312 57.7324 122.877 58.2085 122.877 59.1386C122.877 60.2237 122.013 60.8438 120.607 60.8438ZM132.668 57.5774L133.476 54.9975H134.428L132.524 60.7109H131.593L130.752 58.0646C130.553 57.4334 130.353 56.7691 130.176 56.1269C129.988 56.7691 129.789 57.4334 129.589 58.0646L128.759 60.7109H127.829L125.924 54.9975H126.877L127.685 57.5774C127.906 58.275 128.106 58.9615 128.305 59.659C128.493 58.9615 128.692 58.275 128.914 57.5774L129.711 54.9975H130.641L131.438 57.5774C131.649 58.2639 131.859 58.9504 132.059 59.6369C132.247 58.9504 132.457 58.2639 132.668 57.5774ZM136.337 54.2224H135.385V53.1372H136.337V54.2224ZM136.315 60.7109H135.429V54.9975H136.315V60.7109ZM140.481 54.9975V55.7725H139.307V59.4708C139.307 59.7698 139.451 59.958 139.96 59.958H140.481V60.7109C140.259 60.722 140.027 60.7331 139.85 60.7331C138.964 60.7331 138.421 60.423 138.421 59.5483V55.7725H137.48V54.9975H138.421V53.3808H139.307V54.9975H140.481ZM144.384 54.8646C145.658 54.8646 146.4 55.5843 146.4 56.8466V60.7109H145.514V56.9352C145.514 56.0494 145.027 55.6618 144.207 55.6618C143.465 55.6618 142.635 56.2154 142.635 57.4777V60.7109H141.749V52.8272H142.635V55.7836C143.011 55.2521 143.609 54.8646 144.384 54.8646ZM157.378 60.7109H156.392L155.473 58.4189H151.886L150.978 60.7109H150.003L153.148 52.8272H154.189L157.378 60.7109ZM152.251 57.4888L152.218 57.5774H155.141L155.097 57.4777C154.754 56.6251 154.134 55.0528 153.657 53.8348C153.203 55.0528 152.594 56.6251 152.251 57.4888ZM160.549 54.9975V55.7725H159.375V59.4708C159.375 59.7698 159.519 59.958 160.028 59.958H160.549V60.7109C160.327 60.722 160.095 60.7331 159.917 60.7331C159.032 60.7331 158.489 60.423 158.489 59.5483V55.7725H157.548V54.9975H158.489V53.3808H159.375V54.9975H160.549ZM164.319 54.9975V55.7725H163.146V59.4708C163.146 59.7698 163.29 59.958 163.799 59.958H164.319V60.7109C164.098 60.722 163.865 60.7331 163.688 60.7331C162.802 60.7331 162.26 60.423 162.26 59.5483V55.7725H161.319V54.9975H162.26V53.3808H163.146V54.9975H164.319ZM167.86 60.8438C166.299 60.8438 165.203 59.7033 165.203 57.8542C165.203 56.0604 166.255 54.8646 167.838 54.8646C169.543 54.8646 170.462 56.2154 170.462 57.8542V58.1642H166.122C166.21 59.4487 166.886 60.0355 167.882 60.0355C168.691 60.0355 169.2 59.6147 169.399 58.9725H170.318C170.042 60.0466 169.222 60.8438 167.86 60.8438ZM166.144 57.367H169.51C169.421 56.4258 168.857 55.6729 167.838 55.6729C166.941 55.6729 166.288 56.2376 166.144 57.367ZM174.481 54.8646C175.754 54.8646 176.496 55.5843 176.496 56.8466V60.7109H175.61V56.9352C175.61 56.0494 175.123 55.6618 174.304 55.6618C173.562 55.6618 172.731 56.2154 172.731 57.4777V60.7109H171.845V54.9975H172.687V55.85C173.063 55.2743 173.684 54.8646 174.481 54.8646ZM180.443 54.9975V55.7725H179.27V59.4708C179.27 59.7698 179.414 59.958 179.923 59.958H180.443V60.7109C180.222 60.722 179.99 60.7331 179.812 60.7331C178.927 60.7331 178.384 60.423 178.384 59.5483V55.7725H177.443V54.9975H178.384V53.3808H179.27V54.9975H180.443ZM182.62 54.2224H181.668V53.1372H182.62V54.2224ZM182.598 60.7109H181.712V54.9975H182.598V60.7109ZM186.752 60.8438C185.147 60.8438 183.984 59.6812 183.984 57.8542C183.984 56.0272 185.147 54.8646 186.752 54.8646C188.358 54.8646 189.52 56.0272 189.52 57.8542C189.52 59.6812 188.358 60.8438 186.752 60.8438ZM186.752 60.0466C187.859 60.0466 188.59 59.2383 188.59 57.8542C188.59 56.4701 187.859 55.6618 186.752 55.6618C185.645 55.6618 184.914 56.4701 184.914 57.8542C184.914 59.2383 185.645 60.0466 186.752 60.0466ZM193.543 54.8646C194.816 54.8646 195.558 55.5843 195.558 56.8466V60.7109H194.672V56.9352C194.672 56.0494 194.185 55.6618 193.366 55.6618C192.624 55.6618 191.794 56.2154 191.794 57.4777V60.7109H190.908V54.9975H191.749V55.85C192.126 55.2743 192.746 54.8646 193.543 54.8646ZM197.053 60.7109V59.6037H198.172V60.8106C198.172 61.7739 197.818 62.1725 197.164 62.239L197.053 62.25V61.6521L197.131 61.641C197.43 61.5967 197.541 61.3199 197.541 60.8881V60.7109H197.053ZM208.988 60.7109H208.003L207.083 58.4189H203.496L202.588 60.7109H201.614L204.758 52.8272H205.799L208.988 60.7109ZM203.861 57.4888L203.828 57.5774H206.751L206.707 57.4777C206.364 56.6251 205.744 55.0528 205.268 53.8348C204.814 55.0528 204.205 56.6251 203.861 57.4888ZM212.361 60.8438C210.8 60.8438 209.715 59.6923 209.715 57.8542C209.715 56.0161 210.778 54.8646 212.361 54.8646C213.723 54.8646 214.642 55.6729 214.819 56.9352H213.9C213.745 56.0715 213.081 55.6618 212.361 55.6618C211.387 55.6618 210.645 56.3594 210.645 57.8542C210.645 59.349 211.409 60.0466 212.361 60.0466C213.092 60.0466 213.756 59.6258 213.911 58.7511H214.819C214.631 60.0577 213.646 60.8438 212.361 60.8438ZM218.384 54.9975V55.7725H217.21V59.4708C217.21 59.7698 217.354 59.958 217.864 59.958H218.384V60.7109C218.163 60.722 217.93 60.7331 217.753 60.7331C216.867 60.7331 216.325 60.423 216.325 59.5483V55.7725H215.383V54.9975H216.325V53.3808H217.21V54.9975H218.384ZM228.227 57.5774L229.036 54.9975H229.988L228.084 60.7109H227.153L226.312 58.0646C226.113 57.4334 225.913 56.7691 225.736 56.1269C225.548 56.7691 225.349 57.4334 225.149 58.0646L224.319 60.7109H223.389L221.484 54.9975H222.436L223.245 57.5774C223.466 58.275 223.666 58.9615 223.865 59.659C224.053 58.9615 224.252 58.275 224.474 57.5774L225.271 54.9975H226.201L226.998 57.5774C227.209 58.2639 227.419 58.9504 227.618 59.6369C227.807 58.9504 228.017 58.2639 228.227 57.5774ZM231.897 54.2224H230.945V53.1372H231.897V54.2224ZM231.875 60.7109H230.989V54.9975H231.875V60.7109ZM236.041 54.9975V55.7725H234.867V59.4708C234.867 59.7698 235.011 59.958 235.52 59.958H236.041V60.7109C235.819 60.722 235.587 60.7331 235.41 60.7331C234.524 60.7331 233.981 60.423 233.981 59.5483V55.7725H233.04V54.9975H233.981V53.3808H234.867V54.9975H236.041ZM239.944 54.8646C241.218 54.8646 241.96 55.5843 241.96 56.8466V60.7109H241.074V56.9352C241.074 56.0494 240.587 55.6618 239.767 55.6618C239.025 55.6618 238.195 56.2154 238.195 57.4777V60.7109H237.309V52.8272H238.195V55.7836C238.571 55.2521 239.169 54.8646 239.944 54.8646ZM249.007 60.8881C247.125 60.8881 245.752 60.0798 245.729 58.1089H246.693C246.715 59.5705 247.723 60.0466 249.007 60.0466C250.269 60.0466 251 59.5483 251 58.5739C251 57.821 250.48 57.4556 249.084 57.1455L248.387 56.9905C247.047 56.6916 245.995 56.149 245.995 54.7096C245.995 53.4473 247.047 52.6501 248.686 52.6501C251.011 52.6501 251.731 53.8348 251.764 55.1193H250.812C250.734 54.1006 250.258 53.4916 248.686 53.4916C247.545 53.4916 246.959 53.9677 246.959 54.7096C246.959 55.4625 247.324 55.839 248.808 56.1712L249.505 56.3262C251.321 56.7248 251.963 57.4334 251.963 58.5739C251.963 59.9691 250.9 60.8881 249.007 60.8881ZM256.04 54.8646C257.645 54.8646 258.697 56.0272 258.697 57.8542C258.697 59.6812 257.645 60.8438 256.04 60.8438C255.209 60.8438 254.556 60.5006 254.124 59.8916V62.8812H253.239V54.9975H254.08V55.8833C254.512 55.23 255.187 54.8646 256.04 54.8646ZM255.929 60.0466C257.036 60.0466 257.767 59.194 257.767 57.8099C257.767 56.4258 257.036 55.6618 255.929 55.6618C254.822 55.6618 254.091 56.4701 254.091 57.8542C254.091 59.2383 254.822 60.0466 255.929 60.0466ZM262.461 60.8438C260.9 60.8438 259.803 59.7033 259.803 57.8542C259.803 56.0604 260.855 54.8646 262.439 54.8646C264.144 54.8646 265.063 56.2154 265.063 57.8542V58.1642H260.722C260.811 59.4487 261.486 60.0355 262.483 60.0355C263.291 60.0355 263.801 59.6147 264 58.9725H264.919C264.642 60.0466 263.823 60.8438 262.461 60.8438ZM260.745 57.367H264.111C264.022 56.4258 263.457 55.6729 262.439 55.6729C261.542 55.6729 260.889 56.2376 260.745 57.367ZM268.827 60.8438C267.265 60.8438 266.169 59.7033 266.169 57.8542C266.169 56.0604 267.221 54.8646 268.805 54.8646C270.51 54.8646 271.429 56.2154 271.429 57.8542V58.1642H267.088C267.177 59.4487 267.852 60.0355 268.849 60.0355C269.657 60.0355 270.167 59.6147 270.366 58.9725H271.285C271.008 60.0466 270.189 60.8438 268.827 60.8438ZM267.11 57.367H270.477C270.388 56.4258 269.823 55.6729 268.805 55.6729C267.908 55.6729 267.254 56.2376 267.11 57.367ZM277.108 55.8168V52.8272H277.994V60.7109H277.152V59.8251C276.721 60.4784 276.045 60.8438 275.193 60.8438C273.587 60.8438 272.535 59.6812 272.535 57.8542C272.535 56.0272 273.587 54.8646 275.193 54.8646C276.023 54.8646 276.676 55.2078 277.108 55.8168ZM275.303 60.0466C276.411 60.0466 277.141 59.2383 277.141 57.8542C277.141 56.4701 276.411 55.6618 275.303 55.6618C274.196 55.6618 273.465 56.5144 273.465 57.8985C273.465 59.2826 274.196 60.0466 275.303 60.0466ZM280.318 58.6514H279.742L279.587 54.9975V52.8272H280.517V54.9975L280.318 58.6514ZM280.606 60.7109H279.488V59.6037H280.606V60.7109Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <div class="nav-links">
+
+      <!-- Products -->
+      <div class="nav-item has-dropdown">
+        <a href="../../index.html#hardware" class="nav-link">
+          Products <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--products">
+          <div class="dropdown-inner">
+            <div class="dropdown-grid">
+              <a href="../../products/mic06/" class="dropdown-product-card" data-category="voice">
+                <img src="../../img/cap/MIC06.png" alt="MIC06">
+                <span class="dp-name">MIC06</span>
+                <span class="dp-desc">Continuous voice capture for shift-based operations</span>
+              </a>
+              <a href="../../products/mic05/" class="dropdown-product-card" data-category="voice">
+                <img src="../../img/cap/MIC05.png" alt="MIC05">
+                <span class="dp-name">MIC05</span>
+                <span class="dp-desc">Button-triggered capture for field notes</span>
+              </a>
+              <a href="../../products/mic01/" class="dropdown-product-card" data-category="voice">
+                <img src="../../img/cap/MIC01.png" alt="MIC01">
+                <span class="dp-name">MIC01</span>
+                <span class="dp-desc">Entry-level pilot device</span>
+              </a>
+              <a href="../../products/telalive/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../../img/products/telalive.png" alt="Telalive">
+                <span class="dp-name">Telalive</span>
+                <span class="dp-desc">AI-powered desk phone &amp; wearable platform</span>
+              </a>
+              <a href="../../products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
+                <div class="dp-all-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+                <span class="dp-name">View All</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Service -->
+      <div class="nav-item has-dropdown">
+        <a href="../../custom-devices/index.html" class="nav-link">
+          Service <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Hardware</p>
+              <a href="../../custom-devices/odm-oem/index.html" class="dropdown-link">ODM / OEM</a>
+              <a href="../../custom-devices/private-label/index.html" class="dropdown-link">Private Label</a>
+              <a href="../../custom-devices/custom-enclosure/index.html" class="dropdown-link">Custom Enclosure</a>
+              <a href="../../custom-devices/3d-prototype/index.html" class="dropdown-link">3D Small-batch Prototype</a>
+            </div>
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Engineering</p>
+              <a href="../../custom-devices/firmware-integration/index.html" class="dropdown-link">Firmware Integration</a>
+              <a href="../../custom-devices/audio-dsp-tuning/index.html" class="dropdown-link">Audio &amp; DSP Tuning</a>
+              <a href="../../custom-devices/ai-sdk-integration/index.html" class="dropdown-link">AI SDK Integration</a>
+              <a href="../../custom-devices/prototype-validation/index.html" class="dropdown-link">Prototype Validation</a>
+            </div>
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Production</p>
+              <a href="../../custom-devices/evt-dvt-pvt/index.html" class="dropdown-link">EVT / DVT / PVT</a>
+              <a href="../../custom-devices/smt-manufacturing/index.html" class="dropdown-link">SMT Manufacturing</a>
+              <a href="../../custom-devices/certification-support/index.html" class="dropdown-link">Certification Support</a>
+              <a href="../../custom-devices/supply-chain/index.html" class="dropdown-link">Supply Chain Management</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Implementation -->
+      <div class="nav-item">
+        <a href="../../implementation/index.html" class="nav-link">Implementation</a>
+      </div>
+
+      <!-- Proof -->
+      <div class="nav-item">
+        <a href="../../proof/index.html" class="nav-link">Success Stories</a>
+      </div>
+
+      <!-- Industries -->
+      <div class="nav-item has-dropdown">
+        <a href="../../index.html#industries" class="nav-link">
+          Industries <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Industries</p>
+              <a href="../../industries/healthcare/index.html" class="dropdown-link">Healthcare</a>
+              <a href="../../industries/field-service/index.html" class="dropdown-link">Field Service</a>
+              <a href="../../industries/sales-intelligence/index.html" class="dropdown-link">Sales</a>
+              <a href="../../industries/public-safety/index.html" class="dropdown-link">Public Safety</a>
+              <a href="../../industries/veterinary/index.html" class="dropdown-link">Veterinary</a>
+              <a href="../../industries/logistics/index.html" class="dropdown-link">Logistics</a>
+              <a href="../../industries/enterprise/index.html" class="dropdown-link">Enterprise</a>
+              <a href="https://nemt.gmic.ai/" class="dropdown-link" target="_blank" rel="noopener noreferrer">NEMT</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resource -->
+      <div class="nav-item has-dropdown">
+        <a href="#" class="nav-link">
+          Resource <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Resource</p>
+              <a href="../../resources/voice-ai-hardware/index.html" class="dropdown-link">Voice AI Hardware</a>
+              <a href="../../resources/ai-hardware-integration/index.html" class="dropdown-link">AI Hardware Integration</a>
+              <a href="../../resources/ai-hardware-odm/index.html" class="dropdown-link">AI Hardware ODM</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="nav-item">
+        <a href="../../process/index.html" class="nav-link">Process</a>
+      </div>
+
+      <!-- Company -->
+      <div class="nav-item has-dropdown">
+        <a href="../../about/index.html" class="nav-link">
+          Company <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Company</p>
+              <a href="../../about/index.html" class="dropdown-link">About Us</a>
+              <a href="../../blog/index.html" class="dropdown-link">Blog</a>
+              <a href="../../contact/index.html" class="dropdown-link">Contact</a>
+              <a href="../../faq/index.html" class="dropdown-link">FAQ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Overlay -->
+    <div class="nav-overlay"></div>
+    <div class="nav-right">
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-nav">Start a Project</a>
+    </div>
+    <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-inner">
+
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Industries</p>
+      <a href="../../industries/healthcare/index.html" class="mobile-nav-link">Healthcare</a>
+      <a href="../../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
+      <a href="../../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales</a>
+      <a href="../../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
+      <a href="../../industries/veterinary/index.html" class="mobile-nav-link">Veterinary</a>
+      <a href="../../industries/logistics/index.html" class="mobile-nav-link">Logistics</a>
+      <a href="../../industries/enterprise/index.html" class="mobile-nav-link">Enterprise</a>
+      <a href="https://nemt.gmic.ai/" class="mobile-nav-link" target="_blank" rel="noopener noreferrer">NEMT</a>
+    </div>
+
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Resource</p>
+      <a href="../../resources/voice-ai-hardware/index.html" class="mobile-nav-link">Voice AI Hardware</a>
+      <a href="../../resources/ai-hardware-integration/index.html" class="mobile-nav-link">AI Hardware Integration</a>
+      <a href="../../resources/ai-hardware-odm/index.html" class="mobile-nav-link">AI Hardware ODM</a>
+    </div>
+
+    <div class="mobile-nav-section">
+      <a href="../../implementation/index.html" class="mobile-nav-link">Implementation</a>
+      <a href="../../proof/index.html" class="mobile-nav-link">Success Stories</a>
+      <a href="../../process/index.html" class="mobile-nav-link">Process</a>
+    </div>
+
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Company</p>
+      <a href="../../about/index.html" class="mobile-nav-link">About Us</a>
+      <a href="../../blog/index.html" class="mobile-nav-link">Blog</a>
+      <a href="../../contact/index.html" class="mobile-nav-link">Contact</a>
+      <a href="../../faq/index.html" class="mobile-nav-link">FAQ</a>
+    </div>
+
+    <div class="mobile-nav-cta">
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb"
+         target="_blank" rel="noopener" class="btn btn-nav">
+        Start a Project
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+<!-- Sentinel for ../../js/main.js (reads .hero offsetHeight); hidden, harmless. -->
+<div class="hero" aria-hidden="true" style="display:none"></div>
+
+<main id="main">
+
+  <!-- ========== 1) HERO ========== -->
+  <header class="ind-hero fade-section">
+    <div class="container">
+      <h1 class="display reveal">How to Choose a Microphone for an&nbsp;AI&nbsp;Scribe</h1>
+
+      <p class="lede reveal">The best microphone for an AI scribe depends on speaker distance, whether the device captures one person or a conversation, background noise, placement, and whether the workflow uses live streaming or local recording.</p>
+
+      <div class="ind-hero-photo reveal">
+        <img src="../../img/industries/healthcare/healthcare-sol-scribe.png" alt="Clinician talking with a patient in a consultation room while a wearable voice-capture device records the conversation" width="1000" height="563" fetchpriority="high">
+      </div>
+
+      <div class="ind-hero-copy reveal">
+        <p class="lede-sub">GMIC helps AI scribe companies select, tune, and manufacture the right microphone architecture for their clinical recording environment — from acoustic design through mass production.</p>
+        <div class="ind-hero-cta">
+          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Evaluate Your Audio Requirements</a>
+          <a href="../medical-dictation-devices/index.html" class="btn btn-ghost">Explore Medical Dictation Hardware</a>
+        </div>
+        <p class="ind-hero-trust">
+          <span>US + Shenzhen</span><span class="dot" aria-hidden="true"></span>
+          <span>Audio Engineering</span><span class="dot" aria-hidden="true"></span>
+          <span>DSP Tuning</span><span class="dot" aria-hidden="true"></span>
+          <span>Firmware</span><span class="dot" aria-hidden="true"></span>
+          <span>SDK/API</span><span class="dot" aria-hidden="true"></span>
+          <span>Manufacturing</span>
+        </p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== CREDIBILITY STRIP ========== -->
+  <section class="mdd-statbar fade-section" aria-label="GMIC at a glance">
+    <div class="container">
+      <div class="mdd-stats reveal">
+        <div>
+          <div class="mdd-stat-num">15+</div>
+          <div class="mdd-stat-lb">Years of manufacturing experience</div>
+        </div>
+        <div>
+          <div class="mdd-stat-num">270+</div>
+          <div class="mdd-stat-lb">Hardware programs shipped</div>
+        </div>
+        <div>
+          <div class="mdd-stat-num">50K+</div>
+          <div class="mdd-stat-lb">Units per month capacity</div>
+        </div>
+        <div>
+          <div class="mdd-stat-num">US + CN</div>
+          <div class="mdd-stat-lb">Anaheim, CA &amp; Shenzhen, China</div>
+        </div>
+      </div>
+      <!-- TODO [VERIFY WITH GMIC ENGINEERING]: confirm these production statistics before publication -->
+    </div>
+  </section>
+
+  <!-- ========== 2) WHAT THE MICROPHONE CAPTURES ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="capture">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">What Does a Microphone for an AI Scribe Need to&nbsp;Capture?</h2>
+        <p class="ind-intro measure-wide">The microphone sits at the front of a longer pipeline. It produces the input signal; everything that turns that signal into a clinical note happens further downstream, in software.</p>
+      </div>
+
+      <div class="mdd-snake reveal">
+
+        <div class="mdd-snake-lane mdd-snake-lane--hw">Hardware layer</div>
+        <ol class="mdd-snake-row mdd-snake-row--hw">
+          <li class="mdd-snake-node">
+            <h4>Doctor / patient speech</h4>
+            <p>One or more speakers at varying distance and volume, in a room with its own noise profile.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>Microphone</h4>
+            <p>A single element or an array, positioned on the body, on a desk, or in the room.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>Audio front end</h4>
+            <p>Preamplification, analog-to-digital conversion, sample rate, and bit depth.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>DSP</h4>
+            <p>Noise suppression, beamforming, gain control, voice activity detection, echo cancellation.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>Stream or recording</h4>
+            <p>Sent live, or written to local storage for upload afterward.</p>
+          </li>
+        </ol>
+
+        <div class="mdd-snake-turn">
+          <dl class="mdd-snake-modes">
+            <dt>Transport</dt>
+            <dd>Wi-Fi</dd>
+            <dd>BLE</dd>
+            <dd>USB</dd>
+            <dd>Companion app</dd>
+          </dl>
+          <div class="mdd-snake-down" aria-hidden="true"></div>
+        </div>
+
+        <div class="mdd-snake-lane mdd-snake-lane--sw">Software layer</div>
+        <ol class="mdd-snake-row mdd-snake-row--rtl mdd-snake-row--sw">
+          <li class="mdd-snake-node">
+            <h4>Customer cloud</h4>
+            <p>Or a private server — the upload endpoint the device authenticates to.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>Speech-to-text</h4>
+            <p>Transcription of the captured audio, with or without speaker separation.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>AI scribe / NLP</h4>
+            <p>The customer's models turn conversation into structured clinical content.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>Structured documentation</h4>
+            <p>Transcript, summary, or note the clinician reviews and signs.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>EHR / clinical workflow</h4>
+            <p>Delivered into the record system by the platform.</p>
+          </li>
+        </ol>
+      </div>
+
+      <p class="mdd-snake-foot reveal">The microphone and the audio hardware around it create the input signal. <strong>The microphone does not create the clinical note.</strong> Speech recognition, summarization, and note generation are downstream software functions, and they can only work with what the front end delivered.</p>
+    </div>
+  </section>
+
+  <!-- ========== 3) FIVE FACTORS ========== -->
+  <section class="ind-sec ind-sec--soft fade-section" id="factors">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">Five Factors That Determine the Best Microphone for an AI&nbsp;Scribe</h2>
+        <p class="ind-intro measure-wide">There is no universally best microphone for an AI scribe. The correct architecture follows from the project — and microphones are one part of the broader <a class="sol-link" href="../medical-dictation-devices/index.html">medical dictation devices</a> category, not a decision made in isolation.</p>
+      </div>
+
+      <div class="ind-grid mdd-typegrid mdd-typegrid--3up reveal">
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="ruler"></i></div>
+          <h3>Speaker distance</h3>
+          <p>Near-field and close-talk capture at 5–30 cm is a different problem from body-worn capture at 30–50 cm, tabletop at around 1 m, or room capture at 2–3 m. Each step away lowers the level of the voice relative to the room and raises what the processing has to recover.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="users"></i></div>
+          <h3>Number of speakers</h3>
+          <p>Doctor-only dictation, a doctor and patient, or a group with family members present are three different architectures. Single-speaker capture can favor one direction; multi-speaker capture usually cannot.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="volume-2"></i></div>
+          <h3>Recording environment</h3>
+          <p>A quiet consultation room, a busy clinic, a hospital bedside, a dental operatory, a patient's home, and a telehealth desk each carry a different noise profile and different reflective surfaces.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="shapes"></i></div>
+          <h3>Form factor</h3>
+          <p>Wearable, badge, lapel, desktop, tabletop, room device, or smartphone. Form factor fixes the microphone's position relative to the speaker, which is often the single largest influence on captured audio.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="workflow"></i></div>
+          <h3>Workflow</h3>
+          <p>Push-to-record, continuous ambient capture, real-time streaming, offline recording, or batch upload. This determines power budget, storage, and how the device behaves when the network is unavailable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 4) SINGLE VS ARRAY ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="single-vs-array">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">Single Microphone vs Microphone&nbsp;Array</h2>
+        <p class="ind-intro measure-wide">The number of microphone elements determines what spatial processing is possible at all. It does not, on its own, determine audio quality.</p>
+      </div>
+
+      <div class="reveal">
+        <div class="mdd-tablewrap">
+          <table class="mdd-table">
+            <thead>
+              <tr>
+                <th scope="col">Architecture</th>
+                <th scope="col">Strengths</th>
+                <th scope="col">Limitations</th>
+                <th scope="col">Typical use case</th>
+                <th scope="col">Engineering considerations</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Single microphone</th>
+                <td>Simple, low power, small footprint</td>
+                <td>No spatial information to work with</td>
+                <td>Close-talk wearable, handheld dictation</td>
+                <td>Placement is critical; there is no way to steer</td>
+              </tr>
+              <tr>
+                <th scope="row">Dual microphone</th>
+                <td>Enables basic spatial processing and a noise reference</td>
+                <td>Moderate added complexity and power</td>
+                <td>Wearable with basic noise cancellation</td>
+                <td>Orientation on the body affects results</td>
+              </tr>
+              <tr>
+                <th scope="row">Multi-microphone array</th>
+                <td>Beamforming and spatial selectivity across a room</td>
+                <td>Power draw, physical size, DSP complexity</td>
+                <td>Room capture, multi-speaker conversation</td>
+                <td>Requires tuning against each target environment</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mdd-scroll-hint">Scroll the table horizontally to compare &rarr;</p>
+      </div>
+
+      <div class="mdd-note reveal">
+        <p><strong>More microphones does not automatically mean better audio.</strong> Placement, acoustic design, DSP, enclosure design, and tuning all matter. A well-positioned single microphone often outperforms a poorly tuned array, and an array in the wrong enclosure can perform worse than the element it replaced.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5) WEARABLE VS DESKTOP VS ROOM ========== -->
+  <section class="ind-sec ind-sec--soft fade-section" id="form-factors">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">Wearable vs Desktop vs Room&nbsp;Microphones</h2>
+        <p class="ind-intro measure-wide">Where the microphone sits decides how far it is from each speaker, how stable that distance is, and what else it hears. Every option below has legitimate clinical use cases.</p>
+      </div>
+
+      <div class="reveal">
+        <div class="mdd-tablewrap">
+          <table class="mdd-table">
+            <thead>
+              <tr>
+                <th scope="col">Type</th>
+                <th scope="col">Placement</th>
+                <th scope="col">Best for</th>
+                <th scope="col">Advantages</th>
+                <th scope="col">Limitations</th>
+                <th scope="col">Mobility</th>
+                <th scope="col">AI scribe fit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Wearable microphone</th>
+                <td>Worn on the body</td>
+                <td>Outpatient clinics, rounds</td>
+                <td>Predictable position, hands-free</td>
+                <td>Capturing the patient is a separate problem</td>
+                <td>High</td>
+                <td>Strong for close-talk</td>
+              </tr>
+              <tr>
+                <th scope="row">Lapel microphone</th>
+                <td>Chest</td>
+                <td>Consultations in clinics</td>
+                <td>Consistent distance to the wearer</td>
+                <td>Clothing noise; orientation shifts</td>
+                <td>High</td>
+                <td>Good</td>
+              </tr>
+              <tr>
+                <th scope="row">Badge device</th>
+                <td>Chest or pocket</td>
+                <td>Hospital staff on shift</td>
+                <td>All-day battery, built-in storage</td>
+                <td>Multi-speaker capture is challenging</td>
+                <td>High</td>
+                <td>Strong with SDK integration</td>
+              </tr>
+              <tr>
+                <th scope="row">Desktop microphone</th>
+                <td>On the desk</td>
+                <td>Telehealth, office encounters</td>
+                <td>Can be positioned between both speakers</td>
+                <td>Not portable</td>
+                <td>Low</td>
+                <td>Good for stationary use</td>
+              </tr>
+              <tr>
+                <th scope="row">Tabletop array</th>
+                <td>Center of a table</td>
+                <td>Multi-speaker encounters</td>
+                <td>Captures the whole table</td>
+                <td>Less portable; needs DSP tuning</td>
+                <td>Low</td>
+                <td>Good with tuning</td>
+              </tr>
+              <tr>
+                <th scope="row">Smartphone</th>
+                <td>In hand or on the desk</td>
+                <td>Early pilots</td>
+                <td>Already available, no purchase</td>
+                <td>Inconsistent across models; screen handling distracts</td>
+                <td>Medium</td>
+                <td>Adequate for prototyping</td>
+              </tr>
+              <tr>
+                <th scope="row">Room microphone</th>
+                <td>Wall or ceiling</td>
+                <td>Operating rooms, group therapy</td>
+                <td>Full room coverage without a worn device</td>
+                <td>Complex DSP and higher cost per room</td>
+                <td>None</td>
+                <td>Requires significant tuning</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mdd-scroll-hint">Scroll the table horizontally to compare &rarr;</p>
+      </div>
+
+      <p class="mdd-nextstep reveal"><strong>Not sure which form factor fits your recording environment?</strong> GMIC can walk through the trade-offs against your clinical setting and integration method.<a class="mdd-nextstep-link" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener">Talk to the hardware team <i data-lucide="arrow-right"></i></a></p>
+    </div>
+  </section>
+
+  <!-- ========== VISUAL BREAK — full-bleed clinical band ========== -->
+  <div class="mdd-band fade-section">
+    <img src="../../img/industries/healthcare/healthcare-sol-wearable.png" alt="Clinician walking a hospital corridor in scrubs with a badge-style voice-capture device clipped to the chest" width="1000" height="563" loading="lazy">
+  </div>
+
+  <!-- ========== 6) DOCTOR AND PATIENT ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="two-speakers">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">How Do You Capture Both Doctor and Patient&nbsp;Audio?</h2>
+        <p class="ind-intro measure-wide">Ambient documentation means capturing at least two people who are not speaking at the same volume, from the same direction, or at the same distance. This is the hardest acoustic case in clinical capture.</p>
+      </div>
+
+      <div class="ind-grid mdd-typegrid mdd-typegrid--3up reveal">
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="map-pin"></i></div>
+          <h3>Microphone location</h3>
+          <p>A device worn by the clinician is close to one speaker and far from the other. A device placed between them treats both more equally but loses the predictable positioning a worn device gives.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="move-horizontal"></i></div>
+          <h3>Distance and level difference</h3>
+          <p>A patient two meters away arrives many decibels quieter than a clinician at thirty centimeters. Gain that suits one can clip or bury the other.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="compass"></i></div>
+          <h3>Orientation</h3>
+          <p>Directional elements depend on facing the speaker. Clinicians turn toward screens, equipment, and doors, so orientation is not fixed during an encounter.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="waves"></i></div>
+          <h3>Room reflections</h3>
+          <p>Hard floors, glass, and cabinetry return delayed copies of speech that smear consonants — the detail speech recognition relies on most.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="messages-square"></i></div>
+          <h3>Overlapping speech</h3>
+          <p>People interrupt each other in real consultations. Overlap is a known hard case, and hardware can only preserve it cleanly enough for software to attempt separation.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="volume-x"></i></div>
+          <h3>Background noise</h3>
+          <p>The quieter speaker competes with the room. Noise handling has to protect that voice without stripping the parts of it that carry meaning.</p>
+        </div>
+      </div>
+
+      <div class="mdd-note reveal">
+        <p><strong>Capture is not identification.</strong> Microphone hardware determines whether both voices arrive intelligibly. Deciding <em>which</em> voice belongs to whom — speaker diarization and identification — is a downstream software function. Good array design can make that job easier by preserving spatial cues, but the hardware does not label speakers on its own.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 7) BACKGROUND NOISE ========== -->
+  <section class="ind-sec ind-sec--soft fade-section" id="noise">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">How Background Noise Affects AI Scribe&nbsp;Microphones</h2>
+        <p class="ind-intro measure-wide">Clinical spaces are not quiet. The noise that matters is rarely a steady hum — it is intermittent, broadband, and often close to the microphone.</p>
+      </div>
+
+      <div class="mdd-2col reveal">
+        <div>
+          <h3>What is actually in the room</h3>
+          <ul class="check-list check-list--light">
+            <li><span class="ck"><i data-lucide="check"></i></span> HVAC and ventilation, continuous and broadband</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Keyboard and mouse noise at the workstation</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Clinical equipment, alarms, suction, handpieces</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Hallway traffic, carts, doors, conversation</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Movement of the clinician and the device itself</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Clothing and contact noise on worn devices</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Reverberation from hard, cleanable surfaces</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Why the test environment matters</h3>
+          <p>Two noise sources deserve particular attention on wearable devices. Contact noise — fabric brushing the housing, a lanyard swinging, a badge tapping a button — arrives directly through the enclosure rather than through the air, so it can be far louder at the element than anything in the room.</p>
+          <p style="margin-top:14px;">Reverberation is the other. A room that measures acceptably on a noise meter can still smear speech badly if it is small and hard-surfaced, which is common in examination rooms.</p>
+          <p style="margin-top:14px;"><strong>Audio hardware should be evaluated in the actual target environment rather than only in a quiet engineering room.</strong> A device that performs well on a bench can behave very differently on a moving clinician in a working clinic.</p>
+        </div>
+      </div>
+
+      <figure class="mdd-photo reveal" style="aspect-ratio:16/7; margin-top:44px;">
+        <img src="../../img/seo/microphone-for-ai-scribe/factory/oscilloscope-test.jpg" alt="Signal measurement equipment used during audio validation of a voice-capture device" loading="lazy" width="1600" height="1067">
+        <figcaption>Audio and signal validation during device testing</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ========== 8) DSP ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="dsp">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">DSP for AI Scribe&nbsp;Audio</h2>
+        <p class="ind-intro measure-wide">Digital signal processing shapes what the microphone produces before it ever leaves the device. Each stage solves a specific problem, and each can cause a new one if it is tuned too aggressively — which is why these are tuned together as <a class="sol-link" href="https://gmic.ai/audio-dsp-tuning-for-voice-ai/">audio and DSP tuning</a> rather than enabled independently.</p>
+      </div>
+
+      <div class="ind-grid mdd-typegrid mdd-typegrid--3up reveal">
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="filter"></i></div>
+          <h3>Noise suppression</h3>
+          <p>Attenuates unwanted background sound so speech sits above it. Pushed too hard, it removes the low-energy consonants that distinguish similar words, which is worse for recognition than the noise was.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="focus"></i></div>
+          <h3>Beamforming</h3>
+          <p>Only relevant with an array. Uses the spacing between elements to favor sound from one direction and reject the rest of the room. Its benefit depends entirely on where the speakers actually are.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="sliders-horizontal"></i></div>
+          <h3>Automatic gain control</h3>
+          <p>Manages input-level variation as people move, lean in, or speak more quietly. Keeps a quiet patient usable without clipping a clinician who is close to the microphone.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="activity"></i></div>
+          <h3>Voice activity detection</h3>
+          <p>Detects where speech is present. Used to gate recording, save bandwidth and storage, and avoid sending long stretches of empty room audio to the platform.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="repeat"></i></div>
+          <h3>Acoustic echo cancellation</h3>
+          <p>Relevant when the device plays audio or supports two-way interaction. Removes the device's own output so it does not compete with the speaker's voice.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="audio-lines"></i></div>
+          <h3>High-pass filtering and voice enhancement</h3>
+          <p>Removes rumble, handling noise, and HVAC energy below the speech band, and shapes the remaining signal toward intelligibility rather than toward a pleasant listening experience.</p>
+        </div>
+      </div>
+
+      <div class="mdd-note reveal">
+        <p><strong>DSP can improve the audio signal delivered to downstream speech recognition, but final transcription performance also depends on the ASR system, language, vocabulary, speaker behavior, and environment.</strong> Tuning is a trade-off exercise against a specific environment, not a universal setting.</p>
+        <p>For a public reference on how these stages are commonly implemented, the <a class="sol-link" href="https://chromium.googlesource.com/chromiumos/third_party/webrtc-apm/" target="_blank" rel="noopener noreferrer">WebRTC Audio Processing Module</a> documents an open implementation of noise suppression, AGC, and echo cancellation. It is cited here as an industry technical reference only.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 9) DOES A BETTER MIC IMPROVE ACCURACY ========== -->
+  <section class="ind-sec ind-sec--soft fade-section" id="accuracy">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">Does a Better Microphone Improve AI Scribe&nbsp;Accuracy?</h2>
+        <p class="ind-intro measure-wide">It is the wrong question in one important way: accuracy is a property of the whole chain, not of the microphone. A better microphone raises the ceiling on what is achievable; it does not set the result.</p>
+      </div>
+
+      <div class="mdd-2col reveal">
+        <div>
+          <h3>What the hardware controls</h3>
+          <p>Whether speech arrives intelligibly at all. If a voice is buried in noise, clipped, or smeared by reflections before it is digitized, no downstream model recovers the missing information reliably. This is the part a microphone, its placement, and its DSP genuinely determine.</p>
+        </div>
+        <div>
+          <h3>What the hardware does not control</h3>
+          <p>The speech recognition model and its training data, the language and accent being spoken, specialized clinical vocabulary, how fast and how clearly people speak, whether they interrupt each other, and how the platform post-processes the transcript into a note.</p>
+        </div>
+      </div>
+
+      <div class="mdd-note reveal">
+        <p><strong>On accuracy claims:</strong> GMIC does not publish a percentage improvement for microphone changes, because such a figure is only meaningful against a specific model, language, environment, and test set. Any accuracy target for a program should be measured on your own pipeline with your own recordings. <!-- [VERIFY WITH GMIC ENGINEERING]: if comparative test data exists for a specific platform and environment, it can be cited here with the test conditions stated. --></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 10) STREAMING VS LOCAL ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="streaming">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">Real-Time Streaming vs Local&nbsp;Recording</h2>
+        <p class="ind-intro measure-wide">This decision shapes the power budget, the storage requirement, and how the device behaves when the network does not cooperate. Most deployments end up combining two of these patterns.</p>
+      </div>
+
+      <div class="reveal">
+        <div class="mdd-tablewrap">
+          <table class="mdd-table">
+            <thead>
+              <tr>
+                <th scope="col">Workflow</th>
+                <th scope="col">Benefits</th>
+                <th scope="col">Trade-offs</th>
+                <th scope="col">Typical use</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Real-time streaming</th>
+                <td>Transcription available during the encounter</td>
+                <td>Depends on the network; sustained bandwidth</td>
+                <td>Fixed rooms with stable Wi-Fi</td>
+              </tr>
+              <tr>
+                <th scope="row">Local recording</th>
+                <td>Recording continues regardless of coverage</td>
+                <td>Results are delayed until upload</td>
+                <td>Clinicians moving between rooms</td>
+              </tr>
+              <tr>
+                <th scope="row">Offline-first with sync</th>
+                <td>Continuity plus eventual automatic delivery</td>
+                <td>Storage capacity and retry logic to design</td>
+                <td>Hospital rounds, home and field care</td>
+              </tr>
+              <tr>
+                <th scope="row">Hybrid</th>
+                <td>Streams when it can, buffers when it cannot</td>
+                <td>The most firmware complexity to specify and test</td>
+                <td>Variable network environments</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mdd-scroll-hint">Scroll the table horizontally to compare &rarr;</p>
+      </div>
+
+      <div class="mdd-note reveal">
+        <p><strong>Where this becomes engineering work:</strong> buffering, retry behavior, storage limits, and what happens to a partial recording when a session drops are all firmware decisions. GMIC handles them as <a class="sol-link" href="https://gmic.ai/firmware-integration-for-ai-devices/">firmware integration</a>, specified with the customer's engineering team rather than assumed.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 11) CONNECTIVITY ========== -->
+  <section class="ind-sec ind-sec--soft fade-section" id="connectivity">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">Connectivity — Wi-Fi vs Bluetooth vs&nbsp;USB</h2>
+        <p class="ind-intro measure-wide">The transport choice is constrained by the power budget on one side and the audio bitrate on the other. Wearables and desk devices usually land in different places for that reason.</p>
+      </div>
+
+      <div class="reveal">
+        <div class="mdd-tablewrap">
+          <table class="mdd-table">
+            <thead>
+              <tr>
+                <th scope="col">Method</th>
+                <th scope="col">Best for</th>
+                <th scope="col">Bandwidth</th>
+                <th scope="col">Power</th>
+                <th scope="col">Notes</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Bluetooth / BLE</th>
+                <td>Wearable bridged to a phone</td>
+                <td>Low to moderate</td>
+                <td>Low</td>
+                <td>Range limited; usually needs a companion app</td>
+              </tr>
+              <tr>
+                <th scope="row">Wi-Fi</th>
+                <td>Direct upload to cloud or private server</td>
+                <td>High</td>
+                <td>Higher</td>
+                <td>Capable of real-time streaming</td>
+              </tr>
+              <tr>
+                <th scope="row">USB</th>
+                <td>Secure and wired environments</td>
+                <td>High</td>
+                <td>Bus-powered</td>
+                <td>Simple and reliable, but stationary</td>
+              </tr>
+              <tr>
+                <th scope="row">Companion app</th>
+                <td>BLE device bridged through a phone</td>
+                <td>Via the phone's connection</td>
+                <td>Low on the device</td>
+                <td>Handles authentication and session management</td>
+              </tr>
+              <tr>
+                <th scope="row">Direct to cloud</th>
+                <td>Wi-Fi streaming with no intermediate device</td>
+                <td>High</td>
+                <td>Higher</td>
+                <td>No phone in the path to maintain or support</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mdd-scroll-hint">Scroll the table horizontally to compare &rarr;</p>
+      </div>
+
+      <div class="mdd-note reveal">
+        <p><strong>Agreeing the interface:</strong> audio format, chunking, authentication, upload endpoints, and failure behavior all have to be settled between the device firmware and the customer's platform. GMIC coordinates this as <a class="sol-link" href="https://gmic.ai/ai-sdk-integration-for-voice-devices/">AI SDK integration</a> with the customer's engineering team.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 12) HARDWARE TO SOFTWARE ARCHITECTURE ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="architecture">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">Microphone Hardware to AI Scribe&nbsp;Software</h2>
+        <p class="ind-intro measure-wide">The device and the platform are two halves of one system. Designing them against each other, rather than in sequence, avoids most of the integration surprises.</p>
+      </div>
+
+      <div class="mdd-snake reveal">
+        <div class="mdd-snake-lane mdd-snake-lane--hw">Device</div>
+        <ol class="mdd-snake-row mdd-snake-row--hw">
+          <li class="mdd-snake-node">
+            <h4>Microphone</h4>
+            <p>Single element or array, positioned by the form factor.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>Audio front end</h4>
+            <p>Preamp, conversion, sample rate, and bit depth.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>DSP</h4>
+            <p>Noise suppression, beamforming, AGC, VAD, AEC, tuned as one chain.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>Firmware</h4>
+            <p>Recording triggers, capture state, retry logic, OTA updates.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>Storage or stream</h4>
+            <p>Buffered locally, or sent continuously over the agreed transport.</p>
+          </li>
+        </ol>
+
+        <div class="mdd-snake-turn">
+          <dl class="mdd-snake-modes">
+            <dt>Interface</dt>
+            <dd>Audio format</dd>
+            <dd>Authentication</dd>
+            <dd>Upload endpoint</dd>
+            <dd>Failure behavior</dd>
+          </dl>
+          <div class="mdd-snake-down" aria-hidden="true"></div>
+        </div>
+
+        <div class="mdd-snake-lane mdd-snake-lane--sw">Platform</div>
+        <ol class="mdd-snake-row mdd-snake-row--rtl mdd-snake-row--sw">
+          <li class="mdd-snake-node">
+            <h4>SDK / API</h4>
+            <p>The contract between device firmware and the customer's services.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>Customer cloud</h4>
+            <p>Or a private server, depending on the deployment's privacy architecture.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>Speech-to-text</h4>
+            <p>Transcription, with speaker separation where the platform supports it.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>AI scribe</h4>
+            <p>Structured clinical content generated from the conversation.</p>
+          </li>
+          <li class="mdd-snake-arrow" aria-hidden="true"></li>
+          <li class="mdd-snake-node">
+            <h4>Clinical workflow</h4>
+            <p>Review, signing, and delivery into the record system.</p>
+          </li>
+        </ol>
+      </div>
+
+      <p class="mdd-snake-foot reveal"><strong>The device should be designed around the customer's existing software architecture rather than treating hardware and software as independent systems.</strong> Audio format, authentication, and failure behavior are cheaper to agree at specification time than to retrofit after tooling.</p>
+    </div>
+  </section>
+
+  <!-- ========== 13) WHEN DEDICATED HARDWARE IS WORTH IT ========== -->
+  <section class="ind-sec ind-sec--soft fade-section" id="dedicated">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">When Is Dedicated AI Scribe Hardware Worth&nbsp;It?</h2>
+        <p class="ind-intro measure-wide">Buying hardware early usually slows a software team down. The switch tends to make sense when specific problems become recurring rather than occasional — the same pattern seen across <a class="sol-link" href="https://gmic.ai/voice-ai-hardware/">voice AI hardware</a> programs generally.</p>
+      </div>
+
+      <div class="mdd-2col reveal">
+        <div>
+          <h3>Phones and laptops are fine for</h3>
+          <ul class="check-list check-list--light">
+            <li><span class="ck"><i data-lucide="check"></i></span> Early model validation and demos</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Small pilots with a handful of clinicians</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Quiet, seated, single-speaker environments</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Teams without a hardware timeline yet</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Dedicated hardware earns its cost when</h3>
+          <ul class="check-list check-list--light">
+            <li><span class="ck"><i data-lucide="check"></i></span> Microphone placement needs to be predictable</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Clinicians need hands-free operation</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Firmware behavior and OTA updates must be controlled</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Recording must continue without a network</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Devices map to a role or shift, not a personal phone</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Fleets are provisioned and monitored centrally</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Enterprise customers expect branded hardware</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> The platform needs SDK/API-level device control</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="mdd-nextstep reveal"><strong>Reached that point?</strong> The platform options and trade-offs are covered in the guide to <!-- TODO [ADD WHEN LIVE]: link /dedicated-ai-scribe-hardware/ on the phrase below -->dedicated AI scribe hardware.<a class="mdd-nextstep-link" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener">Book a call <i data-lucide="arrow-right"></i></a></p>
+    </div>
+  </section>
+
+  <!-- ========== 14) EVALUATION FRAMEWORK ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="evaluate">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">How to Evaluate a Microphone Before&nbsp;Deployment</h2>
+        <p class="ind-intro measure-wide">Evaluate against the environment the device will actually live in, with recordings run through your own pipeline. Pass criteria belong to the project, not to a datasheet — the table below is a structure to fill in, not a specification.</p>
+      </div>
+
+      <div class="reveal">
+        <div class="mdd-tablewrap">
+          <table class="mdd-table mdd-table--2col">
+            <thead>
+              <tr>
+                <th scope="col">Test</th>
+                <th scope="col">Environment</th>
+                <th scope="col">What to measure</th>
+                <th scope="col">Pass criteria</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Speaker distance at 30 cm, 1 m, 2 m</th>
+                <td>Quiet room</td>
+                <td>Speech clarity and signal-to-noise ratio at each distance</td>
+                <td>[DEFINE WITH PROJECT]</td>
+              </tr>
+              <tr>
+                <th scope="row">Multiple speakers</th>
+                <td>Consultation room</td>
+                <td>Whether both voices are captured intelligibly</td>
+                <td>[DEFINE WITH PROJECT]</td>
+              </tr>
+              <tr>
+                <th scope="row">Background noise</th>
+                <td>Busy clinic during working hours</td>
+                <td>Speech level against the room's noise floor</td>
+                <td>[DEFINE WITH PROJECT]</td>
+              </tr>
+              <tr>
+                <th scope="row">Movement</th>
+                <td>Walking rounds between rooms</td>
+                <td>Consistency of capture while the wearer moves</td>
+                <td>[DEFINE WITH PROJECT]</td>
+              </tr>
+              <tr>
+                <th scope="row">Wearable placement</th>
+                <td>Worn on the body over a full session</td>
+                <td>Clothing and contact noise; orientation drift</td>
+                <td>[DEFINE WITH PROJECT]</td>
+              </tr>
+              <tr>
+                <th scope="row">Offline recording</th>
+                <td>No Wi-Fi available</td>
+                <td>Recording continuity and storage behavior</td>
+                <td>[DEFINE WITH PROJECT]</td>
+              </tr>
+              <tr>
+                <th scope="row">Battery</th>
+                <td>A full clinical shift</td>
+                <td>Total recording duration achieved</td>
+                <td>[DEFINE WITH PROJECT]</td>
+              </tr>
+              <tr>
+                <th scope="row">Network interruption</th>
+                <td>Unstable or intermittent Wi-Fi</td>
+                <td>Recovery, retry, and whether audio is lost</td>
+                <td>[DEFINE WITH PROJECT]</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mdd-scroll-hint">Scroll the table horizontally to read both columns &rarr;</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 15) WHAT TO TELL A HARDWARE PARTNER ========== -->
+  <section class="ind-sec ind-sec--soft fade-section" id="brief">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">What to Tell a Hardware&nbsp;Partner</h2>
+        <p class="ind-intro measure-wide">Having these answers ready compresses the first technical conversation considerably. Most of them are product decisions rather than engineering ones, so they can be prepared before any hardware exists.</p>
+      </div>
+
+      <div class="mdd-2col reveal">
+        <div>
+          <ul class="check-list check-list--light">
+            <li><span class="ck"><i data-lucide="check"></i></span> The use case and the target clinical environment</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Who speaks — doctor only, doctor and patient, or a group</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Number of speakers and approximate distances</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Desired form factor — wearable, desk, or room device</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Streaming, local recording, or both</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Connectivity available where encounters happen</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="check-list check-list--light">
+            <li><span class="ck"><i data-lucide="check"></i></span> Battery expectations across a session or a shift</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Your software and cloud architecture</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> SDK and API requirements for device control</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Pilot volume and expected production volume</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Deployment geography, which drives certification scope</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Branding and white-label requirements</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 16) HOW GMIC SUPPORTS AUDIO HARDWARE ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="capabilities">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">How GMIC Supports AI Scribe Audio&nbsp;Hardware</h2>
+        <p class="ind-intro measure-wide">Six areas of work, delivered as one program rather than as separate vendors an AI team has to coordinate.</p>
+      </div>
+
+      <div class="ind-grid grid-3 reveal">
+        <div class="cap-col">
+          <img class="cap-col-img" src="../../img/seo/microphone-for-ai-scribe/factory/oscilloscope-test.jpg" alt="Electrical and signal measurement during device validation" loading="lazy" width="1600" height="1067">
+          <div class="cap-col-body">
+            <h3><i data-lucide="mic"></i> Microphone &amp; acoustic architecture</h3>
+            <ul class="cap-list">
+              <li>Element selection for the target speaking distance</li>
+              <li>Single, dual, or array topology with geometry defined</li>
+              <li>Port, seal, and enclosure acoustics</li>
+              <li>Placement validated on the actual form factor</li>
+            </ul>
+          </div>
+        </div>
+        <div class="cap-col">
+          <img class="cap-col-img" src="../../img/seo/microphone-for-ai-scribe/factory/3d-design.jpg" alt="CAD design of a device enclosure on screen" loading="lazy" width="1600" height="1067">
+          <div class="cap-col-body">
+            <h3><i data-lucide="audio-waveform"></i> Audio &amp; DSP tuning</h3>
+            <ul class="cap-list">
+              <li>Noise suppression, beamforming, AGC, VAD, and AEC as one chain</li>
+              <li>Tuning against the noise profile of the real environment</li>
+              <li>Trade-off review between suppression and intelligibility</li>
+              <li>Delivered as <a class="sol-link" href="https://gmic.ai/audio-dsp-tuning-for-voice-ai/">audio and DSP tuning</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="cap-col">
+          <img class="cap-col-img" src="../../img/seo/microphone-for-ai-scribe/factory/finished-pcbs.jpg" alt="Finished printed circuit boards after assembly" loading="lazy" width="1600" height="1067">
+          <div class="cap-col-body">
+            <h3><i data-lucide="cpu"></i> Firmware</h3>
+            <ul class="cap-list">
+              <li>Recording triggers and capture-state behavior</li>
+              <li>Offline storage, retry, and backoff logic</li>
+              <li>BLE pairing and companion-app communication</li>
+              <li>OTA update paths, covered under <a class="sol-link" href="https://gmic.ai/firmware-integration-for-ai-devices/">firmware integration</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="cap-col">
+          <img class="cap-col-img" src="../../img/seo/microphone-for-ai-scribe/factory/smt-hanwha.jpg" alt="SMT pick-and-place line in operation" loading="lazy" width="1600" height="1067">
+          <div class="cap-col-body">
+            <h3><i data-lucide="plug"></i> Software integration</h3>
+            <ul class="cap-list">
+              <li>Audio format, chunking, and endpoint agreement</li>
+              <li>Device authentication against your server</li>
+              <li>Private-server deployment where required</li>
+              <li>Coordinated as <a class="sol-link" href="https://gmic.ai/ai-sdk-integration-for-voice-devices/">AI SDK integration</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="cap-col">
+          <img class="cap-col-img" src="../../img/seo/microphone-for-ai-scribe/factory/aoi-inspection.jpg" alt="Automated optical inspection station checking assembled boards" loading="lazy" width="1600" height="1067">
+          <div class="cap-col-body">
+            <h3><i data-lucide="package"></i> Hardware development &amp; OEM/ODM</h3>
+            <ul class="cap-list">
+              <li>Custom enclosure design and tooling</li>
+              <li>Wearable form factors, drawing on <a class="sol-link" href="https://gmic.ai/ai-wearable-devices/">AI wearable hardware</a> work</li>
+              <li>Branding, logo printing, and packaging</li>
+              <li>Delivered as <a class="sol-link" href="https://gmic.ai/ai-hardware-odm-oem/">AI hardware ODM/OEM</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="cap-col">
+          <img class="cap-col-img" src="../../img/seo/microphone-for-ai-scribe/factory/pcb-assembly.jpg" alt="PCB assembly line with operators at workstations" loading="lazy" width="1600" height="1067">
+          <div class="cap-col-body">
+            <h3><i data-lucide="factory"></i> Manufacturing &amp; QC</h3>
+            <ul class="cap-list">
+              <li>SMT production and through-hole assembly</li>
+              <li>Final assembly and packaging</li>
+              <li>Functional and acoustic testing against a defined test plan</li>
+              <li>AOI inspection and process controls</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 17) RELATED GUIDES ========== -->
+  <section class="ind-sec ind-sec--soft fade-section" id="guides">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">Related&nbsp;Guides</h2>
+      </div>
+
+      <div class="mdd-guides reveal">
+        <a class="mdd-guide" href="../medical-dictation-devices/index.html">
+          <h3>Medical Dictation Devices</h3>
+          <p>The pillar guide to dictation hardware for AI scribe platforms — device categories, integration architecture, and technical requirements.</p>
+          <span class="mdd-guide-cue">Read the guide <i data-lucide="arrow-right"></i></span>
+        </a>
+        <a class="mdd-guide" href="../medical-transcription-equipment/index.html">
+          <h3>Medical Transcription Equipment</h3>
+          <p>The full equipment landscape for medical transcription, from handheld recorders to room systems and dedicated AI voice hardware.</p>
+          <span class="mdd-guide-cue">Compare equipment types <i data-lucide="arrow-right"></i></span>
+        </a>
+        <!-- TODO [ADD WHEN LIVE]: /dedicated-ai-scribe-hardware/ -->
+        <div class="mdd-guide mdd-guide--pending">
+          <h3>Dedicated AI Scribe Hardware</h3>
+          <p>When purpose-built capture hardware becomes worth the investment for a scribe platform.</p>
+        </div>
+        <!-- TODO [ADD WHEN LIVE]: /dictation-devices-for-doctors/ -->
+        <div class="mdd-guide mdd-guide--pending">
+          <h3>Dictation Devices for Doctors</h3>
+          <p>Device selection by specialty and clinical setting, from radiology to home visits.</p>
+        </div>
+        <a class="mdd-guide" href="https://gmic.ai/healthcare-ai-scribe-hardware/">
+          <h3>Healthcare AI Hardware</h3>
+          <p>GMIC's broader healthcare hardware work, including AI scribe and clinical voice capture.</p>
+          <span class="mdd-guide-cue">Explore healthcare AI hardware <i data-lucide="arrow-right"></i></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 18) FAQ ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="faq">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">Frequently Asked&nbsp;Questions</h2>
+      </div>
+
+      <div class="mdd-faq reveal" id="mddFaq">
+
+        <div class="mdd-faq-item">
+          <h3 class="mdd-faq-qwrap">
+            <button class="mdd-faq-q" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
+              <span>What is the best microphone for an AI scribe?</span>
+              <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </h3>
+          <div class="mdd-faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1">
+            <div class="mdd-faq-a-inner">
+              <p>There is no universal best microphone. The right choice depends on speaker distance, the number of speakers, the recording environment, the form factor, and whether the workflow streams audio live or records locally.</p>
+              <p>A wearable close-talk microphone suits mobile clinicians; a multi-microphone array suits room capture of a conversation.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mdd-faq-item">
+          <h3 class="mdd-faq-qwrap">
+            <button class="mdd-faq-q" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
+              <span>Does an AI scribe need a special microphone?</span>
+              <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </h3>
+          <div class="mdd-faq-a" id="faq-a2" role="region" aria-labelledby="faq-q2">
+            <div class="mdd-faq-a-inner">
+              <p>Consumer microphones can work for prototyping and early validation. Dedicated hardware becomes relevant when a company needs consistent capture across a fleet, hands-free operation, DSP tuned for clinical environments, or SDK and API integration with its own platform.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mdd-faq-item">
+          <h3 class="mdd-faq-qwrap">
+            <button class="mdd-faq-q" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
+              <span>Is a single microphone enough for an AI scribe?</span>
+              <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </h3>
+          <div class="mdd-faq-a" id="faq-a3" role="region" aria-labelledby="faq-q3">
+            <div class="mdd-faq-a-inner">
+              <p>For close-talk, doctor-only dictation, a single microphone is often sufficient. For ambient multi-speaker capture at a distance, an array with DSP may be more appropriate, because a single element carries no spatial information for the processing to work with.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mdd-faq-item">
+          <h3 class="mdd-faq-qwrap">
+            <button class="mdd-faq-q" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
+              <span>Is a microphone array better for AI transcription?</span>
+              <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </h3>
+          <div class="mdd-faq-a" id="faq-a4" role="region" aria-labelledby="faq-q4">
+            <div class="mdd-faq-a-inner">
+              <p>Not automatically. Adding microphones adds spatial capability, but also power draw, size, cost, and DSP complexity. Placement, acoustic design, enclosure design, and tuning matter as much as the number of microphones.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mdd-faq-item">
+          <h3 class="mdd-faq-qwrap">
+            <button class="mdd-faq-q" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">
+              <span>Can an AI scribe use a wearable microphone?</span>
+              <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </h3>
+          <div class="mdd-faq-a" id="faq-a5" role="region" aria-labelledby="faq-q5">
+            <div class="mdd-faq-a-inner">
+              <p>Yes. A wearable microphone provides predictable close-range capture of the person wearing it. Capturing the other speaker in the room clearly is a separate design consideration that depends on distance, orientation, and room acoustics.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mdd-faq-item">
+          <h3 class="mdd-faq-qwrap">
+            <button class="mdd-faq-q" id="faq-q6" aria-expanded="false" aria-controls="faq-a6">
+              <span>Can one microphone capture both doctor and patient?</span>
+              <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </h3>
+          <div class="mdd-faq-a" id="faq-a6" role="region" aria-labelledby="faq-q6">
+            <div class="mdd-faq-a-inner">
+              <p>It depends on distance and environment. A close-talk wearable favors the wearer's voice. A room-positioned device or array may capture both, but usually needs DSP tuning to do so reliably.</p>
+              <p>Audio capture is also separate from speaker identification, which is typically a software function performed after the audio reaches the platform.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mdd-faq-item">
+          <h3 class="mdd-faq-qwrap">
+            <button class="mdd-faq-q" id="faq-q7" aria-expanded="false" aria-controls="faq-a7">
+              <span>Does microphone quality affect speech-to-text accuracy?</span>
+              <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </h3>
+          <div class="mdd-faq-a" id="faq-a7" role="region" aria-labelledby="faq-q7">
+            <div class="mdd-faq-a-inner">
+              <p>Poor audio capture can create problems that are difficult to recover downstream. Final accuracy, however, depends on the complete chain: microphone quality, placement, DSP, room acoustics, speaker behavior, the speech recognition model, language, and vocabulary.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mdd-faq-item">
+          <h3 class="mdd-faq-qwrap">
+            <button class="mdd-faq-q" id="faq-q8" aria-expanded="false" aria-controls="faq-a8">
+              <span>Should an AI scribe microphone use Wi-Fi or Bluetooth?</span>
+              <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </h3>
+          <div class="mdd-faq-a" id="faq-a8" role="region" aria-labelledby="faq-q8">
+            <div class="mdd-faq-a-inner">
+              <p>It depends on the workflow. Wi-Fi enables direct, high-bandwidth streaming to a cloud or private server. BLE suits low-power wearables that connect through a companion app on a phone. USB works for wired desk setups where the device stays in one place.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mdd-faq-item">
+          <h3 class="mdd-faq-qwrap">
+            <button class="mdd-faq-q" id="faq-q9" aria-expanded="false" aria-controls="faq-a9">
+              <span>Can an AI scribe microphone record without internet?</span>
+              <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </h3>
+          <div class="mdd-faq-a" id="faq-a9" role="region" aria-labelledby="faq-q9">
+            <div class="mdd-faq-a-inner">
+              <p>Yes, if the hardware supports local storage. Audio can be written to the device and uploaded when connectivity returns. This requires firmware built for offline recording, with retry logic and defined behavior when storage fills or an upload fails.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="mdd-faq-item">
+          <h3 class="mdd-faq-qwrap">
+            <button class="mdd-faq-q" id="faq-q10" aria-expanded="false" aria-controls="faq-a10">
+              <span>Can an AI scribe company build custom microphone hardware?</span>
+              <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
+            </button>
+          </h3>
+          <div class="mdd-faq-a" id="faq-a10" role="region" aria-labelledby="faq-q10">
+            <div class="mdd-faq-a-inner">
+              <p>Yes. GMIC provides ODM and OEM services covering microphone architecture, acoustic design, DSP tuning, firmware development, SDK and API integration, and manufacturing from prototype through mass production.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 19) FINAL CTA ========== -->
+  <section class="final-cta mdd-final fade-section" id="begin">
+    <div class="container">
+      <div class="eyebrow reveal">Begin</div>
+      <h2 class="section reveal">Evaluate the Right Audio Hardware for Your AI&nbsp;Scribe</h2>
+      <p class="reveal measure">If your AI scribe platform already has the software layer but needs more control over real-world audio capture, GMIC can review the recording environment, microphone architecture, DSP, firmware, connectivity, and software integration requirements.</p>
+      <div class="final-cta-actions reveal">
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue-deep">Discuss Your Audio Requirements</a>
+        <!-- TODO [ADD WHEN LIVE]: /dedicated-ai-scribe-hardware/ must be published before this page goes live, or this button 404s -->
+        <a href="https://gmic.ai/dedicated-ai-scribe-hardware/" class="btn btn-ghost">Explore Dedicated AI Scribe Hardware</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== E-E-A-T AUTHOR MODULE ========== -->
+  <div class="mdd-author">
+    <div class="container">
+      <div class="mdd-author-inner">
+        <span>Written by <strong>GMIC AI Product Team</strong></span>
+        <span class="mdd-author-sep" aria-hidden="true"></span>
+        <span>Technical review: <strong>Engineering Lead</strong><!-- TODO: replace with the reviewer's real name and title --></span>
+        <span class="mdd-author-sep" aria-hidden="true"></span>
+        <span>Last updated <strong><time datetime="2026-08">August 2026</time></strong></span>
+      </div>
+    </div>
+  </div>
+
+</main>
+<footer class="footer" id="company">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../../index.html" class="logo">GMIC.AI</a>
+        <p>Designing and manufacturing the embedded hardware behind the voice-first era.</p>
+        <div class="footer-contact">
+          <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a><br>
+          <a href="tel:+16699000008">+1 (669) 900-0008</a><br>
+          Anaheim, CA · Shenzhen, CN
+        </div>
+        <div class="cert-pills">
+          <span class="pill">FCC</span>
+          <span class="pill">CE</span>
+          <span class="pill">UKCA</span>
+          <span class="pill">TELEC</span>
+          <span class="pill">RoHS</span>
+          <span class="pill">ISED</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="../../solutions/voice-ai-hardware/index.html">Voice AI Hardware</a></li>
+          <li><a href="../../solutions/ai-scribe-hardware/index.html">AI Scribe Hardware</a></li>
+          <li><a href="../../solutions/ai-wearable-devices/index.html">AI Wearable Devices</a></li>
+          <li><a href="../../solutions/edge-ai-hardware/index.html">Edge AI Hardware</a></li>
+          <li><a href="../../solutions/embedded-ai-hardware/index.html">Embedded AI Hardware</a></li>
+          <li><a href="../../solutions/field-service-voice-capture/index.html">Field Service Voice Capture</a></li>
+          <li><a href="../../custom-devices/odm-oem/index.html">AI Hardware ODM/OEM</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="../../industries/healthcare/index.html">Healthcare AI</a></li>
+          <li><a href="../../industries/enterprise/index.html">Enterprise AI</a></li>
+          <li><a href="../../industries/field-service/index.html">Field Service AI</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://gmic.ai/blog/" target="_blank" rel="noopener">Blog</a></li>
+          <li><a href="../../index.html#insights">Case Studies</a></li>
+          <li><a href="../../index.html#process">Our Process</a></li>
+          <li><a href="../../index.html#why-gmic">Engineering Capabilities</a></li>
+          <li><a href="../../contact/index.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../../about/index.html">About GMIC</a></li>
+          <li><a href="../../proof/index.html">Customer Stories</a></li>
+          <li><a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener">Book a Demo</a></li>
+          <li style="display:none"><a href="#">Careers</a></li>
+          <li style="display:none"><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 GMIC.AI · All rights reserved.</div>
+      <div>
+        <a href="#" style="display:none">Privacy</a>
+        <a href="#" style="display:none">Terms</a>
+        <a href="#" style="display:none">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="fab" role="toolbar" aria-label="Quick actions">
+  <a class="fab-btn" href="https://t.me/gmicai" target="_blank" rel="noopener" aria-label="Telegram">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+  </a>
+  <a class="fab-btn" href="https://api.whatsapp.com/send/?phone=16699000008&text=Hi%21+I+just+left+a+voice+note+on+your+site+%E2%80%94+looking+forward+to+your+reply.&type=phone_number&app_absent=0" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  </a>
+  <button class="fab-btn wechat-fab-btn" id="fabWechat" aria-label="WeChat">
+    <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor">
+      <path d="M9.5 4C5.36 4 2 6.91 2 10.5c0 1.99 1.03 3.76 2.64 4.95L4 17l2.19-1.09c.96.27 1.99.42 3.04.42.18 0 .36 0 .54-.01C9.63 15.83 9.5 15.17 9.5 14.5 9.5 11.09 12.91 8.5 17 8.5c.35 0 .7.02 1.04.06C17.14 5.72 13.63 4 9.5 4zm-2 4.5a1 1 0 110-2 1 1 0 010 2zm4 0a1 1 0 110-2 1 1 0 010 2z"/>
+      <path d="M17 10.5c-3.31 0-6 2.24-6 5 0 1.5.75 2.84 1.93 3.77L12.5 21l1.96-.98c.82.22 1.67.34 2.54.34 3.31 0 6-2.24 6-5s-2.69-5-6-5zm-2 5.5a1 1 0 110-2 1 1 0 010 2zm4 0a1 1 0 110-2 1 1 0 010 2z"/>
+    </svg>
+  </button>
+  <span class="fab-divider"></span>
+  <button class="fab-btn active" id="fabMic" aria-label="Microphone" onclick="var vp=document.getElementById('voice-panel');vp.style.display=(vp.style.display==='none'||!vp.style.display)?'block':'none';">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path><path d="M19 10v2a7 7 0 0 1-14 0v-2"></path><line x1="12" y1="19" x2="12" y2="23"></line><line x1="8" y1="23" x2="16" y2="23"></line></svg>
+  </button>
+  <button class="fab-btn" id="fabConnect" data-connect aria-label="More" onclick="var cm=document.getElementById('connect-menu');cm.style.display=(cm.style.display==='none'||!cm.style.display)?'block':'none';">
+    <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="5" cy="12" r="2"></circle><circle cx="12" cy="12" r="2"></circle><circle cx="19" cy="12" r="2"></circle></svg>
+  </button>
+</div>
+
+<!-- ========== BACK TO TOP ========== -->
+<button class="back-top" id="backTop" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg>
+</button>
+
+<!-- ========== WeChat QR popup ========== -->
+<div id="wechat-popup" style="display:none;position:fixed;z-index:500;background:#fff;border-radius:16px;padding:20px 20px 16px;box-shadow:0 8px 40px rgba(0,0,0,.2);border:1px solid #e2e8f0;width:240px;text-align:center;">
+  <button onclick="document.getElementById('wechat-popup').style.display='none'" style="position:absolute;top:8px;right:12px;background:none;border:none;font-size:16px;cursor:pointer;color:#aaa;font-family:var(--sans);" aria-label="Close">×</button>
+  <img src="../../img/wechat-qr.png" alt="WeChat QR" style="width:100%;border-radius:8px;display:block;">
+</div>
+
+<!-- ========== Voice assistant panel ========== -->
+<div id="voice-panel" style="display:none;position:fixed;bottom:96px;left:50%;transform:translateX(-50%);z-index:500;background:#fff;border-radius:16px;padding:24px 28px;box-shadow:0 8px 40px rgba(0,0,0,.18);border:1px solid #e2e8f0;width:320px;text-align:center;">
+  <div style="font-family:var(--sans);font-size:15px;font-weight:700;color:#0f172a;margin-bottom:8px;">Talk to GMIC</div>
+  <div style="font-family:var(--sans);font-size:13px;color:#6b7280;margin-bottom:20px;line-height:1.5;">Ask about our products, request a sample, or start a demo inquiry.</div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:16px;">
+    <div id="voice-indicator" style="width:56px;height:56px;border-radius:50%;background:#2563eb;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 20px rgba(37,99,235,.4);animation:pulse-ring 2s ease infinite;">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/>
+        <path d="M19 10v2a7 7 0 01-14 0v-2M12 19v4M8 23h8"/>
+      </svg>
+    </div>
+  </div>
+  <div style="font-family:var(--sans);font-size:12px;color:#9ca3af;">Tap the mic to speak · or <a href="mailto:trigg@gmic.ai" style="color:#2563eb;text-decoration:none;">email us</a></div>
+  <button onclick="document.getElementById('voice-panel').style.display='none'" style="position:absolute;top:10px;right:14px;background:none;border:none;font-size:16px;cursor:pointer;color:#aaa;" aria-label="Close">×</button>
+</div>
+
+<!-- ========== Connect dropdown menu ========== -->
+<div id="connect-menu" style="display:none;position:fixed;bottom:auto;z-index:500;background:#fff;border-radius:14px;padding:12px 0;box-shadow:0 8px 40px rgba(0,0,0,.18);border:1px solid #e2e8f0;min-width:200px;">
+  <div style="font-family:var(--sans);font-size:11px;font-weight:700;color:#9ca3af;letter-spacing:.08em;text-transform:uppercase;padding:4px 18px 10px;">CONNECT</div>
+  <a href="https://twitter.com/gmicai" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <span style="font-size:16px;font-weight:700;">𝕏</span> X / Twitter
+  </a>
+  <a href="https://linkedin.com/company/gmicai" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="#0077b5"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    LinkedIn
+  </a>
+  <a href="https://gmic.ai" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+    GMIC.ai
+  </a>
+  <a href="mailto:trigg@gmic.ai" style="display:flex;align-items:center;gap:12px;padding:10px 18px;font-family:var(--sans);font-size:14px;font-weight:500;color:#0f172a;text-decoration:none;transition:background .15s;" onmouseover="this.style.background='#f8fafc'" onmouseout="this.style.background='none'">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+    Trigg@gmic.ai
+  </a>
+</div>
+
+<script>
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.nav-item')) {
+    document.querySelectorAll('.nav-dropdown').forEach(function(d){ d.style.display = ''; });
+  }
+});
+
+// Mobile nav
+var navBurger = document.getElementById('navBurger');
+var mobileNav = document.getElementById('mobileNav');
+var mobileNavOverlay = document.getElementById('mobileNavOverlay');
+
+function openMobileNav() {
+  mobileNav.classList.add('open');
+  mobileNavOverlay.classList.add('open');
+  navBurger.classList.add('open');
+  navBurger.setAttribute('aria-expanded', 'true');
+  document.body.style.overflow = 'hidden';
+}
+function closeMobileNav() {
+  mobileNav.classList.remove('open');
+  mobileNavOverlay.classList.remove('open');
+  navBurger.classList.remove('open');
+  navBurger.setAttribute('aria-expanded', 'false');
+  document.body.style.overflow = '';
+}
+navBurger.addEventListener('click', function() {
+  if (mobileNav.classList.contains('open')) { closeMobileNav(); } else { openMobileNav(); }
+});
+mobileNavOverlay.addEventListener('click', closeMobileNav);
+document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
+  link.addEventListener('click', closeMobileNav);
+});
+</script>
+
+<!-- ========== Reveal / lucide icons ========== -->
+<script>
+(function () {
+  var els = document.querySelectorAll('.reveal, .fade-section');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (e) { e.classList.add('in', 'visible'); });
+  } else {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in', 'visible'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (e) { io.observe(e); });
+    window.addEventListener('load', function () {
+      setTimeout(function () { els.forEach(function (e) { e.classList.add('in', 'visible'); }); }, 1200);
+    });
+  }
+  if (window.lucide && typeof window.lucide.createIcons === 'function') { window.lucide.createIcons(); }
+})();
+</script>
+
+<!-- ========== FAQ accordion ========== -->
+<script>
+(function () {
+  var faq = document.getElementById('mddFaq');
+  if (!faq) return;
+  var buttons = [].slice.call(faq.querySelectorAll('.mdd-faq-q'));
+
+  function panelOf(btn) { return document.getElementById(btn.getAttribute('aria-controls')); }
+
+  function close(btn) {
+    var panel = panelOf(btn);
+    btn.setAttribute('aria-expanded', 'false');
+    if (panel) panel.style.maxHeight = '0px';
+  }
+  function open(btn) {
+    var panel = panelOf(btn);
+    btn.setAttribute('aria-expanded', 'true');
+    if (panel) panel.style.maxHeight = panel.scrollHeight + 'px';
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var isOpen = btn.getAttribute('aria-expanded') === 'true';
+      buttons.forEach(close);          // one panel open at a time
+      if (!isOpen) open(btn);
+    });
+  });
+
+  // Keep an open panel correctly sized if the viewport reflows.
+  var rid;
+  window.addEventListener('resize', function () {
+    clearTimeout(rid);
+    rid = setTimeout(function () {
+      buttons.forEach(function (btn) {
+        if (btn.getAttribute('aria-expanded') === 'true') open(btn);
+      });
+    }, 120);
+  });
+})();
+</script>
+
+<!-- ========== FAB / nav helpers ========== -->
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  if (nav) window.addEventListener('scroll', function () {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+
+  var backTop = document.getElementById('backTop');
+  if (backTop) {
+    window.addEventListener('scroll', function () {
+      backTop.classList.toggle('show', window.scrollY > 600);
+    }, { passive: true });
+    backTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+  }
+
+  var fabWechat = document.getElementById('fabWechat');
+  var wechat = document.getElementById('wechat-popup');
+  if (fabWechat && wechat) fabWechat.addEventListener('click', function () {
+    wechat.style.display = (wechat.style.display === 'none' || !wechat.style.display) ? 'block' : 'none';
+  });
+})();
+</script>
+
+<script src="../../js/voice-widget.js"></script>
+<script src="../../js/products-mega-menu.js"></script>
+<script src="../../js/chat-widget.js"></script>
+</body>
+</html>
