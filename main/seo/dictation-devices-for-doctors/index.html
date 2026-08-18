@@ -3,20 +3,20 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI Scribe Hardware OEM &amp; ODM Manufacturer | GMIC</title>
-<meta name="description" content="AI scribe hardware OEM and ODM — white label, custom firmware, audio engineering, SDK/API integration, and manufacturing for AI scribe and healthcare software companies." />
-<link rel="canonical" href="https://gmic.ai/ai-scribe-hardware-oem/" />
+<title>Dictation Devices for Doctors: Hardware Guide for Clinical Workflows | GMIC</title>
+<meta name="description" content="Dictation devices for doctors compared by clinical workflow — handheld recorders, wearable mics, smartphones, and dedicated AI scribe hardware. Practical selection guide for healthcare and AI scribe teams." />
+<link rel="canonical" href="https://gmic.ai/dictation-devices-for-doctors/" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
 <meta property="og:site_name" content="GMIC AI" />
-<meta property="og:url" content="https://gmic.ai/ai-scribe-hardware-oem/" />
-<meta property="og:title" content="AI Scribe Hardware OEM &amp; ODM Manufacturer | GMIC" />
-<meta property="og:description" content="OEM and ODM hardware manufacturing for AI scribe platforms. Firmware, audio, SDK/API integration, prototype to mass production." />
+<meta property="og:url" content="https://gmic.ai/dictation-devices-for-doctors/" />
+<meta property="og:title" content="Dictation Devices for Doctors: Clinical Hardware Guide | GMIC" />
+<meta property="og:description" content="Compare dictation hardware by doctor workflow — post-visit dictation, ambient conversation capture, hospital rounds, dental, telehealth. Guide for AI scribe companies and healthcare buyers." />
 <meta property="og:image" content="https://gmic.ai/wp-content/uploads/gmic-site/main/img/cap/MIC06.png" />
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:title" content="AI Scribe Hardware OEM &amp; ODM Manufacturer | GMIC" />
-<meta name="twitter:description" content="OEM and ODM hardware manufacturing for AI scribe platforms. Firmware, audio, SDK/API integration, prototype to mass production." />
+<meta name="twitter:title" content="Dictation Devices for Doctors: Clinical Hardware Guide | GMIC" />
+<meta name="twitter:description" content="Compare dictation hardware by doctor workflow — post-visit dictation, ambient conversation capture, hospital rounds, dental, telehealth. Guide for AI scribe companies and healthcare buyers." />
 <meta name="twitter:image" content="https://gmic.ai/wp-content/uploads/gmic-site/main/img/cap/MIC06.png" />
 
 <link rel="icon" type="image/png" href="../../img/favicon.png">
@@ -66,82 +66,74 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "What is an AI scribe hardware OEM?",
+      "name": "What dictation devices do doctors use?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "An AI scribe hardware OEM is a manufacturer that builds voice-capture hardware for AI scribe software companies. The device ships under the customer's brand and is integrated with the customer's platform, while the manufacturer handles the hardware, firmware, and production side."
+        "text": "Handheld recorders, desktop microphones, smartphones, wearable microphones, badge recorders, and dedicated AI scribe devices. The choice depends on the workflow rather than on the device category alone."
       }
     },
     {
       "@type": "Question",
-      "name": "Can GMIC manufacture hardware for our existing AI scribe software?",
+      "name": "What is the best dictation device for doctors?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. GMIC provides OEM and ODM services to build dedicated hardware that connects to the customer's existing AI stack through SDK and API integration. The customer keeps their speech-to-text, AI scribe, and clinical documentation software."
+        "text": "There is no universal best. Post-visit dictation may need only a simple recorder; ambient conversation capture may need wearable or dedicated hardware; large deployments may need a standardized fleet device."
       }
     },
     {
       "@type": "Question",
-      "name": "Can we white-label an existing AI scribe device?",
+      "name": "Can doctors use smartphones for dictation?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Existing GMIC platforms can be branded with a custom logo, packaging, and documentation, with firmware configured to upload to the customer's cloud endpoint. This is the fastest path to a pilot because the hardware itself is already validated."
+        "text": "Yes. Smartphones work well for many workflows, especially early-stage pilots and simple environments. Limitations tend to emerge at deployment scale, or where hands-free operation and firmware control matter."
       }
     },
     {
       "@type": "Question",
-      "name": "What is the difference between AI scribe OEM and ODM?",
+      "name": "Are handheld dictation recorders still used?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "OEM typically means customizing an existing hardware platform — enclosure, branding, firmware behavior, and connectivity. ODM means deeper custom development, including a new PCB, a custom microphone architecture, and ground-up firmware. GMIC supports both paths."
+        "text": "Yes, particularly for structured post-visit dictation by solo practitioners, radiologists, and pathologists, where one speaker dictates deliberately at a predictable distance from the microphone."
       }
     },
     {
       "@type": "Question",
-      "name": "Can the hardware connect to our API?",
+      "name": "What is the difference between doctor dictation and an AI scribe?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes, depending on the platform and project scope. Firmware can be configured to upload audio or session data to the customer's cloud endpoint through their SDK or API, including authentication and retry behavior."
+        "text": "In doctor dictation, the clinician speaks structured notes for transcription. With an AI scribe, the device captures the ambient doctor-patient conversation and the software generates documentation from it. These are different recording problems and may call for different hardware."
       }
     },
     {
       "@type": "Question",
-      "name": "Can we use our own speech-to-text model?",
+      "name": "Can a wearable microphone capture doctor-patient conversations?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. GMIC hardware captures and delivers audio. The customer's software performs speech recognition, AI processing, and clinical documentation. GMIC does not replace or require a particular ASR or AI vendor."
+        "text": "A wearable captures the wearer's voice well at close range. Capturing the patient at a greater distance is a separate design consideration involving microphone architecture, placement, and DSP."
       }
     },
     {
       "@type": "Question",
-      "name": "Can firmware be customized?",
+      "name": "Do medical dictation devices need Wi-Fi?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Recording logic, connectivity, upload behavior, button and LED behavior, OTA updates, power management, and device authentication can be configured based on project requirements and the selected hardware platform."
+        "text": "Not necessarily. Some devices record offline and upload later. The right architecture depends on whether immediate transcription is needed and how reliable connectivity is where the encounters happen."
       }
     },
     {
       "@type": "Question",
-      "name": "What is the MOQ for custom AI scribe hardware?",
+      "name": "Can doctor dictation hardware connect to an AI scribe platform?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "MOQ depends on the level of customization, the hardware architecture, tooling requirements, and expected volume. GMIC reviews the project before providing a specific estimate."
+        "text": "Yes. Dedicated hardware can deliver audio over Wi-Fi, BLE, USB, or a companion app to the customer's cloud and AI platform through SDK or API integration."
       }
     },
     {
       "@type": "Question",
-      "name": "How long does an AI scribe hardware project take?",
+      "name": "Are dictation devices automatically HIPAA compliant?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Timeline depends on customization depth. A white-label program is the fastest path, and full ODM development is the longest. GMIC provides a project-specific timeline after a requirements review rather than a generic estimate."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can GMIC support prototype and pilot production?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. GMIC supports the full path from sample evaluation through pilot builds, engineering validation (EVT, DVT, and PVT), certification planning, and mass production."
+        "text": "No. Compliance depends on the complete system — hardware, firmware, transmission, cloud, software, authentication, policies, and the applicable agreements between the parties involved."
       }
     }
   ]
@@ -883,120 +875,38 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
    medical-dictation-devices / microphone-for-ai-scribe pages.
    ============================================================ */
 
-/* ── Eleven-stage process flow ───────────────────────────────────────────
-   Both rows read left to right and wrap like text. No connector between the
-   rows: the rail is trimmed at each row's own start and end, so a row reads
-   as a finished line rather than one that was cut off.
-
-     [1]——[2]——[3]——[4]——[5]——[6]
-                                 └──────────┐
-     [7]————[8]————[9]————[10]————[11]      │   (routed back to 7)
-
-   Both rows span the full container width, so the row of five spreads wider
-   per node than the row of six. That needs two different column counts on one
-   list: the grid is cut into 30 tracks — the least common multiple — and each
-   node of row one spans 5 while each node of row two spans 6. Both rows land
-   on exactly 30. Node typography, the numbered circle, and the 2px rail all
-   come from the shared .mdd-step rules. Below 901px this collapses to a
-   vertical list. ── */
-.mdd-flow { list-style:none; margin:0; padding:0; display:grid; }
-
-@media (min-width:901px){
-  .mdd-flow { grid-template-columns:repeat(30,1fr); row-gap:52px; }
-  .mdd-flow .mdd-step:nth-child(-n+6) { grid-column:span 5; }
-  .mdd-flow .mdd-step:nth-child(n+7)  { grid-column:span 6; }
-
-  /* The shared sheet trims the rail every 4th node below 1100px, for a
-     different layout. Reset first, then trim on this grid's own boundaries. */
-  .mdd-flow .mdd-step::before { left:0; right:0; }
-
-  /* Start of each row — nothing to the left to connect to. */
-  .mdd-flow .mdd-step:nth-child(1)::before,
-  .mdd-flow .mdd-step:nth-child(7)::before { left:calc(50% - 1px); }
-  /* End of the flow. Step 6 is deliberately NOT trimmed: its rail runs on to
-     the right edge and turns down, the way a wrapped line of text does. */
-  .mdd-flow .mdd-step:last-child::before   { right:calc(50% - 1px); }
-
-  /* ── Connector from step 6 to step 7 ──
-     Row 2 restarts on the left, so the two are diagonally opposite. The link
-     is routed through the empty band between the rows: the rail carries on to
-     the right edge, turns down, runs left across the gap, then drops into step
-     7. Two pieces, because a single element can only bend once.
-
-     Piece one — the drop and the run left — hangs off step 6. The drop sits on
-     the container's right edge rather than on step 6's centre, so it never
-     crosses that node's title and description. The bottom edge lands on the
-     middle of the 52px row gap: the node stretches to the row height, so 100%
-     is row one's height and the drop measures 100% - 15px (the rail) + 26px
-     (half the gap). The left edge has to reach step 7's centre — step 6 starts
-     at 25/30 of the container and step 7's centre is at 3/30, a run of 22/30 =
-     73.33% of the container, which is 440% of one 5-track node (5/30 =
-     16.67%). Retune both numbers if the track count ever changes. */
-  .mdd-flow .mdd-step:nth-child(6)::after {
-    content:''; position:absolute; pointer-events:none;
-    top:15px; right:0; left:-440%;
-    height:calc(100% + 11px);
-    border-right:2px solid #e2e8f0;
-    border-bottom:2px solid #e2e8f0;
-  }
-  /* Piece two — the short drop from the middle of the gap onto step 7's rail. */
-  .mdd-flow .mdd-step:nth-child(7)::after {
-    content:''; position:absolute; pointer-events:none;
-    top:-26px; left:calc(50% - 1px); width:2px; height:26px;
-    background:#e2e8f0;
-  }
-
-  /* The numbered circle masks the rail behind it; match the section tone
-     rather than the shared white, since this section is .ind-sec--soft. */
-  .mdd-flow .mdd-step-num { box-shadow:0 0 0 5px #f7f8fa; }
-}
-
+/* Two tinted panels for the dictation-vs-ambient comparison and the B2B fit
+   note. Tints only — no borders, no accent stripe — and both sides get the
+   same padding and type, because neither is the recommended one. */
+.wf-pair { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+.wf-panel { border-radius:16px; padding:34px 32px; }
+.wf-panel--a { background:#f0fdf4; }
+.wf-panel--b { background:#eff6ff; }
+.wf-panel h3 { font-size:1.125rem; font-weight:700; letter-spacing:-.01em; color:#0f172a; margin:0 0 14px; }
+.wf-panel p { font-size:1rem; line-height:1.7; color:#475569; margin:0; }
+.wf-panel p + p { margin-top:12px; }
+.wf-panel .wf-chain { margin:0 0 12px; font-family:var(--sans); font-size:.9rem; font-weight:600; line-height:1.6; color:#0f172a; }
+.wf-panel--a .check-list .ck { background:rgba(22,163,74,.14); }
+.wf-panel--a .check-list .ck svg { color:#15803d; }
+.wf-panel--b .check-list .ck { background:rgba(37,99,235,.14); }
+.wf-panel--b .check-list .ck svg { color:#2563eb; }
 @media (max-width:900px){
-  .mdd-flow { grid-template-columns:1fr; }
-  .mdd-flow .mdd-step {
-    display:grid; grid-template-columns:32px 1fr; column-gap:16px;
-    text-align:left; padding:0 0 26px;
-  }
-  /* Rail turns vertical, running through the circles from one step to the next. */
-  .mdd-flow .mdd-step::before {
-    top:34px; bottom:-6px; left:15px; right:auto; width:2px; height:auto;
-  }
-  .mdd-flow .mdd-step:last-child::before { display:none; }
-  /* The 6→7 connector is a desktop-only device; the vertical list already
-     shows the continuation. */
-  .mdd-flow .mdd-step::after { display:none; }
-  .mdd-flow .mdd-step-num { grid-row:1 / span 2; box-shadow:none; }
-  .mdd-flow .mdd-step h3 { margin:5px 0 4px; }
-  .mdd-flow .mdd-step p { margin:0; }
+  .wf-pair { grid-template-columns:1fr; gap:16px; }
+  .wf-panel { padding:26px 22px; }
 }
 
-/* Two-up card grid for the recording-architecture options: 1 → 2 columns,
-   left-aligned, same card styling as every other grid on the page. */
-.ind-grid.mdd-typegrid--2up { grid-template-columns:1fr; }
+/* Related guides: five equal cards across one row. The shared ramp is 3 → 2 → 1
+   and would leave a 3 + 2 split; both class names are in the selector so this
+   wins on specificity rather than source order. */
+.mdd-guides.mdd-guides--5up { grid-template-columns:1fr; }
 @media (min-width:768px){
-  .ind-grid.mdd-typegrid--2up { grid-template-columns:repeat(2,1fr); }
+  .mdd-guides.mdd-guides--5up { grid-template-columns:repeat(2,1fr); }
 }
-
-/* Related resources: four equal cards across one row. The shared .mdd-guides
-   ramp is built for the five-card sets on the guide pages (3 → 2 → 1), so this
-   page opts into its own 1 → 2 → 4. Both class names are used in the selector
-   so it wins on specificity, not just source order. */
-.mdd-guides.mdd-guides--4up { grid-template-columns:1fr; }
-@media (min-width:768px){
-  .mdd-guides.mdd-guides--4up { grid-template-columns:repeat(2,1fr); }
+@media (min-width:1180px){
+  .mdd-guides.mdd-guides--5up { grid-template-columns:repeat(5,1fr); }
+  .mdd-guides.mdd-guides--5up .mdd-guide { padding:26px 22px; }
+  .mdd-guides.mdd-guides--5up .mdd-guide h3 { font-size:1rem; }
 }
-@media (min-width:1024px){
-  .mdd-guides.mdd-guides--4up { grid-template-columns:repeat(4,1fr); }
-}
-
-/* "Less likely fit" list — identical geometry to .check-list, neutral instead
-   of blue, so the two fit columns read as a pair rather than good vs bad. */
-.check-list--x li { color:#64748b; }
-.check-list--x .ck { background:rgba(100,116,139,.14); }
-.check-list--x .ck svg { color:#64748b; }
-
-/* Path cards carry their own CTA, so the link needs air under the copy. */
-.path-cta { display:inline-flex; align-items:center; gap:7px; margin-top:16px; font-weight:600; font-size:.95rem; }
 </style>
 </head>
 <body>
@@ -1230,28 +1140,27 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
   <!-- ========== 1) HERO ========== -->
   <header class="ind-hero fade-section">
     <div class="container">
-      <h1 class="display reveal">AI Scribe Hardware OEM &amp;&nbsp;ODM</h1>
+      <h1 class="display reveal">Dictation Devices for Doctors: How to Choose the Right&nbsp;Hardware</h1>
 
-      <p class="lede reveal">You build the AI software. We build the physical hardware layer.</p>
+      <p class="lede reveal">The right dictation device for a doctor depends on what needs to be captured, where the device is used, and how the audio enters the documentation workflow. A handheld recorder may work for post-visit dictation, while wearable or dedicated AI scribe hardware may be more appropriate for hands-free or doctor-patient conversation capture.</p>
 
       <div class="ind-hero-photo reveal">
-        <img src="../../img/seo/ai-scribe-hardware-oem/factory/assembly-line.jpg" alt="Workers on the GMIC assembly line building voice-capture hardware" width="1600" height="1067" fetchpriority="high">
+        <img src="../../img/industries/healthcare/healthcare-sol-scribe.png" alt="Clinician talking with a patient in an exam room while a voice-capture device records the encounter" width="1000" height="563" fetchpriority="high">
       </div>
 
       <div class="ind-hero-copy reveal">
-        <p class="lede-sub">GMIC works with AI scribe and healthcare software companies that need dedicated voice-capture hardware, firmware customization, audio engineering, SDK/API integration, and production support — from prototype to mass production.</p>
+        <p class="lede-sub">GMIC works with AI scribe and healthcare software companies that need dedicated voice-capture hardware designed around real clinical workflows — from microphone architecture through manufacturing.</p>
         <div class="ind-hero-cta">
-          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Discuss Your AI Scribe Hardware Project</a>
-          <a href="../../products/index.html" class="btn btn-ghost">Evaluate an Existing Platform</a>
+          <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue">Discuss Your Clinical Hardware Requirements</a>
+          <a href="../medical-dictation-devices/index.html" class="btn btn-ghost">Explore Medical Dictation Devices</a>
         </div>
         <p class="ind-hero-trust">
-          <span>Hardware + PCB</span><span class="dot" aria-hidden="true"></span>
+          <span>US + Shenzhen</span><span class="dot" aria-hidden="true"></span>
+          <span>Audio Engineering</span><span class="dot" aria-hidden="true"></span>
+          <span>DSP Tuning</span><span class="dot" aria-hidden="true"></span>
           <span>Firmware</span><span class="dot" aria-hidden="true"></span>
-          <span>Audio &amp; DSP</span><span class="dot" aria-hidden="true"></span>
           <span>SDK/API</span><span class="dot" aria-hidden="true"></span>
-          <span>Prototype &rarr; Production</span><span class="dot" aria-hidden="true"></span>
-          <span>OEM/ODM</span><span class="dot" aria-hidden="true"></span>
-          <span>Manufacturing + QC</span>
+          <span>Manufacturing</span>
         </p>
       </div>
     </div>
@@ -1278,32 +1187,94 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
           <div class="mdd-stat-lb">Anaheim, CA &amp; Shenzhen, China</div>
         </div>
       </div>
-      <!-- TODO [VERIFY WITH GMIC ENGINEERING]: confirm these production statistics before publication -->
+      <!-- TODO [VERIFY]: confirm these production statistics before publication -->
     </div>
   </section>
 
-  <!-- ========== 2) SOFTWARE TO PRODUCT ========== -->
-  <section class="ind-sec ind-sec--light fade-section" id="software-to-product">
+  <!-- ========== 2) QUICK CHOICE GUIDE ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="quick-choice">
     <div class="container">
       <div class="ind-head reveal">
-        <h2 class="section measure-wide">Turn Your AI Scribe Software Into a Physical&nbsp;Product</h2>
+        <h2 class="section measure-wide">Quick Choice&nbsp;Guide</h2>
+        <p class="ind-intro measure-wide">Start from the workflow, not the device category. These are hardware and workflow considerations, not medical recommendations.</p>
+      </div>
+
+      <div class="ind-grid mdd-typegrid mdd-typegrid--3up reveal">
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="file-text"></i></div>
+          <h3>Post-visit dictation</h3>
+          <p>A handheld recorder, a desktop microphone, or a smartphone. One speaker, speaking deliberately, at a distance the clinician controls.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="hand"></i></div>
+          <h3>Hands-free clinical notes</h3>
+          <p>A wearable microphone, a badge recorder, or a dedicated voice device — anything that does not require unlocking a screen mid-encounter.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="users"></i></div>
+          <h3>Doctor and patient conversation</h3>
+          <p>A properly positioned dedicated device, tabletop hardware, or a multi-microphone architecture. Two speakers at different distances is a different problem.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="wifi-off"></i></div>
+          <h3>Unreliable network</h3>
+          <p>Local recording with an offline-first workflow and delayed sync, so a dead zone costs an upload rather than the encounter.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="layers"></i></div>
+          <h3>Building an AI scribe product</h3>
+          <p>Dedicated hardware with firmware control, SDK/API integration, device management, and an OEM or ODM path to production.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 3) WHAT THEY ARE ========== -->
+  <section class="ind-sec ind-sec--soft fade-section" id="definition">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">What Are Dictation Devices for&nbsp;Doctors?</h2>
       </div>
 
       <div class="reveal">
-        <p>Most AI scribe platforms start on hardware that was already in the room — a phone in a coat pocket, a laptop on the desk. That is the right way to validate the product, and it stops being the right way once the software works and the constraint moves to how the audio arrives.</p>
-        <p style="margin-top:18px;">At that point the requests are consistent: a hands-free workflow, a microphone that sits in the same place on every encounter, recording that survives a dead zone, device identity, your brand on the hardware, firmware you control, and a fleet that behaves the same way everywhere.</p>
-        <!-- TODO [ADD WHEN LIVE]: link /dedicated-ai-scribe-hardware/ on the phrase below -->
-        <p style="margin-top:18px;">This page is about how that hardware gets built. If you are still deciding whether you need dedicated AI scribe hardware at all, settle that first — the broader category of <a class="sol-link" href="../medical-dictation-devices/index.html">medical dictation devices</a> covers the landscape it sits in.</p>
+        <p>The category covers everything from a handheld recorder a physician speaks into after a visit, through desktop and USB microphones, wearable and badge devices, up to dedicated hardware built for an AI scribe platform. What separates them is less the microphone than what the device is expected to hear.</p>
+        <p style="margin-top:18px;">Some capture doctor-only dictation: one voice, close, deliberate. Others capture the doctor-patient conversation itself, so that AI software can turn it into documentation. The full device landscape, including integration architecture, is covered in the guide to <a class="sol-link" href="../medical-dictation-devices/index.html">medical dictation devices</a>.</p>
       </div>
     </div>
   </section>
 
-  <!-- ========== 3) DEVELOPMENT PATH ========== -->
-  <section class="ind-sec ind-sec--soft fade-section" id="paths">
+  <!-- ========== 4) DICTATION VS AMBIENT ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="dictation-vs-ambient">
     <div class="container">
       <div class="ind-head reveal">
-        <h2 class="section measure-wide">Choose the Right Development&nbsp;Path</h2>
-        <p class="ind-intro measure-wide">Three routes, distinguished by how much of the hardware changes. Most programs are best served by the lightest path that meets the requirement.</p>
+        <h2 class="section measure-wide">Doctor Dictation vs Ambient AI Scribe&nbsp;Capture</h2>
+      </div>
+
+      <div class="wf-pair reveal">
+        <div class="wf-panel wf-panel--a">
+          <h3>Traditional doctor dictation</h3>
+          <p class="wf-chain">Doctor speaks &rarr; recording &rarr; transcription &rarr; documentation</p>
+          <p>One speaker, deliberate speech, a predictable distance to the microphone, and a clinician who knows they are being recorded and speaks accordingly. The audio problem is largely solved by holding the device in a sensible place.</p>
+        </div>
+        <div class="wf-panel wf-panel--b">
+          <h3>Ambient conversation capture</h3>
+          <p class="wf-chain">Doctor and patient talk &rarr; voice capture &rarr; audio processing &rarr; speech-to-text &rarr; AI scribe &rarr; clinical documentation</p>
+          <p>Multiple speakers at different distances, facing different directions, over room noise, with movement during the encounter. Nobody adjusts their speech for the microphone.</p>
+        </div>
+      </div>
+
+      <div class="mdd-note reveal">
+        <p><strong>These are different recording problems, and the hardware architecture may differ accordingly.</strong> A device that is excellent for one can be mediocre at the other, which is why device selection should follow the workflow rather than the specification sheet.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 5) DEVICE TYPES ========== -->
+  <section class="ind-sec ind-sec--soft fade-section" id="device-types">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">Types of Dictation&nbsp;Devices</h2>
+        <p class="ind-intro measure-wide">Every type here has workflows it suits. None of them is the best device in general.</p>
       </div>
 
       <div class="reveal">
@@ -1311,209 +1282,297 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
           <table class="mdd-table">
             <thead>
               <tr>
-                <th scope="col">Dimension</th>
-                <th scope="col">White label</th>
-                <th scope="col">OEM / platform customization</th>
-                <th scope="col">Full ODM development</th>
+                <th scope="col">Device type</th>
+                <th scope="col">Best for</th>
+                <th scope="col">Advantages</th>
+                <th scope="col">Limitations</th>
+                <th scope="col">Hands-free</th>
+                <th scope="col">Offline</th>
+                <th scope="col">AI scribe integration</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <th scope="row">Best for</th>
-                <td>Fastest path to market</td>
-                <td>An existing platform that needs deeper changes</td>
-                <td>A fully custom product</td>
+                <th scope="row">Handheld recorder</th>
+                <td>Post-visit dictation</td>
+                <td>Simple, dedicated controls</td>
+                <td>Manual handling</td>
+                <td>No</td>
+                <td>Yes</td>
+                <td>Limited</td>
               </tr>
               <tr>
-                <th scope="row">Hardware changes</th>
-                <td>Minimal — branding only</td>
-                <td>Moderate — microphone, buttons, LEDs, enclosure</td>
-                <td>Full — new PCB, custom architecture</td>
-              </tr>
-              <tr>
-                <th scope="row">Firmware changes</th>
-                <td>Cloud endpoint and basic configuration</td>
-                <td>Recording logic, connectivity, OTA</td>
-                <td>Ground-up firmware</td>
-              </tr>
-              <tr>
-                <th scope="row">Time to pilot</th>
-                <td>Fastest</td>
+                <th scope="row">Desktop microphone</th>
+                <td>Telehealth, office work</td>
+                <td>Good, repeatable positioning</td>
+                <td>Stationary</td>
+                <td>No</td>
+                <td>Varies</td>
                 <td>Moderate</td>
-                <td>Longest</td>
               </tr>
               <tr>
-                <th scope="row">Engineering depth</th>
-                <td>Light</td>
-                <td>Medium</td>
-                <td>Deep</td>
+                <th scope="row">USB microphone</th>
+                <td>Desk workflows</td>
+                <td>Plug-and-play</td>
+                <td>Wired to a host</td>
+                <td>No</td>
+                <td>Via host</td>
+                <td>Moderate</td>
               </tr>
               <tr>
-                <th scope="row">Typical next step</th>
-                <td>Evaluate an existing platform</td>
-                <td>Technical review</td>
-                <td>Requirements workshop</td>
+                <th scope="row">Smartphone</th>
+                <td>Early pilots, simple workflows</td>
+                <td>Already available and familiar</td>
+                <td>Variable microphone, shared battery</td>
+                <td>No</td>
+                <td>App-dependent</td>
+                <td>App-dependent</td>
+              </tr>
+              <tr>
+                <th scope="row">Wearable microphone</th>
+                <td>Rounds, mobile clinicians</td>
+                <td>Hands-free, consistent distance</td>
+                <td>Patient capture varies</td>
+                <td>Yes</td>
+                <td>Platform-dependent</td>
+                <td>Strong</td>
+              </tr>
+              <tr>
+                <th scope="row">Badge recorder</th>
+                <td>Hospital shifts, all-day use</td>
+                <td>Built-in storage, worn</td>
+                <td>Multi-speaker capture is harder</td>
+                <td>Yes</td>
+                <td>Yes</td>
+                <td>Strong with SDK</td>
+              </tr>
+              <tr>
+                <th scope="row">Dedicated AI scribe device</th>
+                <td>Scaled, branded deployment</td>
+                <td>Purpose-built, SDK/API</td>
+                <td>Requires a hardware partner</td>
+                <td>Configurable</td>
+                <td>Configurable</td>
+                <td>Purpose-built</td>
+              </tr>
+              <tr>
+                <th scope="row">Tabletop or room device</th>
+                <td>Multi-speaker encounters</td>
+                <td>Captures the room</td>
+                <td>Less portable, needs DSP</td>
+                <td>Yes</td>
+                <td>Platform-dependent</td>
+                <td>With tuning</td>
               </tr>
             </tbody>
           </table>
         </div>
         <p class="mdd-scroll-hint">Scroll the table horizontally to compare &rarr;</p>
       </div>
-
-      <div class="ind-grid mdd-typegrid mdd-typegrid--3up reveal" style="margin-top:44px;">
-        <div class="ind-card">
-          <div class="ind-card-ic"><i data-lucide="tag"></i></div>
-          <h3>White label</h3>
-          <p>An existing GMIC platform, branded as yours and pointed at your cloud endpoint. The hardware is already validated, so the work is configuration and packaging rather than development — usually the fastest route to a pilot.</p>
-          <a class="sol-link path-cta" href="../../products/index.html">Evaluate existing hardware <i data-lucide="arrow-right"></i></a>
-        </div>
-        <div class="ind-card">
-          <div class="ind-card-ic"><i data-lucide="sliders-horizontal"></i></div>
-          <h3>OEM / platform customization</h3>
-          <p>Start from a proven platform and change what the workflow requires — microphone placement, button and LED behavior, connectivity, enclosure, recording logic. The base electronics stay, which keeps validation scope contained.</p>
-          <a class="sol-link path-cta" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener">Discuss customization <i data-lucide="arrow-right"></i></a>
-        </div>
-        <div class="ind-card">
-          <div class="ind-card-ic"><i data-lucide="drafting-compass"></i></div>
-          <h3>Full ODM development</h3>
-          <p>A new product: custom PCB, microphone architecture, mechanical design, and firmware written for your workflow. The right path when the form factor or the audio requirement has no equivalent on the shelf.</p>
-          <a class="sol-link path-cta" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener">Start a requirements review <i data-lucide="arrow-right"></i></a>
-        </div>
-      </div>
     </div>
   </section>
 
-  <!-- ========== 4) CUSTOMIZATION CAPABILITIES ========== -->
-  <section class="ind-sec ind-sec--light fade-section" id="capabilities">
+  <!-- ========== DIVIDER ========== -->
+  <div class="mdd-band fade-section">
+    <img src="../../img/seo/dictation-devices-for-doctors/factory/aoi-line.jpg" alt="Row of automated inspection machines on the GMIC production line" loading="lazy" width="1600" height="1067">
+  </div>
+
+  <!-- ========== 6) CLINICAL WORKFLOWS ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="workflows">
     <div class="container">
       <div class="ind-head reveal">
-        <h2 class="section measure-wide">Customization&nbsp;Capabilities</h2>
-        <p class="ind-intro measure-wide">Depending on the selected platform and project requirements, the following areas are open for customization.</p>
+        <h2 class="section measure-wide">Choosing by Clinical&nbsp;Workflow</h2>
+        <p class="ind-intro measure-wide">The same specification behaves differently in a dental operatory than in a quiet consultation room. What follows is what tends to drive the hardware decision in each setting.</p>
       </div>
 
-      <!-- TODO [VERIFY WITH GMIC ENGINEERING]: confirm which of these are available per platform before publication -->
+      <div class="ind-grid mdd-typegrid reveal">
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="stethoscope"></i></div>
+          <h3>Primary care and outpatient</h3>
+          <p>Repeatable exam rooms and a clear choice between ambient capture and post-visit dictation. Mobility between rooms is usually the deciding factor.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="building-2"></i></div>
+          <h3>Hospital rounds</h3>
+          <p>Constant room changes and variable network coverage. Portable or wearable devices with reliable offline recording tend to fit best.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="smile"></i></div>
+          <h3>Dental practice</h3>
+          <p>Hands-free is not a convenience here — gloves and procedures make it a requirement. Equipment noise and close positioning both matter.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="microscope"></i></div>
+          <h3>Specialty clinics</h3>
+          <p>Workflows vary too widely for a single recommendation. The architecture should follow observed clinician behavior rather than an assumed process.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="house"></i></div>
+          <h3>Home healthcare</h3>
+          <p>High mobility and unpredictable connectivity. Portability, simple controls, and offline capture usually outrank audio refinement.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="video"></i></div>
+          <h3>Telehealth</h3>
+          <p>Desk-based and predictable, but speaker playback introduces echo. Echo cancellation and USB or device integration become the questions.</p>
+        </div>
+        <div class="ind-card">
+          <div class="ind-card-ic"><i data-lucide="paw-print"></i></div>
+          <h3>Veterinary</h3>
+          <p>An adjacent clinical workflow rather than a medical one: hands-free capture with animal and background noise, and often two people speaking.</p>
+        </div>
+      </div>
+
+      <p class="mdd-nextstep reveal">Wider healthcare programs, including AI scribe and clinical voice capture, are covered under <a class="sol-link" href="https://gmic.ai/healthcare-ai-scribe-hardware/">healthcare AI hardware</a>.<a class="mdd-nextstep-link" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener">Book a call <i data-lucide="arrow-right"></i></a></p>
+    </div>
+  </section>
+
+  <!-- ========== 7) DOCTOR-PATIENT CAPTURE ========== -->
+  <section class="ind-sec ind-sec--soft fade-section" id="conversation">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">Choosing Hardware for Doctor-Patient Conversation&nbsp;Capture</h2>
+        <p class="ind-intro measure-wide">Five variables decide most of the outcome, and none of them is the microphone's datasheet.</p>
+      </div>
+
       <div class="ind-grid mdd-typegrid mdd-typegrid--3up reveal">
         <div class="ind-card">
-          <div class="ind-card-ic"><i data-lucide="mic"></i></div>
-          <h3>Microphone &amp; audio</h3>
-          <p>Element selection and topology, placement on the form factor, the analog and digital front end, and a DSP chain tuned as one system.</p>
+          <div class="ind-card-ic"><i data-lucide="ruler"></i></div>
+          <h3>Speaker distance</h3>
+          <p>The doctor and the patient sit at different distances from the device, so one voice arrives louder than the other before any processing happens.</p>
         </div>
         <div class="ind-card">
-          <div class="ind-card-ic"><i data-lucide="cpu"></i></div>
-          <h3>Firmware</h3>
-          <p>Recording logic, button and LED behavior, local storage, upload and retry, BLE and Wi-Fi behavior, OTA updates, power states, and device authentication.</p>
+          <div class="ind-card-ic"><i data-lucide="map-pin"></i></div>
+          <h3>Microphone placement</h3>
+          <p>Where the device sits relative to both speakers sets the capture balance. A worn device favors the wearer by design.</p>
         </div>
         <div class="ind-card">
-          <div class="ind-card-ic"><i data-lucide="circuit-board"></i></div>
-          <h3>Hardware</h3>
-          <p>PCB and electronics design, connectivity, onboard storage, battery and power architecture, buttons, and status indicators.</p>
+          <div class="ind-card-ic"><i data-lucide="waves"></i></div>
+          <h3>Room acoustics</h3>
+          <p>Hard, cleanable surfaces reflect sound. Reverberation blurs the separation between speakers before the audio ever reaches software.</p>
         </div>
         <div class="ind-card">
-          <div class="ind-card-ic"><i data-lucide="plug"></i></div>
-          <h3>Software integration</h3>
-          <p>SDK and API work against your cloud, speech-to-text backend, AI platform, private server, or companion app — whichever the deployment already uses.</p>
+          <div class="ind-card-ic"><i data-lucide="volume-2"></i></div>
+          <h3>Background noise</h3>
+          <p>HVAC, corridor traffic, and equipment compete with both voices, and the further voice loses first.</p>
         </div>
         <div class="ind-card">
-          <div class="ind-card-ic"><i data-lucide="palette"></i></div>
-          <h3>Branding</h3>
-          <p>Device logo and marking, enclosure finish, packaging, and the documentation that ships with the unit.</p>
+          <div class="ind-card-ic"><i data-lucide="messages-square"></i></div>
+          <h3>Overlapping speech</h3>
+          <p>Real conversations overlap, and the two speakers are rarely at the same level. Both make downstream separation harder.</p>
         </div>
-        <div class="ind-card">
-          <div class="ind-card-ic"><i data-lucide="box"></i></div>
-          <h3>Mechanical</h3>
-          <p>Enclosure and form factor, wearable structure, and the mounting, clip, or lanyard the device is actually carried on.</p>
-        </div>
+      </div>
+
+      <div class="mdd-note reveal">
+        <p><strong>Capturing audio and identifying who spoke are separate problems.</strong> Hardware determines how cleanly each voice is recorded. Speaker diarization and identification are downstream software functions, and no microphone architecture performs them on its own. How the capture side is chosen is covered in <a class="sol-link" href="../microphone-for-ai-scribe/index.html">choosing a microphone for an AI scribe</a>.</p>
       </div>
     </div>
   </section>
 
-  <!-- ========== 5) AUDIO ARCHITECTURE ========== -->
-  <section class="ind-sec ind-sec--soft fade-section" id="audio">
+  <!-- ========== 8) AUDIO & DSP ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="audio">
     <div class="container">
       <div class="ind-head reveal">
-        <h2 class="section measure-wide">Design Hardware Around the Real Recording&nbsp;Environment</h2>
+        <h2 class="section measure-wide">Audio and&nbsp;DSP</h2>
       </div>
 
       <div class="reveal">
-        <p>Audio hardware cannot be specified from a software document alone. Before an architecture can be chosen, the engineering team needs to know who is speaking, how far they are from the device, what the room is made of, what else is making noise, and whether the clinician is moving.</p>
-        <p style="margin-top:18px;">Those five answers decide the element count, the placement, the DSP chain, and often the form factor itself — and a device that measures well on a bench can behave very differently on a moving clinician. The trade-offs are covered in the guide to <a class="sol-link" href="../microphone-for-ai-scribe/index.html">choosing a microphone for an AI scribe</a>; the tuning work itself is <a class="sol-link" href="https://gmic.ai/audio-dsp-tuning-for-voice-ai/">audio and DSP tuning</a>.</p>
+        <p>Microphone position, speaker distance, ambient noise, and reverberation set the ceiling on what any processing can recover. Below that ceiling, a DSP chain — noise reduction, beamforming, automatic gain control, voice activity detection, and echo cancellation — conditions the signal that reaches the transcription stage.</p>
+        <p style="margin-top:18px;">What it cannot do is guarantee a transcription result. Final performance depends on the whole chain: capture, processing, the ASR model, the vocabulary, the speakers, and the environment. Tuning the hardware half of that chain is <a class="sol-link" href="https://gmic.ai/audio-dsp-tuning-for-voice-ai/">audio and DSP tuning</a>.</p>
       </div>
 
       <figure class="mdd-photo reveal" style="aspect-ratio:16/7; margin-top:44px;">
-        <img src="../../img/seo/ai-scribe-hardware-oem/factory/oscilloscope-test.jpg" alt="Signal measurement equipment used during audio validation of a voice-capture device" loading="lazy" width="1600" height="1067">
+        <img src="../../img/seo/dictation-devices-for-doctors/factory/oscilloscope-test.jpg" alt="Signal measurement equipment used during audio validation of a voice-capture device" loading="lazy" width="1600" height="1067">
         <figcaption>Audio and signal validation during device testing</figcaption>
       </figure>
     </div>
   </section>
 
-  <!-- ========== 6) FIRMWARE ========== -->
-  <section class="ind-sec ind-sec--light fade-section" id="firmware">
+  <!-- ========== 9) SMARTPHONES ========== -->
+  <section class="ind-sec ind-sec--soft fade-section" id="smartphones">
     <div class="container">
       <div class="ind-head reveal">
-        <h2 class="section measure-wide">Firmware That Fits Your AI Scribe&nbsp;Workflow</h2>
-        <p class="ind-intro measure-wide">Firmware is where a hardware program either matches the clinical workflow or fights it — and it is the layer with the least existing code to reuse.</p>
+        <h2 class="section measure-wide">Can Doctors Use Smartphones for&nbsp;Dictation?</h2>
       </div>
 
-      <div class="mdd-2col reveal">
-        <div>
-          <ul class="check-list check-list--light">
-            <li><span class="ck"><i data-lucide="check"></i></span> Press-to-record or continuous capture</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> Local storage on the device</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> Wi-Fi upload to your endpoint</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> BLE pairing through a companion app</li>
-          </ul>
-        </div>
-        <div>
-          <ul class="check-list check-list--light">
-            <li><span class="ck"><i data-lucide="check"></i></span> Retry logic and offline workflow</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> OTA update paths</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> Battery and power management</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> Device authentication and identity</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="mdd-note reveal">
-        <p>Depending on the selected platform and project requirements, these behaviors are configured rather than rebuilt. Scope is covered under <a class="sol-link" href="https://gmic.ai/firmware-integration-for-ai-devices/">firmware integration</a>.</p>
+      <div class="reveal">
+        <p>Yes, and for a great many workflows it is a reasonable answer. The phone is already in the pocket, the clinician already knows how to use it, the app ecosystem is mature, and connectivity and updates are solved problems. For post-visit dictation in a quiet room, it is often all the hardware the workflow needs.</p>
+        <p style="margin-top:18px;">The limitations tend to appear with scale rather than in the first pilot: microphone variation across models, a battery shared with everything else the clinician does, placement that depends on how the phone is held, personal-device policies, and no meaningful firmware control. The full comparison is set out in <a class="sol-link" href="../medical-dictation-device-vs-smartphone/index.html">medical dictation device vs smartphone</a>.</p>
       </div>
     </div>
   </section>
 
-  <!-- ========== 7) CONNECT TO YOUR STACK ========== -->
+  <!-- ========== 10) WHEN DEDICATED ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="dedicated">
+    <div class="container">
+      <div class="ind-head reveal">
+        <h2 class="section measure-wide">When Dedicated Hardware Makes&nbsp;Sense</h2>
+      </div>
+
+      <div class="mdd-2col reveal">
+        <div>
+          <h3>Worth evaluating when</h3>
+          <ul class="check-list check-list--light" style="margin-top:18px;">
+            <li><span class="ck"><i data-lucide="check"></i></span> The workflow has to be hands-free</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Microphone position needs to be predictable</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Offline recording matters</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Dedicated physical controls are needed</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> Firmware control, device identity, or a standardized fleet is required</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> The device is part of a branded product, integrated with an AI platform</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Smartphones remain better when</h3>
+          <ul class="check-list check-list--light" style="margin-top:18px;">
+            <li><span class="ck"><i data-lucide="check"></i></span> The workflow is simple and the environment is quiet</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> The deployment is small</li>
+            <li><span class="ck"><i data-lucide="check"></i></span> The software itself is still being validated</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- TODO [ADD WHEN LIVE]: link /dedicated-ai-scribe-hardware/ on the phrase below -->
+      <div class="mdd-note reveal">
+        <p>Not every doctor needs dedicated hardware, and a device bought before the requirement is clear usually solves nothing. When several of the conditions on the left do apply, the next question is what that device should be — the subject of the guide to dedicated AI scribe hardware.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 11) HARDWARE TO SOFTWARE ========== -->
   <section class="ind-sec ind-sec--soft fade-section" id="integration">
     <div class="container">
       <div class="ind-head reveal">
-        <h2 class="section measure-wide">Connect Hardware to Your AI&nbsp;Stack</h2>
-        <p class="ind-intro measure-wide">The device is one layer of a system you already own. Everything downstream of the upload stays yours.</p>
+        <h2 class="section measure-wide">How Dictation Hardware Connects to AI&nbsp;Software</h2>
+        <p class="ind-intro measure-wide">The device captures and transports audio. Recognition, summarization, and note generation happen downstream, in software the customer owns.</p>
       </div>
 
       <div class="mdd-snake reveal">
 
-        <div class="mdd-snake-lane mdd-snake-lane--hw">GMIC hardware</div>
+        <div class="mdd-snake-lane mdd-snake-lane--hw">Hardware layer</div>
         <ol class="mdd-snake-row mdd-snake-row--hw">
           <li class="mdd-snake-node">
             <h4>Doctor / patient</h4>
-            <p>The encounter, in the room where it actually happens.</p>
+            <p>One or more speakers, at whatever distance the encounter puts them.</p>
           </li>
           <li class="mdd-snake-arrow" aria-hidden="true"></li>
           <li class="mdd-snake-node">
-            <h4>GMIC hardware</h4>
-            <p>Wearable, badge, desktop, or tabletop device carrying your brand.</p>
+            <h4>Dictation device</h4>
+            <p>Handheld, worn, desktop, or tabletop, depending on the workflow.</p>
           </li>
           <li class="mdd-snake-arrow" aria-hidden="true"></li>
           <li class="mdd-snake-node">
-            <h4>Audio + DSP</h4>
-            <p>Front end and processing chain tuned for the target environment.</p>
+            <h4>Microphone and DSP</h4>
+            <p>Element, placement, and the processing chain tuned for the room.</p>
           </li>
           <li class="mdd-snake-arrow" aria-hidden="true"></li>
           <li class="mdd-snake-node">
             <h4>Firmware</h4>
-            <p>Recording behavior, storage, authentication, and upload logic.</p>
+            <p>Recording logic, storage, authentication, and upload behavior.</p>
           </li>
           <li class="mdd-snake-arrow" aria-hidden="true"></li>
           <li class="mdd-snake-node">
             <h4>Recording or stream</h4>
-            <p>Written locally for later upload, or streamed live.</p>
+            <p>Held locally for later upload, or streamed during the encounter.</p>
           </li>
         </ol>
 
@@ -1523,343 +1582,218 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
             <dd>Wi-Fi</dd>
             <dd>BLE</dd>
             <dd>USB</dd>
+            <dd>Companion app</dd>
           </dl>
           <div class="mdd-snake-down" aria-hidden="true"></div>
         </div>
 
-        <div class="mdd-snake-lane mdd-snake-lane--sw">Your software</div>
+        <div class="mdd-snake-lane mdd-snake-lane--sw">Software layer</div>
         <ol class="mdd-snake-row mdd-snake-row--rtl mdd-snake-row--sw">
           <li class="mdd-snake-node">
-            <h4>Your SDK / API</h4>
+            <h4>SDK / API</h4>
             <p>The endpoint the device authenticates to and uploads through.</p>
           </li>
           <li class="mdd-snake-arrow" aria-hidden="true"></li>
           <li class="mdd-snake-node">
-            <h4>Your cloud</h4>
-            <p>Your infrastructure or private server, under your controls.</p>
+            <h4>Customer cloud</h4>
+            <p>The platform's own infrastructure or a private server.</p>
           </li>
           <li class="mdd-snake-arrow" aria-hidden="true"></li>
           <li class="mdd-snake-node">
-            <h4>Your speech-to-text</h4>
-            <p>Whichever ASR your platform already runs.</p>
+            <h4>Speech-to-text</h4>
+            <p>Transcription of the captured audio, with or without speaker separation.</p>
           </li>
           <li class="mdd-snake-arrow" aria-hidden="true"></li>
           <li class="mdd-snake-node">
-            <h4>Your AI scribe</h4>
-            <p>Your models, your prompts, your clinical output format.</p>
+            <h4>AI scribe</h4>
+            <p>The customer's models turn the transcript into clinical content.</p>
           </li>
           <li class="mdd-snake-arrow" aria-hidden="true"></li>
           <li class="mdd-snake-node">
-            <h4>Your clinical workflow</h4>
-            <p>Delivered into the record system by your platform.</p>
+            <h4>EHR / workflow</h4>
+            <p>Delivered into the record system for the clinician to review and sign.</p>
           </li>
         </ol>
       </div>
 
-      <p class="mdd-snake-foot reveal"><strong>You do not need to replace your existing AI stack.</strong> The goal is to integrate the device into the architecture you already run, which is what <a class="sol-link" href="https://gmic.ai/ai-sdk-integration-for-voice-devices/">AI SDK integration</a> covers.</p>
+      <p class="mdd-snake-foot reveal">Connecting a device into an existing platform runs as <a class="sol-link" href="https://gmic.ai/ai-sdk-integration-for-voice-devices/">AI SDK integration</a>, and the device-side behavior it depends on is <a class="sol-link" href="https://gmic.ai/firmware-integration-for-ai-devices/">firmware integration</a>.</p>
     </div>
   </section>
 
-  <!-- ========== 8) RECORDING ARCHITECTURE ========== -->
-  <section class="ind-sec ind-sec--light fade-section" id="recording">
+  <!-- ========== 12) DECISION FRAMEWORK ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="framework">
     <div class="container">
       <div class="ind-head reveal">
-        <h2 class="section measure-wide">Offline Recording, Upload, or Real-Time&nbsp;Streaming</h2>
-        <p class="ind-intro measure-wide">Four workable architectures. The right one follows from the network the devices will actually live on.</p>
-      </div>
-
-      <div class="ind-grid mdd-typegrid--2up reveal">
-        <div class="ind-card">
-          <div class="ind-card-ic"><i data-lucide="hard-drive"></i></div>
-          <h3>Local recording + batch upload</h3>
-          <p>Audio is written to the device and uploaded when the clinician returns to coverage. Recording never depends on the network being there during the encounter.</p>
-        </div>
-        <div class="ind-card">
-          <div class="ind-card-ic"><i data-lucide="radio"></i></div>
-          <h3>Real-time streaming</h3>
-          <p>Audio moves to your cloud during the encounter, so transcription can begin immediately. Requires stable coverage everywhere the device is used.</p>
-        </div>
-        <div class="ind-card">
-          <div class="ind-card-ic"><i data-lucide="refresh-cw"></i></div>
-          <h3>Offline-first + delayed sync</h3>
-          <p>The device assumes no network, stores everything, and syncs opportunistically. Storage sizing and retry behavior become firmware requirements.</p>
-        </div>
-        <div class="ind-card">
-          <div class="ind-card-ic"><i data-lucide="shuffle"></i></div>
-          <h3>Hybrid</h3>
-          <p>Stream when coverage allows, fall back to local recording when it does not — the most flexible option, and the most firmware logic to specify.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 9) EXISTING PLATFORM VS CUSTOM ========== -->
-  <section class="ind-sec ind-sec--soft fade-section" id="platform-vs-custom">
-    <div class="container">
-      <div class="ind-head reveal">
-        <h2 class="section measure-wide">Existing Platform vs&nbsp;Custom</h2>
-      </div>
-
-      <div class="mdd-2col reveal">
-        <div>
-          <h3>Start with an existing platform</h3>
-          <p style="margin-top:12px;">Samples exist, so the audio can be tested in your rooms rather than after a development cycle. A pilot can run on branded units while the product decision is still open, and the findings carry forward if you later move to a custom build.</p>
-          <p style="margin-top:14px;">See the <a class="sol-link" href="../../products/index.html">existing AI voice hardware platforms</a>.</p>
-        </div>
-        <div>
-          <h3>Build a custom platform</h3>
-          <p style="margin-top:12px;">Worth it when the requirement genuinely exceeds what is on the shelf — an unusual form factor, a microphone geometry no existing device has, a battery target no existing enclosure can hold, or an integration that has to be in the firmware from the start.</p>
-          <p style="margin-top:14px;">That path runs as <a class="sol-link" href="https://gmic.ai/ai-hardware-odm-oem/">AI hardware ODM/OEM</a>.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 10) WEARABLE ========== -->
-  <section class="ind-sec ind-sec--light fade-section" id="wearable">
-    <div class="container">
-      <div class="ind-head reveal">
-        <h2 class="section measure-wide">Wearable AI Scribe&nbsp;Hardware</h2>
+        <h2 class="section measure-wide">Buyer Decision&nbsp;Framework</h2>
+        <p class="ind-intro measure-wide">A starting point for each workflow, and what to put under test before committing to it.</p>
       </div>
 
       <div class="reveal">
-        <p>Wearables fit the cases where the clinician's hands are occupied and the location changes constantly — rounds, home visits, outpatient clinics. Worn on the body, the microphone keeps roughly the same distance from the wearer's mouth on every encounter, which matters more for transcription consistency than raw specification.</p>
-        <p style="margin-top:18px;">The constraints are worth naming early: battery life against a full shift, comfort over hours, microphone position relative to clothing, distance to the second speaker, and contact noise from fabric against the enclosure. Design considerations across form factors are covered under <a class="sol-link" href="https://gmic.ai/ai-wearable-devices/">AI wearable devices</a>.</p>
+        <div class="mdd-tablewrap">
+          <table class="mdd-table">
+            <thead>
+              <tr>
+                <th scope="col">Workflow</th>
+                <th scope="col">Likely starting point</th>
+                <th scope="col">Why</th>
+                <th scope="col">What to test</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Post-visit dictation</th>
+                <td>Handheld recorder or smartphone</td>
+                <td>Simple, one speaker</td>
+                <td>Audio clarity, upload reliability</td>
+              </tr>
+              <tr>
+                <th scope="row">Desktop physician workflow</th>
+                <td>Desktop or USB microphone</td>
+                <td>Stationary and predictable</td>
+                <td>Positioning, echo</td>
+              </tr>
+              <tr>
+                <th scope="row">Mobile clinical rounds</th>
+                <td>Wearable microphone or badge</td>
+                <td>Hands-free and mobile</td>
+                <td>Offline recording, battery</td>
+              </tr>
+              <tr>
+                <th scope="row">Hands-free clinical work</th>
+                <td>Wearable or dedicated device</td>
+                <td>No phone interaction possible</td>
+                <td>Placement, clothing noise</td>
+              </tr>
+              <tr>
+                <th scope="row">Doctor-patient ambient capture</th>
+                <td>Dedicated or tabletop device</td>
+                <td>Multi-speaker capture</td>
+                <td>Both voices, DSP behavior</td>
+              </tr>
+              <tr>
+                <th scope="row">Telehealth</th>
+                <td>Desktop microphone or existing setup</td>
+                <td>Stationary, known environment</td>
+                <td>Echo, speaker playback</td>
+              </tr>
+              <tr>
+                <th scope="row">Home healthcare</th>
+                <td>Portable device with offline capture</td>
+                <td>Unpredictable network</td>
+                <td>Sync, battery, simplicity</td>
+              </tr>
+              <tr>
+                <th scope="row">AI scribe pilot</th>
+                <td>Sample hardware on an existing platform</td>
+                <td>Validates fit before investment</td>
+                <td>The full workflow, end to end</td>
+              </tr>
+              <tr>
+                <th scope="row">Large deployment</th>
+                <td>Standardized dedicated device</td>
+                <td>Fleet consistency</td>
+                <td>Management, OTA, support load</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="mdd-scroll-hint">Scroll the table horizontally to compare &rarr;</p>
       </div>
     </div>
   </section>
 
-  <!-- ========== 11) PRIVACY & SECURITY ========== -->
+  <!-- ========== 13) PRIVACY ========== -->
   <section class="ind-sec ind-sec--soft fade-section" id="privacy">
     <div class="container">
       <div class="ind-head reveal">
-        <h2 class="section measure-wide">Privacy &amp;&nbsp;Security</h2>
+        <h2 class="section measure-wide">Privacy and&nbsp;Security</h2>
       </div>
 
       <div class="reveal">
         <div class="mdd-callout mdd-callout--warn">
           <div class="mdd-callout-ic"><i data-lucide="shield-alert"></i></div>
           <div>
-            <h3>Hardware alone does not make an AI scribe system HIPAA compliant</h3>
-            <p>Compliance is a property of the whole system — how audio is stored, transmitted, accessed, retained, and disclosed, and the agreements between the parties handling it. A device can support that architecture; it cannot deliver it on its own.</p>
+            <h3>A device on its own does not make a system compliant</h3>
+            <p>Compliance is a property of the whole system: how audio is stored on the device and for how long, how it is transmitted and to whom, who can access it, what happens after upload, how a lost device is handled, and what the parties have agreed in writing. The <a class="sol-link" href="https://www.hhs.gov/hipaa/for-professionals/security/index.html" target="_blank" rel="noopener noreferrer">HIPAA Security Rule</a> sets out the safeguards involved; it is cited here to support the principle, not as a claim about any device.</p>
           </div>
         </div>
       </div>
 
-      <div class="mdd-2col reveal" style="margin-top:40px;">
-        <div>
-          <ul class="check-list check-list--light">
-            <li><span class="ck"><i data-lucide="check"></i></span> Where audio is stored on the device, and for how long</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> How the device authenticates to your endpoint</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> How data is protected in transit</li>
-          </ul>
-        </div>
-        <div>
-          <ul class="check-list check-list--light">
-            <li><span class="ck"><i data-lucide="check"></i></span> What happens to recordings after a successful upload</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> How a lost or decommissioned device is handled</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> Which party is responsible for each step</li>
-          </ul>
-        </div>
-      </div>
-
+      <!-- TODO [VERIFY RECORDING/CONSENT REQUIREMENTS WITH QUALIFIED LEGAL COUNSEL FOR TARGET JURISDICTION] -->
       <div class="mdd-note reveal">
-        <p>These are decisions for your security and legal teams, taken against your own deployment. The <a class="sol-link" href="https://www.hhs.gov/hipaa/for-professionals/security/index.html" target="_blank" rel="noopener noreferrer">HIPAA Security Rule</a> is the public reference for the safeguards involved. It is cited here to support the principle, not as a claim that any device is compliant.</p>
+        <p>Recording a clinical encounter also raises consent questions that vary by jurisdiction and by who is in the room. Those requirements should be confirmed with qualified legal counsel for each market a device will be deployed in, before the workflow is designed around them.</p>
       </div>
     </div>
   </section>
 
-  <!-- ========== 12) CERTIFICATION ========== -->
-  <section class="ind-sec ind-sec--light fade-section" id="certification">
+  <!-- ========== 14) HOW GMIC FITS ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="gmic">
     <div class="container">
       <div class="ind-head reveal">
-        <h2 class="section measure-wide">Certification&nbsp;Planning</h2>
-        <p class="ind-intro measure-wide">What a device needs depends on its architecture, its wireless technology, the markets it ships to, and its intended use.</p>
+        <h2 class="section measure-wide">How GMIC&nbsp;Fits</h2>
+        <p class="ind-intro measure-wide">GMIC builds the hardware layer for AI and healthcare software companies: microphone architecture, audio and DSP, firmware, SDK/API integration, prototyping, OEM and ODM development, manufacturing, QC, and certification support.</p>
       </div>
 
       <div class="reveal">
-        <p>For a connected recording device, the scope typically includes some combination of FCC, CE, RoHS, UKCA, TELEC, and ISED, driven mainly by the radio and the destination market. Planning it early matters, because certification scope influences hardware decisions that are expensive to revisit later.</p>
-        <p style="margin-top:18px;">Intended use is a separate question, and one for your regulatory counsel rather than your hardware partner — whether a product is regulated as a medical device depends on what it claims to do. The <a class="sol-link" href="https://www.fda.gov/medical-devices/classify-your-medical-device/how-determine-if-your-product-medical-device" target="_blank" rel="noopener noreferrer">FDA guidance on medical device determination</a> is the US starting point. GMIC does not provide FDA clearance or approval.</p>
-        <p style="margin-top:18px;">Test planning, documentation, and lab coordination run under <a class="sol-link" href="https://gmic.ai/hardware-certification-support/">hardware certification support</a>.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 13) DEVELOPMENT PROCESS ========== -->
-  <section class="ind-sec ind-sec--soft fade-section" id="process">
-    <div class="container">
-      <div class="ind-head reveal">
-        <h2 class="section measure-wide">Development&nbsp;Process</h2>
-        <p class="ind-intro measure-wide">Eleven stages from first conversation to deployed fleet. Duration depends on the path chosen and the certification scope.</p>
+        <p>The sequence is deliberately incremental — clinical workflow, then audio requirements, then a hardware platform, then samples in the real environment, then integration, then a pilot, and only then a production decision. Most programs should start by evaluating <a class="sol-link" href="../../products/index.html">existing voice hardware platforms</a> rather than funding a custom product on day one. Worn form factors draw on <a class="sol-link" href="https://gmic.ai/ai-wearable-devices/">AI wearable devices</a> work, and the build itself runs as <a class="sol-link" href="https://gmic.ai/ai-hardware-odm-oem/">AI hardware ODM/OEM</a>.</p>
       </div>
 
-      <ol class="mdd-flow reveal">
-        <li class="mdd-step">
-          <span class="mdd-step-num">1</span>
-          <h3>Requirements</h3>
-          <p>Workflow, environment, speakers, connectivity, volume.</p>
-        </li>
-        <li class="mdd-step">
-          <span class="mdd-step-num">2</span>
-          <h3>Platform selection</h3>
-          <p>White label, OEM, or full ODM — decided against the requirement.</p>
-        </li>
-        <li class="mdd-step">
-          <span class="mdd-step-num">3</span>
-          <h3>Sample evaluation</h3>
-          <p>Real units tested in your rooms, not in a demo.</p>
-        </li>
-        <li class="mdd-step">
-          <span class="mdd-step-num">4</span>
-          <h3>Audio evaluation</h3>
-          <p>Recordings run through your own transcription pipeline.</p>
-        </li>
-        <li class="mdd-step">
-          <span class="mdd-step-num">5</span>
-          <h3>Firmware &amp; API</h3>
-          <p>Upload, authentication, and endpoints tested against your server.</p>
-        </li>
-        <li class="mdd-step">
-          <span class="mdd-step-num">6</span>
-          <h3>Pilot</h3>
-          <p>A limited fleet with real clinicians and real encounters.</p>
-        </li>
-        <li class="mdd-step">
-          <span class="mdd-step-num">7</span>
-          <h3>Engineering validation</h3>
-          <p>EVT, DVT, and PVT builds against defined exit criteria.</p>
-        </li>
-        <li class="mdd-step">
-          <span class="mdd-step-num">8</span>
-          <h3>Certification</h3>
-          <p>Test planning and lab coordination for the target markets.</p>
-        </li>
-        <li class="mdd-step">
-          <span class="mdd-step-num">9</span>
-          <h3>Production</h3>
-          <p>Tooling, line setup, and first mass-production run.</p>
-        </li>
-        <li class="mdd-step">
-          <span class="mdd-step-num">10</span>
-          <h3>QC</h3>
-          <p>Inspection, functional test, and burn-in on every batch.</p>
-        </li>
-        <li class="mdd-step">
-          <span class="mdd-step-num">11</span>
-          <h3>Deployment</h3>
-          <p>Provisioning, packaging, and shipment to your sites.</p>
-        </li>
-      </ol>
-
-      <p class="mdd-nextstep reveal">Stages seven through nine are described in detail under <a class="sol-link" href="https://gmic.ai/evt-dvt-pvt-manufacturing-support/">EVT, DVT, and PVT validation</a> and the wider <a class="sol-link" href="https://gmic.ai/ai-hardware-development-process/">AI hardware development process</a>.<a class="mdd-nextstep-link" href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener">Book a call <i data-lucide="arrow-right"></i></a></p>
-    </div>
-  </section>
-
-  <!-- ========== 14) MANUFACTURING & QC ========== -->
-  <section class="ind-sec ind-sec--light mdd-why-gmic fade-section" id="manufacturing">
-    <div class="container">
-      <div class="ind-head reveal">
-        <h2 class="section measure-wide">Manufacturing &amp;&nbsp;QC</h2>
-        <p class="ind-intro measure-wide">GMIC is the AI hardware division of Gainstrong, a contract manufacturer founded in 2009. Engineering and production are in Shenzhen; the commercial team is in Anaheim, California.</p>
-      </div>
-
-      <div class="mdd-photos reveal">
-        <figure class="mdd-photo">
-          <img src="../../img/seo/ai-scribe-hardware-oem/factory/assembly-line.jpg" alt="Workers on the GMIC assembly line" loading="lazy" width="1600" height="1067">
-          <figcaption>Assembly</figcaption>
-        </figure>
-        <figure class="mdd-photo">
-          <img src="../../img/seo/ai-scribe-hardware-oem/factory/smt-hanwha.jpg" alt="GMIC SMT production line in operation" loading="lazy" width="1600" height="1067">
-          <figcaption>SMT Production</figcaption>
-        </figure>
-        <figure class="mdd-photo">
-          <img src="../../img/seo/ai-scribe-hardware-oem/factory/aoi-line.jpg" alt="Row of automated inspection machines on the GMIC line" loading="lazy" width="1600" height="1067">
-          <figcaption>AOI Inspection</figcaption>
-        </figure>
-        <figure class="mdd-photo">
-          <img src="../../img/seo/ai-scribe-hardware-oem/factory/oscilloscope-test.jpg" alt="Electrical and signal measurement during device validation" loading="lazy" width="1600" height="1067">
-          <figcaption>Signal Testing</figcaption>
-        </figure>
-        <figure class="mdd-photo">
-          <img src="../../img/seo/ai-scribe-hardware-oem/factory/burn-in-rack.jpg" alt="Racks of powered assemblies undergoing burn-in aging test" loading="lazy" width="1600" height="1067">
-          <figcaption>Burn-in Testing</figcaption>
-        </figure>
-        <figure class="mdd-photo">
-          <img src="../../img/seo/ai-scribe-hardware-oem/factory/pcb-assembly.jpg" alt="PCB assembly line with operators at workstations" loading="lazy" width="1600" height="1067">
-          <figcaption>PCB Assembly</figcaption>
-        </figure>
-      </div>
-
-      <p class="mdd-nextstep reveal">Supplier detail, capacity, and quality systems are covered under <a class="sol-link" href="https://gmic.ai/ai-hardware-odm-oem/">AI hardware ODM/OEM manufacturing</a>.</p>
-    </div>
-  </section>
-
-  <!-- ========== 15) WHAT TO SEND US ========== -->
-  <section class="ind-sec ind-sec--soft fade-section" id="send">
-    <div class="container">
-      <div class="ind-head reveal">
-        <h2 class="section measure-wide">What to Send&nbsp;Us</h2>
-        <p class="ind-intro measure-wide">Enough to give you a real answer instead of a generic one. Partial information is fine.</p>
-      </div>
-
-      <div class="mdd-2col reveal">
-        <div>
-          <ul class="check-list check-list--light">
-            <li><span class="ck"><i data-lucide="check"></i></span> Your current AI scribe product and software architecture</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> Target recording workflow and who uses the device</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> Recording environment and number of speakers</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> Microphone position and desired form factor</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> Wearable or stationary</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> Local recording, streaming, or both</li>
+      <div class="wf-pair reveal" style="margin-top:40px;">
+        <div class="wf-panel wf-panel--a">
+          <h3>Useful if you are</h3>
+          <ul class="check-list">
+            <li><span class="ck"><i data-lucide="check"></i></span> Evaluating clinical dictation hardware for a healthcare workflow</li>
           </ul>
         </div>
-        <div>
-          <ul class="check-list check-list--light">
-            <li><span class="ck"><i data-lucide="check"></i></span> Connectivity and SDK/API requirements</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> Cloud architecture and security requirements</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> Target geography and certifications needed</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> Pilot quantity and expected production volume</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> Branding requirements and desired timing</li>
+        <div class="wf-panel wf-panel--b">
+          <h3>Especially relevant if you are</h3>
+          <ul class="check-list">
+            <li><span class="ck"><i data-lucide="check"></i></span> An AI scribe or healthcare software company that needs dedicated hardware, customization, integration, or manufacturing</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 16) FIT ========== -->
-  <section class="ind-sec ind-sec--light fade-section" id="fit">
+  <!-- ========== 15) RELATED GUIDES ========== -->
+  <section class="ind-sec ind-sec--soft fade-section" id="guides">
     <div class="container">
       <div class="ind-head reveal">
-        <h2 class="section measure-wide">Is GMIC the Right&nbsp;Partner?</h2>
-        <p class="ind-intro measure-wide">Worth checking before either side spends time on a call.</p>
+        <h2 class="section measure-wide">Related&nbsp;Guides</h2>
       </div>
 
-      <div class="mdd-2col reveal">
-        <div>
-          <h3>Good fit</h3>
-          <ul class="check-list check-list--light" style="margin-top:18px;">
-            <li><span class="ck"><i data-lucide="check"></i></span> You already have AI scribe or transcription software</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> You need a dedicated hardware layer under it</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> You need firmware or device integration work</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> You are evaluating a pilot or a product rollout</li>
-            <li><span class="ck"><i data-lucide="check"></i></span> You need OEM, ODM, or white-label manufacturing</li>
-          </ul>
-        </div>
-        <div>
-          <h3>Less likely fit</h3>
-          <ul class="check-list check-list--light check-list--x" style="margin-top:18px;">
-            <li><span class="ck"><i data-lucide="x"></i></span> You want a single recorder for personal use</li>
-            <li><span class="ck"><i data-lucide="x"></i></span> You are looking for transcription software rather than hardware</li>
-            <li><span class="ck"><i data-lucide="x"></i></span> You need a consumer microphone available at retail</li>
-            <li><span class="ck"><i data-lucide="x"></i></span> You do not need hardware development or manufacturing</li>
-          </ul>
+      <div class="mdd-guides mdd-guides--5up reveal">
+        <a class="mdd-guide" href="../medical-dictation-devices/index.html">
+          <h3>Medical Dictation Devices</h3>
+          <p>The pillar guide to dictation hardware for AI scribe platforms.</p>
+          <span class="mdd-guide-cue">Read the guide <i data-lucide="arrow-right"></i></span>
+        </a>
+        <a class="mdd-guide" href="../medical-transcription-equipment/index.html">
+          <h3>Medical Transcription Equipment</h3>
+          <p>The full equipment landscape, from recorders to room systems.</p>
+          <span class="mdd-guide-cue">Compare equipment <i data-lucide="arrow-right"></i></span>
+        </a>
+        <a class="mdd-guide" href="../microphone-for-ai-scribe/index.html">
+          <h3>Microphone for AI Scribe</h3>
+          <p>Speaker distance, single versus array, DSP, and placement.</p>
+          <span class="mdd-guide-cue">Read the guide <i data-lucide="arrow-right"></i></span>
+        </a>
+        <a class="mdd-guide" href="../medical-dictation-device-vs-smartphone/index.html">
+          <h3>Dictation Device vs Smartphone</h3>
+          <p>When a phone is enough, and when a device earns its cost.</p>
+          <span class="mdd-guide-cue">See the comparison <i data-lucide="arrow-right"></i></span>
+        </a>
+        <!-- TODO [ADD WHEN LIVE]: /dedicated-ai-scribe-hardware/ -->
+        <div class="mdd-guide mdd-guide--pending">
+          <h3>Dedicated AI Scribe Hardware</h3>
+          <p>When purpose-built capture hardware becomes worth the investment.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== 17) FAQ ========== -->
-  <section class="ind-sec ind-sec--soft fade-section" id="faq">
+  <!-- ========== 16) FAQ ========== -->
+  <section class="ind-sec ind-sec--light fade-section" id="faq">
     <div class="container">
       <div class="ind-head reveal">
         <h2 class="section measure-wide">Frequently Asked&nbsp;Questions</h2>
@@ -1870,13 +1804,13 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
         <div class="mdd-faq-item">
           <h3 class="mdd-faq-qwrap">
             <button class="mdd-faq-q" id="faq-q1" aria-expanded="false" aria-controls="faq-a1">
-              <span>What is an AI scribe hardware OEM?</span>
+              <span>What dictation devices do doctors use?</span>
               <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
             </button>
           </h3>
           <div class="mdd-faq-a" id="faq-a1" role="region" aria-labelledby="faq-q1">
             <div class="mdd-faq-a-inner">
-              <p>A manufacturer that builds voice-capture hardware for AI scribe software companies — under the customer's brand, and integrated with the customer's platform.</p>
+              <p>Handheld recorders, desktop microphones, smartphones, wearable microphones, badge recorders, and dedicated AI scribe devices. The choice depends on the workflow.</p>
             </div>
           </div>
         </div>
@@ -1884,13 +1818,13 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
         <div class="mdd-faq-item">
           <h3 class="mdd-faq-qwrap">
             <button class="mdd-faq-q" id="faq-q2" aria-expanded="false" aria-controls="faq-a2">
-              <span>Can GMIC manufacture hardware for our existing AI scribe software?</span>
+              <span>What is the best dictation device for doctors?</span>
               <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
             </button>
           </h3>
           <div class="mdd-faq-a" id="faq-a2" role="region" aria-labelledby="faq-q2">
             <div class="mdd-faq-a-inner">
-              <p>Yes. GMIC provides OEM and ODM services to build dedicated hardware that connects to your existing AI stack through SDK/API integration. Your speech-to-text, models, and clinical output stay where they are.</p>
+              <p>There is no universal best. Post-visit dictation may need a simple recorder; ambient conversation capture may need wearable or dedicated hardware; large deployments may need standardized fleet devices.</p>
             </div>
           </div>
         </div>
@@ -1898,13 +1832,13 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
         <div class="mdd-faq-item">
           <h3 class="mdd-faq-qwrap">
             <button class="mdd-faq-q" id="faq-q3" aria-expanded="false" aria-controls="faq-a3">
-              <span>Can we white-label an existing AI scribe device?</span>
+              <span>Can doctors use smartphones for dictation?</span>
               <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
             </button>
           </h3>
           <div class="mdd-faq-a" id="faq-a3" role="region" aria-labelledby="faq-q3">
             <div class="mdd-faq-a-inner">
-              <p>Yes. Existing GMIC platforms can be branded with a custom logo, packaging, and documentation, with firmware configured for your cloud endpoint.</p>
+              <p>Yes. Smartphones work well for many workflows, especially early-stage pilots and simple environments. Limitations emerge at scale.</p>
             </div>
           </div>
         </div>
@@ -1912,13 +1846,13 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
         <div class="mdd-faq-item">
           <h3 class="mdd-faq-qwrap">
             <button class="mdd-faq-q" id="faq-q4" aria-expanded="false" aria-controls="faq-a4">
-              <span>What is the difference between AI scribe OEM and ODM?</span>
+              <span>Are handheld dictation recorders still used?</span>
               <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
             </button>
           </h3>
           <div class="mdd-faq-a" id="faq-a4" role="region" aria-labelledby="faq-q4">
             <div class="mdd-faq-a-inner">
-              <p>OEM typically involves customizing an existing hardware platform. ODM involves deeper custom development — a new PCB, a custom microphone architecture, ground-up firmware. GMIC supports both paths.</p>
+              <p>Yes, particularly for structured post-visit dictation by solo practitioners, radiologists, and pathologists.</p>
             </div>
           </div>
         </div>
@@ -1926,13 +1860,13 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
         <div class="mdd-faq-item">
           <h3 class="mdd-faq-qwrap">
             <button class="mdd-faq-q" id="faq-q5" aria-expanded="false" aria-controls="faq-a5">
-              <span>Can the hardware connect to our API?</span>
+              <span>What is the difference between doctor dictation and an AI scribe?</span>
               <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
             </button>
           </h3>
           <div class="mdd-faq-a" id="faq-a5" role="region" aria-labelledby="faq-q5">
             <div class="mdd-faq-a-inner">
-              <p>Yes, depending on the platform and project scope. Firmware can be configured to upload audio or session data to your cloud endpoint through your SDK or API.</p>
+              <p>With dictation, the clinician speaks structured notes for transcription. With an AI scribe, the device captures the ambient doctor-patient conversation and the software generates the documentation. Different recording problems, potentially different hardware.</p>
             </div>
           </div>
         </div>
@@ -1940,13 +1874,13 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
         <div class="mdd-faq-item">
           <h3 class="mdd-faq-qwrap">
             <button class="mdd-faq-q" id="faq-q6" aria-expanded="false" aria-controls="faq-a6">
-              <span>Can we use our own speech-to-text model?</span>
+              <span>Can a wearable microphone capture doctor-patient conversations?</span>
               <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
             </button>
           </h3>
           <div class="mdd-faq-a" id="faq-a6" role="region" aria-labelledby="faq-q6">
             <div class="mdd-faq-a-inner">
-              <p>Yes. GMIC hardware captures and delivers audio. Your software performs speech recognition, AI processing, and clinical documentation.</p>
+              <p>A wearable captures the wearer's voice well at close range. Capturing the patient at a greater distance is a separate design consideration involving microphone architecture, placement, and DSP.</p>
             </div>
           </div>
         </div>
@@ -1954,13 +1888,13 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
         <div class="mdd-faq-item">
           <h3 class="mdd-faq-qwrap">
             <button class="mdd-faq-q" id="faq-q7" aria-expanded="false" aria-controls="faq-a7">
-              <span>Can firmware be customized?</span>
+              <span>Do medical dictation devices need Wi-Fi?</span>
               <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
             </button>
           </h3>
           <div class="mdd-faq-a" id="faq-a7" role="region" aria-labelledby="faq-q7">
             <div class="mdd-faq-a-inner">
-              <p>Yes. Recording logic, connectivity, upload behavior, buttons, LEDs, OTA updates, power management, and device authentication can be configured based on project requirements.</p>
+              <p>Not necessarily. Some support offline recording with delayed upload. The right architecture depends on whether immediate transcription is needed and how reliable connectivity is.</p>
             </div>
           </div>
         </div>
@@ -1968,14 +1902,13 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
         <div class="mdd-faq-item">
           <h3 class="mdd-faq-qwrap">
             <button class="mdd-faq-q" id="faq-q8" aria-expanded="false" aria-controls="faq-a8">
-              <span>What is the MOQ for custom AI scribe hardware?</span>
+              <span>Can doctor dictation hardware connect to an AI scribe platform?</span>
               <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
             </button>
           </h3>
           <div class="mdd-faq-a" id="faq-a8" role="region" aria-labelledby="faq-q8">
             <div class="mdd-faq-a-inner">
-              <!-- TODO [VERIFY CURRENT MOQ WITH GMIC SALES] before publication -->
-              <p>MOQ depends on the level of customization, the hardware architecture, tooling, and expected volume. GMIC reviews the project before providing a specific estimate.</p>
+              <p>Yes. Dedicated hardware can deliver audio over Wi-Fi, BLE, USB, or a companion app to the customer's cloud and AI platform through SDK/API integration.</p>
             </div>
           </div>
         </div>
@@ -1983,28 +1916,13 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
         <div class="mdd-faq-item">
           <h3 class="mdd-faq-qwrap">
             <button class="mdd-faq-q" id="faq-q9" aria-expanded="false" aria-controls="faq-a9">
-              <span>How long does an AI scribe hardware project take?</span>
+              <span>Are dictation devices automatically HIPAA compliant?</span>
               <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
             </button>
           </h3>
           <div class="mdd-faq-a" id="faq-a9" role="region" aria-labelledby="faq-q9">
             <div class="mdd-faq-a-inner">
-              <!-- TODO [VERIFY WITH GMIC SALES]: add typical ranges here only if the team will stand behind them -->
-              <p>Timeline depends on customization depth — white label is fastest, full ODM is longest. GMIC provides a project-specific timeline after a requirements review.</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="mdd-faq-item">
-          <h3 class="mdd-faq-qwrap">
-            <button class="mdd-faq-q" id="faq-q10" aria-expanded="false" aria-controls="faq-a10">
-              <span>Can GMIC support prototype and pilot production?</span>
-              <svg class="mdd-faq-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 9l-7 7-7-7"/></svg>
-            </button>
-          </h3>
-          <div class="mdd-faq-a" id="faq-a10" role="region" aria-labelledby="faq-q10">
-            <div class="mdd-faq-a-inner">
-              <p>Yes. GMIC supports the full path from sample evaluation through pilot, engineering validation (EVT/DVT/PVT), certification planning, and mass production.</p>
+              <p>No. Compliance depends on the complete system — hardware, firmware, transmission, cloud, software, authentication, policies, and the applicable agreements.</p>
             </div>
           </div>
         </div>
@@ -2013,47 +1931,17 @@ a.mdd-guide:hover { transform:translateY(-4px); box-shadow:0 18px 40px rgba(17,2
     </div>
   </section>
 
-  <!-- ========== 18) RELATED RESOURCES ========== -->
-  <section class="ind-sec ind-sec--light fade-section" id="guides">
-    <div class="container">
-      <div class="ind-head reveal">
-        <h2 class="section measure-wide">Related&nbsp;Resources</h2>
-      </div>
-
-      <div class="mdd-guides mdd-guides--4up reveal">
-        <!-- TODO [ADD WHEN LIVE]: /dedicated-ai-scribe-hardware/ -->
-        <div class="mdd-guide mdd-guide--pending">
-          <h3>Dedicated AI Scribe Hardware</h3>
-          <p>When purpose-built capture hardware becomes worth the investment for a scribe platform.</p>
-        </div>
-        <a class="mdd-guide" href="../medical-dictation-devices/index.html">
-          <h3>Medical Dictation Devices</h3>
-          <p>The pillar guide to dictation hardware for AI scribe platforms — device categories and integration architecture.</p>
-          <span class="mdd-guide-cue">Read the guide <i data-lucide="arrow-right"></i></span>
-        </a>
-        <a class="mdd-guide" href="../microphone-for-ai-scribe/index.html">
-          <h3>Microphone for AI Scribe</h3>
-          <p>How to choose the microphone architecture — speaker distance, single versus array, DSP, and placement.</p>
-          <span class="mdd-guide-cue">Read the guide <i data-lucide="arrow-right"></i></span>
-        </a>
-        <a class="mdd-guide" href="https://gmic.ai/ai-hardware-odm-oem/">
-          <h3>AI Hardware ODM/OEM</h3>
-          <p>GMIC's wider ODM and OEM manufacturing service across voice and edge AI hardware programs.</p>
-          <span class="mdd-guide-cue">Explore ODM/OEM <i data-lucide="arrow-right"></i></span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== 19) FINAL CTA ========== -->
+  <!-- ========== 17) FINAL CTA ========== -->
   <section class="final-cta mdd-final fade-section" id="begin">
     <div class="container">
       <div class="eyebrow reveal">Begin</div>
-      <h2 class="section reveal">Build the Hardware Layer for Your AI&nbsp;Scribe</h2>
-      <p class="reveal measure">Already have an AI scribe, medical transcription, or clinical documentation platform? Send GMIC your workflow, software architecture, hardware requirements, and expected deployment volume. We can evaluate whether an existing hardware platform, OEM customization, or deeper ODM development is the right starting point.</p>
+      <h2 class="section reveal">Building Dictation Hardware for a Clinical AI&nbsp;Workflow?</h2>
+      <p class="reveal measure">If your AI scribe, medical transcription, or healthcare software platform needs a dedicated physical voice-capture layer, GMIC can evaluate the recording environment, form factor, microphone architecture, firmware, connectivity, and software-integration requirements.</p>
       <div class="final-cta-actions reveal">
-        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue-deep">Discuss Your AI Scribe Hardware Project</a>
-        <a href="../../contact/index.html" class="btn btn-ghost">Request a Hardware Evaluation</a>
+        <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-blue-deep">Discuss Your Clinical Hardware Requirements</a>
+        <!-- TODO [ADD WHEN LIVE]: repoint at /dedicated-ai-scribe-hardware/ and restore the label
+             "Explore Dedicated AI Scribe Hardware" once that page is published. -->
+        <a href="../ai-scribe-hardware-oem/index.html" class="btn btn-ghost">Explore AI Scribe Hardware OEM</a>
       </div>
     </div>
   </section>
