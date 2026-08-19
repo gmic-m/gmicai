@@ -1,0 +1,2201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Book a Demo — Talk to a GMIC AI Hardware Engineer | GMIC AI</title>
+<meta name="description" content="Book a 30-minute demo with a GMIC AI hardware engineer. Walk through your use case, reference designs, production timeline and indicative pricing at your volume." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://gmic.ai/book-demo/" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Book a Demo — Talk to a GMIC AI Hardware Engineer | GMIC AI" />
+<meta property="og:description" content="Book a 30-minute demo with a GMIC AI hardware engineer. Use case, reference designs, timeline and indicative pricing at your volume." />
+<meta property="og:url" content="https://gmic.ai/book-demo/" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" type="image/png" href="../img/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/grid.css">
+
+<style>
+/* ===== NAV CSS from homepage ===== */
+:root{--sans:'Inter',sans-serif;--black:#111111;--white:#ffffff;--blue:#2563eb;--blue-deep:#1a4fbf;--border-light:rgba(0,0,0,0.08);--border-dark:rgba(255,255,255,0.08);}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:background .35s ease,backdrop-filter .35s ease,box-shadow .35s ease,color .35s ease;}
+.nav-logo-svg{height:28px;width:auto;display:block;color:#0f172a;transition:color .3s ease;}
+.nav.scrolled .nav-logo-svg{color:#0f172a;}
+.nav-links a{font-family:var(--sans);font-size:14px;font-weight:500;color:rgba(0,0,0,0.75);transition:color .25s ease;}
+.nav-links a:hover{color:var(--black);}
+.nav.scrolled{background:rgba(255,255,255,0.85);backdrop-filter:saturate(180%) blur(14px);-webkit-backdrop-filter:saturate(180%) blur(14px);box-shadow:0 1px 0 var(--border-light);}
+.nav.scrolled .nav-links a{color:#333;}
+.nav.scrolled .nav-links a:hover{color:var(--black);}
+.btn-nav{background:#0f172a;color:var(--white);padding:10px 18px;font-size:13.5px;}
+.btn-nav:hover{background:#1e293b;transform:translateY(-1px);}
+/* ===== Dropdown navigation — full-width mega menu ===== */
+/* ── Mega Menu Base ── */
+.nav-item {
+  position: relative; /* anchors the hover-bridge pseudo-element */
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Pseudo-element bridge so the mouse doesn't lose hover
+   when moving from the nav link down to the dropdown panel */
+.nav-item.has-dropdown::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: -20px;
+  right: -20px;
+  height: 20px; /* bridges the gap */
+  background: transparent;
+}
+
+.nav-dropdown {
+  display: none;
+  position: fixed;
+  top: 64px; /* height of nav bar */
+  left: 0;
+  right: 0;
+  width: 100%;
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.08);
+  
+  box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+  z-index: 999;
+  padding: 32px 0 40px; /* generous top/bottom padding, flush against nav */
+}
+
+.nav-item.has-dropdown:hover .nav-dropdown {
+  display: block;
+}
+.nav-item.has-dropdown:hover .nav-arrow {
+  transform: rotate(90deg);
+  opacity: 1;
+}
+
+.dropdown-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  padding-top: 8px;
+  display: flex;
+  gap: 0;
+}
+
+/* ── Products Mega Menu ── */
+.nav-dropdown--products .dropdown-inner {
+  gap: 0;
+}
+
+
+
+
+.dropdown-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.dropdown-product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 12px;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.15s;
+  border: 1px solid transparent;
+}
+
+.dropdown-product-card:hover {
+  background: #f5f7ff;
+  border-color: rgba(37,99,235,0.15);
+}
+
+.dropdown-all {
+  background: transparent;
+  border: 1px solid transparent !important;
+  /* 与其他卡片一样 top-aligned */
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.dropdown-all:hover {
+  background: #f0f4ff !important;
+  border-color: rgba(37,99,235,0.5) !important;
+}
+
+.dp-all-icon {
+  width: 100%;
+  height: 94px;          /* 与 .dropdown-product-card img 的 height 相同 */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 6px;
+  margin-bottom: 10px;   /* 与 .dropdown-product-card img 的 margin-bottom 相同 */
+  transition: background 0.15s;
+}
+
+.dropdown-all .dp-all-icon svg {
+  stroke: #9ca3af;
+  transition: stroke 0.15s;
+}
+
+.dropdown-all:hover .dp-all-icon {
+  background: #e8eeff;
+}
+
+.dropdown-all:hover .dp-all-icon svg {
+  stroke: #2563eb;
+}
+
+.dropdown-all .dp-name {
+  color: #0f172a;   /* 默认深色，不要蓝色 */
+  transition: color 0.15s;
+}
+
+.dropdown-all:hover .dp-name {
+  color: #2563eb;   /* hover 才变蓝 */
+}
+
+.dropdown-product-card img {
+  width: 100%;
+  height: 94px;             /* 从 72px 放大到 94px */
+  object-fit: contain;
+  margin-bottom: 10px;
+  background: transparent;  /* 去掉灰色背景 */
+  border-radius: 6px;
+  padding: 0;
+}
+
+.dp-name {
+  font-size: 1rem; /* 16px */
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 3px;
+}
+
+.dp-desc {
+  font-size: 0.875rem; /* 14px */
+  color: #888;
+  line-height: 1.5;
+  display: none;
+}
+
+.dropdown-all {
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid transparent !important;
+}
+
+.dp-arrow {
+  font-size: 22px;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+/* ── Text Mega Menu (Custom Devices & Industries) ── */
+.nav-dropdown--text .dropdown-inner {
+  gap: 0;
+}
+
+.dropdown-col {
+  flex: 1;
+  padding: 0 32px;
+  border-right: 1px solid rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-col:first-child { padding-left: 0; }
+.dropdown-col:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.dropdown-col-head {
+  font-size: 0.75rem; /* 12px — kept small as it's a label */
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.dropdown-link {
+  font-size: 1rem; /* 16px */
+  color: #0f172a;
+  text-decoration: none;
+  padding: 7px 0;
+  font-weight: 500;
+  transition: color 0.15s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dropdown-link:hover { color: #2563eb; }
+
+.dropdown-link--external {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.dropdown-link--external::after {
+  content: '↗';
+  font-size: 11px;
+}
+
+/* ── Nav arrow ── */
+.nav-arrow {
+  font-size: 10px;
+  margin-left: 3px;
+  opacity: 0.5;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+/* ── Overlay behind mega menu ── */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.2);
+  z-index: 998;
+}
+.nav-item.has-dropdown:hover ~ .nav-overlay,
+.nav-overlay:hover { display: block; }
+
+/* ── Mobile: hide mega menu ── */
+@media (max-width: 768px) {
+  .nav-dropdown { display: none !important; }
+  .nav-arrow { display: none; }
+}
+
+/* ── Hamburger button ── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  z-index: 1001;
+}
+.nav-burger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+  transform-origin: center;
+}
+/* X state when open */
+.nav-burger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.nav-burger.open span:nth-child(2) {
+  opacity: 0;
+}
+.nav-burger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ── Mobile nav drawer ── */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0; right: 0;
+  width: 85%;
+  max-width: 360px;
+  height: 100vh;
+  background: #ffffff;
+  z-index: 1002;
+  overflow-y: auto;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  padding-top: 80px;
+}
+.mobile-nav.open {
+  transform: translateX(0);
+}
+.mobile-nav-inner {
+  padding: 24px 28px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mobile-nav-section {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+.mobile-nav-section:last-of-type {
+  border-bottom: none;
+}
+.mobile-nav-head {
+  font-size: 0.75rem; /* 12px — label only */
+  font-weight: 700;
+  color: #aaa;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.mobile-nav-link {
+  display: block;
+  font-size: 1rem; /* 16px */
+  font-weight: 500;
+  color: #0f172a;
+  text-decoration: none;
+  padding: 8px 0;
+  transition: color 0.15s;
+}
+.mobile-nav-link:hover { color: #2563eb; }
+.mobile-nav-link--external {
+  color: #2563eb;
+  font-weight: 600;
+}
+.mobile-nav-cta {
+  padding-top: 24px;
+}
+.mobile-nav-cta .btn-nav {
+  display: block;
+  text-align: center;
+  width: 100%;
+  padding: 14px;
+}
+
+/* ── Overlay ── */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 1001;
+}
+.mobile-nav-overlay.open {
+  display: block;
+}
+
+/* ── Show burger on mobile, hide desktop links ── */
+@media (max-width: 768px) {
+  .nav-burger { display: flex; }
+  .nav-links { display: none; }
+  .nav-right { display: none; }
+  .mobile-nav { display: block; }
+}
+
+/* ── Force black text in all dropdown panels ── */
+.nav-dropdown {
+  background: #ffffff;
+  color: #0f172a;
+}
+.dropdown-col-head {
+  color: #aaaaaa !important;
+}
+.dropdown-link {
+  color: #0f172a !important;
+}
+.dropdown-link:hover {
+  color: #2563eb !important;
+}
+.dropdown-link--external {
+  color: #2563eb !important;
+}
+
+/* Active state for Company/About Us */
+.nav-company-active{font-weight:700 !important;color:#2563eb !important;}
+.nav.scrolled .nav-company-active{color:#2563eb !important;}
+/* ============================================================
+   CONTACT — page styles (ct- prefix)
+   ============================================================ */
+body { background: #fff; color: #111; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+.ct-wrap { max-width: clamp(1512px, 88vw, 2200px); width: 100%; margin: 0 auto; padding: 0 clamp(20px, 4vw, 80px); }
+
+.ct-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #2563eb;
+  display: block;
+  margin-bottom: 16px;
+}
+
+/* ---------- 1. HERO ---------- */
+.ct-hero { background: #fff; padding-top: 120px; padding-bottom: 96px; }
+.ct-hero h1 { font-size: clamp(36px, 4.5vw, 58px); font-weight: 700; letter-spacing: -0.04em; line-height: 1.05; color: #111; }
+.ct-hero-sub { font-size: 1.0625rem; color: #666; max-width: 580px; line-height: 1.72; margin-top: 20px; }
+.ct-hero-grid { display: grid; grid-template-columns: 55fr 45fr; gap: 80px; align-items: start; margin-top: 64px; }
+
+/* Form card */
+.ct-form-card { background: #f8f8f8; border: 1px solid #f0f0f0; border-radius: 12px; padding: 40px 44px; }
+.ct-form-title { font-size: 1.375rem; font-weight: 700; letter-spacing: -0.02em; color: #111; }
+.ct-form-resp { font-size: 0.875rem; color: #999; margin-top: 6px; }
+.ct-form { margin-top: 28px; display: flex; flex-direction: column; gap: 18px; }
+.ct-field-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; color: #999; margin-bottom: 6px; display: block; }
+.ct-input, .ct-select, .ct-textarea { width: 100%; padding: 11px 14px; border: 1px solid #e0e0e0; border-radius: 7px; font-family: 'Inter', sans-serif; font-size: 0.9375rem; color: #111; outline: none; transition: border-color 0.15s; background: #fff; }
+.ct-input:focus, .ct-select:focus, .ct-textarea:focus { border-color: #2563eb; }
+.ct-input.error, .ct-select.error, .ct-textarea.error { border-color: #ef4444; }
+.ct-req { color: #ef4444; }
+.ct-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.ct-select-wrap { position: relative; }
+.ct-select { appearance: none; -webkit-appearance: none; -moz-appearance: none; padding-right: 40px; cursor: pointer; }
+.ct-chevron { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; color: #999; display: flex; }
+.ct-textarea { min-height: 110px; resize: vertical; line-height: 1.6; }
+.ct-submit { width: 100%; margin-top: 8px; background: #111; color: #fff; padding: 13px; border-radius: 7px; font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 600; border: none; cursor: pointer; transition: opacity 0.15s; }
+.ct-submit:hover { opacity: 0.85; }
+.ct-fineprint { font-size: 0.8125rem; color: #bbb; text-align: center; margin-top: 10px; }
+
+/* Success state */
+.ct-success { min-height: 400px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.ct-success-circle { width: 48px; height: 48px; background: #2563eb; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.ct-success-title { font-size: 1.125rem; font-weight: 700; color: #111; margin-top: 16px; }
+.ct-success-sub { font-size: 0.9375rem; color: #666; margin-top: 8px; }
+
+/* Right column — trust */
+.ct-trust { margin-bottom: 48px; }
+.ct-trust-item { display: flex; flex-direction: row; gap: 14px; border-top: 1px solid #f0f0f0; padding: 18px 0; }
+.ct-trust-icon { width: 32px; height: 32px; background: #f5f5f5; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.ct-trust-icon svg { width: 18px; height: 18px; stroke-width: 1.5; color: #999; }
+.ct-trust-title { font-size: 0.9375rem; font-weight: 600; color: #111; }
+.ct-trust-desc { font-size: 0.875rem; color: #666; margin-top: 3px; line-height: 1.6; }
+
+/* Right column — direct contact */
+.ct-direct { border-top: 1px solid #f0f0f0; padding-top: 32px; }
+.ct-direct-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 20px; }
+.ct-direct-card { border: 1px solid #f0f0f0; border-radius: 10px; padding: 20px 22px; }
+.ct-direct-city { font-size: 0.9375rem; font-weight: 600; color: #111; }
+.ct-direct-role { font-size: 0.8125rem; color: #999; margin-top: 4px; }
+.ct-direct-email { color: #2563eb; font-size: 0.875rem; margin-top: 12px; display: block; text-decoration: none; }
+.ct-direct-line { color: #666; font-size: 0.875rem; }
+
+/* ---------- 2. CTA BAND ---------- */
+.ct-cta { background: #111; padding: 120px 0; text-align: center; }
+.ct-cta .ct-wrap { max-width: 1200px; }
+.ct-cta .ct-eyebrow { color: #888; }
+.ct-cta h2 { font-size: clamp(1.75rem, 3.5vw, 2.625rem); font-weight: 700; letter-spacing: -0.04em; color: #fff; max-width: 100%; width: 100%; margin: 0 auto; }
+.cta-h2 { white-space: nowrap; }
+.ct-cta-body { font-size: 1rem; color: #aaa; max-width: 480px; margin: 24px auto 0; line-height: 1.75; }
+.ct-cta-btns { margin-top: 40px; display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+.ct-btn-primary { background: #fff; color: #111; padding: 13px 28px; border-radius: 7px; font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 600; text-decoration: none; transition: opacity 0.15s; }
+.ct-btn-primary:hover { opacity: 0.85; }
+.ct-btn-secondary { background: transparent; color: #666; padding: 13px 28px; border-radius: 7px; border: 1px solid #333; font-family: 'Inter', sans-serif; font-size: 0.9375rem; font-weight: 500; text-decoration: none; transition: color 0.15s; }
+.ct-btn-secondary:hover { color: #aaa; }
+
+/* ---------- 3. FULL WIDTH PHOTO ---------- */
+.contact-photo-banner { width: 100%; height: 480px; overflow: hidden; }
+.contact-photo-banner-img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+
+/* ---------- RESPONSIVE (<=768px) ---------- */
+@media (max-width: 768px) {
+  .ct-wrap { padding: 0 24px; }
+  .ct-hero { padding-top: 80px; padding-bottom: 64px; }
+  .ct-hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .ct-cta { padding: 64px 0; }
+  .ct-cta-btns { flex-direction: column; align-items: center; }
+  .ct-direct-grid { grid-template-columns: 1fr; }
+  .contact-photo-banner { height: 260px; }
+  .form-name-row { grid-template-columns: 1fr; }
+  .cta-h2 { white-space: normal; }
+}
+
+.nav { border-bottom: none !important; box-shadow: none !important; }
+/* ===== Book-a-demo page nav overrides ===== */
+/* 与 contact 页一致：导航常驻白底、无边框无阴影 */
+.nav{background:rgba(255,255,255,.92);backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);}
+/* ============================================================
+   BOOK A DEMO — page styles (bk- prefix)
+   调色板与 contact 页保持一致：#111 / #666 / #999 / #f0f0f0 / #2563eb
+   ============================================================ */
+
+/* hero 文案与预约窗口共用容器；容器宽度 = 导航容器宽度，
+   所以左右两边和导航的 logo / CTA 完全对齐，右侧不再留空 */
+.bk-inner{max-width:1400px;margin:0 auto;}
+.ct-hero.bk-hero{padding-bottom:72px;}
+.bk-hero-sub{font-size:1.0625rem;color:#666;max-width:640px;line-height:1.72;margin-top:20px;}
+
+/* ---------- 预约窗口（正文区里嵌入的 scheduling window） ---------- */
+.bk-window{
+  margin-top:48px;border:1px solid #ececec;border-radius:14px;background:#fff;
+  box-shadow:0 1px 2px rgba(17,17,17,.03),0 12px 40px rgba(17,17,17,.06);overflow:hidden;
+}
+.bk-window-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding:14px 22px;background:#fafafa;border-bottom:1px solid #f0f0f0;
+}
+.bk-window-title{display:flex;align-items:center;gap:9px;font-size:0.8125rem;font-weight:600;color:#666;}
+.bk-window-title svg{width:15px;height:15px;stroke-width:2;color:#999;}
+.bk-window-dots{display:flex;gap:6px;margin-right:4px;}
+.bk-window-dots i{width:9px;height:9px;border-radius:50%;background:#e2e2e2;display:block;}
+
+/* Step indicator（放在窗口标题栏右侧） */
+.bk-steps{display:flex;align-items:center;gap:9px;}
+.bk-step-item{display:flex;align-items:center;gap:7px;font-size:0.75rem;font-weight:600;color:#bbb;transition:color .25s ease;}
+.bk-step-num{width:19px;height:19px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:10.5px;font-weight:700;background:#ececec;color:#999;transition:background .25s ease,color .25s ease;}
+.bk-step-item.is-active{color:#111;}
+.bk-step-item.is-active .bk-step-num{background:#2563eb;color:#fff;}
+.bk-step-item.is-done{color:#888;}
+.bk-step-item.is-done .bk-step-num{background:#2563eb;color:#fff;}
+.bk-step-sep{width:20px;height:1px;background:#e2e2e2;}
+.bk-steps-mobile{display:none;font-size:0.75rem;font-weight:600;color:#666;}
+
+/* ---------- 窗口内部：左信息 / 右日历 ---------- */
+.bk-body-grid{display:grid;grid-template-columns:340px 1fr;align-items:stretch;}
+.bk-body-grid.is-confirmed{grid-template-columns:1fr;}
+.bk-body-grid.is-confirmed .bk-side{display:none;}
+
+.bk-side{padding:34px 32px;border-right:1px solid #f0f0f0;display:flex;flex-direction:column;background:#fcfcfc;}
+.bk-side-logo{height:22px;width:auto;display:block;align-self:flex-start;color:#111;}
+.bk-side-org{font-size:0.8125rem;font-weight:600;color:#999;margin-top:14px;}
+.bk-side-title{font-size:1.5rem;font-weight:700;letter-spacing:-.03em;line-height:1.2;color:#111;margin-top:3px;}
+
+.bk-meta{margin-top:20px;display:flex;flex-direction:column;gap:11px;}
+.bk-meta-row{display:flex;gap:10px;align-items:flex-start;font-size:0.9375rem;font-weight:600;color:#111;}
+.bk-meta-row svg{width:16px;height:16px;flex:0 0 16px;margin-top:2px;color:#999;stroke-width:1.8;}
+.bk-meta-sub{display:block;font-weight:400;color:#999;font-size:0.8125rem;margin-top:3px;}
+
+.bk-side-copy{margin-top:22px;font-size:0.9375rem;line-height:1.7;color:#666;}
+
+.bk-side-rule{height:1px;background:#f0f0f0;margin:24px 0 18px;}
+.bk-side-head{font-size:0.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#999;margin-bottom:12px;}
+.bk-cover{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.bk-cover li{display:flex;gap:9px;align-items:flex-start;font-size:0.875rem;line-height:1.55;color:#666;}
+.bk-cover li svg{width:13px;height:13px;flex:0 0 13px;margin-top:4px;color:#2563eb;stroke-width:3;}
+
+.bk-side-foot{margin-top:auto;padding-top:24px;display:flex;gap:8px;align-items:center;font-size:0.8125rem;color:#bbb;}
+.bk-side-foot svg{width:13px;height:13px;stroke-width:1.8;}
+
+/* 预约摘要（第二步时替换左栏内容） */
+.bk-summary{margin-top:20px;background:#fff;border:1px solid #f0f0f0;border-radius:10px;padding:18px 20px;}
+.bk-summary-time{font-size:1.125rem;font-weight:700;letter-spacing:-.02em;color:#111;line-height:1.3;}
+.bk-summary-date{font-size:0.9375rem;font-weight:500;color:#666;margin-top:4px;}
+.bk-summary-tz{font-size:0.8125rem;color:#999;margin-top:8px;}
+.bk-change{margin-top:14px;font-size:0.875rem;font-weight:600;color:#2563eb;background:none;border:none;padding:0;cursor:pointer;}
+.bk-change:hover{text-decoration:underline;}
+
+/* ---------- 右栏 ---------- */
+.bk-main{padding:34px 32px;min-width:0;}
+.bk-panel{display:none;}
+.bk-panel.is-active{display:block;animation:bkFade .24s ease both;}
+@keyframes bkFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.bk-main-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  margin:0 auto 22px;max-width:880px;}
+.bk-main-title{font-size:1.0625rem;font-weight:700;letter-spacing:-.02em;color:#111;}
+.bk-main-title:focus{outline:none;}
+
+/* 时区选择器 */
+.bk-tz{position:relative;display:flex;align-items:center;gap:8px;border:1px solid #e8e8e8;
+  border-radius:7px;padding:8px 10px;background:#fff;transition:border-color .15s ease;}
+.bk-tz:focus-within{border-color:#2563eb;}
+.bk-tz svg{width:14px;height:14px;color:#999;stroke-width:1.8;flex:0 0 14px;}
+.bk-tz select{border:none;background:none;font-size:0.8125rem;font-weight:500;color:#111;cursor:pointer;outline:none;
+  max-width:250px;appearance:none;-webkit-appearance:none;padding-right:16px;}
+.bk-tz::after{content:'';position:absolute;right:11px;top:50%;width:5px;height:5px;border-right:1.5px solid #999;
+  border-bottom:1.5px solid #999;transform:translateY(-70%) rotate(45deg);pointer-events:none;}
+
+/* 日历 + 时段这一组在右侧面板里水平居中，
+   这样整块窗口撑满页面宽度的同时，日历本身是居中的 */
+.bk-split{display:grid;grid-template-columns:1fr 240px;gap:44px;align-items:start;
+  max-width:880px;margin:0 auto;}
+
+/* 月历 */
+.bk-cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.bk-cal-month{font-size:1.0625rem;font-weight:700;letter-spacing:-.02em;color:#111;}
+.bk-cal-nav{display:flex;gap:4px;}
+.bk-cal-arrow{width:30px;height:30px;border-radius:7px;display:flex;align-items:center;justify-content:center;
+  color:#2563eb;background:none;border:none;cursor:pointer;transition:background .15s ease;}
+.bk-cal-arrow:hover:not(:disabled){background:#f4f7ff;}
+.bk-cal-arrow:disabled{color:#ddd;cursor:default;}
+.bk-cal-arrow svg{width:17px;height:17px;stroke-width:2.2;}
+
+.bk-dow{display:grid;grid-template-columns:repeat(7,1fr);margin-bottom:6px;}
+.bk-dow span{text-align:center;font-size:0.6875rem;font-weight:600;letter-spacing:.08em;color:#bbb;}
+
+.bk-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px 0;}
+.bk-cell{display:flex;align-items:center;justify-content:center;}
+.bk-day{position:relative;width:40px;height:40px;border-radius:50%;border:none;background:none;
+  font-size:0.9375rem;font-weight:600;color:#ddd;cursor:default;
+  transition:background .15s ease,transform .15s ease,color .15s ease;}
+.bk-day.is-open{background:#f2f6ff;color:#2563eb;cursor:pointer;}
+.bk-day.is-open:hover{background:#e3ecff;transform:scale(1.06);}
+.bk-day.is-selected{background:#2563eb;color:#fff;}
+.bk-day.is-selected:hover{background:#1d4ed8;}
+.bk-day.is-today::after{content:'';position:absolute;left:50%;bottom:5px;width:4px;height:4px;border-radius:50%;
+  background:#2563eb;transform:translateX(-50%);}
+.bk-day.is-selected.is-today::after{background:#fff;}
+.bk-day:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+
+/* 时段 */
+.bk-slots-col{position:relative;}
+.bk-slots-col::after{content:'';position:absolute;left:0;right:4px;bottom:0;height:44px;pointer-events:none;
+  background:linear-gradient(to bottom,rgba(255,255,255,0) 0%,#fff 88%);opacity:0;transition:opacity .18s ease;}
+.bk-slots-col.is-scrollable:not(.at-end)::after{opacity:1;}
+.bk-slots-head{font-size:0.9375rem;font-weight:600;color:#111;margin-bottom:12px;min-height:21px;}
+.bk-slots{display:flex;flex-direction:column;gap:8px;max-height:338px;overflow-y:auto;padding-right:4px;}
+.bk-slots::-webkit-scrollbar{width:6px;}
+.bk-slots::-webkit-scrollbar-thumb{background:#e8e8e8;border-radius:3px;}
+.bk-slot-row{display:grid;grid-template-columns:1fr 0fr;gap:0;transition:grid-template-columns .22s ease,gap .22s ease;}
+.bk-slot-row.is-selected{grid-template-columns:1fr 1fr;gap:8px;}
+.bk-slot{width:100%;padding:12px 8px;border:1px solid #2563eb;border-radius:7px;background:#fff;color:#2563eb;
+  font-size:0.9375rem;font-weight:600;cursor:pointer;transition:background .15s ease,color .15s ease;
+  white-space:nowrap;overflow:hidden;}
+.bk-slot:hover{background:#f2f6ff;}
+.bk-slot-row.is-selected .bk-slot{background:#2563eb;color:#fff;}
+.bk-next{padding:12px 8px;border:none;border-radius:7px;background:#111;color:#fff;font-size:0.9375rem;font-weight:600;
+  cursor:pointer;opacity:0;overflow:hidden;white-space:nowrap;transition:opacity .18s ease;}
+.bk-slot-row.is-selected .bk-next{opacity:1;}
+.bk-slot-row:not(.is-selected) .bk-next{padding:0;pointer-events:none;}
+.bk-next:hover{opacity:.85;}
+.bk-slot:focus-visible,.bk-next:focus-visible{outline:2px solid #2563eb;outline-offset:2px;}
+
+.bk-empty{border:1px dashed #ececec;border-radius:10px;padding:34px 16px;text-align:center;color:#bbb;
+  font-size:0.8125rem;line-height:1.55;}
+.bk-empty svg{width:22px;height:22px;stroke-width:1.6;color:#ddd;margin:0 auto 10px;}
+
+/* ---------- 第二步表单（沿用 contact 页输入框风格） ---------- */
+#bkStep2 .bk-main-head{max-width:560px;}
+.bk-form{display:flex;flex-direction:column;gap:18px;max-width:560px;margin:0 auto;}
+.bk-field label{display:block;font-size:0.75rem;text-transform:uppercase;letter-spacing:.08em;font-weight:600;
+  color:#999;margin-bottom:6px;}
+.bk-req{color:#ef4444;}
+.bk-opt{text-transform:none;letter-spacing:0;font-weight:400;color:#bbb;}
+.bk-input,.bk-textarea{width:100%;padding:11px 14px;border:1px solid #e0e0e0;border-radius:7px;
+  font-family:'Inter',sans-serif;font-size:0.9375rem;color:#111;background:#fff;outline:none;transition:border-color .15s;}
+.bk-input::placeholder,.bk-textarea::placeholder{color:#c4c4c4;}
+.bk-input:focus,.bk-textarea:focus{border-color:#2563eb;}
+.bk-textarea{min-height:104px;resize:vertical;line-height:1.6;}
+.bk-field.has-error .bk-input,.bk-field.has-error .bk-textarea{border-color:#ef4444;}
+.bk-err{display:none;font-size:0.8125rem;color:#ef4444;margin-top:6px;}
+.bk-field.has-error .bk-err{display:block;}
+.bk-fine{font-size:0.8125rem;color:#bbb;line-height:1.55;}
+.bk-fine a{color:#2563eb;}
+.bk-fine a:hover{text-decoration:underline;}
+
+.bk-actions{display:flex;align-items:center;gap:12px;margin-top:2px;}
+.bk-btn-ghost{padding:13px 22px;border-radius:7px;border:1px solid #e0e0e0;background:#fff;color:#666;
+  font-family:'Inter',sans-serif;font-size:0.9375rem;font-weight:500;cursor:pointer;transition:color .15s,border-color .15s;}
+.bk-btn-ghost:hover{color:#111;border-color:#bbb;}
+.bk-btn-primary{padding:13px 28px;border-radius:7px;border:none;background:#111;color:#fff;
+  font-family:'Inter',sans-serif;font-size:0.9375rem;font-weight:600;cursor:pointer;
+  display:inline-flex;align-items:center;gap:9px;transition:opacity .15s;}
+.bk-btn-primary:hover:not(:disabled){opacity:.85;}
+.bk-btn-primary:disabled{opacity:.6;cursor:default;}
+.bk-spin{width:14px;height:14px;border:2px solid rgba(255,255,255,.35);border-top-color:#fff;border-radius:50%;
+  animation:bkSpin .7s linear infinite;display:none;}
+.bk-btn-primary.is-loading .bk-spin{display:block;}
+@keyframes bkSpin{to{transform:rotate(360deg)}}
+
+/* ---------- 第三步确认 ---------- */
+.bk-done{max-width:560px;margin:0 auto;padding:48px 32px;text-align:center;}
+.bk-done-check{width:56px;height:56px;border-radius:50%;background:#2563eb;display:flex;align-items:center;
+  justify-content:center;margin:0 auto 20px;animation:bkPop .3s cubic-bezier(.34,1.56,.64,1) both;}
+.bk-done-check svg{width:26px;height:26px;color:#fff;stroke-width:2.6;}
+@keyframes bkPop{from{transform:scale(.8);opacity:0}to{transform:scale(1);opacity:1}}
+.bk-done-title{font-size:1.75rem;font-weight:700;letter-spacing:-.03em;color:#111;}
+.bk-done-sub{font-size:0.9375rem;color:#666;line-height:1.7;margin-top:10px;}
+.bk-done-sub strong{color:#111;font-weight:600;}
+
+.bk-detail{background:#fafafa;border:1px solid #f0f0f0;border-radius:10px;padding:20px;margin-top:26px;
+  text-align:left;display:flex;flex-direction:column;gap:14px;}
+.bk-detail-row{display:flex;gap:12px;align-items:flex-start;}
+.bk-detail-row>svg{width:16px;height:16px;flex:0 0 16px;margin-top:2px;color:#999;stroke-width:1.8;}
+.bk-detail-val{font-size:0.9375rem;font-weight:600;color:#111;line-height:1.45;}
+.bk-detail-note{display:block;font-size:0.8125rem;font-weight:400;color:#999;margin-top:3px;}
+
+.bk-add{margin-top:28px;text-align:left;}
+.bk-add-head{font-size:0.75rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#999;margin-bottom:12px;}
+.bk-add-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+.bk-add-btn{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;padding:16px 8px;
+  border:1px solid #f0f0f0;border-radius:10px;background:#fff;color:#111;font-family:'Inter',sans-serif;
+  font-size:0.8125rem;font-weight:600;cursor:pointer;transition:border-color .15s,background .15s;}
+.bk-add-btn:hover{border-color:#2563eb;background:#fafbff;}
+.bk-add-btn svg{width:20px;height:20px;}
+.bk-add-alt{margin-top:10px;font-size:0.8125rem;color:#bbb;}
+.bk-add-alt button{background:none;border:none;padding:0;color:#666;font-family:'Inter',sans-serif;
+  font-size:0.8125rem;font-weight:600;cursor:pointer;text-decoration:underline;}
+.bk-add-alt button:hover{color:#2563eb;}
+
+.bk-done-foot{margin-top:30px;padding-top:22px;border-top:1px solid #f0f0f0;display:flex;align-items:center;
+  justify-content:center;gap:22px;flex-wrap:wrap;}
+.bk-link{background:none;border:none;padding:0;font-family:'Inter',sans-serif;font-size:0.875rem;font-weight:600;
+  color:#2563eb;cursor:pointer;}
+.bk-link:hover{text-decoration:underline;}
+.bk-link-muted{color:#999;}
+.bk-link-muted:hover{color:#111;}
+
+/* ---------- SECTION 2 — What to expect ---------- */
+.bk-expect{background:#fff;padding:88px 0;border-top:1px solid #f0f0f0;}
+.bk-sec-head{max-width:640px;}
+.bk-sec-head h2{font-size:clamp(1.5rem,2.6vw,2rem);font-weight:700;letter-spacing:-.035em;line-height:1.15;
+  color:#111;margin-top:10px;}
+.bk-sec-head p{font-size:1rem;color:#666;line-height:1.7;margin-top:14px;}
+
+.bk-expect-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:44px;}
+.bk-xcard{border:1px solid #f0f0f0;border-radius:12px;padding:26px 24px 28px;background:#fff;
+  transition:border-color .15s ease,box-shadow .15s ease;}
+.bk-xcard:hover{border-color:#e2e2e2;box-shadow:0 6px 24px rgba(17,17,17,.05);}
+.bk-xcard-icon{width:36px;height:36px;border-radius:9px;background:#f5f5f5;display:flex;align-items:center;
+  justify-content:center;margin-bottom:18px;}
+.bk-xcard-icon svg{width:18px;height:18px;stroke-width:1.6;color:#666;}
+.bk-xcard-title{font-size:0.9375rem;font-weight:600;color:#111;letter-spacing:-.01em;}
+.bk-xcard-desc{font-size:0.875rem;color:#666;line-height:1.65;margin-top:7px;}
+
+/* ---------- SECTION 3 — Or reach us directly ---------- */
+.bk-reach{background:#fafafa;padding:72px 0;border-top:1px solid #f0f0f0;}
+.bk-reach-grid{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:32px;align-items:center;}
+.bk-reach-copy h2{font-size:clamp(1.375rem,2.2vw,1.75rem);font-weight:700;letter-spacing:-.035em;
+  line-height:1.2;color:#111;margin-top:10px;}
+.bk-reach-copy p{font-size:0.9375rem;color:#666;line-height:1.7;margin-top:12px;max-width:380px;}
+.bk-reach-card{background:#fff;border:1px solid #ececec;border-radius:12px;padding:24px 26px;}
+.bk-reach-city{font-size:1rem;font-weight:600;color:#111;letter-spacing:-.01em;}
+.bk-reach-role{font-size:0.8125rem;color:#999;margin-top:4px;}
+.bk-reach-email{color:#2563eb;font-size:0.9375rem;font-weight:500;margin-top:16px;display:block;}
+.bk-reach-email:hover{text-decoration:underline;}
+.bk-reach-line{color:#666;font-size:0.875rem;margin-top:4px;}
+
+/* ---------- 响应式 ---------- */
+@media (max-width:1180px){
+  .bk-expect-grid{grid-template-columns:repeat(2,1fr);}
+  .bk-reach-grid{grid-template-columns:1fr 1fr;}
+  .bk-reach-copy{grid-column:1 / -1;}
+}
+@media (max-width:1100px){
+  .bk-split{grid-template-columns:1fr;gap:26px;max-width:640px;}
+  .bk-main-head{max-width:640px;}
+  .bk-slots-col::after{display:none;}
+  .bk-slots{max-height:none;flex-direction:row;flex-wrap:wrap;}
+  .bk-slot-row{flex:0 0 calc(33.333% - 6px);}
+  .bk-slot-row.is-selected{flex:0 0 100%;}
+}
+@media (max-width:900px){
+  .bk-body-grid{grid-template-columns:1fr;}
+  .bk-side{border-right:none;border-bottom:1px solid #f0f0f0;padding:26px 22px;}
+  .bk-main{padding:26px 22px;}
+  .bk-steps{display:none;}
+  .bk-steps-mobile{display:block;}
+  .bk-side-foot{margin-top:20px;padding-top:0;}
+  .bk-below .ct-trust-grid{grid-template-columns:1fr;gap:0;}
+}
+@media (max-width:768px){
+  .bk-window{margin-top:36px;border-radius:12px;}
+  .bk-expect{padding:56px 0;}
+  .bk-expect-grid{grid-template-columns:1fr;gap:14px;margin-top:32px;}
+  .bk-reach{padding:48px 0;}
+  .bk-reach-grid{grid-template-columns:1fr;gap:20px;}
+  .bk-day{width:100%;height:0;padding-bottom:100%;position:relative;border-radius:9px;}
+  .bk-day span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+  .bk-day.is-today::after{bottom:14%;}
+  .bk-grid{gap:5px;}
+  .bk-cell{display:block;}
+  .bk-slot-row{flex:0 0 calc(50% - 4px);}
+  .bk-side-rule,.bk-side-head,.bk-cover{display:none;}
+  .bk-main-head{align-items:stretch;}
+  .bk-tz{width:100%;}
+  .bk-tz select{max-width:none;width:100%;}
+  .bk-done{padding:36px 18px;}
+  .bk-done-title{font-size:1.5rem;}
+  .bk-add-grid{grid-template-columns:repeat(2,1fr);}
+  .bk-actions{flex-direction:column-reverse;align-items:stretch;}
+  .bk-btn-primary{justify-content:center;}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important;}
+}
+</style>
+</head>
+<body>
+<nav class="nav scrolled" id="nav">
+  <div class="container nav-inner">
+    <a href="../index.html" class="nav-logo" aria-label="GMIC.AI">
+      <svg class="nav-logo-svg" width="287" height="64" viewBox="0 0 287 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20.625 19.7969L23.7139 25.1582L23.8672 25.4238L23.6358 25.624C22.0052 27.035 20.9736 29.1214 20.9736 31.4492C20.9737 33.7322 21.9655 35.7823 23.542 37.1914L23.7666 37.3926L23.6162 37.6533L20.5225 43.0244L20.3135 43.3857L19.9785 43.1367C16.4213 40.4831 14.1163 36.2357 14.1162 31.4492C14.1162 26.6153 16.4676 22.3307 20.085 19.6826L20.419 19.4385L20.625 19.7969Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.742097"/>
+        <path d="M47.0339 3.14062C62.6878 3.14063 75.3784 15.8305 75.3787 31.4844C75.3787 37.0582 73.768 42.2562 70.989 46.6396L76.5984 60.6572L76.7273 60.9785L76.406 60.8496L62.4578 55.2676C58.0188 58.1522 52.722 59.8291 47.0339 59.8291H29.0369C28.1388 59.8291 27.2505 59.7868 26.3738 59.7051L26.1433 59.6836L26.2585 59.4834L30.575 52.0078L30.6179 51.9336H47.0339C58.3273 51.9336 67.4832 42.7778 67.4832 31.4844C67.4829 20.1912 58.3272 11.0361 47.0339 11.0361H30.7996L30.7566 10.9619L26.4314 3.4707L26.3152 3.26855L26.5476 3.24902C27.3679 3.17764 28.1981 3.14063 29.0369 3.14062H47.0339Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.296839"/>
+        <path d="M13.9384 7.53125L17.7431 14.1211L17.8837 14.3633L17.6493 14.5176C12.1313 18.1468 8.48923 24.3932 8.48918 31.4902C8.48918 38.5314 12.0742 44.7355 17.5195 48.377L17.7509 48.5312L17.6122 48.7725L13.8056 55.3643L13.6503 55.6348L13.3876 55.4658C5.51302 50.3968 0.296799 41.5526 0.296799 31.4902C0.29685 21.3707 5.5727 12.4833 13.5224 7.42871L13.7841 7.2627L13.9384 7.53125Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.593678"/>
+        <circle cx="35.3099" cy="31.3871" r="4.78653" fill="#2563eb"/>
+        <ellipse cx="51.0754" cy="31.3871" rx="4.74942" ry="4.78653" fill="#2563eb"/>
+        <path d="M109.406 42.317C106.805 42.317 104.408 41.9096 102.214 41.0948C100.051 40.2486 98.1554 39.0577 96.5258 37.5221C94.9275 35.9865 93.6739 34.1845 92.765 32.1161C91.8875 30.0477 91.4488 27.7756 91.4488 25.2998C91.4488 22.8239 91.8875 20.5518 92.765 18.4834C93.6739 16.415 94.9431 14.613 96.5728 13.0774C98.2024 11.5418 100.114 10.3665 102.308 9.55172C104.502 8.70555 106.915 8.28247 109.547 8.28247C112.462 8.28247 115.079 8.76823 117.398 9.73975C119.748 10.7113 121.723 12.1215 123.321 13.9706L118.432 18.4834C117.241 17.2299 115.941 16.3054 114.53 15.7099C113.12 15.0831 111.584 14.7697 109.923 14.7697C108.325 14.7697 106.868 15.0204 105.552 15.5219C104.235 16.0233 103.091 16.7441 102.12 17.6843C101.18 18.6245 100.443 19.737 99.9104 21.0219C99.409 22.3068 99.1583 23.7328 99.1583 25.2998C99.1583 26.8354 99.409 28.2457 99.9104 29.5306C100.443 30.8155 101.18 31.9437 102.12 32.9152C103.091 33.8554 104.22 34.5762 105.504 35.0776C106.821 35.5791 108.262 35.8298 109.829 35.8298C111.334 35.8298 112.791 35.5947 114.201 35.1247C115.643 34.6232 117.037 33.7927 118.385 32.6332L122.71 38.1332C120.923 39.4808 118.839 40.515 116.458 41.2358C114.107 41.9566 111.757 42.317 109.406 42.317ZM122.71 38.1332L115.752 37.146V24.7827H122.71V38.1332ZM129.784 41.7529V8.84658H136.083L150.092 32.0691H146.754L160.528 8.84658H166.78L166.874 41.7529H159.729L159.682 19.7997H160.998L149.998 38.2743H146.566L135.331 19.7997H136.929V41.7529H129.784ZM174.681 41.7529V8.84658H182.297V41.7529H174.681ZM205.854 42.317C203.316 42.317 200.95 41.9096 198.756 41.0948C196.593 40.2486 194.713 39.0577 193.115 37.5221C191.516 35.9865 190.263 34.1845 189.354 32.1161C188.476 30.0477 188.038 27.7756 188.038 25.2998C188.038 22.8239 188.476 20.5518 189.354 18.4834C190.263 16.415 191.516 14.613 193.115 13.0774C194.744 11.5418 196.64 10.3665 198.803 9.55172C200.965 8.70555 203.331 8.28247 205.901 8.28247C208.753 8.28247 211.323 8.7839 213.611 9.78676C215.93 10.7583 217.873 12.1999 219.44 14.1116L214.551 18.6245C213.423 17.3396 212.169 16.3837 210.79 15.7569C209.411 15.0988 207.907 14.7697 206.277 14.7697C204.742 14.7697 203.331 15.0204 202.046 15.5219C200.762 16.0233 199.649 16.7441 198.709 17.6843C197.769 18.6245 197.032 19.737 196.499 21.0219C195.998 22.3068 195.747 23.7328 195.747 25.2998C195.747 26.8667 195.998 28.2927 196.499 29.5776C197.032 30.8625 197.769 31.975 198.709 32.9152C199.649 33.8554 200.762 34.5762 202.046 35.0776C203.331 35.5791 204.742 35.8298 206.277 35.8298C207.907 35.8298 209.411 35.5164 210.79 34.8896C212.169 34.2315 213.423 33.2443 214.551 31.928L219.44 36.4409C217.873 38.3526 215.93 39.8099 213.611 40.8127C211.323 41.8156 208.737 42.317 205.854 42.317ZM233.112 41.7529L247.779 8.84658H255.3L270.014 41.7529H262.022L249.988 12.7013H252.997L240.915 41.7529H233.112ZM240.445 34.7016L242.467 28.9195H259.39L261.458 34.7016H240.445ZM273.428 41.7529V8.84658H281.043V41.7529H273.428Z" fill="currentColor"/>
+        <path d="M98.5933 52.8272V53.6687H94.3082V56.1822H98.1504V57.0237H94.3082V60.7109H93.3781V52.8272H98.5933ZM102.018 60.8438C100.412 60.8438 99.2496 59.6812 99.2496 57.8542C99.2496 56.0272 100.412 54.8646 102.018 54.8646C103.623 54.8646 104.786 56.0272 104.786 57.8542C104.786 59.6812 103.623 60.8438 102.018 60.8438ZM102.018 60.0466C103.125 60.0466 103.856 59.2383 103.856 57.8542C103.856 56.4701 103.125 55.6618 102.018 55.6618C100.91 55.6618 100.18 56.4701 100.18 57.8542C100.18 59.2383 100.91 60.0466 102.018 60.0466ZM108.543 60.8438C106.982 60.8438 105.897 59.6923 105.897 57.8542C105.897 56.0161 106.96 54.8646 108.543 54.8646C109.905 54.8646 110.824 55.6729 111.001 56.9352H110.082C109.927 56.0715 109.263 55.6618 108.543 55.6618C107.569 55.6618 106.827 56.3594 106.827 57.8542C106.827 59.349 107.591 60.0466 108.543 60.0466C109.274 60.0466 109.938 59.6258 110.093 58.7511H111.001C110.813 60.0577 109.827 60.8438 108.543 60.8438ZM116.045 58.2307V54.9975H116.93V60.7109H116.089V59.8583C115.712 60.4341 115.092 60.8438 114.295 60.8438C113.022 60.8438 112.28 60.1241 112.28 58.8618V54.9975H113.166V58.7732C113.166 59.659 113.653 60.0466 114.472 60.0466C115.214 60.0466 116.045 59.4929 116.045 58.2307ZM120.607 60.8438C119.156 60.8438 118.271 60.2348 118.182 58.895H119.079C119.179 59.7587 119.599 60.0798 120.607 60.0798C121.57 60.0798 121.98 59.7587 121.98 59.194C121.98 58.6846 121.67 58.4521 120.673 58.2639L120.142 58.1642C118.902 57.9317 118.359 57.367 118.359 56.4812C118.359 55.5068 119.134 54.8646 120.441 54.8646C121.969 54.8646 122.744 55.54 122.766 56.758H121.88C121.836 55.8722 121.316 55.6286 120.441 55.6286C119.677 55.6286 119.245 55.9386 119.245 56.4701C119.245 57.0127 119.666 57.212 120.397 57.3559L120.906 57.4556C122.312 57.7324 122.877 58.2085 122.877 59.1386C122.877 60.2237 122.013 60.8438 120.607 60.8438ZM132.668 57.5774L133.476 54.9975H134.428L132.524 60.7109H131.593L130.752 58.0646C130.553 57.4334 130.353 56.7691 130.176 56.1269C129.988 56.7691 129.789 57.4334 129.589 58.0646L128.759 60.7109H127.829L125.924 54.9975H126.877L127.685 57.5774C127.906 58.275 128.106 58.9615 128.305 59.659C128.493 58.9615 128.692 58.275 128.914 57.5774L129.711 54.9975H130.641L131.438 57.5774C131.649 58.2639 131.859 58.9504 132.059 59.6369C132.247 58.9504 132.457 58.2639 132.668 57.5774ZM136.337 54.2224H135.385V53.1372H136.337V54.2224ZM136.315 60.7109H135.429V54.9975H136.315V60.7109ZM140.481 54.9975V55.7725H139.307V59.4708C139.307 59.7698 139.451 59.958 139.96 59.958H140.481V60.7109C140.259 60.722 140.027 60.7331 139.85 60.7331C138.964 60.7331 138.421 60.423 138.421 59.5483V55.7725H137.48V54.9975H138.421V53.3808H139.307V54.9975H140.481ZM144.384 54.8646C145.658 54.8646 146.4 55.5843 146.4 56.8466V60.7109H145.514V56.9352C145.514 56.0494 145.027 55.6618 144.207 55.6618C143.465 55.6618 142.635 56.2154 142.635 57.4777V60.7109H141.749V52.8272H142.635V55.7836C143.011 55.2521 143.609 54.8646 144.384 54.8646ZM157.378 60.7109H156.392L155.473 58.4189H151.886L150.978 60.7109H150.003L153.148 52.8272H154.189L157.378 60.7109ZM152.251 57.4888L152.218 57.5774H155.141L155.097 57.4777C154.754 56.6251 154.134 55.0528 153.657 53.8348C153.203 55.0528 152.594 56.6251 152.251 57.4888ZM160.549 54.9975V55.7725H159.375V59.4708C159.375 59.7698 159.519 59.958 160.028 59.958H160.549V60.7109C160.327 60.722 160.095 60.7331 159.917 60.7331C159.032 60.7331 158.489 60.423 158.489 59.5483V55.7725H157.548V54.9975H158.489V53.3808H159.375V54.9975H160.549ZM164.319 54.9975V55.7725H163.146V59.4708C163.146 59.7698 163.29 59.958 163.799 59.958H164.319V60.7109C164.098 60.722 163.865 60.7331 163.688 60.7331C162.802 60.7331 162.26 60.423 162.26 59.5483V55.7725H161.319V54.9975H162.26V53.3808H163.146V54.9975H164.319ZM167.86 60.8438C166.299 60.8438 165.203 59.7033 165.203 57.8542C165.203 56.0604 166.255 54.8646 167.838 54.8646C169.543 54.8646 170.462 56.2154 170.462 57.8542V58.1642H166.122C166.21 59.4487 166.886 60.0355 167.882 60.0355C168.691 60.0355 169.2 59.6147 169.399 58.9725H170.318C170.042 60.0466 169.222 60.8438 167.86 60.8438ZM166.144 57.367H169.51C169.421 56.4258 168.857 55.6729 167.838 55.6729C166.941 55.6729 166.288 56.2376 166.144 57.367ZM174.481 54.8646C175.754 54.8646 176.496 55.5843 176.496 56.8466V60.7109H175.61V56.9352C175.61 56.0494 175.123 55.6618 174.304 55.6618C173.562 55.6618 172.731 56.2154 172.731 57.4777V60.7109H171.845V54.9975H172.687V55.85C173.063 55.2743 173.684 54.8646 174.481 54.8646ZM180.443 54.9975V55.7725H179.27V59.4708C179.27 59.7698 179.414 59.958 179.923 59.958H180.443V60.7109C180.222 60.722 179.99 60.7331 179.812 60.7331C178.927 60.7331 178.384 60.423 178.384 59.5483V55.7725H177.443V54.9975H178.384V53.3808H179.27V54.9975H180.443ZM182.62 54.2224H181.668V53.1372H182.62V54.2224ZM182.598 60.7109H181.712V54.9975H182.598V60.7109ZM186.752 60.8438C185.147 60.8438 183.984 59.6812 183.984 57.8542C183.984 56.0272 185.147 54.8646 186.752 54.8646C188.358 54.8646 189.52 56.0272 189.52 57.8542C189.52 59.6812 188.358 60.8438 186.752 60.8438ZM186.752 60.0466C187.859 60.0466 188.59 59.2383 188.59 57.8542C188.59 56.4701 187.859 55.6618 186.752 55.6618C185.645 55.6618 184.914 56.4701 184.914 57.8542C184.914 59.2383 185.645 60.0466 186.752 60.0466ZM193.543 54.8646C194.816 54.8646 195.558 55.5843 195.558 56.8466V60.7109H194.672V56.9352C194.672 56.0494 194.185 55.6618 193.366 55.6618C192.624 55.6618 191.794 56.2154 191.794 57.4777V60.7109H190.908V54.9975H191.749V55.85C192.126 55.2743 192.746 54.8646 193.543 54.8646ZM197.053 60.7109V59.6037H198.172V60.8106C198.172 61.7739 197.818 62.1725 197.164 62.239L197.053 62.25V61.6521L197.131 61.641C197.43 61.5967 197.541 61.3199 197.541 60.8881V60.7109H197.053ZM208.988 60.7109H208.003L207.083 58.4189H203.496L202.588 60.7109H201.614L204.758 52.8272H205.799L208.988 60.7109ZM203.861 57.4888L203.828 57.5774H206.751L206.707 57.4777C206.364 56.6251 205.744 55.0528 205.268 53.8348C204.814 55.0528 204.205 56.6251 203.861 57.4888ZM212.361 60.8438C210.8 60.8438 209.715 59.6923 209.715 57.8542C209.715 56.0161 210.778 54.8646 212.361 54.8646C213.723 54.8646 214.642 55.6729 214.819 56.9352H213.9C213.745 56.0715 213.081 55.6618 212.361 55.6618C211.387 55.6618 210.645 56.3594 210.645 57.8542C210.645 59.349 211.409 60.0466 212.361 60.0466C213.092 60.0466 213.756 59.6258 213.911 58.7511H214.819C214.631 60.0577 213.646 60.8438 212.361 60.8438ZM218.384 54.9975V55.7725H217.21V59.4708C217.21 59.7698 217.354 59.958 217.864 59.958H218.384V60.7109C218.163 60.722 217.93 60.7331 217.753 60.7331C216.867 60.7331 216.325 60.423 216.325 59.5483V55.7725H215.383V54.9975H216.325V53.3808H217.21V54.9975H218.384ZM228.227 57.5774L229.036 54.9975H229.988L228.084 60.7109H227.153L226.312 58.0646C226.113 57.4334 225.913 56.7691 225.736 56.1269C225.548 56.7691 225.349 57.4334 225.149 58.0646L224.319 60.7109H223.389L221.484 54.9975H222.436L223.245 57.5774C223.466 58.275 223.666 58.9615 223.865 59.659C224.053 58.9615 224.252 58.275 224.474 57.5774L225.271 54.9975H226.201L226.998 57.5774C227.209 58.2639 227.419 58.9504 227.618 59.6369C227.807 58.9504 228.017 58.2639 228.227 57.5774ZM231.897 54.2224H230.945V53.1372H231.897V54.2224ZM231.875 60.7109H230.989V54.9975H231.875V60.7109ZM236.041 54.9975V55.7725H234.867V59.4708C234.867 59.7698 235.011 59.958 235.52 59.958H236.041V60.7109C235.819 60.722 235.587 60.7331 235.41 60.7331C234.524 60.7331 233.981 60.423 233.981 59.5483V55.7725H233.04V54.9975H233.981V53.3808H234.867V54.9975H236.041ZM239.944 54.8646C241.218 54.8646 241.96 55.5843 241.96 56.8466V60.7109H241.074V56.9352C241.074 56.0494 240.587 55.6618 239.767 55.6618C239.025 55.6618 238.195 56.2154 238.195 57.4777V60.7109H237.309V52.8272H238.195V55.7836C238.571 55.2521 239.169 54.8646 239.944 54.8646ZM249.007 60.8881C247.125 60.8881 245.752 60.0798 245.729 58.1089H246.693C246.715 59.5705 247.723 60.0466 249.007 60.0466C250.269 60.0466 251 59.5483 251 58.5739C251 57.821 250.48 57.4556 249.084 57.1455L248.387 56.9905C247.047 56.6916 245.995 56.149 245.995 54.7096C245.995 53.4473 247.047 52.6501 248.686 52.6501C251.011 52.6501 251.731 53.8348 251.764 55.1193H250.812C250.734 54.1006 250.258 53.4916 248.686 53.4916C247.545 53.4916 246.959 53.9677 246.959 54.7096C246.959 55.4625 247.324 55.839 248.808 56.1712L249.505 56.3262C251.321 56.7248 251.963 57.4334 251.963 58.5739C251.963 59.9691 250.9 60.8881 249.007 60.8881ZM256.04 54.8646C257.645 54.8646 258.697 56.0272 258.697 57.8542C258.697 59.6812 257.645 60.8438 256.04 60.8438C255.209 60.8438 254.556 60.5006 254.124 59.8916V62.8812H253.239V54.9975H254.08V55.8833C254.512 55.23 255.187 54.8646 256.04 54.8646ZM255.929 60.0466C257.036 60.0466 257.767 59.194 257.767 57.8099C257.767 56.4258 257.036 55.6618 255.929 55.6618C254.822 55.6618 254.091 56.4701 254.091 57.8542C254.091 59.2383 254.822 60.0466 255.929 60.0466ZM262.461 60.8438C260.9 60.8438 259.803 59.7033 259.803 57.8542C259.803 56.0604 260.855 54.8646 262.439 54.8646C264.144 54.8646 265.063 56.2154 265.063 57.8542V58.1642H260.722C260.811 59.4487 261.486 60.0355 262.483 60.0355C263.291 60.0355 263.801 59.6147 264 58.9725H264.919C264.642 60.0466 263.823 60.8438 262.461 60.8438ZM260.745 57.367H264.111C264.022 56.4258 263.457 55.6729 262.439 55.6729C261.542 55.6729 260.889 56.2376 260.745 57.367ZM268.827 60.8438C267.265 60.8438 266.169 59.7033 266.169 57.8542C266.169 56.0604 267.221 54.8646 268.805 54.8646C270.51 54.8646 271.429 56.2154 271.429 57.8542V58.1642H267.088C267.177 59.4487 267.852 60.0355 268.849 60.0355C269.657 60.0355 270.167 59.6147 270.366 58.9725H271.285C271.008 60.0466 270.189 60.8438 268.827 60.8438ZM267.11 57.367H270.477C270.388 56.4258 269.823 55.6729 268.805 55.6729C267.908 55.6729 267.254 56.2376 267.11 57.367ZM277.108 55.8168V52.8272H277.994V60.7109H277.152V59.8251C276.721 60.4784 276.045 60.8438 275.193 60.8438C273.587 60.8438 272.535 59.6812 272.535 57.8542C272.535 56.0272 273.587 54.8646 275.193 54.8646C276.023 54.8646 276.676 55.2078 277.108 55.8168ZM275.303 60.0466C276.411 60.0466 277.141 59.2383 277.141 57.8542C277.141 56.4701 276.411 55.6618 275.303 55.6618C274.196 55.6618 273.465 56.5144 273.465 57.8985C273.465 59.2826 274.196 60.0466 275.303 60.0466ZM280.318 58.6514H279.742L279.587 54.9975V52.8272H280.517V54.9975L280.318 58.6514ZM280.606 60.7109H279.488V59.6037H280.606V60.7109Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <div class="nav-links">
+
+      <!-- Products -->
+      <div class="nav-item has-dropdown">
+        <a href="../index.html#hardware" class="nav-link">
+          Products <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--products">
+          <div class="dropdown-inner">
+            <div class="dropdown-grid">
+              <a href="../products/mic06/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../img/cap/MIC06.png" alt="MIC06">
+                <span class="dp-name">MIC06</span>
+                <span class="dp-desc">Continuous voice capture for shift-based operations</span>
+              </a>
+              <a href="../products/mic05/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../img/cap/MIC05.png" alt="MIC05">
+                <span class="dp-name">MIC05</span>
+                <span class="dp-desc">Button-triggered capture for field notes</span>
+              </a>
+              <a href="../products/mic01/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../img/cap/MIC01.png" alt="MIC01">
+                <span class="dp-name">MIC01</span>
+                <span class="dp-desc">Entry-level pilot device</span>
+              </a>
+              <a href="../products/telalive/index.html" class="dropdown-product-card" data-category="voice">
+                <img src="../img/products/telalive.png" alt="Telalive">
+                <span class="dp-name">Telalive</span>
+                <span class="dp-desc">AI-powered desk phone & wearable platform</span>
+              </a>
+              <a href="../products/index.html" class="dropdown-product-card dropdown-all" data-category="all">
+                <div class="dp-all-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                </div>
+                <span class="dp-name">View All</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Custom Devices -->
+      <div class="nav-item has-dropdown">
+        <a href="../custom-devices/index.html" class="nav-link">
+          Service <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Hardware</p>
+              <a href="../custom-devices/odm-oem/index.html" class="dropdown-link">ODM / OEM</a>
+              <a href="../custom-devices/private-label/index.html" class="dropdown-link">Private Label</a>
+              <a href="../custom-devices/custom-enclosure/index.html" class="dropdown-link">Custom Enclosure</a>
+              <a href="../custom-devices/3d-prototype/index.html" class="dropdown-link">3D Small-batch Prototype</a>
+            </div>
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Engineering</p>
+              <a href="../custom-devices/firmware-integration/index.html" class="dropdown-link">Firmware Integration</a>
+              <a href="../custom-devices/audio-dsp-tuning/index.html" class="dropdown-link">Audio & DSP Tuning</a>
+              <a href="../custom-devices/ai-sdk-integration/index.html" class="dropdown-link">AI SDK Integration</a>
+              <a href="../custom-devices/prototype-validation/index.html" class="dropdown-link">Prototype Validation</a>
+            </div>
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Production</p>
+              <a href="../custom-devices/evt-dvt-pvt/index.html" class="dropdown-link">EVT / DVT / PVT</a>
+              <a href="../custom-devices/smt-manufacturing/index.html" class="dropdown-link">SMT Manufacturing</a>
+              <a href="../custom-devices/certification-support/index.html" class="dropdown-link">Certification Support</a>
+              <a href="../custom-devices/supply-chain/index.html" class="dropdown-link">Supply Chain Management</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Implementation -->
+      <div class="nav-item">
+        <a href="../implementation/index.html" class="nav-link">Implementation</a>
+      </div>
+
+      <!-- Proof -->
+      <div class="nav-item">
+        <a href="../proof/index.html" class="nav-link">Success Stories</a>
+      </div>
+
+      <!-- Industries -->
+      <div class="nav-item has-dropdown">
+        <a href="../index.html#industries" class="nav-link">
+          Industries <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Industries</p>
+              <a href="../industries/healthcare/index.html" class="dropdown-link">Healthcare</a>
+              <a href="../industries/field-service/index.html" class="dropdown-link">Field Service</a>
+              <a href="../industries/sales-intelligence/index.html" class="dropdown-link">Sales</a>
+              <a href="../industries/public-safety/index.html" class="dropdown-link">Public Safety</a>
+              <a href="../industries/veterinary/index.html" class="dropdown-link">Veterinary</a>
+              <a href="../industries/logistics/index.html" class="dropdown-link">Logistics</a>
+              <a href="../industries/enterprise/index.html" class="dropdown-link">Enterprise</a>
+              <a href="https://nemt.gmic.ai/" class="dropdown-link" target="_blank" rel="noopener noreferrer">NEMT</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resource -->
+      <div class="nav-item has-dropdown">
+        <a href="#" class="nav-link">
+          Resource <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Resource</p>
+              <a href="../resources/voice-ai-hardware/index.html" class="dropdown-link">Voice AI Hardware</a>
+              <a href="../resources/ai-hardware-integration/index.html" class="dropdown-link">AI Hardware Integration</a>
+              <a href="../resources/ai-hardware-odm/index.html" class="dropdown-link">AI Hardware ODM</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Process -->
+      <div class="nav-item">
+        <a href="../process/index.html" class="nav-link">Process</a>
+      </div>
+
+      <!-- Company -->
+      <div class="nav-item has-dropdown">
+        <a href="../about/index.html" class="nav-link">
+          Company <span class="nav-arrow">›</span>
+        </a>
+        <div class="nav-dropdown nav-dropdown--text">
+          <div class="dropdown-inner">
+            <div class="dropdown-col">
+              <p class="dropdown-col-head">Company</p>
+              <a href="../about/index.html" class="dropdown-link">About Us</a>
+              <a href="../blog/index.html" class="dropdown-link">Blog</a>
+              <a href="../contact/index.html" class="dropdown-link">Contact</a>
+              <a href="../faq/index.html" class="dropdown-link">FAQ</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Overlay -->
+    <div class="nav-overlay"></div>
+    <div class="nav-right">
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener" class="btn btn-nav">Start a Project</a>
+    </div>
+    <button class="nav-burger" id="navBurger"
+      aria-label="Open menu" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile nav drawer -->
+<div class="mobile-nav" id="mobileNav">
+  <div class="mobile-nav-inner">
+
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Industries</p>
+      <a href="../industries/healthcare/index.html" class="mobile-nav-link">Healthcare</a>
+      <a href="../industries/field-service/index.html" class="mobile-nav-link">Field Service</a>
+      <a href="../industries/sales-intelligence/index.html" class="mobile-nav-link">Sales</a>
+      <a href="../industries/public-safety/index.html" class="mobile-nav-link">Public Safety</a>
+      <a href="../industries/veterinary/index.html" class="mobile-nav-link">Veterinary</a>
+      <a href="../industries/logistics/index.html" class="mobile-nav-link">Logistics</a>
+      <a href="../industries/enterprise/index.html" class="mobile-nav-link">Enterprise</a>
+      <a href="https://nemt.gmic.ai/" class="mobile-nav-link" target="_blank" rel="noopener noreferrer">NEMT</a>
+    </div>
+
+    <!-- Resource -->
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Resource</p>
+      <a href="../resources/voice-ai-hardware/index.html" class="mobile-nav-link">Voice AI Hardware</a>
+      <a href="../resources/ai-hardware-integration/index.html" class="mobile-nav-link">AI Hardware Integration</a>
+      <a href="../resources/ai-hardware-odm/index.html" class="mobile-nav-link">AI Hardware ODM</a>
+    </div>
+
+    <div class="mobile-nav-section">
+      <a href="../implementation/index.html" class="mobile-nav-link">Implementation</a>
+      <a href="../proof/index.html" class="mobile-nav-link">Success Stories</a>
+      <a href="../process/index.html" class="mobile-nav-link">Process</a>
+    </div>
+
+    <div class="mobile-nav-section">
+      <p class="mobile-nav-head">Company</p>
+      <a href="../about/index.html" class="mobile-nav-link">About Us</a>
+      <a href="../blog/index.html" class="mobile-nav-link">Blog</a>
+      <a href="../contact/index.html" class="mobile-nav-link">Contact</a>
+      <a href="../faq/index.html" class="mobile-nav-link">FAQ</a>
+    </div>
+
+    <div class="mobile-nav-cta">
+      <a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb"
+         target="_blank" rel="noopener" class="btn btn-nav">
+        Start a Project
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- Mobile nav overlay -->
+<div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+
+<!-- ========== SECTION 1 — HERO + SCHEDULING WINDOW ========== -->
+<section class="ct-hero bk-hero">
+  <div class="ct-wrap">
+    <div class="bk-inner">
+
+      <span class="ct-eyebrow">Book a Demo</span>
+      <h1>Let's talk about your device.</h1>
+      <p class="bk-hero-sub">Pick a 30-minute slot with a GMIC hardware engineer. Bring your use case, your volume estimate, and whatever constraints you already know — we'll walk through what's feasible, what it costs, and how fast we can get you to a working prototype. No slides, no sales pitch.</p>
+
+      <!-- ---------- Scheduling window ---------- -->
+      <div class="bk-window" id="bkWindow">
+
+        <div class="bk-window-bar">
+          <div class="bk-window-title">
+            <span class="bk-window-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18M8 2v4M16 2v4"></path></svg>
+            GMIC AI · Scheduling
+          </div>
+          <div class="bk-steps" aria-hidden="true">
+            <div class="bk-step-item is-active" data-step="1"><span class="bk-step-num">1</span>Pick a time</div>
+            <div class="bk-step-sep"></div>
+            <div class="bk-step-item" data-step="2"><span class="bk-step-num">2</span>Your details</div>
+            <div class="bk-step-sep"></div>
+            <div class="bk-step-item" data-step="3"><span class="bk-step-num">3</span>Confirmed</div>
+          </div>
+          <div class="bk-steps-mobile" id="bkStepsMobile">Step 1 of 3 — Pick a time</div>
+        </div>
+
+        <!--
+          ============================================================
+          想换成真的 Calendly / Cal.com 插件？
+          把下面整个 <div class="bk-body-grid"> ... </div> 换成这段就行，
+          外面的窗口边框、标题栏、页面其它部分都不用动：
+
+          <div class="calendly-inline-widget"
+               data-url="https://calendly.com/your-account/30min?hide_gdpr_banner=1&primary_color=2563eb"
+               style="min-width:320px;height:700px;"></div>
+          <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+          （Cal.com 同理：<cal-inline> + embed.js）
+          换掉之后，页面底部那段 book-demo 的 JS 就可以一起删掉。
+          ============================================================
+        -->
+        <div class="bk-body-grid" id="bkGridWrap">
+
+          <!-- LEFT — event info / summary -->
+          <aside class="bk-side" id="bkSide">
+            <svg class="bk-side-logo" width="287" height="64" viewBox="0 0 287 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20.625 19.7969L23.7139 25.1582L23.8672 25.4238L23.6358 25.624C22.0052 27.035 20.9736 29.1214 20.9736 31.4492C20.9737 33.7322 21.9655 35.7823 23.542 37.1914L23.7666 37.3926L23.6162 37.6533L20.5225 43.0244L20.3135 43.3857L19.9785 43.1367C16.4213 40.4831 14.1163 36.2357 14.1162 31.4492C14.1162 26.6153 16.4676 22.3307 20.085 19.6826L20.419 19.4385L20.625 19.7969Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.742097"/>
+        <path d="M47.0339 3.14062C62.6878 3.14063 75.3784 15.8305 75.3787 31.4844C75.3787 37.0582 73.768 42.2562 70.989 46.6396L76.5984 60.6572L76.7273 60.9785L76.406 60.8496L62.4578 55.2676C58.0188 58.1522 52.722 59.8291 47.0339 59.8291H29.0369C28.1388 59.8291 27.2505 59.7868 26.3738 59.7051L26.1433 59.6836L26.2585 59.4834L30.575 52.0078L30.6179 51.9336H47.0339C58.3273 51.9336 67.4832 42.7778 67.4832 31.4844C67.4829 20.1912 58.3272 11.0361 47.0339 11.0361H30.7996L30.7566 10.9619L26.4314 3.4707L26.3152 3.26855L26.5476 3.24902C27.3679 3.17764 28.1981 3.14063 29.0369 3.14062H47.0339Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.296839"/>
+        <path d="M13.9384 7.53125L17.7431 14.1211L17.8837 14.3633L17.6493 14.5176C12.1313 18.1468 8.48923 24.3932 8.48918 31.4902C8.48918 38.5314 12.0742 44.7355 17.5195 48.377L17.7509 48.5312L17.6122 48.7725L13.8056 55.3643L13.6503 55.6348L13.3876 55.4658C5.51302 50.3968 0.296799 41.5526 0.296799 31.4902C0.29685 21.3707 5.5727 12.4833 13.5224 7.42871L13.7841 7.2627L13.9384 7.53125Z" fill="#2563eb" stroke="#2563eb" stroke-width="0.593678"/>
+        <circle cx="35.3099" cy="31.3871" r="4.78653" fill="#2563eb"/>
+        <ellipse cx="51.0754" cy="31.3871" rx="4.74942" ry="4.78653" fill="#2563eb"/>
+        <path d="M109.406 42.317C106.805 42.317 104.408 41.9096 102.214 41.0948C100.051 40.2486 98.1554 39.0577 96.5258 37.5221C94.9275 35.9865 93.6739 34.1845 92.765 32.1161C91.8875 30.0477 91.4488 27.7756 91.4488 25.2998C91.4488 22.8239 91.8875 20.5518 92.765 18.4834C93.6739 16.415 94.9431 14.613 96.5728 13.0774C98.2024 11.5418 100.114 10.3665 102.308 9.55172C104.502 8.70555 106.915 8.28247 109.547 8.28247C112.462 8.28247 115.079 8.76823 117.398 9.73975C119.748 10.7113 121.723 12.1215 123.321 13.9706L118.432 18.4834C117.241 17.2299 115.941 16.3054 114.53 15.7099C113.12 15.0831 111.584 14.7697 109.923 14.7697C108.325 14.7697 106.868 15.0204 105.552 15.5219C104.235 16.0233 103.091 16.7441 102.12 17.6843C101.18 18.6245 100.443 19.737 99.9104 21.0219C99.409 22.3068 99.1583 23.7328 99.1583 25.2998C99.1583 26.8354 99.409 28.2457 99.9104 29.5306C100.443 30.8155 101.18 31.9437 102.12 32.9152C103.091 33.8554 104.22 34.5762 105.504 35.0776C106.821 35.5791 108.262 35.8298 109.829 35.8298C111.334 35.8298 112.791 35.5947 114.201 35.1247C115.643 34.6232 117.037 33.7927 118.385 32.6332L122.71 38.1332C120.923 39.4808 118.839 40.515 116.458 41.2358C114.107 41.9566 111.757 42.317 109.406 42.317ZM122.71 38.1332L115.752 37.146V24.7827H122.71V38.1332ZM129.784 41.7529V8.84658H136.083L150.092 32.0691H146.754L160.528 8.84658H166.78L166.874 41.7529H159.729L159.682 19.7997H160.998L149.998 38.2743H146.566L135.331 19.7997H136.929V41.7529H129.784ZM174.681 41.7529V8.84658H182.297V41.7529H174.681ZM205.854 42.317C203.316 42.317 200.95 41.9096 198.756 41.0948C196.593 40.2486 194.713 39.0577 193.115 37.5221C191.516 35.9865 190.263 34.1845 189.354 32.1161C188.476 30.0477 188.038 27.7756 188.038 25.2998C188.038 22.8239 188.476 20.5518 189.354 18.4834C190.263 16.415 191.516 14.613 193.115 13.0774C194.744 11.5418 196.64 10.3665 198.803 9.55172C200.965 8.70555 203.331 8.28247 205.901 8.28247C208.753 8.28247 211.323 8.7839 213.611 9.78676C215.93 10.7583 217.873 12.1999 219.44 14.1116L214.551 18.6245C213.423 17.3396 212.169 16.3837 210.79 15.7569C209.411 15.0988 207.907 14.7697 206.277 14.7697C204.742 14.7697 203.331 15.0204 202.046 15.5219C200.762 16.0233 199.649 16.7441 198.709 17.6843C197.769 18.6245 197.032 19.737 196.499 21.0219C195.998 22.3068 195.747 23.7328 195.747 25.2998C195.747 26.8667 195.998 28.2927 196.499 29.5776C197.032 30.8625 197.769 31.975 198.709 32.9152C199.649 33.8554 200.762 34.5762 202.046 35.0776C203.331 35.5791 204.742 35.8298 206.277 35.8298C207.907 35.8298 209.411 35.5164 210.79 34.8896C212.169 34.2315 213.423 33.2443 214.551 31.928L219.44 36.4409C217.873 38.3526 215.93 39.8099 213.611 40.8127C211.323 41.8156 208.737 42.317 205.854 42.317ZM233.112 41.7529L247.779 8.84658H255.3L270.014 41.7529H262.022L249.988 12.7013H252.997L240.915 41.7529H233.112ZM240.445 34.7016L242.467 28.9195H259.39L261.458 34.7016H240.445ZM273.428 41.7529V8.84658H281.043V41.7529H273.428Z" fill="currentColor"/>
+        <path d="M98.5933 52.8272V53.6687H94.3082V56.1822H98.1504V57.0237H94.3082V60.7109H93.3781V52.8272H98.5933ZM102.018 60.8438C100.412 60.8438 99.2496 59.6812 99.2496 57.8542C99.2496 56.0272 100.412 54.8646 102.018 54.8646C103.623 54.8646 104.786 56.0272 104.786 57.8542C104.786 59.6812 103.623 60.8438 102.018 60.8438ZM102.018 60.0466C103.125 60.0466 103.856 59.2383 103.856 57.8542C103.856 56.4701 103.125 55.6618 102.018 55.6618C100.91 55.6618 100.18 56.4701 100.18 57.8542C100.18 59.2383 100.91 60.0466 102.018 60.0466ZM108.543 60.8438C106.982 60.8438 105.897 59.6923 105.897 57.8542C105.897 56.0161 106.96 54.8646 108.543 54.8646C109.905 54.8646 110.824 55.6729 111.001 56.9352H110.082C109.927 56.0715 109.263 55.6618 108.543 55.6618C107.569 55.6618 106.827 56.3594 106.827 57.8542C106.827 59.349 107.591 60.0466 108.543 60.0466C109.274 60.0466 109.938 59.6258 110.093 58.7511H111.001C110.813 60.0577 109.827 60.8438 108.543 60.8438ZM116.045 58.2307V54.9975H116.93V60.7109H116.089V59.8583C115.712 60.4341 115.092 60.8438 114.295 60.8438C113.022 60.8438 112.28 60.1241 112.28 58.8618V54.9975H113.166V58.7732C113.166 59.659 113.653 60.0466 114.472 60.0466C115.214 60.0466 116.045 59.4929 116.045 58.2307ZM120.607 60.8438C119.156 60.8438 118.271 60.2348 118.182 58.895H119.079C119.179 59.7587 119.599 60.0798 120.607 60.0798C121.57 60.0798 121.98 59.7587 121.98 59.194C121.98 58.6846 121.67 58.4521 120.673 58.2639L120.142 58.1642C118.902 57.9317 118.359 57.367 118.359 56.4812C118.359 55.5068 119.134 54.8646 120.441 54.8646C121.969 54.8646 122.744 55.54 122.766 56.758H121.88C121.836 55.8722 121.316 55.6286 120.441 55.6286C119.677 55.6286 119.245 55.9386 119.245 56.4701C119.245 57.0127 119.666 57.212 120.397 57.3559L120.906 57.4556C122.312 57.7324 122.877 58.2085 122.877 59.1386C122.877 60.2237 122.013 60.8438 120.607 60.8438ZM132.668 57.5774L133.476 54.9975H134.428L132.524 60.7109H131.593L130.752 58.0646C130.553 57.4334 130.353 56.7691 130.176 56.1269C129.988 56.7691 129.789 57.4334 129.589 58.0646L128.759 60.7109H127.829L125.924 54.9975H126.877L127.685 57.5774C127.906 58.275 128.106 58.9615 128.305 59.659C128.493 58.9615 128.692 58.275 128.914 57.5774L129.711 54.9975H130.641L131.438 57.5774C131.649 58.2639 131.859 58.9504 132.059 59.6369C132.247 58.9504 132.457 58.2639 132.668 57.5774ZM136.337 54.2224H135.385V53.1372H136.337V54.2224ZM136.315 60.7109H135.429V54.9975H136.315V60.7109ZM140.481 54.9975V55.7725H139.307V59.4708C139.307 59.7698 139.451 59.958 139.96 59.958H140.481V60.7109C140.259 60.722 140.027 60.7331 139.85 60.7331C138.964 60.7331 138.421 60.423 138.421 59.5483V55.7725H137.48V54.9975H138.421V53.3808H139.307V54.9975H140.481ZM144.384 54.8646C145.658 54.8646 146.4 55.5843 146.4 56.8466V60.7109H145.514V56.9352C145.514 56.0494 145.027 55.6618 144.207 55.6618C143.465 55.6618 142.635 56.2154 142.635 57.4777V60.7109H141.749V52.8272H142.635V55.7836C143.011 55.2521 143.609 54.8646 144.384 54.8646ZM157.378 60.7109H156.392L155.473 58.4189H151.886L150.978 60.7109H150.003L153.148 52.8272H154.189L157.378 60.7109ZM152.251 57.4888L152.218 57.5774H155.141L155.097 57.4777C154.754 56.6251 154.134 55.0528 153.657 53.8348C153.203 55.0528 152.594 56.6251 152.251 57.4888ZM160.549 54.9975V55.7725H159.375V59.4708C159.375 59.7698 159.519 59.958 160.028 59.958H160.549V60.7109C160.327 60.722 160.095 60.7331 159.917 60.7331C159.032 60.7331 158.489 60.423 158.489 59.5483V55.7725H157.548V54.9975H158.489V53.3808H159.375V54.9975H160.549ZM164.319 54.9975V55.7725H163.146V59.4708C163.146 59.7698 163.29 59.958 163.799 59.958H164.319V60.7109C164.098 60.722 163.865 60.7331 163.688 60.7331C162.802 60.7331 162.26 60.423 162.26 59.5483V55.7725H161.319V54.9975H162.26V53.3808H163.146V54.9975H164.319ZM167.86 60.8438C166.299 60.8438 165.203 59.7033 165.203 57.8542C165.203 56.0604 166.255 54.8646 167.838 54.8646C169.543 54.8646 170.462 56.2154 170.462 57.8542V58.1642H166.122C166.21 59.4487 166.886 60.0355 167.882 60.0355C168.691 60.0355 169.2 59.6147 169.399 58.9725H170.318C170.042 60.0466 169.222 60.8438 167.86 60.8438ZM166.144 57.367H169.51C169.421 56.4258 168.857 55.6729 167.838 55.6729C166.941 55.6729 166.288 56.2376 166.144 57.367ZM174.481 54.8646C175.754 54.8646 176.496 55.5843 176.496 56.8466V60.7109H175.61V56.9352C175.61 56.0494 175.123 55.6618 174.304 55.6618C173.562 55.6618 172.731 56.2154 172.731 57.4777V60.7109H171.845V54.9975H172.687V55.85C173.063 55.2743 173.684 54.8646 174.481 54.8646ZM180.443 54.9975V55.7725H179.27V59.4708C179.27 59.7698 179.414 59.958 179.923 59.958H180.443V60.7109C180.222 60.722 179.99 60.7331 179.812 60.7331C178.927 60.7331 178.384 60.423 178.384 59.5483V55.7725H177.443V54.9975H178.384V53.3808H179.27V54.9975H180.443ZM182.62 54.2224H181.668V53.1372H182.62V54.2224ZM182.598 60.7109H181.712V54.9975H182.598V60.7109ZM186.752 60.8438C185.147 60.8438 183.984 59.6812 183.984 57.8542C183.984 56.0272 185.147 54.8646 186.752 54.8646C188.358 54.8646 189.52 56.0272 189.52 57.8542C189.52 59.6812 188.358 60.8438 186.752 60.8438ZM186.752 60.0466C187.859 60.0466 188.59 59.2383 188.59 57.8542C188.59 56.4701 187.859 55.6618 186.752 55.6618C185.645 55.6618 184.914 56.4701 184.914 57.8542C184.914 59.2383 185.645 60.0466 186.752 60.0466ZM193.543 54.8646C194.816 54.8646 195.558 55.5843 195.558 56.8466V60.7109H194.672V56.9352C194.672 56.0494 194.185 55.6618 193.366 55.6618C192.624 55.6618 191.794 56.2154 191.794 57.4777V60.7109H190.908V54.9975H191.749V55.85C192.126 55.2743 192.746 54.8646 193.543 54.8646ZM197.053 60.7109V59.6037H198.172V60.8106C198.172 61.7739 197.818 62.1725 197.164 62.239L197.053 62.25V61.6521L197.131 61.641C197.43 61.5967 197.541 61.3199 197.541 60.8881V60.7109H197.053ZM208.988 60.7109H208.003L207.083 58.4189H203.496L202.588 60.7109H201.614L204.758 52.8272H205.799L208.988 60.7109ZM203.861 57.4888L203.828 57.5774H206.751L206.707 57.4777C206.364 56.6251 205.744 55.0528 205.268 53.8348C204.814 55.0528 204.205 56.6251 203.861 57.4888ZM212.361 60.8438C210.8 60.8438 209.715 59.6923 209.715 57.8542C209.715 56.0161 210.778 54.8646 212.361 54.8646C213.723 54.8646 214.642 55.6729 214.819 56.9352H213.9C213.745 56.0715 213.081 55.6618 212.361 55.6618C211.387 55.6618 210.645 56.3594 210.645 57.8542C210.645 59.349 211.409 60.0466 212.361 60.0466C213.092 60.0466 213.756 59.6258 213.911 58.7511H214.819C214.631 60.0577 213.646 60.8438 212.361 60.8438ZM218.384 54.9975V55.7725H217.21V59.4708C217.21 59.7698 217.354 59.958 217.864 59.958H218.384V60.7109C218.163 60.722 217.93 60.7331 217.753 60.7331C216.867 60.7331 216.325 60.423 216.325 59.5483V55.7725H215.383V54.9975H216.325V53.3808H217.21V54.9975H218.384ZM228.227 57.5774L229.036 54.9975H229.988L228.084 60.7109H227.153L226.312 58.0646C226.113 57.4334 225.913 56.7691 225.736 56.1269C225.548 56.7691 225.349 57.4334 225.149 58.0646L224.319 60.7109H223.389L221.484 54.9975H222.436L223.245 57.5774C223.466 58.275 223.666 58.9615 223.865 59.659C224.053 58.9615 224.252 58.275 224.474 57.5774L225.271 54.9975H226.201L226.998 57.5774C227.209 58.2639 227.419 58.9504 227.618 59.6369C227.807 58.9504 228.017 58.2639 228.227 57.5774ZM231.897 54.2224H230.945V53.1372H231.897V54.2224ZM231.875 60.7109H230.989V54.9975H231.875V60.7109ZM236.041 54.9975V55.7725H234.867V59.4708C234.867 59.7698 235.011 59.958 235.52 59.958H236.041V60.7109C235.819 60.722 235.587 60.7331 235.41 60.7331C234.524 60.7331 233.981 60.423 233.981 59.5483V55.7725H233.04V54.9975H233.981V53.3808H234.867V54.9975H236.041ZM239.944 54.8646C241.218 54.8646 241.96 55.5843 241.96 56.8466V60.7109H241.074V56.9352C241.074 56.0494 240.587 55.6618 239.767 55.6618C239.025 55.6618 238.195 56.2154 238.195 57.4777V60.7109H237.309V52.8272H238.195V55.7836C238.571 55.2521 239.169 54.8646 239.944 54.8646ZM249.007 60.8881C247.125 60.8881 245.752 60.0798 245.729 58.1089H246.693C246.715 59.5705 247.723 60.0466 249.007 60.0466C250.269 60.0466 251 59.5483 251 58.5739C251 57.821 250.48 57.4556 249.084 57.1455L248.387 56.9905C247.047 56.6916 245.995 56.149 245.995 54.7096C245.995 53.4473 247.047 52.6501 248.686 52.6501C251.011 52.6501 251.731 53.8348 251.764 55.1193H250.812C250.734 54.1006 250.258 53.4916 248.686 53.4916C247.545 53.4916 246.959 53.9677 246.959 54.7096C246.959 55.4625 247.324 55.839 248.808 56.1712L249.505 56.3262C251.321 56.7248 251.963 57.4334 251.963 58.5739C251.963 59.9691 250.9 60.8881 249.007 60.8881ZM256.04 54.8646C257.645 54.8646 258.697 56.0272 258.697 57.8542C258.697 59.6812 257.645 60.8438 256.04 60.8438C255.209 60.8438 254.556 60.5006 254.124 59.8916V62.8812H253.239V54.9975H254.08V55.8833C254.512 55.23 255.187 54.8646 256.04 54.8646ZM255.929 60.0466C257.036 60.0466 257.767 59.194 257.767 57.8099C257.767 56.4258 257.036 55.6618 255.929 55.6618C254.822 55.6618 254.091 56.4701 254.091 57.8542C254.091 59.2383 254.822 60.0466 255.929 60.0466ZM262.461 60.8438C260.9 60.8438 259.803 59.7033 259.803 57.8542C259.803 56.0604 260.855 54.8646 262.439 54.8646C264.144 54.8646 265.063 56.2154 265.063 57.8542V58.1642H260.722C260.811 59.4487 261.486 60.0355 262.483 60.0355C263.291 60.0355 263.801 59.6147 264 58.9725H264.919C264.642 60.0466 263.823 60.8438 262.461 60.8438ZM260.745 57.367H264.111C264.022 56.4258 263.457 55.6729 262.439 55.6729C261.542 55.6729 260.889 56.2376 260.745 57.367ZM268.827 60.8438C267.265 60.8438 266.169 59.7033 266.169 57.8542C266.169 56.0604 267.221 54.8646 268.805 54.8646C270.51 54.8646 271.429 56.2154 271.429 57.8542V58.1642H267.088C267.177 59.4487 267.852 60.0355 268.849 60.0355C269.657 60.0355 270.167 59.6147 270.366 58.9725H271.285C271.008 60.0466 270.189 60.8438 268.827 60.8438ZM267.11 57.367H270.477C270.388 56.4258 269.823 55.6729 268.805 55.6729C267.908 55.6729 267.254 56.2376 267.11 57.367ZM277.108 55.8168V52.8272H277.994V60.7109H277.152V59.8251C276.721 60.4784 276.045 60.8438 275.193 60.8438C273.587 60.8438 272.535 59.6812 272.535 57.8542C272.535 56.0272 273.587 54.8646 275.193 54.8646C276.023 54.8646 276.676 55.2078 277.108 55.8168ZM275.303 60.0466C276.411 60.0466 277.141 59.2383 277.141 57.8542C277.141 56.4701 276.411 55.6618 275.303 55.6618C274.196 55.6618 273.465 56.5144 273.465 57.8985C273.465 59.2826 274.196 60.0466 275.303 60.0466ZM280.318 58.6514H279.742L279.587 54.9975V52.8272H280.517V54.9975L280.318 58.6514ZM280.606 60.7109H279.488V59.6037H280.606V60.7109Z" fill="currentColor"/>
+      </svg>
+            <div class="bk-side-org">GMIC AI</div>
+            <div class="bk-side-title">Demo Call</div>
+
+            <div class="bk-meta" id="bkMeta">
+              <div class="bk-meta-row">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <div>30 min</div>
+              </div>
+              <div class="bk-meta-row">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"></path><rect width="14" height="12" x="2" y="6" rx="2"></rect></svg>
+                <div>Google Meet / Zoom<span class="bk-meta-sub">Link sent after confirmation</span></div>
+              </div>
+              <div class="bk-meta-row">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+                <div id="bkSideTz">—</div>
+              </div>
+            </div>
+
+            <div class="bk-summary" id="bkSummary" style="display:none">
+              <div class="bk-summary-time" id="bkSumTime">—</div>
+              <div class="bk-summary-date" id="bkSumDate">—</div>
+              <div class="bk-summary-tz" id="bkSumTz">—</div>
+              <button type="button" class="bk-change" id="bkChangeTime">&larr; Change time</button>
+            </div>
+
+            <div id="bkSideBody">
+              <p class="bk-side-copy">You'll meet an engineer who has shipped this category before — not an account manager reading from a deck. Come with your use case; leave with a timeline and a number.</p>
+            </div>
+
+            <div class="bk-side-foot">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+              Anaheim, CA · Shenzhen, China
+            </div>
+          </aside>
+
+          <!-- RIGHT — steps -->
+          <div class="bk-main" id="bkMain">
+
+            <!-- STEP 1 -->
+            <div class="bk-panel is-active" id="bkStep1" role="region" aria-label="Select a date and time">
+              <div class="bk-main-head">
+                <h2 class="bk-main-title" id="bkStep1Title" tabindex="-1">Select a Date &amp; Time</h2>
+                <div class="bk-tz">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path d="M2 12h20"></path></svg>
+                  <select id="bkTzSelect" aria-label="Time zone"></select>
+                </div>
+              </div>
+
+              <div class="bk-split">
+                <div>
+                  <div class="bk-cal-head">
+                    <div class="bk-cal-month" id="bkCalMonth" aria-live="polite">—</div>
+                    <div class="bk-cal-nav">
+                      <button type="button" class="bk-cal-arrow" id="bkPrevMonth" aria-label="Previous month">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+                      </button>
+                      <button type="button" class="bk-cal-arrow" id="bkNextMonth" aria-label="Next month">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="bk-dow" aria-hidden="true">
+                    <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
+                  </div>
+                  <div class="bk-grid" id="bkGrid" role="grid" aria-label="Available dates"></div>
+                </div>
+
+                <div class="bk-slots-col" id="bkSlotsCol">
+                  <div class="bk-slots-head" id="bkSlotsHead"></div>
+                  <div class="bk-slots" id="bkSlots" role="listbox" aria-label="Available times"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="bk-panel" id="bkStep2" role="region" aria-label="Enter your details">
+              <div class="bk-main-head">
+                <h2 class="bk-main-title" id="bkStep2Title" tabindex="-1">Enter Details</h2>
+              </div>
+
+              <form class="bk-form" id="bkForm" novalidate>
+                <div class="bk-field" id="fieldName">
+                  <label for="bkName">Full name <span class="bk-req">*</span></label>
+                  <input class="bk-input" type="text" id="bkName" name="name" autocomplete="name" aria-describedby="errName">
+                  <div class="bk-err" id="errName">Please enter your name.</div>
+                </div>
+
+                <div class="bk-field" id="fieldEmail">
+                  <label for="bkEmail">Work email <span class="bk-req">*</span></label>
+                  <input class="bk-input" type="email" id="bkEmail" name="email" autocomplete="email" aria-describedby="errEmail">
+                  <div class="bk-err" id="errEmail">Please enter a valid email address.</div>
+                </div>
+
+                <div class="bk-field" id="fieldCompany">
+                  <label for="bkCompany">Company <span class="bk-req">*</span></label>
+                  <input class="bk-input" type="text" id="bkCompany" name="company" autocomplete="organization" aria-describedby="errCompany">
+                  <div class="bk-err" id="errCompany">Please enter your company name.</div>
+                </div>
+
+                <div class="bk-field" id="fieldPhone">
+                  <label for="bkPhone">Phone <span class="bk-opt">(optional)</span></label>
+                  <input class="bk-input" type="tel" id="bkPhone" name="phone" autocomplete="tel">
+                </div>
+
+                <div class="bk-field" id="fieldNotes">
+                  <label for="bkNotes">What would you like to cover? <span class="bk-opt">(optional)</span></label>
+                  <textarea class="bk-textarea" id="bkNotes" name="notes" placeholder="Your use case, target volume, timeline — anything that helps us prepare."></textarea>
+                </div>
+
+                <p class="bk-fine">By scheduling, you agree to our <a href="../index.html" id="bkPrivacy">Privacy Policy</a>. Your information is never shared.</p>
+
+                <div class="bk-actions">
+                  <button type="button" class="bk-btn-ghost" id="bkBack">Back</button>
+                  <button type="submit" class="bk-btn-primary" id="bkSubmit">
+                    <span class="bk-spin" aria-hidden="true"></span>
+                    <span id="bkSubmitLabel">Schedule Event →</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="bk-panel" id="bkStep3" role="region" aria-label="Booking confirmed">
+              <div class="bk-done">
+                <div class="bk-done-check">
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                </div>
+                <h2 class="bk-done-title" id="bkStep3Title" tabindex="-1">You're booked.</h2>
+                <p class="bk-done-sub">A calendar invite and a Google Meet link are on their way to <strong id="bkDoneEmail">—</strong>.</p>
+
+                <div class="bk-detail">
+                  <div class="bk-detail-row">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18M8 2v4M16 2v4"></path></svg>
+                    <div class="bk-detail-val" id="bkDoneDate">—</div>
+                  </div>
+                  <div class="bk-detail-row">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    <div class="bk-detail-val" id="bkDoneTime">—<span class="bk-detail-note" id="bkDoneHostTime"></span></div>
+                  </div>
+                  <div class="bk-detail-row">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"></path><rect width="14" height="12" x="2" y="6" rx="2"></rect></svg>
+                    <div class="bk-detail-val">Google Meet<span class="bk-detail-note">Link included in your invite</span></div>
+                  </div>
+                  <div class="bk-detail-row">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    <div class="bk-detail-val" id="bkDoneWho">—</div>
+                  </div>
+                </div>
+
+                <div class="bk-add">
+                  <div class="bk-add-head">Add to calendar</div>
+                  <div class="bk-add-grid">
+                    <button type="button" class="bk-add-btn" id="bkAddGoogle">
+                      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.23c0-.71-.06-1.4-.18-2.05H12v3.88h5.38a4.6 4.6 0 0 1-2 3.02v2.5h3.24c1.89-1.74 2.98-4.3 2.98-7.35Z"/><path fill="#34A853" d="M12 22c2.7 0 4.96-.9 6.62-2.42l-3.24-2.5c-.9.6-2.05.96-3.38.96-2.6 0-4.8-1.76-5.59-4.12H3.06v2.59A10 10 0 0 0 12 22Z"/><path fill="#FBBC05" d="M6.41 13.92a6 6 0 0 1 0-3.84V7.49H3.06a10 10 0 0 0 0 9.02l3.35-2.59Z"/><path fill="#EA4335" d="M12 5.98c1.47 0 2.79.5 3.83 1.5l2.87-2.87C16.95 2.99 14.7 2 12 2A10 10 0 0 0 3.06 7.49l3.35 2.59C7.2 7.72 9.4 5.98 12 5.98Z"/></svg>
+                      Google
+                    </button>
+                    <button type="button" class="bk-add-btn" id="bkAddOutlook">
+                      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="#0364B8" d="M23 6.5v11a1 1 0 0 1-1 1H11v-13h11a1 1 0 0 1 1 1Z"/><path fill="#28A8EA" d="M23 7.2v10.3a1 1 0 0 1-1 1H11V11l12-3.8Z" opacity=".85"/><rect width="11" height="15" x="1" y="4.5" fill="#0078D4" rx="1.2"/><path fill="#fff" d="M6.5 8.1c-1.63 0-2.7 1.55-2.7 3.9s1.07 3.9 2.7 3.9 2.7-1.55 2.7-3.9-1.07-3.9-2.7-3.9Zm0 6.3c-.83 0-1.35-.93-1.35-2.4s.52-2.4 1.35-2.4 1.35.93 1.35 2.4-.52 2.4-1.35 2.4Z"/></svg>
+                      Outlook
+                    </button>
+                    <button type="button" class="bk-add-btn" id="bkAddApple">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="#111" aria-hidden="true"><path d="M16.36 12.7c-.02-2.2 1.8-3.26 1.88-3.31-1.03-1.5-2.62-1.7-3.19-1.73-1.36-.14-2.65.8-3.34.8-.69 0-1.75-.78-2.88-.76-1.48.02-2.85.86-3.61 2.18-1.54 2.67-.39 6.62 1.11 8.79.73 1.06 1.6 2.25 2.75 2.21 1.1-.04 1.52-.71 2.85-.71 1.33 0 1.71.71 2.88.69 1.19-.02 1.94-1.08 2.66-2.15.84-1.23 1.19-2.42 1.21-2.48-.03-.01-2.32-.89-2.34-3.53ZM14.2 6.24c.61-.74 1.02-1.77.91-2.79-.88.04-1.94.58-2.57 1.32-.56.65-1.05 1.7-.92 2.7.98.08 1.98-.5 2.58-1.23Z"/></svg>
+                      Apple
+                    </button>
+                    <button type="button" class="bk-add-btn" id="bkAddIcs">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="#111" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                      Other (.ics)
+                    </button>
+                  </div>
+                  <div class="bk-add-alt">Using Microsoft 365 at work? <button type="button" id="bkAddO365">Add to Office 365</button></div>
+                </div>
+
+                <div class="bk-done-foot">
+                  <button type="button" class="bk-link" id="bkAgain">Schedule another</button>
+                  <a href="../index.html" class="bk-link bk-link-muted">&larr; Back to gmic.ai</a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 2 — WHAT TO EXPECT ========== -->
+<section class="bk-expect">
+  <div class="ct-wrap">
+    <div class="bk-inner">
+      <div class="bk-sec-head">
+        <span class="ct-eyebrow">What to expect</span>
+        <h2>Thirty minutes that are actually worth your time.</h2>
+      </div>
+
+      <div class="bk-expect-grid">
+        <div class="bk-xcard">
+          <div class="bk-xcard-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <div class="bk-xcard-title">30 minutes, no slides</div>
+          <div class="bk-xcard-desc">A working session with an engineer who has shipped this category before.</div>
+        </div>
+
+        <div class="bk-xcard">
+          <div class="bk-xcard-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          </div>
+          <div class="bk-xcard-title">NDA on day one</div>
+          <div class="bk-xcard-desc">Your concept and IP are protected from the very first conversation.</div>
+        </div>
+
+        <div class="bk-xcard">
+          <div class="bk-xcard-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v5h5M9 13h6M9 17h4"></path></svg>
+          </div>
+          <div class="bk-xcard-title">Leave with a number</div>
+          <div class="bk-xcard-desc">Indicative pricing and a realistic timeline at your target volume.</div>
+        </div>
+
+        <div class="bk-xcard">
+          <div class="bk-xcard-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <div class="bk-xcard-title">US + Shenzhen team</div>
+          <div class="bk-xcard-desc">Engineering in Shenzhen, client and product support in Anaheim, CA.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SECTION 3 — OR REACH US DIRECTLY ========== -->
+<section class="bk-reach">
+  <div class="ct-wrap">
+    <div class="bk-inner">
+      <div class="bk-reach-grid">
+        <div class="bk-reach-copy">
+          <span class="ct-eyebrow">Or reach us directly</span>
+          <h2>Rather just send a note?</h2>
+          <p>Email either team directly — a real person replies within one business day.</p>
+        </div>
+
+        <div class="bk-reach-card">
+          <div class="bk-reach-city">Anaheim, CA</div>
+          <div class="bk-reach-role">Client &amp; Product</div>
+          <a href="mailto:trigg@gmic.ai" class="bk-reach-email">trigg@gmic.ai</a>
+          <div class="bk-reach-line">(669) 900-0008</div>
+        </div>
+
+        <div class="bk-reach-card">
+          <div class="bk-reach-city">Shenzhen, CN</div>
+          <div class="bk-reach-role">Engineering &amp; Manufacturing</div>
+          <a href="mailto:swallow@gmic.ai" class="bk-reach-email">swallow@gmic.ai</a>
+          <div class="bk-reach-line">Shenzhen HQ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer" id="company">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">GMIC.AI</a>
+        <p>Designing and manufacturing the embedded hardware behind the voice-first era.</p>
+        <div class="footer-contact">
+          <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a><br>
+          <a href="tel:+16699000008">+1 (669) 900-0008</a><br>
+          Anaheim, CA · Shenzhen, CN
+        </div>
+        <div class="cert-pills">
+          <span class="pill">FCC</span>
+          <span class="pill">CE</span>
+          <span class="pill">UKCA</span>
+          <span class="pill">TELEC</span>
+          <span class="pill">RoHS</span>
+          <span class="pill">ISED</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="../solutions/edge-ai-hardware/index.html">Edge AI Hardware</a></li>
+          <li><a href="../solutions/voice-ai-hardware/index.html">Voice AI Hardware</a></li>
+          <li><a href="../solutions/ai-wearable-devices/index.html">AI Wearable Devices</a></li>
+          <li><a href="../custom-devices/odm-oem/index.html">AI Hardware ODM</a></li>
+          <li><a href="../solutions/embedded-ai-hardware/index.html">Embedded AI Hardware</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="../industries/healthcare/index.html">Healthcare AI</a></li>
+          <li><a href="../industries/enterprise/index.html">Enterprise AI</a></li>
+          <li><a href="../industries/field-service/index.html">Field Service AI</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="https://gmic.ai/blog/" target="_blank" rel="noopener">Blog</a></li>
+          <li><a href="#insights">Case Studies</a></li>
+          <li><a href="#process">Our Process</a></li>
+          <li><a href="#why-gmic">Engineering Capabilities</a></li>
+          <li><a href="../contact/index.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about/index.html">About GMIC</a></li>
+          <li><a href="../proof/index.html">Customer Stories</a></li>
+          <li><a href="https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb" target="_blank" rel="noopener">Book a Demo</a></li>
+          <li style="display:none"><a href="#">Careers</a></li>
+          <li style="display:none"><a href="#">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 GMIC.AI · All rights reserved.</div>
+      <div>
+        <a href="#" style="display:none">Privacy</a>
+        <a href="#" style="display:none">Terms</a>
+        <a href="#" style="display:none">Cookies</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // 本页 nav 常驻 scrolled 状态，不随滚动切换
+  var nav = document.getElementById('nav');
+  if(nav) nav.classList.add('scrolled');
+
+  document.addEventListener('click', function(e){
+    if(!e.target.closest('.nav-item')){
+      document.querySelectorAll('.nav-dropdown').forEach(function(d){ d.style.display=''; });
+    }
+  });
+
+  var navBurger = document.getElementById('navBurger');
+  var mobileNav = document.getElementById('mobileNav');
+  var mobileNavOverlay = document.getElementById('mobileNavOverlay');
+  function openMobileNav(){
+    mobileNav.classList.add('open'); mobileNavOverlay.classList.add('open');
+    navBurger.classList.add('open'); navBurger.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  }
+  function closeMobileNav(){
+    mobileNav.classList.remove('open'); mobileNavOverlay.classList.remove('open');
+    navBurger.classList.remove('open'); navBurger.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+  if(navBurger){
+    navBurger.addEventListener('click', function(){
+      if(mobileNav.classList.contains('open')) closeMobileNav(); else openMobileNav();
+    });
+  }
+  if(mobileNavOverlay) mobileNavOverlay.addEventListener('click', closeMobileNav);
+  document.querySelectorAll('.mobile-nav-link').forEach(function(l){ l.addEventListener('click', closeMobileNav); });
+
+  if(typeof lucide !== 'undefined') lucide.createIcons();
+})();
+</script>
+
+<script>
+/* ============================================================
+   GMIC AI — Book a Demo
+   纯前端预约流程（无后端 / 无第三方日历库 / 不使用 localStorage）
+   ============================================================ */
+(function () {
+  'use strict';
+
+  /* ---------------------------------------------------------
+     1. 配置 —— 所有可调参数集中在这里
+     --------------------------------------------------------- */
+  var BOOKING_CONFIG = {
+    hostTimeZone: 'America/Los_Angeles', // GMIC 团队所在时区，所有可约时段以此时区定义
+    durationMinutes: 30,                 // 单场会议时长
+    availableWeekdays: [1, 2, 3, 4, 5],  // 可约的星期 (0=周日 ... 6=周六)
+    dayStartHour: 9,                     // 主办方本地时间，可约窗口开始
+    dayEndHour: 17,                      // 主办方本地时间，可约窗口结束
+    lunchBreak: { startHour: 12, endHour: 13 }, // 午休，不生成时段；设为 null 取消
+    minNoticeHours: 24,                  // 最早可约：从现在起至少提前多少小时
+    bookingWindowDays: 60,               // 最晚可约：往后多少天
+    blackoutDates: [                     // 手动屏蔽的日期（主办方时区，YYYY-MM-DD）
+      '2026-09-07', '2026-11-26', '2026-11-27',
+      '2026-12-24', '2026-12-25', '2027-01-01'
+    ],
+    simulateBookedSlots: true,           // 演示用：把部分时段伪装成已被约满
+    simulatedBookedRate: 32,             // 被约满的百分比
+    eventTitle: 'GMIC AI — Demo Call',
+    organizerName: 'GMIC AI',
+    organizerEmail: 'hello@gmic.ai',
+    location: 'Google Meet'
+  };
+
+  var TZ_CHOICES = [
+    { id: 'America/Los_Angeles', label: 'Pacific Time' },
+    { id: 'America/Denver',      label: 'Mountain Time' },
+    { id: 'America/Chicago',     label: 'Central Time' },
+    { id: 'America/New_York',    label: 'Eastern Time' },
+    { id: 'Europe/London',       label: 'United Kingdom Time' },
+    { id: 'Europe/Berlin',       label: 'Central European Time' },
+    { id: 'Asia/Dubai',          label: 'Gulf Standard Time' },
+    { id: 'Asia/Kolkata',        label: 'India Standard Time' },
+    { id: 'Asia/Shanghai',       label: 'China Standard Time' },
+    { id: 'Asia/Tokyo',          label: 'Japan Standard Time' },
+    { id: 'Australia/Sydney',    label: 'Australian Eastern Time' }
+  ];
+
+  /* ---------------------------------------------------------
+     2. 时区工具 —— 全部走 Intl，绝不用字符串拼时间
+     --------------------------------------------------------- */
+  var PART_FMT_CACHE = {};
+  function partsFormatter(tz) {
+    if (!PART_FMT_CACHE[tz]) {
+      PART_FMT_CACHE[tz] = new Intl.DateTimeFormat('en-US', {
+        timeZone: tz, hour12: false,
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
+      });
+    }
+    return PART_FMT_CACHE[tz];
+  }
+
+  // 把一个绝对时刻拆成"在某时区里显示的日历字段"
+  function partsInZone(date, tz) {
+    var out = {};
+    partsFormatter(tz).formatToParts(date).forEach(function (p) {
+      if (p.type !== 'literal') out[p.type] = p.value;
+    });
+    var hour = parseInt(out.hour, 10);
+    if (hour === 24) hour = 0; // 某些引擎午夜返回 24
+    return {
+      year: parseInt(out.year, 10),
+      month: parseInt(out.month, 10),
+      day: parseInt(out.day, 10),
+      hour: hour,
+      minute: parseInt(out.minute, 10),
+      second: parseInt(out.second, 10)
+    };
+  }
+
+  // 某时区在某个绝对时刻的 UTC 偏移（毫秒）
+  function zoneOffsetMs(date, tz) {
+    var p = partsInZone(date, tz);
+    var asUTC = Date.UTC(p.year, p.month - 1, p.day, p.hour, p.minute, p.second);
+    return asUTC - Math.floor(date.getTime() / 1000) * 1000;
+  }
+
+  // 把"某时区的墙上时间"转成绝对时刻（正确处理夏令时）
+  function zonedTimeToUtc(y, m, d, hh, mm, tz) {
+    var guess = Date.UTC(y, m - 1, d, hh, mm, 0);
+    var off = zoneOffsetMs(new Date(guess), tz);
+    var ts = guess - off;
+    var off2 = zoneOffsetMs(new Date(ts), tz);
+    if (off2 !== off) ts = guess - off2;
+    return new Date(ts);
+  }
+
+  function pad2(n) { return (n < 10 ? '0' : '') + n; }
+  function dateKey(y, m, d) { return y + '-' + pad2(m) + '-' + pad2(d); }
+  function keyInZone(date, tz) {
+    var p = partsInZone(date, tz);
+    return dateKey(p.year, p.month, p.day);
+  }
+  // 'YYYY-MM-DD' → 用 UTC 正午当锚点，避免任何时区漂移
+  function keyToAnchor(key) { return new Date(key + 'T12:00:00Z'); }
+
+  function fmtTime(date, tz) {
+    return new Intl.DateTimeFormat('en-US', {
+      timeZone: tz, hour: 'numeric', minute: '2-digit', hour12: true
+    }).format(date).toLowerCase().replace(/\s/g, '');
+  }
+  function fmtTimeRange(start, end, tz) { return fmtTime(start, tz) + ' – ' + fmtTime(end, tz); }
+  function fmtDateLong(key) {
+    return new Intl.DateTimeFormat('en-US', {
+      timeZone: 'UTC', weekday: 'long', month: 'long', day: 'numeric'
+    }).format(keyToAnchor(key));
+  }
+  function fmtDateFull(key) {
+    return new Intl.DateTimeFormat('en-US', {
+      timeZone: 'UTC', weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
+    }).format(keyToAnchor(key));
+  }
+  function tzAbbrev(date, tz) {
+    var parts = new Intl.DateTimeFormat('en-US', { timeZone: tz, timeZoneName: 'long' }).formatToParts(date);
+    for (var i = 0; i < parts.length; i++) if (parts[i].type === 'timeZoneName') return parts[i].value;
+    return tz;
+  }
+  function tzLabel(tz) {
+    for (var i = 0; i < TZ_CHOICES.length; i++) if (TZ_CHOICES[i].id === tz) return TZ_CHOICES[i].label;
+    return tz.split('/').pop().replace(/_/g, ' ') + ' Time';
+  }
+
+  /* ---------------------------------------------------------
+     3. 时段生成
+     ⚠️ 这是前端模拟数据。将来接真实后端（Google Calendar API /
+        Cal.com / 自建服务）时，只需要替换 getAvailableSlots()
+        一个函数，返回同样结构的 {start, end} 数组即可，
+        页面其它部分完全不用改。
+     --------------------------------------------------------- */
+  function stableHash(str) { // 确定性伪随机，保证重绘时结果一致
+    var h = 2166136261;
+    for (var i = 0; i < str.length; i++) {
+      h ^= str.charCodeAt(i);
+      h = (h * 16777619) >>> 0;
+    }
+    return h;
+  }
+
+  var ALL_SLOTS = null;
+  function getAvailableSlots() {
+    if (ALL_SLOTS) return ALL_SLOTS;
+    var C = BOOKING_CONFIG;
+    var host = C.hostTimeZone;
+    var minTs = Date.now() + C.minNoticeHours * 3600000;
+    var today = partsInZone(new Date(), host);
+    var cursor = Date.UTC(today.year, today.month - 1, today.day);
+    var out = [];
+
+    for (var i = 0; i <= C.bookingWindowDays; i++) {
+      var d = new Date(cursor + i * 86400000);
+      var y = d.getUTCFullYear(), mo = d.getUTCMonth() + 1, da = d.getUTCDate();
+      var key = dateKey(y, mo, da);
+      if (C.availableWeekdays.indexOf(d.getUTCDay()) === -1) continue;
+      if (C.blackoutDates.indexOf(key) !== -1) continue;
+
+      for (var mins = C.dayStartHour * 60; mins + C.durationMinutes <= C.dayEndHour * 60; mins += C.durationMinutes) {
+        if (C.lunchBreak && mins < C.lunchBreak.endHour * 60 && mins + C.durationMinutes > C.lunchBreak.startHour * 60) continue;
+        var hh = Math.floor(mins / 60), mm = mins % 60;
+        var start = zonedTimeToUtc(y, mo, da, hh, mm, host);
+        if (start.getTime() < minTs) continue;
+        if (C.simulateBookedSlots && stableHash(key + 'T' + pad2(hh) + pad2(mm)) % 100 < C.simulatedBookedRate) continue;
+        out.push({ start: start, end: new Date(start.getTime() + C.durationMinutes * 60000) });
+      }
+    }
+    ALL_SLOTS = out;
+    return out;
+  }
+
+  // 按访客时区把时段分组到"访客本地日期"（跨时区可能跨天，这一步很关键）
+  function groupSlotsByViewerDate(tz) {
+    var map = {};
+    getAvailableSlots().forEach(function (s) {
+      var k = keyInZone(s.start, tz);
+      (map[k] || (map[k] = [])).push(s);
+    });
+    Object.keys(map).forEach(function (k) {
+      map[k].sort(function (a, b) { return a.start - b.start; });
+    });
+    return map;
+  }
+
+  /* ---------------------------------------------------------
+     4. 状态
+     --------------------------------------------------------- */
+  var state = {
+    step: 1,
+    timeZone: (Intl.DateTimeFormat().resolvedOptions().timeZone) || 'America/Los_Angeles',
+    slotsByDate: {},
+    viewYear: 0,
+    viewMonth: 0,   // 1-12
+    selectedDate: null,  // 'YYYY-MM-DD'（访客时区）
+    selectedSlot: null,  // {start, end}
+    name: '', email: '', company: '', phone: '', notes: ''
+  };
+
+  var $ = function (id) { return document.getElementById(id); };
+
+  /* ---------------------------------------------------------
+     5. 时区选择器
+     --------------------------------------------------------- */
+  function buildTzOptions() {
+    var sel = $('bkTzSelect');
+    var now = new Date();
+    var list = TZ_CHOICES.slice();
+    var detected = state.timeZone;
+    var known = list.some(function (t) { return t.id === detected; });
+    if (!known) list.unshift({ id: detected, label: tzLabel(detected) });
+
+    sel.innerHTML = '';
+    list.forEach(function (t) {
+      var o = document.createElement('option');
+      o.value = t.id;
+      var clock = new Intl.DateTimeFormat('en-US', { timeZone: t.id, hour: 'numeric', minute: '2-digit', hour12: true })
+        .format(now).toLowerCase().replace(/\s/g, '');
+      o.textContent = t.label + ' (' + clock + ')' + (t.id === detected ? ' · detected' : '');
+      sel.appendChild(o);
+    });
+    sel.value = detected;
+  }
+
+  /* ---------------------------------------------------------
+     6. 渲染 —— 日历
+     --------------------------------------------------------- */
+  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  function firstAvailableMonth() {
+    var keys = Object.keys(state.slotsByDate).sort();
+    if (!keys.length) {
+      var p = partsInZone(new Date(), state.timeZone);
+      return { y: p.year, m: p.month };
+    }
+    var a = keyToAnchor(keys[0]);
+    return { y: a.getUTCFullYear(), m: a.getUTCMonth() + 1 };
+  }
+
+  function renderCalendar() {
+    var grid = $('bkGrid');
+    grid.innerHTML = '';
+    $('bkCalMonth').textContent = MONTHS[state.viewMonth - 1] + ' ' + state.viewYear;
+
+    var firstDow = new Date(Date.UTC(state.viewYear, state.viewMonth - 1, 1)).getUTCDay();
+    var daysInMonth = new Date(Date.UTC(state.viewYear, state.viewMonth, 0)).getUTCDate();
+    var todayKey = keyInZone(new Date(), state.timeZone);
+
+    for (var b = 0; b < firstDow; b++) {
+      var blank = document.createElement('div');
+      blank.className = 'bk-cell';
+      blank.setAttribute('aria-hidden', 'true');
+      grid.appendChild(blank);
+    }
+
+    for (var d = 1; d <= daysInMonth; d++) {
+      var key = dateKey(state.viewYear, state.viewMonth, d);
+      var open = !!(state.slotsByDate[key] && state.slotsByDate[key].length);
+      var cell = document.createElement('div');
+      cell.className = 'bk-cell';
+      cell.setAttribute('role', 'gridcell');
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'bk-day' + (open ? ' is-open' : '') + (key === todayKey ? ' is-today' : '') +
+                      (key === state.selectedDate ? ' is-selected' : '');
+      btn.innerHTML = '<span>' + d + '</span>';
+      btn.dataset.key = key;
+      if (open) {
+        btn.setAttribute('aria-label', fmtDateLong(key) + ' — ' + state.slotsByDate[key].length + ' times available');
+        btn.addEventListener('click', function () { selectDate(this.dataset.key); });
+      } else {
+        btn.disabled = true;
+        btn.setAttribute('aria-label', fmtDateLong(key) + ' — no times available');
+      }
+      cell.appendChild(btn);
+      grid.appendChild(cell);
+    }
+
+    // 上一月按钮：已经在"当前月"时禁用
+    var nowP = partsInZone(new Date(), state.timeZone);
+    $('bkPrevMonth').disabled = (state.viewYear === nowP.year && state.viewMonth === nowP.month) ||
+      (state.viewYear < nowP.year || (state.viewYear === nowP.year && state.viewMonth < nowP.month));
+  }
+
+  // 日历键盘导航：方向键移动焦点，自动跳过不可约日期
+  function calKeydown(e) {
+    var keys = ['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'];
+    if (keys.indexOf(e.key) === -1) return;
+    var btns = Array.prototype.slice.call($('bkGrid').querySelectorAll('.bk-day'));
+    var idx = btns.indexOf(document.activeElement);
+    if (idx === -1) return;
+    e.preventDefault();
+    var step = e.key === 'ArrowLeft' ? -1 : e.key === 'ArrowRight' ? 1 : e.key === 'ArrowUp' ? -7 : e.key === 'ArrowDown' ? 7 : 0;
+    if (e.key === 'Home' || e.key === 'End') {
+      var pool = btns.filter(function (b) { return !b.disabled; });
+      if (pool.length) (e.key === 'Home' ? pool[0] : pool[pool.length - 1]).focus();
+      return;
+    }
+    var i = idx + step;
+    while (i >= 0 && i < btns.length) {
+      if (!btns[i].disabled) { btns[i].focus(); return; }
+      i += (step > 0 ? 1 : -1);
+    }
+  }
+
+  function shiftMonth(delta) {
+    var m = state.viewMonth + delta, y = state.viewYear;
+    if (m < 1) { m = 12; y--; } else if (m > 12) { m = 1; y++; }
+    state.viewYear = y; state.viewMonth = m;
+    renderCalendar();
+  }
+
+  /* ---------------------------------------------------------
+     7. 渲染 —— 时段
+     --------------------------------------------------------- */
+  function renderSlots() {
+    var head = $('bkSlotsHead'), box = $('bkSlots');
+    box.innerHTML = '';
+    if (!state.selectedDate) {
+      head.textContent = '';
+      box.innerHTML = '<div class="bk-empty">' +
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18M8 2v4M16 2v4"></path></svg>' +
+        'Select a date to see available times</div>';
+      return;
+    }
+    head.textContent = fmtDateLong(state.selectedDate);
+    var slots = state.slotsByDate[state.selectedDate] || [];
+    slots.forEach(function (slot) {
+      var row = document.createElement('div');
+      row.className = 'bk-slot-row';
+
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'bk-slot';
+      btn.setAttribute('role', 'option');
+      btn.setAttribute('aria-selected', 'false');
+      btn.textContent = fmtTime(slot.start, state.timeZone);
+
+      var next = document.createElement('button');
+      next.type = 'button';
+      next.className = 'bk-next';
+      next.textContent = 'Next';
+      next.tabIndex = -1;
+
+      btn.addEventListener('click', function () {
+        Array.prototype.forEach.call(box.querySelectorAll('.bk-slot-row'), function (r) {
+          r.classList.remove('is-selected');
+          var s = r.querySelector('.bk-slot'); if (s) s.setAttribute('aria-selected', 'false');
+          var n = r.querySelector('.bk-next'); if (n) n.tabIndex = -1;
+        });
+        row.classList.add('is-selected');
+        btn.setAttribute('aria-selected', 'true');
+        next.tabIndex = 0;
+        state.selectedSlot = slot;
+      });
+      next.addEventListener('click', function () { if (state.selectedSlot) goStep(2); });
+
+      row.appendChild(btn);
+      row.appendChild(next);
+      box.appendChild(row);
+    });
+    updateSlotFade();
+  }
+
+  // 时段列表底部渐隐：只在真的还能往下滚时显示
+  function updateSlotFade() {
+    var col = $('bkSlotsCol'), box = $('bkSlots');
+    var scrollable = box.scrollHeight - box.clientHeight > 2;
+    col.classList.toggle('is-scrollable', scrollable);
+    col.classList.toggle('at-end', box.scrollTop + box.clientHeight >= box.scrollHeight - 2);
+  }
+
+  function selectDate(key) {
+    state.selectedDate = key;
+    state.selectedSlot = null;
+    renderCalendar();
+    renderSlots();
+  }
+
+  /* ---------------------------------------------------------
+     8. 时区变化 → 全量重算
+     --------------------------------------------------------- */
+  function applyTimeZone(tz, keepView) {
+    var prevSlotStart = state.selectedSlot ? state.selectedSlot.start.getTime() : null;
+    state.timeZone = tz;
+    state.slotsByDate = groupSlotsByViewerDate(tz);
+
+    if (!keepView) {
+      var m = firstAvailableMonth();
+      state.viewYear = m.y; state.viewMonth = m.m;
+    }
+    // 换时区后，同一个时刻可能落到另一个本地日期上，跟着搬过去
+    if (prevSlotStart) {
+      state.selectedDate = keyInZone(new Date(prevSlotStart), tz);
+      var a = keyToAnchor(state.selectedDate);
+      state.viewYear = a.getUTCFullYear(); state.viewMonth = a.getUTCMonth() + 1;
+    } else if (state.selectedDate && !state.slotsByDate[state.selectedDate]) {
+      state.selectedDate = null;
+    }
+
+    $('bkSideTz').textContent = tzAbbrev(new Date(), tz);
+    renderCalendar();
+    renderSlots();
+    // 保持之前选中的那个时刻仍然是选中态
+    if (prevSlotStart) {
+      var rows = $('bkSlots').querySelectorAll('.bk-slot-row');
+      var slots = state.slotsByDate[state.selectedDate] || [];
+      for (var i = 0; i < slots.length; i++) {
+        if (slots[i].start.getTime() === prevSlotStart && rows[i]) {
+          rows[i].classList.add('is-selected');
+          rows[i].querySelector('.bk-slot').setAttribute('aria-selected', 'true');
+          rows[i].querySelector('.bk-next').tabIndex = 0;
+          state.selectedSlot = slots[i];
+          break;
+        }
+      }
+    }
+  }
+
+  /* ---------------------------------------------------------
+     9. 步骤切换
+     --------------------------------------------------------- */
+  var STEP_NAMES = ['Pick a time', 'Your details', 'Confirmed'];
+
+  function goStep(n) {
+    state.step = n;
+    ['bkStep1', 'bkStep2', 'bkStep3'].forEach(function (id, i) {
+      $(id).classList.toggle('is-active', i + 1 === n);
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('.bk-step-item'), function (el) {
+      var s = parseInt(el.dataset.step, 10);
+      el.classList.toggle('is-active', s === n);
+      el.classList.toggle('is-done', s < n);
+      el.querySelector('.bk-step-num').textContent = s < n ? '✓' : s;
+    });
+    $('bkStepsMobile').textContent = 'Step ' + n + ' of 3 — ' + STEP_NAMES[n - 1];
+
+    $('bkGridWrap').classList.toggle('is-confirmed', n === 3);
+    $('bkMeta').style.display = n === 1 ? '' : 'none';
+    $('bkSummary').style.display = n === 2 ? '' : 'none';
+    $('bkSideBody').style.display = n === 1 ? '' : 'none';
+
+    if (n === 2) renderSummary();
+    if (n === 3) renderConfirmation();
+
+    var title = $('bkStep' + n + 'Title');
+    if (title) title.focus({ preventScroll: true });
+    // 只把预约窗口滚回视野，不要把整页拉到顶部
+    var win = $('bkWindow');
+    if (win && win.getBoundingClientRect().top < 0) {
+      window.scrollTo({ top: win.getBoundingClientRect().top + window.scrollY - 96, behavior: 'smooth' });
+    }
+  }
+
+  function renderSummary() {
+    var s = state.selectedSlot;
+    if (!s) return;
+    $('bkSumTime').textContent = fmtTimeRange(s.start, s.end, state.timeZone);
+    $('bkSumDate').textContent = fmtDateFull(keyInZone(s.start, state.timeZone));
+    $('bkSumTz').textContent = BOOKING_CONFIG.durationMinutes + ' min · ' + tzAbbrev(s.start, state.timeZone);
+  }
+
+  /* ---------------------------------------------------------
+     10. 表单校验
+     --------------------------------------------------------- */
+  var FREE_EMAIL = ['gmail.com','yahoo.com','hotmail.com','outlook.com','live.com','icloud.com','aol.com','qq.com','163.com','126.com','foxmail.com','proton.me','protonmail.com','yandex.com','mail.com'];
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
+  function setError(fieldId, msg) {
+    var f = $(fieldId);
+    f.classList.add('has-error');
+    var input = f.querySelector('.bk-input, .bk-textarea');
+    if (input) input.setAttribute('aria-invalid', 'true');
+    if (msg) { var e = f.querySelector('.bk-err'); if (e) e.textContent = msg; }
+  }
+  function clearError(fieldId) {
+    var f = $(fieldId);
+    f.classList.remove('has-error');
+    var input = f.querySelector('.bk-input, .bk-textarea');
+    if (input) input.removeAttribute('aria-invalid');
+  }
+
+  function validateField(id) {
+    var v;
+    if (id === 'fieldName') {
+      v = $('bkName').value.trim();
+      if (!v) { setError(id, 'Please enter your name.'); return false; }
+    } else if (id === 'fieldEmail') {
+      v = $('bkEmail').value.trim().toLowerCase();
+      if (!v) { setError(id, 'Please enter your work email.'); return false; }
+      if (!EMAIL_RE.test(v)) { setError(id, 'Please enter a valid email address.'); return false; }
+      if (FREE_EMAIL.indexOf(v.split('@')[1]) !== -1) {
+        setError(id, 'Please use your work email so we can prepare for the call.');
+        return false;
+      }
+    } else if (id === 'fieldCompany') {
+      v = $('bkCompany').value.trim();
+      if (!v) { setError(id, 'Please enter your company name.'); return false; }
+    }
+    clearError(id);
+    return true;
+  }
+
+  /* ---------------------------------------------------------
+     11. 提交
+     TODO — 接后端时在这里发请求，例如 Formspree：
+       var res = await fetch('https://formspree.io/f/XXXXXXX', {
+         method: 'POST',
+         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+         body: JSON.stringify(payload)
+       });
+       if (!res.ok) throw new Error('submit failed');
+     或者换成自建 API / Cal.com / Google Calendar API。
+     --------------------------------------------------------- */
+  function submitBooking(payload) {
+    console.log('[GMIC booking] payload →', payload);
+    return new Promise(function (resolve) { setTimeout(resolve, 800); });
+  }
+
+  /* ---------------------------------------------------------
+     12. 日历导出 —— Google / Outlook / Office 365 / .ics
+     --------------------------------------------------------- */
+  function utcStamp(date) { // 20260820T170000Z
+    return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  }
+  function eventDescription() {
+    var lines = [
+      'A 30-minute working session with a GMIC AI hardware engineer.',
+      '',
+      'Attendee: ' + state.name + ' (' + state.company + ')',
+      'Email: ' + state.email
+    ];
+    if (state.phone) lines.push('Phone: ' + state.phone);
+    if (state.notes) lines.push('', 'Notes: ' + state.notes);
+    lines.push('', 'A Google Meet link will be included in the invite from GMIC AI.', 'Questions? ' + BOOKING_CONFIG.organizerEmail);
+    return lines.join('\n');
+  }
+
+  function googleUrl() {
+    var s = state.selectedSlot;
+    return 'https://calendar.google.com/calendar/render?action=TEMPLATE' +
+      '&text=' + encodeURIComponent(BOOKING_CONFIG.eventTitle) +
+      '&dates=' + utcStamp(s.start) + '/' + utcStamp(s.end) +
+      '&details=' + encodeURIComponent(eventDescription()) +
+      '&location=' + encodeURIComponent(BOOKING_CONFIG.location) +
+      '&sf=true&output=xml';
+  }
+  function outlookUrl(host) {
+    var s = state.selectedSlot;
+    return host + '/calendar/0/deeplink/compose?path=%2Fcalendar%2Faction%2Fcompose&rru=addevent' +
+      '&subject=' + encodeURIComponent(BOOKING_CONFIG.eventTitle) +
+      '&startdt=' + encodeURIComponent(s.start.toISOString()) +
+      '&enddt=' + encodeURIComponent(s.end.toISOString()) +
+      '&body=' + encodeURIComponent(eventDescription()) +
+      '&location=' + encodeURIComponent(BOOKING_CONFIG.location);
+  }
+
+  function icsEscape(t) {
+    return String(t).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+  }
+  // iCalendar 规定单行不超过 75 字节，超出要折行（续行以空格开头）
+  function icsFold(line) {
+    var out = '', cur = '', bytes = 0;
+    for (var i = 0; i < line.length; i++) {
+      var ch = line[i];
+      var b = encodeURIComponent(ch).replace(/%[0-9A-F]{2}/g, 'x').length;
+      if (bytes + b > 73) { out += cur + '\r\n '; cur = ''; bytes = 1; }
+      cur += ch; bytes += b;
+    }
+    return out + cur;
+  }
+  function buildICS() {
+    var s = state.selectedSlot;
+    var uid = 'gmic-' + s.start.getTime() + '-' + Math.random().toString(36).slice(2, 10) + '@gmic.ai';
+    var rows = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//GMIC AI//Booking//EN',
+      'CALSCALE:GREGORIAN',
+      'METHOD:PUBLISH',
+      'BEGIN:VEVENT',
+      'UID:' + uid,
+      'DTSTAMP:' + utcStamp(new Date()),
+      'DTSTART:' + utcStamp(s.start),
+      'DTEND:' + utcStamp(s.end),
+      'SUMMARY:' + icsEscape(BOOKING_CONFIG.eventTitle),
+      'DESCRIPTION:' + icsEscape(eventDescription()),
+      'LOCATION:' + icsEscape(BOOKING_CONFIG.location),
+      'ORGANIZER;CN=' + BOOKING_CONFIG.organizerName + ':mailto:' + BOOKING_CONFIG.organizerEmail,
+      'STATUS:CONFIRMED',
+      'SEQUENCE:0',
+      'TRANSP:OPAQUE',
+      'BEGIN:VALARM',
+      'TRIGGER:-PT15M',
+      'ACTION:DISPLAY',
+      'DESCRIPTION:' + icsEscape(BOOKING_CONFIG.eventTitle + ' starts in 15 minutes'),
+      'END:VALARM',
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ];
+    return rows.map(icsFold).join('\r\n') + '\r\n';
+  }
+  function downloadICS() {
+    var blob = new Blob([buildICS()], { type: 'text/calendar;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url; a.download = 'gmic-ai-demo.ics';
+    document.body.appendChild(a); a.click(); document.body.removeChild(a);
+    setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+  }
+
+  /* ---------------------------------------------------------
+     13. 确认页
+     --------------------------------------------------------- */
+  function renderConfirmation() {
+    var s = state.selectedSlot;
+    if (!s) return;
+    $('bkDoneEmail').textContent = state.email;
+    $('bkDoneDate').textContent = fmtDateFull(keyInZone(s.start, state.timeZone));
+    $('bkDoneTime').childNodes[0].nodeValue = fmtTimeRange(s.start, s.end, state.timeZone) + ' (' + tzAbbrev(s.start, state.timeZone) + ')';
+    var hostNote = $('bkDoneHostTime');
+    if (state.timeZone !== BOOKING_CONFIG.hostTimeZone) {
+      hostNote.textContent = fmtTimeRange(s.start, s.end, BOOKING_CONFIG.hostTimeZone) + ' for the GMIC team (' + tzAbbrev(s.start, BOOKING_CONFIG.hostTimeZone) + ')';
+    } else { hostNote.textContent = ''; }
+    $('bkDoneWho').textContent = state.name + ' · ' + state.company;
+  }
+
+  function resetAll() {
+    ALL_SLOTS = null;
+    state.selectedDate = null;
+    state.selectedSlot = null;
+    state.name = state.email = state.company = state.phone = state.notes = '';
+    $('bkForm').reset();
+    ['fieldName', 'fieldEmail', 'fieldCompany'].forEach(clearError);
+    applyTimeZone(state.timeZone, false);
+    goStep(1);
+  }
+
+  /* ---------------------------------------------------------
+     14. 初始化
+     --------------------------------------------------------- */
+  function init() {
+    document.body.classList.add('bk-body');
+    buildTzOptions();
+    applyTimeZone(state.timeZone, false);
+    goStep(1);
+
+    $('bkTzSelect').addEventListener('change', function () { applyTimeZone(this.value, true); });
+    $('bkPrevMonth').addEventListener('click', function () { shiftMonth(-1); });
+    $('bkNextMonth').addEventListener('click', function () { shiftMonth(1); });
+    $('bkGrid').addEventListener('keydown', calKeydown);
+    $('bkSlots').addEventListener('scroll', updateSlotFade, { passive: true });
+    window.addEventListener('resize', updateSlotFade);
+    $('bkChangeTime').addEventListener('click', function () { goStep(1); });
+    $('bkBack').addEventListener('click', function () { goStep(1); });
+
+    ['fieldName', 'fieldEmail', 'fieldCompany'].forEach(function (fid) {
+      var input = $(fid).querySelector('.bk-input');
+      input.addEventListener('blur', function () { if (input.value.trim()) validateField(fid); });
+      input.addEventListener('input', function () { if ($(fid).classList.contains('has-error')) validateField(fid); });
+    });
+
+    $('bkForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var fields = ['fieldName', 'fieldEmail', 'fieldCompany'];
+      var firstBad = null;
+      fields.forEach(function (fid) { if (!validateField(fid) && !firstBad) firstBad = fid; });
+      if (firstBad) { $(firstBad).querySelector('.bk-input').focus(); return; }
+
+      state.name = $('bkName').value.trim();
+      state.email = $('bkEmail').value.trim();
+      state.company = $('bkCompany').value.trim();
+      state.phone = $('bkPhone').value.trim();
+      state.notes = $('bkNotes').value.trim();
+
+      var btn = $('bkSubmit');
+      btn.classList.add('is-loading');
+      btn.disabled = true;
+      $('bkSubmitLabel').textContent = 'Scheduling…';
+
+      submitBooking({
+        name: state.name, email: state.email, company: state.company,
+        phone: state.phone, notes: state.notes,
+        startUtc: state.selectedSlot.start.toISOString(),
+        endUtc: state.selectedSlot.end.toISOString(),
+        durationMinutes: BOOKING_CONFIG.durationMinutes,
+        visitorTimeZone: state.timeZone
+      }).then(function () {
+        btn.classList.remove('is-loading');
+        btn.disabled = false;
+        $('bkSubmitLabel').textContent = 'Schedule Event';
+        goStep(3);
+      }).catch(function (err) {
+        console.error(err);
+        btn.classList.remove('is-loading');
+        btn.disabled = false;
+        $('bkSubmitLabel').textContent = 'Schedule Event';
+        setError('fieldEmail', 'Something went wrong. Please try again or email ' + BOOKING_CONFIG.organizerEmail + '.');
+      });
+    });
+
+    $('bkAddGoogle').addEventListener('click', function () { window.open(googleUrl(), '_blank', 'noopener'); });
+    $('bkAddOutlook').addEventListener('click', function () { window.open(outlookUrl('https://outlook.live.com'), '_blank', 'noopener'); });
+    $('bkAddO365').addEventListener('click', function () { window.open(outlookUrl('https://outlook.office.com'), '_blank', 'noopener'); });
+    $('bkAddApple').addEventListener('click', downloadICS);
+    $('bkAddIcs').addEventListener('click', downloadICS);
+    $('bkAgain').addEventListener('click', resetAll);
+  }
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+</script>
+</body>
+</html>
