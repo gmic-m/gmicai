@@ -6,7 +6,7 @@ const aboutPath = path.join(BASE, 'about', 'index.html');
 const outDir = path.join(BASE, 'proof');
 const outPath = path.join(outDir, 'index.html');
 
-const BOOKING = '../book-demo/index.html';
+const BOOKING = '../book-a-meeting/index.html';
 
 const a = fs.readFileSync(aboutPath, 'utf8');
 

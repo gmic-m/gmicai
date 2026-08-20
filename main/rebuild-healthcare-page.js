@@ -2,7 +2,7 @@ const fs = require('fs');
 const p = 'C:\\Users\\meng\\Desktop\\gmic\\main\\industries\\healthcare\\index.html';
 let h = fs.readFileSync(p, 'utf8');
 
-const BOOKING = '../../book-demo/index.html';
+const BOOKING = '../../book-a-meeting/index.html';
 
 /* ===== 1. HEAD: title / meta / canonical ===== */
 h = h.replace(

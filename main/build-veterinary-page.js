@@ -53,7 +53,7 @@ const heroOld = `<header class="ind-hero fade-section">
       <div class="ind-hero-aside">
         <p class="lede">Dedicated AI hardware to capture conversations, cut documentation time, and deploy voice workflows in real clinical environments.</p>
         <div class="ind-hero-cta">
-          <a href="../../book-demo/index.html" target="_blank" rel="noopener" class="btn btn-blue">Start a Project</a>
+          <a href="../../book-a-meeting/index.html" target="_blank" rel="noopener" class="btn btn-blue">Start a Project</a>
           <a href="../../products/mic06/index.html" class="btn btn-ghost">View MIC06</a>
         </div>
       </div>
@@ -74,7 +74,7 @@ const heroNew = `<header class="ind-hero fade-section">
       <div class="ind-hero-aside">
         <p class="lede">Voice hardware designed for veterinary AI platforms and clinical documentation.</p>
         <div class="ind-hero-cta">
-          <a href="../../book-demo/index.html" target="_blank" rel="noopener" class="btn btn-blue">Start a Project</a>
+          <a href="../../book-a-meeting/index.html" target="_blank" rel="noopener" class="btn btn-blue">Start a Project</a>
           <a href="../../index.html#products" class="btn btn-ghost">View Hardware</a>
         </div>
       </div>

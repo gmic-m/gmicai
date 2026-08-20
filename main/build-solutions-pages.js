@@ -47,7 +47,7 @@ TAIL = TAIL.replace(FOOTER_SOL_OLD, FOOTER_SOL_NEW);
 
 if (!STYLE || !NAV || !TAIL) throw new Error('Failed to extract shared chunks from reference page.');
 
-const CAL = '../../book-demo/index.html';
+const CAL = '../../book-a-meeting/index.html';
 const ODM = '../../custom-devices/odm-oem/index.html';
 const PRODUCTS = '../../products/index.html';
 const CONTACT = '../../contact/index.html';
