@@ -6,7 +6,7 @@ const aboutPath = path.join(BASE, 'about', 'index.html');
 const outDir = path.join(BASE, 'proof');
 const outPath = path.join(outDir, 'index.html');
 
-const BOOKING = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb';
+const BOOKING = '../book-demo/index.html';
 
 const a = fs.readFileSync(aboutPath, 'utf8');
 

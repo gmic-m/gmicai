@@ -47,7 +47,7 @@ TAIL = TAIL.replace(FOOTER_SOL_OLD, FOOTER_SOL_NEW);
 
 if (!STYLE || !NAV || !TAIL) throw new Error('Failed to extract shared chunks from reference page.');
 
-const CAL = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb';
+const CAL = '../../book-demo/index.html';
 const ODM = '../../custom-devices/odm-oem/index.html';
 const PRODUCTS = '../../products/index.html';
 const CONTACT = '../../contact/index.html';

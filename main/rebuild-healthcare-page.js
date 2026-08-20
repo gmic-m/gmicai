@@ -2,7 +2,7 @@ const fs = require('fs');
 const p = 'C:\\Users\\meng\\Desktop\\gmic\\main\\industries\\healthcare\\index.html';
 let h = fs.readFileSync(p, 'utf8');
 
-const BOOKING = 'https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ1Zt7KlkfMyOoHb9-Aydz4eDp3rzzr4Zpzgl3r0aizQHWVL1jbWvGD0xbd24AxJeoyqK-Jn7FDb';
+const BOOKING = '../../book-demo/index.html';
 
 /* ===== 1. HEAD: title / meta / canonical ===== */
 h = h.replace(
