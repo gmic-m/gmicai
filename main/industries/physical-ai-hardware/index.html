@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Physical AI Hardware Development &amp; Manufacturing | GMIC AI</title>
 <meta name="description" content="Physical AI hardware development and manufacturing for robotics and embodied AI. GMIC builds the embedded compute, sensors, voice, connectivity, firmware, and production electronics that bring AI models into the physical world." />
-<link rel="canonical" href="https://gmic.ai/physical-ai-hardware/" />
+<link rel="canonical" href="https://gmic.ai/industries/physical-ai-hardware/" />
 <link rel="icon" type="image/png" href="../../img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -643,18 +643,30 @@ h2.section, #capabilities h2.section { font-size:clamp(1.5rem, 3vw, 2rem); }
 .pai-two-prose h2.section { margin:0 0 20px; }
 .pai-two-prose p { font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem); line-height:1.75; color:#475569; margin:0 0 16px; }
 .pai-two-prose p.pai-emph { font-weight:600; color:#0f172a; font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem); margin-bottom:0; }
-.pai-triad-steps { position:relative; display:flex; flex-direction:column; }
-.pai-triad-steps::before { content:""; position:absolute; left:42px; top:34px; bottom:34px; width:2px; background:#e2e8f0; }
-.pai-step { position:relative; z-index:1; display:flex; align-items:center; gap:16px; background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:18px 20px; }
-.pai-step-ic { flex:none; width:44px; height:44px; border-radius:10px; background:#eff4ff; display:flex; align-items:center; justify-content:center; }
-.pai-step-ic svg { width:21px; height:21px; color:#2563eb; }
-.pai-step-txt { min-width:0; }
-.pai-step-txt strong { display:block; font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem); font-weight:600; color:#0f172a; line-height:1.3; }
-.pai-step-txt span { display:block; font-size:clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); color:#64748b; margin-top:3px; line-height:1.45; }
-.pai-triad-link { display:flex; justify-content:center; padding:6px 0; }
-.pai-triad-link svg { width:16px; height:16px; color:#94a3b8; }
-.pai-triad-foot { position:relative; margin-top:14px; background:#2563eb; border-radius:12px; padding:14px 18px; text-align:center; font-size:clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); font-weight:700; color:#fff; line-height:1.4; }
-.pai-triad-foot::before { content:""; position:absolute; left:50%; top:-14px; width:2px; height:14px; background:#cbd5e1; transform:translateX(-1px); }
+/* Section 2: numbered rail + hanging cards; one grey → blue gradient across the row */
+.pai-flow { --n:4; overflow:hidden; display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:44px; }
+.pai-flow-col { --k:var(--i); display:flex; flex-direction:column; min-width:0; }
+/* dot sits over the icon centre: 16px card padding + 18px half icon - 12px half dot */
+.pai-flow-rail { position:relative; display:flex; flex-direction:column; align-items:flex-start; padding-left:22px; }
+.pai-flow-rail::before { content:""; position:absolute; top:11px; left:-6px; right:-6px; height:2px; background:linear-gradient(90deg, #e2e8f0 0%, #93c5fd 50%, #2563eb 100%); background-size:calc(var(--n) * 100%) 100%; background-position:calc(var(--k) * 100% / (var(--n) - 1)) 0; }
+.pai-flow-dot { position:relative; z-index:1; display:flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#94a3b8; color:#fff; font-size:.7rem; font-weight:700; line-height:1; }
+.pai-flow-col--light .pai-flow-dot { background:#93c5fd; }
+.pai-flow-col--blue .pai-flow-dot { background:#2563eb; }
+.pai-flow-drop { width:2px; height:20px; margin-left:11px; background:#cbd5e1; }
+.pai-flow-col--light .pai-flow-drop { background:#93c5fd; }
+.pai-flow-col--blue .pai-flow-drop { background:#2563eb; }
+.pai-flow-node { flex:1 1 auto; display:flex; flex-direction:column; align-items:flex-start; text-align:left; background:#f1f5f9; border:none; border-radius:8px; padding:16px; }
+.pai-flow-node--gmic { background:#f8fbff; }
+.pai-flow-node--base { background:#eff6ff; }
+.pai-flow-ic { flex:none; width:36px; height:36px; border-radius:10px; background:#ffffff; display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+.pai-flow-node--gmic .pai-flow-ic { background:#2563eb; }
+.pai-flow-ic svg { width:19px; height:19px; color:#2563eb; }
+.pai-flow-node--gmic .pai-flow-ic svg { color:#fff; }
+.pai-flow-lbl { font-size:.95rem; font-weight:600; color:#0f172a; line-height:1.35; }
+.pai-flow-desc { font-size:.875rem; color:#64748b; line-height:1.5; margin:6px 0 14px; }
+.pai-flow-tag { align-self:flex-start; margin-top:auto; font-size:.65rem; font-weight:700; letter-spacing:.06em; border-radius:100px; padding:3px 9px; line-height:1; }
+.pai-flow-tag--gmic { color:#2563eb; background:rgba(37,99,235,.10); }
+.pai-flow-tag--you { color:#64748b; background:rgba(0,0,0,.04); }
 
 /* ===== PAI · SECTION 3 CAPABILITY GRID ===== */
 .pai-cap-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
@@ -699,22 +711,54 @@ h2.section, #capabilities h2.section { font-size:clamp(1.5rem, 3vw, 2rem); }
 .pai-shot-cap { position:absolute; left:10px; bottom:10px; font-size:.72rem; font-weight:600; color:#0f172a; background:rgba(255,255,255,.92); border-radius:100px; padding:4px 11px; }
 
 /* ===== PAI · SECTION 6 APPLICATION CARDS ===== */
-.pai-app-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; }
-.pai-app-card { display:flex; flex-direction:column; background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:16px; padding:32px 30px 28px; text-decoration:none; cursor:default; }
-.pai-app-ic { width:48px; height:48px; border-radius:12px; background:#fff; display:flex; align-items:center; justify-content:center; margin-bottom:22px; }
+/* 4 cards visible, the off-screen card peeks in at the edge; the section clips the overflow */
+.pai-app-section { overflow:hidden; }
+.pai-app-grid { overflow:visible; }
+.pai-app-track { display:flex; gap:20px; transition:transform .4s ease; }
+.pai-app-track .pai-app-card { flex:0 0 calc(25% - 15px); min-width:calc(25% - 15px); }
+.pai-app-headrow { display:flex; justify-content:space-between; align-items:center; gap:24px; }
+.pai-app-nav { display:flex; gap:8px; flex:none; }
+.pai-app-nav button { width:36px; height:36px; border-radius:50%; border:1px solid rgba(0,0,0,.12); background:#ffffff; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:border-color .2s; }
+.pai-app-nav button:hover { border-color:#2563eb; }
+.pai-app-nav button svg { width:18px; height:18px; color:#0f172a; }
+.pai-app-nav button:disabled { opacity:.3; cursor:default; }
+.pai-app-nav button:disabled:hover { border-color:rgba(0,0,0,.12); }
+.pai-app-card { display:flex; flex-direction:column; background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:16px; padding:28px 24px 24px; min-height:320px; text-decoration:none; cursor:default; }
+.pai-app-ic { width:48px; height:48px; border-radius:12px; background:#fff; display:flex; align-items:center; justify-content:center; margin-bottom:12px; }
 .pai-app-ic svg { width:24px; height:24px; color:#2563eb; }
 .pai-app-card h3 { font-size:1.25rem; font-weight:700; color:#0f172a; margin:0 0 10px; line-height:1.3; }
 .pai-app-card p { font-size:clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem); line-height:1.65; color:#475569; margin:0 0 16px; }
 a.pai-app-card { cursor:pointer; }
 .pai-app-more { display:inline-flex; align-items:center; gap:6px; margin-top:auto; font-size:.9rem; font-weight:600; color:#2563eb; text-decoration:none; }
 .pai-app-more svg { width:14px; height:14px; }
-.pai-app-tags { display:flex; flex-wrap:wrap; gap:8px; }
+.pai-app-tags { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
 
 /* ===== PAI · SECTION 7 ARCHITECTURE DIAGRAM ===== */
 .pai-arch-lead { font-size:clamp(1.4rem,2.6vw,1.9rem); font-weight:600; line-height:1.35; color:#0f172a !important; margin:20px 0 20px; max-width:820px; }
 .pai-arch-lead span { color:#2563eb; }
 .pai-arch-split { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.2fr); gap:56px; align-items:center; }
 .pai-arch { margin-top:0; }
+/* Section 7: staged numbered rail — Your AI Stack (5) / GMIC Hardware Layer (5) / Output (1) */
+.pai-stack { margin-top:44px; }
+/* stage labels share the step grid so each label spans exactly its steps (5 / 5 / 1) */
+.pai-stack-stages { display:grid; grid-template-columns:repeat(11,1fr); gap:0 8px; margin-bottom:14px; }
+.pai-stack-stage { font-size:1rem; font-weight:700; color:#64748b; line-height:1.3; }
+.pai-stack-stage--you { grid-column:span 5; }
+.pai-stack-stage--gmic { grid-column:span 5; color:#2563eb; }
+.pai-stack-stage--out { grid-column:span 1; }
+.pai-stack-steps { --n:11; overflow:hidden; display:grid; grid-template-columns:repeat(11,1fr); gap:8px; }
+.pai-stack-col { --k:var(--i); display:flex; flex-direction:column; min-width:0; }
+/* dot centre sits 5px past the 14px card padding */
+.pai-stack-rail { position:relative; display:flex; flex-direction:column; align-items:flex-start; padding-left:7px; }
+.pai-stack-rail::before { content:""; position:absolute; top:11px; left:-4px; right:-4px; height:2px; background:linear-gradient(90deg, #94a3b8 0%, #2563eb 60%, #2563eb 100%); background-size:calc(var(--n) * 100%) 100%; background-position:calc(var(--k) * 100% / (var(--n) - 1)) 0; }
+.pai-stack-dot { position:relative; z-index:1; display:flex; align-items:center; justify-content:center; width:24px; height:24px; border-radius:50%; background:#2563eb; color:#fff; font-size:.7rem; font-weight:700; line-height:1; }
+.pai-stack-col--you .pai-stack-dot { background:#93c5fd; }
+.pai-stack-drop { width:2px; height:20px; margin-left:11px; background:#2563eb; }
+.pai-stack-col--you .pai-stack-drop { background:#93c5fd; }
+.pai-stack-node { flex:1 1 auto; display:flex; flex-direction:column; align-items:flex-start; gap:10px; text-align:left; background:#eff6ff; border:none; border-radius:8px; padding:14px; }
+.pai-stack-col--you .pai-stack-node { background:#f8fbff; }
+.pai-stack-lbl { font-size:clamp(0.8rem, 0.75rem + 0.2vw, 0.95rem); font-weight:600; color:#0f172a; line-height:1.35; overflow-wrap:break-word; max-width:100%; }
+.pai-stack-col--out .pai-stack-lbl { font-weight:700; color:#2563eb; }
 .pai-arch-tier { border-radius:12px; padding:22px 24px; }
 .pai-arch-label { font-size:clamp(0.75rem, 0.7rem + 0.2vw, 0.85rem); font-weight:700; text-transform:uppercase; letter-spacing:.14em; margin:0 0 16px; }
 .pai-arch-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; }
@@ -756,9 +800,16 @@ a.pai-app-card { cursor:pointer; }
 /* ===== PAI · RESPONSIVE ===== */
 @media (max-width:900px){
   .pai-two { grid-template-columns:1fr; gap:32px; }
+  /* two rows of two — each row runs its own grey → blue gradient */
+  .pai-flow { --n:2; grid-template-columns:repeat(2,1fr); gap:24px 12px; }
+  .pai-flow-col:nth-child(2n+1) { --k:0; } .pai-flow-col:nth-child(2n) { --k:1; }
   .pai-cap-grid { grid-template-columns:repeat(2,1fr); }
   .pai-mfg-grid { grid-template-columns:repeat(2,1fr); }
-  .pai-app-grid { grid-template-columns:repeat(2,1fr); }
+  /* no sliding: all five cards wrap, three per row; arrows hidden */
+  .pai-app-section { overflow:visible; }
+  .pai-app-track { flex-wrap:wrap; transform:none !important; }
+  .pai-app-track .pai-app-card { flex:0 0 calc((100% - 40px) / 3); min-width:0; }
+  .pai-app-nav { display:none; }
   .pai-why-grid { grid-template-columns:repeat(2,1fr); }
   .pai-arch-items, .pai-arch-blocks { grid-template-columns:repeat(2,1fr); }
   .pai-arch-items > div:last-child, .pai-arch-block:last-child { grid-column:1 / -1; }
@@ -773,11 +824,16 @@ a.pai-app-card { cursor:pointer; }
   .pai-node--card { padding:14px 16px; margin:8px 0; }
   .pai-node--card .pai-node-dot { left:-30px; }
   .pai-arch-split { grid-template-columns:1fr; gap:36px; }
+  .pai-stack-stages { display:none; }
+  .pai-stack-steps { --n:6; grid-template-columns:repeat(6,1fr); gap:24px 8px; }
+  .pai-stack-col:nth-child(6) { grid-column-start:1; }
+  .pai-stack-col:nth-child(-n+5) { --k:var(--i); }
+  .pai-stack-col:nth-child(n+6) { --k:calc(var(--i) - 5); }
   .pai-arch-lead { margin-top:18px; }
 }
 @media (max-width:640px){
   .pai-arch-link::before { height:18px; }
-  .pai-app-grid { grid-template-columns:1fr; }
+  .pai-app-track .pai-app-card { flex-basis:100%; }
   .pai-cap-grid { grid-template-columns:1fr; }
   .pai-mfg-grid { grid-template-columns:1fr; }
   .pai-why-grid { grid-template-columns:1fr; }
@@ -788,7 +844,12 @@ a.pai-app-card { cursor:pointer; }
   .pai-pipeline-foot { padding:18px; }
   .pai-pipeline-foot .btn { width:100%; text-align:center; }
   .pai-arch-tier { padding:18px 16px; }
-  .pai-triad-steps::before { left:38px; }
+  /* track hidden; cards stack */
+  .pai-flow { grid-template-columns:1fr; gap:10px; }
+  .pai-flow-rail { display:none; }
+  .pai-stack-steps { grid-template-columns:repeat(3,1fr); gap:8px; }
+  .pai-stack-col:nth-child(6) { grid-column-start:auto; }
+  .pai-stack-rail { display:none; }
   .pai-locator { gap:8px; }
   .pai-loc-item { font-size:.75rem; padding:5px 11px; }
 }
@@ -1059,34 +1120,50 @@ a.pai-app-card { cursor:pointer; }
 <!-- ========== 2) WHAT IS PHYSICAL AI ========== -->
 <section class="ind-sec ind-sec--light fade-section">
   <div class="container">
-    <div class="pai-two">
-      <div class="pai-two-prose reveal">
-        <div class="eyebrow">/ WHAT IS PHYSICAL AI</div>
-        <h2 class="section measure-wide">Bring AI Into the Physical World</h2>
-        <div class="measure">
-          <p>Physical AI combines artificial intelligence with real-world hardware so machines can perceive their environment, process information, communicate, and take action in the physical world.</p>
-          <p>For robotics and embodied AI companies, making that intelligence work outside the lab requires more than an AI model. It requires reliable sensing, embedded computing, connectivity, firmware, audio, power, and production-ready electronics.</p>
-          <p class="pai-emph">GMIC helps build that hardware layer.</p>
+    <div class="pai-two-prose reveal" style="max-width:960px;">
+      <div class="eyebrow">/ WHAT IS PHYSICAL AI</div>
+      <h2 class="section measure-wide">Bring AI Into the Physical World</h2>
+      <p>Physical AI combines artificial intelligence with real-world hardware so machines can perceive their environment, process information, communicate, and take action in the physical world.</p>
+      <p>For robotics and embodied AI companies, making that intelligence work outside the lab requires more than an AI model. It requires reliable sensing, embedded computing, connectivity, firmware, audio, power, and production-ready electronics.</p>
+      <p class="pai-emph">GMIC helps build that hardware layer.</p>
+    </div>
+
+    <div class="pai-flow reveal" role="img" aria-label="Diagram: perception through sensors and audio, then intelligence from AI, VLA and VLM models, then physical interaction with a robot, device or real-world system — all built on GMIC's hardware infrastructure layer. GMIC builds the perception, physical interaction and hardware layers; the customer's team owns the intelligence.">
+      <div class="pai-flow-col pai-flow-col--light" style="--i:0">
+        <span class="pai-flow-rail" aria-hidden="true"><span class="pai-flow-dot">1</span><span class="pai-flow-drop"></span></span>
+        <div class="pai-flow-node pai-flow-node--gmic">
+          <span class="pai-flow-ic"><i data-lucide="scan-eye" aria-hidden="true"></i></span>
+          <span class="pai-flow-lbl">Perception</span>
+          <span class="pai-flow-desc">Sensors / Audio</span>
+          <span class="pai-flow-tag pai-flow-tag--gmic">GMIC</span>
         </div>
       </div>
-      <div class="pai-triad reveal" role="img" aria-label="Diagram: perception through sensors and audio, then intelligence from AI, VLA and VLM models, then physical interaction with a robot, device or real-world system — all resting on GMIC as the hardware infrastructure layer.">
-        <div class="pai-triad-steps">
-          <div class="pai-step">
-            <span class="pai-step-ic"><i data-lucide="scan-eye" aria-hidden="true"></i></span>
-            <span class="pai-step-txt"><strong>Perception</strong><span>Sensors / Audio</span></span>
-          </div>
-          <div class="pai-triad-link" aria-hidden="true"><i data-lucide="chevron-down" aria-hidden="true"></i></div>
-          <div class="pai-step">
-            <span class="pai-step-ic"><i data-lucide="brain-circuit" aria-hidden="true"></i></span>
-            <span class="pai-step-txt"><strong>Intelligence</strong><span>AI / VLA / VLM</span></span>
-          </div>
-          <div class="pai-triad-link" aria-hidden="true"><i data-lucide="chevron-down" aria-hidden="true"></i></div>
-          <div class="pai-step">
-            <span class="pai-step-ic"><i data-lucide="box" aria-hidden="true"></i></span>
-            <span class="pai-step-txt"><strong>Physical Interaction</strong><span>Robot / Device / Real-World System</span></span>
-          </div>
+      <div class="pai-flow-col" style="--i:1">
+        <span class="pai-flow-rail" aria-hidden="true"><span class="pai-flow-dot">2</span><span class="pai-flow-drop"></span></span>
+        <div class="pai-flow-node">
+          <span class="pai-flow-ic"><i data-lucide="brain" aria-hidden="true"></i></span>
+          <span class="pai-flow-lbl">Intelligence</span>
+          <span class="pai-flow-desc">AI / VLA / VLM</span>
+          <span class="pai-flow-tag pai-flow-tag--you">YOUR TEAM</span>
         </div>
-        <div class="pai-triad-foot">GMIC — Hardware Infrastructure Layer</div>
+      </div>
+      <div class="pai-flow-col pai-flow-col--blue" style="--i:2">
+        <span class="pai-flow-rail" aria-hidden="true"><span class="pai-flow-dot">3</span><span class="pai-flow-drop"></span></span>
+        <div class="pai-flow-node pai-flow-node--gmic">
+          <span class="pai-flow-ic"><i data-lucide="move-3d" aria-hidden="true"></i></span>
+          <span class="pai-flow-lbl">Physical Interaction</span>
+          <span class="pai-flow-desc">Robot / Device / Real-World System</span>
+          <span class="pai-flow-tag pai-flow-tag--gmic">GMIC</span>
+        </div>
+      </div>
+      <div class="pai-flow-col pai-flow-col--blue" style="--i:3">
+        <span class="pai-flow-rail" aria-hidden="true"><span class="pai-flow-dot">4</span><span class="pai-flow-drop"></span></span>
+        <div class="pai-flow-node pai-flow-node--gmic pai-flow-node--base">
+          <span class="pai-flow-ic"><i data-lucide="layers" aria-hidden="true"></i></span>
+          <span class="pai-flow-lbl">Hardware Infrastructure</span>
+          <span class="pai-flow-desc">GMIC Hardware Layer</span>
+          <span class="pai-flow-tag pai-flow-tag--gmic">GMIC</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1310,15 +1387,26 @@ a.pai-app-card { cursor:pointer; }
 </section>
 
 <!-- ========== 6) BUILT FOR DIFFERENT PHYSICAL AI APPLICATIONS ========== -->
-<section class="ind-sec ind-sec--soft fade-section">
+<section class="ind-sec ind-sec--soft fade-section pai-app-section">
   <div class="container">
     <div class="ind-head reveal">
       <div class="eyebrow">/ APPLICATIONS</div>
-      <h2 class="section measure-wide">Built for Different Physical AI Applications</h2>
+      <div class="pai-app-headrow">
+        <h2 class="section measure-wide">Built for Different Physical AI Applications</h2>
+        <div class="pai-app-nav">
+          <button type="button" class="pai-app-prev" aria-label="Previous">
+            <i data-lucide="chevron-left" aria-hidden="true"></i>
+          </button>
+          <button type="button" class="pai-app-next" aria-label="Next">
+            <i data-lucide="chevron-right" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
       <p class="measure-wide" style="font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem);line-height:1.75;color:#475569;margin:18px 0 0;">Different Physical AI products require different combinations of sensing, voice, edge computing, connectivity, and embedded hardware.</p>
     </div>
 
     <div class="pai-app-grid reveal">
+     <div class="pai-app-track">
 
       <!-- TODO: point at ../../industries/physical-ai-hardware/humanoid-service-robotics/ when the child page ships -->
       <a href="humanoid-service-robotics/index.html" class="pai-app-card">
@@ -1331,36 +1419,47 @@ a.pai-app-card { cursor:pointer; }
         <span class="pai-app-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>
       </a>
 
-      <!-- TODO: point at ../../industries/physical-ai-hardware/home-robotics/ when the child page ships -->
-      <div class="pai-app-card">
+      <a href="home-robotics-hardware/index.html" class="pai-app-card">
         <span class="pai-app-ic"><i data-lucide="house" aria-hidden="true"></i></span>
         <h3>Home Robotics</h3>
         <p>Connected hardware for AI companions, elder-care devices, home assistants, and other intelligent consumer robotics.</p>
         <div class="pai-app-tags">
           <span class="chip">Voice</span><span class="chip">Wi-Fi / BLE</span><span class="chip">Sensors</span><span class="chip">Cloud AI</span>
         </div>
-      </div>
+        <span class="pai-app-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>
+      </a>
 
-      <!-- TODO: point at ../../industries/physical-ai-hardware/industrial-warehouse-robotics/ when the child page ships -->
-      <div class="pai-app-card">
+      <a href="industrial-robotics-hardware/index.html" class="pai-app-card">
         <span class="pai-app-ic"><i data-lucide="factory" aria-hidden="true"></i></span>
         <h3>Industrial &amp; Warehouse Robotics</h3>
         <p>Edge computing, sensing, connectivity, and embedded electronics for robots operating in industrial and logistics environments.</p>
         <div class="pai-app-tags">
           <span class="chip">Edge AI</span><span class="chip">Sensors</span><span class="chip">Offline Operation</span><span class="chip">Connectivity</span>
         </div>
-      </div>
+        <span class="pai-app-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>
+      </a>
 
-      <!-- TODO: point at ../../industries/physical-ai-hardware/healthcare-robotics/ when the child page ships -->
-      <div class="pai-app-card">
+      <a href="healthcare-robotics-hardware/index.html" class="pai-app-card">
         <span class="pai-app-ic"><i data-lucide="stethoscope" aria-hidden="true"></i></span>
         <h3>Healthcare Robotics</h3>
         <p>Voice, sensing, connectivity, and embedded hardware for clinical, patient-care, and healthcare robotics applications.</p>
         <div class="pai-app-tags">
           <span class="chip">Clinical Voice</span><span class="chip">Audio</span><span class="chip">Connectivity</span><span class="chip">Healthcare</span>
         </div>
-      </div>
+        <span class="pai-app-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>
+      </a>
 
+      <a href="robotics-prototyping/index.html" class="pai-app-card">
+        <span class="pai-app-ic"><i data-lucide="wrench" aria-hidden="true"></i></span>
+        <h3>Robotics Prototyping &amp; Development</h3>
+        <p>Turn a working robotics prototype into integrated, testable, and manufacturable hardware — from architecture through EVT, DVT, PVT and production.</p>
+        <div class="pai-app-tags">
+          <span class="chip">Prototyping</span><span class="chip">EVT</span><span class="chip">DVT</span><span class="chip">PVT</span><span class="chip">Production</span>
+        </div>
+        <span class="pai-app-more">Learn more <i data-lucide="arrow-right" aria-hidden="true"></i></span>
+      </a>
+
+     </div>
     </div>
   </div>
 </section>
@@ -1368,7 +1467,6 @@ a.pai-app-card { cursor:pointer; }
 <!-- ========== 7) BUILT AROUND YOUR AI STACK ========== -->
 <section class="ind-sec ind-sec--light fade-section">
   <div class="container">
-   <div class="pai-arch-split">
     <div class="ind-head reveal" style="margin-bottom:0;">
       <div class="eyebrow">/ POSITIONING</div>
       <h2 class="section measure-wide">Built Around Your AI Stack</h2>
@@ -1376,41 +1474,91 @@ a.pai-app-card { cursor:pointer; }
       <p class="measure-wide" style="font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem);line-height:1.75;color:#475569;margin:0;">Whether your product uses a VLA, VLM, AI agent, speech model, computer vision system, or proprietary robotics software, GMIC helps integrate the hardware required to bring that intelligence into a deployable physical product.</p>
     </div>
 
-    <div class="pai-arch reveal" role="img" aria-label="Three-tier architecture: your AI stack of VLA, VLM, AI agent, speech AI and computer vision sits on top; the GMIC hardware layer of audio and sensors, edge compute, connectivity, firmware and PCB electronics sits in the middle; the result is a production-ready physical product.">
-
-      <div class="pai-arch-tier pai-arch-tier--yours">
-        <p class="pai-arch-label">Your AI Stack</p>
-        <div class="pai-arch-items">
-          <div>VLA</div>
-          <div>VLM</div>
-          <div>AI Agent</div>
-          <div>Speech AI</div>
-          <div>Computer Vision</div>
+    <div class="pai-stack reveal" role="img" aria-label="Your AI stack — VLA, VLM, AI agent, speech AI and computer vision — runs on the GMIC hardware layer of audio and sensors, edge compute, connectivity, firmware and PCB electronics, resulting in a production-ready physical product.">
+      <div class="pai-stack-stages" aria-hidden="true">
+        <span class="pai-stack-stage pai-stack-stage--you">Your AI Stack</span>
+        <span class="pai-stack-stage pai-stack-stage--gmic">GMIC Hardware Layer</span>
+        <span class="pai-stack-stage pai-stack-stage--out">Output</span>
+      </div>
+      <div class="pai-stack-steps">
+      <div class="pai-stack-col pai-stack-col--you" style="--i:0">
+        <span class="pai-stack-rail" aria-hidden="true"><span class="pai-stack-dot">1</span><span class="pai-stack-drop"></span></span>
+        <div class="pai-stack-node">
+          <span class="pai-stack-lbl">VLA</span>
+          <span class="pai-flow-tag pai-flow-tag--you">YOUR TEAM</span>
         </div>
       </div>
-
-      <div class="pai-arch-link" aria-hidden="true"><i data-lucide="chevron-down" aria-hidden="true"></i></div>
-
-      <div class="pai-arch-tier pai-arch-tier--gmic">
-        <div class="pai-arch-head">
-          <p class="pai-arch-label">GMIC Hardware Layer</p>
-          <span class="pai-gmic-pill">GMIC</span>
-        </div>
-        <div class="pai-arch-blocks">
-          <div class="pai-arch-block"><i data-lucide="mic" aria-hidden="true"></i><span>Audio &amp; Sensors</span></div>
-          <div class="pai-arch-block"><i data-lucide="cpu" aria-hidden="true"></i><span>Edge Compute</span></div>
-          <div class="pai-arch-block"><i data-lucide="wifi" aria-hidden="true"></i><span>Connectivity</span></div>
-          <div class="pai-arch-block"><i data-lucide="code-2" aria-hidden="true"></i><span>Firmware</span></div>
-          <div class="pai-arch-block"><i data-lucide="circuit-board" aria-hidden="true"></i><span>PCB / Electronics</span></div>
+      <div class="pai-stack-col pai-stack-col--you" style="--i:1">
+        <span class="pai-stack-rail" aria-hidden="true"><span class="pai-stack-dot">2</span><span class="pai-stack-drop"></span></span>
+        <div class="pai-stack-node">
+          <span class="pai-stack-lbl">VLM</span>
+          <span class="pai-flow-tag pai-flow-tag--you">YOUR TEAM</span>
         </div>
       </div>
-
-      <div class="pai-arch-link" aria-hidden="true"><i data-lucide="chevron-down" aria-hidden="true"></i></div>
-
-      <div class="pai-arch-tier pai-arch-tier--out">Production-Ready Physical Product</div>
-
+      <div class="pai-stack-col pai-stack-col--you" style="--i:2">
+        <span class="pai-stack-rail" aria-hidden="true"><span class="pai-stack-dot">3</span><span class="pai-stack-drop"></span></span>
+        <div class="pai-stack-node">
+          <span class="pai-stack-lbl">AI Agent</span>
+          <span class="pai-flow-tag pai-flow-tag--you">YOUR TEAM</span>
+        </div>
+      </div>
+      <div class="pai-stack-col pai-stack-col--you" style="--i:3">
+        <span class="pai-stack-rail" aria-hidden="true"><span class="pai-stack-dot">4</span><span class="pai-stack-drop"></span></span>
+        <div class="pai-stack-node">
+          <span class="pai-stack-lbl">Speech AI</span>
+          <span class="pai-flow-tag pai-flow-tag--you">YOUR TEAM</span>
+        </div>
+      </div>
+      <div class="pai-stack-col pai-stack-col--you" style="--i:4">
+        <span class="pai-stack-rail" aria-hidden="true"><span class="pai-stack-dot">5</span><span class="pai-stack-drop"></span></span>
+        <div class="pai-stack-node">
+          <span class="pai-stack-lbl">Computer Vision</span>
+          <span class="pai-flow-tag pai-flow-tag--you">YOUR TEAM</span>
+        </div>
+      </div>
+      <div class="pai-stack-col pai-stack-col--gmic" style="--i:5">
+        <span class="pai-stack-rail" aria-hidden="true"><span class="pai-stack-dot">6</span><span class="pai-stack-drop"></span></span>
+        <div class="pai-stack-node">
+          <span class="pai-stack-lbl">Audio &amp; Sensors</span>
+          <span class="pai-flow-tag pai-flow-tag--gmic">GMIC</span>
+        </div>
+      </div>
+      <div class="pai-stack-col pai-stack-col--gmic" style="--i:6">
+        <span class="pai-stack-rail" aria-hidden="true"><span class="pai-stack-dot">7</span><span class="pai-stack-drop"></span></span>
+        <div class="pai-stack-node">
+          <span class="pai-stack-lbl">Edge Compute</span>
+          <span class="pai-flow-tag pai-flow-tag--gmic">GMIC</span>
+        </div>
+      </div>
+      <div class="pai-stack-col pai-stack-col--gmic" style="--i:7">
+        <span class="pai-stack-rail" aria-hidden="true"><span class="pai-stack-dot">8</span><span class="pai-stack-drop"></span></span>
+        <div class="pai-stack-node">
+          <span class="pai-stack-lbl">Connectivity</span>
+          <span class="pai-flow-tag pai-flow-tag--gmic">GMIC</span>
+        </div>
+      </div>
+      <div class="pai-stack-col pai-stack-col--gmic" style="--i:8">
+        <span class="pai-stack-rail" aria-hidden="true"><span class="pai-stack-dot">9</span><span class="pai-stack-drop"></span></span>
+        <div class="pai-stack-node">
+          <span class="pai-stack-lbl">Firmware</span>
+          <span class="pai-flow-tag pai-flow-tag--gmic">GMIC</span>
+        </div>
+      </div>
+      <div class="pai-stack-col pai-stack-col--gmic" style="--i:9">
+        <span class="pai-stack-rail" aria-hidden="true"><span class="pai-stack-dot">10</span><span class="pai-stack-drop"></span></span>
+        <div class="pai-stack-node">
+          <span class="pai-stack-lbl">PCB / Electronics</span>
+          <span class="pai-flow-tag pai-flow-tag--gmic">GMIC</span>
+        </div>
+      </div>
+      <div class="pai-stack-col pai-stack-col--out" style="--i:10">
+        <span class="pai-stack-rail" aria-hidden="true"><span class="pai-stack-dot">11</span><span class="pai-stack-drop"></span></span>
+        <div class="pai-stack-node">
+          <span class="pai-stack-lbl">Production-Ready Product</span>
+        </div>
+      </div>
+      </div>
     </div>
-   </div>
   </div>
 </section>
 
@@ -1691,6 +1839,43 @@ document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
     });
   }
   if (window.lucide && typeof window.lucide.createIcons === 'function') { window.lucide.createIcons(); }
+})();
+
+(function(){
+  // Applications slider: 4 cards visible, the off-screen card peeks at the edge (disabled below 900px by CSS)
+  const track = document.querySelector('.pai-app-track');
+  const prev = document.querySelector('.pai-app-prev');
+  const next = document.querySelector('.pai-app-next');
+  if(!track || !prev || !next) return;
+  let shifted = false;
+  function getShift(){
+    const card = track.querySelector('.pai-app-card');
+    if(!card) return 0;
+    return card.offsetWidth + 20;
+  }
+  function update(){
+    track.style.transform = shifted ? 'translateX(-' + getShift() + 'px)' : 'translateX(0)';
+    prev.disabled = !shifted;
+    next.disabled = shifted;
+  }
+  next.addEventListener('click', function(){
+    shifted = true;
+    update();
+  });
+  prev.addEventListener('click', function(){
+    shifted = false;
+    update();
+  });
+  window.addEventListener('resize', update);
+  // tabbing onto a clipped card slides it into view instead of letting the section scroll sideways
+  const section = track.closest('.pai-app-section');
+  const cards = track.querySelectorAll('.pai-app-card');
+  track.addEventListener('focusin', function(e){
+    if(section) section.scrollLeft = 0;
+    if(e.target === cards[cards.length - 1] && !shifted){ shifted = true; update(); }
+    else if(e.target === cards[0] && shifted){ shifted = false; update(); }
+  });
+  update();
 })();
 
 (function () {
