@@ -445,15 +445,18 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 .ind-head { margin-bottom:48px; }
 .ind-head .eyebrow { display:block; margin-bottom:16px; }
 .ind-head h2.section { margin:0; }
+/* page-level H2 size — overrides the global h2.section and #capabilities h2.section sizes in style.css */
+h2.section, #capabilities h2.section { font-size:clamp(1.5rem, 3vw, 2rem); }
 
 /* HERO */
 .ind-hero { background:#0b1220; color:#fff; padding:140px 0 64px; }
-.ind-hero .eyebrow.dark { display:block; margin-bottom:20px; }
+.ind-hero .container { max-width:1440px; }
+.ind-hero .eyebrow.dark { display:block; margin-bottom:16px; }
 /* Axion-style two-column top: left = pill+eyebrow+H1, right = subtitle+buttons (bottom-aligned) */
-.ind-hero-top { display:grid; grid-template-columns:minmax(0,1.4fr) minmax(0,1fr); gap:48px; align-items:center; }
-.ind-hero h1.display { color:#fff; font-size:clamp(2rem,7vw,3.4rem); line-height:1.05; letter-spacing:-.03em; margin:0; }
+.ind-hero-top { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:48px; align-items:start; }
+.ind-hero h1.display { color:#fff; font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.05; letter-spacing:-.03em; margin:0; }
 .ind-hero-aside { padding-bottom:6px; }
-.ind-hero .lede { font-size:1.0625rem; line-height:1.7; color:rgba(255,255,255,.75); margin:0 0 22px; max-width:440px; }
+.ind-hero .lede { font-size:1.0625rem; line-height:1.7; color:rgba(255,255,255,.75); margin:0 0 22px; }
 .ind-tag { display:inline-flex; align-items:center; gap:8px; font-size:.78rem; font-weight:600; letter-spacing:.04em; text-transform:uppercase; color:#93c5fd; background:rgba(37,99,235,.14); border:1px solid rgba(147,197,253,.25); padding:7px 14px; border-radius:100px; margin-bottom:18px; }
 .ind-tag svg { width:15px; height:15px; }
 .ind-hero-cta { display:flex; flex-wrap:wrap; gap:14px; }
@@ -638,19 +641,19 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 .pai-two { display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center; }
 .pai-two-prose .eyebrow { display:block; margin-bottom:16px; }
 .pai-two-prose h2.section { margin:0 0 20px; }
-.pai-two-prose p { font-size:1rem; line-height:1.75; color:#475569; margin:0 0 16px; }
-.pai-two-prose p.pai-emph { font-weight:600; color:#0f172a; font-size:1.0625rem; margin-bottom:0; }
+.pai-two-prose p { font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem); line-height:1.75; color:#475569; margin:0 0 16px; }
+.pai-two-prose p.pai-emph { font-weight:600; color:#0f172a; font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem); margin-bottom:0; }
 .pai-triad-steps { position:relative; display:flex; flex-direction:column; }
 .pai-triad-steps::before { content:""; position:absolute; left:42px; top:34px; bottom:34px; width:2px; background:#e2e8f0; }
 .pai-step { position:relative; z-index:1; display:flex; align-items:center; gap:16px; background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:18px 20px; }
 .pai-step-ic { flex:none; width:44px; height:44px; border-radius:10px; background:#eff4ff; display:flex; align-items:center; justify-content:center; }
 .pai-step-ic svg { width:21px; height:21px; color:#2563eb; }
 .pai-step-txt { min-width:0; }
-.pai-step-txt strong { display:block; font-size:1rem; font-weight:600; color:#0f172a; line-height:1.3; }
-.pai-step-txt span { display:block; font-size:.875rem; color:#64748b; margin-top:3px; line-height:1.45; }
+.pai-step-txt strong { display:block; font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem); font-weight:600; color:#0f172a; line-height:1.3; }
+.pai-step-txt span { display:block; font-size:clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); color:#64748b; margin-top:3px; line-height:1.45; }
 .pai-triad-link { display:flex; justify-content:center; padding:6px 0; }
 .pai-triad-link svg { width:16px; height:16px; color:#94a3b8; }
-.pai-triad-foot { position:relative; margin-top:14px; background:#2563eb; border-radius:12px; padding:14px 18px; text-align:center; font-size:.9rem; font-weight:700; color:#fff; line-height:1.4; }
+.pai-triad-foot { position:relative; margin-top:14px; background:#2563eb; border-radius:12px; padding:14px 18px; text-align:center; font-size:clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); font-weight:700; color:#fff; line-height:1.4; }
 .pai-triad-foot::before { content:""; position:absolute; left:50%; top:-14px; width:2px; height:14px; background:#cbd5e1; transform:translateX(-1px); }
 
 /* ===== PAI · SECTION 3 CAPABILITY GRID ===== */
@@ -658,15 +661,15 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 .pai-cap-card { position:relative; background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:28px 24px; cursor:default; }
 .pai-cap-ic { width:44px; height:44px; border-radius:10px; background:#eff4ff; display:flex; align-items:center; justify-content:center; margin-bottom:18px; }
 .pai-cap-ic svg { width:22px; height:22px; color:#2563eb; }
-.pai-cap-card h3 { font-size:1.0625rem; font-weight:600; color:#0f172a; margin:0 0 8px; line-height:1.3; }
-.pai-cap-card p { font-size:.9rem; line-height:1.6; color:#64748b; margin:0; }
+.pai-cap-card h3 { font-size:clamp(1.0625rem, 1rem + 0.25vw, 1.2rem); font-weight:600; color:#0f172a; margin:0 0 8px; line-height:1.3; }
+.pai-cap-card p { font-size:clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem); line-height:1.6; color:#64748b; margin:0; }
 .pai-cap-chips { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
 .pai-cap-chips .chip { font-size:.75rem; padding:5px 11px; }
 
 /* ===== PAI · SECTION 4 PRODUCTIZATION PIPELINE ===== */
 .pai-pipeline { margin-top:44px; }
 .pai-phase-row { display:grid; grid-template-columns:1fr 5fr 2fr; margin-bottom:0; padding-bottom:18px; border-radius:10px 10px 0 0; background:linear-gradient(90deg, rgba(0,0,0,.02) 0 12.5%, transparent 12.5% 75%, rgba(37,99,235,.04) 75% 100%); }
-.pai-phase { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:#64748b; padding:14px 0 10px 12px; border-left:3px solid #94a3b8; }
+.pai-phase { font-size:clamp(0.75rem, 0.7rem + 0.2vw, 0.85rem); font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:#64748b; padding:14px 0 10px 12px; border-left:3px solid #94a3b8; }
 .pai-phase:nth-child(2) { border-left-color:#3b82f6; }
 .pai-phase:nth-child(3) { border-left-color:#2563eb; }
 .pai-phase-inline { display:none; }
@@ -678,18 +681,18 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 .pai-node--end .pai-node-dot { background:#2563eb; border-color:rgba(147,197,253,.75); }
 .pai-node--goal .pai-node-dot { box-shadow:0 0 0 6px rgba(37,99,235,.18); }
 .pai-node-num { display:block; font-size:.72rem; font-weight:700; letter-spacing:.12em; color:#2563eb; margin-bottom:7px; }
-.pai-node-lbl { display:block; font-size:.9rem; font-weight:600; color:#0f172a; line-height:1.3; }
+.pai-node-lbl { display:block; font-size:clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); font-weight:600; color:#0f172a; line-height:1.3; }
 .pai-node--card { background:rgba(0,0,0,.03); border:1px solid rgba(0,0,0,.08); border-radius:10px; padding:12px; }
 .pai-node--card .pai-node-dot { top:-32px; left:12px; }
 .pai-pipeline-foot { margin-top:44px; background:#eff4ff; border:1px solid rgba(37,99,235,.15); border-radius:12px; padding:20px 24px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px; }
-.pai-pipeline-foot p { font-size:1rem; font-weight:600; color:#0f172a !important; margin:0; max-width:560px; line-height:1.5; }
+.pai-pipeline-foot p { font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem); font-weight:600; color:#0f172a !important; margin:0; max-width:560px; line-height:1.5; }
 
 /* ===== PAI · SECTION 5 MANUFACTURING TILES + SHOTS ===== */
 .pai-mfg-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
 .pai-mfg-tile { background:#f8fafc; border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:22px 20px; cursor:default; }
 .pai-mfg-tile svg { width:20px; height:20px; color:#2563eb; margin-bottom:14px; }
-.pai-mfg-tile h3 { font-size:1rem; font-weight:600; color:#0f172a; margin:0 0 6px; line-height:1.3; }
-.pai-mfg-tile p { font-size:.875rem; line-height:1.55; color:#64748b; margin:0; }
+.pai-mfg-tile h3 { font-size:clamp(1.0625rem, 1rem + 0.25vw, 1.2rem); font-weight:600; color:#0f172a; margin:0 0 6px; line-height:1.3; }
+.pai-mfg-tile p { font-size:clamp(0.9rem, 0.85rem + 0.2vw, 1rem); line-height:1.55; color:#64748b; margin:0; }
 .pai-shots { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:24px; }
 .pai-shot { position:relative; border-radius:12px; overflow:hidden; background:#f1f5f9; }
 .pai-shot img { display:block; width:100%; height:160px; object-fit:cover; }
@@ -701,7 +704,7 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
 .pai-app-ic { width:48px; height:48px; border-radius:12px; background:#fff; display:flex; align-items:center; justify-content:center; margin-bottom:22px; }
 .pai-app-ic svg { width:24px; height:24px; color:#2563eb; }
 .pai-app-card h3 { font-size:1.25rem; font-weight:700; color:#0f172a; margin:0 0 10px; line-height:1.3; }
-.pai-app-card p { font-size:.95rem; line-height:1.65; color:#475569; margin:0 0 16px; }
+.pai-app-card p { font-size:clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem); line-height:1.65; color:#475569; margin:0 0 16px; }
 a.pai-app-card { cursor:pointer; }
 .pai-app-more { display:inline-flex; align-items:center; gap:6px; margin-top:auto; font-size:.9rem; font-weight:600; color:#2563eb; text-decoration:none; }
 .pai-app-more svg { width:14px; height:14px; }
@@ -713,20 +716,20 @@ a.pai-app-card { cursor:pointer; }
 .pai-arch-split { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1.2fr); gap:56px; align-items:center; }
 .pai-arch { margin-top:0; }
 .pai-arch-tier { border-radius:12px; padding:22px 24px; }
-.pai-arch-label { font-size:.7rem; font-weight:700; text-transform:uppercase; letter-spacing:.14em; margin:0 0 16px; }
+.pai-arch-label { font-size:clamp(0.75rem, 0.7rem + 0.2vw, 0.85rem); font-weight:700; text-transform:uppercase; letter-spacing:.14em; margin:0 0 16px; }
 .pai-arch-head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:16px; }
 .pai-arch-head .pai-arch-label { margin:0; }
 .pai-arch-tier--yours { background:#f8fafc; border:1px solid rgba(0,0,0,.08); }
 .pai-arch-tier--yours .pai-arch-label { color:#64748b; }
 .pai-arch-items { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
-.pai-arch-items > div { border:1px solid rgba(0,0,0,.08); border-radius:10px; padding:14px 12px; text-align:center; font-size:.95rem; font-weight:600; color:#0f172a; line-height:1.35; }
+.pai-arch-items > div { border:1px solid rgba(0,0,0,.08); border-radius:10px; padding:14px 12px; text-align:center; font-size:clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); font-weight:600; color:#0f172a; line-height:1.35; }
 .pai-arch-tier--gmic { background:#eff4ff; border:1px solid rgba(37,99,235,.20); box-shadow:0 8px 30px rgba(37,99,235,.10); }
 .pai-arch-tier--gmic .pai-arch-label { color:#2563eb; }
 .pai-arch-tier--gmic .pai-gmic-pill { color:#2563eb; background:rgba(37,99,235,.10); border-color:rgba(37,99,235,.25); }
 .pai-arch-blocks { display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
 .pai-arch-block { display:flex; flex-direction:column; align-items:flex-start; gap:10px; }
 .pai-arch-block svg { width:20px; height:20px; color:#2563eb; }
-.pai-arch-block span { font-size:.95rem; font-weight:600; color:#0f172a; line-height:1.35; }
+.pai-arch-block span { font-size:clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); font-weight:600; color:#0f172a; line-height:1.35; }
 .pai-arch-tier--out { background:#2563eb; text-align:center; font-size:1.05rem; font-weight:700; color:#fff; padding:20px 24px; }
 .pai-arch-link { display:flex; flex-direction:column; align-items:center; gap:2px; padding:4px 0; }
 .pai-arch-link::before { content:""; width:2px; height:28px; background:#2563eb; opacity:.3; border-radius:2px; }
@@ -736,8 +739,8 @@ a.pai-app-card { cursor:pointer; }
 .pai-why-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
 .pai-why-card { background:#f8fafc; border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:26px 24px; cursor:default; }
 .pai-why-num { font-size:1.25rem; font-weight:700; color:#2563eb; opacity:.5; line-height:1; letter-spacing:.02em; }
-.pai-why-card h3 { font-size:1.0625rem; font-weight:600; color:#0f172a; margin:12px 0 8px; line-height:1.3; }
-.pai-why-card p { font-size:.9rem; line-height:1.65; color:#64748b; margin:0; }
+.pai-why-card h3 { font-size:clamp(1.0625rem, 1rem + 0.25vw, 1.2rem); font-weight:600; color:#0f172a; margin:12px 0 8px; line-height:1.3; }
+.pai-why-card p { font-size:clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem); line-height:1.65; color:#64748b; margin:0; }
 
 /* ===== PAI · SECTION 9 CTA SECONDARY LINK ===== */
 .final-cta .container { max-width:1440px; }
@@ -761,7 +764,7 @@ a.pai-app-card { cursor:pointer; }
   .pai-arch-items > div:last-child, .pai-arch-block:last-child { grid-column:1 / -1; }
   /* Pipeline flips to a vertical rail — never scrolls sideways */
   .pai-phase-row { display:none; }
-  .pai-phase-inline { display:block; font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:#64748b; padding:20px 0 8px; }
+  .pai-phase-inline { display:block; font-size:clamp(0.75rem, 0.7rem + 0.2vw, 0.85rem); font-weight:700; text-transform:uppercase; letter-spacing:.12em; color:#64748b; padding:20px 0 8px; }
   .pai-nodes { grid-template-columns:1fr; gap:0; padding:0 0 0 30px; background:none; border-radius:0; }
   .pai-nodes::before { left:6px; right:auto; top:14px; bottom:14px; transform:none; width:3px; height:auto; background:linear-gradient(180deg, rgba(0,0,0,.12) 0%, rgba(37,99,235,.55) 55%, #2563eb 100%); }
   .pai-node { padding:12px 0; }
@@ -781,7 +784,7 @@ a.pai-app-card { cursor:pointer; }
   .pai-arch-items, .pai-arch-blocks { grid-template-columns:1fr; }
   .pai-arch-items > div:last-child, .pai-arch-block:last-child { grid-column:auto; }
   .pai-shots { grid-template-columns:repeat(2,1fr); }
-  .pai-node-lbl { font-size:.85rem; }
+  .pai-node-lbl { font-size:clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); }
   .pai-pipeline-foot { padding:18px; }
   .pai-pipeline-foot .btn { width:100%; text-align:center; }
   .pai-arch-tier { padding:18px 16px; }
@@ -804,8 +807,8 @@ a.pai-app-card { cursor:pointer; }
 .hsr-flow-step { flex:1 1 0; min-width:0; }
 .hsr-flow-ic { width:44px; height:44px; border-radius:10px; background:#eff4ff; display:flex; align-items:center; justify-content:center; margin-bottom:16px; }
 .hsr-flow-ic svg { width:22px; height:22px; color:#2563eb; }
-.hsr-flow-step h3 { font-size:1rem; font-weight:700; color:#0f172a; margin:0 0 8px; line-height:1.3; }
-.hsr-flow-step p { font-size:.85rem; line-height:1.6; color:#64748b; margin:0; }
+.hsr-flow-step h3 { font-size:clamp(1.0625rem, 1rem + 0.25vw, 1.2rem); font-weight:700; color:#0f172a; margin:0 0 8px; line-height:1.3; }
+.hsr-flow-step p { font-size:clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); line-height:1.6; color:#64748b; margin:0; }
 .hsr-flow-arrow { flex:none; display:flex; align-items:center; padding-top:11px; }
 .hsr-flow-arrow svg { width:18px; height:18px; color:#94a3b8; }
 
@@ -813,7 +816,7 @@ a.pai-app-card { cursor:pointer; }
 .hsr-lead { font-size:clamp(1.4rem,2.4vw,1.7rem); font-weight:600; line-height:1.35; color:#0f172a; margin:20px 0 20px; max-width:820px; }
 .hsr-lead span { color:#2563eb; }
 .hsr-arch-out-label { display:block; }
-.hsr-arch-out-items { display:block; margin-top:6px; font-size:.9rem; font-weight:600; color:rgba(255,255,255,.85); }
+.hsr-arch-out-items { display:block; margin-top:6px; font-size:clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); font-weight:600; color:rgba(255,255,255,.85); }
 
 /* ===== HSR · SECTION 6 PROTOTYPE → PRODUCTION (unified panel) ===== */
 .hsr-prod { margin-top:44px; background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:16px; overflow:hidden; }
@@ -823,10 +826,10 @@ a.pai-app-card { cursor:pointer; }
 .hsr-prod-tag--after { color:#2563eb; background:#eff4ff; }
 .hsr-prod-body { flex:1 1 auto; min-width:0; padding:24px 28px; }
 .hsr-prod-row--after .hsr-prod-body { background:#fafcff; }
-.hsr-prod-h { font-size:.85rem; font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:#64748b; margin:0 0 16px; }
+.hsr-prod-h { font-size:clamp(0.75rem, 0.7rem + 0.2vw, 0.85rem); font-weight:700; text-transform:uppercase; letter-spacing:.08em; color:#64748b; margin:0 0 16px; }
 .hsr-prod-h--after { color:#2563eb; }
 .hsr-prod-items { display:flex; flex-wrap:wrap; gap:12px 28px; }
-.hsr-prod-item { position:relative; padding-left:14px; font-size:.9rem; color:#475569; line-height:1.5; }
+.hsr-prod-item { position:relative; padding-left:14px; font-size:clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); color:#475569; line-height:1.5; }
 .hsr-prod-item::before { content:""; position:absolute; left:0; top:8px; width:6px; height:6px; border-radius:50%; background:#f59e0b; }
 .hsr-prod-row--after .hsr-prod-item { color:#0f172a; font-weight:500; }
 .hsr-prod-row--after .hsr-prod-item::before { background:#2563eb; }
@@ -841,7 +844,7 @@ a.pai-app-card { cursor:pointer; }
 
 /* production process rail */
 .hsr-prod-proc { background:#f8fafc; padding:24px 28px; }
-.hsr-prod-proc-h { font-size:.75rem; font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:#64748b; margin:0 0 26px; }
+.hsr-prod-proc-h { font-size:clamp(0.75rem, 0.7rem + 0.2vw, 0.85rem); font-weight:700; text-transform:uppercase; letter-spacing:.14em; color:#64748b; margin:0 0 26px; }
 .hsr-prod-steps { position:relative; display:grid; grid-template-columns:repeat(6,1fr); gap:10px; }
 .hsr-prod-steps::before { content:""; position:absolute; left:5px; right:5px; top:0; transform:translateY(-50%); height:2px; border-radius:2px; background:linear-gradient(90deg, rgba(0,0,0,.12) 0%, rgba(37,99,235,.55) 55%, #2563eb 100%); }
 .hsr-prod-step { position:relative; padding-top:16px; }
@@ -849,7 +852,7 @@ a.pai-app-card { cursor:pointer; }
 .hsr-prod-step--mid .hsr-prod-dot { background:#3b82f6; }
 .hsr-prod-step--end .hsr-prod-dot { background:#2563eb; }
 .hsr-prod-step--goal .hsr-prod-dot { box-shadow:0 0 0 5px rgba(37,99,235,.16); }
-.hsr-prod-step-lbl { display:block; font-size:.8rem; font-weight:600; color:#475569; line-height:1.35; }
+.hsr-prod-step-lbl { display:block; font-size:clamp(0.9rem, 0.85rem + 0.25vw, 1.05rem); font-weight:600; color:#475569; line-height:1.35; }
 
 /* CTA bar sits tight under the panel */
 .hsr-prod + .pai-pipeline-foot { margin-top:20px; }
@@ -858,7 +861,7 @@ a.pai-app-card { cursor:pointer; }
 .hsr-two { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:56px; align-items:center; }
 .hsr-two .eyebrow { display:block; }
 .hsr-check { list-style:none; padding:0; margin:0; display:grid; grid-template-columns:repeat(2,1fr); gap:14px 20px; }
-.hsr-check li { display:flex; align-items:center; gap:11px; font-size:.95rem; font-weight:500; color:#0f172a; line-height:1.4; }
+.hsr-check li { display:flex; align-items:center; gap:11px; font-size:clamp(0.95rem, 0.9rem + 0.2vw, 1.0625rem); font-weight:500; color:#0f172a; line-height:1.4; }
 .hsr-check-ic { flex:none; width:24px; height:24px; border-radius:50%; background:#eff4ff; display:flex; align-items:center; justify-content:center; }
 .hsr-check-ic svg { width:14px; height:14px; color:#2563eb; }
 
@@ -1119,9 +1122,9 @@ a.pai-app-card { cursor:pointer; }
 <!-- ========== 1) HERO ========== -->
 <header class="ind-hero fade-section">
   <div class="container">
+    <div class="eyebrow dark reveal">/ PHYSICAL AI &amp; ROBOTICS — HUMANOID &amp; SERVICE ROBOTICS</div>
     <div class="ind-hero-top reveal">
       <div class="ind-hero-lead">
-        <div class="eyebrow dark">/ PHYSICAL AI &amp; ROBOTICS — HUMANOID &amp; SERVICE ROBOTICS</div>
         <h1 class="display">Hardware Development for Humanoid &amp; Service Robots</h1>
       </div>
       <div class="ind-hero-aside">
@@ -1145,7 +1148,7 @@ a.pai-app-card { cursor:pointer; }
     <div class="ind-head reveal">
       <div class="eyebrow">/ INTERACTION</div>
       <h2 class="section measure-wide">Hardware Built for Human-Robot Interaction</h2>
-      <p class="measure-wide" style="font-size:1.0625rem;line-height:1.75;color:#475569;margin:18px 0 0;">Humanoid and service robots need more than intelligence. To interact naturally with people, they need hardware that can reliably sense, hear, process, communicate, and connect in real-world environments.</p>
+      <p class="measure-wide" style="font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem);line-height:1.75;color:#475569;margin:18px 0 0;">Humanoid and service robots need more than intelligence. To interact naturally with people, they need hardware that can reliably sense, hear, process, communicate, and connect in real-world environments.</p>
     </div>
 
     <div class="hsr-flow reveal" role="img" aria-label="Interaction flow: see, hear, understand, communicate, connect.">
@@ -1188,7 +1191,7 @@ a.pai-app-card { cursor:pointer; }
     <div class="ind-head reveal">
       <div class="eyebrow">/ VOICE &amp; AUDIO</div>
       <h2 class="section measure-wide">Help Your Robot Hear and Communicate</h2>
-      <p class="measure-wide" style="font-size:1.0625rem;line-height:1.75;color:#475569;margin:18px 0 0;">Voice interaction in robotics becomes difficult when microphones must capture speech around motors, fans, speakers, movement, and environmental noise. GMIC helps build and tune the audio hardware around your voice AI pipeline.</p>
+      <p class="measure-wide" style="font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem);line-height:1.75;color:#475569;margin:18px 0 0;">Voice interaction in robotics becomes difficult when microphones must capture speech around motors, fans, speakers, movement, and environmental noise. GMIC helps build and tune the audio hardware around your voice AI pipeline.</p>
     </div>
 
     <div class="pai-cap-grid reveal">
@@ -1234,7 +1237,7 @@ a.pai-app-card { cursor:pointer; }
       <div class="eyebrow">/ POSITIONING</div>
       <h2 class="section measure-wide">Build the Hardware Around Your Robot Intelligence</h2>
       <p class="hsr-lead">You build the robot intelligence. <span>We help build the hardware around it.</span></p>
-      <p class="measure" style="font-size:1.0625rem;line-height:1.75;color:#475569;margin:0;">Whether your robotics platform uses a VLA, VLM, AI agent, speech model, computer vision system, or proprietary software stack, GMIC helps integrate the electronics required to bring that intelligence into a deployable product.</p>
+      <p class="measure" style="font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem);line-height:1.75;color:#475569;margin:0;">Whether your robotics platform uses a VLA, VLM, AI agent, speech model, computer vision system, or proprietary software stack, GMIC helps integrate the electronics required to bring that intelligence into a deployable product.</p>
     </div>
 
     <div class="pai-arch reveal" role="img" aria-label="Three-tier architecture: your robot intelligence of VLA, VLM, AI agent, speech AI and computer vision sits on top; the GMIC hardware layer of audio and sensors, edge and embedded compute, connectivity, firmware and custom electronics sits in the middle; the result is your robotics platform.">
@@ -1328,8 +1331,8 @@ a.pai-app-card { cursor:pointer; }
       <div class="eyebrow">/ PRODUCTIZATION</div>
       <h2 class="section measure-wide">From Robot Prototype to Production</h2>
       <div class="measure" style="margin-top:18px;">
-        <p style="font-size:1.0625rem;line-height:1.75;color:#475569;margin:0 0 16px;">A robotics prototype can work with development boards, external sensors, USB microphones, loose wiring, and 3D-printed parts. Turning that system into a reliable product requires a different level of hardware integration and production engineering.</p>
-        <p style="font-size:1.0625rem;line-height:1.75;color:#475569;margin:0;">GMIC helps productize the electronics around your existing humanoid or service robotics platform.</p>
+        <p style="font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem);line-height:1.75;color:#475569;margin:0 0 16px;">A robotics prototype can work with development boards, external sensors, USB microphones, loose wiring, and 3D-printed parts. Turning that system into a reliable product requires a different level of hardware integration and production engineering.</p>
+        <p style="font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem);line-height:1.75;color:#475569;margin:0;">GMIC helps productize the electronics around your existing humanoid or service robotics platform.</p>
       </div>
     </div>
 
@@ -1394,7 +1397,7 @@ a.pai-app-card { cursor:pointer; }
     <div class="ind-head reveal">
       <div class="eyebrow">/ APPLICATIONS</div>
       <h2 class="section measure-wide">Hardware for Commercial Service Robots</h2>
-      <p class="measure-wide" style="font-size:1.0625rem;line-height:1.75;color:#475569;margin:18px 0 0;">GMIC supports service robots that interact with customers, employees, visitors, and users across commercial environments.</p>
+      <p class="measure-wide" style="font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem);line-height:1.75;color:#475569;margin:18px 0 0;">GMIC supports service robots that interact with customers, employees, visitors, and users across commercial environments.</p>
     </div>
 
     <div class="pai-app-grid reveal">
@@ -1441,8 +1444,8 @@ a.pai-app-card { cursor:pointer; }
       <div class="reveal">
         <div class="eyebrow">/ HUMANOID ROBOTICS</div>
         <h2 class="section" style="margin:16px 0 20px;">Humanoid Robot Hardware Development</h2>
-        <p style="font-size:1.0625rem;line-height:1.75;color:#475569;margin:0 0 16px;">Humanoid robotics companies often begin with powerful AI and robotics platforms, but production systems still require integrated sensing, audio, computing, connectivity, firmware, and electronics.</p>
-        <p style="font-size:1.0625rem;line-height:1.75;color:#475569;margin:0;">GMIC helps develop and integrate this hardware layer around existing humanoid robotics platforms, from early prototypes through production-ready electronics.</p>
+        <p style="font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem);line-height:1.75;color:#475569;margin:0 0 16px;">Humanoid robotics companies often begin with powerful AI and robotics platforms, but production systems still require integrated sensing, audio, computing, connectivity, firmware, and electronics.</p>
+        <p style="font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem);line-height:1.75;color:#475569;margin:0;">GMIC helps develop and integrate this hardware layer around existing humanoid robotics platforms, from early prototypes through production-ready electronics.</p>
       </div>
       <ul class="hsr-check reveal">
         <li><span class="hsr-check-ic"><i data-lucide="check" aria-hidden="true"></i></span>Voice &amp; audio hardware</li>
@@ -1466,7 +1469,7 @@ a.pai-app-card { cursor:pointer; }
     <div class="ind-head reveal">
       <div class="eyebrow">/ MANUFACTURING</div>
       <h2 class="section measure-wide">Prepare Your Robotics Hardware for Production</h2>
-      <p class="measure-wide" style="font-size:1rem;line-height:1.75;color:#475569;margin:18px 0 0;">Once the hardware architecture is validated, GMIC helps prepare integrated robotics electronics for reliable and scalable production.</p>
+      <p class="measure-wide" style="font-size:clamp(1rem, 0.95rem + 0.25vw, 1.125rem);line-height:1.75;color:#475569;margin:18px 0 0;">Once the hardware architecture is validated, GMIC helps prepare integrated robotics electronics for reliable and scalable production.</p>
     </div>
 
     <div class="pai-mfg-grid reveal">
