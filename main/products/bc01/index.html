@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<meta name="robots" content="noindex, nofollow" />
 <title>BC01 — AI Chat Bone Conduction Headset | GMIC.AI</title>
 <meta name="description" content="BC01 is a ChatGPT-powered bone conduction headset by hearit.ai — open-ear AI voice interaction with situational awareness, all-day comfort, and hands-free operation for professionals on the move." />
+<link rel="canonical" href="https://gmic.ai/products/bc01/">
 
 <!-- Favicon + Open Graph (mirrors homepage, paths rebased to ../../) -->
 <link rel="icon" type="image/png" href="../../img/favicon.png">
@@ -230,6 +230,41 @@
 .m5-tag{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid rgba(0,0,0,.1);background:#fff;font-size:.95rem;font-weight:500;color:#0f172a;transition:border-color .2s,transform .2s,box-shadow .2s;}
 .m5-tag:hover{border-color:rgba(37,99,235,.5);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.06);}
 .m5-tag svg{width:16px;height:16px;color:#2563eb;}
+
+/* ---- Hero colour switch (Black current → White links to bc01-white) ---- */
+.m5-swatches{display:flex;align-items:center;gap:14px;margin-bottom:26px;}
+.m5-swatches-k{font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55);}
+.m5-swatch{display:inline-flex;align-items:center;gap:8px;font-size:.875rem;font-weight:600;color:rgba(255,255,255,.7);text-decoration:none;padding:4px 12px 4px 4px;border-radius:999px;border:1px solid transparent;transition:border-color .2s,color .2s;}
+.m5-swatch:hover{color:#fff;border-color:rgba(255,255,255,.2);}
+.m5-swatch[aria-current]{color:#fff;border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.06);}
+.m5-swatch-dot{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,.35);}
+.m5-swatch[aria-current] .m5-swatch-dot{box-shadow:0 0 0 2px #0a1326,0 0 0 4px #60a5fa;border-color:transparent;}
+.m5-swatch-dot--white{background:#f1f5f9;}
+.m5-swatch-dot--black{background:#111827;}
+/* soft light behind the black product so it reads on the dark hero */
+.m5-hero-media{overflow:visible;}
+.m5-hero-media::before{content:"";position:absolute;inset:6% 8%;border-radius:50%;background:radial-gradient(closest-side,rgba(120,150,200,.38),rgba(120,150,200,0));filter:blur(20px);z-index:0;}
+.m5-hero-media img{z-index:1;padding:0;}
+
+/* ---- Stay-aware section: real BC01 product shot instead of the stock photo ---- */
+.m5-scene--product{background:#fff;}
+.m5-scene--product img{object-fit:contain;padding:24px;}
+.m5-scene--product:hover img{transform:none;}
+
+/* ---- Stay-aware photo: on-site lifestyle shot (512px source, shown at native-ish size) ---- */
+.m5-scene--onsite{aspect-ratio:1/1;max-width:440px;width:100%;justify-self:center;}
+.m5-scene--onsite img{object-fit:cover;}
+
+/* ---- Stay-aware: wide workbench photo + on-site portrait, offset stack ---- */
+.m5-split:has(.m5-stack2){grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:clamp(32px,4vw,56px);}
+.m5-stack2{position:relative;padding:0 0 90px 70px;}
+.m5-stack2 figure{margin:0;}
+.m5-stack2-main{border-radius:16px;overflow:hidden;box-shadow:0 16px 44px rgba(15,23,42,.12);aspect-ratio:1000/563;}
+.m5-stack2-main img{width:100%;height:100%;object-fit:cover;display:block;}
+.m5-stack2-sub{position:absolute;left:0;bottom:0;width:40%;aspect-ratio:1/1;border-radius:14px;overflow:hidden;border:6px solid #fff;box-shadow:0 20px 48px rgba(15,23,42,.18);}
+.m5-stack2-sub img{width:100%;height:100%;object-fit:cover;display:block;}
+@media(max-width:900px){.m5-split:has(.m5-stack2){grid-template-columns:1fr;}}
+@media(max-width:560px){.m5-stack2{padding:0 0 64px 36px;}.m5-stack2-sub{width:46%;border-width:4px;}}
 </style>
 </head>
 <body>
@@ -467,6 +502,11 @@
         <div class="eyebrow dark">BC01 · AI Chat BC Headset</div>
         <h1>AI in your ear. <em class="italic">World still in reach.</em></h1>
         <p class="m5-hero-sub">BC01 is a ChatGPT-powered bone conduction headset that delivers AI voice interaction while keeping your ears open to the world. Talk to ChatGPT, translate conversations, transcribe meetings — all hands-free with full situational awareness. Designed for professionals who need AI without isolation.</p>
+        <div class="m5-swatches" role="group" aria-label="Colour">
+          <span class="m5-swatches-k">Colour</span>
+          <a class="m5-swatch" href="../bc01-white/index.html"><span class="m5-swatch-dot m5-swatch-dot--white"></span>White</a>
+          <span class="m5-swatch" aria-current="true"><span class="m5-swatch-dot m5-swatch-dot--black"></span>Black</span>
+        </div>
         <div class="m5-hero-cta">
           <a href="../../book-a-meeting/index.html" class="btn btn-blue">Request a Sample</a>
           <a href="mailto:swallow@gmic.ai" class="btn btn-ghost">Talk to Sales</a>
@@ -479,7 +519,7 @@
         </div>
       </div>
       <div class="m5-hero-media reveal">
-        <img src="../../img/cap/bc01.png" alt="BC01 AI Chat Bone Conduction Headset">
+        <img src="../../img/products/bc01/hero.png" alt="Hearit.ai BoneSonix HA-BC01 open-ear bone conduction headset, black">
       </div>
     </div>
   </div>
@@ -522,9 +562,14 @@
         <h2 class="section" style="margin-bottom:18px;">AI conversation without <em class="italic">blocking the world out.</em></h2>
         <p class="m5-lead">Traditional headphones isolate you. BC01 uses bone conduction technology to deliver ChatGPT audio through your cheekbones, leaving your ear canals completely open. Hear your surroundings, stay aware of your environment, and interact with AI simultaneously — whether you're on a job site, in a warehouse, driving, or walking through a busy office.</p>
       </div>
-      <figure class="m5-scene reveal">
-        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1100&q=80" alt="Professional wearing headset in active environment" loading="lazy">
-      </figure>
+      <div class="m5-stack2 reveal">
+        <figure class="m5-stack2-main">
+          <img src="../../img/products/bc01/workbench.jpg" alt="Black BoneSonix HA-BC01 headset on a workbench beside a laptop in an electronics production facility" loading="lazy">
+        </figure>
+        <figure class="m5-stack2-sub">
+          <img src="../../img/products/bc01/on-site.jpg" alt="Technician in a workshop wearing the black BoneSonix HA-BC01 open-ear headset" loading="lazy">
+        </figure>
+      </div>
     </div>
   </div>
 </section>

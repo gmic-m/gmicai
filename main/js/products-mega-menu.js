@@ -24,14 +24,19 @@
       { name: 'MIC04', slug: 'products/mic04/index.html', img: OV + 'HA-MIC04.jpg', desc: 'CES-featured GPT recorder in premium aluminum' },
       { name: 'MIC05', slug: 'products/mic05/index.html', img: OV + 'HA-MIC05.jpg', desc: 'Button-triggered capture for field notes' },
       { name: 'MIC06A', slug: 'products/mic06/index.html', img: OV + 'HA-MIC06A.jpg', desc: 'Continuous voice capture for shift-based operations' },
-      { name: 'MIC06B', slug: 'products/mic06b/index.html', img: OV + 'HA-MIC06B.jpg', desc: 'Next-gen AI voice terminal for real-world work' }
+      { name: 'MIC06B', slug: 'products/mic06b/index.html', img: OV + 'HA-MIC06B.jpg', desc: 'Next-gen AI voice terminal for real-world work' },
+      { name: 'CS01', slug: 'products/cs01/index.html', img: OV + 'HA-CS01.jpg', desc: '4.5 mm magnetic card AI recorder (WiFi + BT)' }
     ]},
     { name: 'AI Wearables', products: [
       { name: 'GL01', slug: 'products/gl01/index.html', img: OV + 'HA-GLS01.jpg', desc: 'AI chat glasses (ChatGPT + camera)' },
+      { name: 'GLS02', slug: 'products/gls02/index.html', img: OV + 'HA-GLS02.jpg', desc: 'AI glasses with electrochromic lenses + 1080p camera' },
+      { name: 'GLS03', slug: 'products/gls03/index.html', img: OV + 'HA-GLS03.jpg', desc: 'Browline AI glasses with anti-blue-light lenses' },
       { name: 'EB01', slug: 'products/eb01/index.html', img: OV + 'HA-TWS01.jpg', desc: 'AI Bluetooth headset (ChatGPT-4)' },
       { name: 'BC01', slug: 'products/bc01/index.html', img: OV + 'HA-BC01.jpg', desc: 'AI chat bone conduction headset' },
+      { name: 'BC01 White', slug: 'products/bc01-white/index.html', img: OV + 'HA-BC01-White.jpg', desc: 'Bone conduction AI headset with one-touch recording' },
       { name: 'Smart Pen', slug: PV + 'smart-pen', img: OV + 'HA-PEN01.jpg' },
-      { name: 'OWS03', slug: 'products/ows03/index.html', img: OV + 'HA-OWS03.jpg', desc: 'AIChat OWS headset (5 AI, open-ear)' }
+      { name: 'OWS03', slug: 'products/ows03/index.html', img: OV + 'HA-OWS03.jpg', desc: 'AIChat OWS headset (5 AI, open-ear)' },
+      { name: 'HSC01', slug: 'products/hsc01/index.html', img: OV + 'HA-HSC01.jpg', desc: 'Open-ear AI headset with 1080p camera' }
     ]},
     { name: 'AI Communication', products: [
       { name: 'Telalive', slug: 'products/telalive/index.html', img: OV + 'telalive.png', desc: 'AI-powered desk phone & wearable platform' },
