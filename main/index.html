@@ -400,6 +400,21 @@
 }
 
 .nav { border-bottom: none !important; box-shadow: none !important; }
+
+/* ===== Inside GMIC mini story card (shown only when the "Firmware and hardware" tile is active) ===== */
+.why-mini-story{display:none;align-items:center;gap:18px;align-self:stretch;max-width:none;margin-top:12px;padding:12px 20px 12px 12px;border-radius:14px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);color:#fff;text-decoration:none;transition:background .2s ease,border-color .2s ease}
+.why-tile.active .why-mini-story{display:flex;animation:whyMiniIn .35s ease}
+.why-mini-story:hover{background:rgba(255,255,255,0.14);border-color:#fff}
+.why-mini-story img{position:static;width:88px;height:88px;border-radius:10px;object-fit:cover;flex-shrink:0;z-index:auto;transition:none}
+.why-mini-story-text{display:flex;flex-direction:column;gap:4px;min-width:0}
+.why-mini-story-tag{font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#93c5fd}
+.why-mini-story-title{font-family:var(--sans);font-size:18px;letter-spacing:-0.01em;font-weight:700;color:#fff;line-height:1.3}
+.why-mini-story-link{font-family:var(--sans);font-size:14px;font-weight:500;color:rgba(255,255,255,0.75);margin-top:2px}
+.why-mini-story:hover .why-mini-story-link{color:#fff}
+@media (max-width:768px){.why-mini-story{gap:14px;padding:10px 14px 10px 10px}.why-mini-story img{width:64px;height:64px}.why-mini-story-title{font-size:15px}.why-mini-story-link{font-size:13px}}
+.why-content--story{max-width:none;width:100%}
+.why-content--story p{max-width:520px}
+@keyframes whyMiniIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -814,16 +829,23 @@
       <div class="why-content">
         <h3>AI-first, not hardware-general</h3>
         <p>Generic ODMs build to spec. We build for AI use cases — voice processing, edge inference, and ambient intelligence. That's a different discipline entirely.</p>
-        <a href="#" class="why-btn">Learn more →</a>
+        <a href="resources/voice-ai-hardware/index.html" class="why-btn">Learn more →</a>
       </div>
     </div>
     <div class="why-tile" data-tile="2">
       <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80" alt="Firmware + hardware integration">
       <div class="why-overlay"></div>
-      <div class="why-content">
+      <div class="why-content why-content--story">
         <h3>Firmware and hardware, together</h3>
         <p>Generic ODMs hand off at the enclosure. We own firmware, audio tuning, SDK integration, and AI pipeline — one team, no handoff gaps.</p>
-        <a href="#" class="why-btn">Learn more →</a>
+        <a href="about/story/index.html" class="why-mini-story">
+          <img src="img/about/story/IG-RD-11_card.jpg" alt="Engineer connecting wires to a testing instrument in GMIC's Shenzhen engineering office" loading="lazy">
+          <span class="why-mini-story-text">
+            <span class="why-mini-story-tag">Inside GMIC</span>
+            <span class="why-mini-story-title">Keeping engineering questions visible</span>
+            <span class="why-mini-story-link">Read the story &rarr;</span>
+          </span>
+        </a>
       </div>
     </div>
     <div class="why-tile" data-tile="3">
@@ -832,7 +854,7 @@
       <div class="why-content">
         <h3>Rapid iteration, not slow tooling</h3>
         <p>Generic ODMs optimize for volume runs. We optimize for fast prototyping — first sample in 4–6 weeks, manufacturing roadmap in two weeks.</p>
-        <a href="#" class="why-btn">Learn more →</a>
+        <a href="process/index.html" class="why-btn">Learn more →</a>
       </div>
     </div>
     <div class="why-tile" data-tile="4">
@@ -841,7 +863,7 @@
       <div class="why-content">
         <h3>Production path included</h3>
         <p>Generic ODMs stop at delivery. We plan the scale path from day one — EVT, DVT, PVT checkpoints, certification, and supply chain.</p>
-        <a href="#" class="why-btn">Learn more →</a>
+        <a href="custom-devices/evt-dvt-pvt/index.html" class="why-btn">Learn more →</a>
       </div>
     </div>
   </div>
