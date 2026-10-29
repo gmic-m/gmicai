@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inside GMIC — Homepage Card | GMIC AI</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+
+  <style>
+    /* Preview page shell (not part of the card) */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 64px 20px;
+      background: #F6F8FB;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ------------------------------------------------------------------
+       Inside GMIC entry card — copy everything below into the homepage.
+       All selectors are prefixed with .ig-card to avoid collisions.
+       ------------------------------------------------------------------ */
+    .ig-card {
+      --ig-blue: #0066FF;
+      --ig-ink: #111827;
+      --ig-text: #475569;
+      --ig-line: #E5E7EB;
+
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 380px;
+      overflow: hidden;
+      border: 1px solid var(--ig-line);
+      border-radius: 16px;
+      background: #FFFFFF;
+      color: var(--ig-text);
+      text-decoration: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .ig-card:hover {
+      border-color: #D5DBE3;
+      box-shadow: 0 16px 32px -20px rgba(17, 24, 39, 0.22);
+    }
+    .ig-card:focus-visible {
+      outline: 2px solid var(--ig-blue);
+      outline-offset: 3px;
+    }
+
+    .ig-card__media {
+      margin: 0;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      background: #F6F8FB;
+    }
+    .ig-card__media img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .ig-card:hover .ig-card__media img { transform: scale(1.02); }
+
+    .ig-card__body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 24px 24px 26px;
+    }
+
+    .ig-card__category {
+      margin: 0 0 12px;
+      color: var(--ig-blue);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .ig-card__title {
+      margin: 0 0 10px;
+      color: var(--ig-ink);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.025em;
+      line-height: 1.25;
+      text-wrap: balance;
+    }
+
+    .ig-card__text {
+      margin: 0 0 22px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .ig-card__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: auto;
+      color: var(--ig-blue);
+      font-size: 15px;
+      font-weight: 600;
+    }
+    .ig-card__arrow { transition: transform 0.15s ease; }
+    .ig-card:hover .ig-card__arrow { transform: translateX(3px); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ig-card, .ig-card * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Inside GMIC entry card -->
+  <a class="ig-card" href="https://gmic.ai/inside-gmic/engineering-questions-visible/">
+    <figure class="ig-card__media">
+      <img
+        src="assets/images/IG-RD-11_card_1000x1000_v0.3.jpg"
+        width="1000" height="1000"
+        alt="An engineer's hands wiring a development board next to a test instrument"
+        loading="lazy">
+    </figure>
+    <div class="ig-card__body">
+      <p class="ig-card__category">Inside GMIC</p>
+      <h3 class="ig-card__title">Keeping engineering questions visible</h3>
+      <p class="ig-card__text">How a daily recap gives our founder a starting point for follow-up on engineering work in Shenzhen.</p>
+      <span class="ig-card__link">Read the story <span class="ig-card__arrow" aria-hidden="true">→</span></span>
+    </div>
+  </a>
+
+</body>
+</html>
