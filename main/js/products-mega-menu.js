@@ -56,6 +56,7 @@
       { name: 'TOY02', slug: 'products/toy02/index.html', img: OV + 'HA-TOY02.png', desc: 'ChatGPT AI chat toy (50+ languages)' }
     ]},
     { name: 'Developer Kits', products: [
+      { name: 'CS02 PCBA', slug: 'products/cs02/index.html', img: OV + 'HA-CS02_PCBA.jpg', desc: 'Card-style recorder PCBA (Wi-Fi 6 + BT 6.1)' },
       { name: 'ESP32 Kit', slug: 'products/esp32-kit/index.html', img: OV + 'HA-ESP32-KIT.jpg', desc: 'ESP32-S3 AI development board kit' }
     ]}
   ];

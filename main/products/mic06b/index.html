@@ -2,23 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MIC06B — AI Voice Terminal for Real-World Work | GMIC.AI</title>
-<meta name="description" content="HA-MIC06B is a next-generation wearable AI voice terminal with Wi-Fi 6 dual-band, lossless audio, ultra-low latency, and a 6nm low-power chip in a 30g compact magnetic-clip design." />
-<link rel="canonical" href="https://gmic.ai/products/mic06b/">
+<title>VoiceRec Ultra (HA-MIC06B) — Clip-On AI Voice Recorder | GMIC AI</title>
+<meta name="description" content="VoiceRec Ultra (HA-MIC06B): a clip-on AI voice recorder for offline capture and app sync, with dual-band Wi-Fi 6 and Bluetooth 6.1. Engineering samples; details on request." />
+<link rel="canonical" href="https://gmic.ai/products/cs01/">
 
 <!-- Favicon + Open Graph (mirrors homepage, paths rebased to ../../) -->
 <link rel="icon" type="image/png" href="../../img/favicon.png">
 <meta property="og:type" content="product">
-<meta property="og:title" content="MIC06B — AI Voice Terminal for Real-World Work | GMIC.AI">
-<meta property="og:description" content="HA-MIC06B is a next-generation wearable AI voice terminal with Wi-Fi 6 dual-band, lossless audio, ultra-low latency, and a 6nm low-power chip in a 30g compact magnetic-clip design.">
-<meta property="og:url" content="https://gmic.ai/products/mic06b/">
-<meta property="og:image" content="https://gmic.ai/img/cap/mic06b.png">
+<meta property="og:title" content="VoiceRec Ultra (HA-MIC06B) — Clip-On AI Voice Recorder | GMIC AI">
+<meta property="og:description" content="VoiceRec Ultra (HA-MIC06B): a clip-on AI voice recorder for offline capture and app sync, with dual-band Wi-Fi 6 and Bluetooth 6.1. Engineering samples; details on request.">
+<meta property="og:url" content="https://gmic.ai/products/cs01/">
+<meta property="og:image" content="https://gmic.ai/img/products/cs01/hero.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+<script src="https://unpkg.com/lucide@0.454.0/dist/umd/lucide.min.js"></script>
 <link rel="stylesheet" href="../../css/style.css">
 <link rel="stylesheet" href="../../css/grid.css">
 
@@ -86,9 +87,8 @@
 .nav.scrolled .nav-link.active{color:#2563eb!important;}
 
 /* ===================================================================
-   MIC06B PRODUCT PAGE — page-specific styles (m5- prefix).
-   Layout blocks are kept content-agnostic so this file works as the
-   template for MIC06 / MIC01 / Telalive — swap the copy, keep the shell.
+   HA-CS01 PRODUCT PAGE — page-specific styles (m5- prefix).
+   Layout blocks are kept content-agnostic — swap the copy, keep the shell.
    =================================================================== */
 
 /* ---- Section shells (reusable: alternate .m5-dark / .m5-light / .m5-soft) ---- */
@@ -114,9 +114,9 @@
 .m5-chip{display:inline-flex;align-items:center;gap:6px;font-size:.8125rem;font-weight:500;color:rgba(255,255,255,.78);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);padding:6px 12px;border-radius:999px;}
 .m5-chip svg{width:14px;height:14px;}
 /* Hero image / placeholder panel (4:3 to avoid layout shift) */
-.m5-hero-media{position:relative;aspect-ratio:4/3;width:100%;border-radius:16px;overflow:hidden;border:none;box-shadow:none;background:transparent;}
-.m5-hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:28px;}
-.m5-hero-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:transparent;}
+.m5-hero-media{position:relative;aspect-ratio:4/3;width:100%;border-radius:0;overflow:visible;border:none;box-shadow:none;background:transparent;}
+.m5-hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:0;}
+.m5-hero-ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#f1f5f9 0%,#e2e8f0 100%);}
 .m5-hero-ph span{font-family:var(--sans);font-weight:800;letter-spacing:.06em;font-size:clamp(40px,6vw,72px);color:#94a3b8;}
 .m5-hero-ph small{font-size:.8125rem;letter-spacing:.14em;text-transform:uppercase;color:#b6c0cf;}
 
@@ -126,6 +126,13 @@
 .m5-light .m5-card,.m5-soft .m5-card{border-color:rgba(0,0,0,.08);background:#fff;}
 .m5-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.18);}
 .m5-light .m5-card:hover,.m5-soft .m5-card:hover{box-shadow:0 12px 32px rgba(0,0,0,.08);}
+/* Platform section cards — no hover (nothing is clickable) */
+.m5-light .m5-grid-3 .m5-card:hover,
+.m5-soft .m5-grid-3 .m5-card:hover {
+  transform: none;
+  box-shadow: none;
+  cursor: default;
+}
 .m5-card-ico{width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(37,99,235,.14);color:#60a5fa;margin-bottom:16px;}
 .m5-light .m5-card-ico,.m5-soft .m5-card-ico{background:#eef3ff;color:#2563eb;}
 .m5-card-ico svg{width:22px;height:22px;}
@@ -145,7 +152,7 @@
 .m5-spec-v{font-size:.9375rem;font-weight:600;color:#0f172a;text-align:right;}
 
 /* ---- E · WHAT'S UNIQUE (check row) ---- */
-.m5-check-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.m5-check-row{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
 .m5-check{display:flex;align-items:center;gap:12px;padding:20px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.10);font-weight:600;font-size:.96rem;}
 .m5-check .m5-tick{width:30px;height:30px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:rgba(37,99,235,.18);color:#60a5fa;}
 .m5-check .m5-tick svg{width:17px;height:17px;}
@@ -180,56 +187,228 @@
   .m5-spec-row{padding:14px 0;}
 }
 
-/* ---- Stats band (sits between dark hero and light Positioning; brand-blue to offset both) ---- */
-.m5-stats{background:#f1f5f9;color:#0f172a;padding:clamp(36px,5vw,56px) 0;}
-.m5-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;}
-.m5-stat{text-align:center;padding:6px 14px;border-left:1px solid rgba(15,23,42,.08);}
-.m5-stat:first-child{border-left:none;}
-.m5-stat-v{font-family:var(--sans);font-weight:700;font-size:clamp(36px,4.6vw,56px);line-height:1;letter-spacing:-0.02em;color:#0f172a;}
-.m5-stat-k{font-size:.8125rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:#64748b;margin-top:10px;}
-@media(max-width:640px){
-  .m5-stats-grid{grid-template-columns:1fr 1fr;gap:30px 0;}
-  .m5-stat{border-left:none;}
+
+/* ===================================================================
+   MENG-LIST-03 · PCBA/整机共用产品页模板 v0.1（CS01 样例）
+   =================================================================== */
+html,body{overflow-x:hidden;}
+.rv-bar{background:#fef3c7;color:#78350f;font-size:.8125rem;text-align:center;padding:8px 16px;font-weight:600;margin:0 0 clamp(48px,7vh,80px);}
+.m5-hero{padding-top:64px;}
+.m5-hero-media{aspect-ratio:1/1;max-width:440px;justify-self:center;}
+.m5-hero-media::before{content:"";position:absolute;inset:8%;border-radius:50%;background:radial-gradient(closest-side,rgba(120,150,200,.30),rgba(120,150,200,0));filter:blur(18px);}
+.m5-hero-media img{z-index:1;}
+/* status tags */
+.st{display:inline-flex;align-items:center;gap:6px;font-size:.75rem;font-weight:700;letter-spacing:.02em;padding:4px 10px;border-radius:999px;white-space:nowrap;}
+.st::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor;}
+.st-ok{background:#dcfce7;color:#166534;}
+.st-val{background:#fef3c7;color:#92400e;}
+.st-tbc{background:#e5e7eb;color:#374151;}
+.st-cus{background:#dbeafe;color:#1e40af;}
+.st-no{background:#fee2e2;color:#991b1b;}
+.m5-dark .st-tbc{background:rgba(255,255,255,.12);color:#e5e7eb;}
+.m5-hero .st-tbc{background:rgba(255,255,255,.12);color:#e5e7eb;}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px;}
+/* cards */
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.g2{grid-template-columns:repeat(2,1fr);}
+.card{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:16px;padding:26px;display:flex;flex-direction:column;gap:10px;}
+.m5-soft .card{background:#fff;}
+.card h3{font-size:1.125rem;font-weight:700;letter-spacing:-.01em;margin:0;color:#0f172a;}
+.card p{font-size:.9375rem;line-height:1.6;color:var(--text-muted);margin:0;}
+.card .ico{width:40px;height:40px;border-radius:10px;background:#eef3ff;color:#2563eb;display:flex;align-items:center;justify-content:center;}
+.card .ico svg{width:20px;height:20px;}
+.card a.more{font-size:.875rem;font-weight:600;color:#2563eb;text-decoration:none;margin-top:auto;}
+.card-top{display:flex;justify-content:space-between;align-items:center;gap:10px;}
+/* hardware */
+.hw{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,4vw,56px);align-items:center;}
+.hw-media{display:grid;grid-template-columns:.55fr 1fr;gap:16px;align-items:end;}
+.hw-media figure{margin:0;background:#f8fafc;border-radius:14px;padding:18px;display:flex;align-items:center;justify-content:center;}
+.hw-media img{max-width:100%;max-height:420px;display:block;}
+.hw-media figcaption{font-size:.75rem;color:#64748b;margin-top:8px;text-align:center;}
+.factlist{list-style:none;margin:0 0 20px;padding:0;}
+.factlist li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(15,23,42,.08);font-size:.9375rem;}
+.factlist li span:first-child{color:#64748b;}
+.factlist li span:last-child{font-weight:600;color:#0f172a;text-align:right;}
+.ph{border:1.5px dashed #cbd5e1;border-radius:14px;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;color:#475569;font-size:.9375rem;margin-top:12px;}
+.m5-dark .ph{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.75);}
+/* data paths */
+.paths{border-radius:16px;overflow:hidden;border:1px solid rgba(255,255,255,.1);}
+.path{display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:center;padding:20px 24px;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);}
+.path:last-child{border-bottom:none;}
+.path .n{width:32px;height:32px;border-radius:50%;background:rgba(96,165,250,.15);color:#93c5fd;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.875rem;}
+.path h3{font-size:1rem;font-weight:700;margin:0 0 4px;color:#fff;}
+.path p{font-size:.875rem;margin:0;color:rgba(255,255,255,.6);}
+.note{font-size:.8125rem;color:#64748b;margin-top:16px;}
+.m5-dark .note{color:rgba(255,255,255,.5);}
+/* buy */
+.buy{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(32px,4vw,56px);align-items:start;}
+.checks{list-style:none;padding:0;margin:0 0 28px;display:flex;flex-direction:column;gap:12px;}
+.checks li{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:.9375rem;padding:14px 18px;border:1px solid rgba(15,23,42,.08);border-radius:12px;background:#fff;}
+.faq details{border-bottom:1px solid rgba(15,23,42,.1);padding:16px 0;}
+.faq summary{cursor:pointer;font-weight:600;color:#0f172a;list-style:none;display:flex;justify-content:space-between;gap:16px;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:"+";color:#2563eb;font-weight:700;}
+.faq details[open] summary::after{content:"–";}
+.faq details p{margin:10px 0 0;color:var(--text-muted);font-size:.9375rem;line-height:1.6;}
+.faq-more{display:none;}
+.faq.expanded .faq-more{display:block;}
+.faq-toggle{margin-top:18px;background:none;border:1px solid #cbd5e1;border-radius:999px;padding:10px 18px;font-weight:600;color:#0f172a;cursor:pointer;font-family:var(--sans);}
+/* specs */
+.specs{display:grid;grid-template-columns:1fr 1fr;gap:0 48px;}
+.spec{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid rgba(15,23,42,.08);font-size:.9375rem;}
+.spec span:first-child{color:#64748b;}
+.spec span:last-child{font-weight:600;text-align:right;color:#0f172a;}
+.m5-cta{text-align:center;}
+.m5-cta .m5-head{margin:0 auto 28px;}
+.m5-cta-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
+@media(max-width:900px){
+  .m5-hero-grid,.hw,.buy{grid-template-columns:1fr;}
+  .m5-hero-media{order:-1;max-width:320px;}
+  .g3,.g2{grid-template-columns:1fr;}
+  .specs{grid-template-columns:1fr;}
+}
+@media(max-width:560px){
+  .path{grid-template-columns:32px 1fr;padding:18px;}
+  .path .st{grid-column:2;justify-self:start;}
+  .hw-media{grid-template-columns:.5fr 1fr;}
 }
 
-/* ---- Manufacturing backing (m5-soft) — text + factory photo collage ---- */
-.m5-mfg-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
-.m5-mfg-grid figure{margin:0;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.08);box-shadow:0 10px 30px rgba(0,0,0,.08);}
-.m5-mfg-grid figure:first-child{grid-column:1 / -1;}
-.m5-mfg-grid img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:16/10;transition:transform .45s ease;}
-.m5-mfg-grid figure:first-child img{aspect-ratio:16/7;}
-.m5-mfg-grid figure:hover img{transform:scale(1.05);}
-@media(max-width:640px){
-  .m5-mfg-grid{grid-template-columns:1fr;}
-  .m5-mfg-grid figure:first-child{grid-column:auto;}
-  .m5-mfg-grid figure:first-child img,.m5-mfg-grid img{aspect-ratio:16/10;}
-}
+.m5-hero-media.framed{aspect-ratio:3/4;max-width:400px;background:#eef1f5;border-radius:20px;overflow:hidden;}
+.m5-hero-media.framed::before{display:none;}
+.m5-hero-media.framed img{object-fit:cover;}
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px;}
+.gallery figure{margin:0;border-radius:12px;overflow:hidden;background:#f1f5f9;aspect-ratio:3/4;}
+.gallery img{width:100%;height:100%;object-fit:cover;display:block;}
+.wide-fig{margin:0;background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:16px;padding:16px;}
+.wide-fig img{width:100%;display:block;border-radius:8px;}
+.wide-fig figcaption{font-size:.75rem;color:#64748b;margin-top:8px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.card ul{margin:0;padding-left:18px;color:var(--text-muted);font-size:.9375rem;line-height:1.7;}
+@media(max-width:900px){.gallery{grid-template-columns:repeat(2,1fr);}.g4{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.g4{grid-template-columns:1fr;}}
 
-/* ---- Integration flow diagram (pure HTML+CSS, no images) ---- */
-.m5-flow-outer{margin-top:clamp(44px,6vw,68px);background:#f8fafc;border:1px solid rgba(0,0,0,.07);border-radius:20px;padding:32px 24px;}
-.m5-flow{display:flex;align-items:stretch;justify-content:center;gap:0;}
-.m5-flow-node{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;padding:24px 14px;border:none;border-radius:12px;background:transparent;box-shadow:none;}
-.m5-flow-ico{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#eef3ff;color:#2563eb;}
-.m5-flow-ico svg{width:22px;height:22px;}
-.m5-flow-node span{font-size:.9rem;font-weight:600;color:#0f172a;line-height:1.35;}
-.m5-flow-arrow{flex:0 0 auto;display:flex;align-items:center;justify-content:center;color:#2563eb;padding:0 6px;}
-.m5-flow-arrow svg{width:26px;height:26px;}
-@media(max-width:760px){
-  .m5-flow{flex-direction:column;align-items:stretch;}
-  .m5-flow-node{flex:none;}
-  .m5-flow-arrow{padding:6px 0;transform:rotate(90deg);}
-}
-
-/* ---- Scene image (Positioning / Built-for-business section) ---- */
-.m5-scene{margin:0;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,.08);box-shadow:0 10px 30px rgba(0,0,0,.08);aspect-ratio:4/3;}
-.m5-scene img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .45s ease;}
-.m5-scene:hover img{transform:scale(1.04);}
-
-/* ---- Built For (tag pills) ---- */
-.m5-tags{display:flex;flex-wrap:wrap;gap:12px;}
-.m5-tag{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid rgba(0,0,0,.1);background:#fff;font-size:.95rem;font-weight:500;color:#0f172a;transition:border-color .2s,transform .2s,box-shadow .2s;}
-.m5-tag:hover{border-color:rgba(37,99,235,.5);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.06);}
-.m5-tag svg{width:16px;height:16px;color:#2563eb;}
+/* ---- Samples grid + full-width FAQ (site FAQ accordion style) ---- */
+.checks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:28px;}
+.checks-grid li{display:flex;justify-content:space-between;gap:12px;align-items:center;font-size:.9375rem;padding:18px 20px;border:1px solid rgba(15,23,42,.08);border-radius:12px;background:#fff;list-style:none;}
+ul.checks-grid{padding:0;margin-top:0;}
+.pfaq{max-width:none;}
+.pfaq .faq-item{border-bottom:1px solid #E5E7EB;background:transparent;}
+.pfaq .faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;text-align:left;padding:20px 4px;background:none;border:none;cursor:pointer;font-family:var(--sans);}
+.pfaq .faq-q-main{display:flex;align-items:center;flex-wrap:wrap;gap:12px;}
+.pfaq .faq-q-text{font-size:1.0625rem;font-weight:600;color:#0a0a0a;line-height:1.4;}
+.pfaq .faq-q-cat{font-size:11px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#2563eb;background:#eef3ff;border-radius:6px;padding:3px 8px;}
+.pfaq .faq-icon{flex-shrink:0;width:28px;height:28px;position:relative;color:#9ca3af;}
+.pfaq .faq-icon::before,.pfaq .faq-icon::after{content:'';position:absolute;background:currentColor;border-radius:2px;top:50%;left:50%;}
+.pfaq .faq-icon::before{width:14px;height:2px;transform:translate(-50%,-50%);}
+.pfaq .faq-icon::after{width:2px;height:14px;transform:translate(-50%,-50%);transition:transform .25s ease;}
+.pfaq .faq-item.open .faq-icon{color:#2563eb;}
+.pfaq .faq-item.open .faq-icon::after{transform:translate(-50%,-50%) scaleY(0);}
+.pfaq .faq-a{display:none;}
+.pfaq .faq-item.open .faq-a{display:block;}
+.pfaq .faq-a-inner{padding:0 4px 22px;font-size:.9375rem;color:#5b6472;line-height:1.72;}
+.pfaq .faq-more{display:none;}
+.pfaq.expanded .faq-more{display:block;}
+.pfaq-actions{display:flex;gap:18px;align-items:center;margin-top:24px;flex-wrap:wrap;}
+.pfaq-actions a{font-weight:600;color:#2563eb;text-decoration:none;font-size:.9375rem;}
+@media(max-width:900px){.checks-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.checks-grid{grid-template-columns:1fr;}}
+.faq-split{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.6fr);gap:clamp(32px,5vw,80px);align-items:start;}
+.faq-side{position:sticky;top:96px;}
+.faq-side h2{margin:14px 0 18px;}
+.faq-all{display:inline-block;margin-top:22px;font-weight:600;color:#2563eb;text-decoration:none;}
+.pfaq .faq-item:first-child{border-top:1px solid #E5E7EB;}
+@media(max-width:900px){.faq-split{grid-template-columns:1fr;}.faq-side{position:static;}}
+/* ---- Samples: six cards in one row ---- */
+.checks-grid{grid-template-columns:repeat(6,1fr);gap:12px;}
+.checks-grid li{flex-direction:column;align-items:flex-start;justify-content:space-between;gap:14px;min-height:118px;padding:18px;}
+.checks-grid li > span:first-child{font-weight:600;color:#0f172a;line-height:1.4;}
+.checks-grid li .st{white-space:normal;}
+@media(max-width:1100px){.checks-grid{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:560px){.checks-grid{grid-template-columns:1fr;}.checks-grid li{flex-direction:row;align-items:center;min-height:0;}.checks-grid li .st{white-space:nowrap;}}
+.ck-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;flex-wrap:wrap;}
+.ck-head h2{margin:14px 0 0;}
+.btn-lg{padding:16px 32px;font-size:1.0625rem;}
+.checks-row{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:repeat(6,1fr);gap:14px;}
+.checks-row li{display:flex;flex-direction:column;justify-content:space-between;align-items:flex-start;gap:16px;padding:20px;min-height:128px;border:1px solid rgba(15,23,42,.08);border-radius:14px;background:#fff;}
+.ck-label{font-size:.9375rem;font-weight:600;color:#0f172a;line-height:1.4;}
+.checks-row .st{white-space:normal;}
+@media(max-width:1100px){.checks-row{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:560px){.checks-row{grid-template-columns:1fr 1fr;}.ck-head .btn{width:100%;text-align:center;}}
+.path .n{width:40px;height:40px;border-radius:10px;}
+.path .n svg{width:20px;height:20px;}
+.path{grid-template-columns:52px 1fr auto;}
+@media(max-width:560px){.path{grid-template-columns:44px 1fr;}}
+/* ---- Data paths as four parallel cards ---- */
+.paths{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;border:none;border-radius:0;overflow:visible;}
+.paths .path{display:flex;flex-direction:column;align-items:flex-start;gap:14px;padding:24px;border:1px solid rgba(255,255,255,.1);border-radius:16px;background:rgba(255,255,255,.03);}
+.paths .path:last-child{border-bottom:1px solid rgba(255,255,255,.1);}
+.paths .path > div:nth-child(2){flex:1;}
+.paths .path h3{font-size:1.0625rem;margin-bottom:8px;}
+.paths .path .st{white-space:normal;}
+@media(max-width:1100px){.paths{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.paths{grid-template-columns:1fr;}.paths .path{padding:20px;}}
+.gallery-sq figure{aspect-ratio:1/1;}
+.gallery-sq img{object-position:50% 55%;}
+.hw-mic{grid-template-columns:minmax(0,620px) minmax(0,540px);justify-content:center;align-items:center;gap:clamp(56px,11vw,168px);}
+@media(max-width:900px){.hw-mic{grid-template-columns:1fr;}.hw-mic .pg{max-width:540px;justify-self:center;width:100%;}}
+/* MIC06B hero background */
+.cs-hero{position:relative;isolation:isolate;}
+.cs-hero .m5-hero-grid>*{min-width:0;}
+.cs-hero::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background-image:linear-gradient(rgba(148,178,255,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(148,178,255,.07) 1px,transparent 1px);
+  background-size:44px 44px;
+  -webkit-mask-image:radial-gradient(75% 85% at 72% 50%,#000 0%,rgba(0,0,0,.35) 55%,transparent 85%);mask-image:radial-gradient(75% 85% at 72% 50%,#000 0%,rgba(0,0,0,.35) 55%,transparent 85%);}
+.cs-hero-stage{position:relative;width:100%;max-width:520px;aspect-ratio:1/1;justify-self:center;display:flex;align-items:center;justify-content:center;}
+.cs-wave{position:absolute;left:-30%;right:-30%;top:50%;height:46%;transform:translateY(-50%);opacity:.28;
+  background:url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 1200 300%27 preserveAspectRatio=%27none%27%3E%3Cg fill=%27%2360a5fa%27%3E%3Crect x=%274.0%27 y=%27147.0%27 width=%274%27 height=%276.0%27 rx=%272%27/%3E%3Crect x=%2716.5%27 y=%27147.0%27 width=%274%27 height=%276.0%27 rx=%272%27/%3E%3Crect x=%2729.0%27 y=%27146.9%27 width=%274%27 height=%276.2%27 rx=%272%27/%3E%3Crect x=%2741.5%27 y=%27147.0%27 width=%274%27 height=%276.0%27 rx=%272%27/%3E%3Crect x=%2754.0%27 y=%27143.7%27 width=%274%27 height=%2712.6%27 rx=%272%27/%3E%3Crect x=%2766.5%27 y=%27143.4%27 width=%274%27 height=%2713.2%27 rx=%272%27/%3E%3Crect x=%2779.0%27 y=%27145.4%27 width=%274%27 height=%279.2%27 rx=%272%27/%3E%3Crect x=%2791.5%27 y=%27138.1%27 width=%274%27 height=%2723.7%27 rx=%272%27/%3E%3Crect x=%27104.0%27 y=%27143.9%27 width=%274%27 height=%2712.2%27 rx=%272%27/%3E%3Crect x=%27116.5%27 y=%27135.5%27 width=%274%27 height=%2729.0%27 rx=%272%27/%3E%3Crect x=%27129.0%27 y=%27141.4%27 width=%274%27 height=%2717.2%27 rx=%272%27/%3E%3Crect x=%27141.5%27 y=%27139.9%27 width=%274%27 height=%2720.2%27 rx=%272%27/%3E%3Crect x=%27154.0%27 y=%27130.0%27 width=%274%27 height=%2740.0%27 rx=%272%27/%3E%3Crect x=%27166.5%27 y=%27116.5%27 width=%274%27 height=%2767.0%27 rx=%272%27/%3E%3Crect x=%27179.0%27 y=%27135.7%27 width=%274%27 height=%2728.7%27 rx=%272%27/%3E%3Crect x=%27191.5%27 y=%27131.2%27 width=%274%27 height=%2737.7%27 rx=%272%27/%3E%3Crect x=%27204.0%27 y=%27115.1%27 width=%274%27 height=%2769.8%27 rx=%272%27/%3E%3Crect x=%27216.5%27 y=%27100.3%27 width=%274%27 height=%2799.3%27 rx=%272%27/%3E%3Crect x=%27229.0%27 y=%27112.5%27 width=%274%27 height=%2775.0%27 rx=%272%27/%3E%3Crect x=%27241.5%27 y=%27118.2%27 width=%274%27 height=%2763.7%27 rx=%272%27/%3E%3Crect x=%27254.0%27 y=%2789.8%27 width=%274%27 height=%27120.4%27 rx=%272%27/%3E%3Crect x=%27266.5%27 y=%27131.7%27 width=%274%27 height=%2736.7%27 rx=%272%27/%3E%3Crect x=%27279.0%27 y=%2789.7%27 width=%274%27 height=%27120.5%27 rx=%272%27/%3E%3Crect x=%27291.5%27 y=%27117.1%27 width=%274%27 height=%2765.8%27 rx=%272%27/%3E%3Crect x=%27304.0%27 y=%27123.7%27 width=%274%27 height=%2752.5%27 rx=%272%27/%3E%3Crect x=%27316.5%27 y=%27124.2%27 width=%274%27 height=%2751.5%27 rx=%272%27/%3E%3Crect x=%27329.0%27 y=%27112.0%27 width=%274%27 height=%2775.9%27 rx=%272%27/%3E%3Crect x=%27341.5%27 y=%2779.7%27 width=%274%27 height=%27140.5%27 rx=%272%27/%3E%3Crect x=%27354.0%27 y=%27117.6%27 width=%274%27 height=%2764.8%27 rx=%272%27/%3E%3Crect x=%27366.5%27 y=%2790.6%27 width=%274%27 height=%27118.7%27 rx=%272%27/%3E%3Crect x=%27379.0%27 y=%2785.2%27 width=%274%27 height=%27129.6%27 rx=%272%27/%3E%3Crect x=%27391.5%27 y=%27101.8%27 width=%274%27 height=%2796.5%27 rx=%272%27/%3E%3Crect x=%27404.0%27 y=%2788.4%27 width=%274%27 height=%27123.3%27 rx=%272%27/%3E%3Crect x=%27416.5%27 y=%27121.7%27 width=%274%27 height=%2756.6%27 rx=%272%27/%3E%3Crect x=%27429.0%27 y=%27121.4%27 width=%274%27 height=%2757.3%27 rx=%272%27/%3E%3Crect x=%27441.5%27 y=%27110.0%27 width=%274%27 height=%2780.1%27 rx=%272%27/%3E%3Crect x=%27454.0%27 y=%2773.5%27 width=%274%27 height=%27153.0%27 rx=%272%27/%3E%3Crect x=%27466.5%27 y=%2791.7%27 width=%274%27 height=%27116.6%27 rx=%272%27/%3E%3Crect x=%27479.0%27 y=%2799.7%27 width=%274%27 height=%27100.6%27 rx=%272%27/%3E%3Crect x=%27491.5%27 y=%2777.7%27 width=%274%27 height=%27144.5%27 rx=%272%27/%3E%3Crect x=%27504.0%27 y=%2787.5%27 width=%274%27 height=%27125.0%27 rx=%272%27/%3E%3Crect x=%27516.5%27 y=%2799.2%27 width=%274%27 height=%27101.6%27 rx=%272%27/%3E%3Crect x=%27529.0%27 y=%2758.8%27 width=%274%27 height=%27182.4%27 rx=%272%27/%3E%3Crect x=%27541.5%27 y=%2766.0%27 width=%274%27 height=%27168.1%27 rx=%272%27/%3E%3Crect x=%27554.0%27 y=%27102.7%27 width=%274%27 height=%2794.5%27 rx=%272%27/%3E%3Crect x=%27566.5%27 y=%2775.4%27 width=%274%27 height=%27149.2%27 rx=%272%27/%3E%3Crect x=%27579.0%27 y=%2779.3%27 width=%274%27 height=%27141.4%27 rx=%272%27/%3E%3Crect x=%27591.5%27 y=%2750.3%27 width=%274%27 height=%27199.4%27 rx=%272%27/%3E%3Crect x=%27604.0%27 y=%2762.3%27 width=%274%27 height=%27175.3%27 rx=%272%27/%3E%3Crect x=%27616.5%27 y=%2798.8%27 width=%274%27 height=%27102.4%27 rx=%272%27/%3E%3Crect x=%27629.0%27 y=%2742.1%27 width=%274%27 height=%27215.8%27 rx=%272%27/%3E%3Crect x=%27641.5%27 y=%27113.1%27 width=%274%27 height=%2773.9%27 rx=%272%27/%3E%3Crect x=%27654.0%27 y=%2788.8%27 width=%274%27 height=%27122.3%27 rx=%272%27/%3E%3Crect x=%27666.5%27 y=%2761.8%27 width=%274%27 height=%27176.4%27 rx=%272%27/%3E%3Crect x=%27679.0%27 y=%27111.1%27 width=%274%27 height=%2777.9%27 rx=%272%27/%3E%3Crect x=%27691.5%27 y=%2784.6%27 width=%274%27 height=%27130.7%27 rx=%272%27/%3E%3Crect x=%27704.0%27 y=%27120.7%27 width=%274%27 height=%2758.6%27 rx=%272%27/%3E%3Crect x=%27716.5%27 y=%2772.2%27 width=%274%27 height=%27155.6%27 rx=%272%27/%3E%3Crect x=%27729.0%27 y=%2765.9%27 width=%274%27 height=%27168.3%27 rx=%272%27/%3E%3Crect x=%27741.5%27 y=%2781.6%27 width=%274%27 height=%27136.8%27 rx=%272%27/%3E%3Crect x=%27754.0%27 y=%2760.3%27 width=%274%27 height=%27179.5%27 rx=%272%27/%3E%3Crect x=%27766.5%27 y=%27102.8%27 width=%274%27 height=%2794.3%27 rx=%272%27/%3E%3Crect x=%27779.0%27 y=%2776.5%27 width=%274%27 height=%27147.0%27 rx=%272%27/%3E%3Crect x=%27791.5%27 y=%2785.1%27 width=%274%27 height=%27129.8%27 rx=%272%27/%3E%3Crect x=%27804.0%27 y=%2787.6%27 width=%274%27 height=%27124.8%27 rx=%272%27/%3E%3Crect x=%27816.5%27 y=%2797.4%27 width=%274%27 height=%27105.3%27 rx=%272%27/%3E%3Crect x=%27829.0%27 y=%2773.9%27 width=%274%27 height=%27152.3%27 rx=%272%27/%3E%3Crect x=%27841.5%27 y=%2769.4%27 width=%274%27 height=%27161.1%27 rx=%272%27/%3E%3Crect x=%27854.0%27 y=%27100.6%27 width=%274%27 height=%2798.7%27 rx=%272%27/%3E%3Crect x=%27866.5%27 y=%2791.0%27 width=%274%27 height=%27118.0%27 rx=%272%27/%3E%3Crect x=%27879.0%27 y=%27127.5%27 width=%274%27 height=%2745.0%27 rx=%272%27/%3E%3Crect x=%27891.5%27 y=%2793.1%27 width=%274%27 height=%27113.8%27 rx=%272%27/%3E%3Crect x=%27904.0%27 y=%2798.2%27 width=%274%27 height=%27103.5%27 rx=%272%27/%3E%3Crect x=%27916.5%27 y=%2782.9%27 width=%274%27 height=%27134.1%27 rx=%272%27/%3E%3Crect x=%27929.0%27 y=%2794.2%27 width=%274%27 height=%27111.6%27 rx=%272%27/%3E%3Crect x=%27941.5%27 y=%27121.6%27 width=%274%27 height=%2756.8%27 rx=%272%27/%3E%3Crect x=%27954.0%27 y=%27118.6%27 width=%274%27 height=%2762.7%27 rx=%272%27/%3E%3Crect x=%27966.5%27 y=%27108.7%27 width=%274%27 height=%2782.6%27 rx=%272%27/%3E%3Crect x=%27979.0%27 y=%27136.2%27 width=%274%27 height=%2727.6%27 rx=%272%27/%3E%3Crect x=%27991.5%27 y=%27121.1%27 width=%274%27 height=%2757.8%27 rx=%272%27/%3E%3Crect x=%271004.0%27 y=%27133.0%27 width=%274%27 height=%2733.9%27 rx=%272%27/%3E%3Crect x=%271016.5%27 y=%27135.9%27 width=%274%27 height=%2728.3%27 rx=%272%27/%3E%3Crect x=%271029.0%27 y=%27138.7%27 width=%274%27 height=%2722.6%27 rx=%272%27/%3E%3Crect x=%271041.5%27 y=%27121.0%27 width=%274%27 height=%2758.1%27 rx=%272%27/%3E%3Crect x=%271054.0%27 y=%27139.0%27 width=%274%27 height=%2722.1%27 rx=%272%27/%3E%3Crect x=%271066.5%27 y=%27137.6%27 width=%274%27 height=%2724.9%27 rx=%272%27/%3E%3Crect x=%271079.0%27 y=%27136.3%27 width=%274%27 height=%2727.4%27 rx=%272%27/%3E%3Crect x=%271091.5%27 y=%27130.1%27 width=%274%27 height=%2739.7%27 rx=%272%27/%3E%3Crect x=%271104.0%27 y=%27144.2%27 width=%274%27 height=%2711.7%27 rx=%272%27/%3E%3Crect x=%271116.5%27 y=%27140.8%27 width=%274%27 height=%2718.4%27 rx=%272%27/%3E%3Crect x=%271129.0%27 y=%27141.6%27 width=%274%27 height=%2716.7%27 rx=%272%27/%3E%3Crect x=%271141.5%27 y=%27141.2%27 width=%274%27 height=%2717.7%27 rx=%272%27/%3E%3Crect x=%271154.0%27 y=%27144.1%27 width=%274%27 height=%2711.9%27 rx=%272%27/%3E%3Crect x=%271166.5%27 y=%27146.2%27 width=%274%27 height=%277.6%27 rx=%272%27/%3E%3Crect x=%271179.0%27 y=%27147.0%27 width=%274%27 height=%276.0%27 rx=%272%27/%3E%3Crect x=%271191.5%27 y=%27147.0%27 width=%274%27 height=%276.0%27 rx=%272%27/%3E%3C/g%3E%3C/svg%3E") center/100% 100% no-repeat;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 25%,#000 75%,transparent);mask-image:linear-gradient(90deg,transparent,#000 25%,#000 75%,transparent);}
+.cs-glow{position:absolute;inset:10%;border-radius:50%;background:radial-gradient(closest-side,rgba(96,165,250,.45),rgba(59,130,246,.15) 55%,rgba(59,130,246,0) 100%);filter:blur(8px);}
+.cs-ring{position:absolute;inset:18%;border-radius:50%;border:1px solid rgba(147,197,253,.35);opacity:0;animation:csripple 6s ease-out infinite;}
+.cs-ring.r2{animation-delay:-2s}.cs-ring.r3{animation-delay:-4s}
+@keyframes csripple{0%{transform:scale(.7);opacity:0}15%{opacity:.8}100%{transform:scale(1.45);opacity:0}}
+.cs-board{position:relative;z-index:1;height:78%;width:auto;max-width:none;filter:drop-shadow(0 28px 40px rgba(0,0,0,.55));}
+.cs-chip{position:absolute;z-index:2;display:flex;align-items:center;gap:10px;padding:10px 14px;border-radius:14px;background:rgba(15,23,42,.55);border:1px solid rgba(148,178,255,.22);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.35);animation:csfloat 6s ease-in-out infinite;}
+.cs-chip svg{width:18px;height:18px;color:#93c5fd;flex:none;}
+.cs-chip span{display:flex;flex-direction:column;font-size:.6875rem;color:rgba(255,255,255,.6);line-height:1.35;}
+.cs-chip b{font-size:.8125rem;color:#fff;font-weight:700;}
+.cs-chip.c1{top:14%;left:-6%;}
+.cs-chip.c2{top:46%;right:-8%;animation-delay:-2s;}
+.cs-chip.c3{bottom:12%;left:0;animation-delay:-4s;}
+@keyframes csfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media(max-width:900px){.cs-hero-stage{order:-1;max-width:min(400px,100%);}.cs-chip.c1{left:0}.cs-chip.c2{right:0}.cs-wave{left:-10%;right:-10%}}
+@media(max-width:560px){.cs-chip{padding:8px 10px;gap:8px}.cs-chip b{font-size:.75rem}.cs-chip span{font-size:.625rem}}
+@media(prefers-reduced-motion:reduce){.cs-ring,.cs-chip{animation:none}.cs-ring{opacity:.4}}
+.pg{min-width:0;}
+.pg-main{position:relative;aspect-ratio:1/1;background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:16px;overflow:hidden;cursor:zoom-in;}
+.pg-img{width:100%;height:100%;object-fit:contain;padding:14px;box-sizing:border-box;display:block;transition:opacity .25s;}
+.pg-nav,.pg-zoom{position:absolute;border:0;background:rgba(255,255,255,.92);box-shadow:0 2px 10px rgba(15,23,42,.12);border-radius:999px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:#0f172a;}
+.pg-nav{top:50%;transform:translateY(-50%);}
+.pg-nav.prev{left:10px}.pg-nav.next{right:10px}
+@media(hover:hover){.pg-nav{opacity:0;transition:opacity .2s}.pg-main:hover .pg-nav{opacity:1}}
+.pg-zoom{right:14px;top:14px;width:38px;height:38px}
+.pg-nav svg,.pg-zoom svg{width:20px;height:20px}
+.pg-count{position:absolute;left:14px;bottom:14px;font-size:.75rem;background:rgba(15,23,42,.7);color:#fff;padding:4px 10px;border-radius:999px;}
+.pg-cap{font-size:.75rem;color:#64748b;margin-top:8px;}
+.pg-thumbs{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:10px;}
+.pg-th{width:100%;aspect-ratio:1/1;padding:0;border:2px solid transparent;border-radius:10px;overflow:hidden;background:#fff;cursor:pointer;opacity:.6;transition:all .2s;}
+.pg-th img{width:100%;height:100%;object-fit:contain;display:block}
+.pg-th:hover{opacity:1}.pg-th.on{border-color:#2563eb;opacity:1}
+.pg-lb{position:fixed;inset:0;z-index:9999;background:rgba(2,6,23,.92);display:none;align-items:center;justify-content:center;overflow:hidden;}
+.pg-lb.open{display:flex}
+.pg-lb img{max-width:92vw;max-height:88vh;object-fit:contain;cursor:zoom-in;transition:transform .2s;background:#fff;border-radius:8px;}
+.pg-lb.zoomed img{cursor:zoom-out;transform:scale(2.2);}
+.pg-lb button{position:absolute;z-index:2;border:0;background:rgba(255,255,255,.14);color:#fff;border-radius:999px;width:46px;height:46px;font-size:22px;cursor:pointer;display:flex;align-items:center;justify-content:center;}
+.pg-lb .x{top:20px;right:20px}.pg-lb .l{left:20px;top:50%;transform:translateY(-50%)}.pg-lb .r{right:20px;top:50%;transform:translateY(-50%)}
+.pg-lb .c{position:absolute;z-index:2;background:rgba(2,6,23,.6);padding:4px 12px;border-radius:999px;bottom:20px;left:50%;transform:translateX(-50%);color:#cbd5e1;font-size:.8rem}
+@media(max-width:560px){.pg-nav{width:36px;height:36px}.pg-thumbs{gap:6px}}
+.pg{display:grid;grid-template-columns:minmax(0,1fr) 68px;grid-template-areas:"main th" "cap .";column-gap:12px;}
+.pg-main{grid-area:main;}
+.pg-cap{grid-area:cap;}
+.pg .pg-thumbs{grid-area:th;display:grid;grid-template-columns:1fr;grid-template-rows:repeat(6,minmax(0,1fr));gap:8px;margin-top:0;height:0;min-height:100%;}
+.pg .pg-th{aspect-ratio:auto;height:100%;min-height:0;}
+@media(max-width:560px){.pg{grid-template-columns:minmax(0,1fr) 52px;column-gap:8px;}.pg .pg-thumbs{gap:6px;}}
+.pg-img{padding:0!important;object-fit:cover!important;}
+@media(min-width:901px){.hw h2.section{white-space:nowrap;}}
 </style>
 </head>
 <body>
@@ -460,346 +639,214 @@
 <!-- ====================================================================
      SECTION A: Hero  (dark · two-column · stacks on narrow screens)
      ==================================================================== -->
-<header class="m5-hero">
+
+<!-- ① HERO -->
+<header class="m5-hero cs-hero">
+  <div class="rv-bar">Internal review draft · MENG-LIST-03 · MIC06B v0.1 · Not for publication</div>
   <div class="container">
     <div class="m5-hero-grid">
       <div class="m5-hero-copy reveal">
-        <div class="eyebrow dark">MIC06B · AI Voice Terminal</div>
-        <h1>Next-gen voice terminal for <em class="italic">real-world work.</em></h1>
-        <p class="m5-hero-sub">MIC06B is a next-generation wearable AI voice terminal featuring Wi-Fi 6 dual-band connectivity, lossless audio transmission, and ultra-low latency powered by a 6nm low-power chip. The compact 30g magnetic-clip design enables hands-free operation on clothing or ID badges.</p>
+        <div class="eyebrow dark">HA-MIC06B · Clip-On AI Voice Recorder</div>
+        <h1>VoiceRec Ultra</h1>
+        <p class="m5-hero-sub">A clip-on voice recorder for shift and field teams that record offline and sync to their own app.</p>
+        <div class="hero-tags"><span class="st st-val">Engineering sample</span><span class="st st-tbc">Enclosure version: to be confirmed</span><span class="st st-tbc">Certification: to be confirmed</span></div>
         <div class="m5-hero-cta">
-          <a href="../../book-a-meeting/index.html" class="btn btn-blue">Request a Sample</a>
-          <a href="mailto:swallow@gmic.ai" class="btn btn-ghost">Talk to Sales</a>
-        </div>
-        <div class="m5-chips">
-          <span class="m5-chip"><i data-lucide="wifi"></i>Wi-Fi 6</span>
-          <span class="m5-chip"><i data-lucide="cpu"></i>6nm SoC</span>
-          <span class="m5-chip"><i data-lucide="zap"></i>&lt;50ms Latency</span>
-          <span class="m5-chip"><i data-lucide="feather"></i>30g</span>
+          <a href="../../contact/index.html?product=HA-MIC06B" class="btn btn-blue">Request a sample</a>
+          <a href="#buy-options" class="btn btn-ghost">See buying options</a>
         </div>
       </div>
-      <div class="m5-hero-media reveal">
-        <img src="../../img/cap/mic06b.png" alt="MIC06B AI Voice Terminal">
+      <div class="cs-hero-stage reveal">
+        <div class="cs-wave"></div>
+        <div class="cs-ring r1"></div><div class="cs-ring r2"></div><div class="cs-ring r3"></div><div class="cs-glow"></div>
+        <img class="cs-board" src="img/hero.png" alt="VoiceRec Ultra HA-MIC06B clip-on recorder, real photo">
+        <div class="cs-chip c1"><i data-lucide="wifi"></i><span><b>Wi-Fi 6 · BT 6.1</b>Dual-band, 2.4 / 5 GHz</span></div>
+        <div class="cs-chip c2"><i data-lucide="battery-charging"></i><span><b>1000 mAh</b>USB-C · ~1.5 h charge</span></div>
+        <div class="cs-chip c3"><i data-lucide="magnet"></i><span><b>56.5 g</b>Back clip · magnetic</span></div>
       </div>
     </div>
   </div>
 </header>
-
-
-<!-- ====================================================================
-     SECTION: Stats band  (brand-blue · big serif numbers · stacks 2×2)
-     ==================================================================== -->
-<section class="m5-stats fade-section">
-  <div class="container">
-    <div class="m5-stats-grid">
-      <div class="m5-stat reveal">
-        <div class="m5-stat-v">30g</div>
-        <div class="m5-stat-k">Ultra-lightweight</div>
-      </div>
-      <div class="m5-stat reveal">
-        <div class="m5-stat-v">6nm</div>
-        <div class="m5-stat-k">AI processor</div>
-      </div>
-      <div class="m5-stat reveal">
-        <div class="m5-stat-v">&lt;50ms</div>
-        <div class="m5-stat-k">End-to-end latency</div>
-      </div>
-      <div class="m5-stat reveal">
-        <div class="m5-stat-v">Wi-Fi 6</div>
-        <div class="m5-stat-k">Dual-band</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- SECTION B: Positioning  (light · text + scene image, two-column) -->
-<section class="m5-sec m5-light fade-section">
-  <div class="container">
-    <div class="m5-split">
-      <div class="reveal">
-        <div class="eyebrow">Engineered for the field</div>
-        <h2 class="section" style="margin-bottom:18px;">Lossless audio. Ultra-low latency. <em class="italic">All-day battery.</em></h2>
-        <p class="m5-lead">MIC06B pushes the boundaries of wearable AI voice technology. With a 6nm low-power AI SoC, Wi-Fi 6 dual-band connectivity, and a high-fidelity lossless audio codec, it delivers crystal-clear voice capture and real-time AI processing with minimal delay — all in a package that weighs just 30 grams.</p>
-      </div>
-      <figure class="m5-scene reveal">
-        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1100&q=80" alt="Team using reliable voice AI terminals in a real-world work environment" loading="lazy">
-      </figure>
-    </div>
-  </div>
-</section>
-
-
-<!-- ====================================================================
-     SECTION C: Key Features  (dark · 6 cards, 3×2 grid)
-     ==================================================================== -->
-<section class="m5-sec m5-dark fade-section">
-  <div class="container">
-    <div class="m5-head reveal">
-      <div class="eyebrow dark">Key Features</div>
-      <h2 class="section">Engineering that speaks for itself.</h2>
-    </div>
-    <div class="m5-grid-3">
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="wifi"></i></div>
-        <h3>Wi-Fi 6 Dual-Band</h3>
-        <p>Supports 2.4 GHz and 5 GHz bands for stable, high-speed wireless connection even in dense network environments.</p>
-      </div>
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="volume-2"></i></div>
-        <h3>Lossless Audio & Ultra-Low Latency</h3>
-        <p>High-fidelity audio codec ensures crystal-clear voice capture and playback with sub-50ms end-to-end delay.</p>
-      </div>
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="cpu"></i></div>
-        <h3>6nm Low-Power Chip</h3>
-        <p>Advanced 6nm process SoC delivers powerful AI processing while minimizing energy consumption for all-day battery life.</p>
-      </div>
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="battery-full"></i></div>
-        <h3>Extended Battery Life</h3>
-        <p>Optimized power management provides all-day usage on a single charge for uninterrupted workflow.</p>
-      </div>
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="paperclip"></i></div>
-        <h3>Magnetic Clip-On Design</h3>
-        <p>Compact 30g body with strong magnetic mount attaches securely to clothing, lanyards, or ID badges.</p>
-      </div>
-
-      <div class="m5-card reveal">
-        <div class="m5-card-ico"><i data-lucide="brain"></i></div>
-        <h3>AI-Powered Voice Processing</h3>
-        <p>On-device and cloud-based AI for noise reduction (ANC), speech recognition, and real-time transcription.</p>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ====================================================================
-     SECTION D: Technical Specifications  (soft · two-column table)
-     ==================================================================== -->
-<section class="m5-sec m5-soft fade-section">
-  <div class="container">
-    <div class="m5-head reveal">
-      <div class="eyebrow">Technical Specifications</div>
-      <h2 class="section">The details.</h2>
-    </div>
-    <div class="m5-specs reveal">
-      <div class="m5-spec-row"><span class="m5-spec-k">Product Name</span><span class="m5-spec-v">hearit.ai AI Smart Magnetic Speaker</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Product Category</span><span class="m5-spec-v">AI Voice Terminal / Wearable Speaker</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Wireless</span><span class="m5-spec-v">Wi-Fi 6 (802.11ax), Dual-Band 2.4 GHz / 5 GHz</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Bluetooth</span><span class="m5-spec-v">Bluetooth 5.3 (BLE supported)</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Processor</span><span class="m5-spec-v">6nm Low-Power AI SoC</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Audio Codec</span><span class="m5-spec-v">Lossless Audio (high-fidelity voice)</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Latency</span><span class="m5-spec-v">Ultra-Low (&lt; 50 ms end-to-end)</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Microphone</span><span class="m5-spec-v">Dual MEMS Mic Array with ANC</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Speaker</span><span class="m5-spec-v">High-efficiency micro speaker</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Battery</span><span class="m5-spec-v">Built-in Li-Po, all-day battery life</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Charging</span><span class="m5-spec-v">USB Type-C / Magnetic charging</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Mounting</span><span class="m5-spec-v">Magnetic clip for clothing / badge / lanyard</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Dimensions</span><span class="m5-spec-v">Approx. 55 × 40 × 12 mm</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">Weight</span><span class="m5-spec-v">Approx. 30 g</span></div>
-      <div class="m5-spec-row"><span class="m5-spec-k">OS Compatibility</span><span class="m5-spec-v">iOS / Android / Windows / macOS / Linux</span></div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ====================================================================
-     SECTION E: What Sets It Apart  (dark · 4-check row)
-     ==================================================================== -->
-<section class="m5-sec m5-dark fade-section">
-  <div class="container">
-    <div class="m5-head reveal">
-      <div class="eyebrow dark">Technical edge</div>
-      <h2 class="section">The specifications that <em class="italic">set it apart.</em></h2>
-    </div>
-    <div class="m5-check-row reveal">
-      <div class="m5-check"><span class="m5-tick"><i data-lucide="check"></i></span>Wi-Fi 6 Dual-Band</div>
-      <div class="m5-check"><span class="m5-tick"><i data-lucide="check"></i></span>Lossless Audio Codec</div>
-      <div class="m5-check"><span class="m5-tick"><i data-lucide="check"></i></span>6nm AI Processor</div>
-      <div class="m5-check"><span class="m5-tick"><i data-lucide="check"></i></span>30g Ultra-Light</div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ====================================================================
-     SECTION: Built For  (light · tag pills)
-     ==================================================================== -->
 <section class="m5-sec m5-light fade-section">
   <div class="container">
     <div class="m5-head reveal">
       <div class="eyebrow">Built for</div>
-      <h2 class="section">Made for teams that need reliable voice AI <em class="italic">in the field.</em></h2>
+      <h2 class="section">Clip on. Record offline. Sync later.</h2>
     </div>
-    <div class="m5-tags reveal">
-      <span class="m5-tag"><i data-lucide="wrench"></i>Field Service</span>
-      <span class="m5-tag"><i data-lucide="stethoscope"></i>Healthcare</span>
-      <span class="m5-tag"><i data-lucide="building-2"></i>Enterprise</span>
-      <span class="m5-tag"><i data-lucide="trending-up"></i>Sales Teams</span>
-      <span class="m5-tag"><i data-lucide="settings"></i>Operations</span>
-      <span class="m5-tag"><i data-lucide="truck"></i>Logistics</span>
-      <span class="m5-tag"><i data-lucide="hard-hat"></i>Construction</span>
-      <span class="m5-tag"><i data-lucide="shield"></i>Insurance</span>
-      <span class="m5-tag"><i data-lucide="briefcase"></i>Consulting</span>
+    <div class="g3 reveal">
+      <div class="card"><div class="ico"><i data-lucide="clock"></i></div><h3>Shift and field teams</h3><p>Hands-free recording through a shift, with or without a connection.</p></div>
+      <div class="card"><div class="ico"><i data-lucide="smartphone"></i></div><h3>Teams with their own app</h3><p>Bring recordings into the app and backend you already run.</p></div>
+      <div class="card"><div class="ico"><i data-lucide="tag"></i></div><h3>Private-label recorder brands</h3><p>A clip-on recorder platform for your own brand.</p></div>
     </div>
   </div>
 </section>
-
-
-<!-- ====================================================================
-     SECTION: Manufacturing backing  (soft · text + factory photo collage)
-     ==================================================================== -->
-<section class="m5-sec m5-soft fade-section">
+<section class="m5-sec m5-soft fade-section" id="buy-options">
   <div class="container">
-    <div class="m5-split">
-      <div class="reveal">
-        <div class="eyebrow">Made by the manufacturer</div>
-        <h2 class="section" style="margin-bottom:18px;">Engineered and built <em class="italic">in-house.</em></h2>
-        <p class="m5-lead">From SMT and assembly to QA, MIC05 is produced in our own Shenzhen facility — consistent quality from 100 to 100,000+ units.</p>
-      </div>
-      <div class="m5-mfg-grid reveal">
-        <figure>
-          <img src="../../img/products/mic05/Manufacturer-1.png" alt="SMT line operator inspecting a populated MIC05 circuit board" loading="lazy">
-        </figure>
-        <figure>
-          <img src="../../img/products/mic05/Manufacturer-2.png" alt="Technician assembling MIC05 devices on the production line" loading="lazy">
-        </figure>
-        <figure>
-          <img src="../../img/products/mic05/Manufacturer-3.png" alt="MIC05 unit undergoing automated quality-assurance testing" loading="lazy">
-        </figure>
-      </div>
+    <div class="m5-head reveal">
+      <div class="eyebrow">Buying options</div>
+      <h2 class="section">How you can buy it.</h2>
+    </div>
+    <div class="g3 reveal">
+      <div class="card"><div class="card-top"><div class="ico"><i data-lucide="package"></i></div><span class="st st-val">Engineering sample</span></div><h3>Finished device</h3><p>Engineering-sample units for evaluation. Not yet a mass-production product.</p></div>
+      <div class="card"><div class="card-top"><div class="ico"><i data-lucide="cpu"></i></div><span class="st st-tbc">To be confirmed</span></div><h3>Module / dev kit</h3><p>Whether the BES2710 module and dev kit share this platform is to be confirmed.</p></div>
+      <div class="card"><div class="card-top"><div class="ico"><i data-lucide="plug-zap"></i></div><span class="st st-tbc">To be confirmed</span></div><h3>Evaluation kit</h3><p>To be confirmed.</p></div>
     </div>
   </div>
 </section>
-
-
-<!-- ====================================================================
-     SECTION F: Built for Integration  (light · text + checklist + image)
-     ==================================================================== -->
+<!-- ③ HARDWARE -->
 <section class="m5-sec m5-light fade-section">
   <div class="container">
-    <div class="m5-split">
+    <div class="hw hw-mic">
       <div class="reveal">
-        <div class="eyebrow">A platform, not just a terminal</div>
-        <h2 class="section" style="margin-bottom:18px;">Built to plug into <em class="italic">your</em> stack.</h2>
-        <p class="m5-lead">MIC06B is designed as a hardware platform rather than a standalone terminal. It can be customized to support:</p>
-        <ul class="m5-list">
-          <li><i data-lucide="check"></i>Proprietary software platforms</li>
-          <li><i data-lucide="check"></i>AI transcription systems</li>
-          <li><i data-lucide="check"></i>Voice workflow automation</li>
-          <li><i data-lucide="check"></i>Cloud infrastructure integration</li>
-          <li><i data-lucide="check"></i>Private deployment environments</li>
-          <li><i data-lucide="check"></i>Custom firmware development</li>
+        <div class="eyebrow">Hardware at a glance</div>
+        <h2 class="section" style="margin-bottom:24px;">Real units, photographed.</h2>
+        <ul class="factlist">
+          <li><span>Dimensions</span><span>74.3 × 32 × 27 mm</span></li>
+          <li><span>Weight</span><span>56.5 g</span></li>
+          <li><span>Wear</span><span>Back clip · magnetic attachment</span></li>
+          <li><span>Controls</span><span>Slide-touch · NFC reader</span></li>
+          <li><span>Material</span><span>Plastic + PCBA</span></li>
         </ul>
+        <div class="ph"><span>Microphone &amp; antenna layout</span><span class="st st-tbc">To be confirmed</span></div>
       </div>
-      <div class="m5-split-media reveal">
-        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1100&q=80" alt="GMIC engineering and manufacturing team supporting MIC06B integration" loading="lazy">
+      <div class="pg reveal" data-items="[{&quot;src&quot;: &quot;img/g-front.jpg&quot;, &quot;cap&quot;: &quot;Front \u00b7 slide-touch control&quot;, &quot;alt&quot;: &quot;VoiceRec Ultra front, real photo&quot;}, {&quot;src&quot;: &quot;img/g-side-clip.jpg&quot;, &quot;cap&quot;: &quot;Side \u00b7 back clip&quot;, &quot;alt&quot;: &quot;VoiceRec Ultra side with back clip, real photo&quot;}, {&quot;src&quot;: &quot;img/g-back.jpg&quot;, &quot;cap&quot;: &quot;Back&quot;, &quot;alt&quot;: &quot;VoiceRec Ultra back, real photo&quot;}, {&quot;src&quot;: &quot;img/g-clip.jpg&quot;, &quot;cap&quot;: &quot;Magnetic clip plate&quot;, &quot;alt&quot;: &quot;VoiceRec Ultra magnetic clip plate, real photo&quot;}, {&quot;src&quot;: &quot;img/g-in-hand.jpg&quot;, &quot;cap&quot;: &quot;In hand \u00b7 front&quot;, &quot;alt&quot;: &quot;VoiceRec Ultra held in hand, real photo&quot;}, {&quot;src&quot;: &quot;img/g-in-hand-side.jpg&quot;, &quot;cap&quot;: &quot;In hand \u00b7 side profile&quot;, &quot;alt&quot;: &quot;VoiceRec Ultra side profile in hand, real photo&quot;}]">
+        <div class="pg-main">
+          <img class="pg-img" src="img/g-front.jpg" alt="VoiceRec Ultra front, real photo">
+          <button class="pg-nav prev" aria-label="Previous image"><i data-lucide="chevron-left"></i></button>
+          <button class="pg-nav next" aria-label="Next image"><i data-lucide="chevron-right"></i></button>
+          <button class="pg-zoom" aria-label="Enlarge image"><i data-lucide="maximize-2"></i></button>
+          <span class="pg-count">1 / 6</span>
+        </div>
+        <div class="pg-cap">Front</div>
+        <div class="pg-thumbs"><button class="pg-th on" data-i="0" aria-label="Show: Front"><img src="img/g-front.jpg" alt=""></button><button class="pg-th" data-i="1" aria-label="Show: Side · back clip"><img src="img/g-side-clip.jpg" alt=""></button><button class="pg-th" data-i="2" aria-label="Show: Back"><img src="img/g-back.jpg" alt=""></button><button class="pg-th" data-i="3" aria-label="Show: Magnetic clip plate"><img src="img/g-clip.jpg" alt=""></button><button class="pg-th" data-i="4" aria-label="Show: In hand · front"><img src="img/g-in-hand.jpg" alt=""></button><button class="pg-th" data-i="5" aria-label="Show: In hand · side profile"><img src="img/g-in-hand-side.jpg" alt=""></button></div>
       </div>
-    </div>
-
-    <!-- Integration flow diagram — horizontal on desktop, stacks vertically (arrows point down) on narrow -->
-    <div class="m5-flow-outer reveal">
-    <div class="m5-flow" role="img" aria-label="Integration flow: MIC06B to Wi-Fi or Bluetooth to Cloud or API to AI transcription to your platform">
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="mic"></i></span>
-        <span>MIC06B</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="wifi"></i></span>
-        <span>Wi-Fi / Bluetooth</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="cloud"></i></span>
-        <span>Cloud / API</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="file-text"></i></span>
-        <span>AI Transcription</span>
-      </div>
-      <div class="m5-flow-arrow"><i data-lucide="chevron-right"></i></div>
-      <div class="m5-flow-node">
-        <span class="m5-flow-ico"><i data-lucide="layout-grid"></i></span>
-        <span>Your Platform</span>
-      </div>
-    </div>
     </div>
   </div>
 </section>
-
-
-<!-- ====================================================================
-     SECTION G: Available Customization  (dark · 3 columns)
-     ==================================================================== -->
+<!-- ④ DATA PATHS -->
 <section class="m5-sec m5-dark fade-section">
   <div class="container">
     <div class="m5-head reveal">
-      <div class="eyebrow dark">Make it yours</div>
-      <h2 class="section">Customization options.</h2>
+      <div class="eyebrow dark">Data paths</div>
+      <h2 class="section">How audio gets to your system.</h2>
+      <p class="m5-lead">Four separate ways to get recordings into your system, each shown with its current status on HA-MIC06B.</p>
     </div>
-    <div class="m5-grid-3">
-
-      <div class="m5-card m5-custom-col reveal">
-        <h3><span class="m5-card-ico"><i data-lucide="tag"></i></span>Branding</h3>
-        <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>Custom logo</li>
-          <li><i data-lucide="check"></i>Custom packaging</li>
-          <li><i data-lucide="check"></i>White-label production</li>
-        </ul>
+    <div class="paths reveal">
+      <div class="path"><div class="n"><i data-lucide="bluetooth"></i></div><div><h3>Record offline → sync to your app</h3><p>Local recording through a shift, synced to a phone app later.</p></div><span class="st st-val">To be validated</span></div>
+      <div class="path"><div class="n"><i data-lucide="radio"></i></div><div><h3>Real-time streaming</h3><p>Live audio while recording.</p></div><span class="st st-tbc">To be confirmed</span></div>
+      <div class="path"><div class="n"><i data-lucide="wifi"></i></div><div><h3>Wi-Fi fast transfer to phone</h3><p>Local Wi-Fi transfer of stored files to a nearby phone.</p></div><span class="st st-tbc">To be confirmed</span></div>
+      <div class="path"><div class="n"><i data-lucide="cloud-upload"></i></div><div><h3>Direct upload to your HTTPS endpoint</h3><p>Device uploads to your server without a phone — configured per project.</p></div><span class="st st-cus">Custom configuration</span></div>
+    </div>
+    <p class="note reveal">Engineering-sample firmware; status will be updated after engineering confirmation.</p>
+  </div>
+</section>
+<!-- ⑤ AUDIO & DEMO -->
+<section class="m5-sec m5-soft fade-section">
+  <div class="container">
+    <div class="m5-head reveal">
+      <div class="eyebrow">Evidence</div>
+      <h2 class="section">Hear it. See it connect.</h2>
+    </div>
+    <div class="g3 g2 reveal">
+      <div class="card"><div class="card-top"><div class="ico"><i data-lucide="audio-lines"></i></div><span class="st st-tbc">To be confirmed</span></div><h3>Raw audio samples</h3><p>Unedited recordings with format, distance and noise conditions noted.</p></div>
+      <div class="card"><div class="card-top"><div class="ico"><i data-lucide="play-circle"></i></div><span class="st st-tbc">To be confirmed</span></div><h3>Integration demo</h3><p>Record → file appears in the app → reconnect → file verified.</p></div>
+    </div>
+  </div>
+</section>
+<!-- ⑥ SAMPLES / NRE / SDK / VOLUME -->
+<section class="m5-sec m5-light fade-section">
+  <div class="container">
+    <div class="ck-head reveal">
+      <div>
+        <div class="eyebrow">Samples &amp; volume</div>
+        <h2 class="section">From sample to production.</h2>
       </div>
+      <a href="../../contact/index.html?product=HA-MIC06B" class="btn btn-blue btn-lg">Request a sample</a>
+    </div>
+    <ul class="checks-row reveal">
+      <li><span class="ck-label">Samples</span><span class="st st-tbc">To be confirmed</span></li>
+      <li><span class="ck-label">Tiered pricing from 200 units</span><span class="st st-ok">Available</span></li>
+      <li><span class="ck-label">White-label &amp; ODM</span><span class="st st-ok">Pricing on request</span></li>
+      <li><span class="ck-label">Hardware / firmware / enclosure changes</span><span class="st st-cus">Custom</span></li>
+      <li><span class="ck-label">NRE</span><span class="st st-tbc">To be confirmed</span></li>
+      <li><span class="ck-label">SDK / protocol access</span><span class="st st-tbc">To be confirmed</span></li>
+    </ul>
+  </div>
+</section>
 
-      <div class="m5-card m5-custom-col reveal">
-        <h3><span class="m5-card-ico"><i data-lucide="code"></i></span>Firmware</h3>
-        <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>Custom button behavior</li>
-          <li><i data-lucide="check"></i>Custom upload logic</li>
-          <li><i data-lucide="check"></i>Custom workflow triggers</li>
-        </ul>
+<!-- FAQ -->
+<section class="m5-sec m5-soft fade-section">
+  <div class="container">
+    <div class="faq-split">
+    <div class="faq-side reveal">
+      <div class="eyebrow">FAQ</div>
+      <h2 class="section">Questions buyers ask.</h2>
+      <p class="m5-lead">Pricing, samples, customization and integration — answered where we can, marked “to be confirmed” where we are still checking.</p>
+      <a class="faq-all" href="../../faq/index.html">See all FAQs →</a>
+    </div>
+    <div class="pfaq reveal" id="faq">
+      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">Can we get an engineering sample?</span><span class="faq-q-cat">Samples & MOQ</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>Engineering-sample availability is to be confirmed.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">Is VoiceRec Ultra in mass production?</span><span class="faq-q-cat">Samples & MOQ</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>Not yet. Current units are engineering samples.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">Can it upload directly to our server?</span><span class="faq-q-cat">Integration</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>Direct upload to your HTTPS endpoint is a custom configuration; scope to be confirmed.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">Can it work with our own app?</span><span class="faq-q-cat">Integration</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>See the data paths above. SDK / protocol scope: to be confirmed.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">What is the minimum order?</span><span class="faq-q-cat">Samples & MOQ</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>Tiered pricing starts at 200 units. Model-specific MOQ: to be confirmed.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">How long does the battery last?</span><span class="faq-q-cat">Specs</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>Battery life and test conditions are to be confirmed.</p></div></div></div>
+      <div class="faq-more">
+      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">Is recorded audio encrypted?</span><span class="faq-q-cat">Integration</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>The device supports firmware encryption. Recording / data encryption is to be confirmed.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">Can it be sold under our brand?</span><span class="faq-q-cat">Customization</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>White-label and ODM projects are supported; pricing on request.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">Does the price include cloud services or an AI backend?</span><span class="faq-q-cat">Pricing</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>To be confirmed.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">How soon can samples ship?</span><span class="faq-q-cat">Samples & MOQ</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>To be confirmed.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">Who owns customized designs and related IP?</span><span class="faq-q-cat">Customization</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>To be confirmed.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">Is regional or channel exclusivity available?</span><span class="faq-q-cat">Customization</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>To be confirmed.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">What do we need to start (NDA, documents, payment)?</span><span class="faq-q-cat">Samples & MOQ</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>To be confirmed.</p></div></div></div>
       </div>
-
-      <div class="m5-card m5-custom-col reveal">
-        <h3><span class="m5-card-ico"><i data-lucide="link"></i></span>Integration</h3>
-        <ul class="m5-bullets">
-          <li><i data-lucide="check"></i>API integration</li>
-          <li><i data-lucide="check"></i>Cloud endpoint configuration</li>
-          <li><i data-lucide="check"></i>Private server deployment</li>
-        </ul>
+      <div class="pfaq-actions">
+        <button class="faq-toggle" type="button" onclick="var f=document.getElementById('faq');f.classList.toggle('expanded');this.textContent=f.classList.contains('expanded')?'Show fewer questions':'More questions';">More questions</button>
       </div>
-
+    </div>
     </div>
   </div>
 </section>
 
-
-<!-- ====================================================================
-     SECTION H: CTA  (dark · closing)
-     ==================================================================== -->
+<!-- ⑦ SPECS -->
+<section class="m5-sec m5-light fade-section">
+  <div class="container">
+    <div class="m5-head reveal">
+      <div class="eyebrow">Specifications</div>
+      <h2 class="section">The details.</h2>
+    </div>
+    <div class="specs reveal">
+      <div class="spec"><span>Model</span><span>HA-MIC06B</span></div>
+      <div class="spec"><span>Wi-Fi</span><span>Dual-band Wi-Fi 6 (2.4 / 5 GHz)</span></div>
+      <div class="spec"><span>Bluetooth</span><span>6.1 · 10 m</span></div>
+      <div class="spec"><span>Storage</span><span>512 MB</span></div>
+      <div class="spec"><span>Speaker</span><span>1 W</span></div>
+      <div class="spec"><span>Controls</span><span>Slide-touch · NFC reader · vibration alert</span></div>
+      <div class="spec"><span>Sensors</span><span>Gyroscope · coulomb-meter battery gauge</span></div>
+      <div class="spec"><span>Security</span><span>Firmware encryption</span></div>
+      <div class="spec"><span>Battery</span><span>3.7 V · 1000 mAh</span></div>
+      <div class="spec"><span>Charging</span><span>USB Type-C · 5 V / 1 A · ~1.5 h</span></div>
+      <div class="spec"><span>Battery life</span><span>To be confirmed</span></div>
+      <div class="spec"><span>Dimensions / weight</span><span>74.3 × 32 × 27 mm · 56.5 g</span></div>
+      <div class="spec"><span>Material</span><span>Plastic + PCBA (engineering samples may use a prototype shell)</span></div>
+      <div class="spec"><span>Certification</span><span>To be confirmed</span></div>
+    </div>
+    <p class="note">Specifications are based on current documentation and are subject to engineering sign-off for the shipping version.</p>
+  </div>
+</section>
+<!-- CTA -->
 <section class="m5-sec m5-dark m5-cta fade-section">
   <div class="container">
     <div class="m5-head reveal">
-      <h2 class="section">Ready to deploy next-gen voice AI?</h2>
-      <p class="m5-lead" style="margin-top:16px;">Request a sample device, schedule a demo, or talk to our engineering team.</p>
+      <h2 class="section">Start with a sample.</h2>
+      <p class="m5-lead" style="margin-top:16px;">Tell us your model, configuration, use case, platform, quantity and destination — we will come back with sample pricing and next steps.</p>
     </div>
     <div class="m5-cta-btns reveal">
-      <a href="../../book-a-meeting/index.html" class="btn btn-blue">Request a Sample</a>
-      <a href="mailto:swallow@gmic.ai" class="btn btn-ghost">Talk to Sales</a>
+      <a href="../../contact/index.html?product=HA-MIC06B" class="btn btn-blue">Request a sample</a>
+      <a href="#buy-options" class="btn btn-ghost">Compare buying options</a>
     </div>
   </div>
 </section>
 
-
-<!-- ========== FOOTER (inlined from homepage, paths rebased to ../../) ========== -->
 <footer class="footer" id="company">
   <div class="container">
     <div class="footer-grid">
@@ -810,14 +857,6 @@
           <a href="mailto:trigg@gmic.ai">trigg@gmic.ai</a><br>
           <a href="tel:+16699000008">+1 (669) 900-0008</a><br>
           Anaheim, CA · Shenzhen, CN
-        </div>
-        <div class="cert-pills">
-          <span class="pill">FCC</span>
-          <span class="pill">CE</span>
-          <span class="pill">UKCA</span>
-          <span class="pill">TELEC</span>
-          <span class="pill">RoHS</span>
-          <span class="pill">ISED</span>
         </div>
       </div>
 
@@ -1077,5 +1116,35 @@
 <script src="../../js/voice-widget.js"></script>
 <script src="../../js/products-mega-menu.js"></script>
 <script src="../../js/chat-widget.js"></script>
+<script>
+document.querySelectorAll('.pg').forEach(function(pg){
+  var items=JSON.parse(pg.dataset.items),imgs=items.map(function(x){return x.src}),cap=pg.querySelector('.pg-cap'),i=0,main=pg.querySelector('.pg-img'),cnt=pg.querySelector('.pg-count'),ths=pg.querySelectorAll('.pg-th');
+  var lb=document.createElement('div');lb.className='pg-lb';
+  lb.innerHTML='<img alt="VoiceRec Ultra, enlarged"><button class="x" aria-label="Close">&times;</button><button class="l" aria-label="Previous">&#8249;</button><button class="r" aria-label="Next">&#8250;</button><span class="c"></span>';
+  document.body.appendChild(lb);var lbi=lb.querySelector('img'),lbc=lb.querySelector('.c');
+  function go(n){i=(n+imgs.length)%imgs.length;main.style.opacity=0;setTimeout(function(){main.src=imgs[i];main.alt=items[i].alt;main.style.opacity=1;},150);cap.textContent=items[i].cap;
+    cnt.textContent=(i+1)+' / '+imgs.length;ths.forEach(function(t,k){t.classList.toggle('on',k===i)});
+    lbi.src=imgs[i];lbc.textContent=items[i].cap+' · '+(i+1)+' / '+imgs.length+' · Click to zoom';lb.classList.remove('zoomed');}
+  ths.forEach(function(t){t.onclick=function(){go(+t.dataset.i)}});
+  pg.querySelector('.prev').onclick=function(e){e.stopPropagation();go(i-1)};
+  pg.querySelector('.next').onclick=function(e){e.stopPropagation();go(i+1)};
+  function open(){go(i);lb.classList.add('open');document.body.style.overflow='hidden';}
+  function close(){lb.classList.remove('open','zoomed');document.body.style.overflow='';}
+  pg.querySelector('.pg-main').onclick=open;
+  lb.querySelector('.x').onclick=close;
+  lb.querySelector('.l').onclick=function(e){e.stopPropagation();go(i-1)};
+  lb.querySelector('.r').onclick=function(e){e.stopPropagation();go(i+1)};
+  lb.onclick=function(e){if(e.target===lb)close()};
+  lbi.onclick=function(e){e.stopPropagation();var r=lbi.getBoundingClientRect();
+    if(!lb.classList.contains('zoomed')){lbi.style.transformOrigin=((e.clientX-r.left)/r.width*100)+'% '+((e.clientY-r.top)/r.height*100)+'%';}
+    lb.classList.toggle('zoomed');};
+  lbi.onmousemove=function(e){if(!lb.classList.contains('zoomed'))return;var r=lbi.getBoundingClientRect();
+    var x=(e.clientX-r.left)/r.width*100,y=(e.clientY-r.top)/r.height*100;lbi.style.transformOrigin=x+'% '+y+'%';};
+  document.addEventListener('keydown',function(e){if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')close();if(e.key==='ArrowLeft')go(i-1);if(e.key==='ArrowRight')go(i+1);});
+  var sx=null;pg.querySelector('.pg-main').addEventListener('touchstart',function(e){sx=e.touches[0].clientX},{passive:true});
+  pg.querySelector('.pg-main').addEventListener('touchend',function(e){if(sx===null)return;var d=e.changedTouches[0].clientX-sx;if(Math.abs(d)>40){go(d<0?i+1:i-1);}sx=null;});
+});
+</script>
 </body>
 </html>
