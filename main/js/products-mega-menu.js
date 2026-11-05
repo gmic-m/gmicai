@@ -25,7 +25,10 @@
       { name: 'MIC05', slug: 'products/mic05/index.html', img: OV + 'HA-MIC05.jpg', desc: 'Button-triggered capture for field notes' },
       { name: 'MIC06A', slug: 'products/mic06/index.html', img: OV + 'HA-MIC06A.jpg', desc: 'Continuous voice capture for shift-based operations' },
       { name: 'MIC06B', slug: 'products/mic06b/index.html', img: OV + 'HA-MIC06B.jpg', desc: 'Next-gen AI voice terminal for real-world work' },
-      { name: 'CS01', slug: 'products/cs01/index.html', img: OV + 'HA-CS01.jpg', desc: '4.5 mm magnetic card AI recorder (WiFi + BT)' }
+      { name: 'CS01', slug: 'products/cs01/index.html', img: OV + 'HA-CS01.jpg', desc: '4.5 mm magnetic card AI recorder (WiFi + BT)' },
+      { name: 'CS03', slug: 'products/cs03/index.html', img: OV + 'HA-CS03.jpg', desc: 'Flagship 3.7 mm card recorder with 5 mics + display' },
+      { name: 'CS04', slug: 'products/cs04/index.html', img: OV + 'HA-CS04.jpg', desc: 'Slim 3.0 mm, 30 g card recorder' },
+      { name: 'CS05', slug: 'products/cs05/index.html', img: OV + 'HA-CS05.jpg', desc: 'Card recorder with 5 mics, LCD + built-in magnet' }
     ]},
     { name: 'AI Wearables', products: [
       { name: 'GL01', slug: 'products/gl01/index.html', img: OV + 'HA-GLS01.jpg', desc: 'AI chat glasses (ChatGPT + camera)' },
@@ -36,7 +39,8 @@
       { name: 'BC01 White', slug: 'products/bc01-white/index.html', img: OV + 'HA-BC01-White.jpg', desc: 'Bone conduction AI headset with one-touch recording' },
       { name: 'Smart Pen', slug: PV + 'smart-pen', img: OV + 'HA-PEN01.jpg' },
       { name: 'OWS03', slug: 'products/ows03/index.html', img: OV + 'HA-OWS03.jpg', desc: 'AIChat OWS headset (5 AI, open-ear)' },
-      { name: 'HSC01', slug: 'products/hsc01/index.html', img: OV + 'HA-HSC01.jpg', desc: 'Open-ear AI headset with 1080p camera' }
+      { name: 'HSC01', slug: 'products/hsc01/index.html', img: OV + 'HA-HSC01.jpg', desc: 'Open-ear AI headset with 1080p camera' },
+      { name: 'SR01', slug: 'products/sr01/index.html', img: OV + 'HA-SR01.jpg', desc: 'AI recording smart ring (touch to record, IP68)' }
     ]},
     { name: 'AI Communication', products: [
       { name: 'Telalive', slug: 'products/telalive/index.html', img: OV + 'telalive.png', desc: 'AI-powered desk phone & wearable platform' },
