@@ -303,14 +303,27 @@
     fadeEls.forEach(el => el.classList.add('in-view'));
     return;
   }
-  const fadeObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
+  // Use a lower threshold on mobile so tall sections trigger sooner
+  var isMobile = window.innerWidth <= 768;
+  var fadeThreshold = isMobile ? 0.01 : 0.08;
+  var fadeObs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
       if (e.isIntersecting){
         e.target.classList.add('in-view');
+        fadeObs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.08 });
-  fadeEls.forEach(el => fadeObs.observe(el));
+  }, { threshold: fadeThreshold, rootMargin: '0px 0px -40px 0px' });
+  fadeEls.forEach(function(el){ fadeObs.observe(el); });
+
+  // Fallback: if any section hasn't appeared after 3s, force it visible
+  setTimeout(function(){
+    fadeEls.forEach(function(el){
+      if (!el.classList.contains('in-view')){
+        el.classList.add('in-view');
+      }
+    });
+  }, 3000);
 })();
 
 // ---------- FAB: WeChat popup + Connect menu outside-click ----------

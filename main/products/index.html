@@ -444,9 +444,13 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
 @media (max-width: 768px) {
   .ab-wrap { padding: 0 24px; }
   .po-hero { padding: 96px 0 40px; }
-  .po-grid { grid-template-columns: repeat(2, 1fr); }
+  .po-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
   .po-filterbar { top: 56px; }
-  #poSearch { width: 100%; }
+  .po-filterbar-inner { flex-wrap: nowrap; gap: 10px; padding-top: 10px; padding-bottom: 10px; }
+  .po-tabs { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; gap: 6px; scrollbar-width: none; }
+  .po-tabs::-webkit-scrollbar { display: none; }
+  .po-tab { flex-shrink: 0; font-size: 0.75rem; padding: 5px 12px; }
+  #poSearch { width: 100%; min-width: 0; }
 
   .ab-news { padding: 64px 0; }
   .ab-news-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -454,7 +458,11 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
   .ab-news-input, .ab-news-btn { width: 100%; }
 }
 @media (max-width: 480px) {
-  .po-grid { grid-template-columns: 1fr; }
+  .po-grid { grid-template-columns: 1fr; gap: 20px; }
+  .po-card-thumb { aspect-ratio: 4/3; }
+  .po-card-cta { flex-direction: column; }
+  .po-card-cta .btn-read-more,
+  .po-card-cta .po-btn-contact { width: 100%; justify-content: center; text-align: center; }
 }
 
 .nav { border-bottom: none !important; box-shadow: none !important; }
@@ -776,11 +784,11 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         <div class="po-card-body">
           <div class="po-card-sku">HA-MIC05</div>
           <div class="po-card-name">Hearit.ai VoiceRec Pro</div>
-          <div class="po-card-desc">Wearable AI devices that utilize hardware-level noise reduction and NFC security to capture clear interaction data and drive automated business processing.</div>
+          <div class="po-card-desc">Wearable AI devices that utilize hardware-level noise reduction and firmware encryption to capture clear interaction data and drive automated business processing.</div>
           <div class="po-card-tags">
             <span class="po-card-tag">WiFi + Bluetooth</span>
             <span class="po-card-tag">1GB Storage</span>
-            <span class="po-card-tag">NFC</span>
+            <span class="po-card-tag">Encrypted</span>
             <span class="po-card-tag">Noise Reduction</span>
           </div>
           <div class="po-card-cta">
@@ -912,7 +920,7 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
           <div class="po-card-desc">3.0 mm, 30 g card-style AI voice recorder with three microphones, a recording-mode switch and magnetic pogo-pin charging.</div>
           <div class="po-card-tags">
             <span class="po-card-tag">WiFi + BT 5.3</span>
-            <span class="po-card-tag">16–64GB Storage</span>
+            <span class="po-card-tag">32GB Storage</span>
             <span class="po-card-tag">3 Mics</span>
             <span class="po-card-tag">25h Recording</span>
             <span class="po-card-tag">3.0 mm Thin</span>
@@ -931,12 +939,12 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         <div class="po-card-body">
           <div class="po-card-sku">HA-CS05</div>
           <div class="po-card-name">MeetCard</div>
-          <div class="po-card-desc">Card-style AI voice recorder with five microphones, a 0.96-inch LCD and a built-in magnet for MagSafe phones.</div>
+          <div class="po-card-desc">Card-style AI voice recorder with five microphones, a 0.96-inch color LCD and a built-in magnet for MagSafe phones.</div>
           <div class="po-card-tags">
             <span class="po-card-tag">WiFi + BT 5.3</span>
-            <span class="po-card-tag">16–64GB Storage</span>
+            <span class="po-card-tag">32GB Storage</span>
             <span class="po-card-tag">5 Mics</span>
-            <span class="po-card-tag">0.96" LCD</span>
+            <span class="po-card-tag">0.96" Color LCD</span>
             <span class="po-card-tag">30h Recording</span>
           </div>
           <div class="po-card-cta">
@@ -1050,11 +1058,11 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         <div class="po-card-body">
           <div class="po-card-sku">HA-SPK01</div>
           <div class="po-card-name">Hearit.ai Magnetic SpeakAI Mini</div>
-          <div class="po-card-desc">AI-powered smart speaker with magnetic design and IPX7 waterproofing for versatile voice interaction.</div>
+          <div class="po-card-desc">AI-powered smart speaker with magnetic design and IPX6 waterproofing for versatile voice interaction.</div>
           <div class="po-card-tags">
             <span class="po-card-tag">Bluetooth</span>
             <span class="po-card-tag">Magnetic</span>
-            <span class="po-card-tag">IPX7</span>
+            <span class="po-card-tag">IPX6</span>
             <span class="po-card-tag">Smart Speaker</span>
           </div>
           <div class="po-card-cta">
@@ -1073,12 +1081,12 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         <div class="po-card-body">
           <div class="po-card-sku">HA-SPK02</div>
           <div class="po-card-name">Hearit.ai Magnetic AI Speaker</div>
-          <div class="po-card-desc">AI-powered smart speaker with magnetic design, RGB ambient light, AI voice interaction, and IPX7 waterproofing.</div>
+          <div class="po-card-desc">AI-powered smart speaker with magnetic design, RGB ambient light, AI voice interaction, and IPX6 waterproofing.</div>
           <div class="po-card-tags">
             <span class="po-card-tag">Bluetooth</span>
             <span class="po-card-tag">Magnetic</span>
             <span class="po-card-tag">RGB</span>
-            <span class="po-card-tag">IPX7</span>
+            <span class="po-card-tag">IPX6</span>
             <span class="po-card-tag">Smart Speaker</span>
           </div>
           <div class="po-card-cta">
@@ -1144,11 +1152,11 @@ body { background: #fff; color: #111; -webkit-font-smoothing: antialiased; }
         <div class="po-card-body">
           <div class="po-card-sku">HA-BC01</div>
           <div class="po-card-name">Hearit.ai BoneSonix</div>
-          <div class="po-card-desc">Smart bone conduction headset with AI interaction and IPX6 rating for safe, open-ear sports communication.</div>
+          <div class="po-card-desc">Smart bone conduction headset with AI interaction and IP66 rating for safe, open-ear sports communication.</div>
           <div class="po-card-tags">
             <span class="po-card-tag">Bluetooth</span>
             <span class="po-card-tag">Bone Conduction</span>
-            <span class="po-card-tag">IPX6</span>
+            <span class="po-card-tag">IP66</span>
             <span class="po-card-tag">Open Ear</span>
           </div>
           <div class="po-card-cta">

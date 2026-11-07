@@ -4,14 +4,14 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>MeetCard (HA-CS05) — Card-Style AI Voice Recorder with Display | GMIC AI</title>
-<meta name="description" content="MeetCard (HA-CS05): a card-style AI voice recorder with five microphones, a 0.96-inch LCD and a built-in magnet for MagSafe phones. About 30 hours of recording. Samples, white-label and ODM available." />
+<meta name="description" content="MeetCard (HA-CS05): a card-style AI voice recorder with five microphones, a 0.96-inch color LCD and a built-in magnet for MagSafe phones. About 30 hours of recording. Samples, white-label and ODM available." />
 <link rel="canonical" href="https://gmic.ai/products/cs05/">
 
 <!-- Favicon + Open Graph (mirrors homepage, paths rebased to ../../) -->
 <link rel="icon" type="image/png" href="../../img/favicon.png">
 <meta property="og:type" content="product">
 <meta property="og:title" content="MeetCard (HA-CS05) — Card-Style AI Voice Recorder with Display | GMIC AI">
-<meta property="og:description" content="MeetCard (HA-CS05): a card-style AI voice recorder with five microphones, a 0.96-inch LCD and a built-in magnet for MagSafe phones. About 30 hours of recording. Samples, white-label and ODM available.">
+<meta property="og:description" content="MeetCard (HA-CS05): a card-style AI voice recorder with five microphones, a 0.96-inch color LCD and a built-in magnet for MagSafe phones. About 30 hours of recording. Samples, white-label and ODM available.">
 <meta property="og:url" content="https://gmic.ai/products/cs05/">
 <meta property="og:image" content="https://gmic.ai/products/cs05/img/hero.webp">
 
@@ -360,6 +360,32 @@ ul.checks-grid{padding:0;margin-top:0;}
 @media(max-width:560px){.cs-chip{padding:8px 10px;gap:8px}.cs-chip b{font-size:.75rem}.cs-chip span{font-size:.625rem}}
 @media(prefers-reduced-motion:reduce){.cs-ring,.cs-chip{animation:none}.cs-ring{opacity:.4}}
 @media(min-width:901px){.m5-head h2.section{white-space:nowrap;}}
+/* trade-show scenario */
+.xs-top{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:clamp(24px,3vw,40px);align-items:stretch;margin-top:8px;}
+.xs-img{position:relative;margin:0;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#e0e7ff 0%,#f1f5f9 55%,#e2e8f0 100%);border:1px solid rgba(15,23,42,.06);}
+.xs-img .ph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:20px;text-align:center;color:#64748b;font-size:.8125rem;line-height:1.45;}
+.xs-img .ph svg{width:30px;height:30px;color:#94a3b8;}
+.xs-img img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;}
+.xs-img .tag{position:absolute;z-index:2;left:12px;top:12px;font-size:.6875rem;font-weight:600;letter-spacing:.04em;background:rgba(15,23,42,.62);color:#fff;padding:4px 10px;border-radius:999px;backdrop-filter:blur(6px);}
+.xs-hero{aspect-ratio:16/10;}
+.xs-wear{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:16px;padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;gap:16px;}
+.xs-wear h3{font-size:1.125rem;font-weight:700;margin:0;}
+.xs-wear .xs-img{aspect-ratio:16/10;}
+.xs-wear ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
+.xs-wear li{display:flex;gap:10px;font-size:.9rem;line-height:1.5;color:#334155;}
+.xs-wear li svg{flex:none;width:18px;height:18px;color:#2563eb;margin-top:2px;}
+.xs-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:clamp(24px,3vw,36px);counter-reset:xs;}
+.xs-step{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;}
+.xs-step .xs-img{aspect-ratio:4/3;border:0;border-radius:0;}
+.xs-step div.b{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1;}
+.xs-step .n{font-size:.75rem;font-weight:700;letter-spacing:.08em;color:#2563eb;text-transform:uppercase;}
+.xs-step h3{font-size:1rem;font-weight:700;margin:0;}
+.xs-step p{font-size:.875rem;line-height:1.55;color:#64748b;margin:0;flex:1;}
+.xs-step .st{align-self:flex-start;white-space:normal;}
+.xs-note{font-size:.8125rem;color:#64748b;margin-top:20px;max-width:880px;}
+@media(max-width:1100px){.xs-steps{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:900px){.xs-top{grid-template-columns:1fr;}}
+@media(max-width:560px){.xs-steps{grid-template-columns:1fr;}}
 /* image cards (AI features / workflows) */
 .imgcards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;}
 .imgcard{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;}
@@ -621,11 +647,11 @@ ul.checks-grid{padding:0;margin-top:0;}
       <div class="m5-hero-copy reveal">
         <div class="eyebrow dark">HA-CS05 · Card-Style AI Voice Recorder with Display</div>
         <h1>MeetCard</h1>
-        <p class="m5-hero-sub">Five microphones, a 0.96-inch LCD and a built-in magnet — a compact recorder for meetings, interviews and everyday professional use, right on the back of your phone.</p>
+        <p class="m5-hero-sub">Five microphones, a 0.96-inch color LCD and a built-in magnet — a compact recorder for meetings, interviews and everyday professional use, right on the back of your phone.</p>
         <div class="hero-tags">
           <span class="st st-ok">Finished device</span>
           <span class="st st-tbc">Built-in MagSafe magnet</span>
-          <span class="st st-tbc">0.96" LCD</span>
+          <span class="st st-tbc">0.96" color LCD</span>
         </div>
         <div class="m5-hero-cta">
           <a href="../../contact/index.html?product=HA-CS05" class="btn btn-blue">Request a sample</a>
@@ -668,7 +694,7 @@ ul.checks-grid{padding:0;margin-top:0;}
       <h2 class="section">How you can buy it.</h2>
     </div>
     <div class="g3 reveal">
-      <div class="card"><div class="card-top"><div class="ico"><i data-lucide="package"></i></div><span class="st st-ok">Available</span></div><h3>Finished device</h3><p>Ready-to-use MeetCard units with 16 GB, 32 GB or 64 GB of storage.</p></div>
+      <div class="card"><div class="card-top"><div class="ico"><i data-lucide="package"></i></div><span class="st st-ok">Available</span></div><h3>Finished device</h3><p>Ready-to-use MeetCard units with 32 GB of storage.</p></div>
       <div class="card"><div class="card-top"><div class="ico"><i data-lucide="magnet"></i></div><span class="st st-ok">Built in</span></div><h3>Magnetic attachment</h3><p>No case needed — MeetCard snaps directly onto MagSafe-compatible phones.</p></div>
       <div class="card"><div class="card-top"><div class="ico"><i data-lucide="tag"></i></div><span class="st st-cus">Custom</span></div><h3>White-label &amp; ODM</h3><p>Your logo, packaging and firmware configuration for volume orders.</p></div>
     </div>
@@ -686,7 +712,7 @@ ul.checks-grid{padding:0;margin-top:0;}
           <li><span>Dimensions</span><span>91 × 57 × 4.6 mm (5.8 mm max)</span></li>
           <li><span>Weight</span><span>53 g</span></li>
           <li><span>Material</span><span>Aluminum alloy</span></li>
-          <li><span>Display</span><span>0.96" LCD, 80 × 160</span></li>
+          <li><span>Display</span><span>0.96" color LCD, 80 × 160</span></li>
           <li><span>Controls</span><span>Record / power button · vibration alerts</span></li>
           <li><span>Attachment</span><span>Built-in magnet (MagSafe-compatible)</span></li>
         </ul>
@@ -732,6 +758,31 @@ ul.checks-grid{padding:0;margin-top:0;}
   </div>
 </section>
 
+<!-- SCENARIO: TRADE SHOW -->
+<section class="m5-sec m5-soft fade-section" id="trade-show">
+  <div class="container">
+    <div class="m5-head reveal" style="max-width:none;">
+      <div class="eyebrow">Scenario · Trade show</div>
+      <h2 class="section">Every booth conversation, ready for follow-up.</h2>
+      <p class="m5-lead">At a busy trade show you may talk to dozens of suppliers in a day. Wear MeetCard like a badge, record each conversation as you go, and turn it into notes and next steps after the show.</p>
+    </div>
+    <div class="xs-top reveal">
+      <figure class="xs-img xs-hero"><div class="ph"><i data-lucide="image"></i><span>Buyer wearing MeetCard on a lanyard, talking with a supplier at a busy trade-show booth</span></div><img src="img/expo-1.jpg" alt="Buyer wearing MeetCard on a lanyard, talking with a supplier at a busy trade-show booth" onerror="this.remove()"><span class="tag">Scene illustration</span></figure>
+      <div class="xs-wear">
+        <h3>How it’s worn</h3>
+        <figure class="xs-img "><div class="ph"><i data-lucide="image"></i><span>MeetCard in a badge holder on a lanyard, close-up</span></div><img src="img/expo-2.jpg" alt="MeetCard in a badge holder on a lanyard, close-up" onerror="this.remove()"><span class="tag">Mounting to be confirmed</span></figure>
+        <ul><li><i data-lucide="id-card"></i><span>MeetCard is worn on a lanyard like a badge, keeping your hands free between booths.</span></li><li><i data-lucide="monitor"></i><span>The 0.96" color display shows recording status, so you know it is capturing.</span></li><li><i data-lucide="vibrate"></i><span>Vibration alerts confirm when recording starts and stops.</span></li></ul>
+      </div>
+    </div>
+    <div class="xs-steps reveal">
+      <div class="xs-step"><figure class="xs-img "><div class="ph"><i data-lucide="image"></i><span>Clipping MeetCard onto a lanyard</span></div><img src="img/expo-2.jpg" alt="Clipping MeetCard onto a lanyard" onerror="this.remove()"></figure><div class="b"><span class="n">Step 1</span><h3>Wear it</h3><p>Put MeetCard on your lanyard before you walk the floor — no phone in hand.</p><span class="st st-tbc">To be confirmed</span></div></div>
+      <div class="xs-step"><figure class="xs-img "><div class="ph"><i data-lucide="image"></i><span>Pressing the button to record at a booth, display showing recording</span></div><img src="img/expo-3.jpg" alt="Pressing the button to record at a booth, display showing recording" onerror="this.remove()"></figure><div class="b"><span class="n">Step 2</span><h3>Record each booth</h3><p>Press once to start and once to stop; the display confirms each recording. Five microphones pick up the conversation.</p><span class="st st-val">In validation</span></div></div>
+      <div class="xs-step"><figure class="xs-img "><div class="ph"><i data-lucide="image"></i><span>Reviewing conversations in the app after the show</span></div><img src="img/expo-4.jpg" alt="Reviewing conversations in the app after the show" onerror="this.remove()"></figure><div class="b"><span class="n">Step 3</span><h3>Review after the show</h3><p>Open each recording in the app, read the transcript or summary, and add context such as quotes or business cards.</p><span class="st st-tbc">Depends on your app</span></div></div>
+      <div class="xs-step"><figure class="xs-img "><div class="ph"><i data-lucide="image"></i><span>Follow-up list with action items per supplier</span></div><img src="img/expo-5.jpg" alt="Follow-up list with action items per supplier" onerror="this.remove()"></figure><div class="b"><span class="n">Step 4</span><h3>Follow up</h3><p>Pull out action items and next steps for each supplier and share them with your team.</p><span class="st st-tbc">Depends on your app</span></div></div>
+    </div>
+    <p class="xs-note reveal">Scenes are illustrations. Badge mounting, recording quality in noisy halls and post-show organization depend on configuration and the app you use — contact us to confirm what fits your project.</p>
+  </div>
+</section>
 <!-- WORKFLOWS -->
 <section class="m5-sec m5-light fade-section">
   <div class="container">
@@ -782,7 +833,7 @@ ul.checks-grid{padding:0;margin-top:0;}
     <div class="pfaq reveal" id="faq">
       <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">Can we buy samples before a volume order?</span><span class="faq-q-cat">Samples &amp; MOQ</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>Yes. Samples are available — request one through the contact form.</p></div></div></div>
       <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">What is the minimum order?</span><span class="faq-q-cat">Samples &amp; MOQ</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>Tiered pricing starts at 1,000 units for this model. Contact us for pricing for your configuration.</p></div></div></div>
-      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">How is MeetCard different from VoiceCard (HA-CS03)?</span><span class="faq-q-cat">Specs</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>Both have five microphones and a 0.96-inch display. MeetCard has a built-in magnet, so it snaps straight onto MagSafe phones without a case; VoiceCard is thinner (3.7 mm) and attaches through a magnetic leather case.</p></div></div></div>
+      <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">How is MeetCard different from VoiceCard (HA-CS03)?</span><span class="faq-q-cat">Specs</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>Both have five microphones and a 0.96-inch color display. MeetCard has a built-in magnet, so it snaps straight onto MagSafe phones without a case; VoiceCard is thinner (3.7 mm) and attaches through a magnetic leather case.</p></div></div></div>
       <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">Can it work with our own app?</span><span class="faq-q-cat">Integration</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>Yes — see the data paths above. SDK and protocol access are discussed per project; contact our team with your platform details.</p></div></div></div>
       <div class="faq-more">
       <div class="faq-item"><button class="faq-q" type="button" onclick="this.parentNode.classList.toggle('open')"><span class="faq-q-main"><span class="faq-q-text">How long does the battery last?</span><span class="faq-q-cat">Specs</span></span><span class="faq-icon"></span></button><div class="faq-a"><div class="faq-a-inner"><p>About 30 hours of recording with noise cancellation off, from a 500 mAh battery.</p></div></div></div>
@@ -812,9 +863,9 @@ ul.checks-grid{padding:0;margin-top:0;}
       <div class="spec"><span>Wi-Fi</span><span>802.11b/g/n, 2.4 GHz</span></div>
       <div class="spec"><span>Bluetooth</span><span>5.3 · 10 m</span></div>
       <div class="spec"><span>Wi-Fi transfer rate</span><span>800 KB/s – 1.2 MB/s</span></div>
-      <div class="spec"><span>Storage</span><span>16 / 32 / 64 GB (optional)</span></div>
+      <div class="spec"><span>Storage</span><span>32 GB</span></div>
       <div class="spec"><span>Microphones</span><span>4 omnidirectional + 1 bone-conduction</span></div>
-      <div class="spec"><span>Display</span><span>0.96" LCD, 80 × 160</span></div>
+      <div class="spec"><span>Display</span><span>0.96" color LCD, 80 × 160</span></div>
       <div class="spec"><span>Controls</span><span>Record / power button · vibration alert</span></div>
       <div class="spec"><span>Real-time clock</span><span>Supported</span></div>
       <div class="spec"><span>Battery</span><span>3.7 V · 500 mAh · about 30 h (noise cancellation off)</span></div>
