@@ -52,7 +52,7 @@
       { name: 'SPK01', slug: 'products/spk01/index.html', img: OV + 'HA-SPK01.jpg', desc: 'ChatGPT AI chat portable speaker' },
       { name: 'SPK02', slug: 'products/spk02/index.html', img: OV + 'HA-SPK02.jpg', desc: 'AI chat smart magnetic speaker' },
       { name: 'SPK03', slug: 'products/spk03/index.html', img: OV + 'HA-SPK03_Bluetooth.jpg', desc: 'ChatGPT AI portable speaker (Bluetooth)' },
-      { name: 'SPK03W', slug: 'products/spk03-wifi/index.html', img: OV + 'HA-SPK03_WiFi.jpg', desc: 'Portable ChatGPT AI speaker (BT + WiFi)' }
+      { name: 'SPK03W', slug: 'products/spk03-wifi/index.html', img: OV + 'HA-SPK03_WIFI.jpg', desc: 'Portable ChatGPT AI speaker (BT + WiFi)' }
     ]},
     { name: 'AI Companion', products: [
       { name: 'BirthdayBird', slug: PV + 'birthdaybird', img: OV + 'HA-TOY02.png' },
