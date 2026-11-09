@@ -26,7 +26,7 @@
       { name: 'MIC06A', slug: 'products/mic06/index.html', img: OV + 'HA-MIC06A.jpg', desc: 'Continuous voice capture for shift-based operations' },
       { name: 'MIC06B', slug: 'products/mic06b/index.html', img: OV + 'HA-MIC06B.jpg', desc: 'Next-gen AI voice terminal for real-world work' },
       { name: 'CS01', slug: 'products/cs01/index.html', img: OV + 'HA-CS01.jpg', desc: '4.5 mm magnetic card AI recorder (WiFi + BT)' },
-      { name: 'CS03', slug: 'products/cs03/index.html', img: OV + 'HA-CS03.jpg', desc: 'Flagship 3.7 mm card recorder with 5 mics + display' },
+      { name: 'CS03', slug: 'products/cs03/index.html', img: OV + 'HA-CS03.jpg', desc: 'Flagship 4.5 mm card recorder with 5 mics + display' },
       { name: 'CS04', slug: 'products/cs04/index.html', img: OV + 'HA-CS04.jpg', desc: 'Slim 3.0 mm, 30 g card recorder' },
       { name: 'CS05', slug: 'products/cs05/index.html', img: OV + 'HA-CS05.jpg', desc: 'Card recorder with 5 mics, LCD + built-in magnet' }
     ]},
