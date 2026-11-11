@@ -1,0 +1,795 @@
+<title>Sales Intelligence Showcase</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+  /* Layout: full-width section matching gmic.ai sales-intelligence page (max-width 1200px, Inter) */
+  :root {
+    --ice: #EFF4FA;
+    --white: #FFFFFF;
+    --navy: #0F172A;
+    --navy-soft: #334155;
+    --navy-muted: #64748B;
+    --blue: #2563EB;
+    --blue-light: #DBEAFE;
+    --blue-hover: #1D4ED8;
+    --teal: #0891B2;
+    --teal-bg: #ECFEFF;
+    --teal-border: #A5F3FC;
+    --amber: #D97706;
+    --amber-bg: #FEF3C7;
+    --amber-border: #FDE68A;
+    --green: #16A34A;
+    --green-bg: #DCFCE7;
+    --green-border: #BBF7D0;
+    --border: #E2E8F0;
+    --card-shadow: 0 1px 3px rgba(15,23,42,0.05), 0 8px 32px rgba(15,23,42,0.06);
+    --bg: var(--white);
+    --section-bg: var(--ice);
+    --text: var(--navy);
+    --text-secondary: var(--navy-soft);
+    --text-muted: var(--navy-muted);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ice: #0B1120;
+      --white: #0F172A;
+      --navy: #F1F5F9;
+      --navy-soft: #CBD5E1;
+      --navy-muted: #94A3B8;
+      --blue: #60A5FA;
+      --blue-light: #1E3A5F;
+      --blue-hover: #93C5FD;
+      --teal: #22D3EE;
+      --teal-bg: #0C2A30;
+      --teal-border: #155E75;
+      --amber: #FBBF24;
+      --amber-bg: #422006;
+      --amber-border: #78350F;
+      --green: #4ADE80;
+      --green-bg: #052E16;
+      --green-border: #166534;
+      --border: #1E293B;
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 8px 32px rgba(0,0,0,0.2);
+      --bg: var(--white);
+      --section-bg: var(--ice);
+      --text: var(--navy);
+      --text-secondary: var(--navy-soft);
+      --text-muted: var(--navy-muted);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ice: #0B1120;
+    --white: #0F172A;
+    --navy: #F1F5F9;
+    --navy-soft: #CBD5E1;
+    --navy-muted: #94A3B8;
+    --blue: #60A5FA;
+    --blue-light: #1E3A5F;
+    --blue-hover: #93C5FD;
+    --teal: #22D3EE;
+    --teal-bg: #0C2A30;
+    --teal-border: #155E75;
+    --amber: #FBBF24;
+    --amber-bg: #422006;
+    --amber-border: #78350F;
+    --green: #4ADE80;
+    --green-bg: #052E16;
+    --green-border: #166534;
+    --border: #1E293B;
+    --card-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 8px 32px rgba(0,0,0,0.2);
+    --bg: var(--white);
+    --section-bg: var(--ice);
+    --text: var(--navy);
+    --text-secondary: var(--navy-soft);
+    --text-muted: var(--navy-muted);
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 0;
+  }
+
+  /* ============================================
+     FEATURE SHOWCASE SECTION
+     Drop this block into the sales-intelligence page
+     ============================================ */
+  .showcase-section {
+    background: var(--section-bg);
+    padding: 80px 0;
+  }
+  .showcase-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  /* Section header */
+  .showcase-eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+  .showcase-heading {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin: 0 0 16px;
+  }
+  .showcase-subheading {
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+
+  /* Tab bar */
+  .tab-bar {
+    display: flex;
+    gap: 4px;
+    background: var(--border);
+    border-radius: 10px;
+    padding: 3px;
+    width: fit-content;
+    margin-bottom: 32px;
+  }
+  .tab-btn {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: var(--text-muted);
+    background: transparent;
+    white-space: nowrap;
+  }
+  .tab-btn:hover {
+    color: var(--text);
+  }
+  .tab-btn.active {
+    background: var(--bg);
+    color: var(--text);
+    box-shadow: 0 1px 3px rgba(15,23,42,0.08);
+  }
+
+  /* Card layout: left description + right frame */
+  .showcase-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  /* Left: description */
+  .desc-side {
+    padding-top: 16px;
+  }
+  .desc-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    margin: 0 0 16px;
+  }
+  .desc-body {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+  }
+  .desc-features {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .desc-feature {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .desc-feature-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 8px;
+    background: var(--blue-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1px;
+  }
+  .desc-feature-icon svg {
+    width: 15px;
+    height: 15px;
+    color: var(--blue);
+  }
+  .desc-feature-text {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+  .desc-feature-text strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  /* Right: card frame */
+  .frame-side {
+    display: flex;
+    justify-content: center;
+  }
+
+  /* ====== EMBEDDED RECAP CARD ====== */
+  .recap-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--bg);
+    border-radius: 14px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .rc-inner {
+    padding: 22px 24px 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .rc-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--text-muted);
+    background: var(--section-bg);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 3px 10px;
+    width: fit-content;
+    margin-bottom: 12px;
+  }
+  .rc-badge::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--blue);
+    flex-shrink: 0;
+  }
+  .rc-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 1.2;
+    color: var(--text);
+    margin: 0 0 3px;
+    letter-spacing: -0.01em;
+  }
+  .rc-meta {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .rc-section {
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  .rc-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .rc-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 6px;
+  }
+  .rc-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .rc-section li {
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--text-secondary);
+    padding-left: 12px;
+    position: relative;
+  }
+  .rc-section li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 3.5px;
+    height: 3.5px;
+    border-radius: 50%;
+    background: var(--text-muted);
+  }
+  .rc-section li em {
+    font-style: italic;
+    color: var(--text);
+  }
+  .rc-promise-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .rc-tag-warning {
+    display: inline-flex;
+    align-items: center;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--amber);
+    background: var(--amber-bg);
+    border: 1px solid var(--amber-border);
+    border-radius: 100px;
+    padding: 1px 8px;
+    white-space: nowrap;
+  }
+  .rc-steps-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .rc-steps-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+  .rc-steps-table tr:last-child {
+    border-bottom: none;
+  }
+  .rc-steps-table td {
+    padding: 4px 0;
+    font-size: 12px;
+    line-height: 1.4;
+    vertical-align: baseline;
+  }
+  .rc-step-action {
+    color: var(--text-secondary);
+  }
+  .rc-step-owner {
+    color: var(--text-muted);
+    font-size: 11px;
+  }
+  .rc-step-due {
+    text-align: right;
+    font-weight: 600;
+    font-size: 11.5px;
+    color: var(--blue);
+    white-space: nowrap;
+    padding-left: 8px;
+    font-variant-numeric: tabular-nums;
+  }
+  .rc-coaching {
+    background: var(--section-bg);
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 12.5px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  /* Data path strip — teal */
+  .rc-data-path {
+    padding: 10px 24px 10px;
+  }
+  .rc-path-strip {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: var(--teal-bg);
+    border: 1px solid var(--teal-border);
+    border-radius: 8px;
+    padding: 8px 10px;
+  }
+  .rc-path-node {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+  }
+  .rc-path-text {
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--teal);
+    min-width: 0;
+  }
+  .rc-path-arrow {
+    flex-shrink: 0;
+    width: 20px;
+    display: flex;
+    justify-content: center;
+    color: var(--teal);
+    opacity: 0.5;
+  }
+  .rc-path-arrow svg { width: 12px; height: 12px; }
+  .rc-path-icon {
+    flex-shrink: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    border: 1.5px dashed var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+  }
+  .rc-path-icon svg { width: 14px; height: 14px; color: var(--teal); }
+  .rc-path-icon-solid { border-style: solid; opacity: 1; background: color-mix(in srgb, var(--teal) 8%, transparent); }
+
+  .rc-footer {
+    padding: 8px 24px 12px;
+    font-size: 9.5px;
+    line-height: 1.5;
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+
+  /* ====== EMBEDDED MANAGER VIEW ====== */
+  .mgr-card {
+    width: 100%;
+    max-width: 420px;
+    background: var(--bg);
+    border-radius: 14px;
+    box-shadow: var(--card-shadow);
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .mgr-inner {
+    padding: 22px 24px 18px;
+  }
+  .mgr-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--text);
+    margin: 0 0 3px;
+  }
+  .mgr-meta {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+  }
+  .mgr-stats {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .mgr-stat {
+    flex: 1;
+    background: var(--section-bg);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .mgr-stat-num {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1;
+    color: var(--text);
+    font-variant-numeric: tabular-nums;
+  }
+  .mgr-stat-label {
+    font-size: 9.5px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+  .mgr-list-label {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+  .mgr-row {
+    display: grid;
+    grid-template-columns: 58px 1fr auto;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .mgr-row:last-child { border-bottom: none; }
+  .mgr-date {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
+  .mgr-visit-info { min-width: 0; }
+  .mgr-visit-title {
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .mgr-visit-rep {
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+  .mgr-chip {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .mgr-chip-warn {
+    color: var(--amber);
+    background: var(--amber-bg);
+    border: 1px solid var(--amber-border);
+  }
+  .mgr-chip-ok {
+    color: var(--green);
+    background: var(--green-bg);
+    border: 1px solid var(--green-border);
+  }
+  .mgr-footer {
+    padding: 8px 24px 12px;
+    font-size: 9.5px;
+    line-height: 1.5;
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+
+  /* Tab content */
+  .tab-panel { display: none; }
+  .tab-panel.active { display: grid; }
+  .tab-panel-mgr.active { display: grid; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .showcase-card {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .showcase-heading { font-size: 28px; }
+    .showcase-container { padding: 0 24px; }
+    .showcase-section { padding: 56px 0; }
+    .frame-side { justify-content: flex-start; }
+    .recap-card, .mgr-card { max-width: 100%; }
+  }
+  @media (max-width: 480px) {
+    .showcase-heading { font-size: 24px; }
+    .rc-path-strip { flex-wrap: wrap; gap: 2px; }
+    .rc-path-node { flex-basis: 100%; }
+    .rc-path-arrow { width: 100%; transform: rotate(90deg); padding: 1px 0; }
+    .tab-btn { font-size: 13px; padding: 7px 14px; }
+  }
+</style>
+
+<div class="showcase-section">
+  <div class="showcase-container">
+    <div class="showcase-eyebrow">How it works</div>
+    <h2 class="showcase-heading">Every visit becomes a coaching opportunity</h2>
+    <p class="showcase-subheading">Your sales platform turns recorded conversations into structured recaps with buyer needs, open promises, and next steps — so nothing falls through the cracks.</p>
+
+    <div class="tab-bar">
+      <button class="tab-btn active" onclick="switchTab('recap')">Sales recap</button>
+      <button class="tab-btn" onclick="switchTab('manager')">Manager view</button>
+    </div>
+
+    <!-- ==================== TAB 1: RECAP CARD ==================== -->
+    <div id="tab-recap" class="showcase-card tab-panel active">
+      <div class="desc-side">
+        <h3 class="desc-title">Structured recaps, generated by your platform</h3>
+        <p class="desc-body">After each visit, the recording is uploaded to your server via Wi-Fi. Your sales platform processes the audio and generates a recap — buyer needs, objections, promises made, and recommended next steps.</p>
+        <div class="desc-features">
+          <div class="desc-feature">
+            <div class="desc-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg></div>
+            <div class="desc-feature-text"><strong>Surface what matters.</strong> Buyer concerns, timeline, and decision-makers pulled from the conversation.</div>
+          </div>
+          <div class="desc-feature">
+            <div class="desc-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg></div>
+            <div class="desc-feature-text"><strong>Catch open promises.</strong> When a rep commits to something but hasn't scheduled it, the recap flags it.</div>
+          </div>
+          <div class="desc-feature">
+            <div class="desc-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="desc-feature-text"><strong>Coach with context.</strong> Managers review real conversations, not secondhand summaries.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="frame-side">
+        <div class="recap-card">
+          <div class="rc-inner">
+            <div class="rc-badge">Sample data · Scenario demo</div>
+            <h4 class="rc-title">Model home visit recap</h4>
+            <div class="rc-meta">Sat · 42 min · Clip-on recorder</div>
+
+            <div class="rc-section">
+              <div class="rc-label">What the buyer needs</div>
+              <ul>
+                <li>Move in before the school year starts</li>
+                <li>3 bedrooms, one usable as a home office</li>
+              </ul>
+            </div>
+            <div class="rc-section">
+              <div class="rc-label">Main concerns</div>
+              <ul>
+                <li><em>"We'll think about it."</em></li>
+                <li>Spouse wasn't there and decides too</li>
+                <li>HOA fees unclear</li>
+              </ul>
+            </div>
+            <div class="rc-section">
+              <div class="rc-label">What the rep promised</div>
+              <ul>
+                <li>
+                  <div class="rc-promise-row">
+                    <span>Send HOA fee breakdown</span>
+                    <span class="rc-tag-warning">not scheduled yet</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="rc-section">
+              <div class="rc-label">Next steps · Owner · Due</div>
+              <table class="rc-steps-table">
+                <tr><td class="rc-step-action">Send HOA breakdown <span class="rc-step-owner">· Rep</span></td><td class="rc-step-due">Tue</td></tr>
+                <tr><td class="rc-step-action">Book a second visit with both buyers <span class="rc-step-owner">· Rep</span></td><td class="rc-step-due">This week</td></tr>
+                <tr><td class="rc-step-action">Review follow-up <span class="rc-step-owner">· Manager</span></td><td class="rc-step-due">Fri</td></tr>
+              </table>
+            </div>
+            <div class="rc-section">
+              <div class="rc-label">Manager coaching</div>
+              <div class="rc-coaching">Ask who else is part of the decision before the visit ends. When you promise something, set the date on the spot.</div>
+            </div>
+          </div>
+          <div class="rc-data-path">
+            <div class="rc-path-strip">
+              <div class="rc-path-node">
+                <div class="rc-path-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="16" rx="2"/><circle cx="12" cy="11" r="3"/><line x1="9" y1="21" x2="15" y2="21"/><line x1="12" y1="19" x2="12" y2="21"/></svg>
+                </div>
+                <span class="rc-path-text">MIC05 clip-on recorder</span>
+              </div>
+              <div class="rc-path-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+              <div class="rc-path-node">
+                <div class="rc-path-icon rc-path-icon-solid">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="0.5" fill="currentColor"/><line x1="12" y1="4" x2="12" y2="8"/><line x1="4" y1="8" x2="20" y2="8"/></svg>
+                </div>
+                <span class="rc-path-text">Wi-Fi upload to your own server</span>
+              </div>
+              <div class="rc-path-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+              <div class="rc-path-node">
+                <div class="rc-path-icon rc-path-icon-solid">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6v6H9z"/><line x1="9" y1="3" x2="9" y2="9"/><line x1="15" y1="3" x2="15" y2="9"/><line x1="9" y1="15" x2="9" y2="21"/><line x1="15" y1="15" x2="15" y2="21"/></svg>
+                </div>
+                <span class="rc-path-text">Your sales platform</span>
+              </div>
+            </div>
+          </div>
+          <div class="rc-footer">Sample recap for illustration. GMIC hardware records the conversation. Transcription, speaker labels and recaps are generated by your sales platform. Audio does not pass through GMIC servers.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== TAB 2: MANAGER VIEW ==================== -->
+    <div id="tab-manager" class="showcase-card tab-panel tab-panel-mgr">
+      <div class="desc-side">
+        <h3 class="desc-title">One dashboard for every visit this week</h3>
+        <p class="desc-body">Managers see which visits went well and which need attention — without sitting in on every one. Each row opens to a full recap, so coaching starts from what actually happened, not from a rep's memory.</p>
+        <div class="desc-features">
+          <div class="desc-feature">
+            <div class="desc-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg></div>
+            <div class="desc-feature-text"><strong>Status at a glance.</strong> Every visit flagged as on track or carrying an open promise that needs follow-up.</div>
+          </div>
+          <div class="desc-feature">
+            <div class="desc-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="desc-feature-text"><strong>Nothing ages silently.</strong> Promises that aren't scheduled surface before the buyer notices.</div>
+          </div>
+          <div class="desc-feature">
+            <div class="desc-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <div class="desc-feature-text"><strong>Drill into any visit.</strong> Click a row to see the full recap — buyer needs, concerns, and coaching notes.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="frame-side">
+        <div class="mgr-card">
+          <div class="mgr-inner">
+            <div class="rc-badge">Sample data · Scenario demo</div>
+            <h4 class="mgr-title">This week's visits</h4>
+            <div class="mgr-meta">Nov 4 – 9 · Southwest Region</div>
+
+            <div class="mgr-stats">
+              <div class="mgr-stat">
+                <div class="mgr-stat-num">5</div>
+                <div class="mgr-stat-label">Visits</div>
+              </div>
+              <div class="mgr-stat">
+                <div class="mgr-stat-num">2</div>
+                <div class="mgr-stat-label">Open promises</div>
+              </div>
+              <div class="mgr-stat">
+                <div class="mgr-stat-num">3</div>
+                <div class="mgr-stat-label">On track</div>
+              </div>
+            </div>
+
+            <div class="mgr-list-label">Visit log</div>
+
+            <div class="mgr-row">
+              <span class="mgr-date">Sat, Nov 8</span>
+              <div class="mgr-visit-info"><div class="mgr-visit-title">Model home visit</div><div class="mgr-visit-rep">Sarah Chen · 42 min</div></div>
+              <span class="mgr-chip mgr-chip-warn">Open promise</span>
+            </div>
+            <div class="mgr-row">
+              <span class="mgr-date">Fri, Nov 7</span>
+              <div class="mgr-visit-info"><div class="mgr-visit-title">Lot 14 second showing</div><div class="mgr-visit-rep">Marcus Rivera · 28 min</div></div>
+              <span class="mgr-chip mgr-chip-ok">On track</span>
+            </div>
+            <div class="mgr-row">
+              <span class="mgr-date">Thu, Nov 6</span>
+              <div class="mgr-visit-info"><div class="mgr-visit-title">Phase 2 townhome tour</div><div class="mgr-visit-rep">Sarah Chen · 35 min</div></div>
+              <span class="mgr-chip mgr-chip-ok">On track</span>
+            </div>
+            <div class="mgr-row">
+              <span class="mgr-date">Wed, Nov 5</span>
+              <div class="mgr-visit-info"><div class="mgr-visit-title">Corner unit walkthrough</div><div class="mgr-visit-rep">James Park · 51 min</div></div>
+              <span class="mgr-chip mgr-chip-warn">Open promise</span>
+            </div>
+            <div class="mgr-row">
+              <span class="mgr-date">Tue, Nov 4</span>
+              <div class="mgr-visit-info"><div class="mgr-visit-title">Lakeside model tour</div><div class="mgr-visit-rep">Marcus Rivera · 33 min</div></div>
+              <span class="mgr-chip mgr-chip-ok">On track</span>
+            </div>
+          </div>
+          <div class="mgr-footer">Sample recap for illustration. GMIC hardware records the conversation. Transcription, speaker labels and recaps are generated by your sales platform. Audio does not pass through GMIC servers.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-btn').forEach(function(btn) { btn.classList.remove('active'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p) { p.classList.remove('active'); });
+    if (tab === 'recap') {
+      document.querySelectorAll('.tab-btn')[0].classList.add('active');
+      document.getElementById('tab-recap').classList.add('active');
+    } else {
+      document.querySelectorAll('.tab-btn')[1].classList.add('active');
+      document.getElementById('tab-manager').classList.add('active');
+    }
+  }
+</script>

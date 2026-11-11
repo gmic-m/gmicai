@@ -1,0 +1,477 @@
+<title>Sales Recap Card</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+  /* Layout: single centered card on tinted ground, 4:5 aspect for web + LinkedIn */
+  :root {
+    --ice: #EFF4FA;
+    --white: #FFFFFF;
+    --navy: #0F172A;
+    --navy-soft: #334155;
+    --navy-muted: #64748B;
+    --blue: #2563EB;
+    --blue-light: #DBEAFE;
+    --teal: #0891B2;
+    --teal-bg: #ECFEFF;
+    --teal-border: #A5F3FC;
+    --amber: #D97706;
+    --amber-bg: #FEF3C7;
+    --amber-border: #FDE68A;
+    --border: #E2E8F0;
+    --card-shadow: 0 1px 3px rgba(15,23,42,0.06), 0 6px 24px rgba(15,23,42,0.04);
+    --bg: var(--ice);
+    --card-bg: var(--white);
+    --text: var(--navy);
+    --text-secondary: var(--navy-soft);
+    --text-muted: var(--navy-muted);
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ice: #0B1120;
+      --white: #1E293B;
+      --navy: #F1F5F9;
+      --navy-soft: #CBD5E1;
+      --navy-muted: #94A3B8;
+      --blue: #60A5FA;
+      --blue-light: #1E3A5F;
+      --teal: #22D3EE;
+      --teal-bg: #0C2A30;
+      --teal-border: #155E75;
+      --amber: #FBBF24;
+      --amber-bg: #422006;
+      --amber-border: #78350F;
+      --border: #334155;
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 6px 24px rgba(0,0,0,0.15);
+      --bg: var(--ice);
+      --card-bg: var(--white);
+      --text: var(--navy);
+      --text-secondary: var(--navy-soft);
+      --text-muted: var(--navy-muted);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --ice: #0B1120;
+    --white: #1E293B;
+    --navy: #F1F5F9;
+    --navy-soft: #CBD5E1;
+    --navy-muted: #94A3B8;
+    --blue: #60A5FA;
+    --blue-light: #1E3A5F;
+    --teal: #22D3EE;
+    --teal-bg: #0C2A30;
+    --teal-border: #155E75;
+    --amber: #FBBF24;
+    --amber-bg: #422006;
+    --amber-border: #78350F;
+    --border: #334155;
+    --card-shadow: 0 1px 3px rgba(0,0,0,0.2), 0 6px 24px rgba(0,0,0,0.15);
+    --bg: var(--ice);
+    --card-bg: var(--white);
+    --text: var(--navy);
+    --text-secondary: var(--navy-soft);
+    --text-muted: var(--navy-muted);
+    color-scheme: dark;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100%;
+  }
+
+  .card-wrapper {
+    width: 100%;
+    max-width: 560px;
+    aspect-ratio: 4 / 5;
+    background: var(--card-bg);
+    border-radius: 16px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .card-inner {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 28px 32px 24px;
+    gap: 0;
+    min-height: 0;
+  }
+
+  /* Badge */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--text-muted);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 4px 12px;
+    width: fit-content;
+    margin-bottom: 14px;
+  }
+  .badge::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--blue);
+    flex-shrink: 0;
+  }
+
+  /* Header */
+  .card-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 1.15;
+    color: var(--text);
+    margin: 0 0 4px;
+    letter-spacing: -0.01em;
+  }
+  .card-meta {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+
+  /* Sections */
+  .section {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
+  .section-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+  .section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .section li {
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--text-secondary);
+    padding-left: 14px;
+    position: relative;
+  }
+  .section li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--text-muted);
+  }
+  .section li em {
+    font-style: italic;
+    color: var(--text);
+  }
+
+  /* Promise tag */
+  .promise-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .tag-warning {
+    display: inline-flex;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--amber);
+    background: var(--amber-bg);
+    border: 1px solid var(--amber-border);
+    border-radius: 100px;
+    padding: 2px 10px;
+    white-space: nowrap;
+  }
+
+  /* Next steps table */
+  .steps-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .steps-table tr {
+    border-bottom: 1px solid var(--border);
+  }
+  .steps-table tr:last-child {
+    border-bottom: none;
+  }
+  .steps-table td {
+    padding: 6px 0;
+    font-size: 13.5px;
+    line-height: 1.4;
+    vertical-align: baseline;
+  }
+  .steps-table .step-action {
+    color: var(--text-secondary);
+  }
+  .steps-table .step-owner {
+    color: var(--text-muted);
+    font-size: 12.5px;
+    white-space: nowrap;
+  }
+  .steps-table .step-due {
+    text-align: right;
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--blue);
+    white-space: nowrap;
+    padding-left: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Coaching callout */
+  .coaching {
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+  }
+
+  /* Data path strip — teal zone */
+  .data-path {
+    margin-top: auto;
+    padding-top: 16px;
+  }
+  .data-path-strip {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background: var(--teal-bg);
+    border: 1px solid var(--teal-border);
+    border-radius: 10px;
+    padding: 12px 14px;
+  }
+  .path-node {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+  .path-node-text {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--teal);
+    min-width: 0;
+  }
+  .path-arrow {
+    flex-shrink: 0;
+    width: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--teal);
+    opacity: 0.5;
+  }
+  .path-arrow svg {
+    width: 16px;
+    height: 16px;
+  }
+  .path-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: 1.5px dashed var(--teal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.7;
+  }
+  .path-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--teal);
+  }
+  .path-icon-solid {
+    border-style: solid;
+    opacity: 1;
+    background: color-mix(in srgb, var(--teal) 8%, transparent);
+  }
+
+  /* Footer */
+  .card-footer {
+    padding: 12px 32px 16px;
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--text-muted);
+    opacity: 0.75;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .card-wrapper {
+      aspect-ratio: auto;
+      border-radius: 12px;
+    }
+    .card-inner {
+      padding: 22px 20px 18px;
+    }
+    .card-title {
+      font-size: 22px;
+    }
+    .card-footer {
+      padding: 10px 20px 14px;
+    }
+    .data-path-strip {
+      flex-wrap: wrap;
+      gap: 4px;
+    }
+    .path-node {
+      flex-basis: 100%;
+    }
+    .path-arrow {
+      width: 100%;
+      transform: rotate(90deg);
+      padding: 2px 0;
+    }
+  }
+</style>
+
+<div class="card-wrapper">
+  <div class="card-inner">
+    <div class="badge">Sample data · Scenario demo</div>
+
+    <h1 class="card-title">Model home visit recap</h1>
+    <div class="card-meta">Sat · 42 min · Clip-on recorder</div>
+
+    <div class="section">
+      <div class="section-label">What the buyer needs</div>
+      <ul>
+        <li>Move in before the school year starts</li>
+        <li>3 bedrooms, one usable as a home office</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Main concerns</div>
+      <ul>
+        <li><em>"We'll think about it."</em></li>
+        <li>Spouse wasn't there and decides too</li>
+        <li>HOA fees unclear</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-label">What the rep promised</div>
+      <ul>
+        <li>
+          <div class="promise-row">
+            <span>Send HOA fee breakdown</span>
+            <span class="tag-warning">not scheduled yet</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <div class="section-label">Next steps · Owner · Due</div>
+      <table class="steps-table">
+        <tr>
+          <td class="step-action">Send HOA breakdown <span class="step-owner">· Rep</span></td>
+          <td class="step-due">Tue</td>
+        </tr>
+        <tr>
+          <td class="step-action">Book a second visit with both buyers <span class="step-owner">· Rep</span></td>
+          <td class="step-due">This week</td>
+        </tr>
+        <tr>
+          <td class="step-action">Review follow-up <span class="step-owner">· Manager</span></td>
+          <td class="step-due">Fri</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section" style="border-bottom:none;margin-bottom:0;padding-bottom:12px">
+      <div class="section-label">Manager coaching</div>
+      <div class="coaching">
+        Ask who else is part of the decision before the visit ends. When you promise something, set the date on the spot.
+      </div>
+    </div>
+
+    <div class="data-path">
+      <div class="data-path-strip">
+        <div class="path-node">
+          <!-- MIC05 placeholder — swap for HCJD14.png -->
+          <div class="path-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="6" y="3" width="12" height="16" rx="2"/>
+              <circle cx="12" cy="11" r="3"/>
+              <line x1="9" y1="21" x2="15" y2="21"/>
+              <line x1="12" y1="19" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <span class="path-node-text">MIC05 clip-on recorder</span>
+        </div>
+        <div class="path-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+        <div class="path-node">
+          <div class="path-icon path-icon-solid">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12.55a11 11 0 0 1 14.08 0"/>
+              <path d="M8.53 16.11a6 6 0 0 1 6.95 0"/>
+              <circle cx="12" cy="20" r="0.5" fill="currentColor"/>
+              <line x1="12" y1="4" x2="12" y2="8"/>
+              <line x1="4" y1="8" x2="20" y2="8"/>
+            </svg>
+          </div>
+          <span class="path-node-text">Wi-Fi upload to your own server</span>
+        </div>
+        <div class="path-arrow"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+        <div class="path-node">
+          <div class="path-icon path-icon-solid">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="3"/>
+              <path d="M9 9h6v6H9z"/>
+              <line x1="9" y1="3" x2="9" y2="9"/>
+              <line x1="15" y1="3" x2="15" y2="9"/>
+              <line x1="9" y1="15" x2="9" y2="21"/>
+              <line x1="15" y1="15" x2="15" y2="21"/>
+            </svg>
+          </div>
+          <span class="path-node-text">Your sales platform</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card-footer">
+    Sample recap for illustration. GMIC hardware records the conversation. Transcription, speaker labels and recaps are generated by your sales platform. Audio does not pass through GMIC servers.
+  </div>
+</div>
