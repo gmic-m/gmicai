@@ -603,6 +603,94 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
   .impl-proc-window{height:auto;overflow:visible}
   .impl-proc-track{transform:none !important}
 }
+
+/* ===== SHOWCASE: recap card + manager view ===== */
+.sc-tab-bar{display:flex;gap:4px;background:#e2e8f0;border-radius:10px;padding:3px;width:fit-content;margin-bottom:32px}
+.sc-tab{font-family:var(--sans);font-size:.875rem;font-weight:600;padding:8px 20px;border:none;border-radius:8px;cursor:pointer;transition:all .2s;color:#64748b;background:transparent;white-space:nowrap}
+.sc-tab:hover{color:#0f172a}
+.sc-tab.active{background:#fff;color:#0f172a;box-shadow:0 1px 3px rgba(15,23,42,.08)}
+.sc-layout{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.sc-desc{padding:0}
+.sc-desc-title{font-family:var(--sans);font-weight:700;font-size:1.5rem;line-height:1.25;letter-spacing:-.01em;color:#0f172a;margin:0 0 16px}
+.sc-desc-body{font-size:.9375rem;line-height:1.7;color:#334155;margin-bottom:24px}
+.sc-features{display:flex;flex-direction:column;gap:14px}
+.sc-feat{display:flex;gap:12px;align-items:flex-start}
+.sc-feat-ic{flex-shrink:0;width:28px;height:28px;border-radius:8px;background:#dbeafe;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.sc-feat-ic svg{width:15px;height:15px;color:#2563eb}
+.sc-feat-text{font-size:.875rem;line-height:1.55;color:#334155}
+.sc-feat-text strong{color:#0f172a;font-weight:600}
+.sc-frame{display:flex;justify-content:center;align-items:center;background:#f1f5f9;border-radius:20px;padding:32px 24px;min-height:480px}
+.sc-panel{display:none}.sc-panel.active{display:grid}
+
+/* Embedded recap card */
+.rc{width:100%;background:#fff;border-radius:14px;box-shadow:0 2px 8px rgba(15,23,42,.06),0 12px 40px rgba(15,23,42,.08);border:1px solid #e2e8f0;overflow:hidden}
+.rc-in{padding:22px 24px 18px;display:flex;flex-direction:column}
+.rc-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:600;letter-spacing:.03em;color:#64748b;background:#eff4fa;border:1px solid #e2e8f0;border-radius:100px;padding:3px 10px;width:fit-content;margin-bottom:12px}
+.rc-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:#2563eb;flex-shrink:0}
+.rc-h{font-family:var(--sans);font-weight:700;font-size:1.25rem;line-height:1.2;color:#0f172a;margin:0 0 3px;letter-spacing:-.01em}
+.rc-meta{font-size:11.5px;color:#64748b;margin-bottom:16px}
+.rc-sec{padding-bottom:12px;margin-bottom:12px;border-bottom:1px solid #e2e8f0}
+.rc-sec:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+.rc-lbl{font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2563eb;margin-bottom:6px}
+.rc-sec ul{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:3px}
+.rc-sec li{font-size:12.5px;line-height:1.45;color:#334155;padding-left:12px;position:relative}
+.rc-sec li::before{content:'';position:absolute;left:0;top:7px;width:3.5px;height:3.5px;border-radius:50%;background:#94a3b8}
+.rc-sec li em{font-style:italic;color:#0f172a}
+.rc-promise{display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+.rc-warn{display:inline-flex;font-size:10px;font-weight:600;letter-spacing:.02em;color:#d97706;background:#fef3c7;border:1px solid #fde68a;border-radius:100px;padding:1px 8px;white-space:nowrap}
+.rc-tbl{width:100%;border-collapse:collapse}
+.rc-tbl tr{border-bottom:1px solid #e2e8f0}.rc-tbl tr:last-child{border-bottom:none}
+.rc-tbl td{padding:4px 0;font-size:12px;line-height:1.4;vertical-align:baseline}
+.rc-act{color:#334155}.rc-own{color:#64748b;font-size:11px}
+.rc-due{text-align:right;font-weight:600;font-size:11.5px;color:#2563eb;white-space:nowrap;padding-left:8px;font-variant-numeric:tabular-nums}
+.rc-coach{background:#eff4fa;border-radius:8px;padding:10px 12px;font-size:12.5px;line-height:1.55;color:#334155}
+
+/* Data path strip — teal accent */
+.rc-dp{padding:10px 24px 10px}
+.rc-strip{display:flex;align-items:center;background:#ecfeff;border:1px solid #a5f3fc;border-radius:8px;padding:8px 10px}
+.rc-node{flex:1;display:flex;align-items:center;gap:6px;min-width:0}
+.rc-ntxt{font-size:10px;font-weight:500;line-height:1.3;color:#0891b2}
+.rc-arr{flex-shrink:0;width:20px;display:flex;justify-content:center;color:#0891b2;opacity:.5}
+.rc-arr svg{width:12px;height:12px}
+.rc-nic{flex-shrink:0;width:26px;height:26px;border-radius:6px;border:1.5px dashed #0891b2;display:flex;align-items:center;justify-content:center;opacity:.7}
+.rc-nic svg{width:14px;height:14px;color:#0891b2}
+.rc-nic-s{border-style:solid;opacity:1;background:rgba(8,145,178,.08)}
+.rc-ft{padding:8px 24px 12px;font-size:9.5px;line-height:1.5;color:#64748b;opacity:.7}
+
+/* Embedded manager view */
+.mgr{width:100%;background:#fff;border-radius:14px;box-shadow:0 2px 8px rgba(15,23,42,.06),0 12px 40px rgba(15,23,42,.08);border:1px solid #e2e8f0;overflow:hidden}
+.mgr-in{padding:22px 24px 18px}
+.mgr-h{font-family:var(--sans);font-weight:700;font-size:1.125rem;color:#0f172a;margin:0 0 3px}
+.mgr-meta{font-size:11.5px;color:#64748b;margin-bottom:16px}
+.mgr-stats{display:flex;gap:8px;margin-bottom:16px}
+.mgr-st{flex:1;background:#eff4fa;border-radius:8px;padding:10px 12px}
+.mgr-st-n{font-family:var(--sans);font-weight:700;font-size:1.375rem;line-height:1;color:#0f172a;font-variant-numeric:tabular-nums}
+.mgr-st-l{font-size:9.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:#64748b;margin-top:2px}
+.mgr-ll{font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#2563eb;margin-bottom:8px}
+.mgr-row{display:grid;grid-template-columns:58px 1fr auto;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid #e2e8f0}
+.mgr-row:last-child{border-bottom:none}
+.mgr-dt{font-size:11px;font-weight:500;color:#64748b;font-variant-numeric:tabular-nums}
+.mgr-vi{min-width:0}
+.mgr-vt{font-size:12.5px;font-weight:600;color:#0f172a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mgr-vr{font-size:11px;color:#64748b}
+.mgr-chip{font-size:10px;font-weight:600;padding:3px 10px;border-radius:100px;white-space:nowrap}
+.mgr-cw{color:#d97706;background:#fef3c7;border:1px solid #fde68a}
+.mgr-co{color:#16a34a;background:#dcfce7;border:1px solid #bbf7d0}
+.mgr-ft{padding:8px 24px 12px;font-size:9.5px;line-height:1.5;color:#64748b;opacity:.7}
+
+@media(max-width:900px){
+  .sc-layout{grid-template-columns:1fr;gap:32px}
+  .sc-frame{background:none;padding:0;min-height:auto;justify-content:center}
+  .rc,.mgr{max-width:400px;aspect-ratio:4/5;display:flex;flex-direction:column}
+  .rc-in,.mgr-in{flex:1;overflow-y:auto}
+}
+@media(max-width:480px){
+  .rc,.mgr{max-width:100%}
+  .rc-strip{flex-wrap:wrap;gap:2px}
+  .rc-node{flex-basis:100%}
+  .rc-arr{width:100%;transform:rotate(90deg);padding:1px 0}
+  .sc-tab{font-size:13px;padding:7px 14px}
+}
 </style>
 </head>
 <body>
@@ -914,6 +1002,145 @@ body { background:#fff; color:#0f172a; -webkit-font-smoothing:antialiased; }
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- ========== SHOWCASE: RECAP + MANAGER VIEW ========== -->
+<section class="ind-sec ind-sec--soft fade-section">
+  <div class="container">
+    <div class="ind-head reveal">
+      <div class="eyebrow">/ HOW IT WORKS</div>
+      <h2 class="section measure-wide">Every visit becomes a coaching opportunity</h2>
+      <p class="lede" style="max-width:680px;margin-top:8px">Your sales platform turns recorded conversations into structured recaps with buyer needs, open promises, and next steps — so nothing falls through the cracks.</p>
+    </div>
+
+    <div class="sc-tab-bar reveal">
+      <button class="sc-tab active" onclick="switchShowcaseTab('recap')">Sales recap</button>
+      <button class="sc-tab" onclick="switchShowcaseTab('manager')">Manager view</button>
+    </div>
+
+    <!-- TAB 1: RECAP CARD -->
+    <div id="sc-tab-recap" class="sc-layout sc-panel active reveal">
+      <div class="sc-desc">
+        <h3 class="sc-desc-title">Structured recaps, generated by your platform</h3>
+        <p class="sc-desc-body">After each visit, the recording is uploaded to your server via Wi-Fi. Your sales platform processes the audio and generates a recap — buyer needs, objections, promises made, and recommended next steps.</p>
+        <div class="sc-features">
+          <div class="sc-feat">
+            <div class="sc-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.52 0 10-4.48 10-10S17.52 2 12 2 2 6.48 2 12s4.48 10 10 10z"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg></div>
+            <div class="sc-feat-text"><strong>Surface what matters.</strong> Buyer concerns, timeline, and decision-makers pulled from the conversation.</div>
+          </div>
+          <div class="sc-feat">
+            <div class="sc-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r=".5" fill="currentColor"/></svg></div>
+            <div class="sc-feat-text"><strong>Catch open promises.</strong> When a rep commits to something but hasn't scheduled it, the recap flags it.</div>
+          </div>
+          <div class="sc-feat">
+            <div class="sc-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+            <div class="sc-feat-text"><strong>Coach with context.</strong> Managers review real conversations, not secondhand summaries.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sc-frame">
+        <div class="rc">
+          <div class="rc-in">
+            <div class="rc-badge">Sample data · Scenario demo</div>
+            <h4 class="rc-h">Model home visit recap</h4>
+            <div class="rc-meta">Sat · 42 min · Clip-on recorder</div>
+
+            <div class="rc-sec">
+              <div class="rc-lbl">What the buyer needs</div>
+              <ul><li>Move in before the school year starts</li><li>3 bedrooms, one usable as a home office</li></ul>
+            </div>
+            <div class="rc-sec">
+              <div class="rc-lbl">Main concerns</div>
+              <ul><li><em>"We'll think about it."</em></li><li>Spouse wasn't there and decides too</li><li>HOA fees unclear</li></ul>
+            </div>
+            <div class="rc-sec">
+              <div class="rc-lbl">What the rep promised</div>
+              <ul><li><div class="rc-promise"><span>Send HOA fee breakdown</span><span class="rc-warn">not scheduled yet</span></div></li></ul>
+            </div>
+            <div class="rc-sec">
+              <div class="rc-lbl">Next steps · Owner · Due</div>
+              <table class="rc-tbl">
+                <tr><td class="rc-act">Send HOA breakdown <span class="rc-own">· Rep</span></td><td class="rc-due">Tue</td></tr>
+                <tr><td class="rc-act">Book a second visit with both buyers <span class="rc-own">· Rep</span></td><td class="rc-due">This week</td></tr>
+                <tr><td class="rc-act">Review follow-up <span class="rc-own">· Manager</span></td><td class="rc-due">Fri</td></tr>
+              </table>
+            </div>
+            <div class="rc-sec">
+              <div class="rc-lbl">Manager coaching</div>
+              <div class="rc-coach">Ask who else is part of the decision before the visit ends. When you promise something, set the date on the spot.</div>
+            </div>
+          </div>
+          <div class="rc-dp">
+            <div class="rc-strip">
+              <div class="rc-node">
+                <div class="rc-nic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="3" width="12" height="16" rx="2"/><circle cx="12" cy="11" r="3"/><line x1="9" y1="21" x2="15" y2="21"/><line x1="12" y1="19" x2="12" y2="21"/></svg></div>
+                <span class="rc-ntxt">MIC05 clip-on recorder</span>
+              </div>
+              <div class="rc-arr"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+              <div class="rc-node">
+                <div class="rc-nic rc-nic-s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="0.5" fill="currentColor"/><line x1="12" y1="4" x2="12" y2="8"/><line x1="4" y1="8" x2="20" y2="8"/></svg></div>
+                <span class="rc-ntxt">Wi-Fi upload to your own server</span>
+              </div>
+              <div class="rc-arr"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></div>
+              <div class="rc-node">
+                <div class="rc-nic rc-nic-s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6v6H9z"/><line x1="9" y1="3" x2="9" y2="9"/><line x1="15" y1="3" x2="15" y2="9"/><line x1="9" y1="15" x2="9" y2="21"/><line x1="15" y1="15" x2="15" y2="21"/></svg></div>
+                <span class="rc-ntxt">Your sales platform</span>
+              </div>
+            </div>
+          </div>
+          <div class="rc-ft">Sample recap for illustration. GMIC hardware records the conversation. Transcription, speaker labels and recaps are generated by your sales platform. Audio does not pass through GMIC servers.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: MANAGER VIEW -->
+    <div id="sc-tab-manager" class="sc-layout sc-panel reveal">
+      <div class="sc-desc">
+        <h3 class="sc-desc-title">One dashboard for every visit this week</h3>
+        <p class="sc-desc-body">Managers see which visits went well and which need attention — without sitting in on every one. Each row opens to a full recap, so coaching starts from what actually happened, not from a rep's memory.</p>
+        <div class="sc-features">
+          <div class="sc-feat">
+            <div class="sc-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg></div>
+            <div class="sc-feat-text"><strong>Status at a glance.</strong> Every visit flagged as on track or carrying an open promise that needs follow-up.</div>
+          </div>
+          <div class="sc-feat">
+            <div class="sc-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+            <div class="sc-feat-text"><strong>Nothing ages silently.</strong> Promises that aren't scheduled surface before the buyer notices.</div>
+          </div>
+          <div class="sc-feat">
+            <div class="sc-feat-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></div>
+            <div class="sc-feat-text"><strong>Drill into any visit.</strong> Click a row to see the full recap — buyer needs, concerns, and coaching notes.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="sc-frame">
+        <div class="mgr">
+          <div class="mgr-in">
+            <div class="rc-badge">Sample data · Scenario demo</div>
+            <h4 class="mgr-h">This week's visits</h4>
+            <div class="mgr-meta">Nov 4 – 9 · Southwest Region</div>
+
+            <div class="mgr-stats">
+              <div class="mgr-st"><div class="mgr-st-n">5</div><div class="mgr-st-l">Visits</div></div>
+              <div class="mgr-st"><div class="mgr-st-n">2</div><div class="mgr-st-l">Open promises</div></div>
+              <div class="mgr-st"><div class="mgr-st-n">3</div><div class="mgr-st-l">On track</div></div>
+            </div>
+
+            <div class="mgr-ll">Visit log</div>
+            <div class="mgr-row"><span class="mgr-dt">Sat, Nov 8</span><div class="mgr-vi"><div class="mgr-vt">Model home visit</div><div class="mgr-vr">Sarah Chen · 42 min</div></div><span class="mgr-chip mgr-cw">Open promise</span></div>
+            <div class="mgr-row"><span class="mgr-dt">Fri, Nov 7</span><div class="mgr-vi"><div class="mgr-vt">Lot 14 second showing</div><div class="mgr-vr">Marcus Rivera · 28 min</div></div><span class="mgr-chip mgr-co">On track</span></div>
+            <div class="mgr-row"><span class="mgr-dt">Thu, Nov 6</span><div class="mgr-vi"><div class="mgr-vt">Phase 2 townhome tour</div><div class="mgr-vr">Sarah Chen · 35 min</div></div><span class="mgr-chip mgr-co">On track</span></div>
+            <div class="mgr-row"><span class="mgr-dt">Wed, Nov 5</span><div class="mgr-vi"><div class="mgr-vt">Corner unit walkthrough</div><div class="mgr-vr">James Park · 51 min</div></div><span class="mgr-chip mgr-cw">Open promise</span></div>
+            <div class="mgr-row"><span class="mgr-dt">Tue, Nov 4</span><div class="mgr-vi"><div class="mgr-vt">Lakeside model tour</div><div class="mgr-vr">Marcus Rivera · 33 min</div></div><span class="mgr-chip mgr-co">On track</span></div>
+          </div>
+          <div class="mgr-ft">Sample recap for illustration. GMIC hardware records the conversation. Transcription, speaker labels and recaps are generated by your sales platform. Audio does not pass through GMIC servers.</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -1472,5 +1699,18 @@ document.querySelectorAll('.mobile-nav-link').forEach(function(link) {
 <script src="../../js/voice-widget.js"></script>
 <script src="../../js/products-mega-menu.js"></script>
 <script src="../../js/chat-widget.js"></script>
+<script>
+  function switchShowcaseTab(tab) {
+    document.querySelectorAll('.sc-tab').forEach(function(btn) { btn.classList.remove('active'); });
+    document.querySelectorAll('.sc-panel').forEach(function(p) { p.classList.remove('active'); });
+    if (tab === 'recap') {
+      document.querySelectorAll('.sc-tab')[0].classList.add('active');
+      document.getElementById('sc-tab-recap').classList.add('active');
+    } else {
+      document.querySelectorAll('.sc-tab')[1].classList.add('active');
+      document.getElementById('sc-tab-manager').classList.add('active');
+    }
+  }
+</script>
 </body>
 </html>

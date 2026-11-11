@@ -40,7 +40,10 @@
       { name: 'Smart Pen', slug: PV + 'smart-pen', img: OV + 'HA-PEN01.jpg' },
       { name: 'OWS03', slug: 'products/ows03/index.html', img: OV + 'HA-OWS03.jpg', desc: 'AIChat OWS headset (5 AI, open-ear)' },
       { name: 'HSC01', slug: 'products/hsc01/index.html', img: OV + 'HA-HSC01.jpg', desc: 'Open-ear AI headset with 1080p camera' },
-      { name: 'SR01', slug: 'products/sr01/index.html', img: OV + 'HA-SR01.jpg', desc: 'AI recording smart ring (touch to record, IP68)' }
+      { name: 'SR01', slug: 'products/sr01/index.html', img: OV + 'HA-SR01.jpg', desc: 'AI recording smart ring (touch to record, IP68)' },
+      { name: 'SB01', slug: 'products/sb01/index.html', img: OV + 'HA-SB01.jpg', desc: 'AI recording smart band, 1.47" screen' },
+      { name: 'SB02', slug: 'products/sb02/index.html', img: OV + 'HA-SB02.jpg', desc: 'Lightweight AI recording band, 0.96" screen' },
+      { name: 'SB03', slug: 'products/sb03/index.html', img: OV + 'HA-SB03.jpg', desc: 'Compact AI recording band' }
     ]},
     { name: 'AI Communication', products: [
       { name: 'Telalive', slug: 'products/telalive/index.html', img: OV + 'telalive.png', desc: 'AI-powered desk phone & wearable platform' },

@@ -368,9 +368,12 @@ ul.checks-grid{padding:0;margin-top:0;}
 .xs-img img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;}
 .xs-img .tag{position:absolute;z-index:2;left:12px;top:12px;font-size:.6875rem;font-weight:600;letter-spacing:.04em;background:rgba(15,23,42,.62);color:#fff;padding:4px 10px;border-radius:999px;backdrop-filter:blur(6px);}
 .xs-hero{aspect-ratio:16/10;}
-.xs-wear{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:16px;padding:clamp(20px,2.4vw,28px);display:flex;flex-direction:column;gap:16px;}
+@media(min-width:901px){.xs-top .xs-hero{aspect-ratio:auto;height:100%;min-height:440px;}}
+.xs-wear{background:#fff;border:1px solid rgba(15,23,42,.08);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;}
+.xs-wear .b{padding:18px 22px 22px;display:flex;flex-direction:column;gap:14px;}
 .xs-wear h3{font-size:1.125rem;font-weight:700;margin:0;}
-.xs-wear .xs-img{aspect-ratio:16/10;}
+.xs-wear .xs-img{flex:1 1 auto;aspect-ratio:auto;min-height:220px;border:0;border-radius:0;}
+@media(max-width:900px){.xs-wear .xs-img{flex:none;aspect-ratio:16/10;min-height:0;}}
 .xs-wear ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;}
 .xs-wear li{display:flex;gap:10px;font-size:.9rem;line-height:1.5;color:#334155;}
 .xs-wear li svg{flex:none;width:18px;height:18px;color:#2563eb;margin-top:2px;}
@@ -769,9 +772,9 @@ ul.checks-grid{padding:0;margin-top:0;}
     <div class="xs-top reveal">
       <figure class="xs-img xs-hero"><div class="ph"><i data-lucide="image"></i><span>Buyer wearing SlimCard on a lanyard, talking with a supplier at a busy trade-show booth</span></div><img src="img/expo-1.jpg" alt="Buyer wearing SlimCard on a lanyard, talking with a supplier at a busy trade-show booth" onerror="this.remove()"><span class="tag">Scene illustration</span></figure>
       <div class="xs-wear">
-        <h3>How it’s worn</h3>
         <figure class="xs-img "><div class="ph"><i data-lucide="image"></i><span>SlimCard in a badge holder on a lanyard, close-up</span></div><img src="img/expo-2.jpg" alt="SlimCard in a badge holder on a lanyard, close-up" onerror="this.remove()"><span class="tag">Mounting to be confirmed</span></figure>
-        <ul><li><i data-lucide="id-card"></i><span>At 3.0 mm and 30 g, SlimCard is light enough to wear on a lanyard all day.</span></li><li><i data-lucide="circle-dot"></i><span>One button starts and stops recording; the recording-mode switch sets how it records.</span></li><li><i data-lucide="lightbulb"></i><span>The RGB status LED shows at a glance whether it is recording.</span></li></ul>
+        <div class="b"><h3>How it’s worn</h3>
+        <ul><li><i data-lucide="id-card"></i><span>At 3.0 mm and 30 g, SlimCard is light enough to wear on a lanyard all day.</span></li><li><i data-lucide="circle-dot"></i><span>One button starts and stops recording; the recording-mode switch sets how it records.</span></li><li><i data-lucide="lightbulb"></i><span>The RGB status LED shows at a glance whether it is recording.</span></li></ul></div>
       </div>
     </div>
     <div class="xs-steps reveal">
