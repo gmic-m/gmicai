@@ -28,7 +28,10 @@
       { name: 'CS01', slug: 'products/cs01/index.html', img: OV + 'HA-CS01.jpg', desc: '4.5 mm magnetic card AI recorder (WiFi + BT)' },
       { name: 'CS03', slug: 'products/cs03/index.html', img: OV + 'HA-CS03.jpg', desc: 'Flagship 4.5 mm card recorder with 5 mics + display' },
       { name: 'CS04', slug: 'products/cs04/index.html', img: OV + 'HA-CS04.jpg', desc: 'Slim 3.0 mm, 30 g card recorder' },
-      { name: 'CS05', slug: 'products/cs05/index.html', img: OV + 'HA-CS05.jpg', desc: 'Card recorder with 5 mics, LCD + built-in magnet' }
+      { name: 'CS05', slug: 'products/cs05/index.html', img: OV + 'HA-CS05.jpg', desc: 'Card recorder with 5 mics, LCD + built-in magnet' },
+      { name: 'IDB01', slug: 'products/idb01/index.html', img: OV + 'HA-IDB01.jpg', desc: 'ID-card badge recorder on a lanyard' },
+      { name: 'IDB02', slug: 'products/idb02/index.html', img: OV + 'HA-IDB02.jpg', desc: '20 g name-badge recorder with 3 mics' },
+      { name: 'IDB03', slug: 'products/idb03/index.html', img: OV + 'HA-IDB03.jpg', desc: 'Aluminum name-badge recorder, pin or magnet' }
     ]},
     { name: 'AI Wearables', products: [
       { name: 'GL01', slug: 'products/gl01/index.html', img: OV + 'HA-GLS01.jpg', desc: 'AI chat glasses (ChatGPT + camera)' },

@@ -64,41 +64,42 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .nav-cta:hover{background:#1e293b;transform:translateY(-1px);}
 
 /* ===== Hero ===== */
-.hero{padding:120px 0 80px;background:var(--white);}
-.hero-grid{display:grid;grid-template-columns:2fr 3fr;gap:80px;align-items:start;}
-.hero-left{padding-top:0;}
-.hero-tag{display:inline-block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);background:var(--blue-light);padding:6px 14px;border-radius:100px;margin-bottom:24px;}
-.hero h1{font-size:42px;line-height:1.15;font-weight:800;color:var(--navy);letter-spacing:-0.025em;margin-bottom:20px;}
-.hero-sub{font-size:18px;line-height:1.6;color:var(--gray-600);margin-bottom:12px;}
-.hero-emphasis{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:40px;padding-left:16px;border-left:3px solid var(--blue);}
-.hero-benefits{list-style:none;display:flex;flex-direction:column;gap:24px;}
-.hero-benefits li{display:flex;gap:14px;align-items:flex-start;}
-.benefit-icon{flex-shrink:0;width:36px;height:36px;background:var(--blue-light);border-radius:10px;display:flex;align-items:center;justify-content:center;}
-.benefit-icon svg{width:18px;height:18px;color:var(--blue);stroke-width:2;}
-.benefit-title{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:2px;}
-.benefit-desc{font-size:14px;color:var(--gray-500);line-height:1.5;}
+.hero{padding:140px 0 100px;background:var(--white);}
+.hero-grid{display:grid;grid-template-columns:3fr 2fr;gap:80px;align-items:start;}
+.hero-left{padding-top:8px;}
+.hero-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--blue);background:transparent;padding:0;border-radius:0;margin-bottom:20px;}
+.hero h1{font-size:52px;line-height:1.08;font-weight:800;color:var(--navy);letter-spacing:-0.035em;margin-bottom:24px;}
+.hero-sub{font-size:18px;line-height:1.7;color:var(--gray-500);margin-bottom:16px;}
+.hero-emphasis{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:48px;padding-left:16px;border-left:2px solid var(--blue);}
+.hero-benefits{list-style:none;display:flex;flex-direction:column;gap:28px;}
+.hero-benefits li{display:flex;gap:16px;align-items:flex-start;}
+.benefit-icon{flex-shrink:0;width:40px;height:40px;background:var(--gray-50);border-radius:12px;display:flex;align-items:center;justify-content:center;}
+.benefit-icon svg{width:18px;height:18px;color:var(--gray-500);stroke-width:1.5;}
+.benefit-title{font-size:15px;font-weight:600;color:var(--navy);margin-bottom:4px;}
+.benefit-desc{font-size:14px;color:var(--gray-500);line-height:1.6;}
 
 /* ===== Form Card ===== */
-.form-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:28px 28px;box-shadow:var(--shadow-lg);position:sticky;top:88px;}
-.form-card-title{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;}
-.form-card-desc{font-size:14px;color:var(--gray-500);margin-bottom:20px;line-height:1.5;}
-.form-group{margin-bottom:14px;}
-.form-group label{display:block;font-size:13px;font-weight:600;color:var(--gray-700);margin-bottom:6px;}
+.form-card{background:var(--white);border:1px solid var(--gray-100);border-radius:var(--radius-lg);padding:32px 28px;box-shadow:0 2px 16px rgba(0,0,0,0.04);position:sticky;top:100px;}
+.form-card-title{font-size:22px;font-weight:700;color:var(--navy);margin-bottom:6px;letter-spacing:-0.01em;}
+.form-card-desc{font-size:14px;color:var(--gray-500);margin-bottom:28px;line-height:1.6;}
+.form-group{margin-bottom:20px;}
+.form-group label{display:block;font-size:12px;font-weight:600;color:var(--gray-400);margin-bottom:8px;text-transform:uppercase;letter-spacing:0.06em;}
 .form-group label .req{color:var(--red);margin-left:2px;}
-.form-input,.form-select,.form-textarea{width:100%;padding:9px 12px;border:1px solid var(--gray-200);border-radius:8px;font-size:14px;color:var(--gray-800);background:var(--white);transition:border-color .2s,box-shadow .2s;outline:none;}
-.form-input::placeholder,.form-textarea::placeholder{color:var(--gray-400);}
-.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(37,99,235,0.1);}
-.form-input.error,.form-select.error,.form-textarea.error{border-color:var(--red);box-shadow:0 0 0 3px rgba(239,68,68,0.08);}
+.form-input,.form-select,.form-textarea{width:100%;padding:10px 0;border:none;border-bottom:1.5px solid var(--gray-200);border-radius:0;font-size:15px;color:var(--gray-800);background:transparent;transition:border-color .2s;outline:none;}
+.form-input::placeholder,.form-textarea::placeholder{color:var(--gray-300);}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--navy);box-shadow:none;}
+.form-input.error,.form-select.error,.form-textarea.error{border-color:var(--red);box-shadow:none;}
 .form-error-text{font-size:12px;color:var(--red);margin-top:4px;display:none;}
 .form-error-text.show{display:block;}
-.form-select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%2394a3b8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px;}
-.form-textarea{resize:vertical;min-height:80px;}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.form-optional{font-size:11px;font-weight:400;color:var(--gray-400);margin-left:4px;}
+.form-select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%2394a3b8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 0 center;padding-right:24px;}
+.form-textarea{resize:vertical;min-height:80px;border:1.5px solid var(--gray-200);border-radius:8px;padding:10px 12px;background:var(--gray-50);}
+.form-textarea:focus{border-color:var(--navy);background:var(--white);}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.form-optional{font-size:10px;font-weight:400;color:var(--gray-300);margin-left:4px;text-transform:none;letter-spacing:0;}
 
 /* ===== CTA Button Text TBD Marker ===== */
-.btn-primary{width:100%;padding:14px 24px;background:var(--blue);color:var(--white);font-size:15px;font-weight:600;border-radius:8px;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;display:flex;align-items:center;justify-content:center;gap:8px;}
-.btn-primary:hover{background:var(--blue-deep);transform:translateY(-1px);box-shadow:0 4px 12px rgba(37,99,235,0.25);}
+.btn-primary{width:100%;padding:16px 24px;background:var(--navy);color:var(--white);font-size:15px;font-weight:600;border-radius:8px;border:none;cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;display:flex;align-items:center;justify-content:center;gap:8px;letter-spacing:0.01em;}
+.btn-primary:hover{background:#1e293b;transform:translateY(-1px);box-shadow:0 4px 16px rgba(15,23,42,0.18);}
 .btn-primary:active{transform:translateY(0);}
 .btn-primary:disabled{opacity:0.6;cursor:not-allowed;transform:none;box-shadow:none;}
 .btn-primary .spinner{display:none;width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin .6s linear infinite;}
@@ -127,21 +128,21 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .form-failure .btn-retry:hover{background:var(--gray-200);}
 
 /* ===== Section Shared ===== */
-.section{padding:96px 0;}
+.section{padding:120px 0;}
 .section-alt{background:var(--gray-50);}
-.section-tag{display:inline-block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--blue);margin-bottom:12px;}
-.section-title{font-size:36px;font-weight:800;color:var(--navy);letter-spacing:-0.02em;margin-bottom:12px;}
-.section-desc{font-size:17px;color:var(--gray-500);max-width:640px;line-height:1.6;}
-.section-header{text-align:center;margin-bottom:56px;}
+.section-tag{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.14em;color:var(--gray-400);margin-bottom:16px;}
+.section-title{font-size:40px;font-weight:800;color:var(--navy);letter-spacing:-0.03em;margin-bottom:16px;line-height:1.15;}
+.section-desc{font-size:17px;color:var(--gray-500);max-width:600px;line-height:1.7;}
+.section-header{text-align:center;margin-bottom:72px;}
 .section-header .section-desc{margin:0 auto;}
 
 /* ===== Product Cards ===== */
-.products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px;}
-.product-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);overflow:hidden;transition:box-shadow .3s,transform .3s;}
-.product-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px);}
-.product-card-img{height:360px;background:var(--white);display:flex;align-items:center;justify-content:center;padding:12px;position:relative;overflow:hidden;}
+.products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;}
+.product-card{background:var(--white);border:1px solid var(--gray-100);border-radius:var(--radius-lg);overflow:hidden;transition:box-shadow .4s,transform .4s;}
+.product-card:hover{box-shadow:0 12px 40px rgba(0,0,0,0.06);transform:translateY(-2px);}
+.product-card-img{height:360px;background:var(--gray-50);display:flex;align-items:center;justify-content:center;padding:12px;position:relative;overflow:hidden;}
 .product-card-img img{max-height:336px;object-fit:contain;}
-.product-card-body{padding:28px 28px 24px;}
+.product-card-body{padding:32px 32px 28px;}
 .product-card-model{font-size:13px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;}
 .product-card-name{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px;}
 .product-card-scene{font-size:14px;color:var(--gray-500);margin-bottom:20px;line-height:1.5;}
@@ -154,31 +155,31 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .product-card-sample p{font-size:13px;color:var(--gray-500);line-height:1.5;}
 .product-card-price{font-size:13px;color:var(--gray-500);margin-bottom:20px;}
 .product-card-price strong{color:var(--navy);}
-.btn-card{display:inline-flex;align-items:center;gap:6px;padding:12px 24px;background:var(--blue);color:var(--white);font-size:14px;font-weight:600;border-radius:8px;transition:background .2s,transform .15s;}
-.btn-card:hover{background:var(--blue-deep);transform:translateY(-1px);}
+.btn-card{display:inline-flex;align-items:center;gap:6px;padding:12px 28px;background:var(--navy);color:var(--white);font-size:14px;font-weight:600;border-radius:8px;transition:background .2s,transform .15s;letter-spacing:0.01em;}
+.btn-card:hover{background:#1e293b;transform:translateY(-1px);}
 .products-note{text-align:center;margin-top:32px;font-size:15px;color:var(--gray-500);}
 
 /* ===== Purpose Callout (brand / enterprise entry) ===== */
-.purpose-strip{padding:48px 0;background:var(--white);border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200);}
-.purpose-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
-.purpose-item{text-align:center;padding:24px 16px;border-radius:var(--radius);background:var(--gray-50);transition:background .2s;}
-.purpose-item:hover{background:var(--blue-light);}
-.purpose-icon{width:44px;height:44px;background:var(--blue-light);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;}
-.purpose-icon svg{width:22px;height:22px;color:var(--blue);}
-.purpose-label{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:4px;}
-.purpose-desc{font-size:13px;color:var(--gray-500);line-height:1.4;}
+.purpose-strip{padding:56px 0;background:var(--white);border-top:1px solid var(--gray-100);border-bottom:1px solid var(--gray-100);}
+.purpose-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+.purpose-item{text-align:center;padding:28px 16px;border-radius:var(--radius);background:transparent;transition:background .2s;}
+.purpose-item:hover{background:var(--gray-50);}
+.purpose-icon{width:44px;height:44px;background:var(--gray-50);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;}
+.purpose-icon svg{width:20px;height:20px;color:var(--gray-500);}
+.purpose-label{font-size:14px;font-weight:600;color:var(--navy);margin-bottom:6px;}
+.purpose-desc{font-size:13px;color:var(--gray-500);line-height:1.5;}
 
 /* ===== Validation ===== */
-.validate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:48px;}
-.validate-card{background:var(--white);border:1px solid var(--gray-200);border-radius:var(--radius-lg);padding:32px 28px;text-align:center;transition:box-shadow .3s;}
-.validate-card:hover{box-shadow:var(--shadow-md);}
-.validate-num{font-size:48px;font-weight:800;color:var(--blue-light);margin-bottom:12px;line-height:1;}
+.validate-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-bottom:56px;}
+.validate-card{background:var(--white);border:1px solid var(--gray-100);border-radius:var(--radius-lg);padding:36px 28px;text-align:center;transition:box-shadow .4s;}
+.validate-card:hover{box-shadow:0 8px 30px rgba(0,0,0,0.04);}
+.validate-num{font-size:48px;font-weight:800;color:var(--gray-100);margin-bottom:16px;line-height:1;}
 .validate-card h3{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:10px;}
-.validate-card p{font-size:14px;color:var(--gray-500);line-height:1.6;}
+.validate-card p{font-size:14px;color:var(--gray-500);line-height:1.7;}
 
 /* Flow diagram */
-.flow-diagram{background:var(--gray-50);border-radius:var(--radius-lg);padding:40px;text-align:center;}
-.flow-diagram-label{font-size:12px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:20px;}
+.flow-diagram{background:var(--gray-50);border-radius:var(--radius-lg);padding:48px;text-align:center;border:1px solid var(--gray-100);}
+.flow-diagram-label{font-size:11px;font-weight:600;color:var(--gray-400);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:24px;}
 .flow-steps{display:flex;align-items:center;justify-content:center;gap:0;flex-wrap:wrap;}
 .flow-step{display:flex;align-items:center;gap:0;}
 .flow-box{padding:14px 24px;background:var(--white);border:1px solid var(--gray-200);border-radius:10px;font-size:14px;font-weight:600;color:var(--navy);white-space:nowrap;}
@@ -188,31 +189,40 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 
 /* ===== Process ===== */
 .process-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:0;position:relative;}
-.process-step{text-align:center;padding:0 32px;position:relative;}
-.process-step::after{content:'';position:absolute;top:28px;right:0;width:50%;height:2px;background:var(--gray-200);}
-.process-step::before{content:'';position:absolute;top:28px;left:0;width:50%;height:2px;background:var(--gray-200);}
+.process-step{text-align:center;padding:0 36px;position:relative;}
+.process-step::after{content:'';position:absolute;top:28px;right:0;width:50%;height:1px;background:var(--gray-200);}
+.process-step::before{content:'';position:absolute;top:28px;left:0;width:50%;height:1px;background:var(--gray-200);}
 .process-step:first-child::before{display:none;}
 .process-step:last-child::after{display:none;}
-.process-num{width:56px;height:56px;background:var(--blue-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:var(--blue);margin:0 auto 20px;position:relative;z-index:1;}
-.process-step h3{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:8px;}
-.process-step p{font-size:14px;color:var(--gray-500);line-height:1.6;}
+.process-num{width:56px;height:56px;background:var(--gray-50);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:var(--navy);margin:0 auto 24px;position:relative;z-index:1;border:1px solid var(--gray-100);}
+.process-step h3{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:10px;}
+.process-step p{font-size:14px;color:var(--gray-500);line-height:1.7;}
 .process-cta{text-align:center;margin-top:48px;}
-.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--blue);color:var(--white);font-size:15px;font-weight:600;border-radius:8px;transition:background .2s,transform .15s;}
-.btn-secondary:hover{background:var(--blue-deep);transform:translateY(-1px);}
+.btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:16px 36px;background:var(--navy);color:var(--white);font-size:15px;font-weight:600;border-radius:8px;transition:background .2s,transform .15s;letter-spacing:0.01em;}
+.btn-secondary:hover{background:#1e293b;transform:translateY(-1px);}
 
 /* ===== FAQ ===== */
-.faq-list{max-width:800px;margin:0 auto;}
-.faq-item{border-bottom:1px solid var(--gray-200);}
-.faq-item:first-child{border-top:1px solid var(--gray-200);}
-.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0;cursor:pointer;width:100%;text-align:left;font-size:16px;font-weight:600;color:var(--navy);transition:color .2s;}
-.faq-q:hover{color:var(--blue);}
-.faq-q svg{flex-shrink:0;width:20px;height:20px;color:var(--gray-400);transition:transform .3s;}
+.faq-grid{display:grid;grid-template-columns:1fr 2fr;gap:80px;align-items:start;}
+.faq-left{position:sticky;top:100px;}
+.faq-left .section-tag{margin-bottom:16px;}
+.faq-left .section-title{text-align:left;margin-bottom:16px;}
+.faq-left-desc{font-size:16px;color:var(--gray-500);line-height:1.7;margin-bottom:28px;}
+.faq-left-cta{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;color:var(--navy);transition:color .2s;}
+.faq-left-cta:hover{color:var(--blue);}
+.faq-left-cta svg{width:16px;height:16px;}
+.faq-list{margin:0;}
+.faq-item{border-bottom:1px solid var(--gray-100);}
+.faq-item:first-child{border-top:1px solid var(--gray-100);}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 0;cursor:pointer;width:100%;text-align:left;font-size:16px;font-weight:600;color:var(--navy);transition:color .2s;}
+.faq-q:hover{color:var(--gray-600);}
+.faq-q svg{flex-shrink:0;width:18px;height:18px;color:var(--gray-300);transition:transform .3s;}
 .faq-item.open .faq-q svg{transform:rotate(45deg);}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease;}
-.faq-a-inner{padding:0 0 20px;font-size:15px;color:var(--gray-500);line-height:1.7;}
+.faq-a-inner{padding:0 0 24px;font-size:15px;color:var(--gray-500);line-height:1.7;}
+@media(max-width:1024px){.faq-grid{grid-template-columns:1fr;gap:40px;}.faq-left{position:static;}}
 
 /* ===== Footer ===== */
-.footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:48px 0 32px;}
+.footer{background:var(--navy);color:rgba(255,255,255,0.6);padding:56px 0 36px;}
 .footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;}
 .footer-logo{font-size:18px;font-weight:800;color:var(--white);}
 .footer-links{display:flex;gap:24px;flex-wrap:wrap;}
@@ -286,6 +296,25 @@ body.buyer-view .view-toggle-dot.on{display:none!important;}
 body.buyer-view .placeholder-asset{display:none!important;}
 /* In buyer view, hide the entire integration evidence section placeholder container */
 body.buyer-view [data-internal]{display:none!important;}
+
+/* ===== Comparison Table ===== */
+.compare-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:56px;border:1px solid var(--gray-100);border-radius:var(--radius-lg);background:var(--white);}
+.compare-table{width:100%;border-collapse:collapse;font-size:13px;min-width:900px;}
+.compare-table thead{position:sticky;top:0;z-index:2;}
+.compare-table th{background:var(--navy);color:var(--white);font-weight:600;padding:14px 18px;text-align:center;white-space:nowrap;border-right:1px solid rgba(255,255,255,0.06);}
+.compare-table th:first-child{text-align:left;min-width:170px;position:sticky;left:0;z-index:3;background:var(--navy);}
+.compare-table th:last-child{border-right:none;}
+.compare-table td{padding:11px 18px;border-bottom:1px solid var(--gray-50);text-align:center;color:var(--gray-600);vertical-align:middle;line-height:1.5;}
+.compare-table td:first-child{text-align:left;font-weight:600;color:var(--gray-700);background:var(--white);position:sticky;left:0;z-index:1;white-space:nowrap;}
+.compare-table tbody tr:hover td{background:var(--gray-50);}
+.compare-table tbody tr:hover td:first-child{background:var(--gray-50);}
+.compare-table tbody tr:last-child td{border-bottom:none;}
+.compare-table .highlight-col{background:rgba(15,23,42,0.02);}
+@media(max-width:768px){
+  .compare-wrap{margin-top:32px;}
+  .compare-table{font-size:12px;}
+  .compare-table th,.compare-table td{padding:8px 10px;}
+}
 </style>
 </head>
 <body>
@@ -423,7 +452,15 @@ body.buyer-view [data-internal]{display:none!important;}
               </div>
               <div class="form-group">
                 <label>Preferred device <span class="form-optional">(optional)</span></label>
-                <input type="text" class="form-input" name="device" id="preferred-device" placeholder='Model name, or "Help me choose"'>
+                <select class="form-select" name="device" id="preferred-device">
+                  <option value="">Select a model or "Help me choose"</option>
+                  <option value="HA-CS01">HA-CS01 — Smart Conference (display)</option>
+                  <option value="HA-CS02">HA-CS02 — AI Recording Card (PCBA)</option>
+                  <option value="HA-CS03">HA-CS03 — Smart Conference (color LCD)</option>
+                  <option value="HA-CS04">HA-CS04 — Slim Recording Card</option>
+                  <option value="HA-CS05">HA-CS05 — Pro Card (color LCD)</option>
+                  <option value="help">Help me choose</option>
+                </select>
               </div>
             </div>
 
@@ -506,8 +543,8 @@ body.buyer-view [data-internal]{display:none!important;}
   <div class="container">
     <div class="section-header fade-up">
       <span class="section-tag">Available Models</span>
-      <h2 class="section-title">Choose a device to evaluate</h2>
-      <p class="section-desc">Select a recorder to request as a sample. Each card lists what the sample includes and the confirmed integration options.</p>
+      <h2 class="section-title">5 models, one card-size form factor</h2>
+      <p class="section-desc">All five CS-series recorders share Bluetooth + Wi-Fi connectivity, bone-conduction microphones, and aluminum construction. Compare specs below to find the right fit.</p>
     </div>
 
     <div class="products-grid">
@@ -587,9 +624,170 @@ body.buyer-view [data-internal]{display:none!important;}
 
     <p class="products-note fade-up">Not sure which model fits? <a href="#form-section" style="color:var(--blue);font-weight:600;">Describe your workflow above</a> — we'll recommend one.</p>
 
+    <!-- Full Model Comparison Table -->
+    <div class="compare-wrap fade-up">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Spec</th>
+            <th>HA-CS01</th>
+            <th>HA-CS02</th>
+            <th>HA-CS03</th>
+            <th class="highlight-col">HA-CS04</th>
+            <th class="highlight-col">HA-CS05</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Product Name</td>
+            <td>Card-style AI Voice Recorder</td>
+            <td>AI Recording Card</td>
+            <td>Card-style AI Voice Recorder</td>
+            <td class="highlight-col">Card-style AI Voice Recorder</td>
+            <td class="highlight-col">Card-style AI Voice Recorder</td>
+          </tr>
+          <tr>
+            <td>Positioning</td>
+            <td>Smart Conference Edition</td>
+            <td>Smart Conference Edition</td>
+            <td>Smart Conference Edition</td>
+            <td class="highlight-col">Slim Recording Card</td>
+            <td class="highlight-col">Smart Conference Edition</td>
+          </tr>
+          <tr>
+            <td>Dimensions</td>
+            <td>88.4 x 57 x 4.5 mm</td>
+            <td>81.3 x 49.7 x 0.6 mm (PCBA)</td>
+            <td>91 x 58 x 4.5 mm</td>
+            <td class="highlight-col">85 x 55 x 3.0 mm</td>
+            <td class="highlight-col">91 x 57 x 4.6 mm</td>
+          </tr>
+          <tr>
+            <td>Weight</td>
+            <td>60 g</td>
+            <td>4.2 g</td>
+            <td>40 g</td>
+            <td class="highlight-col">30 g</td>
+            <td class="highlight-col">53 g</td>
+          </tr>
+          <tr>
+            <td>Display</td>
+            <td>0.5" monochrome (88x48)</td>
+            <td>—</td>
+            <td>0.96" color (80x160)</td>
+            <td class="highlight-col">—</td>
+            <td class="highlight-col">0.96" color (80x160)</td>
+          </tr>
+          <tr>
+            <td>Microphones</td>
+            <td>2 mic + 1 bone-conduction</td>
+            <td>2 mic + 1 bone-conduction</td>
+            <td>4 mic + 1 bone-conduction</td>
+            <td class="highlight-col">2 omni + 1 bone-conduction</td>
+            <td class="highlight-col">4 omni + 1 bone-conduction</td>
+          </tr>
+          <tr>
+            <td>Controls</td>
+            <td>1 button</td>
+            <td>1 button + 1 toggle</td>
+            <td>1 button</td>
+            <td class="highlight-col">1 button + 1 toggle</td>
+            <td class="highlight-col">1 button</td>
+          </tr>
+          <tr>
+            <td>Connectivity</td>
+            <td>BLE 5.3 + Wi-Fi 2.4 GHz</td>
+            <td>BLE 5.4 + Wi-Fi 6 (5 GHz)</td>
+            <td>BLE 5.4 + Wi-Fi 2.4 GHz</td>
+            <td class="highlight-col">BLE 5.3 + Wi-Fi 2.4 GHz</td>
+            <td class="highlight-col">BLE 5.3 + Wi-Fi 2.4 GHz</td>
+          </tr>
+          <tr>
+            <td>Wi-Fi Transfer Rate</td>
+            <td>800 KB/s – 1.5 MB/s</td>
+            <td>800 KB/s – 1.5 MB/s</td>
+            <td>800 KB/s – 1.5 MB/s</td>
+            <td class="highlight-col">800 KB/s – 1.2 MB/s</td>
+            <td class="highlight-col">800 KB/s – 1.2 MB/s</td>
+          </tr>
+          <tr>
+            <td>Storage</td>
+            <td>16 / 32 / 64 GB</td>
+            <td>16 / 32 / 64 GB</td>
+            <td>16 / 32 / 64 GB</td>
+            <td class="highlight-col">16 / 32 / 64 GB</td>
+            <td class="highlight-col">16 / 32 / 64 GB</td>
+          </tr>
+          <tr>
+            <td>Operating Time</td>
+            <td>~55 hours</td>
+            <td>~40 hours</td>
+            <td>~40 hours</td>
+            <td class="highlight-col">~25 hours</td>
+            <td class="highlight-col">~30 hours</td>
+          </tr>
+          <tr>
+            <td>Battery</td>
+            <td>500 mAh</td>
+            <td>400 mAh</td>
+            <td>600 mAh</td>
+            <td class="highlight-col">400 mAh</td>
+            <td class="highlight-col">500 mAh</td>
+          </tr>
+          <tr>
+            <td>Charging</td>
+            <td>USB-C (~2h)</td>
+            <td>USB-C (~2h)</td>
+            <td>USB-C (~2.5h)</td>
+            <td class="highlight-col">Magnetic pogo-pin (~2.5h)</td>
+            <td class="highlight-col">USB-C (~2.5h)</td>
+          </tr>
+          <tr>
+            <td>LED Indicator</td>
+            <td>—</td>
+            <td>1 RGB LED</td>
+            <td>—</td>
+            <td class="highlight-col">1 RGB LED</td>
+            <td class="highlight-col">—</td>
+          </tr>
+          <tr>
+            <td>Real-Time Clock</td>
+            <td>—</td>
+            <td>Supported</td>
+            <td>Supported</td>
+            <td class="highlight-col">Supported</td>
+            <td class="highlight-col">Supported</td>
+          </tr>
+          <tr>
+            <td>Vibration Alert</td>
+            <td>Supported</td>
+            <td>Supported</td>
+            <td>Supported</td>
+            <td class="highlight-col">Supported</td>
+            <td class="highlight-col">Supported</td>
+          </tr>
+          <tr>
+            <td>Materials</td>
+            <td>Aluminum + glass + PCBA</td>
+            <td>Aluminum + PCBA</td>
+            <td>Aluminum + PCBA</td>
+            <td class="highlight-col">Aluminum + PCBA</td>
+            <td class="highlight-col">Aluminum + PCBA</td>
+          </tr>
+          <tr>
+            <td>Attachment</td>
+            <td>Integrated MagSafe</td>
+            <td>—</td>
+            <td>Integrated MagSafe</td>
+            <td class="highlight-col">Magnetic leather case</td>
+            <td class="highlight-col">Integrated MagSafe</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
     <div class="internal-note fade-up" style="max-width:640px;margin:20px auto 0;">
       <strong>缺项清单 / Missing assets:</strong><br>
-      · 需确认是否增加第三款型号<br>
       · 每款设备的实际传输方式、可提供的文档及工具<br>
       · 标准样品可测试的能力 vs 需付费开发的功能<br>
       · 样品价格、最小数量、运费、交期<br>
@@ -737,47 +935,58 @@ body.buyer-view [data-internal]{display:none!important;}
 <!-- ===== FAQ ===== -->
 <section class="section section-alt">
   <div class="container">
-    <div class="section-header fade-up">
-      <span class="section-tag">FAQ</span>
-      <h2 class="section-title">Questions before ordering samples</h2>
-    </div>
+    <div class="faq-grid fade-up">
 
-    <div class="faq-list fade-up">
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Can the recorder work with our own app or backend?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Share your intended workflow. We'll confirm which model supports it, what integration resources are available, and whether firmware changes are required.</div></div>
+      <!-- Left: Title & description -->
+      <div class="faq-left">
+        <span class="section-tag">FAQ</span>
+        <h2 class="section-title">Questions before<br>ordering samples</h2>
+        <p class="faq-left-desc">Everything you need to know about evaluating our recording hardware for your project.</p>
+        <a href="#form-section" class="faq-left-cta">
+          Still have questions? Talk to us
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
       </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          Do we need custom firmware to start testing?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">That depends on the device and workflow. We'll clarify what you can test with the standard sample and what requires additional development.</div></div>
+
+      <!-- Right: Accordion -->
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can the recorder work with our own app or backend?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Share your intended workflow. We'll confirm which model supports it, what integration resources are available, and whether firmware changes are required.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Do we need custom firmware to start testing?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">That depends on the device and workflow. We'll clarify what you can test with the standard sample and what requires additional development.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What does the sample purchase include?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Your sample quotation will specify the hardware, accessories, documentation, and included integration support.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            When do we discuss customization and production?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">After you validate the sample, we can scope branding, firmware changes, quantities, and production requirements.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            I don't have my own app yet — can I still order samples?
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">Yes. Samples are available for brand sales, enterprise deployment, and personal evaluation as well. Tell us your use case and we'll recommend a suitable path.</div></div>
+        </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          What does the sample purchase include?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Your sample quotation will specify the hardware, accessories, documentation, and included integration support.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          When do we discuss customization and production?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">After you validate the sample, we can scope branding, firmware changes, quantities, and production requirements.</div></div>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
-          I don't have my own app yet — can I still order samples?
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Yes. Samples are available for brand sales, enterprise deployment, and personal evaluation as well. Tell us your use case and we'll recommend a suitable path.</div></div>
-      </div>
+
     </div>
   </div>
 </section>
