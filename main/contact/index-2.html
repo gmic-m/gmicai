@@ -140,7 +140,7 @@ input,select,textarea{font-family:inherit;font-size:inherit;}
 .products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:40px;}
 .product-card{background:var(--white);border:1px solid var(--gray-100);border-radius:var(--radius-lg);overflow:hidden;transition:box-shadow .4s,transform .4s;}
 .product-card:hover{box-shadow:0 12px 40px rgba(0,0,0,0.06);transform:translateY(-2px);}
-.product-card-img{height:360px;background:var(--gray-50);display:flex;align-items:center;justify-content:center;padding:12px;position:relative;overflow:hidden;}
+.product-card-img{height:360px;background:#fff;display:flex;align-items:center;justify-content:center;padding:12px;position:relative;overflow:hidden;}
 .product-card-img img{max-height:336px;object-fit:contain;}
 .product-card-body{padding:32px 32px 28px;}
 .product-card-model{font-size:13px;font-weight:600;color:var(--blue);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:6px;}
@@ -323,7 +323,7 @@ body.buyer-view [data-internal]{display:none!important;}
 <nav class="nav" id="nav">
   <div class="nav-inner">
     <a href="../index.html" class="nav-logo">
-      <span class="nav-logo-text">GMIC.AI</span>
+      <img src="../img/logo.svg" alt="GMIC.AI" style="height:28px;width:auto;">
     </a>
     <div class="nav-right">
       <a href="#devices" class="nav-link">View Devices</a>
@@ -935,58 +935,47 @@ body.buyer-view [data-internal]{display:none!important;}
 <!-- ===== FAQ ===== -->
 <section class="section section-alt">
   <div class="container">
-    <div class="faq-grid fade-up">
+    <div class="section-header fade-up">
+      <span class="section-tag">FAQ</span>
+      <h2 class="section-title">Questions before ordering samples</h2>
+    </div>
 
-      <!-- Left: Title & description -->
-      <div class="faq-left">
-        <span class="section-tag">FAQ</span>
-        <h2 class="section-title">Questions before<br>ordering samples</h2>
-        <p class="faq-left-desc">Everything you need to know about evaluating our recording hardware for your project.</p>
-        <a href="#form-section" class="faq-left-cta">
-          Still have questions? Talk to us
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+    <div class="faq-list fade-up">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Can the recorder work with our own app or backend?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Share your intended workflow. We'll confirm which model supports it, what integration resources are available, and whether firmware changes are required.</div></div>
       </div>
-
-      <!-- Right: Accordion -->
-      <div class="faq-list">
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            Can the recorder work with our own app or backend?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">Share your intended workflow. We'll confirm which model supports it, what integration resources are available, and whether firmware changes are required.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            Do we need custom firmware to start testing?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">That depends on the device and workflow. We'll clarify what you can test with the standard sample and what requires additional development.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            What does the sample purchase include?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">Your sample quotation will specify the hardware, accessories, documentation, and included integration support.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            When do we discuss customization and production?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">After you validate the sample, we can scope branding, firmware changes, quantities, and production requirements.</div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">
-            I don't have my own app yet — can I still order samples?
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-          </button>
-          <div class="faq-a"><div class="faq-a-inner">Yes. Samples are available for brand sales, enterprise deployment, and personal evaluation as well. Tell us your use case and we'll recommend a suitable path.</div></div>
-        </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Do we need custom firmware to start testing?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">That depends on the device and workflow. We'll clarify what you can test with the standard sample and what requires additional development.</div></div>
       </div>
-
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          What does the sample purchase include?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Your sample quotation will specify the hardware, accessories, documentation, and included integration support.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          When do we discuss customization and production?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">After you validate the sample, we can scope branding, firmware changes, quantities, and production requirements.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          I don't have my own app yet — can I still order samples?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </button>
+        <div class="faq-a"><div class="faq-a-inner">Yes. Samples are available for brand sales, enterprise deployment, and personal evaluation as well. Tell us your use case and we'll recommend a suitable path.</div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -995,7 +984,7 @@ body.buyer-view [data-internal]{display:none!important;}
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
-      <div class="footer-logo">GMIC.AI</div>
+      <div class="footer-logo"><img src="../img/logo.svg" alt="GMIC.AI" style="height:24px;width:auto;filter:brightness(0) invert(1);"></div>
       <div class="footer-links">
         <a href="../index.html">Home</a>
         <a href="../products.html">Products</a>
